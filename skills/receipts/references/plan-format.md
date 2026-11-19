@@ -21,8 +21,8 @@ This is the contract between the model that writes a plan, the script that check
 | `id` | yes | Unique string within the plan |
 | `line` | yes | 1-based line number of the document line that holds the quote |
 | `quote` | yes | A verbatim substring of that single line |
-| `number` | yes | The number as written, a substring of `quote`. It only locates the number. The value is read from the document, not from this string. |
-| `occurrence` | no | 1-based. Which occurrence of `number` inside `quote`. Default 1. |
+| `number` | yes | The number as written, a substring of `quote`. It only locates the number, so it may be the bare digits or include the currency symbol, scale and unit. The value is read from the document, not from this string. |
+| `occurrence` | no | 1-based. Which place in `quote` where `number` stands as a whole number. A match inside a longer number (`3` in `2023`) is not a place. Default 1. |
 | `kind` | yes | `lookup`, `derived`, `no_source` or `label` |
 | `formula` | for `derived` | One of the formulas in section 3. `lookup` means `value`. |
 | `operands` | for `lookup`, `derived` | See section 3 |
@@ -52,8 +52,9 @@ Exactly one cell must match. Zero matches or more than one give `unverifiable`.
 - **Markdown** (`.md`): `table` is the 1-based index of the pipe table in the file. The first table row is the header.
 - **Excel** (`.xlsx`): `sheet` is the sheet name. The header is row 1 unless `header_row` (1-based) says otherwise. Stored values are read. Formulas are not re-evaluated.
 - **Text** (`.txt`, or any other extension): `contains` must match exactly one line. `nth` (1-based, default 1) picks the n-th number on that line, counted the way `scan` counts numbers.
-- **Matching**: cell text and filter values are compared as strings after trimming spaces. A numeric cell whose value is a whole number is compared without a decimal part (`2025.0` matches `"2025"`).
-- **`multiplier`** (optional, any single-cell locator): the cell value is multiplied by it. Use it when the source is in thousands or millions. It appears on the receipt.
+- **Matching**: cell text and filter values are compared as strings after trimming spaces. A numeric cell whose value is a whole number is compared without a decimal part (`2025.0` matches `"2025"`). A `row` or `where` key that is not a column of the table gives `locator_no_match`.
+- **Cell values**: a cell may hold a JSON or Excel number, or text with thousands separators, a currency symbol, a trailing `%`, or parentheses for a negative value (`(1,500)`).
+- **`multiplier`** (optional, a number or a numeric string): the cell value is multiplied by it. Use it when the source is in thousands or millions. It works on many-cells selectors too, on each cell. It appears on the receipt.
 - Files are read as UTF-8 (a BOM is accepted).
 
 ### Many cells
@@ -118,10 +119,10 @@ The script reads the number from the document at the place the claim points to.
 
 Let `q` be the value of one unit in the last written digit after scale (`12.4%` → 0.1, `$1.2M` → 100,000, `3조 2,000억` → 1억), `w` the written value and `v` the recomputed value.
 
-- `verified` if `w` equals `v` rounded to `q` half-up, or half-even.
+- `verified` if `w` equals `v` rounded to `q` half-up (a tie goes away from zero), or half-even.
 - In the default mode also `verified` if `w` equals `v` truncated toward zero at `q`. The receipt notes `truncated`.
 - `--mode strict` accepts rounding only.
-- **Hedged integers**: if the number is an integer ending in zeros and a hedge word (`about`, `approximately`, `roughly`, `around`, `nearly`, `almost`, `~`, `약`, `대략`, `거의`) stands directly before it, `q` is 10 to the number of trailing zeros (`about 1,200,000` → 100,000).
+- **Hedged integers**: if the number is an integer ending in zeros and a hedge word (`about`, `approximately`, `roughly`, `around`, `nearly`, `almost`, `~`, `약`, `대략`, `거의`) stands directly before it or before its currency symbol, `q` is 10 to the number of trailing zeros (`about 1,200,000` → 100,000).
 
 ### Direction
 
@@ -129,6 +130,7 @@ Only for `difference` and `pct_change`.
 
 - If the number is written with an explicit sign (`-3.2%`, `+1.5%p`), the comparison is signed and direction words are ignored.
 - Otherwise the script looks for direction words in the quote. Up: rose, risen, increased, increase, grew, grown, growth, up, higher, gained, climbed, jumped, surged, expanded, 증가, 늘었, 늘어, 늘며, 늘고, 상승, 올랐, 올라, 오른, 성장, 확대, 높아, 급등. Down: fell, fallen, decreased, decrease, declined, decline, dropped, drop, down, lower, shrank, contracted, slipped, plunged, reduced, 감소, 줄었, 줄어, 줄며, 줄고, 하락, 내렸, 내려, 내린, 떨어, 축소, 낮아, 급락.
+- English words are matched as whole words, Korean ones as stems (`늘었` matches `늘었다`).
 - If the quote has words of exactly one direction, that is the direction. If the plan's `direction` disagrees with it, the verdict is `unverifiable`.
 - If the quote has no direction word, or both kinds, the plan's `direction` is used. If there is none, the comparison is signed.
 - With a direction, the written number is a size: `|w|` is compared with `|v|`, and `v` must be positive for `up` and negative for `down`. Otherwise `wrong`.
@@ -161,7 +163,7 @@ A claim may point at a token that `scan` skipped (a year, for example). The toke
 }
 ```
 
-`start` and `end` are 0-based character offsets in the line, `end` exclusive. A token runs from the sign or currency symbol through the percent sign, scale or multiple word.
+`line` is 1-based. `start` and `end` are 0-based character offsets in the line, `end` exclusive. A token runs from the sign or currency symbol through the percent sign, scale or multiple word.
 
 Skip rules, each with its own count. When two rules could apply, the earlier one in this list wins:
 
@@ -172,7 +174,7 @@ Skip rules, each with its own count. When two rules could apply, the earlier one
 - `time`, `version`
 - `heading_number` (`## 2. Results`), `list_marker` (`1.` at the start of a line)
 - `reference` (`[3]`)
-- `identifier`: digits glued to letters or joined to a word by a hyphen, such as `CO2`, `sales_2025`, `COVID-19`
+- `identifier`: digits glued to ASCII letters or joined to a word by a hyphen, such as `CO2`, `sales_2025`, `COVID-19`. Hangul glued to a number (`3명`, `0.86였다`, `2026-11-19에`) changes nothing: the number is still a number and the date is still a date.
 - `ordinal`: `1st`, `2nd`, `제3`, `3번째`
 
 The rules lean toward counting. A 4-digit number with no year context stays a number and shows up as `uncovered` if the plan leaves it out.

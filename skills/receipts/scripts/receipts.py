@@ -71,25 +71,26 @@ MONTH = (r"(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul
 SKIP_RULES = [  # (rule, regex, group to mark). Order is priority: an earlier match wins.
     ("code", re.compile(r"`[^`]+`"), 0),
     ("url", re.compile(r"(?:https?://|www\.)\S+|\b[\w.+-]+@[\w-]+\.[\w.-]+\b"), 0),
-    ("date", re.compile(r"(?<![\w.])\d{4}[-/.]\d{1,2}[-/.]\d{1,2}(?![\w])\.?"), 0),
-    ("date", re.compile(r"(?<![\w.])\d{4}\.\s\d{1,2}\.\s\d{1,2}\.?(?!\d)"), 0),
-    ("date", re.compile(r"(?<![\w.])\d{1,2}/\d{1,2}/\d{4}(?![\w])"), 0),
+    ("date", re.compile(r"(?<![A-Za-z0-9_.])\d{4}[-/.]\d{1,2}[-/.]\d{1,2}(?![A-Za-z0-9_])\.?"), 0),
+    ("date", re.compile(r"(?<![A-Za-z0-9_.])\d{4}\.\s\d{1,2}\.\s\d{1,2}\.?(?!\d)"), 0),
+    ("date", re.compile(r"(?<![A-Za-z0-9_.])\d{1,2}/\d{1,2}/\d{4}(?![A-Za-z0-9_])"), 0),
     ("date", re.compile(rf"(?i:\b{MONTH})\s+\d{{1,2}}(?:st|nd|rd|th)?(?:,?\s+\d{{4}})?(?!\d)"), 0),
-    ("date", re.compile(rf"(?<![\w.])\d{{1,2}}(?:st|nd|rd|th)?\s+(?i:{MONTH})(?:,?\s+\d{{4}})?(?!\d)"), 0),
+    ("date", re.compile(rf"(?<![A-Za-z0-9_.])\d{{1,2}}(?:st|nd|rd|th)?\s+(?i:{MONTH})(?:,?\s+\d{{4}})?(?!\d)"), 0),
     ("date", re.compile(rf"(?i:\b{MONTH}),?\s+\d{{4}}(?!\d)"), 0),
-    ("date", re.compile(r"(?<![\w.])\d{4}\s?년\s?\d{1,2}\s?월(?:\s?\d{1,2}\s?일)?"), 0),
-    ("date", re.compile(r"(?<![\w.,])\d{1,2}\s?월(?:\s?\d{1,2}\s?일)?(?!\w)"), 0),
-    ("date", re.compile(r"(?<![\w.])(?:(?:19|20)\d{2}\s?)?(?:[1-4]Q|Q[1-4]|H[12])(?![A-Za-z0-9])"
+    ("date", re.compile(r"(?<![A-Za-z0-9_.])\d{4}\s?년\s?\d{1,2}\s?월(?:\s?\d{1,2}\s?일)?"), 0),
+    ("date", re.compile(r"(?<![A-Za-z0-9_.,])\d{1,2}\s?월(?:\s?\d{1,2}\s?일)?"), 0),
+    ("date", re.compile(r"(?<![A-Za-z0-9_.])(?:(?:19|20)\d{2}\s?)?(?:[1-4]Q|Q[1-4]|H[12])(?![A-Za-z0-9])"
                         r"(?:\s?(?:(?:19|20)\d{2}|['’]\d{2})(?!\d))?"), 0),
-    ("date", re.compile(r"(?<![\w.])(?:FY|CY)\s?['’]?\d{2,4}(?!\d)"), 0),
-    ("date", re.compile(r"(?<![\w.,])[1-4]\s?(?:/\s?4\s?)?분기"), 0),
-    ("year", re.compile(r"(?<![\w.,])(?:19|20)\d{2}\s?년(?:도)?"), 0),
-    ("time", re.compile(r"(?<![\w.:])\d{1,2}:\d{2}(?::\d{2})?(?![\w:])(?:\s?(?i:am|pm)\b)?"), 0),
-    ("version", re.compile(r"(?i:\bv)\d+(?:\.\d+)+\b|(?<![\w.])\d+\.\d+\.\d+(?:\.\d+)*(?![\w.])"), 0),
+    ("date", re.compile(r"(?<![A-Za-z0-9_.])(?:FY|CY)\s?['’]?\d{2,4}(?!\d)"), 0),
+    ("date", re.compile(r"(?<![A-Za-z0-9_.,])[1-4]\s?(?:/\s?4\s?)?분기"), 0),
+    ("year", re.compile(r"(?<![A-Za-z0-9_.,])(?:19|20)\d{2}\s?년(?:도)?"), 0),
+    ("time", re.compile(r"(?<![A-Za-z0-9_.:])\d{1,2}:\d{2}(?::\d{2})?(?![A-Za-z0-9_:])(?:\s?(?i:am|pm)(?![A-Za-z]))?"), 0),
+    ("version", re.compile(r"(?<![A-Za-z0-9_])[vV]\d+(?:\.\d+)+(?![A-Za-z0-9_])"
+                           r"|(?<![A-Za-z0-9_.])\d+\.\d+\.\d+(?:\.\d+)*(?![A-Za-z0-9_]|\.\d)"), 0),
     ("heading_number", re.compile(r"^(#{1,6}\s+)(\d+(?:\.\d+)*[.)]|\d+(?:\.\d+)+)(?=\s|$)"), 2),
     ("list_marker", re.compile(r"^(\s*)(\d+[.)]|\(\d+\))(?=\s)"), 2),
     ("reference", re.compile(r"\[\^?\d+\]"), 0),
-    ("identifier", re.compile(r"(?<![\w-])\d{2,4}-\d{3,4}-\d{4}(?![\w-])"), 0),
+    ("identifier", re.compile(r"(?<![A-Za-z0-9_-])\d{2,4}-\d{3,4}-\d{4}(?![A-Za-z0-9_-])"), 0),
 ]
 PRE_YEAR_RE = re.compile(
     r"(?i)(?:\b(?:in|since|during|until|through|year|fiscal|versus|vs\.?|end of|as of|start of"
@@ -101,7 +102,7 @@ WEAK_CANCEL_RE = re.compile(rf"(?i)\b(?:{UP_EN}|{DOWN_EN})\s+(?:[^\W\d]+\s+){{0,
 UNIT_AFTER_RE = re.compile(
     r"(?i)^\s?(?:units?|people|persons?|employees|customers|users|stores|shares|orders|items|cases|dollars|won"
     r"|명|건|개|원|달러|주|대|곳|가구|톤|kg|km|%)")
-POST_YEAR_RE = re.compile(r"^(?:\s?년|\s+(?:fiscal|calendar)\b|\s?(?:Q[1-4]|H[12])\b)")
+POST_YEAR_RE = re.compile(r"^(?:\s?년|\s+(?:fiscal|calendar)(?![A-Za-z])|\s?(?:Q[1-4]|H[12])(?![A-Za-z0-9]))")
 YEAR_JOIN_AFTER_RE = re.compile(r"^\s*(?:and\b|to\b|or\b|[-–~/·]|과|와|및)\s*$")
 FENCE_RE = re.compile(r"^\s*(```|~~~)")
 
@@ -787,6 +788,21 @@ def judge(claim: dict, tok: Token, line_text: str, base: str, mode: str) -> dict
 
 # --------------------------------------------------------------------------- check
 
+def _whole_number_places(quote: str, number: str):
+    """Where `number` stands in `quote` as a whole number, not inside a longer one ("3" in "2023")."""
+    out, at = [], quote.find(number)
+    while at >= 0:
+        end = at + len(number)
+        before, before2 = quote[at - 1:at], quote[max(at - 2, 0):max(at - 1, 0)]
+        after, after2 = quote[end:end + 1], quote[end + 1:end + 2]
+        inside = (number[0].isdigit() and (before.isdigit() or (before in (".", ",") and before2.isdigit()))) or \
+                 (number[-1].isdigit() and (after.isdigit() or (after in (".", ",") and after2.isdigit())))
+        if not inside:
+            out.append(at)
+        at = quote.find(number, at + 1)
+    return out
+
+
 def _bind(claim: dict, lines, numbers, skipped):
     """Find the token a claim points at. Returns (token, from_skipped) or raises LocatorError."""
     line, quote, number = claim.get("line"), claim.get("quote"), claim.get("number")
@@ -801,11 +817,10 @@ def _bind(claim: dict, lines, numbers, skipped):
     occ = claim.get("occurrence", 1)
     if not isinstance(occ, int) or isinstance(occ, bool) or occ < 1:
         raise LocatorError("invalid_claim", "occurrence must be a positive integer")
-    at = -1
-    for _ in range(occ):
-        at = quote.find(number, at + 1)
-        if at < 0:
-            raise LocatorError("number_not_in_quote", "the quote does not contain the number")
+    places = _whole_number_places(quote, number)
+    if len(places) < occ:
+        raise LocatorError("number_not_in_quote", "the quote does not contain the number")
+    at = places[occ - 1]
     a, b = pos + at, pos + at + len(number)
 
     def best(pool):

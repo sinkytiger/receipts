@@ -104,6 +104,13 @@ class ScanTest(unittest.TestCase):
         self.assertEqual(scan("Margins of 12.4 % (−3.2%) in a 10-15% band, about $2,250, 약 1,200만 명, 1.8배.")[0],
                          ["12.4 %", "−3.2%", "10", "15%", "$2,250", "1,200만", "1.8배"])
 
+    def test_korean_particles_do_not_break_skip_rules(self):
+        text = ("2026-11-19에 작성했고 11월에는 v3.0.9에서 14:30에 시작했다. 3분기에도, 2025년에는 FY2025와 같다.\n"
+                "이익률은 0.86였다. 직원은 3명이고 매출은 12,345건이었다. 버전은 1.2.3.")
+        nums, skipped = scan(text)
+        self.assertEqual(nums, ["0.86", "3", "12,345"])
+        self.assertEqual({r for _, r in skipped}, {"date", "version", "time", "year"})
+
     def test_offsets(self):
         nums, _ = R.scan_lines(["Total: 1,204 units"])
         self.assertEqual((nums[0].line, nums[0].start, nums[0].end, nums[0].text), (1, 7, 12, "1,204"))
@@ -258,6 +265,18 @@ class VerdictTest(CheckCase):
         self.assertEqual([u["text"] for u in res["labels"]], ["2025"])
         self.assertEqual(res["skipped"].get("label"), 1)
         self.assertEqual(c, {"numbers": 5, "verified": 1, "wrong": 1, "unverifiable": 0, "uncovered": 3})
+
+
+class OccurrenceTest(CheckCase):
+    def test_number_inside_a_longer_number_is_not_a_place(self):
+        self.assertEqual(R._whole_number_places("In 2023, 3 stores and 3.5% of 1,003", "3"), [9])
+        self.assertEqual(R._whole_number_places("It was 455.", "455"), [7])
+        self.assertEqual(R._whole_number_places("5.5% and 5%", "5"), [9])
+        doc = "In 2023 the region took 3 orders."
+        src = {"o.csv": "k,v\na,3\n"}
+        res = self.run_check(doc + "\n", [{"id": "c", "line": 1, "quote": doc, "number": "3", "kind": "lookup",
+                                         "operands": {"of": {"file": "o.csv", "row": {"k": "a"}, "column": "v"}}}], src)
+        self.assertEqual(res["counts"], {"numbers": 1, "verified": 1, "wrong": 0, "unverifiable": 0, "uncovered": 0})
 
 
 class SourceTest(CheckCase):

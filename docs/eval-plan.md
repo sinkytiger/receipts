@@ -71,3 +71,10 @@ Checks of real documents may appear in the README as examples. They are not perf
 ## Change log
 
 - 2026-11-19: registered. No code, generator or result existed at this commit.
+- 2026-11-19, later the same day: the generator and scorer were written. No measure or bar changed. Details the plan left open, as the generator settles them:
+  - The generator and scorer were written by a separate agent from `docs/eval-plan.md` and the contract (`skills/receipts/references/plan-format.md`), without reading the tool.
+  - Size per seed: 64 documents of 15 statements each (960 statements); 24 abstention cases of each of four kinds (zero-match locator, multi-match locator, missing source, corrupt source); 2 claims removed per document in the coverage plans (10% of 15, rounded half-up).
+  - Error types. Wrong scale: a wrong scale word, or with no scale word a shift of the decimal point by one place. Stale value: the row directly above in the source. Wrong denominator: (new − old) / |new| for a percent change, part / (whole − part) for a share. Wrong count: off by 1 or 2. Rounding outside tolerance: the last written digit is off by one or two units.
+  - About 10% of correct statements are written truncated instead of rounded (only where the two differ). The default mode must accept them.
+  - Measures 3 and 4: a crash, a missing claim or any verdict other than the expected one or `unverifiable` counts as a failure. Measure 6 counts any non-zero exit, and the results file also reports how many exits were exactly code 2. Measure 7 counts the statement numbers of the 64 documents, not the distractors.
+  - The first development run (commit `e5a1488`, working tree not clean) was started by the generator's author by accident, with the default tool path. It is kept in `bench/runs.jsonl` like every other run.
