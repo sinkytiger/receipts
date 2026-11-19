@@ -1,0 +1,9 @@
+{"cik": "CIK10", "name": "Synthetic Company CIKNUM", "tickers": ["TICKER"],
+ "filings": {"recent": {
+  "accessionNumber": ["CIK10-26-000030", "CIK10-26-000025", "CIK10-26-000020", "CIK10-26-000002", "CIK10-25-000079", "CIK10-24-000070"],
+  "form":            ["10-Q",            "8-K",             "10-Q",            "10-K/A",          "10-K",            "10-K"],
+  "filingDate":      ["2026-08-05",      "2026-08-01",      "2026-07-31",      "2026-01-15",      "2025-10-31",      "2024-11-01"],
+  "reportDate":      ["2026-06-27",      "2026-08-01",      "2026-06-27",      "2025-09-27",      "2025-09-27",      "2024-09-28"],
+  "primaryDocument": ["synq-old.htm",    "syn-8k.htm",      "syn-20260627.htm", "syn-10ka.htm",   "syn-20250927.htm", "syn-20240928.htm"],
+  "isInlineXBRL":    [0,                 1,                 1,                 1,                 1,                 1],
+  "isXBRL":          [1,                 1,                 1,                 1,                 1,                 1]}}}

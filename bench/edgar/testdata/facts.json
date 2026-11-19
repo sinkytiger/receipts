@@ -1,0 +1,29 @@
+{"_note": "Synthetic company facts for synthetic-10q.htm: [concept, unit, start or null, end, value in whole units]. run_selftest.py writes each fact once per filing of each synthetic company, and each restated row once under an older accession.",
+ "facts": [
+  ["us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", "USD", "2026-03-29", "2026-06-27", 94036000000],
+  ["us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", "USD", "2025-09-28", "2026-06-27", 313695000000],
+  ["us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", "USD", "2025-03-30", "2025-06-28", 85777000000],
+  ["us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", "USD", "2024-09-29", "2025-06-28", 296105000000],
+  ["us-gaap:CostOfRevenue", "USD", "2026-03-29", "2026-06-27", 51000000000],
+  ["us-gaap:NetIncomeLoss", "USD", "2026-03-29", "2026-06-27", 23434000000],
+  ["us-gaap:NetIncomeLoss", "USD", "2025-09-28", "2026-06-27", 84544000000],
+  ["us-gaap:OperatingIncomeLoss", "USD", "2026-03-29", "2026-06-27", 28202000000],
+  ["us-gaap:OtherNonoperatingIncomeExpense", "USD", "2026-03-29", "2026-06-27", -171000000],
+  ["us-gaap:EarningsPerShareBasic", "USD/shares", "2026-03-29", "2026-06-27", 1.57],
+  ["us-gaap:WeightedAverageNumberOfSharesOutstandingBasic", "shares", "2026-03-29", "2026-06-27", 14948500000],
+  ["us-gaap:Assets", "USD", null, "2026-06-27", 364980000000],
+  ["us-gaap:Assets", "USD", null, "2025-09-27", 359241000000],
+  ["us-gaap:CashAndCashEquivalentsAtCarryingValue", "USD", null, "2026-06-27", 36269000000],
+  ["us-gaap:ShortTermBorrowings", "USD", null, "2026-06-27", 0],
+  ["us-gaap:CommercialPaper", "USD", null, "2025-09-27", 0],
+  ["us-gaap:CommonStockSharesIssued", "shares", null, "2026-06-27", 15000000000],
+  ["us-gaap:CommonStockSharesOutstanding", "shares", null, "2025-09-27", 15000000000],
+  ["us-gaap:LiabilitiesCurrent", "USD", null, "2026-06-27", 144430000000],
+  ["us-gaap:ComprehensiveIncomeNetOfTax", "USD", "2026-03-29", "2026-06-27", 24000000000],
+  ["us-gaap:ComprehensiveIncomeNetOfTax", "USD", "2025-12-28", "2026-06-27", 50000000000],
+  ["us-gaap:ComprehensiveIncomeNetOfTax", "USD", "2025-09-28", "2026-06-27", 86000000000],
+  ["us-gaap:LongTermDebtNoncurrent", "USD", null, "2026-06-27", 98200000000]
+ ],
+ "restated": [
+  ["us-gaap:Assets", "USD", null, "2025-09-27", 359000000000]
+ ]}
