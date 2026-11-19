@@ -1,6 +1,6 @@
 # receipts — design (v0.1 draft)
 
-Status: design only. No code exists yet. Changes to this document after the first commit are listed at the bottom.
+Status: the core script exists and follows `skills/receipts/references/plan-format.md`, which is now the detailed contract. The skill packaging and the SEC EDGAR connection do not exist yet. Changes to this document after the first commit are listed at the bottom.
 
 ## What it is
 
@@ -129,3 +129,8 @@ docs/design.md, docs/eval-plan.md
 ## Change log
 
 - 2026-11-19: first version, written before any code.
+- 2026-11-19, later: the core script was written. Four things were added to the design above, all described in `plan-format.md`:
+  - A plan may mark a bare 4-digit year as a `label`. Such tokens are listed on the receipt and leave the count of numbers.
+  - A many-cells selector may stand where a formula expects one cell. Its cells are summed.
+  - An internal error stops the run with exit code 2 instead of producing a verdict.
+  - Year detection leans toward counting: a 4-digit number with no clear year context stays a number.

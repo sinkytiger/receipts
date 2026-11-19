@@ -2,7 +2,7 @@
 
 에이전트가 쓴 숫자마다 영수증을 붙이고, 영수증이 없는 숫자는 표시한다.
 
-> **상태: 아직 쓸 수 없습니다.** 지금 저장소에는 설계와 평가 계획만 있습니다. 코드와 결과가 생기기 전에 먼저 커밋했습니다. 설치할 것이 없습니다.
+> **상태: 배포 전입니다.** 대조 스크립트와 평가 도구는 저장소에 있습니다. 에이전트 스킬과 플러그인 포장은 아직 없고, 배포용 평가 숫자도 아직 없습니다.
 
 [English](README.md)
 
@@ -19,12 +19,35 @@
 3. 코드가 출처를 읽고 다시 계산해 `verified`(확인됨), `wrong`(틀림), `unverifiable`(확인 불가)로 판정합니다.
 4. 계획에서 빠진 숫자는 `uncovered`(미대조)로 나옵니다.
 
-첫 공개 때 읽을 출처는 CSV, TSV, JSON, 마크다운 표, 일반 텍스트, 엑셀 값, 미국 공시(SEC EDGAR)입니다. 파이썬 기본 라이브러리만 씁니다.
+## 스크립트 써 보기
 
-## 지금 있는 것
+파이썬만 있으면 됩니다. 파이썬 3.9 이상을 기준으로 썼고, 지금까지는 3.12에서만 돌려 봤습니다.
 
+```sh
+python skills/receipts/scripts/receipts.py check examples/quickstart/claims.json
+```
+
+예제 보고서는 동부 매출이 12.4% 늘었다고 쓰지만, 출처로 다시 계산하면 11.9%입니다. 결과 첫 줄은 이렇게 나옵니다.
+
+```
+9 numbers / 6 verified / 1 wrong / 1 unverifiable / 1 uncovered   (skipped: 1 date, 2 heading_number, 1 label, 3 year)
+```
+
+지금 읽을 수 있는 출처는 CSV, TSV, JSON, 마크다운 표, 일반 텍스트, 엑셀 값입니다. 미국 공시(SEC EDGAR)는 첫 배포 때 넣을 예정입니다.
+
+## 평가 진행 상황
+
+- **E1 (정답 계획을 주고 스크립트만 평가):** 개발용 문제(문서 64개, 문장 960개, 물러남 사례 96개)에서 통과 기준 8개를 모두 충족했습니다. 실행 기록은 [bench/runs.jsonl](bench/runs.jsonl)에 있습니다. 개발용 숫자이고, 대표 숫자는 배포 커밋에서 한 번만 돌리는 최종용 문제에서 나옵니다. 최종용은 아직 돌리지 않았습니다.
+- **E2 (모델이 계획을 쓰는 전체 흐름):** 돌리지 않았습니다. E1은 계획이 맞을 때 스크립트가 맞게 읽고 비교하는지만 보여 줍니다.
+- **E3 (미국 공시 연결):** 만들지 않았습니다.
+
+평가 문서는 문장 틀로 만든 합성 문서이고, 영어와 한국어가 절반씩입니다.
+
+## 문서
+
+- [skills/receipts/references/plan-format.md](skills/receipts/references/plan-format.md): 계획 양식과 규칙 (영어)
 - [docs/design.md](docs/design.md): 동작 방식과 하지 않는 것 (영어)
-- [docs/eval-plan.md](docs/eval-plan.md): 무엇을 재고 어떤 결과를 통과로 볼지, 코드를 쓰기 전에 정한 기준 (영어)
+- [docs/eval-plan.md](docs/eval-plan.md): 코드를 쓰기 전에 정한 평가 기준 (영어)
 
 ## 라이선스
 

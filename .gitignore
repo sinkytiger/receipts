@@ -7,3 +7,5 @@ bench/out/
 runs/
 posts/
 bench/bench/
+receipts.json
+receipts.md
