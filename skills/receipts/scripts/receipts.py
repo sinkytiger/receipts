@@ -9,12 +9,18 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
+import http.client
 import io
 import json
 import os
 import re
 import sys
+import time
+import urllib.error
+import urllib.request
 import zipfile
+import zlib
 import xml.etree.ElementTree as ET
 from decimal import Decimal, InvalidOperation, ROUND_DOWN, ROUND_HALF_EVEN, ROUND_HALF_UP, getcontext
 
@@ -493,6 +499,8 @@ def _json_pointer(doc, pointer: str):
 
 def _table(loc: dict, base: str):
     """Return (header, rows, label) for a locator that addresses a table."""
+    if isinstance(loc, dict) and "edgar" in loc:
+        raise LocatorError("unsupported", "an EDGAR locator is a single cell: list the facts under items")
     if not isinstance(loc, dict) or not isinstance(loc.get("file"), str):
         raise LocatorError("locator_no_match", "the locator has no file")
     name = loc["file"]
@@ -560,6 +568,8 @@ def _multiplier(loc: dict) -> Decimal:
 
 def resolve_cell(loc: dict, base: str):
     """One cell. Returns (value, description)."""
+    if isinstance(loc, dict) and "edgar" in loc:
+        return resolve_edgar(loc, base)
     if not isinstance(loc, dict) or not isinstance(loc.get("file"), str):
         raise LocatorError("locator_no_match", "the locator has no file")
     name = loc["file"]
@@ -650,6 +660,272 @@ def resolve_count(loc: dict, base: str):
         hits = kept
         label += f" {test['column']} {test['op']} {test.get('value')}"
     return Decimal(len(hits)), f"{label}: {len(hits)} rows"
+
+
+# --------------------------------------------------------------------------- SEC EDGAR (contract sections 2 and 8)
+
+UA_ENV = "RECEIPTS_SEC_USER_AGENT"
+EDGAR_GAP = 0.2  # seconds between requests: at most 5 a second, the SEC allows 10
+_EDGAR = {"cache": None, "refresh": False, "last": 0.0, "files": {}, "fetched": set(), "missing": set()}
+DATE = r"\d{4}-\d{2}-\d{2}"
+
+
+class _NotFound(Exception):
+    pass
+
+
+def edgar_setup(cache=None, refresh=False):
+    _EDGAR.update(cache=cache, refresh=bool(refresh), files={}, fetched=set(), missing=set())
+
+
+def _edgar_hosts():
+    data = os.environ.get("RECEIPTS_EDGAR_DATA_URL", "").strip().rstrip("/") or "https://data.sec.gov"
+    www = os.environ.get("RECEIPTS_EDGAR_WWW_URL", "").strip().rstrip("/") or "https://www.sec.gov"
+    return data, www
+
+
+def _edgar_cache_dir(base: str) -> str:
+    return _EDGAR["cache"] or os.environ.get("RECEIPTS_EDGAR_CACHE", "").strip() or os.path.join(base, ".receipts", "edgar")
+
+
+def _edgar_get(url: str) -> bytes:
+    """One request to the SEC. Raises StopError when EDGAR cannot be read, _NotFound on HTTP 404."""
+    agent = os.environ.get(UA_ENV, "").strip()
+    if not agent:
+        raise StopError(f"EDGAR data is needed and {UA_ENV} is not set. The SEC asks automated clients to say who "
+                        f"they are: set {UA_ENV} to your name and e-mail address. Nothing was requested.")
+    if not url.startswith(("https://", "http://")):
+        raise StopError(f"not an http(s) address: {url}")
+    req = urllib.request.Request(url, headers={"User-Agent": agent, "Accept-Encoding": "gzip",
+                                               "Accept": "application/json"})
+    for attempt in (1, 2):
+        wait = EDGAR_GAP - (time.monotonic() - _EDGAR["last"])
+        if wait > 0:
+            time.sleep(wait)
+        _EDGAR["last"] = time.monotonic()
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                body = resp.read()
+                if (resp.headers.get("Content-Encoding") or "").lower() == "gzip":
+                    body = gzip.decompress(body)
+                return body
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                raise _NotFound() from None
+            if e.code in (429, 500, 502, 503, 504) and attempt == 1:
+                time.sleep(2)
+                continue
+            hint = f" (the SEC refuses clients it cannot identify: check {UA_ENV})" if e.code == 403 else ""
+            raise StopError(f"EDGAR answered HTTP {e.code} for {url}{hint}") from None
+        except (OSError, EOFError, ValueError, http.client.HTTPException, zlib.error) as e:  # no connection, timeout, broken body
+            if attempt == 1:
+                time.sleep(2)
+                continue
+            raise StopError(f"cannot read EDGAR at {url} ({type(e).__name__}: {getattr(e, 'reason', e)})") from None
+    raise StopError(f"cannot read EDGAR at {url}")
+
+
+def _edgar_file(rel: str, url: str, base: str, check):
+    """A cached EDGAR response as parsed JSON. Fetched when it is not in the cache, or once per run with --refresh."""
+    path = os.path.join(_edgar_cache_dir(base), *rel.split("/"))
+    key = os.path.abspath(path)
+    if key in _EDGAR["missing"]:
+        raise _NotFound()
+    if (_EDGAR["refresh"] and key not in _EDGAR["fetched"]) or not os.path.exists(path):
+        try:
+            body = _edgar_get(url)
+        except _NotFound:
+            _EDGAR["missing"].add(key)
+            raise
+        try:
+            doc = json.loads(body.decode("utf-8-sig"), parse_float=Decimal, parse_int=Decimal)
+        except ValueError:
+            raise StopError(f"EDGAR sent something that is not JSON for {url}") from None
+        if not check(doc):
+            raise StopError(f"EDGAR sent an unexpected answer for {url}")
+        try:
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            with open(path + ".part", "wb") as f:
+                f.write(body)
+            os.replace(path + ".part", path)
+        except OSError as e:
+            raise StopError(f"cannot write the EDGAR cache {path}: {e.strerror or e}") from None
+        _EDGAR["fetched"].add(key)
+        _CACHE[key] = doc
+    if key not in _CACHE:
+        try:
+            doc = json.loads(_read_text(path), parse_float=Decimal, parse_int=Decimal)
+        except ValueError:
+            raise StopError(f"the cached EDGAR file {path} is not valid JSON. Delete it or run with --refresh.") from None
+        if not check(doc):
+            raise StopError(f"the cached EDGAR file {path} is not what EDGAR sends. Delete it or run with --refresh.")
+        _CACHE[key] = doc
+    try:
+        _EDGAR["files"][rel] = time.strftime("%Y-%m-%d", time.gmtime(os.path.getmtime(path)))
+    except OSError:
+        _EDGAR["files"][rel] = ""
+    return _CACHE[key]
+
+
+def _edgar_cik(ident, base: str):
+    """A ticker or a CIK -> (cik, how the locator named it)."""
+    if isinstance(ident, bool) or not isinstance(ident, (str, int)):
+        raise LocatorError("locator_no_match", "edgar must be a ticker or a CIK")
+    text = str(ident).strip()
+    m = re.fullmatch(r"(?i)(?:CIK)?\s*(\d{1,10})", text)
+    if m:
+        return int(m.group(1)), ""
+    if not text:
+        raise LocatorError("locator_no_match", "edgar must be a ticker or a CIK")
+    data, www = _edgar_hosts()
+    try:
+        listing = _edgar_file("company_tickers.json", f"{www}/files/company_tickers.json", base,
+                              lambda d: isinstance(d, dict) and all(isinstance(v, dict) for v in d.values()))
+    except _NotFound:
+        raise StopError("the SEC's ticker list was not found (HTTP 404)") from None
+    want = text.upper().replace(".", "-")
+    for row in listing.values():
+        if str(row.get("ticker", "")).upper() == want and row.get("cik_str") is not None:
+            return int(row["cik_str"]), want
+    raise LocatorError("locator_no_match", f"{text!r} is not in the SEC's ticker list")
+
+
+def _edgar_facts(cik: int, base: str) -> dict:
+    data, www = _edgar_hosts()
+    rel = f"companyfacts/CIK{cik:010d}.json"
+    try:
+        return _edgar_file(rel, f"{data}/api/xbrl/companyfacts/CIK{cik:010d}.json", base,
+                           lambda d: isinstance(d, dict) and isinstance(d.get("facts"), dict))
+    except _NotFound:
+        raise LocatorError("locator_no_match", f"EDGAR has no facts for CIK {cik}") from None
+
+
+def _edgar_period(text):
+    """'2026-09-26' -> (None, end); '2025-09-28..2026-09-26' -> (start, end)."""
+    m = re.fullmatch(rf"({DATE})(?:\.\.({DATE}))?", text.strip()) if isinstance(text, str) else None
+    if not m:
+        raise LocatorError("locator_no_match", "period must be YYYY-MM-DD or YYYY-MM-DD..YYYY-MM-DD")
+    return (m.group(1), m.group(2)) if m.group(2) else (None, m.group(1))
+
+
+def _edgar_filing(r: dict) -> str:
+    return f"{r.get('form', '?')} {r.get('accn', '?')}, filed {r.get('filed', '?')}"
+
+
+def _edgar_concept(facts: dict, concept, unit):
+    """Return (unit name, fact rows) of one concept."""
+    if not isinstance(concept, str) or ":" not in concept:
+        raise LocatorError("locator_no_match", "concept must be written taxonomy:Tag, for example us-gaap:Assets")
+    tax, tag = concept.split(":", 1)
+    group = facts["facts"].get(tax)
+    node = group.get(tag) if isinstance(group, dict) else None
+    units = node.get("units") if isinstance(node, dict) else None
+    if not isinstance(units, dict) or not units:
+        raise LocatorError("locator_no_match", f"the company has not reported {concept}")
+    if unit is None:
+        if len(units) > 1:
+            raise LocatorError("locator_multiple", f"{concept} is reported in {', '.join(sorted(units))}: add unit")
+        name = next(iter(units))
+    else:
+        hits = [u for u in units if u.lower() == str(unit).strip().lower()]
+        if not hits:
+            raise LocatorError("locator_no_match", f"{concept} is reported in {', '.join(sorted(units))}, not {unit}")
+        name = hits[0]
+    rows = units[name]
+    return name, [r for r in rows if isinstance(r, dict)] if isinstance(rows, list) else []
+
+
+def resolve_edgar(loc: dict, base: str):
+    """One fact a company reported to the SEC. Returns (value, description)."""
+    if "where" in loc or "rows" in loc:
+        raise LocatorError("unsupported", "an EDGAR locator is a single cell: list the facts under items")
+    mult = _multiplier(loc)
+    start, end = _edgar_period(loc.get("period"))
+    accession = loc.get("accession")
+    if accession is not None:
+        accession = str(accession).replace("-", "").strip()
+        if not re.fullmatch(r"\d{18}", accession):
+            raise LocatorError("locator_no_match", "accession must look like 0000320193-26-000026")
+    version = loc.get("version")
+    if version not in (None, "first", "latest"):
+        raise LocatorError("locator_no_match", "version must be first or latest")
+    cik, ticker = _edgar_cik(loc.get("edgar"), base)
+    facts = _edgar_facts(cik, base)
+    name = str(facts.get("entityName") or "").strip()
+    who = f"{ticker} ({name}, CIK {cik})" if ticker else f"CIK {cik}" + (f" ({name})" if name else "")
+    concept = loc.get("concept")
+    unit, rows = _edgar_concept(facts, concept, loc.get("unit"))
+    period = f"{start}..{end}" if start else end
+    rows = [r for r in rows if r.get("end") == end and r.get("start") == start]
+    if not rows:
+        raise LocatorError("locator_no_match", f"EDGAR has no {concept} in {unit} for {period} ({who})")
+    if accession:
+        rows = [r for r in rows if str(r.get("accn", "")).replace("-", "") == accession]
+        if not rows:
+            raise LocatorError("locator_no_match", f"that filing does not report {concept} for {period}")
+    everywhere = len({to_number(r.get("val")) for r in rows})
+    note = ""
+    if everywhere > 1 and version and not accession:
+        dates = sorted(str(r.get("filed", "")) for r in rows)
+        pick = dates[0] if version == "first" else dates[-1]
+        rows = [r for r in rows if str(r.get("filed", "")) == pick]
+        note = f"; {version} report, other filings give another value"
+    values = {}
+    for r in rows:
+        values.setdefault(to_number(r.get("val")), []).append(r)
+    if len(values) > 1:
+        shown = "; ".join(f"{_plain(v)} ({_edgar_filing(max(rs, key=lambda r: str(r.get('filed', ''))))})"
+                          for v, rs in list(values.items())[:4])
+        more = f"; and {len(values) - 4} more" if len(values) > 4 else ""
+        raise LocatorError("edgar_versions_differ",
+                           f"filings give {len(values)} values for {concept} {period}: {shown}{more}. "
+                           "Pin one with accession, or choose version first or latest.")
+    val, same = next(iter(values.items()))
+    last = max(same, key=lambda r: str(r.get("filed", "")))
+    if not note and len(same) > 1:
+        note = f"; same in {len(same)} filings"
+    desc = f"EDGAR {who} {concept} [{period}] {unit} = {_plain(val)}" + (f" x {_plain(mult)}" if mult != 1 else "")
+    return val * mult, f"{desc} ({_edgar_filing(last)}{note})"
+
+
+def edgar_lookup(what: str, ident: str, base: str, concept=None, match=None, unit=None, since=None, until=None,
+                 limit=60) -> dict:
+    """The three look-up commands: company, concepts, facts."""
+    try:
+        cik, ticker = _edgar_cik(ident, base)
+        facts = _edgar_facts(cik, base)
+        out = {"cik": cik, "name": facts.get("entityName"), "fetched": _EDGAR["files"].get(f"companyfacts/CIK{cik:010d}.json")}
+        if ticker:
+            out["ticker"] = ticker
+        if what == "concepts":
+            found = []
+            for tax, group in sorted(facts["facts"].items()):
+                for tag, node in sorted(group.items()) if isinstance(group, dict) else []:
+                    if not isinstance(node, dict) or not isinstance(node.get("units"), dict):
+                        continue
+                    label = str(node.get("label") or "")
+                    if match and match.lower() not in tag.lower() and match.lower() not in label.lower():
+                        continue
+                    units = node.get("units") or {}
+                    rows = [r for rs in units.values() for r in rs]
+                    found.append({"concept": f"{tax}:{tag}", "label": label, "units": sorted(units),
+                                  "facts": len(rows), "latest_end": max((str(r.get("end", "")) for r in rows), default="")})
+            out.update(matched=len(found), concepts=found[:limit] if limit else found)
+        elif what == "facts":
+            name, rows = _edgar_concept(facts, concept, unit)
+            rows = [r for r in rows if (not since or str(r.get("end", "")) >= since)
+                    and (not until or str(r.get("end", "")) <= until)]
+            seen = {}
+            for r in rows:
+                seen.setdefault((r.get("start"), r.get("end")), set()).add(_cell_str(r.get("val")))
+            out.update(concept=concept, unit=name, facts=[
+                {"period": f"{r['start']}..{r.get('end')}" if r.get("start") else r.get("end"),
+                 "value": _cell_str(r.get("val")), "form": r.get("form"), "accession": r.get("accn"),
+                 "filed": r.get("filed"), "filings_differ": len(seen[(r.get("start"), r.get("end"))]) > 1}
+                for r in sorted(rows, key=lambda r: (str(r.get("end", "")), str(r.get("start", "")), str(r.get("filed", ""))))])
+        return out
+    except LocatorError as e:
+        raise StopError(e.detail or e.reason) from None
 
 
 # --------------------------------------------------------------------------- formulas and verdicts
@@ -836,7 +1112,9 @@ def _bind(claim: dict, lines, numbers, skipped):
     raise LocatorError("no_number_at_position", "there is no number at that place")
 
 
-def run_check(plan_path: str, mode: str = "default", doc_override: str = None) -> dict:
+def run_check(plan_path: str, mode: str = "default", doc_override: str = None, edgar_cache: str = None,
+              refresh: bool = False) -> dict:
+    edgar_setup(edgar_cache, refresh)
     try:
         plan = json.loads(_read_text(plan_path))
     except ValueError as e:
@@ -900,9 +1178,11 @@ def run_check(plan_path: str, mode: str = "default", doc_override: str = None) -
 
     def walk(node, claim_id):
         if isinstance(node, dict):
-            if "multiplier" in node and isinstance(node.get("file"), str):
-                where = node.get("column") or node.get("cell") or node.get("pointer") or node.get("contains") or ""
-                mults.setdefault((node["file"], str(where), str(node["multiplier"])), set()).add(claim_id)
+            src = node["file"] if isinstance(node.get("file"), str) else f"EDGAR {node['edgar']}" if "edgar" in node else None
+            if "multiplier" in node and src:
+                where = (node.get("column") or node.get("cell") or node.get("pointer") or node.get("contains")
+                         or node.get("concept") or "")
+                mults.setdefault((src, str(where), str(node["multiplier"])), set()).add(claim_id)
             for v in node.values():
                 walk(v, claim_id)
         elif isinstance(node, list):
@@ -914,9 +1194,15 @@ def run_check(plan_path: str, mode: str = "default", doc_override: str = None) -
     multipliers = [{"file": f, "column": c, "multiplier": m, "claims": len(ids)}
                    for (f, c, m), ids in sorted(mults.items())]
     truncated = sum(1 for r in claims_out if r["verdict"] == "verified" and r["reason"] == "truncated")
-    return {"document": plan.get("document") or doc_override, "mode": mode, "counts": counts,
-            "truncated": truncated, "skipped": dict(sorted(skip_counts.items())), "claims": claims_out,
-            "uncovered": uncovered, "unbound_claims": unbound, "labels": labels, "multipliers": multipliers}
+    res = {"document": plan.get("document") or doc_override, "mode": mode, "counts": counts,
+           "truncated": truncated, "skipped": dict(sorted(skip_counts.items())), "claims": claims_out,
+           "uncovered": uncovered, "unbound_claims": unbound, "labels": labels, "multipliers": multipliers}
+    if _EDGAR["files"]:
+        res["edgar"] = {"files": [{"file": f, "fetched": d} for f, d in sorted(_EDGAR["files"].items())]}
+        hosts = _edgar_hosts()
+        if hosts != ("https://data.sec.gov", "https://www.sec.gov"):
+            res["edgar"]["addresses"] = list(hosts)
+    return res
 
 
 def _sig(raw: str, digits: int = 6) -> str:
@@ -968,6 +1254,14 @@ def render(res: dict) -> str:
         out += [f"| {esc(m['file'])} | {esc(m['column'])} | {esc(m['multiplier'])} | {m['claims']} |"
                 for m in res["multipliers"]]
         out.append("")
+    if res.get("edgar"):
+        out += [f"### EDGAR data used ({len(res['edgar']['files'])})", "",
+                "Read from the SEC's company facts. A filing made after the fetch date is not in it "
+                "(run with --refresh to fetch again).", "", "| file | fetched (UTC) |", "|---|---|"]
+        out += [f"| {esc(f['file'])} | {esc(f['fetched'])} |" for f in res["edgar"]["files"]]
+        if res["edgar"].get("addresses"):
+            out += ["", "Not read from the SEC's own address but from: " + esc(", ".join(res["edgar"]["addresses"]))]
+        out.append("")
     if res["uncovered"]:
         out += [f"### uncovered ({len(res['uncovered'])})", "", "| line | number |", "|---|---|"]
         out += [f"| {u['line']} | {esc(u['text'])} |" for u in res["uncovered"]]
@@ -1013,8 +1307,21 @@ def main(argv=None) -> int:
                    help="strict accepts rounding only, not truncation")
     p.add_argument("--strict", action="store_true", help="exit 1 also for unverifiable, uncovered or unbound")
     p.add_argument("--quiet", action="store_true", help="do not print the table")
+    p.add_argument("--edgar-cache", help="folder for EDGAR responses (default: .receipts/edgar in the plan's folder)")
+    p.add_argument("--refresh", action="store_true", help="fetch EDGAR data again instead of using the cache")
     p = sub.add_parser("report", help="print receipts.json as a table")
     p.add_argument("receipts")
+    p = sub.add_parser("edgar", help="look up a company's concept names and period dates on SEC EDGAR")
+    p.add_argument("what", choices=["company", "concepts", "facts"])
+    p.add_argument("company", help="a ticker or a CIK")
+    p.add_argument("concept", nargs="?", help="for facts: taxonomy:Tag, for example us-gaap:Assets")
+    p.add_argument("--match", help="for concepts: text in the concept name or label")
+    p.add_argument("--limit", type=int, default=60, help="for concepts: how many to print (0 = all)")
+    p.add_argument("--unit", help="for facts: USD, shares, USD/shares, ...")
+    p.add_argument("--since", help="for facts: period end on or after YYYY-MM-DD")
+    p.add_argument("--until", help="for facts: period end on or before YYYY-MM-DD")
+    p.add_argument("--edgar-cache", help="folder for EDGAR responses (default: .receipts/edgar in the current folder)")
+    p.add_argument("--refresh", action="store_true", help="fetch EDGAR data again instead of using the cache")
     args = ap.parse_args(argv)
     try:
         if args.cmd == "scan":
@@ -1032,7 +1339,15 @@ def main(argv=None) -> int:
             except (ValueError, KeyError, TypeError) as e:
                 raise StopError(f"{args.receipts} is not a receipts file ({e})") from None
             return 0
-        res = run_check(args.plan, args.mode, args.doc)
+        if args.cmd == "edgar":
+            if args.what == "facts" and not args.concept:
+                raise StopError("edgar facts needs a concept, for example us-gaap:Assets")
+            edgar_setup(args.edgar_cache, args.refresh)
+            print(json.dumps(edgar_lookup(args.what, args.company, os.getcwd(), concept=args.concept, match=args.match,
+                                          unit=args.unit, since=args.since, until=args.until, limit=args.limit),
+                             ensure_ascii=False, indent=1))
+            return 0
+        res = run_check(args.plan, args.mode, args.doc, args.edgar_cache, args.refresh)
         out_dir = args.out or os.path.dirname(os.path.abspath(args.plan))
         os.makedirs(out_dir, exist_ok=True)
         text = render(res)
