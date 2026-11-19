@@ -521,6 +521,8 @@ def _table(loc: dict, base: str):
             raise LocatorError("locator_no_match", f"{name} has no sheet {sheet!r}")
         grid = data[sheet]
         hr = loc.get("header_row", 1)
+        if not isinstance(hr, int) or isinstance(hr, bool) or hr < 1:
+            raise LocatorError("locator_no_match", "header_row must be a positive integer")
         cols = {c: _cell_str(v) for (r, c), v in grid.items() if r == hr and _cell_str(v)}
         header = [cols[c] for c in sorted(cols)]
         last = max((r for r, _ in grid), default=0)
@@ -776,6 +778,10 @@ def judge(claim: dict, tok: Token, line_text: str, base: str, mode: str) -> dict
             out.update(verdict="verified" if how else "wrong", reason=how or "mismatch")
     except LocatorError as e:
         out.update(verdict="unverifiable", reason=e.reason, note=e.detail)
+    except StopError:
+        raise
+    except Exception as e:  # a malformed claim or a bug: abstain, never guess
+        out.update(verdict="unverifiable", reason="internal_error", note=f"{type(e).__name__}: {e}")
     return out
 
 
@@ -978,6 +984,9 @@ def main(argv=None) -> int:
         return exit_code(res, args.strict)
     except StopError as e:
         print(f"receipts: stopped: {e}", file=sys.stderr)
+        return 2
+    except Exception as e:  # never let a crash look like a verdict
+        print(f"receipts: stopped: internal error ({type(e).__name__}: {e})", file=sys.stderr)
         return 2
 
 

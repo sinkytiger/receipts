@@ -202,7 +202,7 @@ Reasons for unbound claims: `invalid_claim`, `quote_not_on_line`, `number_not_in
 
 `counts.verified + wrong + unverifiable + uncovered = counts.numbers`.
 
-Reasons: `match`, `truncated`, `mismatch`, `direction_mismatch`, `declared_no_source`, `locator_no_match`, `locator_multiple`, `cell_not_numeric`, `unsupported`, `division_by_zero`, `direction_conflict`, `duplicate_claim`.
+Reasons: `match`, `truncated`, `mismatch`, `direction_mismatch`, `declared_no_source`, `locator_no_match`, `locator_multiple`, `cell_not_numeric`, `unsupported`, `division_by_zero`, `direction_conflict`, `duplicate_claim`, `internal_error`.
 
 ### Exit codes
 
@@ -210,6 +210,6 @@ Reasons: `match`, `truncated`, `mismatch`, `direction_mismatch`, `declared_no_so
 |---|---|
 | 0 | no `wrong`. With `--strict`: also no `unverifiable`, `uncovered` or unbound claim |
 | 1 | at least one `wrong` (or a `--strict` violation) |
-| 2 | stopped: the document or a source file is missing, unreadable or corrupt, or the plan is not valid. Nothing is passed. |
+| 2 | stopped: the document or a source file is missing, unreadable or corrupt, the plan is not valid, or the script hit an internal error. Nothing is passed. |
 
 A missing sheet, table, column or key inside a readable file is a locator problem (`locator_no_match`), not a stop.
