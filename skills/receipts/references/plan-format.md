@@ -77,6 +77,32 @@ A many-cells selector may also stand wherever a formula expects one cell. Its ce
 
 `test` is optional. `op` is one of `==`, `!=`, `>`, `>=`, `<`, `<=`, compared as numbers.
 
+### SEC EDGAR
+
+A single cell may also be a fact a company reported to the SEC. Section 8 says how the data is fetched.
+
+```json
+{"edgar": "AAPL", "concept": "us-gaap:Assets", "unit": "USD", "period": "2026-09-26"}
+{"edgar": "320193", "concept": "us-gaap:NetIncomeLoss", "period": "2025-09-28..2026-09-26",
+ "accession": "0000320193-26-000026"}
+```
+
+| Field | Required | Meaning |
+|---|---|---|
+| `edgar` | yes | A ticker or a CIK. Digits only, or `CIK` followed by digits, is a CIK (leading zeros are optional). Anything else is a ticker, looked up in the SEC's ticker list without regard to case. |
+| `concept` | yes | `taxonomy:Tag` as the filing tags it, for example `us-gaap:Assets`. Case matters. |
+| `period` | yes | One date `YYYY-MM-DD` for a balance, or `start..end` (`YYYY-MM-DD..YYYY-MM-DD`) for a flow. |
+| `unit` | no | As EDGAR names it: `USD`, `shares`, `USD/shares`, `pure`. Case does not matter. It may be left out when the company reports the concept in one unit only. |
+| `accession` | no | Only the fact as reported in this filing (`0000320193-26-000026`, dashes optional). |
+| `version` | no | `first` or `latest`. See below. |
+
+- **Exact periods.** The dates must equal the dates in the filing. Three months and nine months that end on the same day are two periods. A flow asked as one date, or a balance asked as a range, matches nothing.
+- **No match.** An unknown ticker or CIK, a concept the company has not reported, a unit the concept does not have, a period with no fact, or an accession that does not report the fact give `locator_no_match`. A concept with several units and no `unit` gives `locator_multiple`. A `period`, `accession` or `version` that is not written as above gives `locator_no_match`.
+- **The same fact in several filings.** Companies repeat earlier periods as comparison columns, so most facts are reported more than once. If every filing gives the same value, that value is used. If they differ (a restatement or a reclassification) and the locator has neither `accession` nor `version`, the verdict is `unverifiable` with the reason `edgar_versions_differ`, and the receipt lists each value with its filing. With `version`, the report with the earliest (`first`) or latest (`latest`) filing date is used, and the receipt notes that other filings differ. If the reports on that filing date, or inside the one `accession`, still differ, the verdict is `unverifiable` (`edgar_versions_differ`).
+- **Values** are in whole units (dollars, shares). `multiplier` works as on any cell.
+- **What EDGAR does not hold.** The SEC's API carries the facts a company reports for itself as a whole. Numbers on a breakdown axis (by segment, product or region) are not there and give `locator_no_match`. Check those against a file.
+- An EDGAR locator is a single cell. `where` and `rows` do not work with it (`unsupported`). To add up EDGAR facts, list them under `items`.
+
 ## 3. Formulas
 
 | `formula` | `operands` | Result |
@@ -181,7 +207,7 @@ The rules lean toward counting. A 4-digit number with no year context stays a nu
 
 ## 7. `check`
 
-`receipts.py check PLAN [--out DIR] [--mode default|strict] [--strict]` writes `receipts.json` and `receipts.md` into `DIR` (default: the plan's folder) and prints the Markdown.
+`receipts.py check PLAN [--out DIR] [--mode default|strict] [--strict] [--edgar-cache DIR] [--refresh]` writes `receipts.json` and `receipts.md` into `DIR` (default: the plan's folder) and prints the Markdown.
 
 ```json
 {
@@ -208,7 +234,9 @@ Reasons for unbound claims: `invalid_claim`, `quote_not_on_line`, `number_not_in
 
 `counts.verified + wrong + unverifiable + uncovered = counts.numbers`.
 
-Reasons: `match`, `truncated`, `mismatch`, `direction_mismatch`, `declared_no_source`, `locator_no_match`, `locator_multiple`, `cell_not_numeric`, `unsupported`, `division_by_zero`, `direction_conflict`, `duplicate_claim`, `internal_error`.
+Reasons: `match`, `truncated`, `mismatch`, `direction_mismatch`, `declared_no_source`, `locator_no_match`, `locator_multiple`, `cell_not_numeric`, `unsupported`, `division_by_zero`, `direction_conflict`, `duplicate_claim`, `edgar_versions_differ`, `internal_error`.
+
+When a plan uses EDGAR, `receipts.json` also has `"edgar": {"files": [{"file": "companyfacts/CIK0000320193.json", "fetched": "2026-11-20"}]}`, and the Markdown receipt shows the same dates.
 
 ### Exit codes
 
@@ -216,6 +244,44 @@ Reasons: `match`, `truncated`, `mismatch`, `direction_mismatch`, `declared_no_so
 |---|---|
 | 0 | no `wrong`. With `--strict`: also no `unverifiable`, `uncovered` or unbound claim |
 | 1 | at least one `wrong` (or a `--strict` violation) |
-| 2 | stopped: the document or a source file is missing, unreadable or corrupt, the plan is not valid, or the script hit an internal error. Nothing is passed. |
+| 2 | stopped: the document or a source file is missing, unreadable or corrupt, EDGAR could not be read (section 8), the plan is not valid, or the script hit an internal error. Nothing is passed. |
 
 A missing sheet, table, column or key inside a readable file is a locator problem (`locator_no_match`), not a stop.
+
+## 8. EDGAR access
+
+The script reads two things from the SEC, with the Python standard library:
+
+- `https://data.sec.gov/api/xbrl/companyfacts/CIK##########.json`: every fact of one company. One request per company.
+- `https://www.sec.gov/files/company_tickers.json`: the ticker list. Fetched only when a locator names a ticker.
+
+**Who is asking.** The SEC asks automated clients to say who they are in the `User-Agent` header, in the form `Name contact@example.com`. The script takes that text from the environment variable `RECEIPTS_SEC_USER_AGENT`. There is no default. If a request is needed and the variable is empty, the script stops with exit code 2 and makes no request. The text goes to the SEC only. It is not written to the cache or to a receipt.
+
+**Rate.** The SEC allows 10 requests per second. The script makes at most 5.
+
+**Cache.** Responses are stored under `.receipts/edgar/` in the plan's folder, or in the folder given by `--edgar-cache` or by the environment variable `RECEIPTS_EDGAR_CACHE`:
+
+```
+<cache>/company_tickers.json
+<cache>/companyfacts/CIK0000320193.json
+```
+
+A cached file is used as it is, however old, and no request is made for it. `--refresh` fetches again. The file's modification date counts as its fetch date and is shown on the receipt, so a reader sees how fresh the EDGAR data was. A filing made after that date is not in the cache: its facts give `locator_no_match` until the cache is refreshed.
+
+**Stops.** A failed request (no connection, an HTTP error, a timeout), a response that is not the expected JSON, or a cached file that is not the expected JSON stops the script with exit code 2.
+
+**Other addresses.** `RECEIPTS_EDGAR_DATA_URL` and `RECEIPTS_EDGAR_WWW_URL` replace `https://data.sec.gov` and `https://www.sec.gov`. They exist for tests. When either is set, the receipt says which address was used.
+
+### Looking things up
+
+A plan needs the company's own concept names and exact period dates. Three commands print them as JSON, from the same cache:
+
+```
+receipts.py edgar company AAPL
+receipts.py edgar concepts AAPL --match revenue
+receipts.py edgar facts AAPL us-gaap:Assets --since 2025-01-01
+```
+
+- `company`: the CIK and the name.
+- `concepts`: the concepts the company has reported whose name or label contains the text (all of them without `--match`), each with its label, its units, the number of facts and the latest period end.
+- `facts`: one concept's facts, each with period, value, unit, form, accession and filing date. `--unit`, `--since` and `--until` (compared with the period end) narrow the list.
