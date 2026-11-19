@@ -60,9 +60,65 @@ Reported without a bar: tokens `scan` flags that the generator did not place, by
 - Measures: planted errors caught, correct statements flagged as wrong, cost per document, and for arm A the share of numbers left `uncovered`. Counts are reported with Wilson 95% intervals.
 - No pass bars. The numbers are reported as they come out, whichever arm does better.
 
-## E3: SEC EDGAR connection
+## E3: SEC EDGAR connection (free)
 
-To be registered in this file before that part is run. Outline: values returned by the connection for a fixed list of companies, concepts and periods are compared with the values printed in the filings.
+Registered on 2026-11-20, before the connection, its builder or its scorer was written. What had been looked at by then: the SEC's two pages on its APIs and on fair access, and, in a browser, Apple's responses (one concept, the company facts, the filing list), one Apple 10-Q document, and the SEC's ticker list.
+
+No model is involved. E3 asks three things. Given a correct locator (company, concept, unit, period), does the connection return the value the company printed in its filing? Does it abstain when it should? Does it stop when it cannot read EDGAR?
+
+### Two data paths
+
+- **The tool** reads `data.sec.gov/api/xbrl/companyfacts`.
+- **The gold** is read from the filing's primary document (inline XBRL) under `www.sec.gov/Archives`. For each tagged number, the gold is the text displayed in the document, times the scale the tag declares, negated when the tag carries a minus sign.
+- The builder that reads the documents and the scorer are written by a separate agent from this plan and the contract, without reading the tool. The builder does not read the company facts.
+
+Both paths start from the same submission by the company. E3 tests the connection: company lookup, concept, unit, period and duration, periods reported more than once, and scale. It does not test whether a company tagged its filing correctly.
+
+### Companies
+
+- Development, used as often as needed while building: `AAPL`, `MSFT`, `JPM`, `WMT`, `XOM`.
+- Held-out, run once: `JNJ`, `KO`, `NVDA`, `COST`, `PG`, `HD`, `BAC`, `UNH`, `PFE`, `CVX`, `CSCO`, `ORCL`, `NKE`, `DIS`, `MCD`, `CAT`, `T`, `AMZN`, `GS`, `BA`.
+
+The lists were fixed for a spread of industries and fiscal year ends. For the 24 companies other than Apple, only the ticker list was read before registration, to confirm each ticker exists. Until the held-out run, no filing or API response of a held-out company is fetched. The builder refuses a held-out ticker without `--held-out`.
+
+### Filings and facts
+
+- Per company: the most recent `10-K` and the most recent `10-Q` in the SEC's filing list on the day of the run that are inline XBRL. Amendments are not used. The results file records the accession numbers and the fetch date.
+- Eligible facts in a filing's primary document: numeric tags (`ix:nonFraction`) whose concept is in the `us-gaap` taxonomy, whose context has no dimension, whose unit is USD, shares or USD per share, that are not nil, and whose displayed text is a plain number (digits, commas, a decimal point) or a dash that the tag declares as zero. A fact is identified by concept, unit and period. A period is one date, or a start date and an end date.
+- A fact displayed more than once is taken once. Its gold is the display with the finest last digit after scale. Facts whose displays differ are counted and reported separately.
+- Sample per filing, drawn with a random generator seeded with the accession number: 25 eligible facts, plus up to 5 same-end pairs. A same-end pair is two facts with the same concept, unit and end date and different start dates, for example three months and nine months. Both members are taken. If a filing has fewer eligible facts or pairs, all are taken.
+- Expected size: up to 35 facts per filing, so up to 350 for the development companies and up to 1,400 for the held-out ones. The builder prints the exact counts.
+
+### Cases
+
+For each filing the builder writes one test document, with one line per sampled fact that shows the number as displayed (with `thousand`, `million` or `billion` for scale 3, 6 or 9, and a leading minus when the tag says negative), and these plans:
+
+- **Pinned**: each claim is a `lookup` on an EDGAR locator with company, concept, unit, period and the accession number of the filing. The company is given as a ticker in the 10-K plans and as a CIK in the 10-Q plans.
+- **Open**: the same without the accession number.
+- **Abstention**, from the first sampled facts of each filing, each expected `unverifiable`: 5 with a concept name that does not exist; 5 with the period end moved three days later; 5 duration facts asked as one date (the end date); 5 with USD and shares swapped.
+
+Stop cases, each run on the first 5 pinned plans of the run and each expected to exit with code 2: an empty cache and no contact string set; a cache that holds a corrupt company facts file for the company; an empty cache and the EDGAR address replaced by a closed local port.
+
+### Measures and pass bars
+
+| # | Measure | Bar |
+|---|---|---|
+| 1 | Sampled facts judged `wrong`, pinned or open. The document holds the printed number, so `wrong` means the connection returned another value. | 0 |
+| 2 | Pinned: judged `verified` | at least 98%. The rest must be `unverifiable`. |
+| 3 | Open: judged `verified`, or `unverifiable` because filings report different values for that fact. The scorer confirms each such case in the cached company facts. | at least 98%. The rest must be `unverifiable`. |
+| 4 | Abstention cases judged `unverifiable` | 100% |
+| 5 | Stop cases that exit with code 2 | 100% |
+
+A crash, a missing claim or any other verdict counts as a failure of the measure it belongs to.
+
+Reported without a bar: the share of open claims that abstain because filings disagree; same-end pairs with both members `verified`; results by company, form, unit, scale and sign; facts whose displays differ; eligible facts and skipped tags by reason.
+
+### Procedure
+
+- Development companies may be run as often as needed. Every scorer run is logged with the commit hash in `bench/edgar/runs.jsonl`.
+- The held-out companies are run once, on the commit that is to be released, together with E1's held-out seed. If a held-out bar fails, the README says so.
+- EDGAR is live. A run on a later day may sample newer filings, so results name their filings.
+- Fair access. The SEC asks automated clients to identify themselves and allows 10 requests per second. The person who runs E3 supplies the contact string through an environment variable. None is shipped in the repository or written into results. The builder and the tool make at most 5 requests per second, cache what they fetch and do not fetch it twice. A run needs about four requests per company.
 
 ## Real cases
 
@@ -78,3 +134,4 @@ Checks of real documents may appear in the README as examples. They are not perf
   - About 10% of correct statements are written truncated instead of rounded (only where the two differ). The default mode must accept them.
   - Measures 3 and 4: a crash, a missing claim or any verdict other than the expected one or `unverifiable` counts as a failure. Measure 6 counts any non-zero exit, and the results file also reports how many exits were exactly code 2. Measure 7 counts the statement numbers of the 64 documents, not the distractors.
   - The first development run (commit `e5a1488`, working tree not clean) was started by the generator's author by accident, with the default tool path. It is kept in `bench/runs.jsonl` like every other run.
+- 2026-11-20: E3 registered in place of its outline. No connection code, builder, scorer or E3 result existed at this commit. E1 and E2 are unchanged.
