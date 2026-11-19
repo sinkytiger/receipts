@@ -196,9 +196,13 @@ The rules lean toward counting. A 4-digit number with no year context stays a nu
   ],
   "uncovered": [{"line": 30, "start": 5, "end": 10, "text": "1,204"}],
   "unbound_claims": [{"id": "c9", "reason": "quote_not_on_line"}],
-  "labels": [{"id": "c10", "line": 3, "start": 20, "end": 24, "text": "2025"}]
+  "labels": [{"id": "c10", "line": 3, "start": 20, "end": 24, "text": "2025"}],
+  "truncated": 1,
+  "multipliers": [{"file": "sales.csv", "column": "revenue", "multiplier": "1000", "claims": 4}]
 }
 ```
+
+`truncated` is how many of the verified numbers match only by truncation. `multipliers` lists every multiplier the plan declared, with the number of claims that use it. The script cannot check a multiplier: it is the plan's statement about the unit of the source, and it has to come from the source, not from the number in the document. The Markdown receipt shows both.
 
 Reasons for unbound claims: `invalid_claim`, `quote_not_on_line`, `number_not_in_quote`, `no_number_at_position`, `label_not_allowed`.
 

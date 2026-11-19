@@ -1,0 +1,12 @@
+{
+  "name": "receipts",
+  "owner": { "name": "sinkytiger" },
+  "description": "Number receipts for agent-written reports",
+  "plugins": [
+    {
+      "name": "receipts",
+      "source": "./",
+      "description": "Check every number in a document against its source files (skill + standard-library script)"
+    }
+  ]
+}

@@ -267,6 +267,34 @@ class VerdictTest(CheckCase):
         self.assertEqual(c, {"numbers": 5, "verified": 1, "wrong": 1, "unverifiable": 0, "uncovered": 3})
 
 
+class ReceiptTest(CheckCase):
+    def test_multipliers_and_truncation_are_listed(self):
+        src = {"t.csv": "item,usd_thousands\nrevenue,1234.5\ncost,987.6\n"}
+        loc = lambda item: {"file": "t.csv", "row": {"item": item}, "column": "usd_thousands", "multiplier": 1000}
+        doc = "Revenue was $1.2M and cost was $0.9M.\nProfit was $250K.\n"
+        claims = [
+            {"id": "a", "line": 1, "quote": "Revenue was $1.2M", "number": "$1.2M", "kind": "lookup", "operands": {"of": loc("revenue")}},
+            {"id": "b", "line": 1, "quote": "cost was $0.9M", "number": "$0.9M", "kind": "lookup", "operands": {"of": loc("cost")}},
+            {"id": "c", "line": 2, "quote": "Profit was $250K", "number": "$250K", "kind": "derived", "formula": "difference",
+             "operands": {"a": loc("revenue"), "b": loc("cost")}},
+        ]
+        res = self.run_check(doc, claims, src)
+        self.assertEqual(res["multipliers"], [{"file": "t.csv", "column": "usd_thousands", "multiplier": "1000", "claims": 3}])
+        self.assertEqual(res["truncated"], 1)                      # 987,600 written as $0.9M
+        self.assertEqual(res["counts"], {"numbers": 3, "verified": 2, "wrong": 1, "unverifiable": 0, "uncovered": 0})
+        text = R.render(res)
+        self.assertIn("1 of the verified numbers match only when the source value is cut off", text)
+        self.assertIn("multipliers declared by the plan (1)", text)
+        self.assertIn("247K (exact 246,900)", text)
+
+    def test_sig(self):
+        self.assertEqual(R._sig("11.93415637860082304526748971"), "11.9342")
+        self.assertEqual(R._sig("1875683000"), "1,875,683,000")
+        self.assertEqual(R._sig("0.000123456789"), "0.000123457")
+        self.assertEqual(R._sig("-6.56488549"), "-6.56489")
+        self.assertEqual(R._sig("0"), "0")
+
+
 class OccurrenceTest(CheckCase):
     def test_number_inside_a_longer_number_is_not_a_place(self):
         self.assertEqual(R._whole_number_places("In 2023, 3 stores and 3.5% of 1,003", "3"), [9])

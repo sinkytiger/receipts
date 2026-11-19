@@ -2,7 +2,7 @@
 
 Every number your agent writes comes with a receipt, or gets flagged.
 
-> **Status: pre-release.** The checking script and its benchmark are here. The agent skill and plugin packaging are not, and the release numbers do not exist yet.
+> **Status: pre-release.** The checking script, the agent skill and the benchmark are here. Installing the plugin from GitHub has not been verified yet, and the release numbers do not exist yet.
 
 [한국어](README.ko.md)
 
@@ -36,7 +36,7 @@ The example report says East revenue grew 12.4%. The source says otherwise:
 
 | line | sentence | written | source | recomputed | note |
 |---|---|---|---|---|---|
-| 7 | East revenue grew 12.4% year over year | 12.4% | sales.csv [year=2025, region=East] revenue = 1088000; sales.csv [year=2024, region=East] revenue = 972000 | 11.9% | mismatch |
+| 7 | East revenue grew 12.4% year over year | 12.4% | sales.csv [year=2025, region=East] revenue = 1088000; sales.csv [year=2024, region=East] revenue = 972000 | 11.9% (exact 11.9342) | mismatch |
 ```
 
 The command also writes `receipts.json` and `receipts.md` next to the plan. The exit code is 1 when a number is wrong and 2 when a source cannot be read.
@@ -45,6 +45,7 @@ Sources that work today: CSV, TSV, JSON, Markdown tables, plain text and Excel v
 
 ## What is here now
 
+- [skills/receipts/SKILL.md](skills/receipts/SKILL.md): the skill. It tells an agent how to write the plan, run the script and report the result without overstating it.
 - [skills/receipts/scripts/receipts.py](skills/receipts/scripts/receipts.py): `scan`, `check` and `report`. Standard library only.
 - [skills/receipts/references/plan-format.md](skills/receipts/references/plan-format.md): the plan format, the rules for reading and comparing numbers, and the outputs. The script and the benchmark both follow it.
 - [examples/quickstart](examples/quickstart): a short report, its source and a plan.
@@ -65,7 +66,7 @@ The benchmark documents are synthetic and built from sentence templates, half En
 ## Roadmap
 
 1. ~~Core script and the planted-error benchmark.~~ Done.
-2. Skill and plugin packaging.
+2. Skill and plugin packaging. Written; the install from GitHub is still to be verified.
 3. SEC EDGAR connection.
 4. End-to-end evaluation with a model, the held-out run, then the first release.
 

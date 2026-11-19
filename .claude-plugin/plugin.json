@@ -1,0 +1,8 @@
+{
+  "name": "receipts",
+  "version": "0.0.1",
+  "description": "Every number your agent writes comes with a receipt, or gets flagged. A skill plus a standard-library script: the model says where each number comes from, code reads the sources, recomputes and gives the verdict.",
+  "author": { "name": "sinkytiger" },
+  "license": "MIT",
+  "keywords": ["verification", "fact-check", "numbers", "reports", "data", "skill"]
+}

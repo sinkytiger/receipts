@@ -895,9 +895,41 @@ def run_check(plan_path: str, mode: str = "default", doc_override: str = None) -
     skip_counts = {}
     for t in skipped:
         skip_counts[t.rule] = skip_counts.get(t.rule, 0) + 1
+    # Multipliers are the plan's own statement about source units. The script cannot check them, so it lists them.
+    mults = {}
+
+    def walk(node, claim_id):
+        if isinstance(node, dict):
+            if "multiplier" in node and isinstance(node.get("file"), str):
+                where = node.get("column") or node.get("cell") or node.get("pointer") or node.get("contains") or ""
+                mults.setdefault((node["file"], str(where), str(node["multiplier"])), set()).add(claim_id)
+            for v in node.values():
+                walk(v, claim_id)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v, claim_id)
+
+    for claim in plan["claims"]:
+        walk(claim.get("operands"), str(claim.get("id")))
+    multipliers = [{"file": f, "column": c, "multiplier": m, "claims": len(ids)}
+                   for (f, c, m), ids in sorted(mults.items())]
+    truncated = sum(1 for r in claims_out if r["verdict"] == "verified" and r["reason"] == "truncated")
     return {"document": plan.get("document") or doc_override, "mode": mode, "counts": counts,
-            "skipped": dict(sorted(skip_counts.items())), "claims": claims_out, "uncovered": uncovered,
-            "unbound_claims": unbound, "labels": labels}
+            "truncated": truncated, "skipped": dict(sorted(skip_counts.items())), "claims": claims_out,
+            "uncovered": uncovered, "unbound_claims": unbound, "labels": labels, "multipliers": multipliers}
+
+
+def _sig(raw: str, digits: int = 6) -> str:
+    """A recomputed value to about six significant digits, for the wrong-number rows."""
+    try:
+        d = Decimal(raw)
+    except InvalidOperation:
+        return raw
+    if d == 0:
+        return "0"
+    places = max(digits - 1 - d.adjusted(), 0)
+    s = f"{d.quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP):,f}"
+    return s.rstrip("0").rstrip(".") if "." in s else s
 
 
 def render(res: dict) -> str:
@@ -906,7 +938,11 @@ def render(res: dict) -> str:
             f"{c['unverifiable']} unverifiable / {c['uncovered']} uncovered")
     if res.get("skipped"):
         head += "   (skipped: " + ", ".join(f"{n} {r}" for r, n in res["skipped"].items()) + ")"
-    out = [head, ""]
+    out = [head]
+    if res.get("truncated"):
+        out.append(f"{res['truncated']} of the verified numbers match only when the source value is cut off, not rounded "
+                   "(note: truncated).")
+    out.append("")
 
     def esc(s):
         return str(s).replace("|", "\\|").replace("\n", " ")
@@ -919,8 +955,18 @@ def render(res: dict) -> str:
                 "| line | sentence | written | source | recomputed | note |", "|---|---|---|---|---|---|"]
         for r in sorted(rows, key=lambda r: (r["line"], r["start"])):
             note = r["reason"] + (f": {r['note']}" if r.get("note") else "")
+            recomputed = r["recomputed"]
+            if verdict == "wrong" and r.get("recomputed_raw"):
+                recomputed += f" (exact {_sig(r['recomputed_raw'])})"
             out.append(f"| {r['line']} | {esc(r['quote'])} | {esc(r['text'])} | {esc('; '.join(r['sources']))} "
-                       f"| {esc(r['recomputed'])} | {esc(note)} |")
+                       f"| {esc(recomputed)} | {esc(note)} |")
+        out.append("")
+    if res.get("multipliers"):
+        out += [f"### multipliers declared by the plan ({len(res['multipliers'])})", "",
+                "The script cannot check these. Each must come from what the source says about its own units.", "",
+                "| file | column | multiplier | claims |", "|---|---|---|---|"]
+        out += [f"| {esc(m['file'])} | {esc(m['column'])} | {esc(m['multiplier'])} | {m['claims']} |"
+                for m in res["multipliers"]]
         out.append("")
     if res["uncovered"]:
         out += [f"### uncovered ({len(res['uncovered'])})", "", "| line | number |", "|---|---|"]
