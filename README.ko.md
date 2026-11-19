@@ -2,7 +2,7 @@
 
 에이전트가 쓴 숫자마다 영수증을 붙이고, 영수증이 없는 숫자는 표시한다.
 
-> **상태: 배포 전입니다.** 대조 스크립트, 에이전트 스킬, 평가 도구가 저장소에 있습니다. GitHub에서 플러그인으로 설치되는지는 아직 확인하지 않았고, 배포용 평가 숫자도 아직 없습니다.
+> **상태: 배포 전입니다.** 대조 스크립트, 에이전트 스킬, 평가 도구가 저장소에 있고, GitHub에서 플러그인으로 설치됩니다. 배포용 평가 숫자는 아직 없으니 미리보기로 봐 주세요.
 
 [English](README.md)
 
@@ -19,7 +19,24 @@
 3. 코드가 출처를 읽고 다시 계산해 `verified`(확인됨), `wrong`(틀림), `unverifiable`(확인 불가)로 판정합니다.
 4. 계획에서 빠진 숫자는 `uncovered`(미대조)로 나옵니다.
 
-## 스크립트 써 보기
+## Claude Code에 스킬 설치하기
+
+```
+/plugin install receipts --marketplace sinkytiger/receipts
+```
+
+한 줄 설치는 Claude Code 2.1.275 이상에서 됩니다. 그보다 낮은 버전에서는 두 단계로 합니다.
+
+```
+/plugin marketplace add sinkytiger/receipts
+/plugin install receipts@receipts
+```
+
+설치한 뒤 "receipts로 report.md의 숫자를 sales.csv와 대조해 줘"처럼 요청합니다. 스킬 이름을 말하지 않았을 때 얼마나 잘 불러오는지는 아직 재지 않았습니다. 스킬은 세션마다 약 150토큰을, 실행할 때 약 2,300토큰을 씁니다(`claude plugin details`의 추정값).
+
+두 방식 모두 윈도우의 Claude Code 2.1.326에서 명령줄(`claude plugin install ...`)로, 설정이 없는 상태에서 설치해 확인했습니다.
+
+## 에이전트 없이 스크립트만 써 보기
 
 파이썬만 있으면 됩니다. 파이썬 3.9 이상을 기준으로 썼고, 지금까지는 3.12에서만 돌려 봤습니다.
 

@@ -2,7 +2,7 @@
 
 Every number your agent writes comes with a receipt, or gets flagged.
 
-> **Status: pre-release.** The checking script, the agent skill and the benchmark are here. Installing the plugin from GitHub has not been verified yet, and the release numbers do not exist yet.
+> **Status: pre-release.** The checking script, the agent skill and the benchmark are here and the plugin installs from GitHub. The release numbers do not exist yet, so treat it as a preview.
 
 [한국어](README.ko.md)
 
@@ -19,7 +19,24 @@ The model proposes, code decides.
 3. Code reads the sources, recomputes, and gives each number a verdict: `verified`, `wrong`, or `unverifiable`.
 4. Numbers the plan left out are listed as `uncovered`.
 
-## Try the script
+## Install the skill in Claude Code
+
+```
+/plugin install receipts --marketplace sinkytiger/receipts
+```
+
+The one-step form needs Claude Code 2.1.275 or later. On an older version use two steps:
+
+```
+/plugin marketplace add sinkytiger/receipts
+/plugin install receipts@receipts
+```
+
+Then ask Claude to check the numbers in a document against its source files, for example "use receipts to check the numbers in report.md against sales.csv". How reliably the skill is picked up when you do not name it has not been measured yet. The skill adds about 150 tokens to every session and about 2,300 when it runs (estimates from `claude plugin details`).
+
+Both forms were tested as `claude plugin install ...` on the command line, from a clean configuration, with Claude Code 2.1.326 on Windows. The skill folder is plain Markdown plus one Python script, so other agents that read skills can use `skills/receipts` as it is. That has not been tested.
+
+## Try the script without an agent
 
 It needs Python and nothing else. It is written for Python 3.9 and later and has been run on 3.12 so far.
 
@@ -66,7 +83,7 @@ The benchmark documents are synthetic and built from sentence templates, half En
 ## Roadmap
 
 1. ~~Core script and the planted-error benchmark.~~ Done.
-2. Skill and plugin packaging. Written; the install from GitHub is still to be verified.
+2. ~~Skill and plugin packaging.~~ Done.
 3. SEC EDGAR connection.
 4. End-to-end evaluation with a model, the held-out run, then the first release.
 
