@@ -1,6 +1,6 @@
 # receipts — design (v0.1 draft)
 
-Status: the core script exists and follows `skills/receipts/references/plan-format.md`, which is now the detailed contract. The skill packaging and the SEC EDGAR connection do not exist yet. Changes to this document after the first commit are listed at the bottom.
+Status: the core script, the skill packaging and the SEC EDGAR connection exist and follow `skills/receipts/references/plan-format.md`, which is the detailed contract. Changes to this document after the first commit are listed at the bottom.
 
 ## What it is
 
@@ -89,13 +89,18 @@ Checked on the SEC's API page (2026-11-19):
 - `https://data.sec.gov/submissions/CIK##########.json`: filing list
 - No API key or login is needed.
 
-Open items, to be settled before this part is built:
+How the open items were settled (2026-11-20). The rules are in sections 2 and 8 of `plan-format.md`:
 
-- The SEC's fair-access rules (request rate, how a client identifies itself). If a contact string is required, the user supplies it through an environment variable. No default identity is shipped.
-- Three-month versus year-to-date values in quarterly filings.
-- The same period reported more than once (restatements, later filings).
-- Revenue and similar items filed under different concept names by different companies.
-- Mapping a ticker to a CIK.
+| Item | Decision |
+|---|---|
+| Fair access | The SEC allows 10 requests per second and asks each client to name itself. The script makes at most 5, takes the contact string from `RECEIPTS_SEC_USER_AGENT`, ships no default, and stops without a request when it is empty. |
+| Which endpoint | `companyfacts`, one request per company, cached on disk. The receipt shows the fetch date. |
+| Three months versus year to date | A period is exact: one date, or a start date and an end date. The two differ in the start date, so they cannot be mixed up silently. |
+| The same period in several filings | If all filings agree, the value is used. If they differ, the script abstains (`edgar_versions_differ`) and lists the values, unless the plan pins a filing (`accession`) or picks `first` or `latest`. |
+| Different concept names | The plan names the concept. The script does not guess. `edgar concepts` and `edgar facts` print a company's own concept names, labels and period dates. |
+| Ticker to CIK | The SEC's `company_tickers.json`. A locator may also give the CIK. |
+
+Limits: the API holds the facts a company reports for itself as a whole, so segment, product and regional numbers are not available. Custom units and concepts are read as the company filed them, without any mapping between companies.
 
 ## Out of scope for v0.1
 
@@ -134,3 +139,4 @@ docs/design.md, docs/eval-plan.md
   - A many-cells selector may stand where a formula expects one cell. Its cells are summed.
   - An internal error stops the run with exit code 2 instead of producing a verdict.
   - Year detection leans toward counting: a 4-digit number with no clear year context stays a number.
+- 2026-11-20: the SEC EDGAR connection was written. Its open items are settled in the table above. The evaluation of the connection (E3) was registered in `docs/eval-plan.md` before the code.

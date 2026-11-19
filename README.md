@@ -2,7 +2,7 @@
 
 Every number your agent writes comes with a receipt, or gets flagged.
 
-> **Status: pre-release.** The checking script, the agent skill and the benchmark are here and the plugin installs from GitHub. The release numbers do not exist yet, so treat it as a preview.
+> **Status: pre-release.** The checking script, the agent skill, the SEC EDGAR connection and the benchmark are here and the plugin installs from GitHub. The release numbers do not exist yet, so treat it as a preview.
 
 [한국어](README.ko.md)
 
@@ -58,7 +58,24 @@ The example report says East revenue grew 12.4%. The source says otherwise:
 
 The command also writes `receipts.json` and `receipts.md` next to the plan. The exit code is 1 when a number is wrong and 2 when a source cannot be read.
 
-Sources that work today: CSV, TSV, JSON, Markdown tables, plain text and Excel values. SEC EDGAR filings are planned for the first release.
+Sources that work today: CSV, TSV, JSON, Markdown tables, plain text, Excel values, and what US-listed companies report to the SEC.
+
+## Check against SEC filings
+
+A source can be a fact a company reported in its 10-K or 10-Q. The script reads it from the SEC's EDGAR API.
+
+```json
+{"edgar": "AAPL", "concept": "us-gaap:Assets", "unit": "USD", "period": "2026-09-26"}
+```
+
+- The SEC asks automated clients to say who they are. Put your name and e-mail address in the environment variable `RECEIPTS_SEC_USER_AGENT`. Nothing is shipped as a default, and without it the script stops before making a request. The text goes to the SEC only.
+- Each company is fetched once and cached under `.receipts/edgar/`. The receipt shows the fetch date. The script makes at most 5 requests a second (the SEC allows 10).
+- Periods are exact. A quarter and the year to date end on the same day and differ in the start date, so one cannot pass for the other.
+- When filings report different values for the same period (a restatement), the script abstains and lists them, unless the plan names the filing or picks the first or the latest report.
+- `receipts.py edgar concepts AAPL --match revenue` and `receipts.py edgar facts AAPL us-gaap:Assets` print a company's concept names and period dates, which a plan needs.
+- Segment, product and regional numbers are not in this API.
+
+The rules are in sections 2 and 8 of [plan-format.md](skills/receipts/references/plan-format.md).
 
 ## What is here now
 
@@ -67,7 +84,7 @@ Sources that work today: CSV, TSV, JSON, Markdown tables, plain text and Excel v
 - [skills/receipts/references/plan-format.md](skills/receipts/references/plan-format.md): the plan format, the rules for reading and comparing numbers, and the outputs. The script and the benchmark both follow it.
 - [examples/quickstart](examples/quickstart): a short report, its source and a plan.
 - [tests](tests): unit tests. Run `python -m unittest discover -s tests`.
-- [bench](bench): the planted-error benchmark generator and scorer.
+- [bench](bench): the planted-error benchmark generator and scorer, and [bench/edgar](bench/edgar), the builder and scorer for the EDGAR connection.
 - [docs/design.md](docs/design.md) and [docs/eval-plan.md](docs/eval-plan.md): the design, and the evaluation plan that was fixed before any code was written.
 
 ## Where the evaluation stands
@@ -76,7 +93,7 @@ The plan in [docs/eval-plan.md](docs/eval-plan.md) has three parts. Only the fir
 
 - **E1, the script alone with correct plans.** On the development seed (64 documents, 960 statements, 96 abstention cases) all 8 pass bars are met. Every run is logged in [bench/runs.jsonl](bench/runs.jsonl). These are development numbers. The numbers that count come from the held-out seed, which is run once on the release commit and has not been run.
 - **E2, a model writing the plan.** Not run. E1 says the script reads and compares correctly when the plan is right. It says nothing about how well a model writes plans.
-- **E3, SEC EDGAR.** Not built.
+- **E3, SEC EDGAR.** The connection is built and its evaluation was registered before the code: values from the connection are compared with the numbers printed in the filings of 5 development companies and, once, 20 held-out companies. Not run yet. So far the connection has only been tested against a local stand-in server with made-up data.
 
 The benchmark documents are synthetic and built from sentence templates, half English and half Korean.
 
@@ -84,7 +101,7 @@ The benchmark documents are synthetic and built from sentence templates, half En
 
 1. ~~Core script and the planted-error benchmark.~~ Done.
 2. ~~Skill and plugin packaging.~~ Done.
-3. SEC EDGAR connection.
+3. ~~SEC EDGAR connection.~~ Built. Its evaluation (E3) is registered and not run yet.
 4. End-to-end evaluation with a model, the held-out run, then the first release.
 
 Later: Korean filings (DART), an audit of non-numeric claims, PDF sources.
