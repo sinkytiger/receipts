@@ -1,6 +1,6 @@
 ---
 name: receipts
-description: Check every number in a report, summary, analysis or answer against its source files before calling it checked. Use when the user asks to verify, fact-check, review or double-check numbers ("are these numbers right?", "check this against the data", "숫자 확인해줘", "검증해줘", "원자료와 대조해줘"), and before you deliver a document whose numbers come from CSV, Excel, JSON, Markdown tables or text sources. Gives each number a receipt - verified, wrong (with the recomputed value), unverifiable or uncovered - and stops you from saying "all checked" when some numbers were not.
+description: Check every number in a report, summary, analysis or answer against its source files before calling it checked. Use when the user asks to verify, fact-check, review or double-check numbers ("are these numbers right?", "check this against the data", "숫자 확인해줘", "검증해줘", "원자료와 대조해줘"), and before you deliver a document whose numbers come from CSV, Excel, JSON, Markdown tables or text sources, or from what a US-listed company reported to the SEC (10-K, 10-Q on EDGAR). Gives each number a receipt - verified, wrong (with the recomputed value), unverifiable or uncovered - and stops you from saying "all checked" when some numbers were not.
 ---
 
 # receipts
@@ -13,7 +13,7 @@ The script is `scripts/receipts.py` in this skill's folder. It needs only Python
 
 1. **Get the document into a text file.** The script reads `.md` or `.txt`. If the numbers are in a chat answer, a Word file or a PDF, save the text to a file first. Line numbers refer to that file.
 2. **Scan.** `python <skill>/scripts/receipts.py scan report.md` prints every number with its line. This list is the denominator. It also shows what was skipped (dates, years, versions, list markers) and why.
-3. **Find the sources and their units.** Use the files the user gave you or named. Do not guess a source and do not look one up on the web. A number with no source file is `no_source`. Note what each source says about its own units: a column name such as `usd_thousands`, a note field, a header line, or what the user told you.
+3. **Find the sources and their units.** Use the files the user gave you or named. Do not guess a source and do not look one up on the web. The one outside source is SEC EDGAR, for figures a US-listed company reported in its filings (see "SEC filings" below). A number with no source is `no_source`. Note what each source says about its own units: a column name such as `usd_thousands`, a note field, a header line, or what the user told you.
 4. **Write `claims.json`** in the document's folder: one claim for every number in the scan list. The format is below.
 5. **Check.** `python <skill>/scripts/receipts.py check claims.json` prints the receipts and writes `receipts.json` and `receipts.md`. Exit code 0 means no number is wrong, 1 means at least one is wrong, 2 means the run stopped (a file could not be read, or the plan is not valid).
 6. **Repair the plan, never the verdict.** Fix your own mistakes and rerun: a claim listed under "claims that point at nothing" (the quote is not verbatim, or the line is off), a locator that matched no cell or several, a `multiplier` you left out although the source states its unit, a number still `uncovered`. When a number comes back `wrong`, check once that the locator points at what the sentence talks about and that the units follow the source. If they do, the number is wrong. Never choose a locator, formula, `multiplier` or `direction` because it makes the written number match.
@@ -90,6 +90,25 @@ Rows, for `count`. `test` is optional and takes `==`, `!=`, `>`, `>=`, `<`, `<=`
 
 Every table locator names its table the same way, whether it uses `row`, `where` or `rows`: a JSON file needs the `pointer` to the list of records (`"pointer": "/rows"`), a Markdown file the `table` number, an Excel file the `sheet`.
 
+### SEC filings (EDGAR)
+
+A cell can be a fact a US-listed company reported to the SEC. It works wherever one cell is expected, inside formulas too.
+
+```json
+{"edgar": "AAPL", "concept": "us-gaap:Assets", "unit": "USD", "period": "2026-09-26"}
+{"edgar": "AAPL", "concept": "us-gaap:NetIncomeLoss", "unit": "USD", "period": "2025-09-28..2026-09-26"}
+```
+
+- **Who is asking.** The SEC wants automated clients to identify themselves. The script reads the text from the environment variable `RECEIPTS_SEC_USER_AGENT` (a name and an e-mail address) and stops with exit code 2 if it is empty. Ask the user to set it. Never make one up and never put your own or anyone else's address there.
+- **Find the names and dates first.** Run these in the folder of `claims.json`, so they share its cache. Each company is fetched once.
+  - `receipts.py edgar concepts AAPL --match revenue` lists the company's concepts with their labels. Companies use different concepts for the same idea (revenue is not always `us-gaap:Revenues`).
+  - `receipts.py edgar facts AAPL us-gaap:Assets --since 2025-01-01` lists the periods, values and filings of one concept.
+- **Pick the concept by its meaning**, from its label and what the sentence talks about. Never pick a concept, period or filing because its value matches the document.
+- **Periods are exact.** A balance is one date (`2026-09-26`). A flow is `start..end`. A quarter and the year to date end on the same day and differ only in the start, so read the sentence: "in the third quarter" is three months, "in the first nine months" is not.
+- **Restated figures.** If filings give different values for the same period, the verdict is `unverifiable` (`edgar_versions_differ`) and the receipt lists them. Then follow the document: if it cites a filing, add `"accession": "0000320193-26-000026"`; if it says "as originally reported" use `"version": "first"`; if it means the current figure use `"version": "latest"`. If the document does not say, leave it and report it.
+- Values are in whole dollars and shares, so no `multiplier` is needed. Segment, product and regional numbers are not in this data: check them against a file, or mark them `no_source`.
+- A filing made after the fetch date on the receipt is not in the cache. Add `--refresh` to `check` to fetch again.
+
 ### Things that go wrong
 
 - **Units of the source.** If the source is in thousands or millions, add `"multiplier": 1000` (or `1000000`) to every locator that reads such a column, inside formulas too. It works on `where` selectors as well. If the document writes a percent and the source cell holds a fraction (`0.244` for 24.4%), add `"multiplier": 100`. A percent change or share of two values in the same unit needs none.
@@ -115,7 +134,8 @@ Then:
 - every `unverifiable` number and why;
 - every `uncovered` number. If any remain, say that those were not checked;
 - numbers verified with the note `truncated`: the written value is the source value cut off, not rounded (11.30 for 11.3054). Name them so the reader can decide;
-- every multiplier you declared and where it came from. Mark the ones the source does not state as assumptions.
+- every multiplier you declared and where it came from. Mark the ones the source does not state as assumptions;
+- if EDGAR was used: the fetch date the receipt shows, and every `accession` or `version` you chose and why.
 
 What the check does not cover, in one or two lines: numbers written as words ("five years", "두 자릿수"), the skipped tokens the scan listed (dates, years, code), claims that are not numbers, and whether the sources themselves are right.
 
