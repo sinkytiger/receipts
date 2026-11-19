@@ -1,0 +1,181 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 7,
+   "quote": "East revenue grew 12.4% year over year",
+   "number": "12.4%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "revenue"
+    },
+    "old": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2024",
+      "region": "East"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 8,
+   "quote": "West revenue fell 6.6% over the same period",
+   "number": "6.6%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "West"
+     },
+     "column": "revenue"
+    },
+    "old": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2024",
+      "region": "West"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 9,
+   "quote": "Total revenue in 2025 was $1.7M",
+   "number": "$1.7M",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.csv",
+     "where": {
+      "year": "2025"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 9,
+   "quote": "of which East made up 64.0%",
+   "number": "64.0%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "revenue"
+    },
+    "whole": {
+     "file": "sales.csv",
+     "where": {
+      "year": "2025"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 10,
+   "quote": "We expect total revenue to reach $2.0M next year",
+   "number": "$2.0M",
+   "kind": "no_source",
+   "reason": "forecast"
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "East took 455 orders in 2025",
+   "number": "455",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "orders"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 14,
+   "quote": "45 more than the year before",
+   "number": "45",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "orders"
+    },
+    "b": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2024",
+      "region": "East"
+     },
+     "column": "orders"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 15,
+   "quote": "the average order was worth about $2,250",
+   "number": "$2,250",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "sales.csv",
+     "where": {
+      "year": "2025"
+     },
+     "column": "revenue"
+    },
+    "den": {
+     "file": "sales.csv",
+     "where": {
+      "year": "2025"
+     },
+     "column": "orders"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 3,
+   "quote": "for the 2025 planning round",
+   "number": "2025",
+   "kind": "label"
+  }
+ ]
+}
