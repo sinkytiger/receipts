@@ -200,7 +200,7 @@ Skip rules, each with its own count. When two rules could apply, the earlier one
 - `time`, `version`
 - `heading_number` (`## 2. Results`), `list_marker` (`1.` at the start of a line)
 - `reference` (`[3]`)
-- `identifier`: digits glued to ASCII letters or joined to a word by a hyphen, such as `CO2`, `sales_2025`, `COVID-19`. Hangul glued to a number (`3명`, `0.86였다`, `2026-11-19에`) changes nothing: the number is still a number and the date is still a date.
+- `identifier`: digits glued to ASCII letters or joined to a word by a hyphen, such as `CO2`, `sales_2025`, `COVID-19`; and form names written as digits, a hyphen and one or two capital letters, such as `10-K`, `10-Q`, `8-K`, `20-F`, `10-K/A`. A number before a lower-case word (`10-year`, `3-month`) is still a number. Hangul glued to a number (`3명`, `0.86였다`, `2026-11-19에`) changes nothing: the number is still a number and the date is still a date.
 - `ordinal`: `1st`, `2nd`, `제3`, `3번째`
 
 The rules lean toward counting. A 4-digit number with no year context stays a number and shows up as `uncovered` if the plan leaves it out.
@@ -264,9 +264,10 @@ The script reads two things from the SEC, with the Python standard library:
 ```
 <cache>/company_tickers.json
 <cache>/companyfacts/CIK0000320193.json
+<cache>/fetched.json
 ```
 
-A cached file is used as it is, however old, and no request is made for it. `--refresh` fetches again. The file's modification date counts as its fetch date and is shown on the receipt, so a reader sees how fresh the EDGAR data was. A filing made after that date is not in the cache: its facts give `locator_no_match` until the cache is refreshed.
+A cached file is used as it is, however old, and no request is made for it. `--refresh` fetches again. `fetched.json` records the date (UTC) each file was fetched, for example `{"companyfacts/CIK0000320193.json": "2026-11-20"}`. A file with no entry there counts as fetched on its modification date. The date is shown on the receipt, so a reader sees how fresh the EDGAR data was. A filing made after that date is not in the cache: its facts give `locator_no_match` until the cache is refreshed.
 
 **Stops.** A failed request (no connection, an HTTP error, a timeout), a response that is not the expected JSON, or a cached file that is not the expected JSON stops the script with exit code 2. One HTTP error is an answer and not a stop: 404 for a company's facts means the SEC has none under that CIK, which is `locator_no_match`. A request that times out or gets HTTP 429 or 5xx is tried once more after two seconds.
 

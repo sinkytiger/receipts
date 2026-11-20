@@ -1,0 +1,31 @@
+{
+  "document": "report.md",
+  "claims": [
+    {"id": "revenue", "line": 7, "quote": "Revenue was $478.8 billion", "number": "$478.8 billion", "kind": "lookup",
+     "operands": {"of": {"edgar": "AAPL", "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+                         "unit": "USD", "period": "2025-09-28..2026-09-26"}}},
+    {"id": "revenue-growth", "line": 7, "quote": "up 15.1% from fiscal 2025", "number": "15.1%", "kind": "derived",
+     "formula": "pct_change",
+     "operands": {"new": {"edgar": "AAPL", "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+                          "unit": "USD", "period": "2025-09-28..2026-09-26"},
+                  "old": {"edgar": "AAPL", "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+                          "unit": "USD", "period": "2024-09-29..2025-09-27"}}},
+    {"id": "net-income", "line": 8, "quote": "Net income was $132.2 billion", "number": "$132.2 billion", "kind": "lookup",
+     "operands": {"of": {"edgar": "AAPL", "concept": "us-gaap:NetIncomeLoss", "unit": "USD",
+                         "period": "2025-09-28..2026-09-26"}}},
+    {"id": "eps", "line": 9, "quote": "Diluted earnings per share were $8.98", "number": "$8.98", "kind": "lookup",
+     "operands": {"of": {"edgar": "AAPL", "concept": "us-gaap:EarningsPerShareDiluted", "unit": "USD/shares",
+                         "period": "2025-09-28..2026-09-26"}}},
+    {"id": "rnd", "line": 10, "quote": "Research and development spending rose to $45.8 billion", "number": "$45.8 billion",
+     "kind": "lookup",
+     "operands": {"of": {"edgar": "AAPL", "concept": "us-gaap:ResearchAndDevelopmentExpense", "unit": "USD",
+                         "period": "2025-09-28..2026-09-26"}}},
+    {"id": "rnd-share", "line": 10, "quote": "or 10.6% of revenue", "number": "10.6%", "kind": "derived", "formula": "ratio",
+     "operands": {"num": {"edgar": "AAPL", "concept": "us-gaap:ResearchAndDevelopmentExpense", "unit": "USD",
+                          "period": "2025-09-28..2026-09-26"},
+                  "den": {"edgar": "AAPL", "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+                          "unit": "USD", "period": "2025-09-28..2026-09-26"}}},
+    {"id": "assets", "line": 11, "quote": "Total assets stood at $404.5 billion", "number": "$404.5 billion", "kind": "lookup",
+     "operands": {"of": {"edgar": "AAPL", "concept": "us-gaap:Assets", "unit": "USD", "period": "2026-09-26"}}}
+  ]
+}

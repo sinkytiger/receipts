@@ -97,6 +97,7 @@ SKIP_RULES = [  # (rule, regex, group to mark). Order is priority: an earlier ma
     ("list_marker", re.compile(r"^(\s*)(\d+[.)]|\(\d+\))(?=\s)"), 2),
     ("reference", re.compile(r"\[\^?\d+\]"), 0),
     ("identifier", re.compile(r"(?<![A-Za-z0-9_-])\d{2,4}-\d{3,4}-\d{4}(?![A-Za-z0-9_-])"), 0),
+    ("identifier", re.compile(r"(?<![A-Za-z0-9_.,$-])\d{1,3}-[A-Z]{1,2}(?:/A)?(?![A-Za-z0-9_-])"), 0),  # 10-K, 8-K, 20-F
 ]
 PRE_YEAR_RE = re.compile(
     r"(?i)(?:\b(?:in|since|during|until|through|year|fiscal|versus|vs\.?|end of|as of|start of"
@@ -752,6 +753,7 @@ def _edgar_file(rel: str, url: str, base: str, check):
             raise StopError(f"cannot write the EDGAR cache {path}: {e.strerror or e}") from None
         _EDGAR["fetched"].add(key)
         _CACHE[key] = doc
+        _edgar_dates(base, {rel: time.strftime("%Y-%m-%d", time.gmtime())})
     if key not in _CACHE:
         try:
             doc = json.loads(_read_text(path), parse_float=Decimal, parse_int=Decimal)
@@ -760,11 +762,32 @@ def _edgar_file(rel: str, url: str, base: str, check):
         if not check(doc):
             raise StopError(f"the cached EDGAR file {path} is not what EDGAR sends. Delete it or run with --refresh.")
         _CACHE[key] = doc
+    noted = _edgar_dates(base).get(rel)
     try:
-        _EDGAR["files"][rel] = time.strftime("%Y-%m-%d", time.gmtime(os.path.getmtime(path)))
+        _EDGAR["files"][rel] = noted or time.strftime("%Y-%m-%d", time.gmtime(os.path.getmtime(path)))
     except OSError:
         _EDGAR["files"][rel] = ""
     return _CACHE[key]
+
+
+def _edgar_dates(base: str, add: dict = None) -> dict:
+    """Fetch dates by cached file, kept in <cache>/fetched.json. A file without an entry shows its modification date."""
+    path = os.path.join(_edgar_cache_dir(base), "fetched.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            dates = json.load(f)
+        dates = {k: v for k, v in dates.items() if isinstance(v, str) and re.fullmatch(DATE, v)}
+    except (OSError, ValueError, AttributeError):
+        dates = {}
+    if add:
+        dates.update(add)
+        try:
+            with open(path + ".part", "w", encoding="utf-8", newline="\n") as f:
+                json.dump(dates, f, indent=1, sort_keys=True)
+            os.replace(path + ".part", path)
+        except OSError:
+            pass  # the modification date still tells when the file was fetched
+    return dates
 
 
 def _edgar_cik(ident, base: str):

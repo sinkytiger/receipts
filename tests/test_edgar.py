@@ -360,6 +360,37 @@ class EdgarTest(unittest.TestCase):
             if p.is_file():
                 self.assertNotIn(AGENT.encode(), p.read_bytes(), p)
 
+    def test_fetch_date_is_recorded_and_survives_a_copy(self):
+        _, res = self.one("Assets were $5.0 billion.", "$5.0 billion", edgar("2025-12-31"))
+        cache = self.dir / ".receipts" / "edgar"
+        dates = json.loads((cache / "fetched.json").read_text(encoding="utf-8"))
+        self.assertEqual(sorted(dates), ["company_tickers.json", f"companyfacts/CIK{CIK:010d}.json"])
+        self.assertEqual({f["fetched"] for f in res["edgar"]["files"]}, set(dates.values()))
+        # the recorded date wins over the file's modification date; a file without a record falls back to it
+        (cache / "fetched.json").write_text(json.dumps({f"companyfacts/CIK{CIK:010d}.json": "2020-01-02"}), encoding="utf-8")
+        os.utime(cache / "company_tickers.json", (86400 * 365, 86400 * 365))
+        _, res = self.one("Assets were $5.0 billion.", "$5.0 billion", edgar("2025-12-31"))
+        self.assertEqual({f["file"]: f["fetched"] for f in res["edgar"]["files"]},
+                         {"company_tickers.json": "1971-01-01", f"companyfacts/CIK{CIK:010d}.json": "2020-01-02"})
+
+    def test_form_names_are_not_numbers(self):
+        nums, skipped = R.scan_lines(["Its Form 10-K, 10-Q, 8-K, 20-F and 10-K/A; a 10-year bond and a 3-month bill."])
+        self.assertEqual([t.text for t in nums], ["10", "3"])
+        self.assertEqual([(t.text, t.rule) for t in skipped],
+                         [("10-K", "identifier"), ("10-Q", "identifier"), ("8-K", "identifier"),
+                          ("20-F", "identifier"), ("10-K/A", "identifier")])
+
+    def test_shipped_example_runs_from_its_snapshot(self):
+        example = ROOT / "examples" / "edgar"
+        del os.environ["RECEIPTS_SEC_USER_AGENT"]
+        R._CACHE.clear()
+        res = R.run_check(str(example / "claims.json"), edgar_cache=str(example / "snapshot"))
+        self.assertEqual(res["counts"], {"numbers": 7, "verified": 6, "wrong": 1, "unverifiable": 0, "uncovered": 0})
+        wrong = [r for r in res["claims"] if r["verdict"] == "wrong"]
+        self.assertEqual([(r["id"], r["text"], r["recomputed"]) for r in wrong], [("rnd-share", "10.6%", "9.6%")])
+        self.assertEqual({f["fetched"] for f in res["edgar"]["files"]}, {"2026-11-20"})
+        self.assertEqual(self.server.seen, [])
+
     # ---- look-up commands
 
     def test_lookup_commands(self):
