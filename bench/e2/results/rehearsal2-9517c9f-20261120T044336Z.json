@@ -1,0 +1,259 @@
+{
+ "run": {
+  "set": "rehearsal2",
+  "seed": 20261119,
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "max_tokens": 16000,
+  "plans_per_document": 3,
+  "cap_usd": 5.0,
+  "documents": [
+   "d003",
+   "d007",
+   "d004",
+   "d024"
+  ],
+  "approved_estimate_usd_per_document": 0.02,
+  "first_five_documents_stop_usd": 0.15,
+  "fake": false,
+  "starts": [
+   {
+    "started": "20261120T043823Z",
+    "spent_before_usd": 0.035375
+   }
+  ],
+  "finished": "20261120T044154Z",
+  "spent_this_set_usd": 0.041608,
+  "spent_total_usd": 0.076983
+ },
+ "totals": {
+  "documents": 4,
+  "statements": 60,
+  "planted": 23,
+  "correct": 37
+ },
+ "not_run": [],
+ "measures": {
+  "arm_a": {
+   "planted_flagged": {
+    "k": 22,
+    "n": 23,
+    "share": 0.9565,
+    "wilson95": [
+     0.7901,
+     0.9923
+    ]
+   },
+   "correct_flagged": {
+    "k": 0,
+    "n": 37,
+    "share": 0.0,
+    "wilson95": [
+     0.0,
+     0.0941
+    ]
+   },
+   "planted_verdicts": {
+    "unverifiable": 1,
+    "wrong": 22
+   },
+   "correct_verdicts": {
+    "unverifiable": 3,
+    "verified": 34
+   },
+   "uncovered_share": {
+    "k": 0,
+    "n": 60,
+    "share": 0.0,
+    "wilson95": [
+     0.0,
+     0.0602
+    ]
+   },
+   "usd_per_document": 0.008987,
+   "requests_per_document": 2.25,
+   "numbers": 60,
+   "uncovered": 0,
+   "plans_sent": 6,
+   "corrected_plans": 2,
+   "no_accepted_plan": 0,
+   "refused": 0,
+   "cut_off_replies": 0,
+   "requests": 9,
+   "input_tokens": 136130,
+   "output_tokens": 44672,
+   "usd": 0.035949
+  },
+  "arm_b": {
+   "planted_flagged": {
+    "k": 22,
+    "n": 23,
+    "share": 0.9565,
+    "wilson95": [
+     0.7901,
+     0.9923
+    ]
+   },
+   "correct_flagged": {
+    "k": 4,
+    "n": 37,
+    "share": 0.1081,
+    "wilson95": [
+     0.0429,
+     0.2471
+    ]
+   },
+   "usd_per_document": 0.001415,
+   "requests_per_document": 1.0,
+   "unparsed": 0,
+   "refused": 0,
+   "cut_off_replies": 0,
+   "flags": 27,
+   "unmatched_flags": 1,
+   "could_not_check": 20,
+   "requests": 4,
+   "input_tokens": 8424,
+   "output_tokens": 9633,
+   "usd": 0.005659
+  }
+ },
+ "breakdown": {
+  "language": {
+   "en": {
+    "planted": 11,
+    "correct": 19,
+    "a_planted_flagged": 11,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 11,
+    "b_correct_flagged": 3
+   },
+   "ko": {
+    "planted": 12,
+    "correct": 18,
+    "a_planted_flagged": 11,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 11,
+    "b_correct_flagged": 1
+   }
+  },
+  "source_type": {
+   "md": {
+    "planted": 11,
+    "correct": 19,
+    "a_planted_flagged": 11,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 10,
+    "b_correct_flagged": 2
+   },
+   "xlsx": {
+    "planted": 12,
+    "correct": 18,
+    "a_planted_flagged": 11,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 12,
+    "b_correct_flagged": 2
+   }
+  },
+  "units": {
+   "scaled, unit stated": {
+    "planted": 16,
+    "correct": 29,
+    "a_planted_flagged": 15,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 15,
+    "b_correct_flagged": 3
+   },
+   "scaled, unit not stated": {
+    "planted": 7,
+    "correct": 8,
+    "a_planted_flagged": 7,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 7,
+    "b_correct_flagged": 1
+   }
+  },
+  "correct_statements_by_writing": {
+   "written rounded": {
+    "planted": 0,
+    "correct": 33,
+    "a_planted_flagged": 0,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 0,
+    "b_correct_flagged": 1
+   },
+   "written cut off (truncated)": {
+    "planted": 0,
+    "correct": 4,
+    "a_planted_flagged": 0,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 0,
+    "b_correct_flagged": 3
+   }
+  }
+ },
+ "documents": [
+  {
+   "doc": "d003",
+   "lang": "en",
+   "source_type": "md",
+   "units": "scaled, unit stated",
+   "planted": 4,
+   "a_planted_flagged": 4,
+   "a_correct_flagged": 0,
+   "b_planted_flagged": 4,
+   "b_correct_flagged": 2,
+   "a_usd": 0.006181,
+   "b_usd": 0.00119,
+   "a_requests": 2,
+   "a_plans": 1
+  },
+  {
+   "doc": "d007",
+   "lang": "ko",
+   "source_type": "md",
+   "units": "scaled, unit stated",
+   "planted": 7,
+   "a_planted_flagged": 7,
+   "a_correct_flagged": 0,
+   "b_planted_flagged": 6,
+   "b_correct_flagged": 0,
+   "a_usd": 0.008034,
+   "b_usd": 0.001837,
+   "a_requests": 2,
+   "a_plans": 1
+  },
+  {
+   "doc": "d004",
+   "lang": "en",
+   "source_type": "xlsx",
+   "units": "scaled, unit not stated",
+   "planted": 7,
+   "a_planted_flagged": 7,
+   "a_correct_flagged": 0,
+   "b_planted_flagged": 7,
+   "b_correct_flagged": 1,
+   "a_usd": 0.007124,
+   "b_usd": 0.001285,
+   "a_requests": 2,
+   "a_plans": 1
+  },
+  {
+   "doc": "d024",
+   "lang": "ko",
+   "source_type": "xlsx",
+   "units": "scaled, unit stated",
+   "planted": 5,
+   "a_planted_flagged": 4,
+   "a_correct_flagged": 0,
+   "b_planted_flagged": 5,
+   "b_correct_flagged": 1,
+   "a_usd": 0.01461,
+   "b_usd": 0.001346,
+   "a_requests": 3,
+   "a_plans": 3
+  }
+ ],
+ "timestamp": "20261120T044336Z",
+ "commit": "9517c9f",
+ "dirty": false
+}
