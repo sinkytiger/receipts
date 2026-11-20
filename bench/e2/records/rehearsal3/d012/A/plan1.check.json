@@ -1,0 +1,275 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 10,
+  "wrong": 5,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 2,
+  "date": 3,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 28,
+   "end": 31,
+   "text": "686",
+   "quote": "Coastal headcount jumped by 686 in 2025 vs 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "686",
+   "recomputed_raw": "686",
+   "sources": [
+    "book.xlsx [Staff] [Year=2025, Region=Coastal] Staff = 6496",
+    "book.xlsx [Staff] [Year=2024, Region=Coastal] Staff = 5810"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 24,
+   "end": 36,
+   "text": "71.0 percent",
+   "quote": "West operating cost was 71.0 percent of revenue in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "71.0%",
+   "recomputed_raw": "70.999999857463803234350241017196191744209190157244068336984",
+   "sources": [
+    "book.xlsx [Sales] [Year=2025, Region=West] Cost = 64755481",
+    "book.xlsx [Sales] [Year=2025, Region=West] Revenue = 91204903"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 22,
+   "end": 29,
+   "text": "$110.2M",
+   "quote": "South revenue rose by $110.2M in 2023 vs 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "110.2M",
+   "recomputed_raw": "110234147",
+   "sources": [
+    "book.xlsx [Sales] [Year=2023, Region=South] Revenue = 920779345",
+    "book.xlsx [Sales] [Year=2022, Region=South] Revenue = 810545198"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 29,
+   "end": 32,
+   "text": "255",
+   "quote": "Coastal headcount climbed by 255 in 2023 vs 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "255",
+   "recomputed_raw": "255",
+   "sources": [
+    "book.xlsx [Staff] [Year=2023, Region=Coastal] Staff = 4648",
+    "book.xlsx [Staff] [Year=2022, Region=Coastal] Staff = 4393"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 26,
+   "end": 35,
+   "text": "1,769,436",
+   "quote": "All regions together sold 1,769,436 units in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,769,436",
+   "recomputed_raw": "1769436",
+   "sources": [
+    "book.xlsx [Sales] [Year=2025] Units: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 17,
+   "end": 29,
+   "text": "$618,949,801",
+   "quote": "East revenue was $618,949,801 in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "664,613,211",
+   "recomputed_raw": "664613211",
+   "sources": [
+    "book.xlsx [Sales] [Year=2024, Region=East] Revenue = 664613211"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 44,
+   "end": 48,
+   "text": "0.58",
+   "quote": "The cost-to-revenue ratio in Central was 0.58 in 2025.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "0.59",
+   "recomputed_raw": "0.588000000427984081560070454739506418798259217546662569432393",
+   "sources": [
+    "book.xlsx [Sales] [Year=2025, Region=Central] Cost = 329731890",
+    "book.xlsx [Sales] [Year=2025, Region=Central] Revenue = 560768520"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 36,
+   "end": 43,
+   "text": "$241.2K",
+   "quote": "Revenue per employee in East was $241.2K in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "241.2K",
+   "recomputed_raw": "241157.095170454545454545454545454545454545454545454545454545",
+   "sources": [
+    "book.xlsx [Sales] [Year=2022, Region=East] Revenue = 848872975",
+    "book.xlsx [Staff] [Year=2022, Region=East] Staff = 3520"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 29,
+   "end": 41,
+   "text": "12.8 percent",
+   "quote": "The margin in Coastal was 12.8 percent in FY2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "12.8%",
+   "recomputed_raw": "12.8",
+   "sources": [
+    "book.xlsx [Staff] [Year=2023, Region=Coastal] Margin = 12.8"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 27,
+   "end": 39,
+   "text": "65.0 percent",
+   "quote": "West operating cost was 65.0 percent of revenue in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "65.1%",
+   "recomputed_raw": "65.1000003170693837545963277660560722392276013526057490359591",
+   "sources": [
+    "book.xlsx [Sales] [Year=2023, Region=West] Cost = 53177320",
+    "book.xlsx [Sales] [Year=2023, Region=West] Revenue = 81685591"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 33,
+   "end": 40,
+   "text": "$203.09",
+   "quote": "The selling price in Central was $203.09 in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "203.09",
+   "recomputed_raw": "203.09",
+   "sources": [
+    "book.xlsx [Sales] [Year=2025, Region=Central] Price = 203.09"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 36,
+   "end": 45,
+   "text": "3,817,040",
+   "quote": "The highest regional unit sales was 3,817,040 units in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "381,704",
+   "recomputed_raw": "381704",
+   "sources": [
+    "book.xlsx [Sales] [Year=2023] Units: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 23,
+   "end": 28,
+   "text": "21.7%",
+   "quote": "The margin in West was 21.7% in 2022.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-4.9%",
+   "recomputed_raw": "-4.9",
+   "sources": [
+    "book.xlsx [Staff] [Year=2022, Region=West] Margin = -4.9"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 38,
+   "end": 44,
+   "text": "13.80%",
+   "quote": "The average margin across regions was 13.80% in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "13.80%",
+   "recomputed_raw": "13.8",
+   "sources": [
+    "book.xlsx [Staff] [Year=2023] Margin: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 50,
+   "end": 56,
+   "text": "-8.72%",
+   "quote": "The change in South headcount in 2022 vs 2021 was -8.72%.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-8.74%",
+   "recomputed_raw": "-8.73949579831932773109243697478991596638655462184873949579832",
+   "sources": [
+    "book.xlsx [Staff] [Year=2022, Region=South] Staff = 543",
+    "book.xlsx [Staff] [Year=2021, Region=South] Staff = 595"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

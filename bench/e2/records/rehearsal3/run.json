@@ -1,0 +1,25 @@
+{
+ "set": "rehearsal3",
+ "seed": 20261119,
+ "model": "claude-haiku-5-5",
+ "effort": "medium",
+ "max_tokens": 16000,
+ "plans_per_document": 3,
+ "cap_usd": 5.0,
+ "documents": [
+  "d024",
+  "d012"
+ ],
+ "approved_estimate_usd_per_document": 0.02,
+ "first_five_documents_stop_usd": 0.15,
+ "fake": false,
+ "starts": [
+  {
+   "started": "20261120T044405Z",
+   "spent_before_usd": 0.076983
+  }
+ ],
+ "finished": "20261120T044526Z",
+ "spent_this_set_usd": 0.015793,
+ "spent_total_usd": 0.092776
+}

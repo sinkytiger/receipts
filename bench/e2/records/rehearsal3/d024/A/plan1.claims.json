@@ -1,0 +1,342 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "광주 지역 이익률은 2021년 대비 2022년에 16.9%포인트 줄었다.",
+   "number": "16.9%포인트",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2022",
+      "지역": "광주"
+     },
+     "column": "이익률"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2021",
+      "지역": "광주"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "2025년 지역 평균 판매량은 190,325건이었다.",
+   "number": "190,325",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "where": {
+      "연도": "2025"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "2024년 대전 지역 판매량은 382,398건이었다.",
+   "number": "382,398",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2024",
+      "지역": "대전"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "전 기간 전 지역 판매량은 대략 4,000,000건이었다.",
+   "number": "4,000,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "where": {},
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "2021년 대전 지역 판매량은 932,700건이었다.",
+   "number": "932,700",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2021",
+      "지역": "대전"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "2024년 서울 지역은 전체 판매량의 44.3퍼센트를 차지했다.",
+   "number": "44.3퍼센트",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2024",
+      "지역": "서울"
+     },
+     "column": "판매량"
+    },
+    "whole": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "where": {
+      "연도": "2024"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "2024년 인천 지역 단가는 79,427원이었다.",
+   "number": "79,427",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2024",
+      "지역": "인천"
+     },
+     "column": "단가"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "2022년 이익률이 두 자릿수인 지역은 1개였다.",
+   "number": "1",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "where": {
+      "연도": "2022"
+     },
+     "test": {
+      "column": "이익률",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "2025년 지역별 매출 최고치는 21,136조 원이었다.",
+   "number": "21,136조",
+   "kind": "derived",
+   "formula": "max",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "where": {
+      "연도": "2025"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "2021년 이익률이 두 자릿수인 지역은 4개였다.",
+   "number": "4",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "where": {
+      "연도": "2021"
+     },
+     "test": {
+      "column": "이익률",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "2023년 인천 지역은 전체 판매량의 3.4%를 차지했다.",
+   "number": "3.4%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2023",
+      "지역": "인천"
+     },
+     "column": "판매량"
+    },
+    "whole": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "where": {
+      "연도": "2023"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "2025년 대전 지역 매출은 광주 지역 매출의 2.45배였다.",
+   "number": "2.45배",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2025",
+      "지역": "대전"
+     },
+     "column": "매출"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2025",
+      "지역": "광주"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "2023년 전 지역 매출 합계는 4조 244억 원이었다.",
+   "number": "4조 244억",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "where": {
+      "연도": "2023"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "2021년 대전 지역 매출은 18,506억 원이었다.",
+   "number": "18,506억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "row": {
+      "연도": "2021",
+      "지역": "대전"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "2021년 전 지역 매출 합계는 3.62조 원이었다.",
+   "number": "3.62조",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "header_row": 2,
+     "where": {
+      "연도": "2021"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    }
+   }
+  }
+ ]
+}

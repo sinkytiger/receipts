@@ -1,0 +1,77 @@
+{
+ "doc": "d012",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T044526Z",
+   "set": "rehearsal3",
+   "doc": "d012",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1887,
+   "output_tokens": 1928,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0011527,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDa5pKQYqBFhE8SgnkK3"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 14,
+    "number": "$618,949,801",
+    "should_be": "$664,613,211",
+    "why": "East 2024 revenue is 664613211; 618949801 is Central 2024"
+   },
+   {
+    "line": 21,
+    "number": "65.0 percent",
+    "should_be": "65.1 percent",
+    "why": "West 2023 cost/revenue = 53177320/81685591 ≈ 65.1%"
+   },
+   {
+    "line": 24,
+    "number": "3,817,040 units",
+    "should_be": "381,704 units",
+    "why": "Highest 2023 regional units is West at 381704"
+   },
+   {
+    "line": 25,
+    "number": "21.7%",
+    "should_be": "-4.9%",
+    "why": "West 2022 margin is -4.9; 21.7 is South 2022"
+   },
+   {
+    "line": 27,
+    "number": "-8.72%",
+    "should_be": "-8.74%",
+    "why": "(543-595)/595 ≈ -8.74%"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "7 August 2026"
+   },
+   {
+    "line": 4,
+    "number": "v2.7.2"
+   },
+   {
+    "line": 32,
+    "number": "236"
+   },
+   {
+    "line": 33,
+    "number": "0.46"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0011527
+}

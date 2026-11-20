@@ -1,0 +1,380 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "Coastal headcount jumped by 686 in 2025 vs 2024.",
+   "number": "686",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Coastal"
+     },
+     "column": "Staff"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Coastal"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "West operating cost was 71.0 percent of revenue in 2025.",
+   "number": "71.0 percent",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "West"
+     },
+     "column": "Cost"
+    },
+    "whole": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "South revenue rose by $110.2M in 2023 vs 2022.",
+   "number": "$110.2M",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "South"
+     },
+     "column": "Revenue"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "Coastal headcount climbed by 255 in 2023 vs 2022.",
+   "number": "255",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "Coastal"
+     },
+     "column": "Staff"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "Coastal"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "All regions together sold 1,769,436 units in 2025.",
+   "number": "1,769,436",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "where": {
+      "Year": "2025"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "East revenue was $618,949,801 in 2024.",
+   "number": "$618,949,801",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "East"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "The cost-to-revenue ratio in Central was 0.58 in 2025.",
+   "number": "0.58",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Central"
+     },
+     "column": "Cost"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "Revenue per employee in East was $241.2K in 2022.",
+   "number": "$241.2K",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "East"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "East"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "The margin in Coastal was 12.8 percent in FY2023.",
+   "number": "12.8 percent",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "Coastal"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "West operating cost was 65.0 percent of revenue in 2023.",
+   "number": "65.0 percent",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "West"
+     },
+     "column": "Cost"
+    },
+    "whole": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "The selling price in Central was $203.09 in 2025.",
+   "number": "$203.09",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Central"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "The highest regional unit sales was 3,817,040 units in 2023.",
+   "number": "3,817,040",
+   "kind": "derived",
+   "formula": "max",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "where": {
+      "Year": "2023"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The margin in West was 21.7% in 2022.",
+   "number": "21.7%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "West"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "The average margin across regions was 13.80% in 2023.",
+   "number": "13.80%",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "where": {
+      "Year": "2023"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "The change in South headcount in 2022 vs 2021 was -8.72%.",
+   "number": "-8.72%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Staff"
+    },
+    "old": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "South"
+     },
+     "column": "Staff"
+    }
+   }
+  }
+ ]
+}
