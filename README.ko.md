@@ -32,7 +32,7 @@
 /plugin install receipts@receipts
 ```
 
-설치한 뒤 "receipts로 report.md의 숫자를 sales.csv와 대조해 줘"처럼 요청합니다. 스킬 이름을 말하지 않았을 때 얼마나 잘 불러오는지는 아직 재지 않았습니다. 스킬은 세션마다 약 150토큰을, 실행할 때 약 2,300토큰을 씁니다(`claude plugin details`의 추정값).
+설치한 뒤 "receipts로 report.md의 숫자를 sales.csv와 대조해 줘"처럼 요청합니다. 스킬 이름을 말하지 않았을 때 얼마나 잘 불러오는지는 아직 재지 않았습니다. 스킬은 세션마다 약 160토큰을, 실행할 때 약 2,900토큰을 씁니다(`claude plugin details`의 추정값).
 
 두 방식 모두 윈도우의 Claude Code 2.1.326에서 명령줄(`claude plugin install ...`)로, 설정이 없는 상태에서 설치해 확인했습니다.
 
@@ -67,11 +67,29 @@ python skills/receipts/scripts/receipts.py check examples/quickstart/claims.json
 - `receipts.py edgar concepts AAPL --match revenue`, `receipts.py edgar facts AAPL us-gaap:Assets`로 회사가 쓰는 항목 이름과 기간 날짜를 찾습니다.
 - 부문별·제품별·지역별 수치는 이 API에 없습니다.
 
+[examples/edgar](examples/edgar)는 애플의 2026 회계연도를 다룬 짧은 글이고, 숫자 하나를 일부러 틀리게 썼습니다. SEC가 2026-11-20에 돌려준 자료를 잘라 낸 사본이 들어 있어 네트워크 없이 돌아갑니다.
+
+```sh
+python skills/receipts/scripts/receipts.py check examples/edgar/claims.json --edgar-cache examples/edgar/snapshot
+```
+
+```
+7 numbers / 6 verified / 1 wrong / 0 unverifiable / 0 uncovered   (skipped: 1 date, 1 identifier, 3 year)
+```
+
+글은 연구개발비가 매출의 10.6%라고 쓰지만, 공시된 두 수치로 다시 계산하면 9.6%입니다.
+
 ## 평가 진행 상황
 
 - **E1 (정답 계획을 주고 스크립트만 평가):** 개발용 문제(문서 64개, 문장 960개, 물러남 사례 96개)에서 통과 기준 8개를 모두 충족했습니다. 실행 기록은 [bench/runs.jsonl](bench/runs.jsonl)에 있습니다. 개발용 숫자이고, 대표 숫자는 배포 커밋에서 한 번만 돌리는 최종용 문제에서 나옵니다. 최종용은 아직 돌리지 않았습니다.
 - **E2 (모델이 계획을 쓰는 전체 흐름):** 돌리지 않았습니다. E1은 계획이 맞을 때 스크립트가 맞게 읽고 비교하는지만 보여 줍니다.
-- **E3 (미국 공시 연결):** 연결 기능을 만들었고, 평가 기준은 코드를 쓰기 전에 등록했습니다. 연결이 돌려준 값을 공시 문서에 인쇄된 숫자와 비교합니다(개발용 5개 회사, 최종용 20개 회사는 한 번만). 아직 돌리지 않았습니다. 지금까지는 지어낸 자료를 담은 가짜 서버로만 시험했습니다.
+- **E3 (미국 공시 연결):** 평가 기준은 연결 코드를 쓰기 전에 등록했습니다. 연결이 돌려준 값을 공시 문서에 인쇄된 숫자와 비교합니다. 개발용 5개 회사(공시 9건, 뽑은 수치 266개)에서 통과 기준 6개를 모두 충족했습니다.
+  - 틀림으로 판정된 수치는 없었습니다.
+  - 공시를 지정했을 때 266개 중 266개가 확인됐습니다.
+  - 공시를 지정하지 않았을 때 262개가 확인됐고, 4개는 공시마다 값이 달라 판정을 미뤘습니다.
+  - 아무것도 찾지 못해야 하는 위치 지정 180건은 모두 확인 불가로 나왔고, EDGAR를 읽을 수 없는 실행 15건은 모두 멈췄습니다.
+
+  실행 기록은 [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl)에 있습니다. 개발용 숫자이고, 최종용 20개 회사는 배포 커밋에서 한 번만 돌리며 아직 내려받지 않았습니다. 알아 둘 점이 두 가지 있습니다. 여섯 번째 기준은 첫 실행 뒤에 추가했습니다. 일부러 고장 낸 도구 하나가 처음 다섯 기준을 통과했기 때문이고, 경위는 [평가 계획의 변경 기록](docs/eval-plan.md)에 있습니다. 또 개발용 회사 중 XOM은 새 법인으로 공시하고 있어 아직 10-K가 없으므로 공시가 10건이 아니라 9건입니다.
 
 평가 문서는 문장 틀로 만든 합성 문서이고, 영어와 한국어가 절반씩입니다.
 
