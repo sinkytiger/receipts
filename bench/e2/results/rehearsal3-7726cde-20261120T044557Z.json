@@ -1,0 +1,217 @@
+{
+ "run": {
+  "set": "rehearsal3",
+  "seed": 20261119,
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "max_tokens": 16000,
+  "plans_per_document": 3,
+  "cap_usd": 5.0,
+  "documents": [
+   "d024",
+   "d012"
+  ],
+  "approved_estimate_usd_per_document": 0.02,
+  "first_five_documents_stop_usd": 0.15,
+  "fake": false,
+  "starts": [
+   {
+    "started": "20261120T044405Z",
+    "spent_before_usd": 0.076983
+   }
+  ],
+  "finished": "20261120T044526Z",
+  "spent_this_set_usd": 0.015793,
+  "spent_total_usd": 0.092776
+ },
+ "totals": {
+  "documents": 2,
+  "statements": 30,
+  "planted": 10,
+  "correct": 20
+ },
+ "not_run": [],
+ "measures": {
+  "arm_a": {
+   "planted_flagged": {
+    "k": 10,
+    "n": 10,
+    "share": 1.0,
+    "wilson95": [
+     0.7225,
+     1.0
+    ]
+   },
+   "correct_flagged": {
+    "k": 0,
+    "n": 20,
+    "share": 0.0,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "planted_verdicts": {
+    "wrong": 10
+   },
+   "correct_verdicts": {
+    "verified": 20
+   },
+   "uncovered_share": {
+    "k": 0,
+    "n": 30,
+    "share": 0.0,
+    "wilson95": [
+     0.0,
+     0.1135
+    ]
+   },
+   "usd_per_document": 0.006578,
+   "requests_per_document": 2.0,
+   "numbers": 30,
+   "uncovered": 0,
+   "plans_sent": 2,
+   "corrected_plans": 0,
+   "no_accepted_plan": 0,
+   "refused": 0,
+   "cut_off_replies": 0,
+   "requests": 4,
+   "input_tokens": 53137,
+   "output_tokens": 15685,
+   "usd": 0.013156
+  },
+  "arm_b": {
+   "planted_flagged": {
+    "k": 10,
+    "n": 10,
+    "share": 1.0,
+    "wilson95": [
+     0.7225,
+     1.0
+    ]
+   },
+   "correct_flagged": {
+    "k": 0,
+    "n": 20,
+    "share": 0.0,
+    "wilson95": [
+     0.0,
+     0.1611
+    ]
+   },
+   "usd_per_document": 0.001318,
+   "requests_per_document": 1.0,
+   "unparsed": 0,
+   "refused": 0,
+   "cut_off_replies": 0,
+   "flags": 10,
+   "unmatched_flags": 0,
+   "could_not_check": 12,
+   "requests": 2,
+   "input_tokens": 3686,
+   "output_tokens": 4536,
+   "usd": 0.002637
+  }
+ },
+ "breakdown": {
+  "language": {
+   "ko": {
+    "planted": 5,
+    "correct": 10,
+    "a_planted_flagged": 5,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 5,
+    "b_correct_flagged": 0
+   },
+   "en": {
+    "planted": 5,
+    "correct": 10,
+    "a_planted_flagged": 5,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 5,
+    "b_correct_flagged": 0
+   }
+  },
+  "source_type": {
+   "xlsx": {
+    "planted": 10,
+    "correct": 20,
+    "a_planted_flagged": 10,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 10,
+    "b_correct_flagged": 0
+   }
+  },
+  "units": {
+   "scaled, unit stated": {
+    "planted": 5,
+    "correct": 10,
+    "a_planted_flagged": 5,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 5,
+    "b_correct_flagged": 0
+   },
+   "not scaled": {
+    "planted": 5,
+    "correct": 10,
+    "a_planted_flagged": 5,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 5,
+    "b_correct_flagged": 0
+   }
+  },
+  "correct_statements_by_writing": {
+   "written rounded": {
+    "planted": 0,
+    "correct": 18,
+    "a_planted_flagged": 0,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 0,
+    "b_correct_flagged": 0
+   },
+   "written cut off (truncated)": {
+    "planted": 0,
+    "correct": 2,
+    "a_planted_flagged": 0,
+    "a_correct_flagged": 0,
+    "b_planted_flagged": 0,
+    "b_correct_flagged": 0
+   }
+  }
+ },
+ "documents": [
+  {
+   "doc": "d024",
+   "lang": "ko",
+   "source_type": "xlsx",
+   "units": "scaled, unit stated",
+   "planted": 5,
+   "a_planted_flagged": 5,
+   "a_correct_flagged": 0,
+   "b_planted_flagged": 5,
+   "b_correct_flagged": 0,
+   "a_usd": 0.007047,
+   "b_usd": 0.001484,
+   "a_requests": 2,
+   "a_plans": 1
+  },
+  {
+   "doc": "d012",
+   "lang": "en",
+   "source_type": "xlsx",
+   "units": "not scaled",
+   "planted": 5,
+   "a_planted_flagged": 5,
+   "a_correct_flagged": 0,
+   "b_planted_flagged": 5,
+   "b_correct_flagged": 0,
+   "a_usd": 0.006109,
+   "b_usd": 0.001153,
+   "a_requests": 2,
+   "a_plans": 1
+  }
+ ],
+ "timestamp": "20261120T044557Z",
+ "commit": "7726cde",
+ "dirty": false
+}
