@@ -2,7 +2,7 @@
 
 Every number your agent writes comes with a receipt, or gets flagged.
 
-> **Status: 0.1.0, the first release.** A checking script, an agent skill, a connection to SEC EDGAR, and three evaluations whose rules were written down before they were run. The results, with their limits, are [below](#what-the-evaluation-shows).
+> **Status: 0.1.1.** A checking script, an agent skill, a connection to SEC EDGAR, and three evaluations whose rules were written down before they were run. The results, with their limits, are [below](#what-the-evaluation-shows). They were measured on 0.1.0. [CHANGELOG.md](CHANGELOG.md) says what changed since.
 
 [한국어](README.ko.md)
 
@@ -32,7 +32,7 @@ The one-step form needs Claude Code 2.1.275 or later. On an older version use tw
 /plugin install receipts@receipts
 ```
 
-Then ask Claude to check the numbers in a document against its source files, for example "use receipts to check the numbers in report.md against sales.csv". How reliably the skill is picked up when you do not name it has not been measured yet. The skill adds about 160 tokens to every session and about 3,000 when it runs (estimates from `claude plugin details`).
+Then ask Claude to check the numbers in a document against its source files, for example "use receipts to check the numbers in report.md against sales.csv". How reliably the skill is picked up when you do not name it has not been measured yet. The skill adds about 160 tokens to every session and about 3,100 when it runs (estimates from `claude plugin details`).
 
 Both forms were tested as `claude plugin install ...` on the command line, from a clean configuration, with Claude Code 2.1.326 on Windows. The skill folder is plain Markdown plus one Python script, so other agents that read skills can use `skills/receipts` as it is. That has not been tested.
 
@@ -74,7 +74,7 @@ A source can be a fact a company reported in its 10-K or 10-Q. The script reads 
 - When filings report different values for the same period (a restatement), the script abstains and lists them, unless the plan names the filing or picks the first or the latest report.
 - `receipts.py edgar concepts AAPL --match revenue` and `receipts.py edgar facts AAPL us-gaap:Assets` print a company's concept names and period dates, which a plan needs.
 - Segment, product and regional numbers are not in this API. Concepts a company defined itself were not in it either, for the five companies looked at.
-- A fact whose period is one day, such as a dividend paid on one date, is stored by the SEC under that single date. Ask for it as one date, not as a range.
+- A fact whose period is one day, such as a dividend paid on one date, is stored by the SEC under that single date. It can be asked for as the date or as a one-day range.
 
 The rules are in sections 2 and 8 of [plan-format.md](skills/receipts/references/plan-format.md).
 
@@ -148,7 +148,7 @@ Values the connection returns are compared with the numbers printed in the filin
 
 - No fact was judged `wrong`, in 2,338 verdicts.
 - With the filing named, 1,167 of 1,169 were verified. With no filing named, 1,145 were verified and 22 abstained because filings report different values for that fact.
-- The two that were not verified are dividends per share paid on a single day. The filing tags each as a period of one day, and the SEC's API stores such a fact under a single date, so the exact-period rule finds nothing. The script abstained. Until a later version handles this, ask for a one-day period as one date.
+- The two that were not verified are dividends per share paid on a single day. The filing tags each as a period of one day, and the SEC's API stores such a fact under a single date, so the exact-period rule finds nothing. The script abstained. Version 0.1.1 treats a one-day range as the single date. Tried again on their own after the release, both facts verify. That check is not part of the result above.
 - 800 of 800 locators that should match nothing were `unverifiable`, and 15 of 15 runs with no contact string, a corrupt cached file or an unreachable server stopped.
 
 Both sides of this comparison start from the same submission by the company. E3 tests the connection, not whether a company tagged its filing correctly. The sixth bar was added after the first development run, when a deliberately broken copy of the tool got past the first five. The [plan's change log](docs/eval-plan.md) has the details.
@@ -161,13 +161,13 @@ Both sides of this comparison start from the same submission by the company. E3 
 
 ### Where the runs are
 
-Every run is logged with its commit: [bench/runs.jsonl](bench/runs.jsonl) for E1, [bench/e2/runs.jsonl](bench/e2/runs.jsonl) for E2, [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl) for E3. The development runs are there too. The code was frozen at commit `a84647c`. The held-out runs were made on later commits that differ from it only in results and logs.
+Every run is logged with its commit: [bench/runs.jsonl](bench/runs.jsonl) for E1, [bench/e2/runs.jsonl](bench/e2/runs.jsonl) for E2, [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl) for E3. The development runs are there too. The code was frozen at commit `a84647c`. The held-out runs were made on later commits that differ from it only in results and logs. Version 0.1.1 changed code after that. The held-out sets were not run again: 0.1.1 was rerun on the development sets only, where it meets every bar of E1 and E3.
 
 ## Roadmap
 
-Done in 0.1.0: the core script and its benchmark, the skill and plugin, the SEC EDGAR connection, and the three evaluations.
+Done in 0.1.0: the core script and its benchmark, the skill and plugin, the SEC EDGAR connection, and the three evaluations. Done in 0.1.1: one-day periods on EDGAR.
 
-Next: one-day periods on EDGAR, Korean filings (DART), an audit of non-numeric claims, PDF sources.
+Next: Korean filings (DART), an audit of non-numeric claims, PDF sources.
 
 ## License
 
