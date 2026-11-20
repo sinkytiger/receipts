@@ -18,7 +18,7 @@ A held-out ticker is refused without `--held-out`, before any request.
 
 `build.py` options: `--tickers AAPL,MSFT` (development tickers only), `--cache DIR` (default `bench/edgar/cache/`),
 `--out DIR` (default `bench/edgar/out/`), `--offline` (build only from cached files; stop if one is missing),
-`--self-test`. `evaluate.py` options: `--set dev|heldout`, `--held-out`, `--tool PATH`, `--tool-cache DIR`,
+`--fetch-only` (see below), `--self-test`. `evaluate.py` options: `--set dev|heldout`, `--held-out`, `--tool PATH`, `--tool-cache DIR`,
 `--out DIR`, `--results-dir DIR`, `--runs FILE`, `--timeout SEC` (per tool call, default 600).
 
 Fair access: every request sends `User-Agent` from `RECEIPTS_SEC_USER_AGENT` (no default; empty means exit 2 with no
@@ -27,7 +27,17 @@ request) and `Accept-Encoding: gzip`, at most 5 requests per second, 30 s timeou
 A build makes 1 + 3 requests per company. The scorer passes its environment to the tool, which needs the same variable
 for its first fetch of each company.
 
-Exit codes. `build.py`: 0 done, 2 stopped. `evaluate.py`: 0 all five bars pass, 1 any fails, 2 the cases or the tool
+**Fetch once, build offline.** `build.py --fetch-only` (with `--held-out` or `--tickers` as for a build) puts into
+the cache exactly the files a build reads: the ticker list, each company's filing list and the primary documents of
+its most recent inline-XBRL 10-K and 10-Q, with the same pacing, retry and User-Agent rules. It parses nothing,
+writes nothing under `--out`, prints one line per file (`cached already` / `fetched`) and the number of requests
+made. A company without such a filing is reported and skipped. A failed request stops with exit 2; files fetched so
+far stay in the cache. It cannot be combined with `--offline` or `--self-test`. Afterwards `build.py --offline`
+needs no network and no contact string.
+
+Exit codes. `build.py`: 0 every filing built (or fetched, with `--fetch-only`), 1 at least one filing could not be
+built (parsing or case-building raised an error: it is listed under `missing` in the manifest with the exception
+type and message, and the other filings are built), 2 stopped (a fetch problem stops at once). `evaluate.py`: 0 all five bars pass, 1 any fails, 2 the cases or the tool
 are missing, or the held-out set was asked for without `--held-out`.
 
 ## What is written where

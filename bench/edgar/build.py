@@ -507,62 +507,97 @@ def pick_filing(recent, form):
     return best
 
 
+def ticker_map(fetcher):
+    listing = fetcher.get_json(TICKERS_URL)
+    try:
+        return {str(v["ticker"]).upper(): (int(v["cik_str"]), str(v["title"])) for v in listing.values()}
+    except (AttributeError, KeyError, TypeError, ValueError):
+        raise Stop("the ticker list is not in the expected shape")
+
+
+def company_filings(t, by_ticker, fetcher):
+    """CIK, title, filing list and, per form, the chosen row and document URL (None when there is none)."""
+    if t not in by_ticker:
+        raise Stop(f"ticker {t} is not in the SEC's ticker list")
+    cik, title = by_ticker[t]
+    sub_url = SUBMISSIONS_URL.format(cik=cik)
+    subs = fetcher.get_json(sub_url)
+    try:
+        recent = subs["filings"]["recent"]
+    except (KeyError, TypeError):
+        raise Stop(f"the filing list of {t} has no filings.recent")
+    picks = {}
+    for form in FORMS:
+        row = pick_filing(recent, form)
+        url = None if row is None else ARCHIVE_URL.format(cik=cik, acc=row["accessionNumber"].replace("-", ""),
+                                                          doc=row["primaryDocument"])
+        picks[form] = (row, url)
+    return cik, title, sub_url, subs, picks
+
+
+def fetch_only(tickers, fetcher):
+    """Put into the cache exactly what a build would read; parse nothing, write nothing under out/."""
+    files = []
+
+    def get(url, what):
+        cached = os.path.isfile(fetcher.path(url))
+        fetcher.get(url)
+        files.append(url)
+        print(f"{'cached already' if cached else 'fetched'}: {what} {url}", flush=True)
+
+    get(TICKERS_URL, "ticker list")
+    by_ticker = ticker_map(fetcher)
+    missing = 0
+    for t in tickers:
+        if t in by_ticker:
+            get(SUBMISSIONS_URL.format(cik=by_ticker[t][0]), f"{t} filing list")
+        _, _, _, _, picks = company_filings(t, by_ticker, fetcher)
+        for form in FORMS:
+            row, url = picks[form]
+            if row is None:
+                missing += 1
+                print(f"{t} {form}: no inline-XBRL filing in the recent list, skipped", flush=True)
+                continue
+            get(url, f"{t} {form} {row['accessionNumber']}")
+    print(f"fetch-only: {len(files)} files in the cache, {missing} filings not found; "
+          f"{fetcher.requests} requests made", flush=True)
+    return fetcher.requests
+
+
 def build(tickers, set_name, fetcher, out_root):
     out = os.path.join(out_root, set_name)
     os.makedirs(out, exist_ok=True)
-    listing = fetcher.get_json(TICKERS_URL)
-    try:
-        by_ticker = {str(v["ticker"]).upper(): (int(v["cik_str"]), str(v["title"])) for v in listing.values()}
-    except (AttributeError, KeyError, TypeError, ValueError):
-        raise Stop("the ticker list is not in the expected shape")
+    by_ticker = ticker_map(fetcher)
     manifest = {"set": set_name, "builder_version": BUILDER_VERSION,
                 "fetch_date": datetime.now(timezone.utc).strftime("%Y-%m-%d"), "offline": fetcher.offline,
                 "ticker_list_fetched": fetcher.fetched_date(TICKERS_URL), "companies": [], "filings": [],
                 "missing": []}
-    totals = Counter()
+    totals, failed = Counter(), 0
     for t in tickers:
-        if t not in by_ticker:
-            raise Stop(f"ticker {t} is not in the SEC's ticker list")
-        cik, title = by_ticker[t]
-        sub_url = SUBMISSIONS_URL.format(cik=cik)
-        subs = fetcher.get_json(sub_url)
-        try:
-            recent = subs["filings"]["recent"]
-        except (KeyError, TypeError):
-            raise Stop(f"the filing list of {t} has no filings.recent")
+        cik, title, sub_url, subs, picks = company_filings(t, by_ticker, fetcher)
         comp = {"ticker": t, "cik": cik, "name": subs.get("name") or title, "submissions_fetched":
                 fetcher.fetched_date(sub_url), "filings": []}
         manifest["companies"].append(comp)
         for form in FORMS:
-            row = pick_filing(recent, form)
+            row, url = picks[form]
             if row is None:
                 manifest["missing"].append({"ticker": t, "form": form, "reason": "no inline-XBRL filing in "
                                                                                   "filings.recent"})
                 print(f"{t} {form}: no inline-XBRL filing in the recent list, skipped", flush=True)
                 continue
             acc = row["accessionNumber"]
-            url = ARCHIVE_URL.format(cik=cik, acc=acc.replace("-", ""), doc=row["primaryDocument"])
-            text = fetcher.get(url).decode("utf-8", "replace")
-            parsed = parse_ixbrl(text)
-            company = t if form == "10-K" else str(cik)
-            lines, plans, gold = build_cases(parsed, acc, company)
-            folder = f"{t}-{form}"
-            fdir = os.path.join(out, folder)
-            os.makedirs(fdir, exist_ok=True)
-            with open(os.path.join(fdir, "document.md"), "w", encoding="utf-8", newline="\n") as fh:
-                fh.write("\n".join(lines) + "\n")
-            for name, claims in plans.items():
-                write_json(os.path.join(fdir, name), {"document": "document.md", "claims": claims})
-            gold.update({"ticker": t, "cik": cik, "form": form, "filing_date": row["filingDate"],
-                         "report_date": row["reportDate"], "document_url": url})
-            write_json(os.path.join(fdir, "gold.json"), gold)
-            c = gold["counts"]
-            entry = {"ticker": t, "cik": cik, "form": form, "accession": acc, "filing_date": row["filingDate"],
-                     "report_date": row["reportDate"], "document_url": url, "folder": folder,
-                     "company_in_plans": company, "document_fetched": fetcher.fetched_date(url),
-                     "counts": {k: v for k, v in c.items() if k != "abstain"}, "abstain": c["abstain"],
-                     "skipped": gold["skipped"]}
-            comp["filings"].append({"form": form, "accession": acc, "folder": folder})
+            text = fetcher.get(url).decode("utf-8", "replace")  # a Stop here ends the run at once
+            try:
+                built = build_filing(text, t, cik, form, row, url, out, fetcher)
+            except Exception as e:  # one document that cannot be parsed must not lose the others
+                reason = f"build_error: {type(e).__name__}: {e}"
+                manifest["missing"].append({"ticker": t, "form": form, "accession": acc, "document_url": url,
+                                            "reason": reason})
+                failed += 1
+                print(f"{t}-{form} {acc}: {reason}; skipped", file=sys.stderr, flush=True)
+                continue
+            entry, c, gold = built
+            comp["filings"].append({"form": form, "accession": acc, "folder": entry["folder"]})
             manifest["filings"].append(entry)
             for k in ("numeric_tags", "eligible_facts", "writable_facts", "sampled_facts", "sampled_pairs",
                       "same_end_pairs", "eligible_displays_differ", "sampled_displays_differ", "excluded_scale"):
@@ -571,16 +606,43 @@ def build(tickers, set_name, fetcher, out_root):
                 totals["abstain:" + k] += v
             for k, v in gold["skipped"].items():
                 totals["skipped:" + k] += v
-            print(f"{folder} {acc}: {c['numeric_tags']} numeric tags, {c['eligible_facts']} eligible facts "
+            print(f"{entry['folder']} {acc}: {c['numeric_tags']} numeric tags, {c['eligible_facts']} eligible facts "
                   f"({c['excluded_scale']} with an unwritable scale), {c['same_end_pairs']} same-end pairs; "
                   f"sampled {c['sampled_facts']} facts, {c['sampled_pairs']} pairs; skipped {gold['skipped']}",
                   flush=True)
     totals["filings"] = len(manifest["filings"])
+    totals["build_errors"] = failed
     manifest["counts"] = dict(sorted(totals.items()))
     write_json(os.path.join(out, "manifest.json"), manifest)
     print(f"{set_name}: {totals['filings']} filings, {totals['sampled_facts']} sampled facts, "
-          f"{totals['sampled_pairs']} pairs; {fetcher.requests} requests made. Written to {out}", flush=True)
+          f"{totals['sampled_pairs']} pairs, {failed} build errors; {fetcher.requests} requests made. "
+          f"Written to {out}", flush=True)
     return manifest
+
+
+def build_filing(text, t, cik, form, row, url, out, fetcher):
+    """Parse one document and write its folder. Returns (manifest entry, counts, gold)."""
+    acc = row["accessionNumber"]
+    parsed = parse_ixbrl(text)
+    company = t if form == "10-K" else str(cik)
+    lines, plans, gold = build_cases(parsed, acc, company)
+    folder = f"{t}-{form}"
+    fdir = os.path.join(out, folder)
+    os.makedirs(fdir, exist_ok=True)
+    with open(os.path.join(fdir, "document.md"), "w", encoding="utf-8", newline="\n") as fh:
+        fh.write("\n".join(lines) + "\n")
+    for name, claims in plans.items():
+        write_json(os.path.join(fdir, name), {"document": "document.md", "claims": claims})
+    gold.update({"ticker": t, "cik": cik, "form": form, "filing_date": row["filingDate"],
+                 "report_date": row["reportDate"], "document_url": url})
+    write_json(os.path.join(fdir, "gold.json"), gold)
+    c = gold["counts"]
+    entry = {"ticker": t, "cik": cik, "form": form, "accession": acc, "filing_date": row["filingDate"],
+             "report_date": row["reportDate"], "document_url": url, "folder": folder,
+             "company_in_plans": company, "document_fetched": fetcher.fetched_date(url),
+             "counts": {k: v for k, v in c.items() if k != "abstain"}, "abstain": c["abstain"],
+             "skipped": gold["skipped"]}
+    return entry, c, gold
 
 
 # ---------------------------------------------------------------- self-test
@@ -749,6 +811,68 @@ def self_test():
                 os.environ[UA_ENV] = saved
     ok(main(["--tickers", "JNJ", "--cache", os.path.join(tempfile.gettempdir(), "receipts-e3-never")]) == 2,
        "held-out ticker refused without --held-out")
+    # --fetch-only: exactly the build's URLs, paced, no parsing, nothing under out/; a failure keeps what was fetched
+    with tempfile.TemporaryDirectory(prefix="receipts-e3-selftest-") as tmp:
+        cache, outdir = os.path.join(tmp, "cache"), os.path.join(tmp, "out")
+        cik = 9990001
+        subs = json.loads(open(os.path.join(td, "submissions-template.json"), encoding="utf-8").read()
+                          .replace("CIKNUM", str(cik)).replace("CIK10", f"{cik:010d}").replace("TICKER", "AAPL"))
+        served = {TICKERS_URL: json.dumps({"0": {"cik_str": cik, "ticker": "AAPL", "title": "Synthetic A"},
+                                           "1": {"cik_str": 9990002, "ticker": "MSFT", "title": "Synthetic B"}}),
+                  SUBMISSIONS_URL.format(cik=cik): json.dumps(subs)}
+        for acc, doc in ((f"{cik:010d}-26-000020", "syn-20260627.htm"), (f"{cik:010d}-25-000079",
+                                                                         "syn-20250927.htm")):
+            served[ARCHIVE_URL.format(cik=cik, acc=acc.replace("-", ""), doc=doc)] = open(
+                os.path.join(td, "synthetic-10q.htm"), encoding="utf-8").read()
+        asked, sleeps = [], []
+
+        def opener_served(req, timeout):
+            asked.append(req.full_url)
+            if req.full_url not in served:
+                raise urllib.error.HTTPError(req.full_url, 404, "nf", {}, None)
+            return Resp(served[req.full_url].encode("utf-8"), {})
+
+        saved = os.environ.get(UA_ENV)
+        os.environ[UA_ENV] = "selftest-placeholder"
+        try:
+            fx = Fetcher(cache, opener=opener_served, sleep=sleeps.append)
+            fetch_only(["AAPL"], fx)
+            ok(sorted(asked) == sorted(served) and fx.requests == 4, "fetch-only: the four URLs, once each")
+            ok(len([s for s in sleeps if 0 < s <= 0.25]) == 3, "fetch-only: paced")
+            ok(not os.path.exists(outdir), "fetch-only: nothing under out/")
+            fetch_only(["AAPL"], Fetcher(cache, opener=opener_fail))
+            ok(len(asked) == 4, "fetch-only again: all cached, no request")
+            try:
+                fetch_only(["AAPL", "MSFT"], Fetcher(cache, opener=opener_served, sleep=sleeps.append))
+                ok(False, "fetch failure stops")
+            except Stop:
+                ok(asked[-1] == SUBMISSIONS_URL.format(cik=9990002) and len(asked) == 5
+                   and os.path.isfile(Fetcher(cache).path(TICKERS_URL)), "fetch failure: stop, cache kept")
+            # the build from that cache works offline, and a document that cannot be built does not lose the other
+            m = build(["AAPL"], "dev", Fetcher(cache, offline=True), outdir)
+            ok(len(m["filings"]) == 2 and m["counts"]["build_errors"] == 0, "offline build after fetch-only")
+            real_parse = globals()["parse_ixbrl"]
+
+            def parse_fails_for_10k(text, _n=[0]):
+                _n[0] += 1
+                if _n[0] == 1:
+                    raise RuntimeError("synthetic parse failure")
+                return real_parse(text)
+            globals()["parse_ixbrl"] = parse_fails_for_10k
+            try:
+                m = build(["AAPL"], "dev", Fetcher(cache, offline=True), os.path.join(tmp, "out2"))
+            finally:
+                globals()["parse_ixbrl"] = real_parse
+            ok([f["form"] for f in m["filings"]] == ["10-Q"] and m["counts"]["build_errors"] == 1
+               and m["missing"][0]["reason"] == "build_error: RuntimeError: synthetic parse failure",
+               "one filing that cannot be built is recorded in missing, the other is built")
+        finally:
+            if saved is None:
+                os.environ.pop(UA_ENV, None)
+            else:
+                os.environ[UA_ENV] = saved
+    ok(main(["--fetch-only", "--offline"]) == 2 and main(["--fetch-only", "--self-test"]) == 2,
+       "--fetch-only refused with --offline or --self-test")
     print(f"self-test passed: {len(checks)} checks")
     return 0
 
@@ -762,8 +886,13 @@ def main(argv=None):
     ap.add_argument("--cache", default=os.path.join(HERE, "cache"))
     ap.add_argument("--out", default=os.path.join(HERE, "out"), help="writes <out>/dev or <out>/heldout")
     ap.add_argument("--offline", action="store_true", help="use only cached files; stop if one is missing")
+    ap.add_argument("--fetch-only", action="store_true",
+                    help="only fill the cache with what a build reads; parse nothing, write nothing under --out")
     ap.add_argument("--self-test", action="store_true")
     a = ap.parse_args(argv)
+    if a.fetch_only and (a.offline or a.self_test):
+        print("error: --fetch-only cannot be combined with --offline or --self-test", file=sys.stderr)
+        return 2
     if a.self_test:
         return self_test()
     if a.held_out:
@@ -784,12 +913,17 @@ def main(argv=None):
                   file=sys.stderr)
             return 2
         set_name = "dev"
+    fetcher = Fetcher(a.cache, offline=a.offline)
     try:
-        build(tickers, set_name, Fetcher(a.cache, offline=a.offline), a.out)
+        if a.fetch_only:
+            fetch_only(tickers, fetcher)
+            return 0
+        manifest = build(tickers, set_name, fetcher, a.out)
     except Stop as e:
-        print(f"stopped: {e}", file=sys.stderr)
+        print(f"stopped: {e} ({fetcher.requests} requests made; files fetched so far stay in the cache)",
+              file=sys.stderr)
         return 2
-    return 0
+    return 1 if manifest["counts"].get("build_errors") else 0
 
 
 if __name__ == "__main__":
