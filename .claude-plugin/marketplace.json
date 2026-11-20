@@ -6,7 +6,7 @@
     {
       "name": "receipts",
       "source": "./",
-      "description": "Check every number in a document against its source files (skill + standard-library script)"
+      "description": "Check every number in a document against its source files or SEC filings (skill + standard-library script)"
     }
   ]
 }
