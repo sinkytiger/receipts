@@ -8,6 +8,7 @@ refuses to go past the cap.
   python bench/e2/run.py --rehearsal --dry-run                      # no request: prompt sizes and a cost estimate
   python bench/e2/run.py --rehearsal --fake                         # no request: the gold plan stands in for the model
   python bench/e2/run.py --rehearsal --approved-estimate 0.02       # 4 development documents
+  python bench/e2/run.py --rehearsal --docs d003,d007 --approved-estimate 0.02
   python bench/e2/run.py --held-out --approved-estimate 0.02        # the 30 held-out documents (release run)
 """
 from __future__ import annotations
@@ -17,6 +18,7 @@ import datetime
 import importlib.util
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -26,6 +28,7 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 TOOL = os.path.join(ROOT, "skills", "receipts", "scripts", "receipts.py")
 SKILL = os.path.join(ROOT, "skills", "receipts", "SKILL.md")
 SPEND = os.path.join(HERE, "spend.jsonl")
+RECORDS = os.path.join(HERE, "records")
 DEV_SEED, HELD_OUT_SEED = 20261119, 20261120
 
 MODEL = "claude-haiku-5-5"
@@ -34,6 +37,7 @@ MAX_TOKENS = 16000
 PLANS_PER_DOCUMENT = 3            # the first plan and up to two corrected ones
 CAP_USD = 5.00
 RESERVE_USD = 0.03                # room kept for the request about to be made
+CHECK_TIMEOUT = 120               # seconds for one run of the script
 # US$ per million tokens for prompts of at most 100,000 tokens, and for longer ones
 RATES = {"short": (0.10, 0.50), "long": (0.50, 2.50)}
 
@@ -52,8 +56,9 @@ BASELINE_SYSTEM = """You are a careful reviewer. You are given a report and the 
 
 Check every number in the report against the sources. Look each value up or recompute it: differences, percent
 changes, ratios, shares, sums, averages, minimums, maximums and counts. Allow for normal rounding at the precision the
-report uses. Check that words such as "rose" and "fell" agree with the direction of the change. Mind the units the
-sources state. Do not guess: when a number cannot be checked from the sources, list it under could_not_check.
+report uses. A value that is cut off at that precision instead of rounded also counts as correct (2.36 for 2.368).
+Check that words such as "rose" and "fell" agree with the direction of the change. Mind the units the sources state.
+Do not guess: when a number cannot be checked from the sources, list it under could_not_check.
 
 Reply with one JSON object and nothing else:
 {"wrong": [{"line": <line number>, "number": "<the number exactly as written>", "should_be": "<your value>",
@@ -88,10 +93,24 @@ def write_json(path, data):
         json.dump(data, f, ensure_ascii=False, indent=1)
 
 
+def tool_env():
+    """The script runs without a contact string and with an empty EDGAR cache, so no plan can reach the SEC."""
+    env = dict(os.environ, PYTHONUTF8="1")
+    for name in ("RECEIPTS_SEC_USER_AGENT", "RECEIPTS_EDGAR_DATA_URL", "RECEIPTS_EDGAR_WWW_URL", "RECEIPTS_EDGAR_CACHE"):
+        env.pop(name, None)
+    return env
+
+
 # ---------------------------------------------------------------- documents
 
-def choose_documents(manifest, per_language):
-    """The first documents of each language, in manifest order."""
+def choose_documents(manifest, per_language, ids=None):
+    """The first documents of each language in manifest order, or the documents named."""
+    if ids:
+        by_id = {d["id"]: d for d in manifest["docs"]}
+        missing = [i for i in ids if i not in by_id]
+        if missing:
+            raise Stop(f"no such document: {', '.join(missing)}")
+        return [by_id[i] for i in ids]
     chosen = []
     for lang in ("en", "ko"):
         chosen += [d for d in manifest["docs"] if d["lang"] == lang][:per_language]
@@ -118,15 +137,14 @@ def build_prompts(tool, tool_path, doc_dir):
     lines = read(os.path.join(doc_dir, "report.md")).splitlines()
     numbered = "\n".join(f"{i}| {ln}" for i, ln in enumerate(lines, start=1))
     scan = subprocess.run([sys.executable, tool_path, "scan", os.path.join(doc_dir, "report.md")], capture_output=True,
-                          env=dict(os.environ, PYTHONUTF8="1"))
+                          env=tool_env(), timeout=CHECK_TIMEOUT)
     if scan.returncode != 0:
         raise Stop(f"scan failed on {doc_dir}: {scan.stderr.decode('utf-8', 'replace')[:300]}")
     scan_doc = json.loads(scan.stdout.decode("utf-8"))
     scan_doc["document"] = "report.md"
     sources = []
     for name in gold["source_files"]:
-        note = " (an Excel file, shown sheet by sheet as tab-separated rows; row 1 of a sheet is its header)" \
-            if name.lower().endswith(".xlsx") else ""
+        note = " (an Excel file, shown sheet by sheet as tab-separated rows)" if name.lower().endswith(".xlsx") else ""
         sources.append(f"--- {name}{note} ---\n{render_source(tool, os.path.join(doc_dir, name))}")
     shared = (f"Document `report.md`. The number and bar at the start of each line are its line number and are not "
               f"part of the file.\n\n{numbered}\n\n")
@@ -134,34 +152,39 @@ def build_prompts(tool, tool_path, doc_dir):
     arm_a = (shared + "Output of `receipts.py scan report.md`:\n\n" + json.dumps(scan_doc, ensure_ascii=False, indent=1)
              + "\n\n" + files + "\nWrite `claims.json` for this document. Reply with the JSON only.")
     arm_b = shared + files + "\nReview the report. Reply with the JSON object only."
-    return gold, arm_a, arm_b
+    return gold, len(scan_doc["numbers"]), arm_a, arm_b
 
 
-def extract_json(text):
-    """The first JSON object in a reply, or None."""
+def extract_json(text, key):
+    """The reply's JSON object: the outermost object, which must hold `key` as a list. Anything else is None.
+
+    Only the first `{` is tried. A reply that was cut off therefore reads as None and never as one of its inner objects.
+    """
     start = text.find("{")
-    while start != -1:
-        try:
-            obj, _ = json.JSONDecoder().raw_decode(text[start:])
-            if isinstance(obj, dict):
-                return obj
-        except ValueError:
-            pass
-        start = text.find("{", start + 1)
-    return None
+    if start == -1:
+        return None
+    try:
+        obj, _ = json.JSONDecoder().raw_decode(text[start:])
+    except ValueError:
+        return None
+    return obj if isinstance(obj, dict) and isinstance(obj.get(key), list) else None
+
+
+def says_done(text) -> bool:
+    return len(text) < 40 and re.sub(r"[^A-Za-z]", "", text).upper() == "DONE"
 
 
 # ---------------------------------------------------------------- spending
 
-def spent_so_far() -> float:
+def spend_rows():
     if not os.path.isfile(SPEND):
-        return 0.0
-    total = 0.0
+        return []
     with open(SPEND, encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
-                total += float(json.loads(line)["usd"])
-    return total
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def spent_so_far() -> float:
+    return sum(float(r["usd"]) for r in spend_rows())
 
 
 def cost_of(usage) -> float:
@@ -180,7 +203,7 @@ class Model:
         self.anthropic = anthropic
         key = read(key_file).strip() if key_file else None
         self.client = anthropic.Anthropic(api_key=key) if key else anthropic.Anthropic()
-        self.set_name, self.cap, self.run_usd = set_name, cap, 0.0
+        self.set_name, self.cap = set_name, cap
 
     def ask(self, system, messages, doc, arm, request_no):
         spent = spent_so_far()
@@ -198,7 +221,6 @@ class Model:
             raise Stop(f"no connection to the API: {e}") from None
         usage = resp.usage.to_dict()
         usd = cost_of(usage)
-        self.run_usd += usd
         row = {"time": utc_now(), "set": self.set_name, "doc": doc, "arm": arm, "request": request_no, "model": resp.model,
                "input_tokens": usage.get("input_tokens", 0), "output_tokens": usage.get("output_tokens", 0),
                "cache_creation_input_tokens": usage.get("cache_creation_input_tokens", 0) or 0,
@@ -214,7 +236,6 @@ class FakeModel:
     """Stands in for the API without any request: the gold plan for arm A, an empty review for arm B."""
 
     def __init__(self):
-        self.run_usd = 0.0
         self.gold_plan = None
 
     def ask(self, system, messages, doc, arm, request_no):
@@ -235,41 +256,70 @@ class FakeModel:
 
 # ---------------------------------------------------------------- the two arms
 
-def run_arm_a(model, system, first_message, doc, doc_dir, out_dir, tool_path, gold):
+class Record:
+    """What was said, written to disk after every request so that a stopped run loses nothing."""
+
+    def __init__(self, out_dir, system, first_message):
+        self.out_dir = out_dir
+        self.turns = [{"role": "system", "text": system}, {"role": "user", "text": first_message}]
+        self.raw = []
+        self.save()
+
+    def reply(self, resp, text, row):
+        self.turns.append({"role": "assistant", "text": text, "stop_reason": row["stop_reason"],
+                           "input_tokens": row["input_tokens"], "output_tokens": row["output_tokens"], "usd": row["usd"]})
+        self.raw.append(resp.to_dict())
+        self.save()
+
+    def user(self, text):
+        self.turns.append({"role": "user", "text": text})
+        self.save()
+
+    def save(self):
+        write_json(os.path.join(self.out_dir, "conversation.json"), self.turns)
+        write_json(os.path.join(self.out_dir, "transcript.json"), self.raw)
+
+
+def run_arm_a(model, system, first_message, doc, doc_dir, out_dir, tool_path, gold, scan_numbers):
     work = os.path.join(out_dir, "work")
     os.makedirs(work, exist_ok=True)
     for name in ["report.md"] + gold["source_files"]:
         shutil.copyfile(os.path.join(doc_dir, name), os.path.join(work, name))
+    record = Record(out_dir, system, first_message)
     messages = [{"role": "user", "content": first_message}]
-    requests, transcript, accepted, plans, done_word = [], [], None, 0, False
+    requests, accepted, plans, done_word, cut_off = [], None, 0, False, 0
     for request_no in range(1, PLANS_PER_DOCUMENT + 1):
         resp, text, row = model.ask(system, messages, doc, "A", request_no)
         requests.append(row)
-        transcript.append(resp.to_dict())
+        record.reply(resp, text, row)
         if resp.stop_reason == "refusal":
             break
-        if text.strip().strip("`. ").upper() == "DONE":
+        if says_done(text):
             done_word = True
             break
-        plan = extract_json(text)
+        cut = resp.stop_reason == "max_tokens"
+        cut_off += int(cut)
+        plan = None if cut else extract_json(text, "claims")
         if plan is None:
-            note = "Your reply held no JSON object" + (" (the reply was cut off at the output limit)"
-                                                        if resp.stop_reason == "max_tokens" else "")
-            feedback = note + ". Reply with the full contents of claims.json and nothing else."
+            feedback = ("Your reply was cut off at the output limit, so no plan was read" if cut else
+                        "Your reply held no claims.json (one JSON object with a `claims` list)")
+            feedback += ". Reply with the full contents of claims.json and nothing else."
         else:
             plans += 1
             plan_dir = os.path.join(out_dir, f"plan{plans}")
             write_json(os.path.join(work, "claims.json"), plan)
             write_json(os.path.join(plan_dir, "claims.json"), plan)
-            run = subprocess.run([sys.executable, tool_path, "check", os.path.join(work, "claims.json"), "--out",
-                                  plan_dir, "--quiet"], capture_output=True, env=dict(os.environ, PYTHONUTF8="1"))
-            if run.returncode in (0, 1) and os.path.isfile(os.path.join(plan_dir, "receipts.json")):
-                accepted = os.path.join(f"plan{plans}", "receipts.json")
-                feedback = (f"`check` ran (exit code {run.returncode}). It printed:\n\n"
-                            + read(os.path.join(plan_dir, "receipts.md")))
+            try:
+                run = subprocess.run([sys.executable, tool_path, "check", os.path.join(work, "claims.json"), "--out",
+                                      plan_dir, "--quiet"], capture_output=True, env=tool_env(), timeout=CHECK_TIMEOUT)
+                code, err = run.returncode, run.stderr.decode("utf-8", "replace")
+            except subprocess.TimeoutExpired:
+                code, err = 2, f"the script did not finish in {CHECK_TIMEOUT} seconds"
+            if code in (0, 1) and os.path.isfile(os.path.join(plan_dir, "receipts.json")):
+                accepted = f"plan{plans}/receipts.json"
+                feedback = f"`check` ran (exit code {code}). It printed:\n\n" + read(os.path.join(plan_dir, "receipts.md"))
             else:
-                feedback = ("`check` stopped (exit code " + str(run.returncode) + ") and checked nothing:\n\n"
-                            + run.stderr.decode("utf-8", "replace")[:2000])
+                feedback = f"`check` stopped (exit code {code}) and checked nothing:\n\n" + err[:2000]
         if request_no == PLANS_PER_DOCUMENT:
             break
         left = PLANS_PER_DOCUMENT - request_no
@@ -277,22 +327,50 @@ def run_arm_a(model, system, first_message, doc, doc_dir, out_dir, tool_path, go
                      f"({left} correction{'s' if left > 1 else ''} left). If it needs none, reply DONE.")
         messages.append({"role": "assistant", "content": resp.content})
         messages.append({"role": "user", "content": feedback})
+        record.user(feedback)
     result = {"doc": doc, "arm": "A", "requests": requests, "plans_sent": plans, "said_done": done_word,
-              "accepted_receipts": accepted, "refused": any(r["stop_reason"] == "refusal" for r in requests),
+              "cut_off_replies": cut_off, "accepted_receipts": accepted, "scan_numbers": scan_numbers,
+              "refused": any(r["stop_reason"] == "refusal" for r in requests),
               "usd": round(sum(r["usd"] for r in requests), 8)}
-    write_json(os.path.join(out_dir, "transcript.json"), transcript)
     write_json(os.path.join(out_dir, "result.json"), result)
     return result
 
 
 def run_arm_b(model, first_message, doc, out_dir):
+    record = Record(out_dir, BASELINE_SYSTEM, first_message)
     resp, text, row = model.ask(BASELINE_SYSTEM, [{"role": "user", "content": first_message}], doc, "B", 1)
-    answer = extract_json(text)
+    record.reply(resp, text, row)
+    cut = resp.stop_reason == "max_tokens"
+    answer = None if cut else extract_json(text, "wrong")
     result = {"doc": doc, "arm": "B", "requests": [row], "answer": answer, "parsed": answer is not None,
-              "refused": resp.stop_reason == "refusal", "usd": round(row["usd"], 8)}
-    write_json(os.path.join(out_dir, "transcript.json"), [resp.to_dict()])
+              "cut_off_replies": int(cut), "refused": resp.stop_reason == "refusal", "usd": round(row["usd"], 8)}
     write_json(os.path.join(out_dir, "result.json"), result)
     return result
+
+
+def export_records(out_root, set_name, docs):
+    """Copy what a reader needs to check the run into bench/e2/records/<set>/ (tracked): no thinking data, no keys."""
+    dest_root = os.path.join(RECORDS, set_name)
+    for doc in docs:
+        for arm in ("A", "B"):
+            src = os.path.join(out_root, doc, arm)
+            if not os.path.isfile(os.path.join(src, "result.json")):
+                continue
+            dest = os.path.join(dest_root, doc, arm)
+            os.makedirs(dest, exist_ok=True)
+            shutil.copyfile(os.path.join(src, "result.json"), os.path.join(dest, "result.json"))
+            shutil.copyfile(os.path.join(src, "conversation.json"), os.path.join(dest, "conversation.json"))
+            n = 1
+            while arm == "A" and os.path.isdir(os.path.join(src, f"plan{n}")):
+                shutil.copyfile(os.path.join(src, f"plan{n}", "claims.json"), os.path.join(dest, f"plan{n}.claims.json"))
+                if os.path.isfile(os.path.join(src, f"plan{n}", "receipts.json")):
+                    shutil.copyfile(os.path.join(src, f"plan{n}", "receipts.json"),
+                                    os.path.join(dest, f"plan{n}.check.json"))
+                n += 1
+    for name in ("run.json", "prompts.json"):
+        if os.path.isfile(os.path.join(out_root, name)):
+            os.makedirs(dest_root, exist_ok=True)
+            shutil.copyfile(os.path.join(out_root, name), os.path.join(dest_root, name))
 
 
 # ---------------------------------------------------------------- estimate
@@ -332,8 +410,10 @@ def estimate(prompts, system_a):
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="E2 harness for receipts (see docs/eval-plan.md).")
-    ap.add_argument("--rehearsal", action="store_true", help="4 development-seed documents (2 English, 2 Korean)")
+    ap.add_argument("--rehearsal", action="store_true", help="development-seed documents (default: 2 English, 2 Korean)")
     ap.add_argument("--held-out", action="store_true", help="the 30 held-out documents: the release run")
+    ap.add_argument("--docs", help="rehearsal only: document ids, comma-separated, instead of the default four")
+    ap.add_argument("--name", help="rehearsal only: a name for this rehearsal's folder (default: rehearsal)")
     ap.add_argument("--dry-run", action="store_true", help="make no request: print prompt sizes and a cost estimate")
     ap.add_argument("--fake", action="store_true", help="make no request: the gold plan stands in for the model")
     ap.add_argument("--approved-estimate", type=float, help="the approved cost per document in US$ (needed to run)")
@@ -346,7 +426,13 @@ def main(argv=None) -> int:
     if a.rehearsal == a.held_out:
         print("choose exactly one of --rehearsal and --held-out", file=sys.stderr)
         return 2
-    set_name, seed, per_lang = ("heldout", HELD_OUT_SEED, 15) if a.held_out else ("rehearsal", DEV_SEED, 2)
+    if a.held_out and (a.docs or a.name):
+        print("--docs and --name are for rehearsals: the held-out documents are fixed by the plan", file=sys.stderr)
+        return 2
+    set_name, seed, per_lang = ("heldout", HELD_OUT_SEED, 15) if a.held_out else (a.name or "rehearsal", DEV_SEED, 2)
+    if not re.fullmatch(r"[A-Za-z0-9_-]+", set_name) or (a.rehearsal and set_name.startswith("heldout")):
+        print("the rehearsal name may hold letters, digits, - and _ and may not start with heldout", file=sys.stderr)
+        return 2
     cap = min(a.cap, CAP_USD)
     data = a.data or os.path.join(ROOT, "bench", "out", str(seed))
     out_root = a.out or os.path.join(HERE, "out", set_name + ("-fake" if a.fake else ""))
@@ -354,19 +440,16 @@ def main(argv=None) -> int:
         if not os.path.isfile(os.path.join(data, "manifest.json")):
             raise Stop(f"no generated benchmark at {data}: run bench/generate.py for seed {seed} first")
         manifest = json.loads(read(os.path.join(data, "manifest.json")))
-        docs = choose_documents(manifest, per_lang)
+        docs = choose_documents(manifest, per_lang, a.docs.split(",") if a.docs else None)
         tool = load_tool(a.tool)
-        skill = read(SKILL)
-        if skill.startswith("---"):
-            skill = skill.split("---", 2)[2].lstrip("\n")
-        system_a = skill + HARNESS_NOTE
+        system_a = read(SKILL) + HARNESS_NOTE              # the skill file as shipped, front matter included
         prepared = []
         for d in docs:
             doc_dir = os.path.join(data, "docs", d["id"])
-            gold, msg_a, msg_b = build_prompts(tool, a.tool, doc_dir)
-            prepared.append((d, doc_dir, gold, msg_a, msg_b))
-        est = estimate([(d["id"], ma, mb, read(os.path.join(dd, "claims.gold.json"))) for d, dd, _, ma, mb in prepared],
-                       system_a)
+            gold, scan_numbers, msg_a, msg_b = build_prompts(tool, a.tool, doc_dir)
+            prepared.append((d, doc_dir, gold, scan_numbers, msg_a, msg_b))
+        est = estimate([(d["id"], ma, mb, read(os.path.join(dd, "claims.gold.json")))
+                        for d, dd, _, _, ma, mb in prepared], system_a)
         if a.dry_run:
             est.update(set=set_name, seed=seed, spent_so_far_usd=round(spent_so_far(), 4), cap_usd=cap)
             print(json.dumps(est, ensure_ascii=False, indent=1))
@@ -377,36 +460,52 @@ def main(argv=None) -> int:
             if a.approved_estimate is None:
                 raise Stop("--approved-estimate is needed: the cost per document that was shown and approved")
             model = Model(a.key_file, set_name, cap)
-        meta = {"set": set_name, "seed": seed, "started": utc_now(), "model": MODEL, "effort": EFFORT,
-                "max_tokens": MAX_TOKENS, "plans_per_document": PLANS_PER_DOCUMENT, "cap_usd": cap,
-                "approved_estimate_usd_per_document": a.approved_estimate, "documents": [d["id"] for d in docs],
-                "spent_before_usd": round(spent_so_far(), 6), "fake": a.fake}
-        write_json(os.path.join(out_root, "run.json"), meta)
+        first_five_stop = round(1.5 * 5 * a.approved_estimate, 6) if a.approved_estimate else None
+        start = {"started": utc_now(), "spent_before_usd": round(spent_so_far(), 6)}
+        run_path = os.path.join(out_root, "run.json")
+        meta = json.loads(read(run_path)) if os.path.isfile(run_path) else {
+            "set": set_name, "seed": seed, "model": MODEL, "effort": EFFORT, "max_tokens": MAX_TOKENS,
+            "plans_per_document": PLANS_PER_DOCUMENT, "cap_usd": cap, "documents": [d["id"] for d in docs],
+            "approved_estimate_usd_per_document": a.approved_estimate, "first_five_documents_stop_usd": first_five_stop,
+            "fake": a.fake, "starts": []}
+        if meta["documents"] != [d["id"] for d in docs]:
+            raise Stop(f"{out_root} holds a run on other documents: use another --name or --out")
+        meta["starts"].append(start)
+        write_json(run_path, meta)
         write_json(os.path.join(out_root, "prompts.json"), {"arm_a_system": system_a, "arm_b_system": BASELINE_SYSTEM})
-        done_cost, finished = 0.0, 0
-        for d, doc_dir, gold, msg_a, msg_b in prepared:
-            doc, cost = d["id"], 0.0
-            for arm, runner in (("A", None), ("B", None)):
+        finished = 0
+        for d, doc_dir, gold, scan_numbers, msg_a, msg_b in prepared:
+            doc = d["id"]
+            for arm in ("A", "B"):
                 out_dir = os.path.join(out_root, doc, arm)
-                done = os.path.join(out_dir, "result.json")
-                if os.path.isfile(done):
-                    cost += json.loads(read(done))["usd"]
+                if os.path.isfile(os.path.join(out_dir, "result.json")):
                     continue
+                if os.path.isdir(out_dir):                         # a stopped attempt: keep it, start the arm again
+                    n = 1
+                    while os.path.exists(f"{out_dir}-interrupted{n}"):
+                        n += 1
+                    os.rename(out_dir, f"{out_dir}-interrupted{n}")
                 if a.fake:
                     model.gold_plan = json.loads(read(os.path.join(doc_dir, "claims.gold.json")))
-                res = run_arm_a(model, system_a, msg_a, doc, doc_dir, out_dir, a.tool, gold) if arm == "A" \
-                    else run_arm_b(model, msg_b, doc, out_dir)
-                cost += res["usd"]
+                if arm == "A":
+                    run_arm_a(model, system_a, msg_a, doc, doc_dir, out_dir, a.tool, gold, scan_numbers)
+                else:
+                    run_arm_b(model, msg_b, doc, out_dir)
             finished += 1
-            done_cost += cost
-            print(f"[{finished}/{len(prepared)}] {doc} ({d['lang']}, {d['source_type']}): US${cost:.4f}", flush=True)
-            if finished == 5 and a.approved_estimate and done_cost > 1.5 * 5 * a.approved_estimate:
-                raise Stop(f"the first 5 documents cost US${done_cost:.4f}, more than 1.5 times the approved "
+            done_ids = [x[0]["id"] for x in prepared[:finished]]
+            # everything charged for these documents in this set, stopped attempts included
+            charged = sum(r["usd"] for r in spend_rows() if r.get("set") == set_name and r["doc"] in done_ids)
+            this = sum(r["usd"] for r in spend_rows() if r.get("set") == set_name and r["doc"] == doc)
+            print(f"[{finished}/{len(prepared)}] {doc} ({d['lang']}, {d['source_type']}): US${this:.4f}", flush=True)
+            if finished == 5 and first_five_stop is not None and charged > first_five_stop:
+                raise Stop(f"the first 5 documents cost US${charged:.4f}, more than 1.5 times the approved "
                            f"US${5 * a.approved_estimate:.4f}. Stopped as the plan requires.")
-        meta.update(finished=utc_now(), spent_this_run_usd=round(done_cost, 6),
-                    spent_total_usd=round(spent_so_far(), 6))
-        write_json(os.path.join(out_root, "run.json"), meta)
-        print(f"done: {finished} documents, US${done_cost:.4f} in this set; US${spent_so_far():.4f} spent in all of E2")
+        total = sum(r["usd"] for r in spend_rows() if r.get("set") == set_name)
+        meta.update(finished=utc_now(), spent_this_set_usd=round(total, 6), spent_total_usd=round(spent_so_far(), 6))
+        write_json(run_path, meta)
+        if not a.fake:
+            export_records(out_root, set_name, [d["id"] for d in docs])
+        print(f"done: {finished} documents, US${total:.4f} in this set; US${spent_so_far():.4f} spent in all of E2")
         return 0
     except Stop as e:
         print(f"e2: stopped: {e}", file=sys.stderr)

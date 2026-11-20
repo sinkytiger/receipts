@@ -17,7 +17,8 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-SEEDS = {"rehearsal": 20261119, "rehearsal-fake": 20261119, "heldout": 20261120, "heldout-fake": 20261120}
+SPEND = os.path.join(HERE, "spend.jsonl")
+DEV_SEED, HELD_OUT_SEED = 20261119, 20261120
 
 
 def read_json(path):
@@ -59,25 +60,59 @@ def git(*args) -> str:
         return ""
 
 
+def unit_group(gold, gold_plan_text) -> str:
+    """Whether the document's sources are scaled, and whether they say so. From how the generator writes sources:
+    JSON and Markdown always carry a unit note, Excel only when its header is on row 2, CSV never."""
+    if not gold.get("scaled"):
+        return "not scaled"
+    stated = gold["source_type"] in ("json", "md") or (gold["source_type"] == "xlsx" and '"header_row": 2' in gold_plan_text)
+    return "scaled, unit stated" if stated else "scaled, unit not stated"
+
+
+def bump(table, group, key, n=1):
+    row = table.setdefault(group, {"planted": 0, "correct": 0, "a_planted_flagged": 0, "a_correct_flagged": 0,
+                                   "b_planted_flagged": 0, "b_correct_flagged": 0})
+    row[key] += n
+
+
 def score(out_root, data):
     run = read_json(os.path.join(out_root, "run.json"))
+    set_name = run["set"]
+    spend = {}
+    if os.path.isfile(SPEND):
+        with open(SPEND, encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    r = json.loads(line)
+                    if r.get("set") == set_name and r["doc"] in run["documents"]:
+                        s = spend.setdefault((r["doc"], r["arm"]), {"requests": 0, "input_tokens": 0, "output_tokens": 0, "usd": 0.0})
+                        s["requests"] += 1
+                        s["input_tokens"] += r["input_tokens"]
+                        s["output_tokens"] += r["output_tokens"]
+                        s["usd"] += r["usd"]
     arm_a = {"planted": {}, "correct": {}}
     arm_b = {"planted": {"flagged": 0, "not_flagged": 0}, "correct": {"flagged": 0, "not_flagged": 0}}
     totals = {"documents": 0, "statements": 0, "planted": 0, "correct": 0}
     a_extra = {"numbers": 0, "uncovered": 0, "plans_sent": 0, "corrected_plans": 0, "no_accepted_plan": 0, "refused": 0,
+               "cut_off_replies": 0, "requests": 0, "input_tokens": 0, "output_tokens": 0, "usd": 0.0}
+    b_extra = {"unparsed": 0, "refused": 0, "cut_off_replies": 0, "flags": 0, "unmatched_flags": 0, "could_not_check": 0,
                "requests": 0, "input_tokens": 0, "output_tokens": 0, "usd": 0.0}
-    b_extra = {"unparsed": 0, "refused": 0, "flags": 0, "unmatched_flags": 0, "could_not_check": 0, "requests": 0,
-               "input_tokens": 0, "output_tokens": 0, "usd": 0.0}
-    per_doc, by_lang = [], {}
+    per_doc, not_run, by_lang, by_source, by_unit, by_trunc = [], [], {}, {}, {}, {}
     for doc in run["documents"]:
+        path_a = os.path.join(out_root, doc, "A", "result.json")
+        path_b = os.path.join(out_root, doc, "B", "result.json")
+        if not (os.path.isfile(path_a) and os.path.isfile(path_b)):
+            not_run.append(doc)                      # a run that was stopped: the document is left out and named
+            continue
         gold = read_json(os.path.join(data, "docs", doc, "gold.json"))
-        res_a = read_json(os.path.join(out_root, doc, "A", "result.json"))
-        res_b = read_json(os.path.join(out_root, doc, "B", "result.json"))
+        with open(os.path.join(data, "docs", doc, "claims.gold.json"), encoding="utf-8") as f:
+            units = unit_group(gold, f.read())
+        res_a, res_b = read_json(path_a), read_json(path_b)
         totals["documents"] += 1
-        # arm A: the verdict of every statement's number
+        # arm A: the verdict of every statement's number, from the last plan the script accepted
         verdicts = {}
         if res_a["accepted_receipts"]:
-            rec = read_json(os.path.join(out_root, doc, "A", res_a["accepted_receipts"]))
+            rec = read_json(os.path.join(out_root, doc, "A", *re.split(r"[\\/]", res_a["accepted_receipts"])))
             for c in rec["claims"]:
                 if c.get("counted", True):
                     verdicts[(c["line"], c["start"], c["end"])] = c["verdict"]
@@ -86,38 +121,38 @@ def score(out_root, data):
             a_extra["numbers"] += rec["counts"]["numbers"]
             a_extra["uncovered"] += rec["counts"]["uncovered"]
         else:
-            a_extra["no_accepted_plan"] += 1
+            a_extra["no_accepted_plan"] += 1         # every number of the document counts as not checked
+            numbers = res_a.get("scan_numbers") or len(gold["statements"])
+            a_extra["numbers"] += numbers
+            a_extra["uncovered"] += numbers
         a_extra["plans_sent"] += res_a["plans_sent"]
         a_extra["corrected_plans"] += max(res_a["plans_sent"] - 1, 0)
         a_extra["refused"] += int(res_a["refused"])
-        for r in res_a["requests"]:
-            a_extra["requests"] += 1
-            a_extra["input_tokens"] += r["input_tokens"]
-            a_extra["output_tokens"] += r["output_tokens"]
-            a_extra["usd"] += r["usd"]
-        # arm B: flags by line and digits
+        a_extra["cut_off_replies"] += res_a.get("cut_off_replies", 0)
         answer = res_b.get("answer") or {}
         flags = [f for f in answer.get("wrong", []) if isinstance(f, dict)] if isinstance(answer.get("wrong"), list) else []
         b_extra["unparsed"] += int(not res_b["parsed"])
         b_extra["refused"] += int(res_b["refused"])
+        b_extra["cut_off_replies"] += res_b.get("cut_off_replies", 0)
         b_extra["flags"] += len(flags)
-        b_extra["could_not_check"] += len(answer.get("could_not_check", []) or []) if isinstance(answer, dict) else 0
-        for r in res_b["requests"]:
-            b_extra["requests"] += 1
-            b_extra["input_tokens"] += r["input_tokens"]
-            b_extra["output_tokens"] += r["output_tokens"]
-            b_extra["usd"] += r["usd"]
+        cnc = answer.get("could_not_check")
+        b_extra["could_not_check"] += len(cnc) if isinstance(cnc, list) else 0
+        for extra, arm in ((a_extra, "A"), (b_extra, "B")):
+            for k, v in spend.get((doc, arm), {}).items():
+                extra[k] += v
         used = set()
-        row = {"doc": doc, "lang": gold["lang"], "source_type": gold["source_type"], "planted": 0,
-               "a_planted_wrong": 0, "a_correct_wrong": 0, "b_planted_flagged": 0, "b_correct_flagged": 0}
-        lang = by_lang.setdefault(gold["lang"], {"planted": 0, "correct": 0, "a_planted_wrong": 0, "a_correct_wrong": 0,
-                                                 "b_planted_flagged": 0, "b_correct_flagged": 0})
+        row = {"doc": doc, "lang": gold["lang"], "source_type": gold["source_type"], "units": units, "planted": 0,
+               "a_planted_flagged": 0, "a_correct_flagged": 0, "b_planted_flagged": 0, "b_correct_flagged": 0}
         for s in gold["statements"]:
             kind = "planted" if s["planted"] else "correct"
+            groups = [(by_lang, gold["lang"]), (by_source, gold["source_type"]), (by_unit, units)]
+            if kind == "correct":
+                groups.append((by_trunc, "written cut off (truncated)" if s.get("truncated_ok") else "written rounded"))
             totals["statements"] += 1
             totals[kind] += 1
-            lang[kind] += 1
             row["planted"] += int(kind == "planted")
+            for table, group in groups:
+                bump(table, group, kind)
             v = verdicts.get((s["line"], s["start"], s["end"]), "not_checked" if not res_a["accepted_receipts"]
                              else "no_verdict")
             arm_a[kind][v] = arm_a[kind].get(v, 0) + 1
@@ -133,30 +168,34 @@ def score(out_root, data):
             if hit is not None:
                 used.add(hit)
             arm_b[kind]["flagged" if hit is not None else "not_flagged"] += 1
-            if v == "wrong":
-                row[f"a_{kind}_wrong"] += 1
-                lang[f"a_{kind}_wrong"] += 1
-            if hit is not None:
-                row[f"b_{kind}_flagged"] += 1
-                lang[f"b_{kind}_flagged"] += 1
+            for arm, flagged in (("a", v == "wrong"), ("b", hit is not None)):
+                if flagged:
+                    row[f"{arm}_{kind}_flagged"] += 1
+                    for table, group in groups:
+                        bump(table, group, f"{arm}_{kind}_flagged")
         b_extra["unmatched_flags"] += len(flags) - len(used)
-        row.update(a_usd=round(res_a["usd"], 6), b_usd=round(res_b["usd"], 6), a_requests=len(res_a["requests"]))
+        row.update(a_usd=round(spend.get((doc, "A"), {}).get("usd", 0.0), 6),
+                   b_usd=round(spend.get((doc, "B"), {}).get("usd", 0.0), 6),
+                   a_requests=spend.get((doc, "A"), {}).get("requests", 0), a_plans=res_a["plans_sent"])
         per_doc.append(row)
     n = max(totals["documents"], 1)
+    tidy = lambda d: {k: (round(v, 6) if isinstance(v, float) else v) for k, v in d.items()}
     measures = {
         "arm_a": {"planted_flagged": share(arm_a["planted"].get("wrong", 0), totals["planted"]),
                   "correct_flagged": share(arm_a["correct"].get("wrong", 0), totals["correct"]),
                   "planted_verdicts": dict(sorted(arm_a["planted"].items())),
                   "correct_verdicts": dict(sorted(arm_a["correct"].items())),
                   "uncovered_share": share(a_extra["uncovered"], a_extra["numbers"]),
-                  "usd_per_document": round(a_extra["usd"] / n, 6), "requests_per_document": round(a_extra["requests"] / n, 2),
-                  **{k: (round(v, 6) if isinstance(v, float) else v) for k, v in a_extra.items()}},
+                  "usd_per_document": round(a_extra["usd"] / n, 6),
+                  "requests_per_document": round(a_extra["requests"] / n, 2), **tidy(a_extra)},
         "arm_b": {"planted_flagged": share(arm_b["planted"]["flagged"], totals["planted"]),
                   "correct_flagged": share(arm_b["correct"]["flagged"], totals["correct"]),
-                  "usd_per_document": round(b_extra["usd"] / n, 6), "requests_per_document": round(b_extra["requests"] / n, 2),
-                  **{k: (round(v, 6) if isinstance(v, float) else v) for k, v in b_extra.items()}},
+                  "usd_per_document": round(b_extra["usd"] / n, 6),
+                  "requests_per_document": round(b_extra["requests"] / n, 2), **tidy(b_extra)},
     }
-    return {"run": run, "totals": totals, "measures": measures, "by_language": by_lang, "documents": per_doc}
+    return {"run": run, "totals": totals, "not_run": not_run, "measures": measures,
+            "breakdown": {"language": by_lang, "source_type": by_source, "units": by_unit,
+                          "correct_statements_by_writing": by_trunc}, "documents": per_doc}
 
 
 def render(res) -> str:
@@ -170,27 +209,37 @@ def render(res) -> str:
 
     out = [f"# E2 result: {res['run']['set']}", "",
            f"{t['documents']} documents, {t['statements']} statements ({t['planted']} with a planted error, "
-           f"{t['correct']} correct). Model {res['run']['model']}, effort {res['run']['effort']}.", "",
-           "| Measure | Count | Wilson 95% interval |", "|---|---|---|",
-           line("Arm A (skill): planted errors flagged", m["arm_a"]["planted_flagged"]),
-           line("Arm B (review only): planted errors flagged", m["arm_b"]["planted_flagged"]),
-           line("Arm A (skill): correct statements flagged", m["arm_a"]["correct_flagged"]),
-           line("Arm B (review only): correct statements flagged", m["arm_b"]["correct_flagged"]),
-           line("Arm A: numbers left uncovered", m["arm_a"]["uncovered_share"]), "",
-           f"Arm A verdicts on planted errors: {m['arm_a']['planted_verdicts']}", "",
-           f"Arm A verdicts on correct statements: {m['arm_a']['correct_verdicts']}", "",
-           f"Arm A: {m['arm_a']['requests']} requests, {m['arm_a']['corrected_plans']} corrected plans, "
-           f"{m['arm_a']['no_accepted_plan']} documents with no accepted plan, US${m['arm_a']['usd_per_document']:.4f} "
-           "per document.", "",
-           f"Arm B: {m['arm_b']['requests']} requests, {m['arm_b']['unmatched_flags']} flags that match no statement, "
-           f"{m['arm_b']['unparsed']} replies that could not be read, US${m['arm_b']['usd_per_document']:.4f} per document.",
-           ""]
+           f"{t['correct']} correct). Model {res['run']['model']}, effort {res['run']['effort']}.", ""]
+    if res["not_run"]:
+        out += [f"Not run (the run was stopped): {', '.join(res['not_run'])}. They are left out of every count.", ""]
+    out += ["| Measure | Count | Wilson 95% interval |", "|---|---|---|",
+            line("Arm A (skill): planted errors flagged", m["arm_a"]["planted_flagged"]),
+            line("Arm B (review only): planted errors flagged", m["arm_b"]["planted_flagged"]),
+            line("Arm A (skill): correct statements flagged", m["arm_a"]["correct_flagged"]),
+            line("Arm B (review only): correct statements flagged", m["arm_b"]["correct_flagged"]),
+            line("Arm A: numbers left uncovered", m["arm_a"]["uncovered_share"]), "",
+            f"Arm A verdicts on planted errors: {m['arm_a']['planted_verdicts']}", "",
+            f"Arm A verdicts on correct statements: {m['arm_a']['correct_verdicts']}", "",
+            f"Arm A: {m['arm_a']['requests']} requests, {m['arm_a']['corrected_plans']} corrected plans, "
+            f"{m['arm_a']['no_accepted_plan']} documents with no accepted plan, {m['arm_a']['cut_off_replies']} replies cut "
+            f"off, US${m['arm_a']['usd_per_document']:.4f} per document.", "",
+            f"Arm B: {m['arm_b']['requests']} requests, {m['arm_b']['unmatched_flags']} flags that match no statement, "
+            f"{m['arm_b']['unparsed']} replies that could not be read, US${m['arm_b']['usd_per_document']:.4f} per document.",
+            ""]
+    for title, key in (("By language", "language"), ("By source type", "source_type"),
+                       ("By whether the sources state their unit", "units"),
+                       ("Correct statements, by how the number is written", "correct_statements_by_writing")):
+        out += [f"## {title}", "", "| Group | Planted flagged: A | B | Correct flagged: A | B |", "|---|---|---|---|---|"]
+        for group, r in sorted(res["breakdown"][key].items()):
+            out.append(f"| {group} | {r['a_planted_flagged']} of {r['planted']} | {r['b_planted_flagged']} of {r['planted']} "
+                       f"| {r['a_correct_flagged']} of {r['correct']} | {r['b_correct_flagged']} of {r['correct']} |")
+        out.append("")
     return "\n".join(out)
 
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Score an E2 run.")
-    ap.add_argument("--set", default="rehearsal", choices=sorted(SEEDS))
+    ap.add_argument("--set", default="rehearsal", help="the run's folder name under bench/e2/out (heldout, rehearsal, ...)")
     ap.add_argument("--held-out", action="store_true", help="required to score the held-out set")
     ap.add_argument("--out", help="the run folder (default: bench/e2/out/<set>)")
     ap.add_argument("--data", help="the generated benchmark folder (default: bench/out/<seed>)")
@@ -198,11 +247,12 @@ def main(argv=None) -> int:
     ap.add_argument("--runs", default=os.path.join(HERE, "runs.jsonl"))
     ap.add_argument("--no-log", action="store_true", help="print only: write no results file and no log line")
     a = ap.parse_args(argv)
-    if a.set.startswith("heldout") and not a.held_out:
+    held = a.set.startswith("heldout")
+    if held and not a.held_out:
         print("refusing the held-out set without --held-out", file=sys.stderr)
         return 2
     out_root = a.out or os.path.join(HERE, "out", a.set)
-    data = a.data or os.path.join(ROOT, "bench", "out", str(SEEDS[a.set]))
+    data = a.data or os.path.join(ROOT, "bench", "out", str(HELD_OUT_SEED if held else DEV_SEED))
     if not os.path.isfile(os.path.join(out_root, "run.json")):
         print(f"no run at {out_root}", file=sys.stderr)
         return 2
@@ -221,7 +271,8 @@ def main(argv=None) -> int:
         f.write(text + "\n")
     with open(a.runs, "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps({"timestamp": stamp, "set": a.set, "commit": res["commit"], "dirty": res["dirty"],
-                            "totals": res["totals"], "measures": res["measures"]}, ensure_ascii=False) + "\n")
+                            "totals": res["totals"], "not_run": res["not_run"], "measures": res["measures"]},
+                           ensure_ascii=False) + "\n")
     print(f"results: {base}.json")
     return 0
 
