@@ -90,7 +90,7 @@ Committed: `bench/edgar/results/<set>-<commit>-<UTC>.json` and `.md`, and one li
 - **Abstention.** From the sample in sample order: the first 5 facts with `Zz` added to the concept; the first 5 with
   the end date (or the instant) moved three days later; the first 5 durations asked as their end date (durations of
   one day, start equal to end, are left out of this kind, because the SEC's API stores a one-day period under a single
-  date and the tool now treats the two spellings as one fact, so finding it is correct; the skipped count is in
+  date, so a tool that finds it is right and the case is not an abstention; the skipped count is in
   `gold.json` as `abstain_instant_skipped_one_day`); the first 5
   facts in USD or shares with the two swapped. The locators keep the filing's accession (the pinned form), so the case
   cannot be answered by another filing. Each kind is its own plan file, so no plan claims a number twice.

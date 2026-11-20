@@ -102,7 +102,7 @@ The note says research and development was 10.6% of revenue. Recomputed from the
 
 ## What the evaluation shows
 
-The rules for each evaluation were fixed in [docs/eval-plan.md](docs/eval-plan.md) before it was run. The code was frozen in one commit, and each held-out set was then run once.
+The rules for each evaluation were fixed in [docs/eval-plan.md](docs/eval-plan.md) before it was run. The code was frozen in one commit, and each held-out set was then run once. The results below were measured on version 0.1.0.
 
 | | Question | Held-out result |
 |---|---|---|
@@ -148,7 +148,7 @@ Values the connection returns are compared with the numbers printed in the filin
 
 - No fact was judged `wrong`, in 2,338 verdicts.
 - With the filing named, 1,167 of 1,169 were verified. With no filing named, 1,145 were verified and 22 abstained because filings report different values for that fact.
-- The two that were not verified are dividends per share paid on a single day. The filing tags each as a period of one day, and the SEC's API stores such a fact under a single date, so the exact-period rule finds nothing. The script abstained. Version 0.1.1 treats a one-day range as the single date. Tried again on their own after the release, both facts verify. That check is not part of the result above.
+- The two that were not verified are dividends per share paid on a single day. The filing tags each as a period of one day, and the SEC's API stores such a fact under a single date, so the exact-period rule finds nothing. The script abstained. Version 0.1.1 treats a one-day range as the single date. Tried again on their own after the 0.1.0 release, both facts verify. That check is not part of the result above.
 - 800 of 800 locators that should match nothing were `unverifiable`, and 15 of 15 runs with no contact string, a corrupt cached file or an unreachable server stopped.
 
 Both sides of this comparison start from the same submission by the company. E3 tests the connection, not whether a company tagged its filing correctly. The sixth bar was added after the first development run, when a deliberately broken copy of the tool got past the first five. The [plan's change log](docs/eval-plan.md) has the details.
