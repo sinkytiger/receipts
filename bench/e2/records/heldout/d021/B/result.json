@@ -1,0 +1,95 @@
+{
+ "doc": "d021",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051823Z",
+   "set": "heldout",
+   "doc": "d021",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1795,
+   "output_tokens": 3064,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0017115,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcb5qMKNFkjpEaLmFVc"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "+51.80%",
+    "should_be": "+21.80%",
+    "why": "2025 vs 2024 Daejeon sales 352078/289062 is +21.80%"
+   },
+   {
+    "line": 13,
+    "number": "0.62",
+    "should_be": "0.64 (0.635)",
+    "why": "2021 Gwangju cost/sales 1254086/1974938 = 0.635"
+   },
+   {
+    "line": 14,
+    "number": "760,490원",
+    "should_be": "76,049원",
+    "why": "2023 Gwangju 단가 in sales.csv is 76049"
+   },
+   {
+    "line": 18,
+    "number": "85,734원",
+    "should_be": "56,162원",
+    "why": "2025 Daegu 단가 is 56162; 85734 is Gwangju's value"
+   },
+   {
+    "line": 20,
+    "number": "-10.4%",
+    "should_be": "-10.5%",
+    "why": "Daejeon staff 5543 to 4961 is -10.50%"
+   },
+   {
+    "line": 24,
+    "number": "6.2%",
+    "should_be": "5.8%",
+    "why": "2021 Daegu sales 237263 of total 4091997 is 5.80%"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-02-22"
+   },
+   {
+    "line": 4,
+    "number": "v3.1.8"
+   },
+   {
+    "line": 4,
+    "number": "9"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 5,
+    "number": "table-92"
+   },
+   {
+    "line": 32,
+    "number": "132"
+   },
+   {
+    "line": 33,
+    "number": "0.21"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0017115
+}

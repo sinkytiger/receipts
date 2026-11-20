@@ -1,0 +1,274 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 10,
+  "wrong": 5,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 16
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 23,
+   "end": 27,
+   "text": "2.6%",
+   "quote": "The margin in East was 2.6% in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2.6%",
+   "recomputed_raw": "2.6",
+   "sources": [
+    "data.csv [year=2021, region=East] margin = 2.6"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 22,
+   "end": 35,
+   "text": "14.00 percent",
+   "quote": "South revenue dropped 14.00 percent in 2022 vs 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-14.00%",
+   "recomputed_raw": "-14.000000037325188502502254078900547409922551942202473898851",
+   "sources": [
+    "data.csv [year=2022, region=South] revenue = 599059265",
+    "data.csv [year=2021, region=South] revenue = 696580541"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 27,
+   "end": 39,
+   "text": "$138,456,006",
+   "quote": "Central operating cost was $138,456,006 in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "138,456,006",
+   "recomputed_raw": "138456006",
+   "sources": [
+    "data.csv [year=2024, region=Central] cost = 138456006"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 22,
+   "end": 27,
+   "text": "5.50%",
+   "quote": "Central accounted for 5.50% of total revenue in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5.50%",
+   "recomputed_raw": "5.5014945760573055972614887201994085737227308793635872405497",
+   "sources": [
+    "data.csv [year=2024, region=Central] revenue = 138733473",
+    "data.csv [year=2024] revenue: 5 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 15,
+   "end": 20,
+   "text": "2,570",
+   "quote": "North employed 2,570 people in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,570",
+   "recomputed_raw": "2570",
+   "sources": [
+    "data.csv [year=2024, region=North] staff = 2570"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 23,
+   "end": 27,
+   "text": "4.8%",
+   "quote": "The margin in East was 4.8% in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4.7%",
+   "recomputed_raw": "4.7",
+   "sources": [
+    "data.csv [year=2023, region=East] margin = 4.7"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 20,
+   "end": 25,
+   "text": "3,065",
+   "quote": "Central employed 3,065 people in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3,887",
+   "recomputed_raw": "3887",
+   "sources": [
+    "data.csv [year=2024, region=Central] staff = 3887"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 51,
+   "end": 56,
+   "text": "-1.4%",
+   "quote": "The change in North revenue in 2025 vs 2024 was -1.4%.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "-1.5%",
+   "recomputed_raw": "-1.49999996222055026300059715240446018138883057030114257327812",
+   "sources": [
+    "data.csv [year=2025, region=North] revenue = 378049445",
+    "data.csv [year=2024, region=North] revenue = 383806543"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 59,
+   "end": 68,
+   "text": "3,800,000",
+   "quote": "Across all regions and years, shipments totalled around 3,800,000 units.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,800,000",
+   "recomputed_raw": "3750202",
+   "sources": [
+    "data.csv [] units: 25 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 42,
+   "end": 46,
+   "text": "0.89",
+   "quote": "The cost-to-revenue ratio in North was 0.89 in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.89",
+   "recomputed_raw": "0.888999999860252512582698970488434106384704893793794835558828",
+   "sources": [
+    "data.csv [year=2023, region=North] cost = 337158119",
+    "data.csv [year=2023, region=North] revenue = 379255477"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 23,
+   "end": 26,
+   "text": "696",
+   "quote": "East headcount fell by 696 in 2025 vs 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-692",
+   "recomputed_raw": "-692",
+   "sources": [
+    "data.csv [year=2025, region=East] staff = 5374",
+    "data.csv [year=2024, region=East] staff = 6066"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 17,
+   "end": 31,
+   "text": "$572.1 million",
+   "quote": "West revenue was $572.1 million in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "995.7 million",
+   "recomputed_raw": "995668017",
+   "sources": [
+    "data.csv [year=2023, region=West] revenue = 995668017"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 20,
+   "end": 26,
+   "text": "39.76%",
+   "quote": "South accounted for 39.76% of total unit sales in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "28.45%",
+   "recomputed_raw": "28.44994869668309436088826509726364588483601546010834835218",
+   "sources": [
+    "data.csv [year=2025, region=South] units = 214054",
+    "data.csv [year=2025] units: 5 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 36,
+   "end": 37,
+   "text": "2",
+   "quote": "East posted double-digit margins in 2 of the five years covered.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2",
+   "recomputed_raw": "2",
+   "sources": [
+    "data.csv [region=East] margin >= 10: 2 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 38,
+   "end": 42,
+   "text": "0.88",
+   "quote": "The cost-to-revenue ratio in East was 0.88 in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.88",
+   "recomputed_raw": "0.877999998967730747017128959849371270604739457821220255806644",
+   "sources": [
+    "data.csv [year=2023, region=East] cost = 255165984",
+    "data.csv [year=2023, region=East] revenue = 290621850"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

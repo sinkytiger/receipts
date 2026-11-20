@@ -1,0 +1,282 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 14,
+  "wrong": 1,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 4,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 16
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 24,
+   "end": 29,
+   "text": "90.6%",
+   "quote": "West operating cost was 90.6% of revenue in 2022",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "90.6%",
+   "recomputed_raw": "90.5999867411048572114804643221607217186136412295125617163531",
+   "sources": [
+    "sales.csv [year=2022, region=West] cost = 833644",
+    "sales.csv [year=2022, region=West] revenue = 920137"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 15,
+   "end": 20,
+   "text": "5,397",
+   "quote": "North employed 5,397 people in 2024",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,397",
+   "recomputed_raw": "5397",
+   "sources": [
+    "staff.csv [year=2024, region=North] staff = 5397"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 26,
+   "end": 37,
+   "text": "1.1 million",
+   "quote": "All regions together sold 1.1 million units in 2024",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.1 million",
+   "recomputed_raw": "1132701",
+   "sources": [
+    "sales.csv [year=2024] units: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 20,
+   "end": 24,
+   "text": "6.9x",
+   "quote": "Coastal revenue was 6.9x that of South in 2023",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "7.0x",
+   "recomputed_raw": "6.97516667915199640422503558318975204135141209079331785152446",
+   "sources": [
+    "sales.csv [year=2023, region=Coastal] revenue = 744892",
+    "sales.csv [year=2023, region=South] revenue = 106792"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 41,
+   "end": 55,
+   "text": "$496.0 million",
+   "quote": "Coastal and Central revenue combined was $496.0 million in 2021",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "496.0 million",
+   "recomputed_raw": "495953000",
+   "sources": [
+    "sales.csv [year=2021, region=Coastal] revenue = 490779 x 1000",
+    "sales.csv [year=2021, region=Central] revenue = 5174 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 17,
+   "end": 32,
+   "text": "$705.78 million",
+   "quote": "East revenue was $705.78 million in 2023",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "705.78 million",
+   "recomputed_raw": "705776000",
+   "sources": [
+    "sales.csv [year=2023, region=East] revenue = 705776 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 27,
+   "end": 32,
+   "text": "17.1%",
+   "quote": "The margin in North was 17.1% in FY2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "17.1%",
+   "recomputed_raw": "17.1",
+   "sources": [
+    "staff.csv [year=2025, region=North] margin = 17.1"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 24,
+   "end": 37,
+   "text": "18.70 percent",
+   "quote": "North headcount rose 18.70 percent in 2023 vs 2022",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "18.70%",
+   "recomputed_raw": "18.6962900859358625026199958080067071892684971704045273527562",
+   "sources": [
+    "staff.csv [year=2023, region=North] staff = 5663",
+    "staff.csv [year=2022, region=North] staff = 4771"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 29,
+   "end": 34,
+   "text": "5.19%",
+   "quote": "Central headcount slipped 5.19% in 2025 vs 2024",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-5.19%",
+   "recomputed_raw": "-5.19114688128772635814889336016096579476861167002012072434608",
+   "sources": [
+    "staff.csv [year=2025, region=Central] staff = 4712",
+    "staff.csv [year=2024, region=Central] staff = 4970"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 36,
+   "end": 43,
+   "text": "$89,768",
+   "quote": "Revenue per employee in East was $89,768 in 2025",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "89,768",
+   "recomputed_raw": "89768.1866888915347065126800809620192880104774377902131206096",
+   "sources": [
+    "sales.csv [year=2025, region=East] revenue = 753963 x 1000",
+    "staff.csv [year=2025, region=East] staff = 8399"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 27,
+   "end": 35,
+   "text": "$997.99K",
+   "quote": "Central revenue climbed by $997.99K in 2025 vs 2024",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "998.00K",
+   "recomputed_raw": "998000",
+   "sources": [
+    "sales.csv [year=2025, region=Central] revenue = 8178 x 1000",
+    "sales.csv [year=2024, region=Central] revenue = 7180 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 25,
+   "end": 30,
+   "text": "7.10%",
+   "quote": "South headcount declined 7.10% in 2022 vs 2021",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-7.10%",
+   "recomputed_raw": "-7.09812108559498956158663883089770354906054279749478079331942",
+   "sources": [
+    "staff.csv [year=2022, region=South] staff = 4895",
+    "staff.csv [year=2021, region=South] staff = 5269"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 17,
+   "end": 31,
+   "text": "$916.6 million",
+   "quote": "West revenue was $916.6 million in FY2025",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "916.6 million",
+   "recomputed_raw": "916567000",
+   "sources": [
+    "sales.csv [year=2025, region=West] revenue = 916567 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 32,
+   "end": 45,
+   "text": "$5.17 million",
+   "quote": "The lowest regional revenue was $5.17 million in 2021",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5.17 million",
+   "recomputed_raw": "5174000",
+   "sources": [
+    "sales.csv [year=2021, region=Central] revenue = 5174 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 57,
+   "end": 66,
+   "text": "5,300,000",
+   "quote": "Across all regions and years, shipments totalled roughly 5,300,000 units",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,300,000",
+   "recomputed_raw": "5251479",
+   "sources": [
+    "sales.csv [] units: 30 cells"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "sales.csv",
+   "column": "revenue",
+   "multiplier": "1000",
+   "claims": 6
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "doc": "d020",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050944Z",
+   "set": "heldout",
+   "doc": "d020",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1876,
+   "output_tokens": 2071,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0012231,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbwJeiooYka4ZxD6X9v"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 12,
+    "number": "-4.4 percent",
+    "should_be": "6.7 percent",
+    "why": "2024 regional margins are 14.7, 14.9, 23.4, 6.7, 10.7; lowest is 6.7, and -4.4 is the 2025 figure"
+   },
+   {
+    "line": 13,
+    "number": "15.0%",
+    "should_be": "14.9%",
+    "why": "Central 2024 margin in Staff sheet is 14.9"
+   },
+   {
+    "line": 14,
+    "number": "8.80",
+    "should_be": "0.88",
+    "why": "Coastal 2024 cost 524,832,860 / revenue 596,400,977 ≈ 0.88"
+   },
+   {
+    "line": 18,
+    "number": "7.2x",
+    "should_be": "1.2x",
+    "why": "Central 2021 revenue 630,691,245 / North 524,348,436 ≈ 1.20"
+   },
+   {
+    "line": 19,
+    "number": "1.3x",
+    "should_be": "1.4x",
+    "why": "Central 2025 revenue 1,014,806,779 / Coastal 739,537,211 ≈ 1.37"
+   },
+   {
+    "line": 24,
+    "number": "4 regions",
+    "should_be": "2 regions",
+    "why": "Only East... no: only Coastal (-4.4) and North (-2.8) have negative 2025 margins"
+   },
+   {
+    "line": 26,
+    "number": "5.28%",
+    "should_be": "5.30%",
+    "why": "Average of 2025 margins 20.2, 2.8, -4.4, 10.7, -2.8 is 5.30"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 4,
+    "number": "41"
+   },
+   {
+    "line": 32,
+    "number": "398"
+   },
+   {
+    "line": 33,
+    "number": "0.99"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0012231
+}

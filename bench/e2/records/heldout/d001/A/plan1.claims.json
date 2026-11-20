@@ -1,0 +1,312 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "North revenue was $614.43M in FY2022.",
+   "number": "$614.43M",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2022",
+      "region": "North"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "East headcount fell 71.0% in 2024 vs 2023.",
+   "number": "71.0%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2024",
+      "region": "East"
+     },
+     "column": "staff"
+    },
+    "old": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2023",
+      "region": "East"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "The cost-to-revenue ratio in West was 0.84 in 2025.",
+   "number": "0.84",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "West"
+     },
+     "column": "cost"
+    },
+    "whole": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "West"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "The margin in East slipped 10.1pp in 2025 vs 2024.",
+   "number": "10.1pp",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "margin"
+    },
+    "b": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2024",
+      "region": "East"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "Central operating cost was 96.4% of revenue in 2022.",
+   "number": "96.4%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2022",
+      "region": "Central"
+     },
+     "column": "cost"
+    },
+    "whole": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2022",
+      "region": "Central"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "East sold 336,270 units in 2023.",
+   "number": "336,270",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2023",
+      "region": "East"
+     },
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "West employed 410 people in 2023.",
+   "number": "410",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2023",
+      "region": "West"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "The margin in South decreased 21.9 percentage points in 2024 vs 2023.",
+   "number": "21.9 percentage points",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2024",
+      "region": "South"
+     },
+     "column": "margin"
+    },
+    "b": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2023",
+      "region": "South"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "Central posted double-digit margins in 5 of the five years covered.",
+   "number": "5",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "staff.csv",
+     "where": {
+      "region": "Central"
+     },
+     "test": {
+      "column": "margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "All regions together sold 1.06 million units in 2022.",
+   "number": "1.06 million",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.csv",
+     "where": {
+      "year": "2022"
+     },
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "Total operating cost across all regions was $1,104,902,242 in 2022.",
+   "number": "$1,104,902,242",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.csv",
+     "where": {
+      "year": "2022"
+     },
+     "column": "cost"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "Total revenue across all regions was $1.56B in 2021.",
+   "number": "$1.56B",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.csv",
+     "where": {
+      "year": "2021"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "West revenue was $142.2 million in 2025.",
+   "number": "$142.2 million",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "West"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "South sold 276,681 units in FY2024.",
+   "number": "276,681",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2024",
+      "region": "South"
+     },
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "The selling price in East was $107.84 in FY2021.",
+   "number": "$107.84",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2021",
+      "region": "East"
+     },
+     "column": "price"
+    }
+   }
+  }
+ ]
+}

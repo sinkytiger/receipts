@@ -1,0 +1,289 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 11,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "code": 2,
+  "date": 3,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 14
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 18,
+   "end": 22,
+   "text": "3.2x",
+   "quote": "North revenue was 3.2x that of West in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3.2x",
+   "recomputed_raw": "3.16753629178075114945497752750942811386061889755643953091905",
+   "sources": [
+    "book.xlsx [Sales] [Year=2024, Region=North] Revenue = 122628",
+    "book.xlsx [Sales] [Year=2024, Region=West] Revenue = 38714"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 20,
+   "end": 25,
+   "text": "3.69x",
+   "quote": "Central revenue was 3.69x that of West in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3.69x",
+   "recomputed_raw": "3.68783902464224828227514594203647259389368187219093867851423",
+   "sources": [
+    "book.xlsx [Sales] [Year=2024, Region=Central] Revenue = 142771",
+    "book.xlsx [Sales] [Year=2024, Region=West] Revenue = 38714"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 33,
+   "end": 40,
+   "text": "$212.80",
+   "quote": "The selling price in Coastal was $212.80 in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "212.80",
+   "recomputed_raw": "212.8",
+   "sources": [
+    "book.xlsx [Sales] [Year=2023, Region=Coastal] Price = 212.8"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 49,
+   "end": 54,
+   "text": "-4.9%",
+   "quote": "The change in West headcount in 2025 vs 2024 was -4.9%.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-4.8%",
+   "recomputed_raw": "-4.79645612159169021614603223096311005881005117238218895593065",
+   "sources": [
+    "book.xlsx [Staff] [Year=2025, Region=West] Staff = 12465",
+    "book.xlsx [Staff] [Year=2024, Region=West] Staff = 13093"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 27,
+   "end": 32,
+   "text": "80.5%",
+   "quote": "Coastal operating cost was 80.5% of revenue in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "80.5%",
+   "recomputed_raw": "80.4998588515543730882119778957667067554032785110192464606544",
+   "sources": [
+    "book.xlsx [Sales] [Year=2025, Region=Coastal] Cost = 208167",
+    "book.xlsx [Sales] [Year=2025, Region=Coastal] Revenue = 258593"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 26,
+   "end": 31,
+   "text": "15.4%",
+   "quote": "The margin in Central was 15.4% in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "15.4%",
+   "recomputed_raw": "15.4",
+   "sources": [
+    "book.xlsx [Staff] [Year=2021, Region=Central] Margin = 15.4"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 39,
+   "end": 46,
+   "text": "$240.2K",
+   "quote": "Revenue per employee in Coastal was $240.2K in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "240.2K",
+   "recomputed_raw": "240238.333333333333333333333333333333333333333333333333333333",
+   "sources": [
+    "book.xlsx [Sales] [Year=2024, Region=Coastal] Revenue = 288286 x 1000",
+    "book.xlsx [Staff] [Year=2024, Region=Coastal] Staff = 1200"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 38,
+   "end": 45,
+   "text": "$52.19M",
+   "quote": "West and East revenue combined was $52.19M in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "55.29M",
+   "recomputed_raw": "55291000",
+   "sources": [
+    "book.xlsx [Sales] [Year=2025, Region=West] Revenue = 39798 x 1000",
+    "book.xlsx [Sales] [Year=2025, Region=East] Revenue = 15493 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 59,
+   "end": 68,
+   "text": "6,300,000",
+   "quote": "Across all regions and years, shipments totalled around 6,300,000 units.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6,300,000",
+   "recomputed_raw": "6259756",
+   "sources": [
+    "book.xlsx [Sales] [] Units: 25 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 30,
+   "end": 35,
+   "text": "73.8%",
+   "quote": "Central operating cost was 73.8% of revenue in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "73.8%",
+   "recomputed_raw": "73.80000140084470935974392558712903881040267281170545839141",
+   "sources": [
+    "book.xlsx [Sales] [Year=2024, Region=Central] Cost = 105365",
+    "book.xlsx [Sales] [Year=2024, Region=Central] Revenue = 142771"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 38,
+   "end": 50,
+   "text": "$328,045,000",
+   "quote": "East and Coastal revenue combined was $328,045,000 in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "328,045,000",
+   "recomputed_raw": "328045000",
+   "sources": [
+    "book.xlsx [Sales] [Year=2022, Region=East] Revenue = 13269 x 1000",
+    "book.xlsx [Sales] [Year=2022, Region=Coastal] Revenue = 314776 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 27,
+   "end": 41,
+   "text": "$159.7 billion",
+   "quote": "Coastal operating cost was $159.7 billion in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "0.2 billion",
+   "recomputed_raw": "159710000",
+   "sources": [
+    "book.xlsx [Sales] [Year=2024, Region=Coastal] Cost = 159710 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 39,
+   "end": 43,
+   "text": "0.75",
+   "quote": "The cost-to-revenue ratio in North was 0.75 in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.75",
+   "recomputed_raw": "0.753997327931732965564797655475585053656854717062448821273111",
+   "sources": [
+    "book.xlsx [Sales] [Year=2023, Region=North] Cost = 87475",
+    "book.xlsx [Sales] [Year=2023, Region=North] Revenue = 116015"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 30,
+   "end": 37,
+   "text": "$107.69",
+   "quote": "The selling price in West was $107.69 in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "107.69",
+   "recomputed_raw": "107.69",
+   "sources": [
+    "book.xlsx [Sales] [Year=2024, Region=West] Price = 107.69"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 24,
+   "end": 35,
+   "text": "$72,039,000",
+   "quote": "West operating cost was $72,039,000 in FY2021.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "35,406,000",
+   "recomputed_raw": "35406000",
+   "sources": [
+    "book.xlsx [Sales] [Year=2021, Region=West] Cost = 35406 x 1000"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "book.xlsx",
+   "column": "Cost",
+   "multiplier": "1000",
+   "claims": 2
+  },
+  {
+   "file": "book.xlsx",
+   "column": "Revenue",
+   "multiplier": "1000",
+   "claims": 3
+  }
+ ]
+}

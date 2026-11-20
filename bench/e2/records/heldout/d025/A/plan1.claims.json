@@ -1,0 +1,325 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "The margin in East was 2.6% in 2021.",
+   "number": "2.6%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.csv",
+     "row": {
+      "year": "2021",
+      "region": "East"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "South revenue dropped 14.00 percent in 2022 vs 2021.",
+   "number": "14.00 percent",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "file": "data.csv",
+     "row": {
+      "year": "2022",
+      "region": "South"
+     },
+     "column": "revenue"
+    },
+    "old": {
+     "file": "data.csv",
+     "row": {
+      "year": "2021",
+      "region": "South"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "Central operating cost was $138,456,006 in 2024.",
+   "number": "$138,456,006",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.csv",
+     "row": {
+      "year": "2024",
+      "region": "Central"
+     },
+     "column": "cost"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "Central accounted for 5.50% of total revenue in 2024.",
+   "number": "5.50%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "data.csv",
+     "row": {
+      "year": "2024",
+      "region": "Central"
+     },
+     "column": "revenue"
+    },
+    "whole": {
+     "file": "data.csv",
+     "where": {
+      "year": "2024"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "North employed 2,570 people in 2024.",
+   "number": "2,570",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.csv",
+     "row": {
+      "year": "2024",
+      "region": "North"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "The margin in East was 4.8% in 2023.",
+   "number": "4.8%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "East"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "Central employed 3,065 people in 2024.",
+   "number": "3,065",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.csv",
+     "row": {
+      "year": "2024",
+      "region": "Central"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "The change in North revenue in 2025 vs 2024 was -1.4%.",
+   "number": "-1.4%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "data.csv",
+     "row": {
+      "year": "2025",
+      "region": "North"
+     },
+     "column": "revenue"
+    },
+    "old": {
+     "file": "data.csv",
+     "row": {
+      "year": "2024",
+      "region": "North"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "Across all regions and years, shipments totalled around 3,800,000 units.",
+   "number": "3,800,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "data.csv",
+     "where": {},
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "The cost-to-revenue ratio in North was 0.89 in 2023.",
+   "number": "0.89",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "North"
+     },
+     "column": "cost"
+    },
+    "den": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "North"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "East headcount fell by 696 in 2025 vs 2024.",
+   "number": "696",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "data.csv",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "staff"
+    },
+    "b": {
+     "file": "data.csv",
+     "row": {
+      "year": "2024",
+      "region": "East"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "West revenue was $572.1 million in 2023.",
+   "number": "$572.1 million",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "West"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "South accounted for 39.76% of total unit sales in 2025.",
+   "number": "39.76%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "data.csv",
+     "row": {
+      "year": "2025",
+      "region": "South"
+     },
+     "column": "units"
+    },
+    "whole": {
+     "file": "data.csv",
+     "where": {
+      "year": "2025"
+     },
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "East posted double-digit margins in 2 of the five years covered.",
+   "number": "2",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "data.csv",
+     "where": {
+      "region": "East"
+     },
+     "test": {
+      "column": "margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "The cost-to-revenue ratio in East was 0.88 in 2023.",
+   "number": "0.88",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "East"
+     },
+     "column": "cost"
+    },
+    "den": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "East"
+     },
+     "column": "revenue"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,273 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 10,
+  "wrong": 5,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 2,
+ "skipped": {
+  "code": 2,
+  "date": 6,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 10
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 36,
+   "end": 43,
+   "text": "200,045",
+   "quote": "The highest regional unit sales was 200,045 units in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "200,045",
+   "recomputed_raw": "200045",
+   "sources": [
+    "tables.md table 2 [Year=2024, Region=Central] Units = 200045"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 27,
+   "end": 32,
+   "text": "97.8%",
+   "quote": "Central operating cost was 97.8% of revenue in 2021.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "97.9%",
+   "recomputed_raw": "97.8999999565748866724841452270524888616638205417052851872138",
+   "sources": [
+    "tables.md table 2 [Year=2021, Region=Central] Cost = 333659463",
+    "tables.md table 2 [Year=2021, Region=Central] Revenue = 340816612"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 36,
+   "end": 37,
+   "text": "2",
+   "quote": "Double-digit margins were posted by 2 regions in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2",
+   "recomputed_raw": "2",
+   "sources": [
+    "tables.md table 2 [Year=2025] Margin >= 10: 2 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 18,
+   "end": 32,
+   "text": "$174.7 billion",
+   "quote": "North revenue was $174.7 billion in 2022.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "0.2 billion",
+   "recomputed_raw": "174747270",
+   "sources": [
+    "tables.md table 2 [Year=2022, Region=North] Revenue = 174747270"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 22,
+   "end": 28,
+   "text": "14.97%",
+   "quote": "Central accounted for 14.97% of total revenue in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "14.97%",
+   "recomputed_raw": "14.9738594442053818229875345510841673861885906312209896300643",
+   "sources": [
+    "tables.md table 2 [Year=2021, Region=Central] Revenue = 340816612",
+    "tables.md table 2 [Year=2021] Revenue: 6 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 39,
+   "end": 43,
+   "text": "1.83",
+   "quote": "The cost-to-revenue ratio in North was 1.83 in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1.03",
+   "recomputed_raw": "1.02500000090980467015353147900503809794925538977687913876968",
+   "sources": [
+    "tables.md table 2 [Year=2024, Region=North] Cost = 168992318",
+    "tables.md table 2 [Year=2024, Region=North] Revenue = 164870554"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 41,
+   "end": 45,
+   "text": "0.97",
+   "quote": "The cost-to-revenue ratio in West was 0.97 in 2025.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "0.98",
+   "recomputed_raw": "0.979000000685439100265219427862370210738366576390497166777799",
+   "sources": [
+    "tables.md table 2 [Year=2025, Region=West] Cost = 509896503",
+    "tables.md table 2 [Year=2025, Region=West] Revenue = 520834017"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 37,
+   "end": 45,
+   "text": "$119.61K",
+   "quote": "Revenue per employee in North was $119.61K in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "119.61K",
+   "recomputed_raw": "119607.987679671457905544147843942505133470225872689938398357",
+   "sources": [
+    "tables.md table 2 [Year=2022, Region=North] Revenue = 174747270",
+    "tables.md table 2 [Year=2022, Region=North] Staff = 1461"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 26,
+   "end": 31,
+   "text": "17.5%",
+   "quote": "The margin in West was 17.5% in FY2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "17.5%",
+   "recomputed_raw": "17.5",
+   "sources": [
+    "tables.md table 2 [Year=2021, Region=West] Margin = 17.5"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 39,
+   "end": 45,
+   "text": "$97.3K",
+   "quote": "Revenue per employee in Central was $97.3K in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "97.3K",
+   "recomputed_raw": "97290.9068884997081144191476941039112667834208990075890251022",
+   "sources": [
+    "tables.md table 2 [Year=2022, Region=Central] Revenue = 333318647",
+    "tables.md table 2 [Year=2022, Region=Central] Staff = 3426"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 26,
+   "end": 31,
+   "text": "22.7%",
+   "quote": "The margin in Central was 22.7% in FY2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "22.6%",
+   "recomputed_raw": "22.6",
+   "sources": [
+    "tables.md table 2 [Year=2025, Region=Central] Margin = 22.6"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 33,
+   "end": 39,
+   "text": "$75.02",
+   "quote": "The selling price in Central was $75.02 in FY2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "75.02",
+   "recomputed_raw": "75.02",
+   "sources": [
+    "tables.md table 2 [Year=2024, Region=Central] Price = 75.02"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 31,
+   "end": 37,
+   "text": "$23.95",
+   "quote": "The selling price in North was $23.95 in FY2021.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "192.63",
+   "recomputed_raw": "192.63",
+   "sources": [
+    "tables.md table 2 [Year=2021, Region=North] Price = 192.63"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 36,
+   "end": 37,
+   "text": "4",
+   "quote": "Double-digit margins were posted by 4 regions in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2",
+   "recomputed_raw": "2",
+   "sources": [
+    "tables.md table 2 [Year=2025] Margin >= 10: 2 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 56,
+   "end": 65,
+   "text": "3,800,000",
+   "quote": "Across all regions and years, shipments totalled around 3,800,000 units.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,800,000",
+   "recomputed_raw": "3752297",
+   "sources": [
+    "tables.md table 2 [] Units: 30 cells"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

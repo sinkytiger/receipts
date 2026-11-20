@@ -1,0 +1,97 @@
+{
+ "doc": "d014",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051552Z",
+   "set": "heldout",
+   "doc": "d014",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 3368,
+   "output_tokens": 2519,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0015963,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcQEd7jrU4o7xPWSsnJ"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 11,
+    "number": "1.7%",
+    "should_be": "1.4%",
+    "why": "광주 인원 1533→1512 is -1.37%"
+   },
+   {
+    "line": 12,
+    "number": "74.9%",
+    "should_be": "74.8%",
+    "why": "2022 부산 비용/매출 = 1427094/1907880 = 0.748"
+   },
+   {
+    "line": 14,
+    "number": "0.74",
+    "should_be": "0.75",
+    "why": "0.748 rounds to 0.75 at two decimals"
+   },
+   {
+    "line": 23,
+    "number": "383명 상승했다",
+    "should_be": "383명 하락했다",
+    "why": "부산 인원 4671→4288 fell by 383"
+   },
+   {
+    "line": 24,
+    "number": "1,708명 올랐다",
+    "should_be": "1,708명 줄었다",
+    "why": "서울 인원 11390→9682 fell by 1,708"
+   },
+   {
+    "line": 26,
+    "number": "73.7%",
+    "should_be": "74.7%",
+    "why": "2024 부산 비용/매출 = 1282597/1716997 = 0.747"
+   },
+   {
+    "line": 27,
+    "number": "-1.38퍼센트",
+    "should_be": "-13.8퍼센트",
+    "why": "인천 판매량 38781→33429 is -13.80%"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-09-02"
+   },
+   {
+    "line": 4,
+    "number": "v1.0.4"
+   },
+   {
+    "line": 4,
+    "number": "25"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 32,
+    "number": "318"
+   },
+   {
+    "line": 33,
+    "number": "0.83"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0015963
+}

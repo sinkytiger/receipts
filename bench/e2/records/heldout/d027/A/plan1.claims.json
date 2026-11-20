@@ -1,0 +1,347 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "The change in East unit sales in 2023 vs 2022 was +12.70%.",
+   "number": "+12.70%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2023",
+      "Region": "East"
+     },
+     "column": "Units"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "East"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "Revenue per employee in West was $208.3K in 2024.",
+   "number": "$208.3K",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "South revenue increased 8.5 percent in 2023 vs 2022.",
+   "number": "8.5 percent",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2023",
+      "Region": "South"
+     },
+     "column": "Revenue"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "All regions together sold 810,615 units in 2023.",
+   "number": "810,615",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "Year": "2023"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "The margin in South was 60.2% in 2022.",
+   "number": "60.2%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "Central sold 165,041 units in 2024.",
+   "number": "165,041",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2024",
+      "Region": "Central"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "East accounted for 14.96 percent of total unit sales in 2023.",
+   "number": "14.96 percent",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2023",
+      "Region": "East"
+     },
+     "column": "Units"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "Year": "2023"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "The change in East headcount in 2023 vs 2022 was -6.39%.",
+   "number": "-6.39%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "East"
+     },
+     "column": "Staff"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "East"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "The selling price in Central was $224.72 in 2025.",
+   "number": "$224.72",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2025",
+      "Region": "Central"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "Total operating cost across all regions was $1,289,868,790 in 2025.",
+   "number": "$1,289,868,790",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "Year": "2025"
+     },
+     "column": "Cost"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "The change in Central headcount in 2022 vs 2021 was +22.29%.",
+   "number": "+22.29%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "The selling price in West was $215.05 in 2021.",
+   "number": "$215.05",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2021",
+      "Region": "West"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The average selling price across regions was $154.20 in 2023.",
+   "number": "$154.20",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "Year": "2023"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "Central accounted for 9.1% of total revenue in 2024.",
+   "number": "9.1%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2024",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "Year": "2024"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "East posted double-digit margins in 1 of the five years covered.",
+   "number": "1",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Region": "East"
+     },
+     "test": {
+      "column": "Margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  }
+ ]
+}

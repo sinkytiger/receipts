@@ -1,0 +1,290 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 10,
+  "wrong": 5,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 31,
+   "end": 38,
+   "text": "+51.80%",
+   "quote": "대전 지역 판매량의 2024년 대비 2025년 변동률은 +51.80%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "21.80%",
+   "recomputed_raw": "21.8001674381274605447966180265825324670831863060519888466834",
+   "sources": [
+    "sales.csv [연도=2025, 지역=대전] 판매량 = 352078",
+    "sales.csv [연도=2024, 지역=대전] 판매량 = 289062"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 26,
+   "end": 30,
+   "text": "1.2배",
+   "quote": "2023년 대전 지역 매출은 대구 지역 매출의 1.2배였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.2배",
+   "recomputed_raw": "1.19362436972120232913828237397827892474777501940192158446757",
+   "sources": [
+    "sales.csv [연도=2023, 지역=대전] 매출 = 263002",
+    "sales.csv [연도=2023, 지역=대구] 매출 = 220339"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 26,
+   "end": 30,
+   "text": "1.03",
+   "quote": "2023년 대구 지역의 매출 대비 비용 비율은 1.03였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.03",
+   "recomputed_raw": "1.03299915130775759171095448377273201748215250137288450977811",
+   "sources": [
+    "sales.csv [연도=2023, 지역=대구] 비용 = 227610",
+    "sales.csv [연도=2023, 지역=대구] 매출 = 220339"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 17,
+   "end": 26,
+   "text": "3,700,000",
+   "quote": "전 기간 전 지역 판매량은 약 3,700,000건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,700,000",
+   "recomputed_raw": "3749292",
+   "sources": [
+    "sales.csv [] 판매량: 20 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 26,
+   "end": 30,
+   "text": "0.62",
+   "quote": "2021년 광주 지역의 매출 대비 비용 비율은 0.62였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "0.64",
+   "recomputed_raw": "0.635000187347653445323346859496348746137853441475124788727545",
+   "sources": [
+    "sales.csv [연도=2021, 지역=광주] 비용 = 1254086",
+    "sales.csv [연도=2021, 지역=광주] 매출 = 1974938"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 16,
+   "end": 23,
+   "text": "760,490",
+   "quote": "2023년 광주 지역 단가는 760,490원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "76,049",
+   "recomputed_raw": "76049",
+   "sources": [
+    "sales.csv [연도=2023, 지역=광주] 단가 = 76049"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 19,
+   "end": 25,
+   "text": "85,734",
+   "quote": "2025년 대구 지역 단가는 85,734원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "56,162",
+   "recomputed_raw": "56162",
+   "sources": [
+    "sales.csv [연도=2025, 지역=대구] 단가 = 56162"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 23,
+   "end": 29,
+   "text": "5.5퍼센트",
+   "quote": "2023년 대전 지역은 전체 매출의 5.5퍼센트를 차지했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5.5%",
+   "recomputed_raw": "5.53576423801416176642999174272320905181078101882966414584334",
+   "sources": [
+    "sales.csv [연도=2023, 지역=대전] 매출 = 263002",
+    "sales.csv [연도=2023] 매출: 4 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 33,
+   "end": 39,
+   "text": "-10.4%",
+   "quote": "대전 지역 인원의 2024년 대비 2025년 변동률은 -10.4%였다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "-10.5%",
+   "recomputed_raw": "-10.4997293884178242828793072343496301641710265199350532202778",
+   "sources": [
+    "staff.csv [연도=2025, 지역=대전] 인원 = 4961",
+    "staff.csv [연도=2024, 지역=대전] 인원 = 5543"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 29,
+   "end": 40,
+   "text": "324억 3,600만",
+   "quote": "대전 지역 매출은 2021년 대비 2022년에 324억 3,600만 원 상승했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "32,436,000,000",
+   "recomputed_raw": "32436000000",
+   "sources": [
+    "sales.csv [연도=2022, 지역=대전] 매출 = 254600 x 1000000",
+    "sales.csv [연도=2021, 지역=대전] 매출 = 222164 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 18,
+   "end": 22,
+   "text": "3.3조",
+   "quote": "2022년 전 지역 비용 합계는 3.3조 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,300,000,000,000",
+   "recomputed_raw": "3290242000000",
+   "sources": [
+    "sales.csv [연도=2022] 비용: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 20,
+   "end": 24,
+   "text": "6.2%",
+   "quote": "2021년 대구 지역은 전체 매출의 6.2%를 차지했다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "5.8%",
+   "recomputed_raw": "5.79822028217518243537324196474239839374271291010232900952762",
+   "sources": [
+    "sales.csv [연도=2021, 지역=대구] 매출 = 237263",
+    "sales.csv [연도=2021] 매출: 4 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 20,
+   "end": 26,
+   "text": "103.5%",
+   "quote": "2024년 대구 지역 비용은 매출의 103.5%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "103.5%",
+   "recomputed_raw": "103.499818371804128565854796105532708771520698887359126032029",
+   "sources": [
+    "sales.csv [연도=2024, 지역=대구] 비용 = 230787",
+    "sales.csv [연도=2024, 지역=대구] 매출 = 222983"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 27,
+   "end": 33,
+   "text": "15.5%p",
+   "quote": "대구 지역 이익률은 2022년 대비 2023년에 15.5%p 상승했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "15.5%p",
+   "recomputed_raw": "15.5",
+   "sources": [
+    "staff.csv [연도=2023, 지역=대구] 이익률 = 23",
+    "staff.csv [연도=2022, 지역=대구] 이익률 = 7.5"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 22,
+   "end": 23,
+   "text": "2",
+   "quote": "2023년 이익률이 두 자릿수인 지역은 2개였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2",
+   "recomputed_raw": "2",
+   "sources": [
+    "staff.csv [연도=2023] 이익률 >= 10: 2 rows"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "sales.csv",
+   "column": "매출",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "sales.csv",
+   "column": "비용",
+   "multiplier": "1000000",
+   "claims": 1
+  }
+ ]
+}

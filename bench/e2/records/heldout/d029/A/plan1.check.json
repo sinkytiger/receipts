@@ -1,0 +1,277 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 13,
+  "wrong": 2,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 2,
+ "skipped": {
+  "code": 2,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 22
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 26,
+   "end": 30,
+   "text": "0.79",
+   "quote": "2024년 부산 지역의 매출 대비 비용 비율은 0.79였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.79",
+   "recomputed_raw": "0.791000000000102062922152828520098590620179096406663287213684",
+   "sources": [
+    "sales.csv [연도=2024, 지역=부산] 비용 = 170502662798",
+    "sales.csv [연도=2024, 지역=부산] 매출 = 215553303158"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 27,
+   "end": 34,
+   "text": "8.5%포인트",
+   "quote": "부산 지역 이익률은 2022년 대비 2023년에 8.5%포인트 상승했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "8.5%p",
+   "recomputed_raw": "8.5",
+   "sources": [
+    "staff.csv [연도=2023, 지역=부산] 이익률 = 22.7",
+    "staff.csv [연도=2022, 지역=부산] 이익률 = 14.2"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 26,
+   "end": 32,
+   "text": "38.80배",
+   "quote": "2022년 서울 지역 매출은 부산 지역 매출의 38.80배였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3.88배",
+   "recomputed_raw": "3.87938221837338704161465198175667182321309881646752061039668",
+   "sources": [
+    "sales.csv [연도=2022, 지역=서울] 매출 = 594721172198",
+    "sales.csv [연도=2022, 지역=부산] 매출 = 153303061859"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 26,
+   "end": 29,
+   "text": "684",
+   "quote": "부산 지역 인원은 2021년 대비 2022년에 684명 증가했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "684",
+   "recomputed_raw": "684",
+   "sources": [
+    "staff.csv [연도=2022, 지역=부산] 인원 = 4442",
+    "staff.csv [연도=2021, 지역=부산] 인원 = 3758"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 27,
+   "end": 33,
+   "text": "18.9%p",
+   "quote": "인천 지역 이익률은 2024년 대비 2025년에 18.9%p 늘었다.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "-18.9%p",
+   "recomputed_raw": "-18.9",
+   "sources": [
+    "staff.csv [연도=2025, 지역=인천] 이익률 = -3.8",
+    "staff.csv [연도=2024, 지역=인천] 이익률 = 15.1"
+   ],
+   "note": "the sentence says up, the recomputed change is -18.9"
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 27,
+   "end": 35,
+   "text": "26.9%포인트",
+   "quote": "부산 지역 이익률은 2023년 대비 2024년에 26.9%포인트 하락했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-26.9%p",
+   "recomputed_raw": "-26.9",
+   "sources": [
+    "staff.csv [연도=2024, 지역=부산] 이익률 = -4.2",
+    "staff.csv [연도=2023, 지역=부산] 이익률 = 22.7"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 29,
+   "end": 33,
+   "text": "0.82",
+   "quote": "2025년 부산 지역의 매출 대비 비용 비율은 0.82였다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "0.83",
+   "recomputed_raw": "0.827999999998176031694239508278538318689230504847722354190954",
+   "sources": [
+    "sales.csv [연도=2025, 지역=부산] 비용 = 208819417967",
+    "sales.csv [연도=2025, 지역=부산] 매출 = 252197364695"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 21,
+   "end": 28,
+   "text": "2조 439억",
+   "quote": "2023년 전 지역 매출 합계는 2조 439억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,043,900,000,000",
+   "recomputed_raw": "2043923430438",
+   "sources": [
+    "sales.csv [연도=2023] 매출: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 21,
+   "end": 27,
+   "text": "6,863억",
+   "quote": "2023년 지역별 매출 최고치는 6,863억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "686,300,000,000",
+   "recomputed_raw": "686271518370",
+   "sources": [
+    "sales.csv [연도=2023] 매출: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 29,
+   "end": 33,
+   "text": "697억",
+   "quote": "서울 지역 비용은 2022년 대비 2023년에 697억 원 상승했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "69,700,000,000",
+   "recomputed_raw": "69698347775",
+   "sources": [
+    "sales.csv [연도=2023, 지역=서울] 비용 = 462214321426",
+    "sales.csv [연도=2022, 지역=서울] 비용 = 392515973651"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 16,
+   "end": 21,
+   "text": "3,840",
+   "quote": "2023년 인천 지역 인원은 3,840명이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,840",
+   "recomputed_raw": "3840",
+   "sources": [
+    "staff.csv [연도=2023, 지역=인천] 인원 = 3840"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 17,
+   "end": 22,
+   "text": "21.8%",
+   "quote": "2023년 인천 지역 이익률은 21.8%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "21.8%",
+   "recomputed_raw": "21.8",
+   "sources": [
+    "staff.csv [연도=2023, 지역=인천] 이익률 = 21.8"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 16,
+   "end": 21,
+   "text": "3,589",
+   "quote": "2022년 인천 지역 단가는 3,589원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,589",
+   "recomputed_raw": "3589",
+   "sources": [
+    "sales.csv [연도=2022, 지역=인천] 단가 = 3589"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 26,
+   "end": 34,
+   "text": "14.50퍼센트",
+   "quote": "서울 지역 매출은 2022년 대비 2023년에 14.50퍼센트 떨어졌다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-14.50%",
+   "recomputed_raw": "-14.5000000000487623467192539352703382835283910488752173973768",
+   "sources": [
+    "sales.csv [연도=2023, 지역=서울] 매출 = 508486602229",
+    "sales.csv [연도=2022, 지역=서울] 매출 = 594721172198"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 30,
+   "end": 37,
+   "text": "-11.90%",
+   "quote": "부산 지역 인원의 2022년 대비 2023년 변동률은 -11.90%였다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "-11.91%",
+   "recomputed_raw": "-11.90904997748761819000450247636199909950472760018009905448",
+   "sources": [
+    "staff.csv [연도=2023, 지역=부산] 인원 = 3913",
+    "staff.csv [연도=2022, 지역=부산] 인원 = 4442"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

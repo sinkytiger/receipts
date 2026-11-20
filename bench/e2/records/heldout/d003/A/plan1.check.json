@@ -1,0 +1,275 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 12,
+  "wrong": 3,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 2,
+ "skipped": {
+  "code": 2,
+  "date": 3,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 33,
+   "end": 40,
+   "text": "$674.3K",
+   "quote": "Revenue per employee in East was $674.3K in 2024.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "674.4K",
+   "recomputed_raw": "674375.703448275862068965517241379310344827586206896551724138",
+   "sources": [
+    "tables.md table 1 [Year=2024, Region=East] Revenue = 293353431",
+    "tables.md table 2 [Year=2024, Region=East] Staff = 435"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 25,
+   "end": 30,
+   "text": "63.7%",
+   "quote": "North operating cost was 63.7% of revenue in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "63.9%",
+   "recomputed_raw": "63.9000000570508243412579025083038571959938208983576808453715",
+   "sources": [
+    "tables.md table 1 [Year=2025, Region=North] Cost = 436821033",
+    "tables.md table 1 [Year=2025, Region=North] Revenue = 683600990"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 26,
+   "end": 29,
+   "text": "643",
+   "quote": "Central headcount fell by 643 in 2024 vs 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-643",
+   "recomputed_raw": "-643",
+   "sources": [
+    "tables.md table 2 [Year=2024, Region=Central] Staff = 7196",
+    "tables.md table 2 [Year=2023, Region=Central] Staff = 7839"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 57,
+   "end": 66,
+   "text": "3,900,000",
+   "quote": "Across all regions and years, shipments totalled roughly 3,900,000 units.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,900,000",
+   "recomputed_raw": "3920405",
+   "sources": [
+    "tables.md table 1 [] Units: 25 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 17,
+   "end": 22,
+   "text": "7,839",
+   "quote": "Central employed 7,839 people in FY2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "7,839",
+   "recomputed_raw": "7839",
+   "sources": [
+    "tables.md table 2 [Year=2023, Region=Central] Staff = 7839"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 26,
+   "end": 34,
+   "text": "79,656.2",
+   "quote": "All regions together sold 79,656.2 units in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "796,562.0",
+   "recomputed_raw": "796562",
+   "sources": [
+    "tables.md table 1 [Year=2024] Units: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 39,
+   "end": 40,
+   "text": "4",
+   "quote": "Double-digit margins were posted by 4 regions in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4",
+   "recomputed_raw": "4",
+   "sources": [
+    "tables.md table 2 [Year=2025] Margin >= 10: 4 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 28,
+   "end": 33,
+   "text": "6.10%",
+   "quote": "Central headcount jumped 6.10% in 2023 vs 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6.10%",
+   "recomputed_raw": "6.10449377368706009745533297238765565782349756361667569030861",
+   "sources": [
+    "tables.md table 2 [Year=2023, Region=Central] Staff = 7839",
+    "tables.md table 2 [Year=2022, Region=Central] Staff = 7388"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 20,
+   "end": 27,
+   "text": "$865.0M",
+   "quote": "West revenue was $865.0M in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "865.0M",
+   "recomputed_raw": "864989877",
+   "sources": [
+    "tables.md table 1 [Year=2022, Region=West] Revenue = 864989877"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 35,
+   "end": 36,
+   "text": "1",
+   "quote": "Negative margins were posted by 1 regions in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1",
+   "recomputed_raw": "1",
+   "sources": [
+    "tables.md table 2 [Year=2021] Margin < 0: 1 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 18,
+   "end": 22,
+   "text": "1.6x",
+   "quote": "South revenue was 1.6x that of North in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.6x",
+   "recomputed_raw": "1.58866616818688670224271461118760224719773509196861671867372",
+   "sources": [
+    "tables.md table 1 [Year=2022, Region=South] Revenue = 1006682605",
+    "tables.md table 1 [Year=2022, Region=North] Revenue = 633665288"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 30,
+   "end": 37,
+   "text": "$109.89",
+   "quote": "The selling price in West was $109.89 in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "109.89",
+   "recomputed_raw": "109.89",
+   "sources": [
+    "tables.md table 1 [Year=2021, Region=West] Price = 109.89"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 50,
+   "end": 55,
+   "text": "+3.8%",
+   "quote": "The change in West unit sales in 2024 vs 2023 was +3.8%.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3.9%",
+   "recomputed_raw": "3.90020835837640742076371358737027687622711063028408863244781",
+   "sources": [
+    "tables.md table 1 [Year=2024, Region=West] Units = 207443",
+    "tables.md table 1 [Year=2023, Region=West] Units = 199656"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 27,
+   "end": 31,
+   "text": "8.0%",
+   "quote": "South unit sales increased 8.0% in 2025 vs 2024.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "8.1%",
+   "recomputed_raw": "8.09987604037542057729768018416858508942801487515494953072428",
+   "sources": [
+    "tables.md table 1 [Year=2025, Region=South] Units = 213654",
+    "tables.md table 1 [Year=2024, Region=South] Units = 197645"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 25,
+   "end": 30,
+   "text": "12.2%",
+   "quote": "South unit sales slipped 12.2% in 2022 vs 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-12.2%",
+   "recomputed_raw": "-12.19993352703412636296383656227551972210011686376258429737",
+   "sources": [
+    "tables.md table 1 [Year=2022, Region=South] Units = 163784",
+    "tables.md table 1 [Year=2021, Region=South] Units = 186542"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

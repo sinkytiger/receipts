@@ -1,0 +1,67 @@
+{
+ "doc": "d030",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T052236Z",
+   "set": "heldout",
+   "doc": "d030",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4695,
+   "output_tokens": 1953,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.001446,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcv9ZbmETLSY1oNVznt"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 19,
+    "number": "+2.0%",
+    "should_be": "+1.8%",
+    "why": "대구 판매량 116,007→118,095 is about +1.80%"
+   },
+   {
+    "line": 27,
+    "number": "72,759원",
+    "should_be": "74,069원",
+    "why": "2024년 인천 단가 is 74069; 72759 is the 2023 value"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-06-24"
+   },
+   {
+    "line": 4,
+    "number": "v2.9.9"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 5,
+    "number": "table-90"
+   },
+   {
+    "line": 32,
+    "number": "271"
+   },
+   {
+    "line": 33,
+    "number": "0.31"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.001446
+}

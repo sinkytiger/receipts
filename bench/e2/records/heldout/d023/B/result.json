@@ -1,0 +1,93 @@
+{
+ "doc": "d023",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T052024Z",
+   "set": "heldout",
+   "doc": "d023",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2933,
+   "output_tokens": 2132,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0013593,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDckMNEPVJrsDv9z2XZY"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "125명",
+    "should_be": "126명",
+    "why": "부산 인원 3072→2946 is a drop of 126"
+   },
+   {
+    "line": 12,
+    "number": "72.9%",
+    "should_be": "73.0%",
+    "why": "2022 대전 비용/매출 = 953573/1306265 ≈ 0.730"
+   },
+   {
+    "line": 18,
+    "number": "21.9%",
+    "should_be": "18.0%",
+    "why": "2021 부산 이익률 is 18; 21.9 is 광주"
+   },
+   {
+    "line": 19,
+    "number": "3.9조 원",
+    "should_be": "3.3조 원",
+    "why": "2023 인천+부산 매출 = 1870285+1440903 = 3,311,188 백만 원"
+   },
+   {
+    "line": 25,
+    "number": "2.06조 원",
+    "should_be": "1.51조 원",
+    "why": "2025 대전 비용 is 1512915 백만 원; 2.06 is 서울 2023 region figure"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026"
+   },
+   {
+    "line": 3,
+    "number": "5월 28일"
+   },
+   {
+    "line": 4,
+    "number": "v1.3.1"
+   },
+   {
+    "line": 4,
+    "number": "7"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 5,
+    "number": "42"
+   },
+   {
+    "line": 32,
+    "number": "159"
+   },
+   {
+    "line": 33,
+    "number": "0.38"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0013593
+}

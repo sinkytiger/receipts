@@ -1,0 +1,367 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "Revenue per employee in West was $127.76K in 2024.",
+   "number": "$127.76K",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2024",
+      "region": "West"
+     },
+     "column": "revenue"
+    },
+    "den": {
+     "file": "data.json",
+     "pointer": "/staff",
+     "row": {
+      "year": "2024",
+      "region": "West"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "Coastal employed 6,129 people in 2024.",
+   "number": "6,129",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.json",
+     "pointer": "/staff",
+     "row": {
+      "year": "2024",
+      "region": "Coastal"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "South revenue was $395.6M in 2021.",
+   "number": "$395.6M",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2021",
+      "region": "South"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "Revenue per employee in East was $126.64K in 2025.",
+   "number": "$126.64K",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "revenue"
+    },
+    "den": {
+     "file": "data.json",
+     "pointer": "/staff",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "West revenue was 1.2x that of South in 2022.",
+   "number": "1.2x",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2022",
+      "region": "West"
+     },
+     "column": "revenue"
+    },
+    "den": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2022",
+      "region": "South"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "West and South revenue combined was $1,108,838,197 in 2023.",
+   "number": "$1,108,838,197",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "data.json",
+      "pointer": "/sales",
+      "row": {
+       "year": "2023",
+       "region": "West"
+      },
+      "column": "revenue"
+     },
+     {
+      "file": "data.json",
+      "pointer": "/sales",
+      "row": {
+       "year": "2023",
+       "region": "South"
+      },
+      "column": "revenue"
+     }
+    ]
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "East headcount grew by 705 in 2025 vs 2024.",
+   "number": "705",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "data.json",
+     "pointer": "/staff",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "staff"
+    },
+    "b": {
+     "file": "data.json",
+     "pointer": "/staff",
+     "row": {
+      "year": "2024",
+      "region": "East"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "The change in East revenue in 2025 vs 2024 was +7.2 percent.",
+   "number": "+7.2 percent",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "revenue"
+    },
+    "old": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2024",
+      "region": "East"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "The highest regional margin was 19.5% in 2023.",
+   "number": "19.5%",
+   "kind": "derived",
+   "formula": "max",
+   "operands": {
+    "cells": {
+     "file": "data.json",
+     "pointer": "/staff",
+     "where": {
+      "year": "2023"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "The highest regional margin was 16.4% in 2024.",
+   "number": "16.4%",
+   "kind": "derived",
+   "formula": "max",
+   "operands": {
+    "cells": {
+     "file": "data.json",
+     "pointer": "/staff",
+     "where": {
+      "year": "2024"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "South accounted for 28.09 percent of total revenue in 2021.",
+   "number": "28.09 percent",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2021",
+      "region": "South"
+     },
+     "column": "revenue"
+    },
+    "whole": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "where": {
+      "year": "2021"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "Total revenue across all regions was $2.15B in 2025.",
+   "number": "$2.15B",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "where": {
+      "year": "2025"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The margin in East fell 10.6 percentage points in 2025 vs 2024.",
+   "number": "10.6 percentage points",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "data.json",
+     "pointer": "/staff",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "margin"
+    },
+    "b": {
+     "file": "data.json",
+     "pointer": "/staff",
+     "row": {
+      "year": "2024",
+      "region": "East"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "The selling price in West was $92.07 in 2021.",
+   "number": "$92.07",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2021",
+      "region": "West"
+     },
+     "column": "price"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "South operating cost was 64.0% of revenue in 2023.",
+   "number": "64.0%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2023",
+      "region": "South"
+     },
+     "column": "cost"
+    },
+    "whole": {
+     "file": "data.json",
+     "pointer": "/sales",
+     "row": {
+      "year": "2023",
+      "region": "South"
+     },
+     "column": "revenue"
+    }
+   }
+  }
+ ]
+}

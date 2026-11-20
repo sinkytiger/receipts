@@ -1,0 +1,95 @@
+{
+ "doc": "d024",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T052108Z",
+   "set": "heldout",
+   "doc": "d024",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2005,
+   "output_tokens": 2444,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0014225,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcoXWm2hnTBBxEHtYS7"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "69,409원",
+    "should_be": "73,371원",
+    "why": "69,409 is the 2022 Daejeon unit price; 2021 is 73,371"
+   },
+   {
+    "line": 13,
+    "number": "3억 원",
+    "should_be": "약 3.86억 원",
+    "why": "215,065,786,441 / 557 ≈ 386 million won"
+   },
+   {
+    "line": 18,
+    "number": "2억 원",
+    "should_be": "약 1.5억 원",
+    "why": "665,704,506,714 / 4,342 ≈ 153 million won"
+   },
+   {
+    "line": 21,
+    "number": "올랐다",
+    "should_be": "내렸다 (1.3%p 하락)",
+    "why": "Incheon profit rate fell from 17.9 to 16.6"
+   },
+   {
+    "line": 23,
+    "number": "3조 4,202억 원",
+    "should_be": "3조 4,201억 원",
+    "why": "Sum of 2023 sales is 3,420,122,818,547 won"
+   },
+   {
+    "line": 24,
+    "number": "13,138건",
+    "should_be": "13,703건",
+    "why": "13,138 is the 2023 Incheon volume; 2024 is 13,703"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026"
+   },
+   {
+    "line": 3,
+    "number": "5월 5일"
+   },
+   {
+    "line": 4,
+    "number": "v1.4.4"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 5,
+    "number": "table-85"
+   },
+   {
+    "line": 32,
+    "number": "338"
+   },
+   {
+    "line": 33,
+    "number": "0.19"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0014225
+}

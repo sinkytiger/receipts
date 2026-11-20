@@ -1,0 +1,273 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 12,
+  "wrong": 3,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "code": 2,
+  "date": 3,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 16
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 36,
+   "end": 37,
+   "text": "2",
+   "quote": "Double-digit margins were posted by 2 regions in 2021.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1",
+   "recomputed_raw": "1",
+   "sources": [
+    "data.csv [year=2021] margin >= 10: 1 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 56,
+   "end": 65,
+   "text": "5,400,000",
+   "quote": "Across all regions and years, shipments totalled around 5,400,000 units.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,400,000",
+   "recomputed_raw": "5430670",
+   "sources": [
+    "data.csv [] units: 25 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 52,
+   "end": 58,
+   "text": "-13.2%",
+   "quote": "The change in Central headcount in 2023 vs 2022 was -13.2%.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-13.2%",
+   "recomputed_raw": "-13.1976004362843119432830394473732048718414833666606071623341",
+   "sources": [
+    "data.csv [year=2023, region=Central] staff = 4775",
+    "data.csv [year=2022, region=Central] staff = 5501"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 41,
+   "end": 45,
+   "text": "0.73",
+   "quote": "The cost-to-revenue ratio in Coastal was 0.73 in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.73",
+   "recomputed_raw": "0.728999999876276240599423274067930151649740249608900099199527",
+   "sources": [
+    "data.csv [year=2022, region=Coastal] cost = 500833472",
+    "data.csv [year=2022, region=Coastal] revenue = 687014365"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 37,
+   "end": 38,
+   "text": "3",
+   "quote": "South posted double-digit margins in 3 of the five years covered.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4",
+   "recomputed_raw": "4",
+   "sources": [
+    "data.csv [region=South] margin >= 10: 4 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 45,
+   "end": 52,
+   "text": "$115.22",
+   "quote": "The average selling price across regions was $115.22 in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "115.22",
+   "recomputed_raw": "115.216",
+   "sources": [
+    "data.csv [year=2021] price: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 32,
+   "end": 35,
+   "text": "531",
+   "quote": "1. Coastal headcount climbed by 531 in 2024 vs 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "531",
+   "recomputed_raw": "531",
+   "sources": [
+    "data.csv [year=2024, region=Coastal] staff = 3598",
+    "data.csv [year=2023, region=Coastal] staff = 3067"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 40,
+   "end": 45,
+   "text": "$1.7B",
+   "quote": "2. Total revenue across all regions was $1.7B in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.7B",
+   "recomputed_raw": "1748634512",
+   "sources": [
+    "data.csv [year=2024] revenue: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 29,
+   "end": 41,
+   "text": "1.15 million",
+   "quote": "3. All regions together sold 1.15 million units in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.15 million",
+   "recomputed_raw": "1150759",
+   "sources": [
+    "data.csv [year=2025] units: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 40,
+   "end": 45,
+   "text": "$1.8B",
+   "quote": "4. Total revenue across all regions was $1.8B in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.8B",
+   "recomputed_raw": "1845551666",
+   "sources": [
+    "data.csv [year=2021] revenue: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 24,
+   "end": 29,
+   "text": "99.6%",
+   "quote": "West operating cost was 99.6% of revenue in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "99.6%",
+   "recomputed_raw": "99.6000000823866258132048902153899883647598093791916616934402",
+   "sources": [
+    "data.csv [year=2021, region=West] cost = 527095261",
+    "data.csv [year=2021, region=West] revenue = 529212109"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 28,
+   "end": 31,
+   "text": "531",
+   "quote": "Coastal headcount jumped by 531 in 2024 vs 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "531",
+   "recomputed_raw": "531",
+   "sources": [
+    "data.csv [year=2024, region=Coastal] staff = 3598",
+    "data.csv [year=2023, region=Coastal] staff = 3067"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 26,
+   "end": 30,
+   "text": "7.6%",
+   "quote": "The margin in Central was 7.6% in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "7.6%",
+   "recomputed_raw": "7.6",
+   "sources": [
+    "data.csv [year=2025, region=Central] margin = 7.6"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 34,
+   "end": 45,
+   "text": "$96,467,060",
+   "quote": "Coastal operating cost dropped by $96,467,060 in 2025 vs 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-96,467,060",
+   "recomputed_raw": "-96467060",
+   "sources": [
+    "data.csv [year=2025, region=Coastal] cost = 630210822",
+    "data.csv [year=2024, region=Coastal] cost = 726677882"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 30,
+   "end": 39,
+   "text": "$1,176.20",
+   "quote": "The selling price in West was $1,176.20 in FY2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "117.62",
+   "recomputed_raw": "117.62",
+   "sources": [
+    "data.csv [year=2023, region=West] price = 117.62"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

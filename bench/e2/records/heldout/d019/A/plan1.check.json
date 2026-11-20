@@ -1,0 +1,276 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 12,
+  "wrong": 3,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 15
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 36,
+   "end": 37,
+   "text": "2",
+   "quote": "West posted double-digit margins in 2 of the five years covered.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2",
+   "recomputed_raw": "2",
+   "sources": [
+    "tables.md table 2 [Region=West] Margin >= 10: 2 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 34,
+   "end": 41,
+   "text": "$68,584",
+   "quote": "Revenue per employee in South was $68,584 in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "68,584",
+   "recomputed_raw": "68583.8921941157311909673216805992834654217783085441320160677",
+   "sources": [
+    "tables.md table 1 [Year=2022, Region=South] Revenue = 631726231",
+    "tables.md table 2 [Year=2022, Region=South] Staff = 9211"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 19,
+   "end": 25,
+   "text": "24.29%",
+   "quote": "West accounted for 24.29% of total revenue in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "24.29%",
+   "recomputed_raw": "24.2913640376626442767691987707928918162957142532509531038081",
+   "sources": [
+    "tables.md table 1 [Year=2022, Region=West] Revenue = 823044438",
+    "tables.md table 1 [Year=2022] Revenue: 4 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 24,
+   "end": 29,
+   "text": "82.0%",
+   "quote": "West operating cost was 82.0% of revenue in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "82.0%",
+   "recomputed_raw": "82.0000000478303896664748094835577563497151237365518581714062",
+   "sources": [
+    "tables.md table 1 [Year=2024, Region=West] Cost = 720044312",
+    "tables.md table 1 [Year=2024, Region=West] Revenue = 878102819"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 36,
+   "end": 37,
+   "text": "3",
+   "quote": "Double-digit margins were posted by 3 regions in 2022.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4",
+   "recomputed_raw": "4",
+   "sources": [
+    "tables.md table 2 [Year=2022] Margin >= 10: 4 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 36,
+   "end": 37,
+   "text": "4",
+   "quote": "West posted double-digit margins in 4 of the five years covered.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2",
+   "recomputed_raw": "2",
+   "sources": [
+    "tables.md table 2 [Region=West] Margin >= 10: 2 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 20,
+   "end": 25,
+   "text": "1.30x",
+   "quote": "West revenue was 1.30x that of South in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.30x",
+   "recomputed_raw": "1.30284987010457066171754390866824714771104700257412613281211",
+   "sources": [
+    "tables.md table 1 [Year=2022, Region=West] Revenue = 823044438",
+    "tables.md table 1 [Year=2022, Region=South] Revenue = 631726231"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 37,
+   "end": 43,
+   "text": "$68.5K",
+   "quote": "Revenue per employee in South was $68.5K in 2022.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "68.6K",
+   "recomputed_raw": "68583.8921941157311909673216805992834654217783085441320160677",
+   "sources": [
+    "tables.md table 1 [Year=2022, Region=South] Revenue = 631726231",
+    "tables.md table 2 [Year=2022, Region=South] Staff = 9211"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 34,
+   "end": 41,
+   "text": "$136.87",
+   "quote": "The selling price in North was $136.87 in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "136.89",
+   "recomputed_raw": "136.89",
+   "sources": [
+    "tables.md table 1 [Year=2023, Region=North] Price = 136.89"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 21,
+   "end": 26,
+   "text": "1.28x",
+   "quote": "North revenue was 1.28x that of East in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.28x",
+   "recomputed_raw": "1.27511194570581517102751201631492564278370773300589426022614",
+   "sources": [
+    "tables.md table 1 [Year=2023, Region=North] Revenue = 1138957846",
+    "tables.md table 1 [Year=2023, Region=East] Revenue = 893221846"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 21,
+   "end": 27,
+   "text": "18.40%",
+   "quote": "North headcount rose 18.40% in 2025 vs 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "18.40%",
+   "recomputed_raw": "18.4016118200134318334452652787105439892545332437877770315648",
+   "sources": [
+    "tables.md table 2 [Year=2025, Region=North] Staff = 1763",
+    "tables.md table 2 [Year=2024, Region=North] Staff = 1489"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 30,
+   "end": 37,
+   "text": "$249.78",
+   "quote": "The selling price in East was $249.78 in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "249.78",
+   "recomputed_raw": "249.78",
+   "sources": [
+    "tables.md table 1 [Year=2025, Region=East] Price = 249.78"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 49,
+   "end": 55,
+   "text": "+9.74%",
+   "quote": "The change in West headcount in 2022 vs 2021 was +9.74%.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "9.74%",
+   "recomputed_raw": "9.73782771535580524344569288389513108614232209737827715355805",
+   "sources": [
+    "tables.md table 2 [Year=2022, Region=West] Staff = 586",
+    "tables.md table 2 [Year=2021, Region=West] Staff = 534"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 37,
+   "end": 49,
+   "text": "$1.9 billion",
+   "quote": "South and North revenue combined was $1.9 billion in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.9 billion",
+   "recomputed_raw": "1897029323",
+   "sources": [
+    "tables.md table 1 [Year=2023, Region=South] Revenue = 758071477",
+    "tables.md table 1 [Year=2023, Region=North] Revenue = 1138957846"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 10,
+   "end": 17,
+   "text": "241,390",
+   "quote": "West sold 241,390 units in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "241,390",
+   "recomputed_raw": "241390",
+   "sources": [
+    "tables.md table 1 [Year=2021, Region=West] Units = 241390"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

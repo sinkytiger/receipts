@@ -1,0 +1,283 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 11,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 19
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 26,
+   "end": 30,
+   "text": "410억",
+   "quote": "대전 지역 비용은 2022년 대비 2023년에 410억 원 증가했다.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "-41,000,000,000",
+   "recomputed_raw": "-40968000000",
+   "sources": [
+    "tables.md table 1 [연도=2023, 지역=대전] 비용 = 655969 x 1000000",
+    "tables.md table 1 [연도=2022, 지역=대전] 비용 = 696937 x 1000000"
+   ],
+   "note": "the sentence says up, the recomputed change is -40968000000"
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 16,
+   "end": 17,
+   "text": "1",
+   "quote": "다섯 해 가운데 1개 연도에 두 자릿수 이익률을 기록했다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2",
+   "recomputed_raw": "2",
+   "sources": [
+    "tables.md table 2 [지역=인천] 이익률 >= 10: 2 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 27,
+   "end": 34,
+   "text": "2.4%포인트",
+   "quote": "대구 지역 이익률은 2022년 대비 2023년에 2.4%포인트 증가했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2.4%p",
+   "recomputed_raw": "2.4",
+   "sources": [
+    "tables.md table 2 [연도=2023, 지역=대구] 이익률 = 4.2",
+    "tables.md table 2 [연도=2022, 지역=대구] 이익률 = 1.8"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 19,
+   "end": 28,
+   "text": "1,311,717",
+   "quote": "2022년 전 지역 판매량 합계는 1,311,717건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,311,717",
+   "recomputed_raw": "1311717",
+   "sources": [
+    "tables.md table 1 [연도=2022] 판매량: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 31,
+   "end": 39,
+   "text": "+7.30퍼센트",
+   "quote": "대전 지역 판매량의 2021년 대비 2022년 변동률은 +7.30퍼센트였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "7.30%",
+   "recomputed_raw": "7.29996093867371773684684955379946516030167362759532465971575",
+   "sources": [
+    "tables.md table 1 [연도=2022, 지역=대전] 판매량 = 142842",
+    "tables.md table 1 [연도=2021, 지역=대전] 판매량 = 133124"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 30,
+   "end": 39,
+   "text": "+18.41퍼센트",
+   "quote": "인천 지역 인원의 2024년 대비 2025년 변동률은 +18.41퍼센트였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "18.41%",
+   "recomputed_raw": "18.4053048681869642568332524664402393660035581432961345625101",
+   "sources": [
+    "tables.md table 2 [연도=2025, 지역=인천] 인원 = 7321",
+    "tables.md table 2 [연도=2024, 지역=인천] 인원 = 6183"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 29,
+   "end": 32,
+   "text": "158",
+   "quote": "인천 지역 인원은 2021년 대비 2022년에 158명 떨어졌다.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "158",
+   "recomputed_raw": "158",
+   "sources": [
+    "tables.md table 2 [연도=2022, 지역=인천] 인원 = 7019",
+    "tables.md table 2 [연도=2021, 지역=인천] 인원 = 6861"
+   ],
+   "note": "the sentence says down, the recomputed change is 158"
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 20,
+   "end": 27,
+   "text": "-4.7퍼센트",
+   "quote": "2021년 대구 지역 이익률은 -4.7퍼센트였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-4.5%",
+   "recomputed_raw": "-4.5",
+   "sources": [
+    "tables.md table 2 [연도=2021, 지역=대구] 이익률 = -4.5"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 23,
+   "end": 30,
+   "text": "5.97퍼센트",
+   "quote": "2024년 인천 지역은 전체 매출의 5.97퍼센트를 차지했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5.97%",
+   "recomputed_raw": "5.9747777180981635941529761138509479440866133693186610262033",
+   "sources": [
+    "tables.md table 1 [연도=2024, 지역=인천] 매출 = 269196",
+    "tables.md table 1 [연도=2024] 매출: 5 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 20,
+   "end": 24,
+   "text": "9.2%",
+   "quote": "2024년 대전 지역 이익률은 9.2%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "9.2%",
+   "recomputed_raw": "9.2",
+   "sources": [
+    "tables.md table 2 [연도=2024, 지역=대전] 이익률 = 9.2"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 26,
+   "end": 31,
+   "text": "1.88배",
+   "quote": "2021년 부산 지역 매출은 대전 지역 매출의 1.88배였다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "1.89배",
+   "recomputed_raw": "1.88651110838001689475624724837936350639309399613878591108007",
+   "sources": [
+    "tables.md table 1 [연도=2021, 지역=부산] 매출 = 1212655",
+    "tables.md table 1 [연도=2021, 지역=대전] 매출 = 642803"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 26,
+   "end": 30,
+   "text": "2.5배",
+   "quote": "2021년 서울 지역 매출은 대전 지역 매출의 2.5배였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2.5배",
+   "recomputed_raw": "2.4545078352154548127497849263304620544708098748761284561522",
+   "sources": [
+    "tables.md table 1 [연도=2021, 지역=서울] 매출 = 1577765",
+    "tables.md table 1 [연도=2021, 지역=대전] 매출 = 642803"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 16,
+   "end": 21,
+   "text": "6,152",
+   "quote": "2022년 서울 지역 인원은 6,152명이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6,152",
+   "recomputed_raw": "6152",
+   "sources": [
+    "tables.md table 2 [연도=2022, 지역=서울] 인원 = 6152"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 20,
+   "end": 25,
+   "text": "6.07%",
+   "quote": "2025년 대구 지역은 전체 매출의 6.07%를 차지했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6.07%",
+   "recomputed_raw": "6.07253410691037737580860038246440126796274435463599184356604",
+   "sources": [
+    "tables.md table 1 [연도=2025, 지역=대구] 매출 = 248100",
+    "tables.md table 1 [연도=2025] 매출: 5 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 17,
+   "end": 22,
+   "text": "24.7%",
+   "quote": "2021년 대전 지역 이익률은 24.7%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "24.7%",
+   "recomputed_raw": "24.7",
+   "sources": [
+    "tables.md table 2 [연도=2021, 지역=대전] 이익률 = 24.7"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "tables.md",
+   "column": "비용",
+   "multiplier": "1000000",
+   "claims": 1
+  }
+ ]
+}

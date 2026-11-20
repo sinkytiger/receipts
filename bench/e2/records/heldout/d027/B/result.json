@@ -1,0 +1,109 @@
+{
+ "doc": "d027",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051130Z",
+   "set": "heldout",
+   "doc": "d027",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2343,
+   "output_tokens": 2058,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0012633,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDc54Bnk768q9RNrqqkC"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 11,
+    "number": "8.5 percent",
+    "should_be": "9.30 percent",
+    "why": "South revenue 2023 vs 2022 is 221438157/202596667, about +9.30%"
+   },
+   {
+    "line": 13,
+    "number": "60.2%",
+    "should_be": "20.2%",
+    "why": "South margin in 2022 is 20.2 in the source table"
+   },
+   {
+    "line": 14,
+    "number": "165,041",
+    "should_be": "165,341",
+    "why": "Central units in 2024 are 165341"
+   },
+   {
+    "line": 18,
+    "number": "14.96 percent",
+    "should_be": "13.01 percent",
+    "why": "East 2023 units 105491 / total 810615 is about 13.01%"
+   },
+   {
+    "line": 19,
+    "number": "-6.39%",
+    "should_be": "-6.40%",
+    "why": "East headcount 7040 vs 7521 is -6.395%, which rounds to -6.40%"
+   },
+   {
+    "line": 21,
+    "number": "$1,289,868,790",
+    "should_be": "$1,421,677,031",
+    "why": "Sum of 2025 costs across the five regions"
+   },
+   {
+    "line": 24,
+    "number": "$215.05",
+    "should_be": "$142.82",
+    "why": "West 2021 price is 142.82; 215.05 is Central 2021"
+   },
+   {
+    "line": 26,
+    "number": "9.1%",
+    "should_be": "8.4%",
+    "why": "Central 2024 revenue 147874785 / total 1765216709 is about 8.38%"
+   },
+   {
+    "line": 27,
+    "number": "1 of the five years",
+    "should_be": "3 of the five years",
+    "why": "East margins at or above 10 are in 2021, 2022 and 2025"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-12-01"
+   },
+   {
+    "line": 4,
+    "number": "v1.2.9"
+   },
+   {
+    "line": 4,
+    "number": "40"
+   },
+   {
+    "line": 5,
+    "number": "2025"
+   },
+   {
+    "line": 32,
+    "number": "168"
+   },
+   {
+    "line": 33,
+    "number": "0.45"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0012633
+}

@@ -1,0 +1,81 @@
+{
+ "doc": "d010",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050606Z",
+   "set": "heldout",
+   "doc": "d010",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 3701,
+   "output_tokens": 2151,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0014456,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbfEfQFEfWoXj4o2eKA"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "5 of the five years",
+    "should_be": "3 of the five years",
+    "why": "Central's double-digit margins are 2021 (11.4), 2024 (17.6) and 2025 (19.1) only"
+   },
+   {
+    "line": 11,
+    "number": "12.0pp",
+    "should_be": "11.9pp",
+    "why": "East margin went from 9.2 in 2024 to -2.7 in 2025, a drop of 11.9pp"
+   },
+   {
+    "line": 19,
+    "number": "+19.42%",
+    "should_be": "+24.10%",
+    "why": "Central revenue 599,796 vs 483,317 is a 24.10% rise"
+   },
+   {
+    "line": 20,
+    "number": "decreased 18.7pp",
+    "should_be": "increased 18.7pp",
+    "why": "North margin rose from 2.5 in 2022 to 21.2 in 2023"
+   },
+   {
+    "line": 23,
+    "number": "$929.32M",
+    "should_be": "$602.36M",
+    "why": "Central 2023 cost 324,121 plus Coastal 278,237 is 602,358 thousand"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "October 21, 2026"
+   },
+   {
+    "line": 4,
+    "number": "v3.8.4"
+   },
+   {
+    "line": 4,
+    "number": "46"
+   },
+   {
+    "line": 32,
+    "number": "142"
+   },
+   {
+    "line": 33,
+    "number": "0.17"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0014456
+}

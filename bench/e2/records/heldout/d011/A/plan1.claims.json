@@ -1,0 +1,341 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "The highest regional unit sales was 200,045 units in 2024.",
+   "number": "200,045",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Central"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "Central operating cost was 97.8% of revenue in 2021.",
+   "number": "97.8%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "Central"
+     },
+     "column": "Cost"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "Double-digit margins were posted by 2 regions in 2025.",
+   "number": "2",
+   "occurrence": 1,
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Year": "2025"
+     },
+     "test": {
+      "column": "Margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "North revenue was $174.7 billion in 2022.",
+   "number": "$174.7 billion",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "Central accounted for 14.97% of total revenue in 2021.",
+   "number": "14.97%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Year": "2021"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "The cost-to-revenue ratio in North was 1.83 in 2024.",
+   "number": "1.83",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "North"
+     },
+     "column": "Cost"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "The cost-to-revenue ratio in West was 0.97 in 2025.",
+   "number": "0.97",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "West"
+     },
+     "column": "Cost"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "Revenue per employee in North was $119.61K in 2022.",
+   "number": "$119.61K",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "North"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "The margin in West was 17.5% in FY2021.",
+   "number": "17.5%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "West"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "Revenue per employee in Central was $97.3K in 2022.",
+   "number": "$97.3K",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "The margin in Central was 22.7% in FY2025.",
+   "number": "22.7%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Central"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "The selling price in Central was $75.02 in FY2024.",
+   "number": "$75.02",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Central"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The selling price in North was $23.95 in FY2021.",
+   "number": "$23.95",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "North"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "Double-digit margins were posted by 4 regions in 2025.",
+   "number": "4",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Year": "2025"
+     },
+     "test": {
+      "column": "Margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "Across all regions and years, shipments totalled around 3,800,000 units.",
+   "number": "3,800,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {},
+     "column": "Units"
+    }
+   }
+  }
+ ]
+}

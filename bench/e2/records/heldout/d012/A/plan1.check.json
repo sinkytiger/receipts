@@ -1,0 +1,279 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 11,
+  "wrong": 3,
+  "unverifiable": 1,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 2,
+  "date": 4,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 16
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 48,
+   "end": 53,
+   "text": "-3.9%",
+   "quote": "The change in North revenue in 2022 vs 2021 was -3.9%.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-3.9%",
+   "recomputed_raw": "-3.90026918157347129684427559611309444264141578053110860808308",
+   "sources": [
+    "book.xlsx [Sales] [Year=2022, Region=North] Revenue = 50338",
+    "book.xlsx [Sales] [Year=2021, Region=North] Revenue = 52381"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 14,
+   "end": 19,
+   "text": "6,758",
+   "quote": "East employed 6,758 people in FY2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "8,758",
+   "recomputed_raw": "8758",
+   "sources": [
+    "book.xlsx [Staff] [Year=2023, Region=East] Staff = 8758"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 24,
+   "end": 29,
+   "text": "13.4%",
+   "quote": "The margin in North was 13.4% in FY2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "13.4%",
+   "recomputed_raw": "13.4",
+   "sources": [
+    "book.xlsx [Staff] [Year=2022, Region=North] Margin = 13.4"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 21,
+   "end": 33,
+   "text": "20.3 percent",
+   "quote": "West revenue climbed 20.3 percent in 2024 vs 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "20.3%",
+   "recomputed_raw": "20.3000075361564232031405219130875632865863266718277919746785",
+   "sources": [
+    "book.xlsx [Sales] [Year=2024, Region=West] Revenue = 351187",
+    "book.xlsx [Sales] [Year=2023, Region=West] Revenue = 291926"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 25,
+   "end": 33,
+   "text": "$366.68M",
+   "quote": "South operating cost was $366.68M in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "275.58M",
+   "recomputed_raw": "275580000",
+   "sources": [
+    "book.xlsx [Sales] [Year=2025, Region=South] Cost = 275580 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 38,
+   "end": 43,
+   "text": "9.23%",
+   "quote": "The average margin across regions was 9.23% in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "9.23%",
+   "recomputed_raw": "9.23333333333333333333333333333333333333333333333333333333333",
+   "sources": [
+    "book.xlsx [Staff] [Year=2025] Margin: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 20,
+   "end": 24,
+   "text": "0.3x",
+   "quote": "East revenue was 0.3x that of Central in 2021.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "0.4x",
+   "recomputed_raw": "0.391214997170949386683178358296591260902520523961524911658891",
+   "sources": [
+    "book.xlsx [Sales] [Year=2021, Region=East] Revenue = 73291",
+    "book.xlsx [Sales] [Year=2021, Region=Central] Revenue = 187342"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 39,
+   "end": 40,
+   "text": "2",
+   "quote": "East posted double-digit margins in 2 of the five years covered.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2",
+   "recomputed_raw": "2",
+   "sources": [
+    "book.xlsx [Staff] [Region=East] Margin >= 10: 2 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 29,
+   "end": 36,
+   "text": "885,380",
+   "quote": "All regions together sold 885,380 units in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "885,380",
+   "recomputed_raw": "885380",
+   "sources": [
+    "book.xlsx [Sales] [Year=2021] Units: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 28,
+   "end": 40,
+   "text": "91.5 percent",
+   "quote": "South operating cost was 91.5 percent of revenue in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "91.5%",
+   "recomputed_raw": "91.4999847694791438785767493637796060556550923938778844529612",
+   "sources": [
+    "book.xlsx [Sales] [Year=2023, Region=South] Cost = 330422",
+    "book.xlsx [Sales] [Year=2023, Region=South] Revenue = 361117"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 27,
+   "end": 32,
+   "text": "1,493",
+   "quote": "North headcount climbed by 1,493 in 2022 vs 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,493",
+   "recomputed_raw": "1493",
+   "sources": [
+    "book.xlsx [Staff] [Year=2022, Region=North] Staff = 8706",
+    "book.xlsx [Staff] [Year=2021, Region=North] Staff = 7213"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 26,
+   "end": 33,
+   "text": "978,938",
+   "quote": "All regions together sold 978,938 units in 2022.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "971,938",
+   "recomputed_raw": "971938",
+   "sources": [
+    "book.xlsx [Sales] [Year=2022] Units: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 32,
+   "end": 44,
+   "text": "21.2 percent",
+   "quote": "The highest regional margin was 21.2 percent in 2025.",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "items must be a non-empty list"
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 26,
+   "end": 29,
+   "text": "261",
+   "quote": "Central headcount fell by 261 in 2022 vs 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-261",
+   "recomputed_raw": "-261",
+   "sources": [
+    "book.xlsx [Staff] [Year=2022, Region=Central] Staff = 1749",
+    "book.xlsx [Staff] [Year=2021, Region=Central] Staff = 2010"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 27,
+   "end": 32,
+   "text": "73.2%",
+   "quote": "Central operating cost was 73.2% of revenue in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "73.2%",
+   "recomputed_raw": "73.2001800843122007121515982482707813203454344534031842180657",
+   "sources": [
+    "book.xlsx [Sales] [Year=2025, Region=Central] Cost = 143080",
+    "book.xlsx [Sales] [Year=2025, Region=Central] Revenue = 195464"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "book.xlsx",
+   "column": "Cost",
+   "multiplier": "1000",
+   "claims": 1
+  }
+ ]
+}

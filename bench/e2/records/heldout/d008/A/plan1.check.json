@@ -1,0 +1,273 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 10,
+  "wrong": 5,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 16,
+   "end": 22,
+   "text": "60,468",
+   "quote": "2025년 인천 지역 단가는 60,468원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "60,468",
+   "recomputed_raw": "60468",
+   "sources": [
+    "book.xlsx [매출] [연도=2025, 지역=인천] 단가 = 60468"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 19,
+   "end": 26,
+   "text": "954,700",
+   "quote": "2022년 전 지역 판매량 합계는 954,700건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "954,700",
+   "recomputed_raw": "954700",
+   "sources": [
+    "book.xlsx [매출] [연도=2022] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 26,
+   "end": 30,
+   "text": "0.58",
+   "quote": "2022년 광주 지역의 매출 대비 비용 비율은 0.58였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.58",
+   "recomputed_raw": "0.576000000000157271144232587783735617468339964614356025477631",
+   "sources": [
+    "book.xlsx [매출] [연도=2022, 지역=광주] 비용 = 380896319489",
+    "book.xlsx [매출] [연도=2022, 지역=광주] 매출 = 661278332446"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 26,
+   "end": 30,
+   "text": "1.6배",
+   "quote": "2023년 대구 지역 매출은 서울 지역 매출의 1.6배였다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "1.7배",
+   "recomputed_raw": "1.68218296358781552560790069151982175890194027320068313995396",
+   "sources": [
+    "book.xlsx [매출] [연도=2023, 지역=대구] 매출 = 1464157912431",
+    "book.xlsx [매출] [연도=2023, 지역=서울] 매출 = 870391594805"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 21,
+   "end": 22,
+   "text": "2",
+   "quote": "마이너스인 지역은 2개였다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1",
+   "recomputed_raw": "1",
+   "sources": [
+    "book.xlsx [인원] [연도=2025] 이익률 < 0: 1 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 26,
+   "end": 31,
+   "text": "1.12배",
+   "quote": "2023년 서울 지역 매출은 부산 지역 매출의 1.12배였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.12배",
+   "recomputed_raw": "1.11952292676733033208300339626126068773834683574485774871759",
+   "sources": [
+    "book.xlsx [매출] [연도=2023, 지역=서울] 매출 = 870391594805",
+    "book.xlsx [매출] [연도=2023, 지역=부산] 매출 = 777466520778"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 22,
+   "end": 25,
+   "text": "98만",
+   "quote": "2023년 전 지역 판매량 합계는 98만건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "980,000",
+   "recomputed_raw": "975978",
+   "sources": [
+    "book.xlsx [매출] [연도=2023] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 30,
+   "end": 38,
+   "text": "13.4%포인트",
+   "quote": "대전 지역 이익률은 2023년 대비 2024년에 13.4%포인트 감소했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-13.4%p",
+   "recomputed_raw": "-13.4",
+   "sources": [
+    "book.xlsx [인원] [연도=2024, 지역=대전] 이익률 = -1.8",
+    "book.xlsx [인원] [연도=2023, 지역=대전] 이익률 = 11.6"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 19,
+   "end": 24,
+   "text": "3,002",
+   "quote": "2025년 서울 지역 인원은 3,002명이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,002",
+   "recomputed_raw": "3002",
+   "sources": [
+    "book.xlsx [인원] [연도=2025, 지역=서울] 인원 = 3002"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 33,
+   "end": 39,
+   "text": "−7.53%",
+   "quote": "광주 지역 인원의 2024년 대비 2025년 변동률은 −7.53%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-7.01%",
+   "recomputed_raw": "-7.00659654127295418078088785879835977892672490640042788375825",
+   "sources": [
+    "book.xlsx [인원] [연도=2025, 지역=광주] 인원 = 5216",
+    "book.xlsx [인원] [연도=2024, 지역=광주] 인원 = 5609"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 19,
+   "end": 25,
+   "text": "21,666",
+   "quote": "2025년 지역별 판매량 최저치는 21,666건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "21,666",
+   "recomputed_raw": "21666",
+   "sources": [
+    "book.xlsx [매출] [연도=2025] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 17,
+   "end": 21,
+   "text": "8.6%",
+   "quote": "2022년 대구 지역 이익률은 8.6%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "20.8%",
+   "recomputed_raw": "20.8",
+   "sources": [
+    "book.xlsx [인원] [연도=2022, 지역=대구] 이익률 = 20.8"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 16,
+   "end": 23,
+   "text": "19,905억",
+   "quote": "2023년 인천 지역 비용은 19,905억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,990,500,000,000",
+   "recomputed_raw": "1990511407690",
+   "sources": [
+    "book.xlsx [매출] [연도=2023, 지역=인천] 비용 = 1990511407690"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 18,
+   "end": 27,
+   "text": "5억 3,659만",
+   "quote": "2022년 전 지역 비용 합계는 5억 3,659만 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "5,365,923,780,000",
+   "recomputed_raw": "5365923776186",
+   "sources": [
+    "book.xlsx [매출] [연도=2022] 비용: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 26,
+   "end": 30,
+   "text": "504조",
+   "quote": "인천 지역 비용은 2023년 대비 2024년에 504조 원 줄었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-0",
+   "recomputed_raw": "-50402592430",
+   "sources": [
+    "book.xlsx [매출] [연도=2024, 지역=인천] 비용 = 1940108815260",
+    "book.xlsx [매출] [연도=2023, 지역=인천] 비용 = 1990511407690"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

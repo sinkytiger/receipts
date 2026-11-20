@@ -1,0 +1,375 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "The change in North revenue in 2022 vs 2021 was -3.9%.",
+   "number": "-3.9%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    },
+    "old": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "East employed 6,758 people in FY2023.",
+   "number": "6,758",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "East"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "The margin in North was 13.4% in FY2022.",
+   "number": "13.4%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "North"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "West revenue climbed 20.3 percent in 2024 vs 2023.",
+   "number": "20.3 percent",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "up",
+   "operands": {
+    "new": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    },
+    "old": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "South operating cost was $366.68M in 2025.",
+   "number": "$366.68M",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "South"
+     },
+     "column": "Cost",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "The average margin across regions was 9.23% in 2025.",
+   "number": "9.23%",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "where": {
+      "Year": "2025"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "East revenue was 0.3x that of Central in 2021.",
+   "number": "0.3x",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "East"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "East posted double-digit margins in 2 of the five years covered.",
+   "number": "2",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "where": {
+      "Region": "East"
+     },
+     "test": {
+      "column": "Margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "All regions together sold 885,380 units in 2021.",
+   "number": "885,380",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "where": {
+      "Year": "2021"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "South operating cost was 91.5 percent of revenue in 2023.",
+   "number": "91.5 percent",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "South"
+     },
+     "column": "Cost"
+    },
+    "whole": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "South"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "North headcount climbed by 1,493 in 2022 vs 2021.",
+   "number": "1,493",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "North"
+     },
+     "column": "Staff"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "North"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "All regions together sold 978,938 units in 2022.",
+   "number": "978,938",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "where": {
+      "Year": "2022"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The highest regional margin was 21.2 percent in 2025.",
+   "number": "21.2 percent",
+   "kind": "derived",
+   "formula": "max",
+   "operands": {
+    "items": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "where": {
+      "Year": "2025"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "Central headcount fell by 261 in 2022 vs 2021.",
+   "number": "261",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "Central operating cost was 73.2% of revenue in 2025.",
+   "number": "73.2%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Central"
+     },
+     "column": "Cost"
+    },
+    "whole": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    }
+   }
+  }
+ ]
+}

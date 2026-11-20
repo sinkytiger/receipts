@@ -1,0 +1,398 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "North revenue was 3.2x that of West in 2024.",
+   "number": "3.2x",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "Central revenue was 3.69x that of West in 2024.",
+   "number": "3.69x",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "The selling price in Coastal was $212.80 in 2023.",
+   "number": "$212.80",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "Coastal"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "The change in West headcount in 2025 vs 2024 was -4.9%.",
+   "number": "-4.9%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "West"
+     },
+     "column": "Staff"
+    },
+    "old": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "Coastal operating cost was 80.5% of revenue in 2025.",
+   "number": "80.5%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Coastal"
+     },
+     "column": "Cost"
+    },
+    "whole": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Coastal"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "The margin in Central was 15.4% in 2021.",
+   "number": "15.4%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "Central"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "Revenue per employee in Coastal was $240.2K in 2024.",
+   "number": "$240.2K",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Coastal"
+     },
+     "column": "Revenue",
+     "multiplier": 1000
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "Staff",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Coastal"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "West and East revenue combined was $52.19M in 2025.",
+   "number": "$52.19M",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "book.xlsx",
+      "sheet": "Sales",
+      "header_row": 2,
+      "row": {
+       "Year": "2025",
+       "Region": "West"
+      },
+      "column": "Revenue",
+      "multiplier": 1000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "Sales",
+      "header_row": 2,
+      "row": {
+       "Year": "2025",
+       "Region": "East"
+      },
+      "column": "Revenue",
+      "multiplier": 1000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "Across all regions and years, shipments totalled around 6,300,000 units.",
+   "number": "6,300,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "where": {},
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "Central operating cost was 73.8% of revenue in 2024.",
+   "number": "73.8%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Central"
+     },
+     "column": "Cost"
+    },
+    "whole": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "East and Coastal revenue combined was $328,045,000 in 2022.",
+   "number": "$328,045,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "book.xlsx",
+      "sheet": "Sales",
+      "header_row": 2,
+      "row": {
+       "Year": "2022",
+       "Region": "East"
+      },
+      "column": "Revenue",
+      "multiplier": 1000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "Sales",
+      "header_row": 2,
+      "row": {
+       "Year": "2022",
+       "Region": "Coastal"
+      },
+      "column": "Revenue",
+      "multiplier": 1000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "Coastal operating cost was $159.7 billion in 2024.",
+   "number": "$159.7 billion",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Coastal"
+     },
+     "column": "Cost",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The cost-to-revenue ratio in North was 0.75 in 2023.",
+   "number": "0.75",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "North"
+     },
+     "column": "Cost"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "The selling price in West was $107.69 in 2024.",
+   "number": "$107.69",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "West operating cost was $72,039,000 in FY2021.",
+   "number": "$72,039,000",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Sales",
+     "header_row": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "West"
+     },
+     "column": "Cost",
+     "multiplier": 1000
+    }
+   }
+  }
+ ]
+}

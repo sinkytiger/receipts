@@ -1,0 +1,89 @@
+{
+ "doc": "d011",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050647Z",
+   "set": "heldout",
+   "doc": "d011",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2339,
+   "output_tokens": 2537,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0015024,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbi4S6E8PWGbZdeD19m"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "200,045",
+    "should_be": "233,697",
+    "why": "Highest unit sales is 233,697 (Central, 2023); 200,045 is Central 2024"
+   },
+   {
+    "line": 10,
+    "number": "97.8%",
+    "should_be": "97.9%",
+    "why": "333,659,463 / 340,816,612 = 0.979"
+   },
+   {
+    "line": 12,
+    "number": "$174.7 billion",
+    "should_be": "$174.7 million",
+    "why": "North 2022 revenue is 174,747,270 dollars"
+   },
+   {
+    "line": 14,
+    "number": "1.83",
+    "should_be": "1.03",
+    "why": "North 2024 cost/revenue = 168,992,318 / 164,870,554 = 1.025"
+   },
+   {
+    "line": 18,
+    "number": "0.97",
+    "should_be": "0.98",
+    "why": "West 2025 cost/revenue = 509,896,503 / 520,834,017 = 0.979"
+   },
+   {
+    "line": 25,
+    "number": "$23.95",
+    "should_be": "$192.63",
+    "why": "North 2021 price is 192.63; 23.95 is South 2021"
+   },
+   {
+    "line": 26,
+    "number": "4 regions",
+    "should_be": "2 regions",
+    "why": "Only Central (22.6) and Coastal (23.3) have double-digit 2025 margins"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "5 May 2026"
+   },
+   {
+    "line": 4,
+    "number": "v2.0.0"
+   },
+   {
+    "line": 32,
+    "number": "16"
+   },
+   {
+    "line": 33,
+    "number": "0.41"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0015024
+}

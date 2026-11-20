@@ -1,0 +1,366 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "Revenue per employee in East was $674.3K in 2024.",
+   "number": "$674.3K",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2024",
+      "Region": "East"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "East"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "North operating cost was 63.7% of revenue in 2025.",
+   "number": "63.7%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2025",
+      "Region": "North"
+     },
+     "column": "Cost"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2025",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "Central headcount fell by 643 in 2024 vs 2023.",
+   "number": "643",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    },
+    "b": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "Across all regions and years, shipments totalled roughly 3,900,000 units.",
+   "number": "3,900,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {},
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "Central employed 7,839 people in FY2023.",
+   "number": "7,839",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "All regions together sold 79,656.2 units in 2024.",
+   "number": "79,656.2",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "Year": "2024"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "Double-digit margins were posted by 4 regions in 2025.",
+   "number": "4",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Year": "2025"
+     },
+     "test": {
+      "column": "Margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "Central headcount jumped 6.10% in 2023 vs 2022.",
+   "number": "6.10%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "up",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2023",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "Central"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "West revenue was $865.0M in 2022.",
+   "number": "$865.0M",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "Negative margins were posted by 1 regions in 2021.",
+   "number": "1",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Year": "2021"
+     },
+     "test": {
+      "column": "Margin",
+      "op": "<",
+      "value": "0"
+     }
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "South revenue was 1.6x that of North in 2022.",
+   "number": "1.6x",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "The selling price in West was $109.89 in 2021.",
+   "number": "$109.89",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2021",
+      "Region": "West"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The change in West unit sales in 2024 vs 2023 was +3.8%.",
+   "number": "+3.8%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "up",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Units"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2023",
+      "Region": "West"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "South unit sales increased 8.0% in 2025 vs 2024.",
+   "number": "8.0%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "up",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2025",
+      "Region": "South"
+     },
+     "column": "Units"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2024",
+      "Region": "South"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "South unit sales slipped 12.2% in 2022 vs 2021.",
+   "number": "12.2%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Units"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2021",
+      "Region": "South"
+     },
+     "column": "Units"
+    }
+   }
+  }
+ ]
+}

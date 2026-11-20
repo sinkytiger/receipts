@@ -1,0 +1,330 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "2021년 지역 평균 판매량은 260,066건이었다.",
+   "number": "260,066",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "연도": "2021"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "2021년 서울 지역 인당 매출은 1억 원이었다.",
+   "number": "1억",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2021",
+      "지역": "서울"
+     },
+     "column": "매출"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "연도": "2021",
+      "지역": "서울"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "2025년 서울 지역은 전체 판매량의 19.1%를 차지했다.",
+   "number": "19.1%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2025",
+      "지역": "서울"
+     },
+     "column": "판매량"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "연도": "2025"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "2021년 대전 지역은 전체 매출의 13.3%를 차지했다.",
+   "number": "13.3%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2021",
+      "지역": "대전"
+     },
+     "column": "매출"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "연도": "2021"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "2025년 인천 지역은 전체 판매량의 31.2퍼센트를 차지했다.",
+   "number": "31.2퍼센트",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2025",
+      "지역": "인천"
+     },
+     "column": "판매량"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "연도": "2025"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "2022년 인천 지역 이익률은 19.6%였다.",
+   "number": "19.6%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "연도": "2022",
+      "지역": "인천"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "2022년 인천 지역 단가는 23,001원이었다.",
+   "number": "23,001",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2022",
+      "지역": "인천"
+     },
+     "column": "단가"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "2023년 지역별 이익률 최고치는 22.6%였다.",
+   "number": "22.6%",
+   "kind": "derived",
+   "formula": "max",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "연도": "2023"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "2022년 서울 지역 인원은 5,082명이었다.",
+   "number": "5,082",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "연도": "2022",
+      "지역": "서울"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "대전 지역 판매량의 2024년 대비 2025년 변동률은 −10.9%였다.",
+   "number": "−10.9%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2025",
+      "지역": "대전"
+     },
+     "column": "판매량"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2024",
+      "지역": "대전"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "2023년 지역 평균 판매량은 269,786건이었다.",
+   "number": "269,786",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "연도": "2023"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "2025년 인천 지역 매출은 644억 원이었다.",
+   "number": "644억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2025",
+      "지역": "인천"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "2021년 서울 지역 단가는 59,511원이었다.",
+   "number": "59,511",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2021",
+      "지역": "서울"
+     },
+     "column": "단가"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "전 기간 전 지역 판매량은 약 5,400,000건이었다.",
+   "number": "5,400,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {},
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "2025년 대전 지역 인당 매출은 3,125만 원이었다.",
+   "number": "3,125만",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2025",
+      "지역": "대전"
+     },
+     "column": "매출"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "연도": "2025",
+      "지역": "대전"
+     },
+     "column": "인원"
+    }
+   }
+  }
+ ]
+}

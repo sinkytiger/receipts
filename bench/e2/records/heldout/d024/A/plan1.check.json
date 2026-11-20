@@ -1,0 +1,274 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 11,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 2,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 16,
+   "end": 22,
+   "text": "69,409",
+   "quote": "2021년 대전 지역 단가는 69,409원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "73,371",
+   "recomputed_raw": "73371",
+   "sources": [
+    "book.xlsx [자료] [연도=2021, 지역=대전] 단가 = 73371"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 26,
+   "end": 28,
+   "text": "53",
+   "quote": "부산 지역 인원은 2024년 대비 2025년에 53명 줄었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-53",
+   "recomputed_raw": "-53",
+   "sources": [
+    "book.xlsx [자료] [연도=2025, 지역=부산] 인원 = 582",
+    "book.xlsx [자료] [연도=2024, 지역=부산] 인원 = 635"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 17,
+   "end": 24,
+   "text": "10.4퍼센트",
+   "quote": "2024년 대구 지역 이익률은 10.4퍼센트였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "10.4%",
+   "recomputed_raw": "10.4",
+   "sources": [
+    "book.xlsx [자료] [연도=2024, 지역=대구] 이익률 = 10.4"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 16,
+   "end": 21,
+   "text": "5,095",
+   "quote": "2025년 서울 지역 인원은 5,095명이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,095",
+   "recomputed_raw": "5095",
+   "sources": [
+    "book.xlsx [자료] [연도=2025, 지역=서울] 인원 = 5095"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 19,
+   "end": 21,
+   "text": "3억",
+   "quote": "2022년 부산 지역 인당 매출은 3억 원이었다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "400,000,000",
+   "recomputed_raw": "386114517.847396768402154398563734290843806104129263913824057",
+   "sources": [
+    "book.xlsx [자료] [연도=2022, 지역=부산] 매출 = 215065786441",
+    "book.xlsx [자료] [연도=2022, 지역=부산] 인원 = 557"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 22,
+   "end": 23,
+   "text": "3",
+   "quote": "2024년 이익률이 두 자릿수인 지역은 3개였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3",
+   "recomputed_raw": "3",
+   "sources": [
+    "book.xlsx [자료] [연도=2024] 이익률 >= 10: 3 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 22,
+   "end": 24,
+   "text": "2억",
+   "quote": "2025년 대전 지역 인당 매출은 2억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "200,000,000",
+   "recomputed_raw": "153317481.970059880239520958083832335329341317365269461077844",
+   "sources": [
+    "book.xlsx [자료] [연도=2025, 지역=대전] 매출 = 665704506714",
+    "book.xlsx [자료] [연도=2025, 지역=대전] 인원 = 4342"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 34,
+   "end": 41,
+   "text": "+23.10%",
+   "quote": "광주 지역 판매량의 2021년 대비 2022년 변동률은 +23.10%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "23.10%",
+   "recomputed_raw": "23.0997453056060035886276498851966382521529038978604580136019",
+   "sources": [
+    "book.xlsx [자료] [연도=2022, 지역=광주] 판매량 = 225712",
+    "book.xlsx [자료] [연도=2021, 지역=광주] 판매량 = 183357"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 20,
+   "end": 26,
+   "text": "14.48%",
+   "quote": "2023년 지역 평균 이익률은 14.48%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "14.48%",
+   "recomputed_raw": "14.4833333333333333333333333333333333333333333333333333333333",
+   "sources": [
+    "book.xlsx [자료] [연도=2023] 이익률: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 30,
+   "end": 35,
+   "text": "1.3%p",
+   "quote": "인천 지역 이익률은 2022년 대비 2023년에 1.3%p 올랐다.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "-1.3%p",
+   "recomputed_raw": "-1.3",
+   "sources": [
+    "book.xlsx [자료] [연도=2023, 지역=인천] 이익률 = 16.6",
+    "book.xlsx [자료] [연도=2022, 지역=인천] 이익률 = 17.9"
+   ],
+   "note": "the sentence says up, the recomputed change is -1.3"
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 18,
+   "end": 27,
+   "text": "3조 4,202억",
+   "quote": "2023년 전 지역 매출 합계는 3조 4,202억 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3,420,100,000,000",
+   "recomputed_raw": "3420122818547",
+   "sources": [
+    "book.xlsx [자료] [연도=2023] 매출: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 17,
+   "end": 23,
+   "text": "13,138",
+   "quote": "2024년 인천 지역 판매량은 13,138건이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "13,703",
+   "recomputed_raw": "13703",
+   "sources": [
+    "book.xlsx [자료] [연도=2024, 지역=인천] 판매량 = 13703"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 16,
+   "end": 29,
+   "text": "2,150억 6,579만",
+   "quote": "2022년 부산 지역 매출은 2,150억 6,579만 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "215,065,790,000",
+   "recomputed_raw": "215065786441",
+   "sources": [
+    "book.xlsx [자료] [연도=2022, 지역=부산] 매출 = 215065786441"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 19,
+   "end": 21,
+   "text": "3억",
+   "quote": "2022년 광주 지역 인당 매출은 3억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "300,000,000",
+   "recomputed_raw": "332638582.642776735459662288930581613508442776735459662288931",
+   "sources": [
+    "book.xlsx [자료] [연도=2022, 지역=광주] 매출 = 886481822743",
+    "book.xlsx [자료] [연도=2022, 지역=광주] 인원 = 2665"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 26,
+   "end": 30,
+   "text": "1.5배",
+   "quote": "2021년 대전 지역 매출은 인천 지역 매출의 1.5배였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.5배",
+   "recomputed_raw": "1.48590877303419278106964324508692791320030420857132523573151",
+   "sources": [
+    "book.xlsx [자료] [연도=2021, 지역=대전] 매출 = 689820573023",
+    "book.xlsx [자료] [연도=2021, 지역=인천] 매출 = 464241537261"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

@@ -1,0 +1,83 @@
+{
+ "doc": "d006",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051249Z",
+   "set": "heldout",
+   "doc": "d006",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 3517,
+   "output_tokens": 1971,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0013372,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcAvh1RW6N4Jc4BFHjH"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "17.72%",
+    "should_be": "17.70%",
+    "why": "2024 profit rates 24.9, 18.4, 6.6, 20.9 average 17.7"
+   },
+   {
+    "line": 10,
+    "number": "1.6%p 늘었다",
+    "should_be": "1.6%p 줄었다",
+    "why": "Daejeon rate fell from 15.5 to 13.9, so the change is a decline"
+   },
+   {
+    "line": 20,
+    "number": "+24.41%",
+    "should_be": "+21.41%",
+    "why": "Busan staff 2448 to 2972 is +21.41%"
+   },
+   {
+    "line": 21,
+    "number": "855,608건",
+    "should_be": "736,492건",
+    "why": "2023 sales volumes sum to 736,492"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026년 11월 5일"
+   },
+   {
+    "line": 4,
+    "number": "v1.6.7"
+   },
+   {
+    "line": 4,
+    "number": "44"
+   },
+   {
+    "line": 5,
+    "number": "2025"
+   },
+   {
+    "line": 5,
+    "number": "41"
+   },
+   {
+    "line": 32,
+    "number": "151"
+   },
+   {
+    "line": 33,
+    "number": "0.76"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0013372
+}

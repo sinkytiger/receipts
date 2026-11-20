@@ -1,0 +1,288 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 10,
+  "wrong": 5,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 19
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 39,
+   "end": 40,
+   "text": "5",
+   "quote": "Central posted double-digit margins in 5 of the five years covered.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3",
+   "recomputed_raw": "3",
+   "sources": [
+    "staff.json /rows [region=Central] margin >= 10: 3 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 15,
+   "end": 20,
+   "text": "9,716",
+   "quote": "North employed 9,716 people in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "9,716",
+   "recomputed_raw": "9716",
+   "sources": [
+    "staff.json /rows [year=2025, region=North] staff = 9716"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 27,
+   "end": 33,
+   "text": "12.0pp",
+   "quote": "The margin in East dropped 12.0pp in 2025 vs 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-11.9%p",
+   "recomputed_raw": "-11.9",
+   "sources": [
+    "staff.json /rows [year=2025, region=East] margin = -2.7",
+    "staff.json /rows [year=2024, region=East] margin = 9.2"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 36,
+   "end": 50,
+   "text": "$1,210,153,000",
+   "quote": "East and North revenue combined was $1,210,153,000 in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,210,153,000",
+   "recomputed_raw": "1210153000",
+   "sources": [
+    "sales.json /rows [year=2022, region=East] revenue = 542940 x 1000",
+    "sales.json /rows [year=2022, region=North] revenue = 667213 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 44,
+   "end": 56,
+   "text": "$2.1 billion",
+   "quote": "Total operating cost across all regions was $2.1 billion in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2.1 billion",
+   "recomputed_raw": "2109159000",
+   "sources": [
+    "sales.json /rows [year=2023] cost: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 26,
+   "end": 38,
+   "text": "$116,479,000",
+   "quote": "Central revenue jumped by $116,479,000 in 2022 vs 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "116,479,000",
+   "recomputed_raw": "116479000",
+   "sources": [
+    "sales.json /rows [year=2022, region=Central] revenue = 599796 x 1000",
+    "sales.json /rows [year=2021, region=Central] revenue = 483317 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 59,
+   "end": 68,
+   "text": "5,200,000",
+   "quote": "Across all regions and years, shipments totalled around 5,200,000 units.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,200,000",
+   "recomputed_raw": "5170185",
+   "sources": [
+    "sales.json /rows [] units: 25 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 53,
+   "end": 60,
+   "text": "+19.42%",
+   "quote": "The change in Central revenue in 2022 vs 2021 was +19.42%.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "24.10%",
+   "recomputed_raw": "24.0999178592931761142273083711104720090540990695547642644476",
+   "sources": [
+    "sales.json /rows [year=2022, region=Central] revenue = 599796",
+    "sales.json /rows [year=2021, region=Central] revenue = 483317"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 33,
+   "end": 39,
+   "text": "18.7pp",
+   "quote": "The margin in North decreased 18.7pp in 2023 vs 2022.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "18.7%p",
+   "recomputed_raw": "18.7",
+   "sources": [
+    "staff.json /rows [year=2023, region=North] margin = 21.2",
+    "staff.json /rows [year=2022, region=North] margin = 2.5"
+   ],
+   "note": "the sentence says down, the recomputed change is 18.7"
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 36,
+   "end": 43,
+   "text": "$667.2M",
+   "quote": "The highest regional revenue was $667.2M in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "667.2M",
+   "recomputed_raw": "667213000",
+   "sources": [
+    "sales.json /rows [year=2022] revenue: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 48,
+   "end": 56,
+   "text": "$929.32M",
+   "quote": "Central and Coastal operating cost combined was $929.32M in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "602.36M",
+   "recomputed_raw": "602358000",
+   "sources": [
+    "sales.json /rows [year=2023, region=Central] cost = 324121 x 1000",
+    "sales.json /rows [year=2023, region=Coastal] cost = 278237 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 27,
+   "end": 38,
+   "text": "1.3 percent",
+   "quote": "North unit sales decreased 1.3 percent in 2023 vs 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-1.3%",
+   "recomputed_raw": "-1.3000148098380670632813544138735673287747929331787330725357",
+   "sources": [
+    "sales.json /rows [year=2023, region=North] units = 273244",
+    "sales.json /rows [year=2022, region=North] units = 276843"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 26,
+   "end": 35,
+   "text": "1,082,365",
+   "quote": "All regions together sold 1,082,365 units in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,082,365",
+   "recomputed_raw": "1082365",
+   "sources": [
+    "sales.json /rows [year=2024] units: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 24,
+   "end": 36,
+   "text": "$374,391,000",
+   "quote": "East operating cost was $374,391,000 in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "374,391,000",
+   "recomputed_raw": "374391000",
+   "sources": [
+    "sales.json /rows [year=2025, region=East] cost = 374391 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 21,
+   "end": 26,
+   "text": "7.40%",
+   "quote": "Coastal revenue rose 7.40% in 2022 vs 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "7.40%",
+   "recomputed_raw": "7.40004314087708721647317798930327483504145395817547275211141",
+   "sources": [
+    "sales.json /rows [year=2022, region=Coastal] revenue = 388365",
+    "sales.json /rows [year=2021, region=Coastal] revenue = 361606"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "sales.json",
+   "column": "cost",
+   "multiplier": "1000",
+   "claims": 3
+  },
+  {
+   "file": "sales.json",
+   "column": "revenue",
+   "multiplier": "1000",
+   "claims": 3
+  }
+ ]
+}

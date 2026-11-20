@@ -1,0 +1,93 @@
+{
+ "doc": "d005",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051217Z",
+   "set": "heldout",
+   "doc": "d005",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1884,
+   "output_tokens": 2667,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0015219,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDc8JfGfMkC8TB2JbGwr"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "103.0%",
+    "should_be": "103.1%",
+    "why": "2023 Daejeon cost/revenue = 834919/809815 = 1.0310"
+   },
+   {
+    "line": 14,
+    "number": "2,938억 9,700만 원",
+    "should_be": "4,938억 9,700만 원",
+    "why": "2023 minimum regional revenue is Gwangju/Seoul's 493,897 (백만 원), i.e. 4,938억 9,700만 원"
+   },
+   {
+    "line": 18,
+    "number": "+13.5%",
+    "should_be": "+15.6%",
+    "why": "Busan revenue 870827 to 1006676 = +15.6%"
+   },
+   {
+    "line": 20,
+    "number": "46.0%",
+    "should_be": "4.6%",
+    "why": "2022 Daejeon sales 51,817 / 2022 total 1,122,191 = 4.6%"
+   },
+   {
+    "line": 25,
+    "number": "52,538원",
+    "should_be": "56,216원",
+    "why": "2023 Daegu unit price is 56216; 52538 is the 2022 value"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026"
+   },
+   {
+    "line": 3,
+    "number": "9"
+   },
+   {
+    "line": 3,
+    "number": "9"
+   },
+   {
+    "line": 4,
+    "number": "v1.9.3"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 5,
+    "number": "18"
+   },
+   {
+    "line": 32,
+    "number": "218"
+   },
+   {
+    "line": 33,
+    "number": "0.02"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0015219
+}

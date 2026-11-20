@@ -1,0 +1,63 @@
+{
+ "doc": "d012",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050730Z",
+   "set": "heldout",
+   "doc": "d012",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1964,
+   "output_tokens": 1443,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0009179,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbmYa5tcKi6o2SPA2WB"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 10,
+    "number": "6,758",
+    "should_be": "8,758",
+    "why": "East Staff 2023 is 8758"
+   },
+   {
+    "line": 13,
+    "number": "$366.68M",
+    "should_be": "$275.58M",
+    "why": "South 2025 cost is 275580 thousand; 366676 is Coastal 2024"
+   },
+   {
+    "line": 18,
+    "number": "0.3x",
+    "should_be": "0.4x",
+    "why": "East 2021 revenue 73291 / Central 187342 = 0.39"
+   },
+   {
+    "line": 24,
+    "number": "978,938",
+    "should_be": "971,938",
+    "why": "2022 units sum to 971,938"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 32,
+    "number": "207"
+   },
+   {
+    "line": 33,
+    "number": "0.98"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0009179
+}

@@ -1,0 +1,282 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 11,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 2,
+ "skipped": {
+  "code": 2,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 16
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 20,
+   "end": 26,
+   "text": "103.0%",
+   "quote": "2023년 대전 지역 비용은 매출의 103.0%였다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "103.1%",
+   "recomputed_raw": "103.099967276476726165852694751270351870488938831708476627378",
+   "sources": [
+    "data.csv [연도=2023, 지역=대전] 비용 = 834919",
+    "data.csv [연도=2023, 지역=대전] 매출 = 809815"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 16,
+   "end": 22,
+   "text": "36,887",
+   "quote": "2023년 지역 평균 단가는 36,887원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "36,887",
+   "recomputed_raw": "36887.3333333333333333333333333333333333333333333333333333333",
+   "sources": [
+    "data.csv [연도=2023] 단가: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 26,
+   "end": 30,
+   "text": "1.3배",
+   "quote": "2021년 대전 지역 매출은 서울 지역 매출의 1.3배였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.3배",
+   "recomputed_raw": "1.29505881279564308072372022514492651909661300057549513636427",
+   "sources": [
+    "data.csv [연도=2021, 지역=대전] 매출 = 738111",
+    "data.csv [연도=2021, 지역=서울] 매출 = 569944"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 19,
+   "end": 28,
+   "text": "5억 7,274만",
+   "quote": "2025년 부산 지역 인당 매출은 5억 7,274만 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "572,740,000",
+   "recomputed_raw": "572744882.675986020968547179231153270094857713429855217174239",
+   "sources": [
+    "data.csv [연도=2025, 지역=부산] 매출 = 1147208 x 1000000",
+    "data.csv [연도=2025, 지역=부산] 인원 = 2003"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 16,
+   "end": 29,
+   "text": "5,593억 4,000만",
+   "quote": "2022년 광주 지역 매출은 5,593억 4,000만 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "559,340,000,000",
+   "recomputed_raw": "559340000000",
+   "sources": [
+    "data.csv [연도=2022, 지역=광주] 매출 = 559340 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 18,
+   "end": 31,
+   "text": "2,938억 9,700만",
+   "quote": "2023년 지역별 매출 최저치는 2,938억 9,700만 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "493,897,000,000",
+   "recomputed_raw": "493897000000",
+   "sources": [
+    "data.csv [연도=2023] 매출: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 33,
+   "end": 39,
+   "text": "+13.5%",
+   "quote": "부산 지역 매출의 2022년 대비 2023년 변동률은 +13.5%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "15.6%",
+   "recomputed_raw": "15.5999986219995475565181143901142247541704609526346794483864",
+   "sources": [
+    "data.csv [연도=2023, 지역=부산] 매출 = 1006676",
+    "data.csv [연도=2022, 지역=부산] 매출 = 870827"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 20,
+   "end": 29,
+   "text": "5,900,000",
+   "quote": "전 기간 전 지역 판매량은 약 5,900,000건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,900,000",
+   "recomputed_raw": "5915316",
+   "sources": [
+    "data.csv [] 판매량: 30 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 24,
+   "end": 29,
+   "text": "46.0%",
+   "quote": "2022년 대전 지역은 전체 판매량의 46.0%를 차지했다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4.6%",
+   "recomputed_raw": "4.61748490230272743231767141244226695812031998117967440480275",
+   "sources": [
+    "data.csv [연도=2022, 지역=대전] 판매량 = 51817",
+    "data.csv [연도=2022] 판매량: 6 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 29,
+   "end": 35,
+   "text": "1,188억",
+   "quote": "대전 지역 매출은 2021년 대비 2022년에 1,188억 원 상승했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "118,800,000,000",
+   "recomputed_raw": "118836000000",
+   "sources": [
+    "data.csv [연도=2022, 지역=대전] 매출 = 856947 x 1000000",
+    "data.csv [연도=2021, 지역=대전] 매출 = 738111 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 19,
+   "end": 23,
+   "text": "102만",
+   "quote": "2021년 전 지역 판매량 합계는 102만건이었다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "1,030,000",
+   "recomputed_raw": "1027086",
+   "sources": [
+    "data.csv [연도=2021] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 17,
+   "end": 22,
+   "text": "10.2%",
+   "quote": "2025년 서울 지역 이익률은 10.2%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "10.2%",
+   "recomputed_raw": "10.2",
+   "sources": [
+    "data.csv [연도=2025, 지역=서울] 이익률 = 10.2"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 16,
+   "end": 22,
+   "text": "52,538",
+   "quote": "2023년 대구 지역 단가는 52,538원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "56,216",
+   "recomputed_raw": "56216",
+   "sources": [
+    "data.csv [연도=2023, 지역=대구] 단가 = 56216"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 26,
+   "end": 30,
+   "text": "0.58",
+   "quote": "2021년 서울 지역의 매출 대비 비용 비율은 0.58였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.58",
+   "recomputed_raw": "0.581999284140196229805033476973176312058728576842637171371222",
+   "sources": [
+    "data.csv [연도=2021, 지역=서울] 비용 = 331707",
+    "data.csv [연도=2021, 지역=서울] 매출 = 569944"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 26,
+   "end": 30,
+   "text": "1.6배",
+   "quote": "2022년 부산 지역 매출은 광주 지역 매출의 1.6배였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.6배",
+   "recomputed_raw": "1.55688311223942503665033789823720813816283476954982658132799",
+   "sources": [
+    "data.csv [연도=2022, 지역=부산] 매출 = 870827",
+    "data.csv [연도=2022, 지역=광주] 매출 = 559340"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "data.csv",
+   "column": "매출",
+   "multiplier": "1000000",
+   "claims": 4
+  }
+ ]
+}

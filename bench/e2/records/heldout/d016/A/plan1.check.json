@@ -1,0 +1,273 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 11,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 16
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 16,
+   "end": 17,
+   "text": "3",
+   "quote": "부산 지역은 다섯 해 가운데 3개 연도에 두 자릿수 이익률을 기록했다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1",
+   "recomputed_raw": "1",
+   "sources": [
+    "book.xlsx [인원] [지역=부산] 이익률 >= 10: 1 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 20,
+   "end": 25,
+   "text": "73.1%",
+   "quote": "2021년 대구 지역 비용은 매출의 73.1%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "73.1%",
+   "recomputed_raw": "73.1000000001178542118920180442887476841889498256141841045026",
+   "sources": [
+    "book.xlsx [매출] [연도=2021, 지역=대구] 비용 = 277255258641",
+    "book.xlsx [매출] [연도=2021, 지역=대구] 매출 = 379282159563"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 18,
+   "end": 22,
+   "text": "4.0조",
+   "quote": "2025년 전 지역 비용 합계는 4.0조 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,000,000,000,000",
+   "recomputed_raw": "4005570120822",
+   "sources": [
+    "book.xlsx [매출] [연도=2025] 비용: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 19,
+   "end": 23,
+   "text": "102만",
+   "quote": "2023년 전 지역 판매량 합계는 102만건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,020,000",
+   "recomputed_raw": "1023717",
+   "sources": [
+    "book.xlsx [매출] [연도=2023] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 16,
+   "end": 17,
+   "text": "3",
+   "quote": "대구 지역은 다섯 해 가운데 3개 연도에 두 자릿수 이익률을 기록했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3",
+   "recomputed_raw": "3",
+   "sources": [
+    "book.xlsx [인원] [지역=대구] 이익률 >= 10: 3 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 26,
+   "end": 29,
+   "text": "491",
+   "quote": "대구 지역 인원은 2023년 대비 2024년에 491명 늘었다.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "-491",
+   "recomputed_raw": "-491",
+   "sources": [
+    "book.xlsx [인원] [연도=2024, 지역=대구] 인원 = 4053",
+    "book.xlsx [인원] [연도=2023, 지역=대구] 인원 = 4544"
+   ],
+   "note": "the sentence says up, the recomputed change is -491"
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 29,
+   "end": 32,
+   "text": "432",
+   "quote": "1. 대전 지역 인원은 2022년 대비 2023년에 432명 줄었다.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "432",
+   "recomputed_raw": "432",
+   "sources": [
+    "book.xlsx [인원] [연도=2023, 지역=대전] 인원 = 4006",
+    "book.xlsx [인원] [연도=2022, 지역=대전] 인원 = 3574"
+   ],
+   "note": "the sentence says down, the recomputed change is 432"
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 29,
+   "end": 32,
+   "text": "721",
+   "quote": "2. 광주 지역 인원은 2022년 대비 2023년에 721명 떨어졌다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-721",
+   "recomputed_raw": "-721",
+   "sources": [
+    "book.xlsx [인원] [연도=2023, 지역=광주] 인원 = 4742",
+    "book.xlsx [인원] [연도=2022, 지역=광주] 인원 = 5463"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 24,
+   "end": 30,
+   "text": "23.18%",
+   "quote": "3. 2022년 광주 지역은 전체 판매량의 23.18%를 차지했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "23.18%",
+   "recomputed_raw": "23.1836939721025718406922040675724909240539126584753998925877",
+   "sources": [
+    "book.xlsx [매출] [연도=2022, 지역=광주] 판매량 = 233537",
+    "book.xlsx [매출] [연도=2022] 판매량: 6 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 21,
+   "end": 28,
+   "text": "40,055억",
+   "quote": "4. 2025년 전 지역 비용 합계는 40,055억 원이었다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "4,005,600,000,000",
+   "recomputed_raw": "4005570120822",
+   "sources": [
+    "book.xlsx [매출] [연도=2025] 비용: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 18,
+   "end": 22,
+   "text": "4.6조",
+   "quote": "2023년 전 지역 매출 합계는 4.6조 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,600,000,000,000",
+   "recomputed_raw": "4553422962670",
+   "sources": [
+    "book.xlsx [매출] [연도=2023] 매출: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 18,
+   "end": 25,
+   "text": "16,002억",
+   "quote": "2022년 지역별 매출 최고치는 16,002억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,600,200,000,000",
+   "recomputed_raw": "1600228423567",
+   "sources": [
+    "book.xlsx [매출] [연도=2022] 매출: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 19,
+   "end": 25,
+   "text": "8,569만",
+   "quote": "2022년 서울 지역 인당 매출은 8,569만 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "85,690,000",
+   "recomputed_raw": "85685664.6699902723735408560311284046692607003891050583657588",
+   "sources": [
+    "book.xlsx [매출] [연도=2022, 지역=서울] 매출 = 352339453123",
+    "book.xlsx [인원] [연도=2022, 지역=서울] 인원 = 4112"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 17,
+   "end": 24,
+   "text": "177,617",
+   "quote": "2021년 지역 평균 판매량은 177,617건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "177,617",
+   "recomputed_raw": "177616.5",
+   "sources": [
+    "book.xlsx [매출] [연도=2021] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 17,
+   "end": 22,
+   "text": "−9.8%",
+   "quote": "2023년 부산 지역 이익률은 −9.8%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-3.8%",
+   "recomputed_raw": "-3.8",
+   "sources": [
+    "book.xlsx [인원] [연도=2023, 지역=부산] 이익률 = -3.8"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

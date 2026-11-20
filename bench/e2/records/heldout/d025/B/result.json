@@ -1,0 +1,91 @@
+{
+ "doc": "d025",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051018Z",
+   "set": "heldout",
+   "doc": "d025",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1638,
+   "output_tokens": 1965,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0011463,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbynVLGjgYVojemnSd3"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 14,
+    "number": "4.8%",
+    "should_be": "4.7%",
+    "why": "East 2023 margin in data.csv is 4.7"
+   },
+   {
+    "line": 18,
+    "number": "3,065",
+    "should_be": "3,887",
+    "why": "Central 2024 staff is 3887; 3065 is West's figure"
+   },
+   {
+    "line": 19,
+    "number": "-1.4%",
+    "should_be": "-1.5%",
+    "why": "North 2025 vs 2024 revenue is 378049445/383806543 - 1 ≈ -1.50%"
+   },
+   {
+    "line": 23,
+    "number": "696",
+    "should_be": "692",
+    "why": "East staff 5374 (2025) minus 6066 (2024) is -692"
+   },
+   {
+    "line": 24,
+    "number": "$572.1 million",
+    "should_be": "$995.7 million",
+    "why": "West 2023 revenue is 995668017; 572.1m is South 2023"
+   },
+   {
+    "line": 25,
+    "number": "39.76%",
+    "should_be": "28.45%",
+    "why": "South 2025 units 214054 / total 2025 units 752388 ≈ 28.45%"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "7 February 2026"
+   },
+   {
+    "line": 4,
+    "number": "v3.0.5"
+   },
+   {
+    "line": 4,
+    "number": "15"
+   },
+   {
+    "line": 5,
+    "number": "2025"
+   },
+   {
+    "line": 32,
+    "number": "399"
+   },
+   {
+    "line": 33,
+    "number": "0.07"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0011463
+}

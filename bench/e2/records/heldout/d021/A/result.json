@@ -1,0 +1,58 @@
+{
+ "doc": "d021",
+ "arm": "A",
+ "requests": [
+  {
+   "time": "20261120T051754Z",
+   "set": "heldout",
+   "doc": "d021",
+   "arm": "A",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 8738,
+   "output_tokens": 7967,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0048573,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcXgkwY7NazbVMdDGMg"
+  },
+  {
+   "time": "20261120T051807Z",
+   "set": "heldout",
+   "doc": "d021",
+   "arm": "A",
+   "request": 2,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 18634,
+   "output_tokens": 3559,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0036429,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDca1CGX6g4Wc4NK2Fqr"
+  },
+  {
+   "time": "20261120T051809Z",
+   "set": "heldout",
+   "doc": "d021",
+   "arm": "A",
+   "request": 3,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 24029,
+   "output_tokens": 5,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0024054,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcb1hJaKtfkDpzWMiWB"
+  }
+ ],
+ "plans_sent": 2,
+ "said_done": true,
+ "cut_off_replies": 0,
+ "accepted_receipts": "plan2/receipts.json",
+ "scan_numbers": 15,
+ "refused": false,
+ "usd": 0.0109056
+}

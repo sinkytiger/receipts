@@ -1,0 +1,79 @@
+{
+ "doc": "d001",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050304Z",
+   "set": "heldout",
+   "doc": "d001",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1755,
+   "output_tokens": 1834,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0010925,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbRrwq46UQQ4KZWyNdT"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 10,
+    "number": "71.0%",
+    "should_be": "7.1%",
+    "why": "East staff 6130 to 5695 is a fall of about 7.1%"
+   },
+   {
+    "line": 19,
+    "number": "21.9",
+    "should_be": "21.0",
+    "why": "South margin 20.6 to -0.4 is a 21.0pp drop"
+   },
+   {
+    "line": 20,
+    "number": "5 of the five years",
+    "should_be": "3 of the five years",
+    "why": "Central margins at or above 10 are only in 2021, 2022 and 2023"
+   },
+   {
+    "line": 21,
+    "number": "1.06 million",
+    "should_be": "1.04 million",
+    "why": "2022 units sum to 1,035,315"
+   },
+   {
+    "line": 23,
+    "number": "$1,104,902,242",
+    "should_be": "$1,419,520,610",
+    "why": "sum of 2022 regional costs"
+   },
+   {
+    "line": 26,
+    "number": "276,681",
+    "should_be": "236,681",
+    "why": "South 2024 units in sales.csv"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 4,
+    "number": "3.3.7"
+   },
+   {
+    "line": 32,
+    "number": "124"
+   },
+   {
+    "line": 33,
+    "number": "0.08"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0010925
+}

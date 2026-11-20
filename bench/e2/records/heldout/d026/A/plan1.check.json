@@ -1,0 +1,286 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 10,
+  "wrong": 5,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 2,
+  "date": 3,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 26,
+   "end": 28,
+   "text": "81",
+   "quote": "Coastal headcount rose by 81 in 2023 vs 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "81",
+   "recomputed_raw": "81",
+   "sources": [
+    "staff.json /rows [year=2023, region=Coastal] staff = 1848",
+    "staff.json /rows [year=2022, region=Coastal] staff = 1767"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 44,
+   "end": 49,
+   "text": "$1.9B",
+   "quote": "Total operating cost across all regions was $1.9B in 2021.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "2.0B",
+   "recomputed_raw": "1968428000",
+   "sources": [
+    "sales.json /rows [year=2021] cost: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 36,
+   "end": 43,
+   "text": "$72,131",
+   "quote": "Revenue per employee in Central was $72,131 in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "72,131",
+   "recomputed_raw": "72130.8876811594202898550724637681159420289855072463768115942",
+   "sources": [
+    "sales.json /rows [year=2023, region=Central] revenue = 318530 x 1000",
+    "staff.json /rows [year=2023, region=Central] staff = 4416"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 28,
+   "end": 31,
+   "text": "378",
+   "quote": "West headcount decreased by 378 in 2024 vs 2023.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "378",
+   "recomputed_raw": "378",
+   "sources": [
+    "staff.json /rows [year=2024, region=West] staff = 9177",
+    "staff.json /rows [year=2023, region=West] staff = 8799"
+   ],
+   "note": "the sentence says down, the recomputed change is 378"
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 30,
+   "end": 37,
+   "text": "$142.81",
+   "quote": "The selling price in West was $142.81 in 2021.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "246.38",
+   "recomputed_raw": "246.38",
+   "sources": [
+    "sales.json /rows [year=2021, region=West] price = 246.38"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 23,
+   "end": 28,
+   "text": "1,356",
+   "quote": "East headcount grew by 1,356 in 2022 vs 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,356",
+   "recomputed_raw": "1356",
+   "sources": [
+    "staff.json /rows [year=2022, region=East] staff = 7358",
+    "staff.json /rows [year=2021, region=East] staff = 6002"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 36,
+   "end": 43,
+   "text": "$136.07",
+   "quote": "The selling price in Central was $136.07 in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "243.88",
+   "recomputed_raw": "243.88",
+   "sources": [
+    "sales.json /rows [year=2024, region=Central] price = 243.88"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 33,
+   "end": 40,
+   "text": "$249.34",
+   "quote": "The selling price in West was $249.34 in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "249.34",
+   "recomputed_raw": "249.34",
+   "sources": [
+    "sales.json /rows [year=2022, region=West] price = 249.34"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 40,
+   "end": 46,
+   "text": "$2.50B",
+   "quote": "Total revenue across all regions was $2.50B in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2.50B",
+   "recomputed_raw": "2503640000",
+   "sources": [
+    "sales.json /rows [year=2025] revenue: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 30,
+   "end": 42,
+   "text": "$218,585,000",
+   "quote": "Central operating cost was $218,585,000 in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "218,585,000",
+   "recomputed_raw": "218585000",
+   "sources": [
+    "sales.json /rows [year=2022, region=Central] cost = 218585 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 33,
+   "end": 45,
+   "text": "$851,483,000",
+   "quote": "The highest regional revenue was $851,483,000 in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "851,483,000",
+   "recomputed_raw": "851483000",
+   "sources": [
+    "sales.json /rows [year=2023] revenue: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 38,
+   "end": 44,
+   "text": "14.17%",
+   "quote": "The average margin across regions was 14.17% in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "14.18%",
+   "recomputed_raw": "14.18",
+   "sources": [
+    "staff.json /rows [year=2025] margin: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 36,
+   "end": 43,
+   "text": "$76,444",
+   "quote": "Revenue per employee in Central was $76,444 in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "76,444",
+   "recomputed_raw": "76443.759302572825855836699978736976398043801828620029768233",
+   "sources": [
+    "sales.json /rows [year=2022, region=Central] revenue = 359515 x 1000",
+    "staff.json /rows [year=2022, region=Central] staff = 4703"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 23,
+   "end": 27,
+   "text": "9.3%",
+   "quote": "The margin in East was 9.3% in FY2021.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "9.4%",
+   "recomputed_raw": "9.4",
+   "sources": [
+    "staff.json /rows [year=2021, region=East] margin = 9.4"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 47,
+   "end": 53,
+   "text": "+16.4%",
+   "quote": "The change in West revenue in 2025 vs 2024 was +16.4%.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "16.4%",
+   "recomputed_raw": "16.4000317811958142295630552946070114926412510574258166131527",
+   "sources": [
+    "sales.json /rows [year=2025, region=West] revenue = 249053",
+    "sales.json /rows [year=2024, region=West] revenue = 213963"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "sales.json",
+   "column": "cost",
+   "multiplier": "1000",
+   "claims": 2
+  },
+  {
+   "file": "sales.json",
+   "column": "revenue",
+   "multiplier": "1000",
+   "claims": 4
+  }
+ ]
+}

@@ -1,0 +1,290 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 10,
+  "wrong": 5,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 26,
+   "end": 29,
+   "text": "125",
+   "quote": "부산 지역 인원은 2024년 대비 2025년에 125명 떨어졌다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-126",
+   "recomputed_raw": "-126",
+   "sources": [
+    "tables.md table 3 [연도=2025, 지역=부산] 인원 = 2946",
+    "tables.md table 3 [연도=2024, 지역=부산] 인원 = 3072"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 21,
+   "end": 22,
+   "text": "1",
+   "quote": "2023년 이익률이 마이너스인 지역은 1개였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1",
+   "recomputed_raw": "1",
+   "sources": [
+    "tables.md table 3 [연도=2023] 이익률 < 0: 1 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 19,
+   "end": 25,
+   "text": "1,876만",
+   "quote": "2021년 대구 지역 인당 매출은 1,876만 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "18,760,000",
+   "recomputed_raw": "18758734.3441001977587343441001977587343441001977587343441002",
+   "sources": [
+    "tables.md table 2 [연도=2021, 지역=대구] 매출 = 142285 x 1000000",
+    "tables.md table 3 [연도=2021, 지역=대구] 인원 = 7585"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 20,
+   "end": 25,
+   "text": "72.9%",
+   "quote": "2022년 대전 지역 비용은 매출의 72.9%였다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "73.0%",
+   "recomputed_raw": "72.9999655506348252460258829563679651525532721155355153816416",
+   "sources": [
+    "tables.md table 2 [연도=2022, 지역=대전] 비용 = 953573",
+    "tables.md table 2 [연도=2022, 지역=대전] 매출 = 1306265"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 26,
+   "end": 30,
+   "text": "0.79",
+   "quote": "2022년 서울 지역의 매출 대비 비용 비율은 0.79였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.79",
+   "recomputed_raw": "0.792999822817092050877636321915202003038251175652163809955356",
+   "sources": [
+    "tables.md table 2 [연도=2022, 지역=서울] 비용 = 1365058",
+    "tables.md table 2 [연도=2022, 지역=서울] 매출 = 1721385"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 26,
+   "end": 28,
+   "text": "25",
+   "quote": "광주 지역 인원은 2024년 대비 2025년에 25명 올랐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "25",
+   "recomputed_raw": "25",
+   "sources": [
+    "tables.md table 3 [연도=2025, 지역=광주] 인원 = 2312",
+    "tables.md table 3 [연도=2024, 지역=광주] 인원 = 2287"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 20,
+   "end": 25,
+   "text": "21.9%",
+   "quote": "2021년 부산 지역 이익률은 21.9%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "18.0%",
+   "recomputed_raw": "18",
+   "sources": [
+    "tables.md table 3 [연도=2021, 지역=부산] 이익률 = 18"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 31,
+   "end": 35,
+   "text": "3.9조",
+   "quote": "2023년 인천 지역과 부산 지역의 매출을 합하면 3.9조 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3,300,000,000,000",
+   "recomputed_raw": "3311188000000",
+   "sources": [
+    "tables.md table 2 [연도=2023, 지역=인천] 매출 = 1870285 x 1000000",
+    "tables.md table 2 [연도=2023, 지역=부산] 매출 = 1440903 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 23,
+   "end": 28,
+   "text": "66.7%",
+   "quote": "2025년 대구 지역 비용은 매출의 66.7%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "66.7%",
+   "recomputed_raw": "66.6997765085671715917556493667742736528433076732058604420164",
+   "sources": [
+    "tables.md table 2 [연도=2025, 지역=대구] 비용 = 88638",
+    "tables.md table 2 [연도=2025, 지역=대구] 매출 = 132891"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 29,
+   "end": 33,
+   "text": "0.67",
+   "quote": "2025년 대구 지역의 매출 대비 비용 비율은 0.67였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.67",
+   "recomputed_raw": "0.666997765085671715917556493667742736528433076732058604420164",
+   "sources": [
+    "tables.md table 2 [연도=2025, 지역=대구] 비용 = 88638",
+    "tables.md table 2 [연도=2025, 지역=대구] 매출 = 132891"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 31,
+   "end": 36,
+   "text": "-5.3%",
+   "quote": "광주 지역 판매량의 2021년 대비 2022년 변동률은 -5.3%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-5.3%",
+   "recomputed_raw": "-5.300100995527340932044438032030010099552734093204443803203",
+   "sources": [
+    "tables.md table 2 [연도=2022, 지역=광주] 판매량 = 262546",
+    "tables.md table 2 [연도=2021, 지역=광주] 판매량 = 277240"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 16,
+   "end": 25,
+   "text": "1조 6,230억",
+   "quote": "2025년 부산 지역 매출은 1조 6,230억 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,622,900,000,000",
+   "recomputed_raw": "1622851000000",
+   "sources": [
+    "tables.md table 2 [연도=2025, 지역=부산] 매출 = 1622851 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 16,
+   "end": 21,
+   "text": "2.06조",
+   "quote": "2025년 대전 지역 비용은 2.06조 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,510,000,000,000",
+   "recomputed_raw": "1512915000000",
+   "sources": [
+    "tables.md table 2 [연도=2025, 지역=대전] 비용 = 1512915 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 19,
+   "end": 28,
+   "text": "3억 5,346만",
+   "quote": "2025년 서울 지역 인당 매출은 3억 5,346만 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "353,460,000",
+   "recomputed_raw": "353463972.823171821920257464688002860718755587341319506526015",
+   "sources": [
+    "tables.md table 2 [연도=2025, 지역=서울] 매출 = 1976924 x 1000000",
+    "tables.md table 3 [연도=2025, 지역=서울] 인원 = 5593"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 22,
+   "end": 23,
+   "text": "3",
+   "quote": "2023년 이익률이 두 자릿수인 지역은 3개였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3",
+   "recomputed_raw": "3",
+   "sources": [
+    "tables.md table 3 [연도=2023] 이익률 >= 10: 3 rows"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "tables.md",
+   "column": "매출",
+   "multiplier": "1000000",
+   "claims": 4
+  },
+  {
+   "file": "tables.md",
+   "column": "비용",
+   "multiplier": "1000000",
+   "claims": 1
+  }
+ ]
+}

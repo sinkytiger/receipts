@@ -1,0 +1,53 @@
+{
+ "set": "heldout",
+ "seed": 20261120,
+ "model": "claude-haiku-5-5",
+ "effort": "medium",
+ "max_tokens": 16000,
+ "plans_per_document": 3,
+ "cap_usd": 5.0,
+ "documents": [
+  "d001",
+  "d002",
+  "d003",
+  "d004",
+  "d009",
+  "d010",
+  "d011",
+  "d012",
+  "d017",
+  "d018",
+  "d019",
+  "d020",
+  "d025",
+  "d026",
+  "d027",
+  "d005",
+  "d006",
+  "d007",
+  "d008",
+  "d013",
+  "d014",
+  "d015",
+  "d016",
+  "d021",
+  "d022",
+  "d023",
+  "d024",
+  "d029",
+  "d030",
+  "d031"
+ ],
+ "approved_estimate_usd_per_document": 0.02,
+ "first_five_documents_stop_usd": 0.15,
+ "fake": false,
+ "starts": [
+  {
+   "started": "20261120T050231Z",
+   "spent_before_usd": 0.092776
+  }
+ ],
+ "finished": "20261120T052334Z",
+ "spent_this_set_usd": 0.266118,
+ "spent_total_usd": 0.358894
+}

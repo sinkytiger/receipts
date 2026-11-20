@@ -1,0 +1,344 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "West operating cost was 90.6% of revenue in 2022",
+   "number": "90.6%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2022",
+      "region": "West"
+     },
+     "column": "cost"
+    },
+    "whole": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2022",
+      "region": "West"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "North employed 5,397 people in 2024",
+   "number": "5,397",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2024",
+      "region": "North"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "All regions together sold 1.1 million units in 2024",
+   "number": "1.1 million",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.csv",
+     "where": {
+      "year": "2024"
+     },
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "Coastal revenue was 6.9x that of South in 2023",
+   "number": "6.9x",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2023",
+      "region": "Coastal"
+     },
+     "column": "revenue"
+    },
+    "den": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2023",
+      "region": "South"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "Coastal and Central revenue combined was $496.0 million in 2021",
+   "number": "$496.0 million",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "sales.csv",
+      "row": {
+       "year": "2021",
+       "region": "Coastal"
+      },
+      "column": "revenue",
+      "multiplier": 1000
+     },
+     {
+      "file": "sales.csv",
+      "row": {
+       "year": "2021",
+       "region": "Central"
+      },
+      "column": "revenue",
+      "multiplier": 1000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "East revenue was $705.78 million in 2023",
+   "number": "$705.78 million",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2023",
+      "region": "East"
+     },
+     "column": "revenue",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "The margin in North was 17.1% in FY2025.",
+   "number": "17.1%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2025",
+      "region": "North"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "North headcount rose 18.70 percent in 2023 vs 2022",
+   "number": "18.70 percent",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "up",
+   "operands": {
+    "new": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2023",
+      "region": "North"
+     },
+     "column": "staff"
+    },
+    "old": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2022",
+      "region": "North"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "Central headcount slipped 5.19% in 2025 vs 2024",
+   "number": "5.19%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2025",
+      "region": "Central"
+     },
+     "column": "staff"
+    },
+    "old": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2024",
+      "region": "Central"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "Revenue per employee in East was $89,768 in 2025",
+   "number": "$89,768",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "revenue",
+     "multiplier": 1000
+    },
+    "den": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "Central revenue climbed by $997.99K in 2025 vs 2024",
+   "number": "$997.99K",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "Central"
+     },
+     "column": "revenue",
+     "multiplier": 1000
+    },
+    "b": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2024",
+      "region": "Central"
+     },
+     "column": "revenue",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "South headcount declined 7.10% in 2022 vs 2021",
+   "number": "7.10%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2022",
+      "region": "South"
+     },
+     "column": "staff"
+    },
+    "old": {
+     "file": "staff.csv",
+     "row": {
+      "year": "2021",
+      "region": "South"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "West revenue was $916.6 million in FY2025",
+   "number": "$916.6 million",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2025",
+      "region": "West"
+     },
+     "column": "revenue",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "The lowest regional revenue was $5.17 million in 2021",
+   "number": "$5.17 million",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "year": "2021",
+      "region": "Central"
+     },
+     "column": "revenue",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "Across all regions and years, shipments totalled roughly 5,300,000 units",
+   "number": "5,300,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.csv",
+     "where": {},
+     "column": "units"
+    }
+   }
+  }
+ ]
+}

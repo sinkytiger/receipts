@@ -1,0 +1,67 @@
+{
+ "doc": "d015",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051631Z",
+   "set": "heldout",
+   "doc": "d015",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2344,
+   "output_tokens": 2239,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0013539,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcTCZBdWH3yxqgaDXH8"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 10,
+    "number": "1억 원",
+    "should_be": "약 1.97억 원 (about 2억 원)",
+    "why": "2021 Seoul sales 1167742938432 / 5930 people ≈ 196.9 million won, not 100 million"
+   },
+   {
+    "line": 25,
+    "number": "59,511원",
+    "should_be": "40,846원",
+    "why": "2021 Seoul unit price is 40846; 59511 is Daejeon's 2021 unit price"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026"
+   },
+   {
+    "line": 3,
+    "number": "4월 14일"
+   },
+   {
+    "line": 4,
+    "number": "v2.1.1"
+   },
+   {
+    "line": 4,
+    "number": "37"
+   },
+   {
+    "line": 32,
+    "number": "184"
+   },
+   {
+    "line": 33,
+    "number": "0.07"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0013539
+}

@@ -1,0 +1,43 @@
+{
+ "doc": "d020",
+ "arm": "A",
+ "requests": [
+  {
+   "time": "20261120T050933Z",
+   "set": "heldout",
+   "doc": "d020",
+   "arm": "A",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 8608,
+   "output_tokens": 6191,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0039563,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbuV3jdHYNBie5S3sAt"
+  },
+  {
+   "time": "20261120T050936Z",
+   "set": "heldout",
+   "doc": "d020",
+   "arm": "A",
+   "request": 2,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 16341,
+   "output_tokens": 392,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0018301,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbw7x2sAQBYVRLmqjjW"
+  }
+ ],
+ "plans_sent": 1,
+ "said_done": true,
+ "cut_off_replies": 0,
+ "accepted_receipts": "plan1/receipts.json",
+ "scan_numbers": 15,
+ "refused": false,
+ "usd": 0.0057864
+}

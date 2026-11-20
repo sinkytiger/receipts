@@ -1,0 +1,288 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 11,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 2,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 20
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 26,
+   "end": 30,
+   "text": "0.56",
+   "quote": "2023년 인천 지역의 매출 대비 비용 비율은 0.56였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "0.58",
+   "recomputed_raw": "0.582999256315508145669199841967045480954704966417997164702875",
+   "sources": [
+    "tables.md table 1 [연도=2023, 지역=인천] 비용 = 200687",
+    "tables.md table 1 [연도=2023, 지역=인천] 매출 = 344232"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 18,
+   "end": 25,
+   "text": "29,049억",
+   "quote": "2023년 전 지역 비용 합계는 29,049억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,904,900,000,000",
+   "recomputed_raw": "2904871000000",
+   "sources": [
+    "tables.md table 1 [연도=2023] 비용: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 18,
+   "end": 27,
+   "text": "464억 600만",
+   "quote": "2022년 지역별 매출 최저치는 464억 600만 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "46,406,000,000",
+   "recomputed_raw": "46406000000",
+   "sources": [
+    "tables.md table 1 [연도=2022] 매출: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 26,
+   "end": 30,
+   "text": "0.86",
+   "quote": "2025년 인천 지역의 매출 대비 비용 비율은 0.86였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.86",
+   "recomputed_raw": "0.86099919758350803046661989404741399229512122370615592086745",
+   "sources": [
+    "tables.md table 1 [연도=2025, 지역=인천] 비용 = 409889",
+    "tables.md table 1 [연도=2025, 지역=인천] 매출 = 476062"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 17,
+   "end": 22,
+   "text": "9.83%",
+   "quote": "2024년 지역 평균 이익률은 9.83%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "9.83%",
+   "recomputed_raw": "9.83333333333333333333333333333333333333333333333333333333333",
+   "sources": [
+    "tables.md table 2 [연도=2024] 이익률: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 26,
+   "end": 31,
+   "text": "3.40%",
+   "quote": "서울 지역 매출은 2024년 대비 2025년에 3.40% 하락했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-3.40%",
+   "recomputed_raw": "-3.40005165711445974177981645377178671496715849906657555833821",
+   "sources": [
+    "tables.md table 1 [연도=2025, 지역=서울] 매출 = 590927",
+    "tables.md table 1 [연도=2024, 지역=서울] 매출 = 611726"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 29,
+   "end": 35,
+   "text": "22.90%",
+   "quote": "부산 지역 인원은 2024년 대비 2025년에 22.90% 증가했다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "22.91%",
+   "recomputed_raw": "22.9078762306610407876230661040787623066104078762306610407876",
+   "sources": [
+    "tables.md table 2 [연도=2025, 지역=부산] 인원 = 6991",
+    "tables.md table 2 [연도=2024, 지역=부산] 인원 = 5688"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 33,
+   "end": 40,
+   "text": "+15.25%",
+   "quote": "광주 지역 매출의 2022년 대비 2023년 변동률은 +15.25%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "18.00%",
+   "recomputed_raw": "17.9998276084989010041804939016506486230228849717708916950394",
+   "sources": [
+    "tables.md table 1 [연도=2023, 지역=광주] 매출 = 54759",
+    "tables.md table 1 [연도=2022, 지역=광주] 매출 = 46406"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 22,
+   "end": 29,
+   "text": "111,135",
+   "quote": "2021년 지역별 판매량 최저치는 111,135건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "111,135",
+   "recomputed_raw": "111135",
+   "sources": [
+    "tables.md table 1 [연도=2021] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 19,
+   "end": 25,
+   "text": "5,966조",
+   "quote": "2024년 대전 지역 비용은 5,966조 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,000,000,000,000",
+   "recomputed_raw": "596601000000",
+   "sources": [
+    "tables.md table 1 [연도=2024, 지역=대전] 비용 = 596601 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 17,
+   "end": 22,
+   "text": "15.5%",
+   "quote": "2021년 인천 지역 이익률은 15.5%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "15.5%",
+   "recomputed_raw": "15.5",
+   "sources": [
+    "tables.md table 2 [연도=2021, 지역=인천] 이익률 = 15.5"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 31,
+   "end": 37,
+   "text": "+15.8%",
+   "quote": "부산 지역 판매량의 2023년 대비 2024년 변동률은 +15.8%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "15.8%",
+   "recomputed_raw": "15.7998520176266689021967728178978484237690308612501230149039",
+   "sources": [
+    "tables.md table 1 [연도=2024, 지역=부산] 판매량 = 317705",
+    "tables.md table 1 [연도=2023, 지역=부산] 판매량 = 274357"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 26,
+   "end": 28,
+   "text": "88",
+   "quote": "서울 지역 인원은 2021년 대비 2022년에 88명 떨어졌다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-88",
+   "recomputed_raw": "-88",
+   "sources": [
+    "tables.md table 2 [연도=2022, 지역=서울] 인원 = 1673",
+    "tables.md table 2 [연도=2021, 지역=서울] 인원 = 1761"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 19,
+   "end": 23,
+   "text": "127만",
+   "quote": "2024년 전 지역 판매량 합계는 127만건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,270,000",
+   "recomputed_raw": "1274012",
+   "sources": [
+    "tables.md table 1 [연도=2024] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 21,
+   "end": 27,
+   "text": "35.46%",
+   "quote": "2025년 광주 지역은 전체 판매량의 35.46%를 차지했다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "26.18%",
+   "recomputed_raw": "26.1801541425818882466281310211946050096339113680154142581888",
+   "sources": [
+    "tables.md table 1 [연도=2025, 지역=광주] 판매량 = 344579",
+    "tables.md table 1 [연도=2025] 판매량: 6 cells (summed)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "tables.md",
+   "column": "매출",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "tables.md",
+   "column": "비용",
+   "multiplier": "1000000",
+   "claims": 2
+  }
+ ]
+}

@@ -1,0 +1,274 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 7,
+  "wrong": 8,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 50,
+   "end": 57,
+   "text": "+12.70%",
+   "quote": "The change in East unit sales in 2023 vs 2022 was +12.70%.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "12.70%",
+   "recomputed_raw": "12.7004476352253667083319979060500197643237930408213411963292",
+   "sources": [
+    "tables.md table 1 [Year=2023, Region=East] Units = 105491",
+    "tables.md table 1 [Year=2022, Region=East] Units = 93603"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 33,
+   "end": 40,
+   "text": "$208.3K",
+   "quote": "Revenue per employee in West was $208.3K in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "208.3K",
+   "recomputed_raw": "208329.743203883495145631067961165048543689320388349514563107",
+   "sources": [
+    "tables.md table 1 [Year=2024, Region=West] Revenue = 858318542",
+    "tables.md table 2 [Year=2024, Region=West] Staff = 4120"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 24,
+   "end": 35,
+   "text": "8.5 percent",
+   "quote": "South revenue increased 8.5 percent in 2023 vs 2022.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "9.3%",
+   "recomputed_raw": "9.29999998469866239211131740879034303165510615236330615448871",
+   "sources": [
+    "tables.md table 1 [Year=2023, Region=South] Revenue = 221438157",
+    "tables.md table 1 [Year=2022, Region=South] Revenue = 202596667"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 26,
+   "end": 33,
+   "text": "810,615",
+   "quote": "All regions together sold 810,615 units in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "810,615",
+   "recomputed_raw": "810615",
+   "sources": [
+    "tables.md table 1 [Year=2023] Units: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 24,
+   "end": 29,
+   "text": "60.2%",
+   "quote": "The margin in South was 60.2% in 2022.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "20.2%",
+   "recomputed_raw": "20.2",
+   "sources": [
+    "tables.md table 2 [Year=2022, Region=South] Margin = 20.2"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 13,
+   "end": 20,
+   "text": "165,041",
+   "quote": "Central sold 165,041 units in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "165,341",
+   "recomputed_raw": "165341",
+   "sources": [
+    "tables.md table 1 [Year=2024, Region=Central] Units = 165341"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 22,
+   "end": 35,
+   "text": "14.96 percent",
+   "quote": "East accounted for 14.96 percent of total unit sales in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "13.01%",
+   "recomputed_raw": "13.013699475089900877728638132775732005946102650456751972268",
+   "sources": [
+    "tables.md table 1 [Year=2023, Region=East] Units = 105491",
+    "tables.md table 1 [Year=2023] Units: 5 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 52,
+   "end": 58,
+   "text": "-6.39%",
+   "quote": "The change in East headcount in 2023 vs 2022 was -6.39%.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "-6.40%",
+   "recomputed_raw": "-6.39542614014093870495944688206355537827416566945884855737269",
+   "sources": [
+    "tables.md table 2 [Year=2023, Region=East] Staff = 7040",
+    "tables.md table 2 [Year=2022, Region=East] Staff = 7521"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 36,
+   "end": 43,
+   "text": "$224.72",
+   "quote": "The selling price in Central was $224.72 in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "224.72",
+   "recomputed_raw": "224.72",
+   "sources": [
+    "tables.md table 1 [Year=2025, Region=Central] Price = 224.72"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 47,
+   "end": 61,
+   "text": "$1,289,868,790",
+   "quote": "Total operating cost across all regions was $1,289,868,790 in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,421,677,031",
+   "recomputed_raw": "1421677031",
+   "sources": [
+    "tables.md table 1 [Year=2025] Cost: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 52,
+   "end": 59,
+   "text": "+22.29%",
+   "quote": "The change in Central headcount in 2022 vs 2021 was +22.29%.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "22.29%",
+   "recomputed_raw": "22.2942399412987648281765928824752354164118870001222942399413",
+   "sources": [
+    "tables.md table 2 [Year=2022, Region=Central] Staff = 10000",
+    "tables.md table 2 [Year=2021, Region=Central] Staff = 8177"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 30,
+   "end": 37,
+   "text": "$215.05",
+   "quote": "The selling price in West was $215.05 in 2021.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "142.82",
+   "recomputed_raw": "142.82",
+   "sources": [
+    "tables.md table 1 [Year=2021, Region=West] Price = 142.82"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 45,
+   "end": 52,
+   "text": "$154.20",
+   "quote": "The average selling price across regions was $154.20 in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "154.20",
+   "recomputed_raw": "154.196",
+   "sources": [
+    "tables.md table 1 [Year=2023] Price: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 22,
+   "end": 26,
+   "text": "9.1%",
+   "quote": "Central accounted for 9.1% of total revenue in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "8.4%",
+   "recomputed_raw": "8.3771462306048225832877044220183619392648747015684406825995",
+   "sources": [
+    "tables.md table 1 [Year=2024, Region=Central] Revenue = 147874785",
+    "tables.md table 1 [Year=2024] Revenue: 5 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 36,
+   "end": 37,
+   "text": "1",
+   "quote": "East posted double-digit margins in 1 of the five years covered.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3",
+   "recomputed_raw": "3",
+   "sources": [
+    "tables.md table 2 [Region=East] Margin >= 10: 3 rows"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

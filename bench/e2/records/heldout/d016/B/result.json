@@ -1,0 +1,81 @@
+{
+ "doc": "d016",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051723Z",
+   "set": "heldout",
+   "doc": "d016",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2246,
+   "output_tokens": 3112,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0017806,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcWg31UPyKHGmQRp2Je"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "3개 연도",
+    "should_be": "1개 연도",
+    "why": "부산 이익률 두 자릿수는 2024년(18.5)뿐"
+   },
+   {
+    "line": 14,
+    "number": "늘었다",
+    "should_be": "줄었다",
+    "why": "대구 인원은 4544명에서 4053명으로 감소(491명 감소)"
+   },
+   {
+    "line": 18,
+    "number": "줄었다",
+    "should_be": "늘었다",
+    "why": "대전 인원은 3574명에서 4006명으로 증가(432명 증가)"
+   },
+   {
+    "line": 21,
+    "number": "40,055억 원",
+    "should_be": "40,056억 원",
+    "why": "2025년 비용 합계 4,005,570,120,822원, 약 40,055.7억 원"
+   },
+   {
+    "line": 27,
+    "number": "−9.8%",
+    "should_be": "−3.8%",
+    "why": "2023년 부산 이익률 원자료는 -3.8"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-11-01"
+   },
+   {
+    "line": 4,
+    "number": "v1.3.5"
+   },
+   {
+    "line": 4,
+    "number": "20"
+   },
+   {
+    "line": 32,
+    "number": "371"
+   },
+   {
+    "line": 33,
+    "number": "0.51"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0017806
+}

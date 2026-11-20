@@ -1,0 +1,395 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "2022년 부산 지역과 광주 지역의 매출을 합하면 2조 571억 원이었다.",
+   "number": "2조 571억",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "data.json",
+      "pointer": "/rows",
+      "where": {
+       "연도": "2022",
+       "지역": "부산"
+      },
+      "column": "매출",
+      "multiplier": 1000000
+     },
+     {
+      "file": "data.json",
+      "pointer": "/rows",
+      "where": {
+       "연도": "2022",
+       "지역": "광주"
+      },
+      "column": "매출",
+      "multiplier": 1000000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "2022년 대전 지역 단가는 28,729원이었다.",
+   "number": "28,729",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "대전"
+     },
+     "column": "단가"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "광주 지역 인원은 2024년 대비 2025년에 1.7% 줄었다.",
+   "number": "1.7%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2025",
+      "지역": "광주"
+     },
+     "column": "인원"
+    },
+    "old": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2024",
+      "지역": "광주"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "2022년 부산 지역 비용은 매출의 74.9%였다.",
+   "number": "74.9%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "비용"
+    },
+    "whole": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "2023년 광주 지역 판매량은 82,288건이었다.",
+   "number": "82,288",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2023",
+      "지역": "광주"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "2022년 부산 지역의 매출 대비 비용 비율은 0.74였다.",
+   "number": "0.74",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "비용"
+    },
+    "den": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "대전 지역 매출은 2021년 대비 2022년에 289억 원 상승했다.",
+   "number": "289억",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "대전"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    },
+    "b": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2021",
+      "지역": "대전"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "전 기간 전 지역 판매량은 대략 3,100,000건이었다.",
+   "number": "3,100,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "where": {},
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "2024년 서울 지역 인당 매출은 9,359만 원이었다.",
+   "number": "9,359만",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2024",
+      "지역": "서울"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    },
+    "den": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2024",
+      "지역": "서울"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "2022년 부산 지역의 매출 대비 비용 비율은 0.75였다.",
+   "number": "0.75",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "비용"
+    },
+    "den": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "부산 지역 인원은 2023년 대비 2024년에 383명 상승했다.",
+   "number": "383",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2024",
+      "지역": "부산"
+     },
+     "column": "인원"
+    },
+    "b": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2023",
+      "지역": "부산"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "서울 지역 인원은 2024년 대비 2025년에 1,708명 올랐다.",
+   "number": "1,708",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2025",
+      "지역": "서울"
+     },
+     "column": "인원"
+    },
+    "b": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2024",
+      "지역": "서울"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "2022년 광주 지역 판매량은 90,626건이었다.",
+   "number": "90,626",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "광주"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "2024년 부산 지역 비용은 매출의 73.7%였다.",
+   "number": "73.7%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2024",
+      "지역": "부산"
+     },
+     "column": "비용"
+    },
+    "whole": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2024",
+      "지역": "부산"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "인천 지역 판매량의 2022년 대비 2023년 변동률은 -1.38퍼센트였다.",
+   "number": "-1.38퍼센트",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2023",
+      "지역": "인천"
+     },
+     "column": "판매량"
+    },
+    "old": {
+     "file": "data.json",
+     "pointer": "/rows",
+     "row": {
+      "연도": "2022",
+      "지역": "인천"
+     },
+     "column": "판매량"
+    }
+   }
+  }
+ ]
+}

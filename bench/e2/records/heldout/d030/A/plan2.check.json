@@ -1,0 +1,272 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 13,
+  "wrong": 2,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 2,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 17
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 27,
+   "end": 32,
+   "text": "21.2%",
+   "quote": "대전 지역 판매량은 2021년 대비 2022년에 21.2% 증가했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "21.2%",
+   "recomputed_raw": "21.2000102586899652914322840973207721373980542684699163916768",
+   "sources": [
+    "sales.json /rows [연도=2022, 지역=대전] 판매량 = 283545",
+    "sales.json /rows [연도=2021, 지역=대전] 판매량 = 233948"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 17,
+   "end": 24,
+   "text": "278,190",
+   "quote": "2025년 인천 지역 판매량은 278,190건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "278,190",
+   "recomputed_raw": "278190",
+   "sources": [
+    "sales.json /rows [연도=2025, 지역=인천] 판매량 = 278190"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 16,
+   "end": 22,
+   "text": "51,743",
+   "quote": "2025년 지역 평균 단가는 51,743원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "51,743",
+   "recomputed_raw": "51742.5",
+   "sources": [
+    "sales.json /rows [연도=2025] 단가: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 26,
+   "end": 30,
+   "text": "1.2배",
+   "quote": "2021년 광주 지역 매출은 대구 지역 매출의 1.2배였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.2배",
+   "recomputed_raw": "1.18296257121926103930996959943885474678830077780247286565498",
+   "sources": [
+    "sales.json /rows [연도=2021, 지역=광주] 매출 = 810442088358",
+    "sales.json /rows [연도=2021, 지역=대구] 매출 = 685095292172"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 19,
+   "end": 26,
+   "text": "692,543",
+   "quote": "2022년 전 지역 판매량 합계는 692,543건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "692,543",
+   "recomputed_raw": "692543",
+   "sources": [
+    "sales.json /rows [연도=2022] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 16,
+   "end": 17,
+   "text": "1",
+   "quote": "대전 지역은 다섯 해 가운데 1개 연도에 두 자릿수 이익률을 기록했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1",
+   "recomputed_raw": "1",
+   "sources": [
+    "staff.json /rows [지역=대전] 이익률 >= 10: 1 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 30,
+   "end": 36,
+   "text": "21.0%p",
+   "quote": "대구 지역 이익률은 2021년 대비 2022년에 21.0%p 하락했다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-21.0%p",
+   "recomputed_raw": "-21",
+   "sources": [
+    "staff.json /rows [연도=2022, 지역=대구] 이익률 = 0.5",
+    "staff.json /rows [연도=2021, 지역=대구] 이익률 = 21.5"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 34,
+   "end": 39,
+   "text": "+2.0%",
+   "quote": "대구 지역 판매량의 2021년 대비 2022년 변동률은 +2.0%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1.8%",
+   "recomputed_raw": "1.79989138586464609894230520572034446197212237192583206185834",
+   "sources": [
+    "sales.json /rows [연도=2022, 지역=대구] 판매량 = 118095",
+    "sales.json /rows [연도=2021, 지역=대구] 판매량 = 116007"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 22,
+   "end": 28,
+   "text": "20,958",
+   "quote": "2023년 지역별 판매량 최저치는 20,958건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "20,958",
+   "recomputed_raw": "20958",
+   "sources": [
+    "sales.json /rows [연도=2023] 판매량: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 25,
+   "end": 26,
+   "text": "3",
+   "quote": "이익률이 두 자릿수인 지역은 3개였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3",
+   "recomputed_raw": "3",
+   "sources": [
+    "staff.json /rows [연도=2023] 이익률 >= 10: 3 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 19,
+   "end": 24,
+   "text": "21.8%",
+   "quote": "2025년 지역별 이익률 최고치는 21.8%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "21.8%",
+   "recomputed_raw": "21.8",
+   "sources": [
+    "staff.json /rows [연도=2025] 이익률: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 18,
+   "end": 27,
+   "text": "3,500,000",
+   "quote": "전 기간 전 지역 판매량은 대략 3,500,000건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,500,000",
+   "recomputed_raw": "3508278",
+   "sources": [
+    "sales.json /rows [] 판매량: 30 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 16,
+   "end": 25,
+   "text": "1조 3,821억",
+   "quote": "2022년 인천 지역 비용은 1조 3,821억 원이었다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "1,382,200,000,000",
+   "recomputed_raw": "1382182105670",
+   "sources": [
+    "sales.json /rows [연도=2022, 지역=인천] 비용 = 1382182105670"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 27,
+   "end": 35,
+   "text": "22.70퍼센트",
+   "quote": "서울 지역 판매량은 2021년 대비 2022년에 22.70퍼센트 늘었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "22.70%",
+   "recomputed_raw": "22.6986322422007069309973874289226986322422007069309973874289",
+   "sources": [
+    "sales.json /rows [연도=2022, 지역=서울] 판매량 = 23952",
+    "sales.json /rows [연도=2021, 지역=서울] 판매량 = 19521"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 16,
+   "end": 22,
+   "text": "72,759",
+   "quote": "2024년 인천 지역 단가는 72,759원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "74,069",
+   "recomputed_raw": "74069",
+   "sources": [
+    "sales.json /rows [연도=2024, 지역=인천] 단가 = 74069"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

@@ -1,0 +1,69 @@
+{
+ "doc": "d019",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050912Z",
+   "set": "heldout",
+   "doc": "d019",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2046,
+   "output_tokens": 1825,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0011171,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbtvLUefBRGhDTddgMw"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 13,
+    "number": "3",
+    "should_be": "4",
+    "why": "2022 margins at or above 10 are South 16.3, East 19.6, North 14.9 and West 19.8, which is four regions"
+   },
+   {
+    "line": 14,
+    "number": "4",
+    "should_be": "2",
+    "why": "West margins at or above 10 occur only in 2022 (19.8) and 2023 (18.2)"
+   },
+   {
+    "line": 20,
+    "number": "$136.87",
+    "should_be": "$136.89",
+    "why": "North 2023 price in the source is 136.89"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "January 5, 2026"
+   },
+   {
+    "line": 4,
+    "number": "v1.9.3"
+   },
+   {
+    "line": 4,
+    "number": "33"
+   },
+   {
+    "line": 32,
+    "number": "247"
+   },
+   {
+    "line": 33,
+    "number": "0.38"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0011171
+}

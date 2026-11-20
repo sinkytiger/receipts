@@ -1,0 +1,272 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 9,
+  "wrong": 6,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 2,
+  "date": 5,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 14
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 18,
+   "end": 26,
+   "text": "$614.43M",
+   "quote": "North revenue was $614.43M in FY2022.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "614.44M",
+   "recomputed_raw": "614436301",
+   "sources": [
+    "sales.csv [year=2022, region=North] revenue = 614436301"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 20,
+   "end": 25,
+   "text": "71.0%",
+   "quote": "East headcount fell 71.0% in 2024 vs 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-7.1%",
+   "recomputed_raw": "-7.09624796084828711256117455138662316476345840130505709624796",
+   "sources": [
+    "staff.csv [year=2024, region=East] staff = 5695",
+    "staff.csv [year=2023, region=East] staff = 6130"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 38,
+   "end": 42,
+   "text": "0.84",
+   "quote": "The cost-to-revenue ratio in West was 0.84 in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.84",
+   "recomputed_raw": "0.839000000429049006336216826344053511948638529384310948104687",
+   "sources": [
+    "sales.csv [year=2025, region=West] cost = 119284742",
+    "sales.csv [year=2025, region=West] revenue = 142174901"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 27,
+   "end": 33,
+   "text": "10.1pp",
+   "quote": "The margin in East slipped 10.1pp in 2025 vs 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-10.1%p",
+   "recomputed_raw": "-10.1",
+   "sources": [
+    "staff.csv [year=2025, region=East] margin = 7.2",
+    "staff.csv [year=2024, region=East] margin = 17.3"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 27,
+   "end": 32,
+   "text": "96.4%",
+   "quote": "Central operating cost was 96.4% of revenue in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "96.4%",
+   "recomputed_raw": "96.3999999918384136071519042978092685107291628106359080144121",
+   "sources": [
+    "sales.csv [year=2022, region=Central] cost = 377965735",
+    "sales.csv [year=2022, region=Central] revenue = 392080638"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 10,
+   "end": 17,
+   "text": "336,270",
+   "quote": "East sold 336,270 units in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "336,270",
+   "recomputed_raw": "336270",
+   "sources": [
+    "sales.csv [year=2023, region=East] units = 336270"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 17,
+   "end": 20,
+   "text": "410",
+   "quote": "West employed 410 people in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "410",
+   "recomputed_raw": "410",
+   "sources": [
+    "staff.csv [year=2023, region=West] staff = 410"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 33,
+   "end": 55,
+   "text": "21.9 percentage points",
+   "quote": "The margin in South decreased 21.9 percentage points in 2024 vs 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-21.0%p",
+   "recomputed_raw": "-21",
+   "sources": [
+    "staff.csv [year=2024, region=South] margin = -0.4",
+    "staff.csv [year=2023, region=South] margin = 20.6"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 42,
+   "end": 43,
+   "text": "5",
+   "quote": "Central posted double-digit margins in 5 of the five years covered.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3",
+   "recomputed_raw": "3",
+   "sources": [
+    "staff.csv [region=Central] margin >= 10: 3 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 29,
+   "end": 41,
+   "text": "1.06 million",
+   "quote": "All regions together sold 1.06 million units in 2022.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1.04 million",
+   "recomputed_raw": "1035315",
+   "sources": [
+    "sales.csv [year=2022] units: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 44,
+   "end": 58,
+   "text": "$1,104,902,242",
+   "quote": "Total operating cost across all regions was $1,104,902,242 in 2022.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,419,520,727",
+   "recomputed_raw": "1419520727",
+   "sources": [
+    "sales.csv [year=2022] cost: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 37,
+   "end": 43,
+   "text": "$1.56B",
+   "quote": "Total revenue across all regions was $1.56B in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.56B",
+   "recomputed_raw": "1560857451",
+   "sources": [
+    "sales.csv [year=2021] revenue: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 17,
+   "end": 31,
+   "text": "$142.2 million",
+   "quote": "West revenue was $142.2 million in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "142.2 million",
+   "recomputed_raw": "142174901",
+   "sources": [
+    "sales.csv [year=2025, region=West] revenue = 142174901"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 11,
+   "end": 18,
+   "text": "276,681",
+   "quote": "South sold 276,681 units in FY2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "236,681",
+   "recomputed_raw": "236681",
+   "sources": [
+    "sales.csv [year=2024, region=South] units = 236681"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 30,
+   "end": 37,
+   "text": "$107.84",
+   "quote": "The selling price in East was $107.84 in FY2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "107.84",
+   "recomputed_raw": "107.84",
+   "sources": [
+    "sales.csv [year=2021, region=East] price = 107.84"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

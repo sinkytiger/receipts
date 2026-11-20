@@ -1,0 +1,274 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 11,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 17,
+   "end": 23,
+   "text": "17.72%",
+   "quote": "2024년 지역 평균 이익률은 17.72%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "17.70%",
+   "recomputed_raw": "17.7",
+   "sources": [
+    "staff.json /rows [연도=2024] 이익률: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 27,
+   "end": 32,
+   "text": "1.6%p",
+   "quote": "대전 지역 이익률은 2022년 대비 2023년에 1.6%p 늘었다.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "-1.6%p",
+   "recomputed_raw": "-1.6",
+   "sources": [
+    "staff.json /rows [연도=2023, 지역=대전] 이익률 = 13.9",
+    "staff.json /rows [연도=2022, 지역=대전] 이익률 = 15.5"
+   ],
+   "note": "the sentence says up, the recomputed change is -1.6"
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 16,
+   "end": 21,
+   "text": "5,162",
+   "quote": "2023년 인천 지역 인원은 5,162명이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,162",
+   "recomputed_raw": "5162",
+   "sources": [
+    "staff.json /rows [연도=2023, 지역=인천] 인원 = 5162"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 19,
+   "end": 22,
+   "text": "92만",
+   "quote": "2025년 전 지역 판매량 합계는 92만건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "920,000",
+   "recomputed_raw": "916426",
+   "sources": [
+    "sales.json /rows [연도=2025] 판매량: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 17,
+   "end": 24,
+   "text": "229,107",
+   "quote": "2025년 지역 평균 판매량은 229,107건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "229,107",
+   "recomputed_raw": "229106.5",
+   "sources": [
+    "sales.json /rows [연도=2025] 판매량: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 16,
+   "end": 22,
+   "text": "47,273",
+   "quote": "2025년 지역 평균 단가는 47,273원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "47,273",
+   "recomputed_raw": "47272.5",
+   "sources": [
+    "sales.json /rows [연도=2025] 단가: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 20,
+   "end": 27,
+   "text": "135,896",
+   "quote": "2022년 부산 지역 판매량은 135,896건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "135,896",
+   "recomputed_raw": "135896",
+   "sources": [
+    "sales.json /rows [연도=2022, 지역=부산] 판매량 = 135896"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 22,
+   "end": 29,
+   "text": "145,378",
+   "quote": "2025년 지역별 판매량 최저치는 145,378건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "145,378",
+   "recomputed_raw": "145378",
+   "sources": [
+    "sales.json /rows [연도=2025] 판매량: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 33,
+   "end": 40,
+   "text": "+24.41%",
+   "quote": "부산 지역 인원의 2022년 대비 2023년 변동률은 +24.41%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "21.41%",
+   "recomputed_raw": "21.4052287581699346405228758169934640522875816993464052287582",
+   "sources": [
+    "staff.json /rows [연도=2023, 지역=부산] 인원 = 2972",
+    "staff.json /rows [연도=2022, 지역=부산] 인원 = 2448"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 22,
+   "end": 29,
+   "text": "855,608",
+   "quote": "2023년 전 지역 판매량 합계는 855,608건이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "736,492",
+   "recomputed_raw": "736492",
+   "sources": [
+    "sales.json /rows [연도=2023] 판매량: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 26,
+   "end": 30,
+   "text": "0.67",
+   "quote": "2023년 인천 지역의 매출 대비 비용 비율은 0.67였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.67",
+   "recomputed_raw": "0.670999999999727849493587649023051268743551959275411422355525",
+   "sources": [
+    "sales.json /rows [연도=2023, 지역=인천] 비용 = 387090957091",
+    "sales.json /rows [연도=2023, 지역=인천] 매출 = 576886672267"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 26,
+   "end": 30,
+   "text": "1.1배",
+   "quote": "2025년 대전 지역 매출은 부산 지역 매출의 1.1배였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.1배",
+   "recomputed_raw": "1.11769073925243818106409381193876499760250819829859183323888",
+   "sources": [
+    "sales.json /rows [연도=2025, 지역=대전] 매출 = 2007664589769",
+    "sales.json /rows [연도=2025, 지역=부산] 매출 = 1796261272695"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 19,
+   "end": 21,
+   "text": "8억",
+   "quote": "2024년 서울 지역 인당 매출은 8억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "800,000,000",
+   "recomputed_raw": "801139566.025710419485791610284167794316644113667117726657645",
+   "sources": [
+    "sales.json /rows [연도=2024, 지역=서울] 매출 = 1776126417879",
+    "staff.json /rows [연도=2024, 지역=서울] 인원 = 2217"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 26,
+   "end": 30,
+   "text": "0.89",
+   "quote": "2025년 서울 지역의 매출 대비 비용 비율은 0.89였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.89",
+   "recomputed_raw": "0.891000000000029835406116387173034172363126946364762139061506",
+   "sources": [
+    "sales.json /rows [연도=2025, 지역=서울] 비용 = 1851558506846",
+    "sales.json /rows [연도=2025, 지역=서울] 매출 = 2078067908918"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 26,
+   "end": 30,
+   "text": "983억",
+   "quote": "부산 지역 비용은 2021년 대비 2022년에 983억 원 하락했다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "-98,400,000,000",
+   "recomputed_raw": "-98388095328",
+   "sources": [
+    "sales.json /rows [연도=2022, 지역=부산] 비용 = 893201999102",
+    "sales.json /rows [연도=2021, 지역=부산] 비용 = 991590094430"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

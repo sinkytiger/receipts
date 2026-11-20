@@ -1,0 +1,105 @@
+{
+ "doc": "d013",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051504Z",
+   "set": "heldout",
+   "doc": "d013",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2038,
+   "output_tokens": 2478,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0014428,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcLg6wN4hF3dbNauGKT"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 12,
+    "number": "701명 증가",
+    "should_be": "701명 감소",
+    "why": "2024년 7,380명에서 2025년 6,679명으로 줄었다"
+   },
+   {
+    "line": 14,
+    "number": "69,101원",
+    "should_be": "73,200원",
+    "why": "2021년 서울 단가가 73200이다. 69101은 2022년 값이다"
+   },
+   {
+    "line": 19,
+    "number": "5,564조 8,793억 원",
+    "should_be": "5,564억 8,793만 원",
+    "why": "차이는 556,487,928,515원으로 조 단위가 아니다"
+   },
+   {
+    "line": 21,
+    "number": "+16.2%",
+    "should_be": "+19.4%",
+    "why": "대구 판매량 150,398→179,575은 약 +19.4%"
+   },
+   {
+    "line": 23,
+    "number": "3개 연도",
+    "should_be": "2개 연도",
+    "why": "대구 이익률 10% 이상은 2022년(11)과 2024년(14.7) 두 해뿐"
+   },
+   {
+    "line": 24,
+    "number": "14.75%",
+    "should_be": "10.78%",
+    "why": "2022년 6개 지역 이익률 평균은 64.7/6 ≈ 10.78"
+   },
+   {
+    "line": 26,
+    "number": "19.0% 상승",
+    "should_be": "23.5% 상승",
+    "why": "인천 인원 255→315은 약 +23.5%"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026"
+   },
+   {
+    "line": 3,
+    "number": "8월 15일"
+   },
+   {
+    "line": 4,
+    "number": "v1.8.3"
+   },
+   {
+    "line": 4,
+    "number": "46"
+   },
+   {
+    "line": 5,
+    "number": "2025"
+   },
+   {
+    "line": 5,
+    "number": "50"
+   },
+   {
+    "line": 32,
+    "number": "408"
+   },
+   {
+    "line": 33,
+    "number": "0.55"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0014428
+}

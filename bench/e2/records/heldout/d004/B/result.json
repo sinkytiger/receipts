@@ -1,0 +1,71 @@
+{
+ "doc": "d004",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050449Z",
+   "set": "heldout",
+   "doc": "d004",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1827,
+   "output_tokens": 1661,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0010132,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbZf8enoqQxkzjEBGtW"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 12,
+    "number": "-4.9%",
+    "should_be": "-4.8%",
+    "why": "West staff 12465 vs 13093 is -4.80%"
+   },
+   {
+    "line": 19,
+    "number": "$52.19M",
+    "should_be": "$55.29M",
+    "why": "West 39798 + East 15493 = 55291 thousand"
+   },
+   {
+    "line": 24,
+    "number": "$159.7 billion",
+    "should_be": "$159.7 million",
+    "why": "Coastal 2024 cost is 159710 thousand dollars"
+   },
+   {
+    "line": 27,
+    "number": "$72,039,000",
+    "should_be": "$35,406,000",
+    "why": "West 2021 cost is 35406 thousand; 72039 is North 2021"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-01-01"
+   },
+   {
+    "line": 4,
+    "number": "v1.3.1"
+   },
+   {
+    "line": 32,
+    "number": "11"
+   },
+   {
+    "line": 33,
+    "number": "0.98"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0010132
+}

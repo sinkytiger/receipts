@@ -1,0 +1,378 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "West posted double-digit margins in 2 of the five years covered.",
+   "number": "2",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Region": "West"
+     },
+     "test": {
+      "column": "Margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "Revenue per employee in South was $68,584 in 2022.",
+   "number": "$68,584",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "West accounted for 24.29% of total revenue in 2022.",
+   "number": "24.29%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "Year": "2022"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "West operating cost was 82.0% of revenue in 2024.",
+   "number": "82.0%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Cost"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "Double-digit margins were posted by 3 regions in 2022.",
+   "number": "3",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Year": "2022"
+     },
+     "test": {
+      "column": "Margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "West posted double-digit margins in 4 of the five years covered.",
+   "number": "4",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Region": "West"
+     },
+     "test": {
+      "column": "Margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "West revenue was 1.30x that of South in 2022.",
+   "number": "1.30x",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "Revenue per employee in South was $68.5K in 2022.",
+   "number": "$68.5K",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "South"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "The selling price in North was $136.87 in 2023.",
+   "number": "$136.87",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2023",
+      "Region": "North"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "North revenue was 1.28x that of East in 2023.",
+   "number": "1.28x",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2023",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2023",
+      "Region": "East"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "North headcount rose 18.40% in 2025 vs 2024.",
+   "number": "18.40%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "North"
+     },
+     "column": "Staff"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "North"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "The selling price in East was $249.78 in 2025.",
+   "number": "$249.78",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2025",
+      "Region": "East"
+     },
+     "column": "Price"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The change in West headcount in 2022 vs 2021 was +9.74%.",
+   "number": "+9.74%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "West"
+     },
+     "column": "Staff"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "West"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "South and North revenue combined was $1.9 billion in 2023.",
+   "number": "$1.9 billion",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "tables.md",
+      "table": 1,
+      "row": {
+       "Year": "2023",
+       "Region": "South"
+      },
+      "column": "Revenue"
+     },
+     {
+      "file": "tables.md",
+      "table": 1,
+      "row": {
+       "Year": "2023",
+       "Region": "North"
+      },
+      "column": "Revenue"
+     }
+    ]
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "West sold 241,390 units in 2021.",
+   "number": "241,390",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "Year": "2021",
+      "Region": "West"
+     },
+     "column": "Units"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "doc": "d022",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051935Z",
+   "set": "heldout",
+   "doc": "d022",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 3010,
+   "output_tokens": 2012,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.001307,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcgmMkz8RHXU1MH3TCR"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "3,774.3원",
+    "should_be": "37,742.5원",
+    "why": "2023 average of the four regions' 단가 is (71273+13195+58059+8443)/4 = 37,742.5; the report is off by a factor of 10"
+   },
+   {
+    "line": 20,
+    "number": "3.7%",
+    "should_be": "3.8%",
+    "why": "2025 대전 revenue 191,863,892,434 over 2025 total 5,069,924,625,519 is about 3.78%"
+   },
+   {
+    "line": 23,
+    "number": "+14.60%",
+    "should_be": "+17.10%",
+    "why": "광주 매출 went from 918,724,210,486 (2024) to 1,075,826,050,479 (2025), a rise of about 17.10%"
+   },
+   {
+    "line": 26,
+    "number": "6개 연도",
+    "should_be": "5개 연도",
+    "why": "인천 margins are 20.2, 18, 16.8, 15.9, 13.2, so all five years are double-digit; there are only five years"
+   },
+   {
+    "line": 27,
+    "number": "6개 연도",
+    "should_be": "4개 연도",
+    "why": "대전 margins of 17.3, 16.7, 10.6, 21.5 are double-digit; 2023 (1.2) is not, so the count is 4"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-03-15"
+   },
+   {
+    "line": 4,
+    "number": "2.9.4"
+   },
+   {
+    "line": 4,
+    "number": "47"
+   },
+   {
+    "line": 32,
+    "number": "236"
+   },
+   {
+    "line": 33,
+    "number": "0.86"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.001307
+}

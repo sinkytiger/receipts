@@ -1,0 +1,83 @@
+{
+ "doc": "d031",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T052334Z",
+   "set": "heldout",
+   "doc": "d031",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2842,
+   "output_tokens": 1971,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0012697,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDczSNWpjL44E9P6MLb9"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "0.56",
+    "should_be": "0.58",
+    "why": "2023 인천 cost/revenue = 200687/344232 ≈ 0.583"
+   },
+   {
+    "line": 19,
+    "number": "+15.25%",
+    "should_be": "+18.00%",
+    "why": "광주 매출 2022→2023: 54759/46406 − 1 ≈ +18.00%"
+   },
+   {
+    "line": 21,
+    "number": "5,966조 원",
+    "should_be": "5,966억 원",
+    "why": "2024 대전 비용 596601백만 원 = 5,966억 원, not 조"
+   },
+   {
+    "line": 27,
+    "number": "35.46%",
+    "should_be": "26.18%",
+    "why": "2025 광주 판매량 344579 / 전체 1316184 ≈ 26.18%"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026"
+   },
+   {
+    "line": 3,
+    "number": "5월 16일"
+   },
+   {
+    "line": 4,
+    "number": "v2.7.3"
+   },
+   {
+    "line": 5,
+    "number": "2025"
+   },
+   {
+    "line": 5,
+    "number": "36"
+   },
+   {
+    "line": 32,
+    "number": "73"
+   },
+   {
+    "line": 33,
+    "number": "0.80"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0012697
+}

@@ -1,0 +1,89 @@
+{
+ "doc": "d007",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051335Z",
+   "set": "heldout",
+   "doc": "d007",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2615,
+   "output_tokens": 2189,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.001356,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcEDEFv7Ve7AbwAVDiH"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "증가했다",
+    "should_be": "감소했다",
+    "why": "대전 비용은 696,937에서 655,969(백만 원)로 줄었으므로 약 410억 원 감소했다"
+   },
+   {
+    "line": 10,
+    "number": "1개 연도",
+    "should_be": "2개 연도",
+    "why": "인천 이익률이 두 자릿수인 해는 2024년(21.6)과 2025년(10.7)이다"
+   },
+   {
+    "line": 18,
+    "number": "떨어졌다",
+    "should_be": "늘었다",
+    "why": "인천 인원은 6,861명에서 7,019명으로 158명 증가했다"
+   },
+   {
+    "line": 19,
+    "number": "-4.7퍼센트",
+    "should_be": "-4.5퍼센트",
+    "why": "2021년 대구 이익률 원자료는 -4.5이다"
+   },
+   {
+    "line": 23,
+    "number": "1.88배",
+    "should_be": "1.89배",
+    "why": "1,212,655 / 642,803 = 1.8865, 반올림하면 1.89"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-05-25"
+   },
+   {
+    "line": 4,
+    "number": "v3.7.1"
+   },
+   {
+    "line": 4,
+    "number": "43"
+   },
+   {
+    "line": 5,
+    "number": "2025"
+   },
+   {
+    "line": 5,
+    "number": "table-63"
+   },
+   {
+    "line": 32,
+    "number": "78"
+   },
+   {
+    "line": 33,
+    "number": "0.36"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.001356
+}

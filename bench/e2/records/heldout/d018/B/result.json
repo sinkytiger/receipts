@@ -1,0 +1,99 @@
+{
+ "doc": "d018",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050838Z",
+   "set": "heldout",
+   "doc": "d018",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 3144,
+   "output_tokens": 2025,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0013269,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbrNZUTgpMynKV8mbeK"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 10,
+    "number": "6,129",
+    "should_be": "4,511",
+    "why": "Coastal 2024 staff is 4511; 6,129 is West"
+   },
+   {
+    "line": 11,
+    "number": "$395.6M",
+    "should_be": "$395.5M",
+    "why": "South 2021 revenue is 395,536,812"
+   },
+   {
+    "line": 12,
+    "number": "$126.64K",
+    "should_be": "$126.80K",
+    "why": "714,653,847 / 5,643 ≈ 126,804"
+   },
+   {
+    "line": 13,
+    "number": "1.2x",
+    "should_be": "1.3x",
+    "why": "619,163,624 / 489,674,573 ≈ 1.264"
+   },
+   {
+    "line": 14,
+    "number": "$1,108,838,197",
+    "should_be": "$1,288,656,038",
+    "why": "725,040,604 + 563,615,434"
+   },
+   {
+    "line": 18,
+    "number": "grew by 705",
+    "should_be": "fell by 705 (-705)",
+    "why": "East staff 2025 5,643 vs 2024 6,348 is a decrease"
+   },
+   {
+    "line": 19,
+    "number": "+7.2 percent",
+    "should_be": "+7.8 percent",
+    "why": "714,653,847 / 662,944,199 - 1 ≈ 7.8%"
+   },
+   {
+    "line": 23,
+    "number": "28.09 percent",
+    "should_be": "21.93 percent",
+    "why": "395,536,812 / total 2021 revenue 1,803,874,653 ≈ 21.93%"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-06-23"
+   },
+   {
+    "line": 4,
+    "number": "46"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 32,
+    "number": "53"
+   },
+   {
+    "line": 33,
+    "number": "0.83"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0013269
+}

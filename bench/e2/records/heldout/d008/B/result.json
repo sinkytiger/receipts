@@ -1,0 +1,87 @@
+{
+ "doc": "d008",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051422Z",
+   "set": "heldout",
+   "doc": "d008",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2266,
+   "output_tokens": 1986,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0012196,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDcHjL5uTa3grdJPRDE9"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 12,
+    "number": "1.6배",
+    "should_be": "1.68배",
+    "why": "2023 대구 매출 1,464,157,912,431 ÷ 서울 870,391,594,805 ≈ 1.68"
+   },
+   {
+    "line": 13,
+    "number": "2개",
+    "should_be": "1개",
+    "why": "2025 이익률 마이너스는 대구(-1.2)뿐"
+   },
+   {
+    "line": 21,
+    "number": "−7.53%",
+    "should_be": "−7.01%",
+    "why": "광주 인원 5,609→5,216 이므로 (5216-5609)/5609 ≈ -7.01%"
+   },
+   {
+    "line": 24,
+    "number": "8.6%",
+    "should_be": "20.8%",
+    "why": "2022 대구 이익률은 20.8; 8.6은 서울 값"
+   },
+   {
+    "line": 26,
+    "number": "5억 3,659만 원",
+    "should_be": "5조 3,659억 원",
+    "why": "2022 전 지역 비용 합계 약 5,365,923,776,186원"
+   },
+   {
+    "line": 27,
+    "number": "504조 원",
+    "should_be": "504억 원",
+    "why": "인천 비용 2023→2024 감소액 약 50,402,592,430원"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-05-06"
+   },
+   {
+    "line": 4,
+    "number": "v2.5.4"
+   },
+   {
+    "line": 4,
+    "number": "3"
+   },
+   {
+    "line": 32,
+    "number": "229"
+   },
+   {
+    "line": 33,
+    "number": "0.60"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0012196
+}

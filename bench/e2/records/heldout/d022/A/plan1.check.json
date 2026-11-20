@@ -1,0 +1,289 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 9,
+  "wrong": 6,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 17
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 16,
+   "end": 23,
+   "text": "3,774.3",
+   "quote": "2023년 지역 평균 단가는 3,774.3원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "37,742.5",
+   "recomputed_raw": "37742.5",
+   "sources": [
+    "data.json /rows [연도=2023] 단가: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 27,
+   "end": 34,
+   "text": "2.1%포인트",
+   "quote": "서울 지역 이익률은 2023년 대비 2024년에 2.1%포인트 늘었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2.1%p",
+   "recomputed_raw": "2.1",
+   "sources": [
+    "data.json /rows [연도=2024, 지역=서울] 이익률 = 18",
+    "data.json /rows [연도=2023, 지역=서울] 이익률 = 15.9"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 26,
+   "end": 32,
+   "text": "3,670억",
+   "quote": "광주 지역 비용은 2022년 대비 2023년에 3,670억 원 감소했다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-36,699,483,024,700,000,000",
+   "recomputed_raw": "-36699483024700000000",
+   "sources": [
+    "data.json /rows [연도=2023, 지역=광주] 비용 = 618206945374 x 100000000",
+    "data.json /rows [연도=2022, 지역=광주] 비용 = 985201775621 x 100000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 26,
+   "end": 30,
+   "text": "0.98",
+   "quote": "2024년 인천 지역의 매출 대비 비용 비율은 0.98였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.98",
+   "recomputed_raw": "0.981999999999823449947063061074215778099730963869690488973083",
+   "sources": [
+    "data.json /rows [연도=2024, 지역=인천] 비용 = 1813264820228",
+    "data.json /rows [연도=2024, 지역=인천] 매출 = 1846501853593"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 17,
+   "end": 23,
+   "text": "88,703",
+   "quote": "2021년 인천 지역 판매량은 88,703건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "88,703",
+   "recomputed_raw": "88703",
+   "sources": [
+    "data.json /rows [연도=2021, 지역=인천] 판매량 = 88703"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 30,
+   "end": 36,
+   "text": "-11.2%",
+   "quote": "서울 지역 인원의 2022년 대비 2023년 변동률은 -11.2%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-11.2%",
+   "recomputed_raw": "-11.2019877834144321358318666528626151775546122787037995651724",
+   "sources": [
+    "data.json /rows [연도=2023, 지역=서울] 인원 = 8577",
+    "data.json /rows [연도=2022, 지역=서울] 인원 = 9659"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 20,
+   "end": 26,
+   "text": "16,814",
+   "quote": "2024년 광주 지역 판매량은 16,814건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "16,814",
+   "recomputed_raw": "16814",
+   "sources": [
+    "data.json /rows [연도=2024, 지역=광주] 판매량 = 16814"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 29,
+   "end": 34,
+   "text": "1.86배",
+   "quote": "2024년 서울 지역 매출은 광주 지역 매출의 1.86배였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.86배",
+   "recomputed_raw": "1.8601570021225016993603163827705011038878973957924564387444",
+   "sources": [
+    "data.json /rows [연도=2024, 지역=서울] 매출 = 1708971273155",
+    "data.json /rows [연도=2024, 지역=광주] 매출 = 918724210486"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 23,
+   "end": 27,
+   "text": "3.7%",
+   "quote": "2025년 대전 지역은 전체 매출의 3.7%를 차지했다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "3.8%",
+   "recomputed_raw": "3.78435394223162051526195795318733043734270023847132413260155",
+   "sources": [
+    "data.json /rows [연도=2025, 지역=대전] 매출 = 191863892434",
+    "data.json /rows [연도=2025] 매출: 4 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 22,
+   "end": 28,
+   "text": "8,387만",
+   "quote": "2023년 대전 지역 인당 매출은 8,387만 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "10,000",
+   "recomputed_raw": "8387.03147117346938775510204081632653061224489795918367346939",
+   "sources": [
+    "data.json /rows [연도=2023, 지역=대전] 매출 = 164385816835 x 0.0001",
+    "data.json /rows [연도=2023, 지역=대전] 인원 = 1960"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 30,
+   "end": 37,
+   "text": "+14.60%",
+   "quote": "광주 지역 매출의 2024년 대비 2025년 변동률은 +14.60%였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "17.10%",
+   "recomputed_raw": "17.099999999988462261167154113716849913788176913177182976593",
+   "sources": [
+    "data.json /rows [연도=2025, 지역=광주] 매출 = 1075826050479",
+    "data.json /rows [연도=2024, 지역=광주] 매출 = 918724210486"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 26,
+   "end": 30,
+   "text": "0.97",
+   "quote": "2024년 서울 지역의 매출 대비 비용 비율은 0.97였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.97",
+   "recomputed_raw": "0.967999999999976594106274147952589667121542423724615132440956",
+   "sources": [
+    "data.json /rows [연도=2024, 지역=서울] 비용 = 1654284192414",
+    "data.json /rows [연도=2024, 지역=서울] 매출 = 1708971273155"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 21,
+   "end": 22,
+   "text": "1",
+   "quote": "2024년 이익률이 마이너스인 지역은 1개였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1",
+   "recomputed_raw": "1",
+   "sources": [
+    "data.json /rows [연도=2024] 이익률 < 0: 1 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 16,
+   "end": 17,
+   "text": "6",
+   "quote": "인천 지역은 다섯 해 가운데 6개 연도에 두 자릿수 이익률을 기록했다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "5",
+   "recomputed_raw": "5",
+   "sources": [
+    "data.json /rows [지역=인천] 이익률 >= 10: 5 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 16,
+   "end": 17,
+   "text": "6",
+   "quote": "대전 지역은 다섯 해 가운데 6개 연도에 두 자릿수 이익률을 기록했다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4",
+   "recomputed_raw": "4",
+   "sources": [
+    "data.json /rows [지역=대전] 이익률 >= 10: 4 rows"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "data.json",
+   "column": "매출",
+   "multiplier": "0.0001",
+   "claims": 1
+  },
+  {
+   "file": "data.json",
+   "column": "비용",
+   "multiplier": "100000000",
+   "claims": 1
+  }
+ ]
+}

@@ -1,0 +1,65 @@
+{
+ "doc": "d017",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050801Z",
+   "set": "heldout",
+   "doc": "d017",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1663,
+   "output_tokens": 1805,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0010688,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbojRzxGWFFmBD2v4RW"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "2",
+    "should_be": "1",
+    "why": "Only Central (21.2) has a margin of 10 or more in 2021"
+   },
+   {
+    "line": 13,
+    "number": "3",
+    "should_be": "4",
+    "why": "South margins of 10 or more occur in 2022, 2023, 2024 and 2025, which is 4 of 5 years"
+   },
+   {
+    "line": 27,
+    "number": "$1,176.20",
+    "should_be": "$117.62",
+    "why": "West price in 2023 is 117.62 in data.csv; the value is off by a factor of 10"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "23 October 2026"
+   },
+   {
+    "line": 4,
+    "number": "v2.5.4"
+   },
+   {
+    "line": 32,
+    "number": "467"
+   },
+   {
+    "line": 33,
+    "number": "0.26"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0010688
+}

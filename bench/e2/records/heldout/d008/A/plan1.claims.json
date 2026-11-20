@@ -1,0 +1,362 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "2025년 인천 지역 단가는 60,468원이었다.",
+   "number": "60,468",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2025",
+      "지역": "인천"
+     },
+     "column": "단가"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "2022년 전 지역 판매량 합계는 954,700건이었다.",
+   "number": "954,700",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "where": {
+      "연도": "2022"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "2022년 광주 지역의 매출 대비 비용 비율은 0.58였다.",
+   "number": "0.58",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2022",
+      "지역": "광주"
+     },
+     "column": "비용"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2022",
+      "지역": "광주"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "2023년 대구 지역 매출은 서울 지역 매출의 1.6배였다.",
+   "number": "1.6배",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2023",
+      "지역": "대구"
+     },
+     "column": "매출"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2023",
+      "지역": "서울"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "마이너스인 지역은 2개였다",
+   "number": "2",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "book.xlsx",
+     "sheet": "인원",
+     "header_row": 2,
+     "where": {
+      "연도": "2025"
+     },
+     "test": {
+      "column": "이익률",
+      "op": "<",
+      "value": "0"
+     }
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "2023년 서울 지역 매출은 부산 지역 매출의 1.12배였다.",
+   "number": "1.12배",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2023",
+      "지역": "서울"
+     },
+     "column": "매출"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2023",
+      "지역": "부산"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "2023년 전 지역 판매량 합계는 98만건이었다.",
+   "number": "98만",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "where": {
+      "연도": "2023"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "대전 지역 이익률은 2023년 대비 2024년에 13.4%포인트 감소했다.",
+   "number": "13.4%포인트",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "인원",
+     "header_row": 2,
+     "row": {
+      "연도": "2024",
+      "지역": "대전"
+     },
+     "column": "이익률"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "인원",
+     "header_row": 2,
+     "row": {
+      "연도": "2023",
+      "지역": "대전"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "2025년 서울 지역 인원은 3,002명이었다.",
+   "number": "3,002",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "인원",
+     "header_row": 2,
+     "row": {
+      "연도": "2025",
+      "지역": "서울"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "광주 지역 인원의 2024년 대비 2025년 변동률은 −7.53%였다.",
+   "number": "−7.53%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "book.xlsx",
+     "sheet": "인원",
+     "header_row": 2,
+     "row": {
+      "연도": "2025",
+      "지역": "광주"
+     },
+     "column": "인원"
+    },
+    "old": {
+     "file": "book.xlsx",
+     "sheet": "인원",
+     "header_row": 2,
+     "row": {
+      "연도": "2024",
+      "지역": "광주"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "2025년 지역별 판매량 최저치는 21,666건이었다.",
+   "number": "21,666",
+   "kind": "derived",
+   "formula": "min",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "where": {
+      "연도": "2025"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "2022년 대구 지역 이익률은 8.6%였다.",
+   "number": "8.6%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "인원",
+     "header_row": 2,
+     "row": {
+      "연도": "2022",
+      "지역": "대구"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "2023년 인천 지역 비용은 19,905억 원이었다.",
+   "number": "19,905억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2023",
+      "지역": "인천"
+     },
+     "column": "비용"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "2022년 전 지역 비용 합계는 5억 3,659만 원이었다.",
+   "number": "5억 3,659만",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "where": {
+      "연도": "2022"
+     },
+     "column": "비용"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "인천 지역 비용은 2023년 대비 2024년에 504조 원 줄었다.",
+   "number": "504조",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2024",
+      "지역": "인천"
+     },
+     "column": "비용"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "매출",
+     "header_row": 2,
+     "row": {
+      "연도": "2023",
+      "지역": "인천"
+     },
+     "column": "비용"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "doc": "d003",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050415Z",
+   "set": "heldout",
+   "doc": "d003",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2319,
+   "output_tokens": 2245,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0013544,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbWvGeRknFjmi29WkWk"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "$674.3K",
+    "should_be": "$674.4K",
+    "why": "East 2024 revenue 293,353,431 / 435 staff = 674,375.7"
+   },
+   {
+    "line": 10,
+    "number": "63.7%",
+    "should_be": "63.9%",
+    "why": "North 2025 cost 436,821,033 / revenue 683,600,990 = 63.9%"
+   },
+   {
+    "line": 14,
+    "number": "79,656.2",
+    "should_be": "796,562",
+    "why": "2024 units summed across regions is 796,562; the figure is also not a whole unit count"
+   },
+   {
+    "line": 25,
+    "number": "+3.8%",
+    "should_be": "+3.9%",
+    "why": "West units 207,443 vs 199,656 is +3.90%"
+   },
+   {
+    "line": 26,
+    "number": "8.0%",
+    "should_be": "8.1%",
+    "why": "South units 213,654 vs 197,645 is +8.10%"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 1,
+    "number": "2026-11-15"
+   },
+   {
+    "line": 4,
+    "number": "v1.3.2"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 5,
+    "number": "18"
+   },
+   {
+    "line": 32,
+    "number": "496"
+   },
+   {
+    "line": 33,
+    "number": "0.47"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0013544
+}

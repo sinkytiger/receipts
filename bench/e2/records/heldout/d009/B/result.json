@@ -1,0 +1,77 @@
+{
+ "doc": "d009",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050531Z",
+   "set": "heldout",
+   "doc": "d009",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1905,
+   "output_tokens": 2393,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.001387,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbcY4q8KuoN67gwvP6S"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 12,
+    "number": "6.9x",
+    "should_be": "7.0x",
+    "why": "744892/106792 = 6.975, which rounds to 7.0"
+   },
+   {
+    "line": 19,
+    "number": "18.70 percent",
+    "should_be": "18.68 percent",
+    "why": "5663/4771 - 1 = 18.68%"
+   },
+   {
+    "line": 23,
+    "number": "$997.99K",
+    "should_be": "$998K",
+    "why": "Central revenue 2025 minus 2024 is 8178 - 7180 = 998 (thousands), an integer difference"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-11-25"
+   },
+   {
+    "line": 4,
+    "number": "v2.5.5"
+   },
+   {
+    "line": 4,
+    "number": "4"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 5,
+    "number": "40"
+   },
+   {
+    "line": 32,
+    "number": "206"
+   },
+   {
+    "line": 33,
+    "number": "0.23"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.001387
+}

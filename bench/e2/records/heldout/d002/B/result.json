@@ -1,0 +1,65 @@
+{
+ "doc": "d002",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T050336Z",
+   "set": "heldout",
+   "doc": "d002",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 4233,
+   "output_tokens": 2041,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0014438,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDbUBLRtH1YPY344ciZL"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 13,
+    "number": "1.9%",
+    "should_be": "about 1.9% increase",
+    "why": "Central staff rose from 1958 to 1995 in 2025, so it did not decrease"
+   },
+   {
+    "line": 14,
+    "number": "+23.8%",
+    "should_be": "+23.7%",
+    "why": "East staff 8471 to 10479 is +2008, or 23.70%"
+   },
+   {
+    "line": 27,
+    "number": "15.68%",
+    "should_be": "13.55%",
+    "why": "South 2023 revenue 633,686,708 divided by total 2023 revenue 4,674,849,649"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-09-13"
+   },
+   {
+    "line": 4,
+    "number": "v1.5.5"
+   },
+   {
+    "line": 32,
+    "number": "178"
+   },
+   {
+    "line": 33,
+    "number": "0.52"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0014438
+}

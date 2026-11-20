@@ -1,0 +1,276 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 9,
+  "wrong": 6,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 2,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 18
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 33,
+   "end": 41,
+   "text": "$127.76K",
+   "quote": "Revenue per employee in West was $127.76K in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "127.76K",
+   "recomputed_raw": "127760.458802414749551313427965410344264969815630608582150432",
+   "sources": [
+    "data.json /sales [year=2024, region=West] revenue = 783043852",
+    "data.json /staff [year=2024, region=West] staff = 6129"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 17,
+   "end": 22,
+   "text": "6,129",
+   "quote": "Coastal employed 6,129 people in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4,511",
+   "recomputed_raw": "4511",
+   "sources": [
+    "data.json /staff [year=2024, region=Coastal] staff = 4511"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 18,
+   "end": 25,
+   "text": "$395.6M",
+   "quote": "South revenue was $395.6M in 2021.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "395.5M",
+   "recomputed_raw": "395536812",
+   "sources": [
+    "data.json /sales [year=2021, region=South] revenue = 395536812"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 33,
+   "end": 41,
+   "text": "$126.64K",
+   "quote": "Revenue per employee in East was $126.64K in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "126.64K",
+   "recomputed_raw": "126644.311004784688995215311004784688995215311004784688995215",
+   "sources": [
+    "data.json /sales [year=2025, region=East] revenue = 714653847",
+    "data.json /staff [year=2025, region=East] staff = 5643"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 17,
+   "end": 21,
+   "text": "1.2x",
+   "quote": "West revenue was 1.2x that of South in 2022.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "1.3x",
+   "recomputed_raw": "1.2644389930371165096211765114461027977452282375299074391596",
+   "sources": [
+    "data.json /sales [year=2022, region=West] revenue = 619163624",
+    "data.json /sales [year=2022, region=South] revenue = 489674573"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 36,
+   "end": 50,
+   "text": "$1,108,838,197",
+   "quote": "West and South revenue combined was $1,108,838,197 in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,288,656,038",
+   "recomputed_raw": "1288656038",
+   "sources": [
+    "data.json /sales [year=2023, region=West] revenue = 725040604",
+    "data.json /sales [year=2023, region=South] revenue = 563615434"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 26,
+   "end": 29,
+   "text": "705",
+   "quote": "East headcount grew by 705 in 2025 vs 2024.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "-705",
+   "recomputed_raw": "-705",
+   "sources": [
+    "data.json /staff [year=2025, region=East] staff = 5643",
+    "data.json /staff [year=2024, region=East] staff = 6348"
+   ],
+   "note": "the sentence says up, the recomputed change is -705"
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 50,
+   "end": 62,
+   "text": "+7.2 percent",
+   "quote": "The change in East revenue in 2025 vs 2024 was +7.2 percent.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "7.8%",
+   "recomputed_raw": "7.80000007210259939238113764685042518940572251692634541025677",
+   "sources": [
+    "data.json /sales [year=2025, region=East] revenue = 714653847",
+    "data.json /sales [year=2024, region=East] revenue = 662944199"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 35,
+   "end": 40,
+   "text": "19.5%",
+   "quote": "The highest regional margin was 19.5% in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "19.5%",
+   "recomputed_raw": "19.5",
+   "sources": [
+    "data.json /staff [year=2023] margin: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 35,
+   "end": 40,
+   "text": "16.4%",
+   "quote": "The highest regional margin was 16.4% in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "16.4%",
+   "recomputed_raw": "16.4",
+   "sources": [
+    "data.json /staff [year=2024] margin: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 20,
+   "end": 33,
+   "text": "28.09 percent",
+   "quote": "South accounted for 28.09 percent of total revenue in 2021.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "21.93%",
+   "recomputed_raw": "21.9270674568317691196030126822786505443513208453514424984827",
+   "sources": [
+    "data.json /sales [year=2021, region=South] revenue = 395536812",
+    "data.json /sales [year=2021] revenue: 4 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 37,
+   "end": 43,
+   "text": "$2.15B",
+   "quote": "Total revenue across all regions was $2.15B in 2025.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "2.16B",
+   "recomputed_raw": "2155052588",
+   "sources": [
+    "data.json /sales [year=2025] revenue: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 24,
+   "end": 46,
+   "text": "10.6 percentage points",
+   "quote": "The margin in East fell 10.6 percentage points in 2025 vs 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-10.6%p",
+   "recomputed_raw": "-10.6",
+   "sources": [
+    "data.json /staff [year=2025, region=East] margin = 5.7",
+    "data.json /staff [year=2024, region=East] margin = 16.3"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 30,
+   "end": 36,
+   "text": "$92.07",
+   "quote": "The selling price in West was $92.07 in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "92.07",
+   "recomputed_raw": "92.07",
+   "sources": [
+    "data.json /sales [year=2021, region=West] price = 92.07"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 25,
+   "end": 30,
+   "text": "64.0%",
+   "quote": "South operating cost was 64.0% of revenue in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "64.0%",
+   "recomputed_raw": "64.0000000425822263767177106792998149159982017099978848343603",
+   "sources": [
+    "data.json /sales [year=2023, region=South] cost = 360713878",
+    "data.json /sales [year=2023, region=South] revenue = 563615434"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

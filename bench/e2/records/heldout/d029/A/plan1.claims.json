@@ -1,0 +1,355 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "2024년 부산 지역의 매출 대비 비용 비율은 0.79였다.",
+   "number": "0.79",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2024",
+      "지역": "부산"
+     },
+     "column": "비용"
+    },
+    "den": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2024",
+      "지역": "부산"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "부산 지역 이익률은 2022년 대비 2023년에 8.5%포인트 상승했다.",
+   "number": "8.5%포인트",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2023",
+      "지역": "부산"
+     },
+     "column": "이익률"
+    },
+    "b": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "2022년 서울 지역 매출은 부산 지역 매출의 38.80배였다.",
+   "number": "38.80배",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2022",
+      "지역": "서울"
+     },
+     "column": "매출"
+    },
+    "den": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "부산 지역 인원은 2021년 대비 2022년에 684명 증가했다.",
+   "number": "684",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "인원"
+    },
+    "b": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2021",
+      "지역": "부산"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "인천 지역 이익률은 2024년 대비 2025년에 18.9%p 늘었다.",
+   "number": "18.9%p",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2025",
+      "지역": "인천"
+     },
+     "column": "이익률"
+    },
+    "b": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2024",
+      "지역": "인천"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "부산 지역 이익률은 2023년 대비 2024년에 26.9%포인트 하락했다.",
+   "number": "26.9%포인트",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2024",
+      "지역": "부산"
+     },
+     "column": "이익률"
+    },
+    "b": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2023",
+      "지역": "부산"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "2025년 부산 지역의 매출 대비 비용 비율은 0.82였다.",
+   "number": "0.82",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2025",
+      "지역": "부산"
+     },
+     "column": "비용"
+    },
+    "den": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2025",
+      "지역": "부산"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "2023년 전 지역 매출 합계는 2조 439억 원이었다.",
+   "number": "2조 439억",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.csv",
+     "where": {
+      "연도": "2023"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "2023년 지역별 매출 최고치는 6,863억 원이었다.",
+   "number": "6,863억",
+   "kind": "derived",
+   "formula": "max",
+   "operands": {
+    "cells": {
+     "file": "sales.csv",
+     "where": {
+      "연도": "2023"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "서울 지역 비용은 2022년 대비 2023년에 697억 원 상승했다.",
+   "number": "697억",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2023",
+      "지역": "서울"
+     },
+     "column": "비용"
+    },
+    "b": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2022",
+      "지역": "서울"
+     },
+     "column": "비용"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "2023년 인천 지역 인원은 3,840명이었다.",
+   "number": "3,840",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2023",
+      "지역": "인천"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "2023년 인천 지역 이익률은 21.8%였다.",
+   "number": "21.8%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2023",
+      "지역": "인천"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "2022년 인천 지역 단가는 3,589원이었다.",
+   "number": "3,589",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2022",
+      "지역": "인천"
+     },
+     "column": "단가"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "서울 지역 매출은 2022년 대비 2023년에 14.50퍼센트 떨어졌다.",
+   "number": "14.50퍼센트",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2023",
+      "지역": "서울"
+     },
+     "column": "매출"
+    },
+    "old": {
+     "file": "sales.csv",
+     "row": {
+      "연도": "2022",
+      "지역": "서울"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "부산 지역 인원의 2022년 대비 2023년 변동률은 -11.90%였다.",
+   "number": "-11.90%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2023",
+      "지역": "부산"
+     },
+     "column": "인원"
+    },
+    "old": {
+     "file": "staff.csv",
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "인원"
+    }
+   }
+  }
+ ]
+}

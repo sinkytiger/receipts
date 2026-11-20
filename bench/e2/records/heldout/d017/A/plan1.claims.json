@@ -1,0 +1,321 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "Double-digit margins were posted by 2 regions in 2021.",
+   "number": "2",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "data.csv",
+     "where": {
+      "year": "2021"
+     },
+     "test": {
+      "column": "margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "Across all regions and years, shipments totalled around 5,400,000 units.",
+   "number": "5,400,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "data.csv",
+     "where": {},
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "The change in Central headcount in 2023 vs 2022 was -13.2%.",
+   "number": "-13.2%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "Central"
+     },
+     "column": "staff"
+    },
+    "old": {
+     "file": "data.csv",
+     "row": {
+      "year": "2022",
+      "region": "Central"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "The cost-to-revenue ratio in Coastal was 0.73 in 2022.",
+   "number": "0.73",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.csv",
+     "row": {
+      "year": "2022",
+      "region": "Coastal"
+     },
+     "column": "cost"
+    },
+    "den": {
+     "file": "data.csv",
+     "row": {
+      "year": "2022",
+      "region": "Coastal"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "South posted double-digit margins in 3 of the five years covered.",
+   "number": "3",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "data.csv",
+     "where": {
+      "region": "South"
+     },
+     "test": {
+      "column": "margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "The average selling price across regions was $115.22 in 2021.",
+   "number": "$115.22",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "data.csv",
+     "where": {
+      "year": "2021"
+     },
+     "column": "price"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "1. Coastal headcount climbed by 531 in 2024 vs 2023.",
+   "number": "531",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "data.csv",
+     "row": {
+      "year": "2024",
+      "region": "Coastal"
+     },
+     "column": "staff"
+    },
+    "b": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "Coastal"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "2. Total revenue across all regions was $1.7B in 2024.",
+   "number": "$1.7B",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "data.csv",
+     "where": {
+      "year": "2024"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "3. All regions together sold 1.15 million units in 2025.",
+   "number": "1.15 million",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "data.csv",
+     "where": {
+      "year": "2025"
+     },
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "4. Total revenue across all regions was $1.8B in 2021.",
+   "number": "$1.8B",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "data.csv",
+     "where": {
+      "year": "2021"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "West operating cost was 99.6% of revenue in 2021.",
+   "number": "99.6%",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "data.csv",
+     "row": {
+      "year": "2021",
+      "region": "West"
+     },
+     "column": "cost"
+    },
+    "den": {
+     "file": "data.csv",
+     "row": {
+      "year": "2021",
+      "region": "West"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "Coastal headcount jumped by 531 in 2024 vs 2023.",
+   "number": "531",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "data.csv",
+     "row": {
+      "year": "2024",
+      "region": "Coastal"
+     },
+     "column": "staff"
+    },
+    "b": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "Coastal"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The margin in Central was 7.6% in 2025.",
+   "number": "7.6%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.csv",
+     "row": {
+      "year": "2025",
+      "region": "Central"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "Coastal operating cost dropped by $96,467,060 in 2025 vs 2024.",
+   "number": "$96,467,060",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "data.csv",
+     "row": {
+      "year": "2025",
+      "region": "Coastal"
+     },
+     "column": "cost"
+    },
+    "b": {
+     "file": "data.csv",
+     "row": {
+      "year": "2024",
+      "region": "Coastal"
+     },
+     "column": "cost"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "The selling price in West was $1,176.20 in FY2023.",
+   "number": "$1,176.20",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "data.csv",
+     "row": {
+      "year": "2023",
+      "region": "West"
+     },
+     "column": "price"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "doc": "d026",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T051056Z",
+   "set": "heldout",
+   "doc": "d026",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 3665,
+   "output_tokens": 1958,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0013455,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDc2aCFKEzVSZu9nqiLz"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 12,
+    "number": "decreased",
+    "should_be": "increased (up by 378)",
+    "why": "West staff went from 8,799 in 2023 to 9,177 in 2024, a rise"
+   },
+   {
+    "line": 13,
+    "number": "$142.81",
+    "should_be": "$246.38",
+    "why": "West 2021 price is 246.38; 142.81 is North 2021"
+   },
+   {
+    "line": 18,
+    "number": "$136.07",
+    "should_be": "$243.88",
+    "why": "Central 2024 price is 243.88; 136.07 is East 2024"
+   },
+   {
+    "line": 24,
+    "number": "14.17%",
+    "should_be": "14.18%",
+    "why": "2025 regional margins sum to 70.9, and 70.9/5 = 14.18"
+   },
+   {
+    "line": 26,
+    "number": "9.3%",
+    "should_be": "9.4%",
+    "why": "East 2021 margin in staff.json is 9.4"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "May 28, 2026"
+   },
+   {
+    "line": 4,
+    "number": "v3.2.6"
+   },
+   {
+    "line": 32,
+    "number": "29"
+   },
+   {
+    "line": 33,
+    "number": "0.36"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0013455
+}

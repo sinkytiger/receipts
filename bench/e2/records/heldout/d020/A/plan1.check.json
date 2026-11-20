@@ -1,0 +1,271 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 9,
+  "wrong": 6,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 3,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 13
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 57,
+   "end": 66,
+   "text": "5,400,000",
+   "quote": "Across all regions and years, shipments totalled roughly 5,400,000 units.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,400,000",
+   "recomputed_raw": "5416041",
+   "sources": [
+    "book.xlsx [Sales] [] Units: 25 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 14,
+   "end": 20,
+   "text": "10,293",
+   "quote": "East employed 10,293 people in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "10,293",
+   "recomputed_raw": "10293",
+   "sources": [
+    "book.xlsx [Staff] [Year=2024, Region=East] Staff = 10293"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 31,
+   "end": 36,
+   "text": "-4.4%",
+   "quote": "The lowest regional margin was -4.4% in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-4.4%",
+   "recomputed_raw": "-4.4",
+   "sources": [
+    "book.xlsx [Staff] [Year=2025] Margin: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 31,
+   "end": 43,
+   "text": "-4.4 percent",
+   "quote": "The lowest regional margin was -4.4 percent in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "6.7%",
+   "recomputed_raw": "6.7",
+   "sources": [
+    "book.xlsx [Staff] [Year=2024] Margin: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 26,
+   "end": 31,
+   "text": "15.0%",
+   "quote": "The margin in Central was 15.0% in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "14.9%",
+   "recomputed_raw": "14.9",
+   "sources": [
+    "book.xlsx [Staff] [Year=2024, Region=Central] Margin = 14.9"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 41,
+   "end": 45,
+   "text": "8.80",
+   "quote": "The cost-to-revenue ratio in Coastal was 8.80 in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "0.88",
+   "recomputed_raw": "0.880000000402413827702364746461506886498611487016393670327606",
+   "sources": [
+    "book.xlsx [Sales] [Year=2024, Region=Coastal] Cost = 524832860",
+    "book.xlsx [Sales] [Year=2024, Region=Coastal] Revenue = 596400977"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 23,
+   "end": 27,
+   "text": "7.2x",
+   "quote": "Central revenue was 7.2x that of North in 2021.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1.2x",
+   "recomputed_raw": "1.20280943300076897721499068226456958479418445333171547783543",
+   "sources": [
+    "book.xlsx [Sales] [Year=2021, Region=Central] Revenue = 630691245",
+    "book.xlsx [Sales] [Year=2021, Region=North] Revenue = 524348436"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 23,
+   "end": 27,
+   "text": "1.3x",
+   "quote": "Central revenue was 1.3x that of Coastal in 2025.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "1.4x",
+   "recomputed_raw": "1.37221868474715601565585048025392734429965012267651803122047",
+   "sources": [
+    "book.xlsx [Sales] [Year=2025, Region=Central] Revenue = 1014806779",
+    "book.xlsx [Sales] [Year=2025, Region=Coastal] Revenue = 739537211"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 29,
+   "end": 36,
+   "text": "975,291",
+   "quote": "All regions together sold 975,291 units in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "975,291",
+   "recomputed_raw": "975291",
+   "sources": [
+    "book.xlsx [Sales] [Year=2022] Units: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 48,
+   "end": 55,
+   "text": "$132.42",
+   "quote": "The average selling price across regions was $132.42 in 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "132.42",
+   "recomputed_raw": "132.416",
+   "sources": [
+    "book.xlsx [Sales] [Year=2022] Price: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 31,
+   "end": 37,
+   "text": "$15.25",
+   "quote": "The selling price in South was $15.25 in FY2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "15.25",
+   "recomputed_raw": "15.25",
+   "sources": [
+    "book.xlsx [Sales] [Year=2022, Region=South] Price = 15.25"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 32,
+   "end": 33,
+   "text": "4",
+   "quote": "Negative margins were posted by 4 regions in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2",
+   "recomputed_raw": "2",
+   "sources": [
+    "book.xlsx [Staff] [Year=2025] Margin < 0: 2 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 17,
+   "end": 22,
+   "text": "0.83x",
+   "quote": "East revenue was 0.83x that of Coastal in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.83x",
+   "recomputed_raw": "0.828976068146625115722252598936381754287681392236328761221567",
+   "sources": [
+    "book.xlsx [Sales] [Year=2023, Region=East] Revenue = 564386001",
+    "book.xlsx [Sales] [Year=2023, Region=Coastal] Revenue = 680823033"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 38,
+   "end": 43,
+   "text": "5.28%",
+   "quote": "The average margin across regions was 5.28% in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "5.30%",
+   "recomputed_raw": "5.3",
+   "sources": [
+    "book.xlsx [Staff] [Year=2025] Margin: 5 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 26,
+   "end": 35,
+   "text": "1,090,669",
+   "quote": "All regions together sold 1,090,669 units in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,090,669",
+   "recomputed_raw": "1090669",
+   "sources": [
+    "book.xlsx [Sales] [Year=2023] Units: 5 cells"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": []
+}

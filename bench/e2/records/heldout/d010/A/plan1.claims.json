@@ -1,0 +1,376 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "Central posted double-digit margins in 5 of the five years covered.",
+   "number": "5",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "staff.json",
+     "pointer": "/rows",
+     "where": {
+      "region": "Central"
+     },
+     "test": {
+      "column": "margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "North employed 9,716 people in 2025.",
+   "number": "9,716",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "staff.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2025",
+      "region": "North"
+     },
+     "column": "staff"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "The margin in East dropped 12.0pp in 2025 vs 2024.",
+   "number": "12.0pp",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "staff.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "margin"
+    },
+    "b": {
+     "file": "staff.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2024",
+      "region": "East"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "East and North revenue combined was $1,210,153,000 in 2022.",
+   "number": "$1,210,153,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "sales.json",
+      "pointer": "/rows",
+      "row": {
+       "year": "2022",
+       "region": "East"
+      },
+      "column": "revenue",
+      "multiplier": 1000
+     },
+     {
+      "file": "sales.json",
+      "pointer": "/rows",
+      "row": {
+       "year": "2022",
+       "region": "North"
+      },
+      "column": "revenue",
+      "multiplier": 1000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "Total operating cost across all regions was $2.1 billion in 2023.",
+   "number": "$2.1 billion",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "where": {
+      "year": "2023"
+     },
+     "column": "cost",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "Central revenue jumped by $116,479,000 in 2022 vs 2021.",
+   "number": "$116,479,000",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "up",
+   "operands": {
+    "a": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2022",
+      "region": "Central"
+     },
+     "column": "revenue",
+     "multiplier": 1000
+    },
+    "b": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2021",
+      "region": "Central"
+     },
+     "column": "revenue",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "Across all regions and years, shipments totalled around 5,200,000 units.",
+   "number": "5,200,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "where": {},
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "The change in Central revenue in 2022 vs 2021 was +19.42%.",
+   "number": "+19.42%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "up",
+   "operands": {
+    "new": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2022",
+      "region": "Central"
+     },
+     "column": "revenue"
+    },
+    "old": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2021",
+      "region": "Central"
+     },
+     "column": "revenue"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "The margin in North decreased 18.7pp in 2023 vs 2022.",
+   "number": "18.7pp",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "staff.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2023",
+      "region": "North"
+     },
+     "column": "margin"
+    },
+    "b": {
+     "file": "staff.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2022",
+      "region": "North"
+     },
+     "column": "margin"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "The highest regional revenue was $667.2M in 2022.",
+   "number": "$667.2M",
+   "kind": "derived",
+   "formula": "max",
+   "operands": {
+    "cells": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "where": {
+      "year": "2022"
+     },
+     "column": "revenue",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "Central and Coastal operating cost combined was $929.32M in 2023.",
+   "number": "$929.32M",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "sales.json",
+      "pointer": "/rows",
+      "row": {
+       "year": "2023",
+       "region": "Central"
+      },
+      "column": "cost",
+      "multiplier": 1000
+     },
+     {
+      "file": "sales.json",
+      "pointer": "/rows",
+      "row": {
+       "year": "2023",
+       "region": "Coastal"
+      },
+      "column": "cost",
+      "multiplier": 1000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "North unit sales decreased 1.3 percent in 2023 vs 2022.",
+   "number": "1.3 percent",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2023",
+      "region": "North"
+     },
+     "column": "units"
+    },
+    "old": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2022",
+      "region": "North"
+     },
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "All regions together sold 1,082,365 units in 2024.",
+   "number": "1,082,365",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "where": {
+      "year": "2024"
+     },
+     "column": "units"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "East operating cost was $374,391,000 in 2025.",
+   "number": "$374,391,000",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2025",
+      "region": "East"
+     },
+     "column": "cost",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "Coastal revenue rose 7.40% in 2022 vs 2021.",
+   "number": "7.40%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "up",
+   "operands": {
+    "new": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2022",
+      "region": "Coastal"
+     },
+     "column": "revenue"
+    },
+    "old": {
+     "file": "sales.json",
+     "pointer": "/rows",
+     "row": {
+      "year": "2021",
+      "region": "Coastal"
+     },
+     "column": "revenue"
+    }
+   }
+  }
+ ]
+}
