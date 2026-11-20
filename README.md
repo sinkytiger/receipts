@@ -2,7 +2,7 @@
 
 Every number your agent writes comes with a receipt, or gets flagged.
 
-> **Status: pre-release.** The checking script, the agent skill, the SEC EDGAR connection and the benchmark are here and the plugin installs from GitHub. The release numbers do not exist yet, so treat it as a preview.
+> **Status: 0.1.0, the first release.** A checking script, an agent skill, a connection to SEC EDGAR, and three evaluations whose rules were written down before they were run. The results, with their limits, are [below](#what-the-evaluation-shows).
 
 [한국어](README.ko.md)
 
@@ -74,6 +74,7 @@ A source can be a fact a company reported in its 10-K or 10-Q. The script reads 
 - When filings report different values for the same period (a restatement), the script abstains and lists them, unless the plan names the filing or picks the first or the latest report.
 - `receipts.py edgar concepts AAPL --match revenue` and `receipts.py edgar facts AAPL us-gaap:Assets` print a company's concept names and period dates, which a plan needs.
 - Segment, product and regional numbers are not in this API. Concepts a company defined itself were not in it either, for the five companies looked at.
+- A fact whose period is one day, such as a dividend paid on one date, is stored by the SEC under that single date. Ask for it as one date, not as a range.
 
 The rules are in sections 2 and 8 of [plan-format.md](skills/receipts/references/plan-format.md).
 
@@ -96,33 +97,76 @@ The note says research and development was 10.6% of revenue. Recomputed from the
 - [skills/receipts/references/plan-format.md](skills/receipts/references/plan-format.md): the plan format, the rules for reading and comparing numbers, and the outputs. The script and the benchmark both follow it.
 - [examples/quickstart](examples/quickstart): a short report, its source and a plan. [examples/edgar](examples/edgar): a note checked against SEC filings.
 - [tests](tests): unit tests. Run `python -m unittest discover -s tests`.
-- [bench](bench): the planted-error benchmark generator and scorer, and [bench/edgar](bench/edgar), the builder and scorer for the EDGAR connection.
+- [bench](bench): the planted-error benchmark generator and scorer; [bench/edgar](bench/edgar), the builder and scorer for the EDGAR connection; [bench/e2](bench/e2), the harness, scorer, spending record and conversations of the evaluation with a model.
 - [docs/design.md](docs/design.md) and [docs/eval-plan.md](docs/eval-plan.md): the design, and the evaluation plan that was fixed before any code was written.
 
-## Where the evaluation stands
+## What the evaluation shows
 
-The plan in [docs/eval-plan.md](docs/eval-plan.md) has three parts. E1 and E3 have been run on their development sets only. E2 has not been run.
+The rules for each evaluation were fixed in [docs/eval-plan.md](docs/eval-plan.md) before it was run. The code was frozen in one commit, and each held-out set was then run once.
 
-- **E1, the script alone with correct plans.** On the development seed (64 documents, 960 statements, 96 abstention cases) all 8 pass bars are met. Every run is logged in [bench/runs.jsonl](bench/runs.jsonl). These are development numbers. The numbers that count come from the held-out seed, which is run once on the release commit and has not been run.
-- **E2, a model writing the plan.** Not run. E1 says the script reads and compares correctly when the plan is right. It says nothing about how well a model writes plans.
-- **E3, SEC EDGAR.** Registered before the connection was written. Values the connection returns are compared with the numbers printed in the filings. On the 5 development companies (9 filings, 266 sampled facts) all 6 pass bars are met:
-  - no fact was judged wrong;
-  - with the filing named, 266 of 266 were verified;
-  - with no filing named, 262 were verified and 4 abstained because filings report different values for that fact;
-  - 180 of 180 locators that should match nothing were `unverifiable`, and 15 of 15 runs with no contact string, a corrupt cached file or an unreachable server stopped.
+| | Question | Held-out result |
+|---|---|---|
+| **E1** | Given a correct plan, does the script judge correctly? 64 synthetic documents, 960 statements, 288 with a planted error. | All 8 pass bars met. No planted error was accepted and no correct statement was flagged. |
+| **E2** | What happens when a model writes the plan? Claude Haiku 5.5, 30 synthetic documents, 128 planted errors, 322 correct statements. | With the skill and the script: 128 of 128 planted errors flagged, 2 of 322 correct statements flagged. The same model reviewing on its own: 118 of 128 and 26 of 322. |
+| **E3** | Does the EDGAR connection return what the filing prints? 20 companies, 40 filings, 1,169 facts. | All 6 pass bars met. No wrong value. 1,167 of 1,169 verified when the filing is named. |
 
-  Runs are logged in [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl). These are development numbers. The 20 held-out companies are run once on the release commit and have not been fetched. Two things to know: the sixth bar was added after the first run, when a deliberately broken copy of the tool got past the first five (the [plan's change log](docs/eval-plan.md) has the details); and one development company, XOM, files under a new registrant with no 10-K yet, so there are 9 filings and not 10.
+### E1, the script alone
 
-The E1 documents are synthetic and built from sentence templates, half English and half Korean. The E3 test lines are generated from numbers in real filings.
+No model is involved. The generator writes the documents, the sources and the correct plans, and plants an error in 30% of the statements. On the held-out seed:
+
+- 288 of 288 planted errors were judged `wrong`, and 672 of 672 correct statements `verified`;
+- 48 of 48 locators that match no cell or several were `unverifiable`, and 48 of 48 missing or corrupt sources stopped the run;
+- `scan` found 960 of 960 statement numbers, and 128 of 128 numbers removed from a plan were listed as `uncovered`.
+
+This shows that the script reads and compares correctly when the plan is right. The documents are built from sentence templates, half English and half Korean, so real reports will be messier.
+
+### E2, a model writes the plan
+
+Two arms on the same 30 documents, with the same model and settings. In arm A the model gets the skill text, writes the plan, and the script decides. It may correct its plan twice. In arm B the model reviews the document against the sources in one request and lists the wrong numbers. E2 has no pass bars.
+
+| | Arm A: skill and script | Arm B: the model alone |
+|---|---|---|
+| Planted errors flagged | 128 of 128 (95% interval 97.1% to 100%) | 118 of 128 (86.2% to 95.7%) |
+| Correct statements flagged | 2 of 322 (0.2% to 2.2%) | 26 of 322 (5.6% to 11.6%) |
+| Numbers left unchecked | 0 of 450 `uncovered`, 2 `unverifiable` | not reported by this arm |
+| Cost per document | US$0.0075, 2.2 requests on average | US$0.0013, 1 request |
+
+What to keep in mind:
+
+- **Most of arm B's false alarms are about one convention.** 22 of its 26 are numbers written cut off instead of rounded (2.36 for 2.368). The benchmark counts those as correct, the script accepts them by default, and arm B was told so. On numbers written rounded the arms are close: 2 of 289 for arm A, 4 of 289 for arm B.
+- **A wrong plan can still make a correct number look wrong.** Both of arm A's false alarms come from one Korean document where the model set multipliers that convert into the unit of the sentence, not the unit of the source. The receipt lists every multiplier a plan declares, so a reader can see this.
+- **Arm A abstained twice.** In one document whose CSV source does not state its unit, the model marked two numbers as having no source.
+- **One model, one run.** Other models, other settings and real documents may give other numbers. The arms differ in cost: arm A used 67 requests, arm B 30.
+- **Two rules changed after the rehearsals and before this run:** how arm B's flags are matched to statements, and the sentence that tells arm B about cut-off values. Both are in the plan's change log, with the reason. The rehearsals used development documents only.
+
+Every conversation, plan and script result of this run is in [bench/e2/records/heldout](bench/e2/records/heldout), and every request with its cost in [bench/e2/spend.jsonl](bench/e2/spend.jsonl). All of E2, rehearsals included, cost US$0.36.
+
+### E3, SEC EDGAR
+
+Values the connection returns are compared with the numbers printed in the filings. For each of 20 companies, the most recent 10-K and 10-Q were read, and up to 35 tagged numbers per filing were sampled.
+
+- No fact was judged `wrong`, in 2,338 verdicts.
+- With the filing named, 1,167 of 1,169 were verified. With no filing named, 1,145 were verified and 22 abstained because filings report different values for that fact.
+- The two that were not verified are dividend payment dates. The filing tags them as a period of one day, and the SEC's API stores such a fact under a single date, so the exact-period rule finds nothing. The script abstained. Until a later version handles this, ask for a one-day period as one date.
+- 800 of 800 locators that should match nothing were `unverifiable`, and 15 of 15 runs with no contact string, a corrupt cached file or an unreachable server stopped.
+
+Both sides of this comparison start from the same submission by the company. E3 tests the connection, not whether a company tagged its filing correctly. The sixth bar was added after the first development run, when a deliberately broken copy of the tool got past the first five. The [plan's change log](docs/eval-plan.md) has the details.
+
+### What was not measured
+
+- Whether an agent picks up the skill when it is not named.
+- Agents other than Claude Code, and the `/plugin` command typed inside the app (the command-line form was tested).
+- Real documents. Checks of real documents may appear here as examples. They are not performance estimates.
+
+### Where the runs are
+
+Every run is logged with its commit: [bench/runs.jsonl](bench/runs.jsonl) for E1, [bench/e2/runs.jsonl](bench/e2/runs.jsonl) for E2, [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl) for E3. The development runs are there too. The code was frozen at commit `a84647c`. The held-out runs were made on later commits that differ from it only in results and logs.
 
 ## Roadmap
 
-1. ~~Core script and the planted-error benchmark.~~ Done.
-2. ~~Skill and plugin packaging.~~ Done.
-3. ~~SEC EDGAR connection.~~ Done. Its held-out evaluation runs at the release.
-4. End-to-end evaluation with a model, the held-out run, then the first release.
+Done in 0.1.0: the core script and its benchmark, the skill and plugin, the SEC EDGAR connection, and the three evaluations.
 
-Later: Korean filings (DART), an audit of non-numeric claims, PDF sources.
+Next: one-day periods on EDGAR, Korean filings (DART), an audit of non-numeric claims, PDF sources.
 
 ## License
 
