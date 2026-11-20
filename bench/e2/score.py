@@ -39,8 +39,17 @@ def share(k, n):
     return {"k": k, "n": n, "share": round(k / n, 4) if n else None, "wilson95": wilson(k, n)}
 
 
-def digits(text) -> str:
-    return re.sub(r"[^0-9.]", "", str(text)).strip(".")
+def number_parts(text):
+    """The digit groups of a written number, commas removed: '5,970억 5,000만' -> ['5970', '5000']."""
+    return [g.replace(",", "") for g in re.findall(r"\d[\d,]*(?:\.\d+)?", str(text))]
+
+
+def names_number(flag_text, statement_text) -> bool:
+    """True when the flagged text contains the statement's number as whole digit groups, in order."""
+    want, have = number_parts(statement_text), number_parts(flag_text)
+    if not want:
+        return False
+    return any(have[i:i + len(want)] == want for i in range(len(have) - len(want) + 1))
 
 
 def git(*args) -> str:
@@ -118,7 +127,7 @@ def score(out_root, data):
                     same_line = int(f.get("line")) == s["line"]
                 except (TypeError, ValueError):
                     same_line = False
-                if same_line and digits(f.get("number")) == digits(s["text"]) and digits(s["text"]):
+                if same_line and names_number(f.get("number"), s["text"]):
                     hit = i
                     break
             if hit is not None:
