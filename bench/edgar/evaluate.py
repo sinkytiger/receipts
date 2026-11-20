@@ -4,9 +4,9 @@
 Usage: python bench/edgar/evaluate.py [--set dev|heldout] [--held-out] [--tool skills/receipts/scripts/receipts.py]
 
 Runs the tool as a black box (`check ... --edgar-cache ... --quiet`) on the cases written by bench/edgar/build.py,
-computes the five E3 measures, compares them with the registered bars, writes
+computes the six E3 measures, compares them with the registered bars, writes
 bench/edgar/results/<set>-<commit>-<UTC>.json and .md, and appends one line to bench/edgar/runs.jsonl.
-Exit 0 if every bar passes, 1 otherwise, 2 when the cases or the tool are missing.
+Exit 0 if all six bars pass, 1 otherwise, 2 when the cases or the tool are missing.
 The tool reads RECEIPTS_SEC_USER_AGENT from the environment that is passed through; it is never printed or written.
 """
 from __future__ import annotations
@@ -200,19 +200,21 @@ def main(argv=None):
                 data = None
             results[name] = data
         for g in gold["facts"]:
+            cf = companyfacts(f["cik"])
+            # the company facts hold two or more values for this concept, unit and period (measures 3 and 6)
+            filings_differ = cf is not None and len(companyfacts_values(cf, g["concept"], g["unit"],
+                                                                        g["period"])) >= 2
             for arm in ("pinned", "open"):
                 v, reason = verdict_of(results[arm + ".json"], g["id"])
                 confirmed = None
                 if arm == "open" and v == "unverifiable" and reason == "edgar_versions_differ":
-                    cf = companyfacts(f["cik"])
-                    confirmed = cf is not None and len(companyfacts_values(cf, g["concept"], g["unit"],
-                                                                           g["period"])) >= 2
+                    confirmed = filings_differ
                 records.append({"filing": f["folder"], "accession": f["accession"], "company": f["ticker"],
                                 "form": f["form"], "arm": arm, "id": g["id"], "concept": g["concept"],
                                 "unit": g["unit"], "period": g["period"], "written": g["written"],
                                 "value": g["value"], "scale": g["scale"], "sign": g["sign"] or "none",
                                 "displays_differ": g["displays_differ"], "pair": g["pair"], "verdict": v,
-                                "reason": reason, "confirmed_differ": confirmed})
+                                "reason": reason, "confirmed_differ": confirmed, "filings_differ": filings_differ})
         for name in ABSTAIN_FILES:
             for c in gold["abstain"][name]:
                 v, reason = verdict_of(results[name], c["id"])
@@ -265,6 +267,18 @@ def main(argv=None):
     o_ok = o_ver + o_conf
     a_unv = cnt(abst, "unverifiable")
     s_ok = sum(1 for s in stops if s["ok"])
+    by_fact = {(r["filing"], r["id"], r["arm"]): r for r in records}
+    m6 = []
+    for r in pinned:
+        if not r["filings_differ"]:
+            continue
+        o = by_fact.get((r["filing"], r["id"], "open"), {})
+        ok6 = (o.get("verdict") == "unverifiable" and o.get("reason") == "edgar_versions_differ"
+               and r["verdict"] == "verified")
+        m6.append({"filing": r["filing"], "id": r["id"], "concept": r["concept"], "unit": r["unit"],
+                   "period": r["period"], "open_verdict": o.get("verdict", "missing"), "open_reason": o.get("reason"),
+                   "pinned_verdict": r["verdict"], "pinned_reason": r["reason"], "ok": ok6})
+    m6_ok = sum(1 for x in m6 if x["ok"])
     measures = [
         dict(n=1, name="sampled facts judged wrong, pinned or open", value=wrong, den=len(pinned) + len(opened),
              wrong_pinned=cnt(pinned, "wrong"), wrong_open=cnt(opened, "wrong"), bar="0",
@@ -282,6 +296,10 @@ def main(argv=None):
              den=len(abst), bar="100%", ok=len(abst) > 0 and a_unv == len(abst)),
         dict(n=5, name="stop cases that exit with code 2", value=rate(s_ok, len(stops)), num=s_ok, den=len(stops),
              bar="100%", ok=len(stops) > 0 and s_ok == len(stops)),
+        dict(n=6, name="facts the company facts report with different values: open unverifiable "
+                       "(edgar_versions_differ) and pinned verified",
+             value=rate(m6_ok, len(m6)), num=m6_ok, den=len(m6), cases=len(m6), bar="100%",
+             ok=m6_ok == len(m6), note="no cases in this run: counted as passing" if not m6 else ""),
     ]
 
     breakdown = {}
@@ -327,7 +345,7 @@ def main(argv=None):
               "abstain": len(abst), "stop_cases": len(stops), "pairs": pairs["total"]}
     extra = {"open_abstaining_because_filings_differ": {"n": o_differ, "share": rate(o_differ, len(opened)),
                                                         "confirmed": o_conf},
-             "same_end_pairs": pairs, "displays_differ": differ_facts, "eligible": eligible,
+             "measure_6_facts": m6, "same_end_pairs": pairs, "displays_differ": differ_facts, "eligible": eligible,
              "skipped_tags": dict(sorted(skipped.items())), "skipped_formats": dict(sorted(skipped_formats.items()))}
     tool_rel = os.path.relpath(tool, ROOT).replace(os.sep, "/") if tool.startswith(ROOT) else tool
     result = {"timestamp": stamp, "set": a.set, "commit": commit, "dirty": bool(porcelain), "tool": tool_rel,
@@ -370,7 +388,8 @@ def render_md(r):
            "|---|---|---|---|---|"]
     for m in r["measures"]:
         val = m["value"]
-        shown = (f"{val:.2%} ({m['num']}/{m['den']})" if isinstance(val, float) and "num" in m
+        shown = ("n/a (0 cases)" if m.get("cases") == 0
+                 else f"{val:.2%} ({m['num']}/{m['den']})" if isinstance(val, float) and "num" in m
                  else f"{val} of {m['den']}" if m["n"] == 1 else str(val))
         out.append(f"| {m['n']} | {m['name']} | {shown} | {m['bar']} | {'yes' if m['ok'] else 'no'} |")
     rep = r["reported"]
@@ -389,6 +408,11 @@ def render_md(r):
             "- Skipped tags: " + (", ".join(f"{k} {v}" for k, v in rep["skipped_tags"].items()) or "none") + ".",
             "- Skipped formats: " + (", ".join(f"{k} {v}" for k, v in rep["skipped_formats"].items()) or "none")
             + "."]
+    m6 = rep.get("measure_6_facts", [])
+    out += ["", "### Measure 6: facts with different values in different filings", ""]
+    out += [f"- {x['filing']} {x['id']} `{x['concept']}` {x['period']}: open {x['open_verdict']} "
+            f"{x['open_reason'] or ''}, pinned {x['pinned_verdict']}: {'pass' if x['ok'] else 'FAIL'}"
+            for x in m6] or ["- none in this run (0 cases; the measure counts as passing)"]
     out += ["", "### Sampled facts whose displays differ", ""]
     out += [f"- {d['filing']} {d['id']} ({d['arm']}) `{d['concept']}` {d['period']} written {d['written']}: "
             f"{d['verdict']} {d['reason'] or ''}" for d in rep["displays_differ"]] or ["- none"]

@@ -108,6 +108,7 @@ Stop cases, each run on the first 5 pinned plans of the run and each expected to
 | 3 | Open: judged `verified`, or `unverifiable` because filings report different values for that fact. The scorer confirms each such case in the cached company facts. | at least 98%. The rest must be `unverifiable`. |
 | 4 | Abstention cases judged `unverifiable` | 100% |
 | 5 | Stop cases that exit with code 2 | 100% |
+| 6 | Added 2026-11-20, see the change log. Facts for which the company facts hold different values in different filings: the open claim is `unverifiable` because filings differ, and the pinned claim is `verified`. | 100% |
 
 A crash, a missing claim or any other verdict counts as a failure of the measure it belongs to.
 
@@ -144,3 +145,5 @@ Checks of real documents may appear in the README as examples. They are not perf
   - Scoring: if `check` exits with code 2, crashes or times out on a plan, every claim in that plan counts as a failure. Measure 1 counts claims, pinned and open together. The stop cases use the pinned plans of the first 5 filings of the run.
   - Fetching is a step of its own (`build.py --fetch-only`), run by the person who owns the contact string. Building the cases and scoring then run from the cached files without any request, so they can be repeated.
   - Before any real filing was fetched, the tool and the scorer were run together on a made-up filing and made-up company facts, to check that the pieces fit. That run is not an E3 result and is not in `bench/edgar/runs.jsonl`.
+- 2026-11-20, after the first development run (commit `c37a731`, all five bars met): measure 6 added. Reason: four deliberately broken copies of the tool were scored on the development set as a check of the scorer. Three failed the bars they should. The fourth, which silently takes the latest report when filings give different values, passed all five, because measure 3 accepts both `verified` and a confirmed abstention, and the sampled filings are the latest ones. Measure 6 requires the abstention on such facts in the open plan and the value of the pinned filing in the pinned plan. Measures 1 to 5 and their bars are unchanged. The held-out companies had not been fetched or run. A run with no such fact has no cases for measure 6, and the results say so.
+- 2026-11-20, same entry, a fact about the development set: `XOM` now files under a new registrant (CIK 2115436) that has a 10-Q and no 10-K yet. The builder reports the missing 10-K and uses the 10-Q only, so the development set has 9 filings.

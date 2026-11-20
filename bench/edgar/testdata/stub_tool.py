@@ -97,9 +97,15 @@ def answer(plan, claims, a, mode):
             rows = [r for r in rows if r.get("start") == s and r.get("end") == e]
         else:
             rows = [r for r in rows if "start" not in r and r.get("end") == period]
+        all_vals = {Decimal(str(r["val"])) for r in rows}
+        latest = max(rows, key=lambda r: (r.get("filed", ""), r["accn"])) if rows else None
         if loc.get("accession"):
             rows = [r for r in rows if r["accn"].replace("-", "") == loc["accession"].replace("-", "")]
         vals = {Decimal(str(r["val"])) for r in rows}
+        if mode == "latest_on_differ" and not loc.get("accession") and len(vals) > 1:
+            vals = {Decimal(str(latest["val"]))}  # silently takes the latest report
+        if mode == "ignore_pin_on_differ" and loc.get("accession") and len(all_vals) > 1:
+            vals = all_vals  # the accession pin is ignored on facts whose filings differ
         m = NUM_RE.match(c["number"])
         sign = -1 if m.group(1) == "-" else 1
         exp = SCALE[m.group(3) or ""] - (len(m.group(2).split(".")[1]) if "." in m.group(2) else 0)

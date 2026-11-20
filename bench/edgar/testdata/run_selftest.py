@@ -24,8 +24,9 @@ TICKERS = ("AAPL", "MSFT", "JPM")
 PLACEHOLDER = "receipts-selftest offline placeholder"
 
 # stub file -> bars expected to fail
-EXPECT = {"stub_tool.py": set(), "stub_always_verified.py": {4}, "stub_wrong_value.py": {1, 2, 3},
-          "stub_never_exit2.py": {5}, "stub_fake_differ.py": {3}, "stub_pinned_abstain.py": {2}}
+EXPECT = {"stub_tool.py": set(), "stub_always_verified.py": {4, 6}, "stub_wrong_value.py": {1, 2, 3, 6},
+          "stub_never_exit2.py": {5}, "stub_fake_differ.py": {3}, "stub_pinned_abstain.py": {2, 6},
+          "stub_latest_on_differ.py": {6}, "stub_ignore_pin_on_differ.py": {2, 6}}
 
 
 def run(args, env=None):
@@ -45,6 +46,28 @@ def write(path, text):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(text)
+
+
+def write_src(src, spec, tickers, ciks, manifest):
+    """Synthetic company facts per company: each fact once per filing, each restated row under an older accession."""
+    write(os.path.join(src, "company_tickers.json"), json.dumps(tickers))
+    for t in TICKERS:
+        cik = ciks[t]
+        accs = [f["accession"] for f in manifest["filings"] if f["ticker"] == t]
+        facts = {}
+        for rows, accns in ((spec["facts"], accs), (spec["restated"], [f"{cik:010d}-24-000050"])):
+            for concept, unit, start, end, val in rows:
+                tax, tag = concept.split(":")
+                lst = facts.setdefault(tax, {}).setdefault(tag, {"label": tag, "units": {}})["units"].setdefault(
+                    unit, [])
+                for accn in accns:
+                    row = {"end": end, "val": val, "accn": accn, "fy": 2026, "fp": "Q3", "form": "10-Q",
+                           "filed": "2026-07-31"}
+                    if start:
+                        row["start"] = start
+                    lst.append(row)
+        write(os.path.join(src, "companyfacts", f"CIK{cik:010d}.json"),
+              json.dumps({"cik": cik, "entityName": f"Synthetic {t}", "facts": facts}))
 
 
 def main():
@@ -101,24 +124,9 @@ def main():
     with open(os.path.join(TD, "facts.json"), encoding="utf-8") as fh:
         spec = json.load(fh)
     src = os.path.join(work, "edgar-src")
-    write(os.path.join(src, "company_tickers.json"), json.dumps(tickers))
-    for t in TICKERS:
-        cik = ciks[t]
-        accs = [f["accession"] for f in manifest["filings"] if f["ticker"] == t]
-        facts = {}
-        for rows, accns in ((spec["facts"], accs), (spec["restated"], [f"{cik:010d}-24-000050"])):
-            for concept, unit, start, end, val in rows:
-                tax, tag = concept.split(":")
-                lst = facts.setdefault(tax, {}).setdefault(tag, {"label": tag, "units": {}})["units"].setdefault(
-                    unit, [])
-                for accn in accns:
-                    row = {"end": end, "val": val, "accn": accn, "fy": 2026, "fp": "Q3", "form": "10-Q",
-                           "filed": "2026-07-31"}
-                    if start:
-                        row["start"] = start
-                    lst.append(row)
-        write(os.path.join(src, "companyfacts", f"CIK{cik:010d}.json"),
-              json.dumps({"cik": cik, "entityName": f"Synthetic {t}", "facts": facts}))
+    write_src(src, spec, tickers, ciks, manifest)
+    src_same = os.path.join(work, "edgar-src-no-restatement")
+    write_src(src_same, dict(spec, restated=[]), tickers, ciks, manifest)
 
     env = {"RECEIPTS_SEC_USER_AGENT": PLACEHOLDER, "STUB_EDGAR_SRC": src, "RECEIPTS_EDGAR_DATA_URL": "",
            "RECEIPTS_EDGAR_WWW_URL": "", "RECEIPTS_EDGAR_CACHE": ""}
@@ -141,8 +149,22 @@ def main():
                                   "stop_cases": 15, "pairs": 24}, f"counts {r['counts']}")
             check(r["reported"]["same_end_pairs"]["both_pinned_verified"] == 24, "pairs verified")
             check(len(r["reported"]["displays_differ"]) == 12, "displays-differ fact reported per filing and arm")
+            m6 = r["measures"][5]
+            check(m6["cases"] == 6 and len(r["reported"]["measure_6_facts"]) == 6 and m6["ok"],
+                  "measure 6: the restated fact in each filing, open differ + pinned verified")
+    tool_cache = tempfile.mkdtemp(prefix="tool-cache-", dir=work)
+    code, out, err = run([evaluate, "--out", work, "--tool", os.path.join(TD, "stub_tool.py"), "--tool-cache",
+                          tool_cache, "--results-dir", results, "--runs", runs, "--timeout", "60"],
+                         dict(env, STUB_EDGAR_SRC=src_same))
+    path = out.strip().splitlines()[-1].split("results: ", 1)[-1]
+    with open(path, encoding="utf-8") as fh:
+        r = json.load(fh)
+    with open(path[:-5] + ".md", encoding="utf-8") as fh:
+        md = fh.read()
+    check(code == 0 and r["measures"][5]["cases"] == 0 and r["measures"][5]["ok"] and "n/a (0 cases)" in md,
+          "measure 6 with no case: n/a (0 cases), counted as passing")
     with open(runs, encoding="utf-8") as fh:
-        check(len(fh.readlines()) == len(EXPECT), "one runs.jsonl line per scorer run, in the test folder")
+        check(len(fh.readlines()) == len(EXPECT) + 1, "one runs.jsonl line per scorer run, in the test folder")
     code, _, err = run([evaluate, "--out", work, "--set", "heldout", "--tool", os.path.join(TD, "stub_tool.py"),
                         "--runs", runs, "--results-dir", results])
     check(code == 2 and "refusing" in err, "held-out set refused without --held-out")

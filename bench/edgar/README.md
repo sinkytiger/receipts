@@ -37,7 +37,7 @@ needs no network and no contact string.
 
 Exit codes. `build.py`: 0 every filing built (or fetched, with `--fetch-only`), 1 at least one filing could not be
 built (parsing or case-building raised an error: it is listed under `missing` in the manifest with the exception
-type and message, and the other filings are built), 2 stopped (a fetch problem stops at once). `evaluate.py`: 0 all five bars pass, 1 any fails, 2 the cases or the tool
+type and message, and the other filings are built), 2 stopped (a fetch problem stops at once). `evaluate.py`: 0 all six bars pass, 1 any fails, 2 the cases or the tool
 are missing, or the held-out set was asked for without `--held-out`.
 
 ## What is written where
@@ -96,6 +96,11 @@ Committed: `bench/edgar/results/<set>-<commit>-<UTC>.json` and `.md`, and one li
   `unverifiable` with reason `edgar_versions_differ` as correct only when the tool's cached
   `companyfacts/CIK##########.json` holds at least two different values for that concept, unit (case-insensitive) and
   exact period (an instant is a row without `start`). Measure 1 counts claims (pinned and open together).
+- **Measure 6** (added by the plan's amendment of 2026-11-20). A sampled fact is in it when the tool's cached company
+  facts hold two or more different values for its concept, unit and exact period (the same test as the confirmation
+  in measure 3). It passes only when its open claim is `unverifiable` with reason `edgar_versions_differ` and its
+  pinned claim is `verified`. A run with no such fact shows `n/a (0 cases)`, records `"cases": 0`, and counts the
+  measure as passing. The results list every fact of the measure with both verdicts.
 - **Stop cases.** The first 5 filings of the manifest, pinned plan, each in a fresh temporary cache: (a) no contact
   string; (b) a broken `companyfacts` file for the company, plus a copy of the normal tool cache's ticker list when the
   plan names a ticker; (c) the placeholder contact string `receipts-bench stop-case (no request is expected to
@@ -110,7 +115,8 @@ PYTHONUTF8=1 python bench/edgar/testdata/run_selftest.py       # offline build +
 ```
 
 `testdata/` holds a synthetic inline-XBRL document, a synthetic ticker list, filing-list template and company facts,
-a stub tool that answers from the company facts, and five broken stubs (always `verified`; a wrong value; never exit 2;
-open claims always `edgar_versions_differ`; pinned claims never found). `run_selftest.py` asserts that the good stub
-passes all five bars and each broken stub fails exactly the bars it should. It writes only under
+a stub tool that answers from the company facts, and seven broken stubs (always `verified`; a wrong value; never exit 2;
+open claims always `edgar_versions_differ`; pinned claims never found; the latest report taken silently when filings
+differ; the accession pin ignored when filings differ). `run_selftest.py` asserts that the good stub
+passes all six bars and each broken stub fails exactly the bars it should. It writes only under
 `bench/edgar/out/selftest/` and logs to a `runs.jsonl` there.
