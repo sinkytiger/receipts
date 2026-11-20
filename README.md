@@ -98,7 +98,7 @@ The note says research and development was 10.6% of revenue. Recomputed from the
 - [examples/quickstart](examples/quickstart): a short report, its source and a plan. [examples/edgar](examples/edgar): a note checked against SEC filings.
 - [tests](tests): unit tests. Run `python -m unittest discover -s tests`.
 - [bench](bench): the planted-error benchmark generator and scorer; [bench/edgar](bench/edgar), the builder and scorer for the EDGAR connection; [bench/e2](bench/e2), the harness, scorer, spending record and conversations of the evaluation with a model.
-- [docs/design.md](docs/design.md) and [docs/eval-plan.md](docs/eval-plan.md): the design, and the evaluation plan that was fixed before any code was written.
+- [docs/design.md](docs/design.md) and [docs/eval-plan.md](docs/eval-plan.md): the design, and the evaluation plan. E1 was fixed before any code existed, E3 before the connection was written, and E2's details before its harness.
 
 ## What the evaluation shows
 
@@ -107,7 +107,7 @@ The rules for each evaluation were fixed in [docs/eval-plan.md](docs/eval-plan.m
 | | Question | Held-out result |
 |---|---|---|
 | **E1** | Given a correct plan, does the script judge correctly? 64 synthetic documents, 960 statements, 288 with a planted error. | All 8 pass bars met. No planted error was accepted and no correct statement was flagged. |
-| **E2** | What happens when a model writes the plan? Claude Haiku 5.5, 30 synthetic documents, 128 planted errors, 322 correct statements. | With the skill and the script: 128 of 128 planted errors flagged, 2 of 322 correct statements flagged. The same model reviewing on its own: 118 of 128 and 26 of 322. |
+| **E2** | What happens when a model writes the plan? Claude Haiku 5.5, 30 synthetic documents, 128 planted errors, 322 correct statements. | With the skill and the script: 128 of 128 planted errors flagged, 2 of 322 correct statements flagged. The same model reviewing on its own: 125 of 128 and 26 of 322 (118 of 128 under the matching rule fixed beforehand, which undercounts it). |
 | **E3** | Does the EDGAR connection return what the filing prints? 20 companies, 40 filings, 1,169 facts. | All 6 pass bars met. No wrong value. 1,167 of 1,169 verified when the filing is named. |
 
 ### E1, the script alone
@@ -122,22 +122,24 @@ This shows that the script reads and compares correctly when the plan is right. 
 
 ### E2, a model writes the plan
 
-Two arms on the same 30 documents, with the same model and settings. In arm A the model gets the skill text, writes the plan, and the script decides. It may correct its plan twice. In arm B the model reviews the document against the sources in one request and lists the wrong numbers. E2 has no pass bars.
+Two arms on the same 30 documents, with the same model and request settings. In arm A the model gets the skill text and the script's list of every number in the document, writes the plan, and the script decides. It may correct its plan twice. In arm B the model reviews the document against the sources in one request and lists the wrong numbers. It gets no output of the script. E2 has no pass bars.
 
 | | Arm A: skill and script | Arm B: the model alone |
 |---|---|---|
-| Planted errors flagged | 128 of 128 (95% interval 97.1% to 100%) | 118 of 128 (86.2% to 95.7%) |
+| Planted errors flagged | 128 of 128 (95% interval 97.1% to 100%) | 125 of 128 (93.3% to 99.2%) when any flag on the statement's line counts. 118 of 128 (86.2% to 95.7%) under the rule fixed beforehand. |
 | Correct statements flagged | 2 of 322 (0.2% to 2.2%) | 26 of 322 (5.6% to 11.6%) |
-| Numbers left unchecked | 0 of 450 `uncovered`, 2 `unverifiable` | not reported by this arm |
+| Numbers left unchecked | 0 of 450 `uncovered`, 2 `unverifiable` | 164 items listed as not checkable, none of them a benchmark statement |
 | Cost per document | US$0.0075, 2.2 requests on average | US$0.0013, 1 request |
 
 What to keep in mind:
 
+- **The matching rule fixed beforehand undercounts arm B.** It credits a flag only when the flagged text contains the statement's number. Seven times arm B flagged a wrong direction word on the right line ("decreased", "늘었다") without quoting the number, and the rule counted these as misses. Counting any flag on the statement's line, arm B flagged 125 of 128. The three it missed are rounding errors. Its count of correct statements flagged is 26 under both rules. This recount was made after the run, when an audit found the gap, so both figures are shown. The seven cases are listed in [bench/e2/results/heldout-recount-after-audit.md](bench/e2/results/heldout-recount-after-audit.md).
+
 - **Most of arm B's false alarms are about one convention.** 22 of its 26 are numbers written cut off instead of rounded (2.36 for 2.368). The benchmark counts those as correct, the script accepts them by default, and arm B was told so. On numbers written rounded the arms are close: 2 of 289 for arm A, 4 of 289 for arm B.
 - **A wrong plan can still make a correct number look wrong.** Both of arm A's false alarms come from one Korean document where the model set multipliers that convert into the unit of the sentence, not the unit of the source. The receipt lists every multiplier a plan declares, so a reader can see this.
-- **Arm A abstained twice.** In one document whose CSV source does not state its unit, the model marked two numbers as having no source.
+- **Arm A abstained twice.** In one document whose CSV source does not state its unit, the model's first plan verified two numbers with a multiplier of one million. In its corrected plan it withdrew both, because the source does not state the unit, and marked them as having no source.
 - **One model, one run.** Other models, other settings and real documents may give other numbers. The arms differ in cost: arm A used 67 requests, arm B 30.
-- **Two rules changed after the rehearsals and before this run:** how arm B's flags are matched to statements, and the sentence that tells arm B about cut-off values. Both are in the plan's change log, with the reason. The rehearsals used development documents only.
+- **What changed between the rehearsals and this run.** For arm B: how its flags are matched to statements, and a sentence telling it that cut-off values count as correct. For arm A: after the second rehearsal the skill text, which is arm A's prompt, gained two lines, on Excel sheets whose header is not on row 1 and on shares of a many-cells total. For both: a wrong note about Excel headers was removed from the sources they see, and the harness was made robust against cut-off replies and stopped runs. All of it is in the plan's change log, with the reasons. The rehearsals used development documents only.
 
 Every conversation, plan and script result of this run is in [bench/e2/records/heldout](bench/e2/records/heldout), and every request with its cost in [bench/e2/spend.jsonl](bench/e2/spend.jsonl). All of E2, rehearsals included, cost US$0.36.
 
@@ -147,7 +149,7 @@ Values the connection returns are compared with the numbers printed in the filin
 
 - No fact was judged `wrong`, in 2,338 verdicts.
 - With the filing named, 1,167 of 1,169 were verified. With no filing named, 1,145 were verified and 22 abstained because filings report different values for that fact.
-- The two that were not verified are dividend payment dates. The filing tags them as a period of one day, and the SEC's API stores such a fact under a single date, so the exact-period rule finds nothing. The script abstained. Until a later version handles this, ask for a one-day period as one date.
+- The two that were not verified are dividends per share paid on a single day. The filing tags each as a period of one day, and the SEC's API stores such a fact under a single date, so the exact-period rule finds nothing. The script abstained. Until a later version handles this, ask for a one-day period as one date.
 - 800 of 800 locators that should match nothing were `unverifiable`, and 15 of 15 runs with no contact string, a corrupt cached file or an unreachable server stopped.
 
 Both sides of this comparison start from the same submission by the company. E3 tests the connection, not whether a company tagged its filing correctly. The sixth bar was added after the first development run, when a deliberately broken copy of the tool got past the first five. The [plan's change log](docs/eval-plan.md) has the details.
