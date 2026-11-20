@@ -1,0 +1,552 @@
+{
+  "timestamp": "20261120T004228Z",
+  "set": "dev",
+  "commit": "c37a731",
+  "dirty": false,
+  "tool": "skills/receipts/scripts/receipts.py",
+  "fetch_date": "2026-11-20",
+  "builder_version": "e3-builder-1",
+  "filings": [
+    {
+      "ticker": "AAPL",
+      "cik": 320193,
+      "form": "10-K",
+      "accession": "0000320193-26-000026",
+      "filing_date": "2026-11-03",
+      "report_date": "2026-09-26",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000026/aapl-20260926.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "AAPL",
+      "cik": 320193,
+      "form": "10-Q",
+      "accession": "0000320193-26-000020",
+      "filing_date": "2026-07-31",
+      "report_date": "2026-06-27",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "MSFT",
+      "cik": 789019,
+      "form": "10-K",
+      "accession": "0001193125-26-323660",
+      "filing_date": "2026-07-29",
+      "report_date": "2026-06-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "MSFT",
+      "cik": 789019,
+      "form": "10-Q",
+      "accession": "0001193125-26-436133",
+      "filing_date": "2026-10-28",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "JPM",
+      "cik": 19617,
+      "form": "10-K",
+      "accession": "0001628280-26-008131",
+      "filing_date": "2026-02-13",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "JPM",
+      "cik": 19617,
+      "form": "10-Q",
+      "accession": "0001628280-26-069523",
+      "filing_date": "2026-11-03",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026069523/jpm-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "WMT",
+      "cik": 104169,
+      "form": "10-K",
+      "accession": "0000104169-26-000055",
+      "filing_date": "2026-03-13",
+      "report_date": "2026-01-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "WMT",
+      "cik": 104169,
+      "form": "10-Q",
+      "accession": "0000104169-26-000154",
+      "filing_date": "2026-08-28",
+      "report_date": "2026-07-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "XOM",
+      "cik": 2115436,
+      "form": "10-Q",
+      "accession": "0002115436-26-000020",
+      "filing_date": "2026-11-02",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/2115436/000211543626000020/xom-20260930.htm",
+      "document_fetched": "2026-11-20"
+    }
+  ],
+  "missing_filings": [
+    {
+      "ticker": "XOM",
+      "form": "10-K",
+      "reason": "no inline-XBRL filing in filings.recent"
+    }
+  ],
+  "counts": {
+    "filings": 9,
+    "facts": 266,
+    "pinned": 266,
+    "open": 266,
+    "abstain": 180,
+    "stop_cases": 15,
+    "pairs": 24
+  },
+  "measures": [
+    {
+      "n": 1,
+      "name": "sampled facts judged wrong, pinned or open",
+      "value": 0,
+      "den": 532,
+      "wrong_pinned": 0,
+      "wrong_open": 0,
+      "bar": "0",
+      "ok": true
+    },
+    {
+      "n": 2,
+      "name": "pinned: judged verified",
+      "value": 1.0,
+      "num": 266,
+      "den": 266,
+      "other_unverifiable": 0,
+      "other_not_unverifiable": 0,
+      "bar": ">= 98%, rest unverifiable",
+      "ok": true
+    },
+    {
+      "n": 3,
+      "name": "open: judged verified, or unverifiable because filings differ (confirmed)",
+      "value": 1.0,
+      "num": 266,
+      "den": 266,
+      "verified": 262,
+      "differ_confirmed": 4,
+      "differ_not_confirmed": 0,
+      "other_unverifiable": 0,
+      "other_not_unverifiable": 0,
+      "bar": ">= 98%, rest unverifiable",
+      "ok": true
+    },
+    {
+      "n": 4,
+      "name": "abstention cases judged unverifiable",
+      "value": 1.0,
+      "num": 180,
+      "den": 180,
+      "bar": "100%",
+      "ok": true
+    },
+    {
+      "n": 5,
+      "name": "stop cases that exit with code 2",
+      "value": 1.0,
+      "num": 15,
+      "den": 15,
+      "bar": "100%",
+      "ok": true
+    }
+  ],
+  "pass": true,
+  "reported": {
+    "open_abstaining_because_filings_differ": {
+      "n": 4,
+      "share": 0.015038,
+      "confirmed": 4
+    },
+    "same_end_pairs": {
+      "total": 24,
+      "both_pinned_verified": 24,
+      "both_open_verified": 23
+    },
+    "displays_differ": [
+      {
+        "filing": "JPM-10-K",
+        "arm": "pinned",
+        "id": "f20",
+        "concept": "us-gaap:UnrecognizedTaxBenefits",
+        "period": "2025-12-31",
+        "written": "5,624 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "JPM-10-K",
+        "arm": "open",
+        "id": "f20",
+        "concept": "us-gaap:UnrecognizedTaxBenefits",
+        "period": "2025-12-31",
+        "written": "5,624 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "WMT-10-K",
+        "arm": "pinned",
+        "id": "f17",
+        "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+        "period": "2026-01-31",
+        "written": "10,727 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "WMT-10-K",
+        "arm": "open",
+        "id": "f17",
+        "concept": "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+        "period": "2026-01-31",
+        "written": "10,727 million",
+        "verdict": "verified",
+        "reason": "match"
+      }
+    ],
+    "eligible": {
+      "numeric_tags": 23273,
+      "eligible_facts": 4384,
+      "eligible_displays_differ": 33,
+      "excluded_scale": 0,
+      "writable_facts": 4384,
+      "same_end_pairs": 390
+    },
+    "skipped_tags": {
+      "dimension": 14425,
+      "format": 10,
+      "nil": 21,
+      "not_us_gaap": 3279,
+      "unit": 171,
+      "zero_format_not_dash": 12
+    },
+    "skipped_formats": {
+      "ixt-sec:numwordsen": 10
+    }
+  },
+  "breakdown": {
+    "company": {
+      "AAPL / open": {
+        "n": 56,
+        "verdict:verified": 56
+      },
+      "AAPL / pinned": {
+        "n": 56,
+        "verdict:verified": 56
+      },
+      "JPM / open": {
+        "n": 60,
+        "verdict:verified": 60
+      },
+      "JPM / pinned": {
+        "n": 60,
+        "verdict:verified": 60
+      },
+      "MSFT / open": {
+        "n": 57,
+        "verdict:verified": 54,
+        "verdict:unverifiable": 3
+      },
+      "MSFT / pinned": {
+        "n": 57,
+        "verdict:verified": 57
+      },
+      "WMT / open": {
+        "n": 59,
+        "verdict:verified": 58,
+        "verdict:unverifiable": 1
+      },
+      "WMT / pinned": {
+        "n": 59,
+        "verdict:verified": 59
+      },
+      "XOM / open": {
+        "n": 34,
+        "verdict:verified": 34
+      },
+      "XOM / pinned": {
+        "n": 34,
+        "verdict:verified": 34
+      }
+    },
+    "form": {
+      "10-K / open": {
+        "n": 107,
+        "verdict:verified": 104,
+        "verdict:unverifiable": 3
+      },
+      "10-K / pinned": {
+        "n": 107,
+        "verdict:verified": 107
+      },
+      "10-Q / open": {
+        "n": 159,
+        "verdict:verified": 158,
+        "verdict:unverifiable": 1
+      },
+      "10-Q / pinned": {
+        "n": 159,
+        "verdict:verified": 159
+      }
+    },
+    "unit": {
+      "USD / open": {
+        "n": 240,
+        "verdict:verified": 236,
+        "verdict:unverifiable": 4
+      },
+      "USD / pinned": {
+        "n": 240,
+        "verdict:verified": 240
+      },
+      "USD/shares / open": {
+        "n": 19,
+        "verdict:verified": 19
+      },
+      "USD/shares / pinned": {
+        "n": 19,
+        "verdict:verified": 19
+      },
+      "shares / open": {
+        "n": 7,
+        "verdict:verified": 7
+      },
+      "shares / pinned": {
+        "n": 7,
+        "verdict:verified": 7
+      }
+    },
+    "scale": {
+      "0 / open": {
+        "n": 20,
+        "verdict:verified": 20
+      },
+      "0 / pinned": {
+        "n": 20,
+        "verdict:verified": 20
+      },
+      "6 / open": {
+        "n": 237,
+        "verdict:verified": 233,
+        "verdict:unverifiable": 4
+      },
+      "6 / pinned": {
+        "n": 237,
+        "verdict:verified": 237
+      },
+      "9 / open": {
+        "n": 9,
+        "verdict:verified": 9
+      },
+      "9 / pinned": {
+        "n": 9,
+        "verdict:verified": 9
+      }
+    },
+    "sign": {
+      "- / open": {
+        "n": 23,
+        "verdict:verified": 22,
+        "verdict:unverifiable": 1
+      },
+      "- / pinned": {
+        "n": 23,
+        "verdict:verified": 23
+      },
+      "none / open": {
+        "n": 243,
+        "verdict:verified": 240,
+        "verdict:unverifiable": 3
+      },
+      "none / pinned": {
+        "n": 243,
+        "verdict:verified": 243
+      }
+    }
+  },
+  "abstain_by_kind": {
+    "concept": {
+      "n": 45,
+      "verdict:unverifiable": 45,
+      "reason:locator_no_match": 45
+    },
+    "period": {
+      "n": 45,
+      "verdict:unverifiable": 45,
+      "reason:locator_no_match": 45
+    },
+    "instant": {
+      "n": 45,
+      "verdict:unverifiable": 45,
+      "reason:locator_no_match": 45
+    },
+    "unit": {
+      "n": 45,
+      "verdict:unverifiable": 45,
+      "reason:locator_no_match": 45
+    }
+  },
+  "stop_cases": [
+    {
+      "filing": "AAPL-10-K",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "AAPL-10-K",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "AAPL-10-K",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "AAPL-10-Q",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "AAPL-10-Q",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "AAPL-10-Q",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "MSFT-10-K",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "MSFT-10-K",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "MSFT-10-K",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "MSFT-10-Q",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "MSFT-10-Q",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "MSFT-10-Q",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "JPM-10-K",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "JPM-10-K",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "JPM-10-K",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    }
+  ],
+  "check_exit_codes": {
+    "pinned.json": {
+      "0": 9
+    },
+    "open.json": {
+      "0": 9
+    },
+    "abstain-concept.json": {
+      "0": 9
+    },
+    "abstain-period.json": {
+      "0": 9
+    },
+    "abstain-instant.json": {
+      "0": 9
+    },
+    "abstain-unit.json": {
+      "0": 9
+    }
+  },
+  "failures": [],
+  "not_passing": []
+}
