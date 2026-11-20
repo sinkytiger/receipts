@@ -1,0 +1,1546 @@
+{
+  "timestamp": "20261120T050123Z",
+  "set": "heldout",
+  "commit": "33e7b1b",
+  "dirty": false,
+  "tool": "skills/receipts/scripts/receipts.py",
+  "fetch_date": "2026-11-20",
+  "builder_version": "e3-builder-1",
+  "filings": [
+    {
+      "ticker": "JNJ",
+      "cik": 200406,
+      "form": "10-K",
+      "accession": "0000200406-26-000016",
+      "filing_date": "2026-02-11",
+      "report_date": "2025-12-28",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "JNJ",
+      "cik": 200406,
+      "form": "10-Q",
+      "accession": "0000200406-26-000197",
+      "filing_date": "2026-10-21",
+      "report_date": "2026-09-27",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000197/jnj-20260927.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "KO",
+      "cik": 21344,
+      "form": "10-K",
+      "accession": "0001628280-26-010047",
+      "filing_date": "2026-02-20",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "KO",
+      "cik": 21344,
+      "form": "10-Q",
+      "accession": "0001628280-26-067844",
+      "filing_date": "2026-10-28",
+      "report_date": "2026-10-02",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026067844/ko-20261002.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "NVDA",
+      "cik": 1045810,
+      "form": "10-K",
+      "accession": "0001045810-26-000021",
+      "filing_date": "2026-02-25",
+      "report_date": "2026-01-25",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "NVDA",
+      "cik": 1045810,
+      "form": "10-Q",
+      "accession": "0001045810-26-000075",
+      "filing_date": "2026-08-26",
+      "report_date": "2026-07-26",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "COST",
+      "cik": 909832,
+      "form": "10-K",
+      "accession": "0000909832-26-000093",
+      "filing_date": "2026-10-07",
+      "report_date": "2026-08-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "COST",
+      "cik": 909832,
+      "form": "10-Q",
+      "accession": "0000909832-26-000051",
+      "filing_date": "2026-06-03",
+      "report_date": "2026-05-10",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000051/cost-20260510.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "PG",
+      "cik": 80424,
+      "form": "10-K",
+      "accession": "0000080424-26-000103",
+      "filing_date": "2026-08-04",
+      "report_date": "2026-06-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "PG",
+      "cik": 80424,
+      "form": "10-Q",
+      "accession": "0000080424-26-000256",
+      "filing_date": "2026-10-22",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000256/pg-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "HD",
+      "cik": 354950,
+      "form": "10-K",
+      "accession": "0001628280-26-019436",
+      "filing_date": "2026-03-18",
+      "report_date": "2026-02-01",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026019436/hd-20260201.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "HD",
+      "cik": 354950,
+      "form": "10-Q",
+      "accession": "0001628280-26-058715",
+      "filing_date": "2026-08-25",
+      "report_date": "2026-08-02",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026058715/hd-20260802.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "BAC",
+      "cik": 70858,
+      "form": "10-K",
+      "accession": "0000070858-26-000157",
+      "filing_date": "2026-02-25",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000157/bac-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "BAC",
+      "cik": 70858,
+      "form": "10-Q",
+      "accession": "0000070858-26-000548",
+      "filing_date": "2026-10-30",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/70858/000007085826000548/bac-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "UNH",
+      "cik": 731766,
+      "form": "10-K",
+      "accession": "0000731766-26-000062",
+      "filing_date": "2026-03-02",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "UNH",
+      "cik": 731766,
+      "form": "10-Q",
+      "accession": "0000731766-26-000266",
+      "filing_date": "2026-11-03",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000266/unh-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "PFE",
+      "cik": 78003,
+      "form": "10-K",
+      "accession": "0000078003-26-000026",
+      "filing_date": "2026-02-26",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000026/pfe-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "PFE",
+      "cik": 78003,
+      "form": "10-Q",
+      "accession": "0000078003-26-000127",
+      "filing_date": "2026-11-03",
+      "report_date": "2026-09-27",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000127/pfe-20260927.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "CVX",
+      "cik": 93410,
+      "form": "10-K",
+      "accession": "0000093410-26-000078",
+      "filing_date": "2026-02-24",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "CVX",
+      "cik": 93410,
+      "form": "10-Q",
+      "accession": "0000093410-26-000200",
+      "filing_date": "2026-11-05",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000200/cvx-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "CSCO",
+      "cik": 858877,
+      "form": "10-K",
+      "accession": "0000858877-26-000132",
+      "filing_date": "2026-09-02",
+      "report_date": "2026-07-25",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/858877/000085887726000132/csco-20260725.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "CSCO",
+      "cik": 858877,
+      "form": "10-Q",
+      "accession": "0000858877-26-000185",
+      "filing_date": "2026-11-17",
+      "report_date": "2026-10-24",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/858877/000085887726000185/csco-20261024.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "ORCL",
+      "cik": 1341439,
+      "form": "10-K",
+      "accession": "0001193125-26-277521",
+      "filing_date": "2026-06-22",
+      "report_date": "2026-05-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "ORCL",
+      "cik": 1341439,
+      "form": "10-Q",
+      "accession": "0001193125-26-389274",
+      "filing_date": "2026-09-11",
+      "report_date": "2026-08-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "NKE",
+      "cik": 320187,
+      "form": "10-K",
+      "accession": "0000320187-26-000088",
+      "filing_date": "2026-07-15",
+      "report_date": "2026-05-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "NKE",
+      "cik": 320187,
+      "form": "10-Q",
+      "accession": "0000320187-26-000193",
+      "filing_date": "2026-10-02",
+      "report_date": "2026-08-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000193/nke-20260831.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "DIS",
+      "cik": 1744489,
+      "form": "10-K",
+      "accession": "0001744489-26-000066",
+      "filing_date": "2026-11-17",
+      "report_date": "2026-10-03",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448926000066/dis-20261003.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "DIS",
+      "cik": 1744489,
+      "form": "10-Q",
+      "accession": "0001744489-26-000057",
+      "filing_date": "2026-08-05",
+      "report_date": "2026-06-27",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1744489/000174448926000057/dis-20260627.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "MCD",
+      "cik": 63908,
+      "form": "10-K",
+      "accession": "0000063908-26-000035",
+      "filing_date": "2026-02-24",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/63908/000006390826000035/mcd-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "MCD",
+      "cik": 63908,
+      "form": "10-Q",
+      "accession": "0000063908-26-000083",
+      "filing_date": "2026-11-06",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/63908/000006390826000083/mcd-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "CAT",
+      "cik": 18230,
+      "form": "10-K",
+      "accession": "0000018230-26-000008",
+      "filing_date": "2026-02-13",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000008/cat-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "CAT",
+      "cik": 18230,
+      "form": "10-Q",
+      "accession": "0000018230-26-000057",
+      "filing_date": "2026-11-04",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/18230/000001823026000057/cat-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "T",
+      "cik": 732717,
+      "form": "10-K",
+      "accession": "0000732717-26-000120",
+      "filing_date": "2026-02-09",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/732717/000073271726000120/t-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "T",
+      "cik": 732717,
+      "form": "10-Q",
+      "accession": "0000732717-26-000372",
+      "filing_date": "2026-10-21",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/732717/000073271726000372/t-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "AMZN",
+      "cik": 1018724,
+      "form": "10-K",
+      "accession": "0001018724-26-000004",
+      "filing_date": "2026-02-06",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "AMZN",
+      "cik": 1018724,
+      "form": "10-Q",
+      "accession": "0001018724-26-000040",
+      "filing_date": "2026-10-30",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000040/amzn-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "GS",
+      "cik": 886982,
+      "form": "10-K",
+      "accession": "0000886982-26-000091",
+      "filing_date": "2026-02-25",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000091/gs-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "GS",
+      "cik": 886982,
+      "form": "10-Q",
+      "accession": "0000886982-26-000532",
+      "filing_date": "2026-11-02",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/886982/000088698226000532/gs-20260930.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "BA",
+      "cik": 12927,
+      "form": "10-K",
+      "accession": "0001628280-26-004357",
+      "filing_date": "2026-01-30",
+      "report_date": "2025-12-31",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/12927/000162828026004357/ba-20251231.htm",
+      "document_fetched": "2026-11-20"
+    },
+    {
+      "ticker": "BA",
+      "cik": 12927,
+      "form": "10-Q",
+      "accession": "0001628280-26-067508",
+      "filing_date": "2026-10-27",
+      "report_date": "2026-09-30",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/12927/000162828026067508/ba-20260930.htm",
+      "document_fetched": "2026-11-20"
+    }
+  ],
+  "missing_filings": [],
+  "counts": {
+    "filings": 40,
+    "facts": 1169,
+    "pinned": 1169,
+    "open": 1169,
+    "abstain": 800,
+    "stop_cases": 15,
+    "pairs": 89
+  },
+  "measures": [
+    {
+      "n": 1,
+      "name": "sampled facts judged wrong, pinned or open",
+      "value": 0,
+      "den": 2338,
+      "wrong_pinned": 0,
+      "wrong_open": 0,
+      "bar": "0",
+      "ok": true
+    },
+    {
+      "n": 2,
+      "name": "pinned: judged verified",
+      "value": 0.998289,
+      "num": 1167,
+      "den": 1169,
+      "other_unverifiable": 2,
+      "other_not_unverifiable": 0,
+      "bar": ">= 98%, rest unverifiable",
+      "ok": true
+    },
+    {
+      "n": 3,
+      "name": "open: judged verified, or unverifiable because filings differ (confirmed)",
+      "value": 0.998289,
+      "num": 1167,
+      "den": 1169,
+      "verified": 1145,
+      "differ_confirmed": 22,
+      "differ_not_confirmed": 0,
+      "other_unverifiable": 2,
+      "other_not_unverifiable": 0,
+      "bar": ">= 98%, rest unverifiable",
+      "ok": true
+    },
+    {
+      "n": 4,
+      "name": "abstention cases judged unverifiable",
+      "value": 1.0,
+      "num": 800,
+      "den": 800,
+      "bar": "100%",
+      "ok": true
+    },
+    {
+      "n": 5,
+      "name": "stop cases that exit with code 2",
+      "value": 1.0,
+      "num": 15,
+      "den": 15,
+      "bar": "100%",
+      "ok": true
+    },
+    {
+      "n": 6,
+      "name": "facts the company facts report with different values: open unverifiable (edgar_versions_differ) and pinned verified",
+      "value": 1.0,
+      "num": 22,
+      "den": 22,
+      "cases": 22,
+      "bar": "100%",
+      "ok": true,
+      "note": ""
+    }
+  ],
+  "pass": true,
+  "reported": {
+    "open_abstaining_because_filings_differ": {
+      "n": 22,
+      "share": 0.01882,
+      "confirmed": 22
+    },
+    "measure_6_facts": [
+      {
+        "filing": "NVDA-10-K",
+        "id": "f05",
+        "concept": "us-gaap:PreferredStockSharesAuthorized",
+        "unit": "shares",
+        "period": "2025-01-26",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "HD-10-K",
+        "id": "f18",
+        "concept": "us-gaap:IncomeTaxReconciliationStateAndLocalIncomeTaxes",
+        "unit": "USD",
+        "period": "2023-01-30..2024-01-28",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "BAC-10-K",
+        "id": "f02",
+        "concept": "us-gaap:NetIncomeLoss",
+        "unit": "USD",
+        "period": "2024-01-01..2024-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "BAC-10-K",
+        "id": "f16",
+        "concept": "us-gaap:IncomeTaxReconciliationIncomeTaxExpenseBenefitAtFederalStatutoryIncomeTaxRate",
+        "unit": "USD",
+        "period": "2024-01-01..2024-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "BAC-10-K",
+        "id": "f19",
+        "concept": "us-gaap:RetainedEarningsAccumulatedDeficit",
+        "unit": "USD",
+        "period": "2024-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "BAC-10-K",
+        "id": "f24",
+        "concept": "us-gaap:StockholdersEquity",
+        "unit": "USD",
+        "period": "2024-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "BAC-10-Q",
+        "id": "f12",
+        "concept": "us-gaap:StockholdersEquity",
+        "unit": "USD",
+        "period": "2024-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "PFE-10-K",
+        "id": "f16",
+        "concept": "us-gaap:DeferredTaxAssetsTaxDeferredExpense",
+        "unit": "USD",
+        "period": "2024-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "CVX-10-K",
+        "id": "f20",
+        "concept": "us-gaap:ValuationAllowanceDeferredTaxAssetChangeInAmount",
+        "unit": "USD",
+        "period": "2024-01-01..2024-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "CSCO-10-K",
+        "id": "f02",
+        "concept": "us-gaap:StockRepurchasedAndRetiredDuringPeriodValue",
+        "unit": "USD",
+        "period": "2023-07-30..2024-07-27",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "CSCO-10-Q",
+        "id": "f04",
+        "concept": "us-gaap:OtherLiabilitiesCurrent",
+        "unit": "USD",
+        "period": "2026-07-25",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "ORCL-10-K",
+        "id": "f21",
+        "concept": "us-gaap:DeferredFederalIncomeTaxExpenseBenefit",
+        "unit": "USD",
+        "period": "2023-06-01..2024-05-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "DIS-10-K",
+        "id": "f03",
+        "concept": "us-gaap:ProceedsFromPaymentsForOtherFinancingActivities",
+        "unit": "USD",
+        "period": "2023-10-01..2024-09-28",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "DIS-10-K",
+        "id": "f22",
+        "concept": "us-gaap:OtherOperatingActivitiesCashFlowStatement",
+        "unit": "USD",
+        "period": "2023-10-01..2024-09-28",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "MCD-10-K",
+        "id": "f04",
+        "concept": "us-gaap:PaymentsForRepurchaseOfCommonStock",
+        "unit": "USD",
+        "period": "2023-01-01..2023-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "MCD-10-K",
+        "id": "f13",
+        "concept": "us-gaap:OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax",
+        "unit": "USD",
+        "period": "2023-01-01..2023-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "MCD-10-K",
+        "id": "f14",
+        "concept": "us-gaap:RestructuringAndRelatedCostIncurredCost",
+        "unit": "USD",
+        "period": "2023-01-01..2023-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "MCD-10-K",
+        "id": "f17",
+        "concept": "us-gaap:StockholdersEquity",
+        "unit": "USD",
+        "period": "2023-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "T-10-K",
+        "id": "f15",
+        "concept": "us-gaap:IncomeTaxReconciliationStateAndLocalIncomeTaxes",
+        "unit": "USD",
+        "period": "2024-01-01..2024-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "T-10-Q",
+        "id": "f06",
+        "concept": "us-gaap:TreasuryStockCommonShares",
+        "unit": "shares",
+        "period": "2024-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "AMZN-10-K",
+        "id": "f18",
+        "concept": "us-gaap:IncomeTaxReconciliationStateAndLocalIncomeTaxes",
+        "unit": "USD",
+        "period": "2023-01-01..2023-12-31",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      },
+      {
+        "filing": "BA-10-K",
+        "id": "f16",
+        "concept": "us-gaap:IncomeTaxReconciliationTaxContingencies",
+        "unit": "USD",
+        "period": "2024-04-01..2024-06-30",
+        "open_verdict": "unverifiable",
+        "open_reason": "edgar_versions_differ",
+        "pinned_verdict": "verified",
+        "pinned_reason": "match",
+        "ok": true
+      }
+    ],
+    "same_end_pairs": {
+      "total": 89,
+      "both_pinned_verified": 89,
+      "both_open_verified": 89
+    },
+    "displays_differ": [
+      {
+        "filing": "JNJ-10-K",
+        "arm": "pinned",
+        "id": "f04",
+        "concept": "us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired",
+        "period": "2024-01-01..2024-12-29",
+        "written": "15,146 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "JNJ-10-K",
+        "arm": "open",
+        "id": "f04",
+        "concept": "us-gaap:PaymentsToAcquireBusinessesNetOfCashAcquired",
+        "period": "2024-01-01..2024-12-29",
+        "written": "15,146 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "NVDA-10-K",
+        "arm": "pinned",
+        "id": "f12",
+        "concept": "us-gaap:StockRepurchasedAndRetiredDuringPeriodValue",
+        "period": "2024-01-29..2025-01-26",
+        "written": "34,015 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "NVDA-10-K",
+        "arm": "open",
+        "id": "f12",
+        "concept": "us-gaap:StockRepurchasedAndRetiredDuringPeriodValue",
+        "period": "2024-01-29..2025-01-26",
+        "written": "34,015 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "BAC-10-K",
+        "arm": "pinned",
+        "id": "f25",
+        "concept": "us-gaap:FinancingReceivableExcludingAccruedInterestAllowanceForCreditLossWriteoffAfterRecovery",
+        "period": "2025-01-01..2025-12-31",
+        "written": "5,631 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "BAC-10-K",
+        "arm": "open",
+        "id": "f25",
+        "concept": "us-gaap:FinancingReceivableExcludingAccruedInterestAllowanceForCreditLossWriteoffAfterRecovery",
+        "period": "2025-01-01..2025-12-31",
+        "written": "5,631 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "BAC-10-Q",
+        "arm": "pinned",
+        "id": "f17",
+        "concept": "us-gaap:DerivativeAssets",
+        "period": "2026-09-30",
+        "written": "53,148 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "BAC-10-Q",
+        "arm": "open",
+        "id": "f17",
+        "concept": "us-gaap:DerivativeAssets",
+        "period": "2026-09-30",
+        "written": "53,148 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "PFE-10-Q",
+        "arm": "pinned",
+        "id": "f08",
+        "concept": "us-gaap:Assets",
+        "period": "2026-09-27",
+        "written": "204,544 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "PFE-10-Q",
+        "arm": "open",
+        "id": "f08",
+        "concept": "us-gaap:Assets",
+        "period": "2026-09-27",
+        "written": "204,544 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "CVX-10-Q",
+        "arm": "pinned",
+        "id": "f30",
+        "concept": "us-gaap:IncomeTaxExpenseBenefit",
+        "period": "2025-07-01..2025-09-30",
+        "written": "1,801 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "CVX-10-Q",
+        "arm": "open",
+        "id": "f30",
+        "concept": "us-gaap:IncomeTaxExpenseBenefit",
+        "period": "2025-07-01..2025-09-30",
+        "written": "1,801 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "CVX-10-Q",
+        "arm": "pinned",
+        "id": "f31",
+        "concept": "us-gaap:IncomeTaxExpenseBenefit",
+        "period": "2025-01-01..2025-09-30",
+        "written": "5,504 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "CVX-10-Q",
+        "arm": "open",
+        "id": "f31",
+        "concept": "us-gaap:IncomeTaxExpenseBenefit",
+        "period": "2025-01-01..2025-09-30",
+        "written": "5,504 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "CAT-10-Q",
+        "arm": "pinned",
+        "id": "f23",
+        "concept": "us-gaap:TreasuryStockSharesAcquired",
+        "period": "2025-01-01..2025-09-30",
+        "written": "11,029,455",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "CAT-10-Q",
+        "arm": "open",
+        "id": "f23",
+        "concept": "us-gaap:TreasuryStockSharesAcquired",
+        "period": "2025-01-01..2025-09-30",
+        "written": "11,029,455",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "AMZN-10-Q",
+        "arm": "pinned",
+        "id": "f34",
+        "concept": "us-gaap:IncomeTaxesPaidNet",
+        "period": "2025-07-01..2025-09-30",
+        "written": "1,136 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "AMZN-10-Q",
+        "arm": "open",
+        "id": "f34",
+        "concept": "us-gaap:IncomeTaxesPaidNet",
+        "period": "2025-07-01..2025-09-30",
+        "written": "1,136 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "AMZN-10-Q",
+        "arm": "pinned",
+        "id": "f35",
+        "concept": "us-gaap:IncomeTaxesPaidNet",
+        "period": "2025-01-01..2025-09-30",
+        "written": "6,774 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "AMZN-10-Q",
+        "arm": "open",
+        "id": "f35",
+        "concept": "us-gaap:IncomeTaxesPaidNet",
+        "period": "2025-01-01..2025-09-30",
+        "written": "6,774 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "GS-10-Q",
+        "arm": "pinned",
+        "id": "f22",
+        "concept": "us-gaap:SecuritiesBorrowedFairValueDisclosure",
+        "period": "2026-09-30",
+        "written": "60,397 million",
+        "verdict": "verified",
+        "reason": "match"
+      },
+      {
+        "filing": "GS-10-Q",
+        "arm": "open",
+        "id": "f22",
+        "concept": "us-gaap:SecuritiesBorrowedFairValueDisclosure",
+        "period": "2026-09-30",
+        "written": "60,397 million",
+        "verdict": "verified",
+        "reason": "match"
+      }
+    ],
+    "eligible": {
+      "numeric_tags": 87905,
+      "eligible_facts": 20980,
+      "eligible_displays_differ": 171,
+      "excluded_scale": 9,
+      "writable_facts": 20971,
+      "same_end_pairs": 1799
+    },
+    "skipped_tags": {
+      "dimension": 50414,
+      "format": 8,
+      "nil": 283,
+      "not_us_gaap": 10972,
+      "unit": 889,
+      "zero_format_not_dash": 144
+    },
+    "skipped_formats": {
+      "ixt-sec:numwordsen": 8
+    }
+  },
+  "breakdown": {
+    "company": {
+      "AMZN / open": {
+        "n": 62,
+        "verdict:verified": 61,
+        "verdict:unverifiable": 1
+      },
+      "AMZN / pinned": {
+        "n": 62,
+        "verdict:verified": 62
+      },
+      "BA / open": {
+        "n": 59,
+        "verdict:verified": 58,
+        "verdict:unverifiable": 1
+      },
+      "BA / pinned": {
+        "n": 59,
+        "verdict:verified": 59
+      },
+      "BAC / open": {
+        "n": 60,
+        "verdict:verified": 55,
+        "verdict:unverifiable": 5
+      },
+      "BAC / pinned": {
+        "n": 60,
+        "verdict:verified": 60
+      },
+      "CAT / open": {
+        "n": 60,
+        "verdict:verified": 60
+      },
+      "CAT / pinned": {
+        "n": 60,
+        "verdict:verified": 60
+      },
+      "COST / open": {
+        "n": 61,
+        "verdict:verified": 61
+      },
+      "COST / pinned": {
+        "n": 61,
+        "verdict:verified": 61
+      },
+      "CSCO / open": {
+        "n": 50,
+        "verdict:verified": 48,
+        "verdict:unverifiable": 2
+      },
+      "CSCO / pinned": {
+        "n": 50,
+        "verdict:verified": 50
+      },
+      "CVX / open": {
+        "n": 60,
+        "verdict:verified": 59,
+        "verdict:unverifiable": 1
+      },
+      "CVX / pinned": {
+        "n": 60,
+        "verdict:verified": 60
+      },
+      "DIS / open": {
+        "n": 60,
+        "verdict:verified": 57,
+        "verdict:unverifiable": 3
+      },
+      "DIS / pinned": {
+        "n": 60,
+        "verdict:verified": 59,
+        "verdict:unverifiable": 1
+      },
+      "GS / open": {
+        "n": 62,
+        "verdict:verified": 62
+      },
+      "GS / pinned": {
+        "n": 62,
+        "verdict:verified": 62
+      },
+      "HD / open": {
+        "n": 59,
+        "verdict:verified": 58,
+        "verdict:unverifiable": 1
+      },
+      "HD / pinned": {
+        "n": 59,
+        "verdict:verified": 59
+      },
+      "JNJ / open": {
+        "n": 59,
+        "verdict:verified": 59
+      },
+      "JNJ / pinned": {
+        "n": 59,
+        "verdict:verified": 59
+      },
+      "KO / open": {
+        "n": 60,
+        "verdict:verified": 60
+      },
+      "KO / pinned": {
+        "n": 60,
+        "verdict:verified": 60
+      },
+      "MCD / open": {
+        "n": 61,
+        "verdict:verified": 57,
+        "verdict:unverifiable": 4
+      },
+      "MCD / pinned": {
+        "n": 61,
+        "verdict:verified": 61
+      },
+      "NKE / open": {
+        "n": 50,
+        "verdict:verified": 50
+      },
+      "NKE / pinned": {
+        "n": 50,
+        "verdict:verified": 50
+      },
+      "NVDA / open": {
+        "n": 59,
+        "verdict:verified": 58,
+        "verdict:unverifiable": 1
+      },
+      "NVDA / pinned": {
+        "n": 59,
+        "verdict:verified": 59
+      },
+      "ORCL / open": {
+        "n": 50,
+        "verdict:verified": 49,
+        "verdict:unverifiable": 1
+      },
+      "ORCL / pinned": {
+        "n": 50,
+        "verdict:verified": 50
+      },
+      "PFE / open": {
+        "n": 59,
+        "verdict:verified": 58,
+        "verdict:unverifiable": 1
+      },
+      "PFE / pinned": {
+        "n": 59,
+        "verdict:verified": 59
+      },
+      "PG / open": {
+        "n": 50,
+        "verdict:verified": 50
+      },
+      "PG / pinned": {
+        "n": 50,
+        "verdict:verified": 50
+      },
+      "T / open": {
+        "n": 68,
+        "verdict:verified": 66,
+        "verdict:unverifiable": 2
+      },
+      "T / pinned": {
+        "n": 68,
+        "verdict:verified": 68
+      },
+      "UNH / open": {
+        "n": 60,
+        "verdict:verified": 59,
+        "verdict:unverifiable": 1
+      },
+      "UNH / pinned": {
+        "n": 60,
+        "verdict:verified": 59,
+        "verdict:unverifiable": 1
+      }
+    },
+    "form": {
+      "10-K / open": {
+        "n": 515,
+        "verdict:verified": 496,
+        "verdict:unverifiable": 19
+      },
+      "10-K / pinned": {
+        "n": 515,
+        "verdict:verified": 515
+      },
+      "10-Q / open": {
+        "n": 654,
+        "verdict:verified": 649,
+        "verdict:unverifiable": 5
+      },
+      "10-Q / pinned": {
+        "n": 654,
+        "verdict:verified": 652,
+        "verdict:unverifiable": 2
+      }
+    },
+    "unit": {
+      "USD / open": {
+        "n": 1027,
+        "verdict:verified": 1007,
+        "verdict:unverifiable": 20
+      },
+      "USD / pinned": {
+        "n": 1027,
+        "verdict:verified": 1027
+      },
+      "USD/shares / open": {
+        "n": 58,
+        "verdict:verified": 56,
+        "verdict:unverifiable": 2
+      },
+      "USD/shares / pinned": {
+        "n": 58,
+        "verdict:verified": 56,
+        "verdict:unverifiable": 2
+      },
+      "shares / open": {
+        "n": 84,
+        "verdict:verified": 82,
+        "verdict:unverifiable": 2
+      },
+      "shares / pinned": {
+        "n": 84,
+        "verdict:verified": 84
+      }
+    },
+    "scale": {
+      "0 / open": {
+        "n": 65,
+        "verdict:verified": 63,
+        "verdict:unverifiable": 2
+      },
+      "0 / pinned": {
+        "n": 65,
+        "verdict:verified": 63,
+        "verdict:unverifiable": 2
+      },
+      "3 / open": {
+        "n": 9,
+        "verdict:verified": 9
+      },
+      "3 / pinned": {
+        "n": 9,
+        "verdict:verified": 9
+      },
+      "6 / open": {
+        "n": 1070,
+        "verdict:verified": 1048,
+        "verdict:unverifiable": 22
+      },
+      "6 / pinned": {
+        "n": 1070,
+        "verdict:verified": 1070
+      },
+      "9 / open": {
+        "n": 25,
+        "verdict:verified": 25
+      },
+      "9 / pinned": {
+        "n": 25,
+        "verdict:verified": 25
+      }
+    },
+    "sign": {
+      "- / open": {
+        "n": 137,
+        "verdict:verified": 133,
+        "verdict:unverifiable": 4
+      },
+      "- / pinned": {
+        "n": 137,
+        "verdict:verified": 137
+      },
+      "none / open": {
+        "n": 1032,
+        "verdict:verified": 1012,
+        "verdict:unverifiable": 20
+      },
+      "none / pinned": {
+        "n": 1032,
+        "verdict:verified": 1030,
+        "verdict:unverifiable": 2
+      }
+    }
+  },
+  "abstain_by_kind": {
+    "concept": {
+      "n": 200,
+      "verdict:unverifiable": 200,
+      "reason:locator_no_match": 200
+    },
+    "period": {
+      "n": 200,
+      "verdict:unverifiable": 200,
+      "reason:locator_no_match": 200
+    },
+    "instant": {
+      "n": 200,
+      "verdict:unverifiable": 200,
+      "reason:locator_no_match": 200
+    },
+    "unit": {
+      "n": 200,
+      "verdict:unverifiable": 200,
+      "reason:locator_no_match": 200
+    }
+  },
+  "stop_cases": [
+    {
+      "filing": "JNJ-10-K",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "JNJ-10-K",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "JNJ-10-K",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "JNJ-10-Q",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "JNJ-10-Q",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "JNJ-10-Q",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "KO-10-K",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "KO-10-K",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "KO-10-K",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "KO-10-Q",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "KO-10-Q",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "KO-10-Q",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "NVDA-10-K",
+      "variant": "no_contact_string",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "NVDA-10-K",
+      "variant": "corrupt_companyfacts",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    },
+    {
+      "filing": "NVDA-10-K",
+      "variant": "closed_port",
+      "exit": 2,
+      "ok": true,
+      "note": "",
+      "stderr": ""
+    }
+  ],
+  "check_exit_codes": {
+    "pinned.json": {
+      "0": 40
+    },
+    "open.json": {
+      "0": 40
+    },
+    "abstain-concept.json": {
+      "0": 40
+    },
+    "abstain-period.json": {
+      "0": 40
+    },
+    "abstain-instant.json": {
+      "0": 40
+    },
+    "abstain-unit.json": {
+      "0": 40
+    }
+  },
+  "failures": [],
+  "not_passing": [
+    {
+      "filing": "UNH-10-Q",
+      "accession": "0000731766-26-000266",
+      "company": "UNH",
+      "form": "10-Q",
+      "arm": "pinned",
+      "id": "f23",
+      "concept": "us-gaap:CommonStockDividendsPerShareCashPaid",
+      "unit": "USD/shares",
+      "period": "2026-09-22..2026-09-22",
+      "written": "2.32",
+      "value": "2.32",
+      "scale": 0,
+      "sign": "none",
+      "displays_differ": false,
+      "pair": null,
+      "verdict": "unverifiable",
+      "reason": "locator_no_match",
+      "confirmed_differ": null,
+      "filings_differ": false
+    },
+    {
+      "filing": "UNH-10-Q",
+      "accession": "0000731766-26-000266",
+      "company": "UNH",
+      "form": "10-Q",
+      "arm": "open",
+      "id": "f23",
+      "concept": "us-gaap:CommonStockDividendsPerShareCashPaid",
+      "unit": "USD/shares",
+      "period": "2026-09-22..2026-09-22",
+      "written": "2.32",
+      "value": "2.32",
+      "scale": 0,
+      "sign": "none",
+      "displays_differ": false,
+      "pair": null,
+      "verdict": "unverifiable",
+      "reason": "locator_no_match",
+      "confirmed_differ": null,
+      "filings_differ": false
+    },
+    {
+      "filing": "DIS-10-Q",
+      "accession": "0001744489-26-000057",
+      "company": "DIS",
+      "form": "10-Q",
+      "arm": "pinned",
+      "id": "f16",
+      "concept": "us-gaap:CommonStockDividendsPerShareCashPaid",
+      "unit": "USD/shares",
+      "period": "2025-01-16..2025-01-16",
+      "written": "0.50",
+      "value": "0.5",
+      "scale": 0,
+      "sign": "none",
+      "displays_differ": false,
+      "pair": null,
+      "verdict": "unverifiable",
+      "reason": "locator_no_match",
+      "confirmed_differ": null,
+      "filings_differ": false
+    },
+    {
+      "filing": "DIS-10-Q",
+      "accession": "0001744489-26-000057",
+      "company": "DIS",
+      "form": "10-Q",
+      "arm": "open",
+      "id": "f16",
+      "concept": "us-gaap:CommonStockDividendsPerShareCashPaid",
+      "unit": "USD/shares",
+      "period": "2025-01-16..2025-01-16",
+      "written": "0.50",
+      "value": "0.5",
+      "scale": 0,
+      "sign": "none",
+      "displays_differ": false,
+      "pair": null,
+      "verdict": "unverifiable",
+      "reason": "locator_no_match",
+      "confirmed_differ": null,
+      "filings_differ": false
+    }
+  ]
+}
