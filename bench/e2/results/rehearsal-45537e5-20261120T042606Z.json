@@ -1,0 +1,185 @@
+{
+ "run": {
+  "set": "rehearsal",
+  "seed": 20261119,
+  "started": "20261120T042120Z",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "max_tokens": 16000,
+  "plans_per_document": 3,
+  "cap_usd": 5.0,
+  "approved_estimate_usd_per_document": 0.02,
+  "documents": [
+   "d001",
+   "d002",
+   "d005",
+   "d006"
+  ],
+  "spent_before_usd": 0.0,
+  "fake": false,
+  "finished": "20261120T042407Z",
+  "spent_this_run_usd": 0.035375,
+  "spent_total_usd": 0.035375
+ },
+ "totals": {
+  "documents": 4,
+  "statements": 60,
+  "planted": 24,
+  "correct": 36
+ },
+ "measures": {
+  "arm_a": {
+   "planted_flagged": {
+    "k": 24,
+    "n": 24,
+    "share": 1.0,
+    "wilson95": [
+     0.862,
+     1.0
+    ]
+   },
+   "correct_flagged": {
+    "k": 0,
+    "n": 36,
+    "share": 0.0,
+    "wilson95": [
+     0.0,
+     0.0964
+    ]
+   },
+   "planted_verdicts": {
+    "wrong": 24
+   },
+   "correct_verdicts": {
+    "verified": 36
+   },
+   "uncovered_share": {
+    "k": 0,
+    "n": 60,
+    "share": 0.0,
+    "wilson95": [
+     0.0,
+     0.0602
+    ]
+   },
+   "usd_per_document": 0.007381,
+   "requests_per_document": 2.25,
+   "numbers": 60,
+   "uncovered": 0,
+   "plans_sent": 5,
+   "corrected_plans": 1,
+   "no_accepted_plan": 0,
+   "refused": 0,
+   "requests": 9,
+   "input_tokens": 131579,
+   "output_tokens": 32732,
+   "usd": 0.029524
+  },
+  "arm_b": {
+   "planted_flagged": {
+    "k": 24,
+    "n": 24,
+    "share": 1.0,
+    "wilson95": [
+     0.862,
+     1.0
+    ]
+   },
+   "correct_flagged": {
+    "k": 4,
+    "n": 36,
+    "share": 0.1111,
+    "wilson95": [
+     0.0441,
+     0.2531
+    ]
+   },
+   "usd_per_document": 0.001463,
+   "requests_per_document": 1.0,
+   "unparsed": 0,
+   "refused": 0,
+   "flags": 28,
+   "unmatched_flags": 0,
+   "could_not_check": 24,
+   "requests": 4,
+   "input_tokens": 10440,
+   "output_tokens": 9615,
+   "usd": 0.005851
+  }
+ },
+ "by_language": {
+  "en": {
+   "planted": 14,
+   "correct": 16,
+   "a_planted_wrong": 14,
+   "a_correct_wrong": 0,
+   "b_planted_flagged": 14,
+   "b_correct_flagged": 2
+  },
+  "ko": {
+   "planted": 10,
+   "correct": 20,
+   "a_planted_wrong": 10,
+   "a_correct_wrong": 0,
+   "b_planted_flagged": 10,
+   "b_correct_flagged": 2
+  }
+ },
+ "documents": [
+  {
+   "doc": "d001",
+   "lang": "en",
+   "source_type": "csv",
+   "planted": 8,
+   "a_planted_wrong": 8,
+   "a_correct_wrong": 0,
+   "b_planted_flagged": 8,
+   "b_correct_flagged": 1,
+   "a_usd": 0.005054,
+   "b_usd": 0.001235,
+   "a_requests": 2
+  },
+  {
+   "doc": "d002",
+   "lang": "en",
+   "source_type": "json",
+   "planted": 6,
+   "a_planted_wrong": 6,
+   "a_correct_wrong": 0,
+   "b_planted_flagged": 6,
+   "b_correct_flagged": 1,
+   "a_usd": 0.009659,
+   "b_usd": 0.001467,
+   "a_requests": 3
+  },
+  {
+   "doc": "d005",
+   "lang": "ko",
+   "source_type": "csv",
+   "planted": 6,
+   "a_planted_wrong": 6,
+   "a_correct_wrong": 0,
+   "b_planted_flagged": 6,
+   "b_correct_flagged": 1,
+   "a_usd": 0.006762,
+   "b_usd": 0.001508,
+   "a_requests": 2
+  },
+  {
+   "doc": "d006",
+   "lang": "ko",
+   "source_type": "json",
+   "planted": 4,
+   "a_planted_wrong": 4,
+   "a_correct_wrong": 0,
+   "b_planted_flagged": 4,
+   "b_correct_flagged": 1,
+   "a_usd": 0.008048,
+   "b_usd": 0.001641,
+   "a_requests": 2
+  }
+ ],
+ "timestamp": "20261120T042606Z",
+ "commit": "45537e5",
+ "dirty": false
+}
