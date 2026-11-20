@@ -135,3 +135,12 @@ Checks of real documents may appear in the README as examples. They are not perf
   - Measures 3 and 4: a crash, a missing claim or any verdict other than the expected one or `unverifiable` counts as a failure. Measure 6 counts any non-zero exit, and the results file also reports how many exits were exactly code 2. Measure 7 counts the statement numbers of the 64 documents, not the distractors.
   - The first development run (commit `e5a1488`, working tree not clean) was started by the generator's author by accident, with the default tool path. It is kept in `bench/runs.jsonl` like every other run.
 - 2026-11-20: E3 registered in place of its outline. No connection code, builder, scorer or E3 result existed at this commit. E1 and E2 are unchanged.
+- 2026-11-20, later the same day: the E3 builder and scorer were written by a separate agent from this plan and the contract, without reading the tool. No measure or bar changed. Details the plan left open, as the builder and scorer settle them (the full list is in `bench/edgar/README.md`):
+  - Filing: in the recent part of the SEC's filing list, the entry with the exact form and inline XBRL that has the latest filing date.
+  - A fact whose finest display has a scale other than 0, 3, 6 or 9 cannot be written with a scale word. It stays in the eligible count and is left out of the sample.
+  - Same-end pairs are formed from durations: the two earliest-appearing start dates of one concept, unit and end date. The sample is the 25 drawn facts, then the members of the drawn pairs that are not already in it.
+  - A zero is written `0`. The test lines carry no unit words.
+  - Abstention locators keep the filing's accession number. Each kind of abstention case has its own plan file, so that no plan claims a number twice.
+  - Scoring: if `check` exits with code 2, crashes or times out on a plan, every claim in that plan counts as a failure. Measure 1 counts claims, pinned and open together. The stop cases use the pinned plans of the first 5 filings of the run.
+  - Fetching is a step of its own (`build.py --fetch-only`), run by the person who owns the contact string. Building the cases and scoring then run from the cached files without any request, so they can be repeated.
+  - Before any real filing was fetched, the tool and the scorer were run together on a made-up filing and made-up company facts, to check that the pieces fit. That run is not an E3 result and is not in `bench/edgar/runs.jsonl`.

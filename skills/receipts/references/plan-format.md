@@ -268,7 +268,7 @@ The script reads two things from the SEC, with the Python standard library:
 
 A cached file is used as it is, however old, and no request is made for it. `--refresh` fetches again. The file's modification date counts as its fetch date and is shown on the receipt, so a reader sees how fresh the EDGAR data was. A filing made after that date is not in the cache: its facts give `locator_no_match` until the cache is refreshed.
 
-**Stops.** A failed request (no connection, an HTTP error, a timeout), a response that is not the expected JSON, or a cached file that is not the expected JSON stops the script with exit code 2.
+**Stops.** A failed request (no connection, an HTTP error, a timeout), a response that is not the expected JSON, or a cached file that is not the expected JSON stops the script with exit code 2. One HTTP error is an answer and not a stop: 404 for a company's facts means the SEC has none under that CIK, which is `locator_no_match`. A request that times out or gets HTTP 429 or 5xx is tried once more after two seconds.
 
 **Other addresses.** `RECEIPTS_EDGAR_DATA_URL` and `RECEIPTS_EDGAR_WWW_URL` replace `https://data.sec.gov` and `https://www.sec.gov`. They exist for tests. When either is set, the receipt says which address was used.
 
@@ -283,5 +283,7 @@ receipts.py edgar facts AAPL us-gaap:Assets --since 2025-01-01
 ```
 
 - `company`: the CIK and the name.
-- `concepts`: the concepts the company has reported whose name or label contains the text (all of them without `--match`), each with its label, its units, the number of facts and the latest period end.
-- `facts`: one concept's facts, each with period, value, unit, form, accession and filing date. `--unit`, `--since` and `--until` (compared with the period end) narrow the list.
+- `concepts`: the concepts the company has reported whose name or label contains the text (all of them without `--match`), each with its label, its units, the number of facts and the latest period end. At most 60 are printed unless `--limit` says otherwise (`0` prints all). `matched` is the full count.
+- `facts`: one concept's facts, each with period, value, form, accession and filing date, and `filings_differ: true` when filings give different values for that period. `--unit`, `--since` and `--until` (compared with the period end) narrow the list.
+
+These commands use `.receipts/edgar/` in the current folder unless `--edgar-cache` or `RECEIPTS_EDGAR_CACHE` names another, so run them in the plan's folder to share its cache. They stop with exit code 2 when the company or the concept is not found.
