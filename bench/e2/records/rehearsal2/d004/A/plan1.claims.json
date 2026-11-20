@@ -1,0 +1,384 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "West accounted for 24.08% of total revenue in 2023.",
+   "number": "24.08%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2023",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    },
+    "whole": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "where": {
+      "Year": "2023"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "West sold 329,428 units in 2024.",
+   "number": "329,428",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "West and East operating cost combined was $831.05 million in 2021.",
+   "number": "$831.05 million",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "book.xlsx",
+      "sheet": "Data",
+      "row": {
+       "Year": "2021",
+       "Region": "West"
+      },
+      "column": "Cost",
+      "multiplier": 1000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "Data",
+      "row": {
+       "Year": "2021",
+       "Region": "East"
+      },
+      "column": "Cost",
+      "multiplier": 1000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "North and West operating cost combined was $722.58M in 2023.",
+   "number": "$722.58M",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "book.xlsx",
+      "sheet": "Data",
+      "row": {
+       "Year": "2023",
+       "Region": "North"
+      },
+      "column": "Cost",
+      "multiplier": 1000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "Data",
+      "row": {
+       "Year": "2023",
+       "Region": "West"
+      },
+      "column": "Cost",
+      "multiplier": 1000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "The margin in Coastal slipped 7.4 percentage points in 2023 vs 2022.",
+   "number": "7.4",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2023",
+      "Region": "Coastal"
+     },
+     "column": "Margin"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2022",
+      "Region": "Coastal"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "The change in East unit sales in 2024 vs 2023 was −136.0%.",
+   "number": "−136.0%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2024",
+      "Region": "East"
+     },
+     "column": "Units"
+    },
+    "old": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2023",
+      "Region": "East"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "The change in West headcount in 2025 vs 2024 was −14.8 percent.",
+   "number": "−14.8 percent",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2025",
+      "Region": "West"
+     },
+     "column": "Staff"
+    },
+    "old": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "The margin in Central jumped 23.1 percentage points in 2022 vs 2021.",
+   "number": "23.1",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2022",
+      "Region": "Central"
+     },
+     "column": "Margin"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2021",
+      "Region": "Central"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "Coastal headcount decreased by 648 in 2025 vs 2024.",
+   "number": "648",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2025",
+      "Region": "Coastal"
+     },
+     "column": "Staff"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2024",
+      "Region": "Coastal"
+     },
+     "column": "Staff"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "The margin in Coastal was 1.8 percent in 2024.",
+   "number": "1.8 percent",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2024",
+      "Region": "Coastal"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "West sold 322,428 units in 2023.",
+   "number": "322,428",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2023",
+      "Region": "West"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "West revenue was $695.67 million in 2023.",
+   "number": "$695.67 million",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2023",
+      "Region": "West"
+     },
+     "column": "Revenue",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "The change in East unit sales in 2022 vs 2021 was +2.0%.",
+   "number": "+2.0%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2022",
+      "Region": "East"
+     },
+     "column": "Units"
+    },
+    "old": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2021",
+      "Region": "East"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "West revenue was $747.3M in FY2025.",
+   "number": "$747.3M",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2025",
+      "Region": "West"
+     },
+     "column": "Revenue",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "Central revenue was 1.1x that of North in 2021.",
+   "number": "1.1x",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2021",
+      "Region": "Central"
+     },
+     "column": "Revenue"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "Data",
+     "row": {
+      "Year": "2021",
+      "Region": "North"
+     },
+     "column": "Revenue"
+    }
+   }
+  }
+ ]
+}

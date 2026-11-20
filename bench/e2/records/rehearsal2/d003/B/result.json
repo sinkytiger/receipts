@@ -1,0 +1,87 @@
+{
+ "doc": "d003",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T043900Z",
+   "set": "rehearsal2",
+   "doc": "d003",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2089,
+   "output_tokens": 1962,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0011899,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDZbPsD4iBfXjvbUfhPy"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "1.4%",
+    "should_be": "-4.6% (2021 West)",
+    "why": "lowest margin in the table is -4.6 in 2021 West; 1.4 is Central 2023, not the minimum"
+   },
+   {
+    "line": 13,
+    "number": "382,630",
+    "should_be": "38,263",
+    "why": "East 2025 units are 38263 in the source"
+   },
+   {
+    "line": 14,
+    "number": "$1.78B",
+    "should_be": "$1.69B",
+    "why": "2025 regional costs sum to 1,687,612 thousand, about $1.69B"
+   },
+   {
+    "line": 19,
+    "number": "+6.69%",
+    "should_be": "+6.70%",
+    "why": "(39369 − 36897) / 36897 = 6.6997%, which rounds to 6.70%"
+   },
+   {
+    "line": 21,
+    "number": "14.55%",
+    "should_be": "8.23%",
+    "why": "2022 margins -3.6, 15.2, 2, 19.3 average 8.225"
+   },
+   {
+    "line": 24,
+    "number": "3",
+    "should_be": "4",
+    "why": "in 2024 all four regions have margins of 11.5 or more (12.3, 11.5, 13.8, 12)"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "20 March 2026"
+   },
+   {
+    "line": 4,
+    "number": "v3.8.7"
+   },
+   {
+    "line": 5,
+    "number": "2024"
+   },
+   {
+    "line": 32,
+    "number": "32"
+   },
+   {
+    "line": 33,
+    "number": "0.60"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0011899
+}

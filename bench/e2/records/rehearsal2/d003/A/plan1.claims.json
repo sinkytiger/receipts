@@ -1,0 +1,332 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "The lowest regional margin was 1.4% in 2023.",
+   "number": "1.4%",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 3,
+     "row": {
+      "Year": "2023",
+      "Region": "Central"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "West operating cost was $124.25 million in 2024.",
+   "number": "$124.25 million",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Cost",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "Across all regions and years, shipments totalled around 2,300,000 units.",
+   "number": "2,300,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {},
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "The cost-to-revenue ratio in West was 0.74 in 2025.",
+   "number": "0.74",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "West"
+     },
+     "column": "Cost"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "East sold 382,630 units in 2025.",
+   "number": "382,630",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "East"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "Total operating cost across all regions was $1.78B in 2025.",
+   "number": "$1.78B",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Year": "2025"
+     },
+     "column": "Cost",
+     "multiplier": 1000
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "The cost-to-revenue ratio in West was 1.03 in 2024.",
+   "number": "1.03",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Cost"
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "The change in West unit sales in 2022 vs 2021 was +6.69%.",
+   "number": "+6.69%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2022",
+      "Region": "West"
+     },
+     "column": "Units"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2021",
+      "Region": "West"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "Central sold 210,447 units in 2025.",
+   "number": "210,447",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2025",
+      "Region": "Central"
+     },
+     "column": "Units"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "The average margin across regions was 14.55% in 2022.",
+   "number": "14.55%",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 3,
+     "where": {
+      "Year": "2022"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "Coastal and West revenue combined was $927.5 million in 2021.",
+   "number": "$927.5 million",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "tables.md",
+      "table": 2,
+      "row": {
+       "Year": "2021",
+       "Region": "Coastal"
+      },
+      "column": "Revenue",
+      "multiplier": 1000
+     },
+     {
+      "file": "tables.md",
+      "table": 2,
+      "row": {
+       "Year": "2021",
+       "Region": "West"
+      },
+      "column": "Revenue",
+      "multiplier": 1000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "Double-digit margins were posted by 3 regions in 2024.",
+   "number": "3",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 3,
+     "where": {
+      "Year": "2024"
+     },
+     "test": {
+      "column": "Margin",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "West accounted for 4.93% of total revenue in 2024.",
+   "number": "4.93%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Revenue"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "Year": "2024"
+     },
+     "column": "Revenue"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "The average margin across regions was 12.40 percent in 2024.",
+   "number": "12.40 percent",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 3,
+     "where": {
+      "Year": "2024"
+     },
+     "column": "Margin"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "West sold 48,057 units in 2024.",
+   "number": "48,057",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "Year": "2024",
+      "Region": "West"
+     },
+     "column": "Units"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,435 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "광주 지역 이익률은 2021년 대비 2022년에 16.9%포인트 줄었다.",
+   "number": "16.9%포인트",
+   "kind": "derived",
+   "formula": "difference",
+   "direction": "down",
+   "operands": {
+    "a": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "cell": "H10"
+    },
+    "b": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "cell": "H5"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "2025년 지역 평균 판매량은 190,325건이었다.",
+   "number": "190,325",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "items": [
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E23"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E24"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E25"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E26"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E27"
+     }
+    ]
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "2024년 대전 지역 판매량은 382,398건이었다.",
+   "number": "382,398",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "cell": "E22"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "전 기간 전 지역 판매량은 대략 4,000,000건이었다.",
+   "number": "4,000,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E3"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E4"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E5"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E6"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E7"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E8"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E9"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E10"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E11"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E12"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E13"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E14"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E15"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E16"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E17"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E18"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E19"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E20"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E21"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E22"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E23"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E24"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E25"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E26"
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "E27"
+     }
+    ]
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "2021년 대전 지역 판매량은 932,700건이었다.",
+   "number": "932,700",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "cell": "E7"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "2024년 서울 지역은 전체 판매량의 44.3퍼센트를 차지했다.",
+   "number": "44.3퍼센트",
+   "kind": "no_source",
+   "reason": "share whose denominator is the sum of five cells; the plan format cannot nest a sum inside a share"
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "2024년 인천 지역 단가는 79,427원이었다.",
+   "number": "79,427",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "cell": "F18"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "2022년 이익률이 두 자릿수인 지역은 1개였다.",
+   "number": "1",
+   "kind": "no_source",
+   "reason": "count of rows over a threshold: the sheet's header is not its first row, so a row selector cannot be used and the count cannot be expressed with the cell locators"
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "2025년 지역별 매출 최고치는 21,136조 원이었다.",
+   "number": "21,136조",
+   "kind": "derived",
+   "formula": "max",
+   "operands": {
+    "items": [
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C23",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C24",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C25",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C26",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C27",
+      "multiplier": 1000000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "2021년 이익률이 두 자릿수인 지역은 4개였다.",
+   "number": "4",
+   "kind": "no_source",
+   "reason": "count of rows over a threshold: the sheet's header is not its first row, so a row selector cannot be used and the count cannot be expressed with the cell locators"
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "2023년 인천 지역은 전체 판매량의 3.4%를 차지했다.",
+   "number": "3.4%",
+   "kind": "no_source",
+   "reason": "share whose denominator is the sum of five cells; the plan format cannot nest a sum inside a share"
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "2025년 대전 지역 매출은 광주 지역 매출의 2.45배였다.",
+   "number": "2.45배",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "cell": "C27"
+    },
+    "den": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "cell": "C25"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "2023년 전 지역 매출 합계는 4조 244억 원이었다.",
+   "number": "4조 244억",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C13",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C14",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C15",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C16",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C17",
+      "multiplier": 1000000
+     }
+    ]
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "2021년 대전 지역 매출은 18,506억 원이었다.",
+   "number": "18,506억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "book.xlsx",
+     "sheet": "자료",
+     "cell": "C7",
+     "multiplier": 1000000
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "2021년 전 지역 매출 합계는 3.62조 원이었다.",
+   "number": "3.62조",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "items": [
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C3",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C4",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C5",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C6",
+      "multiplier": 1000000
+     },
+     {
+      "file": "book.xlsx",
+      "sheet": "자료",
+      "cell": "C7",
+      "multiplier": 1000000
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,290 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 8,
+  "wrong": 7,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 3,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 20
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 19,
+   "end": 25,
+   "text": "24.08%",
+   "quote": "West accounted for 24.08% of total revenue in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "24.08%",
+   "recomputed_raw": "24.0767848478456760356473928167089886911873545219226099484459",
+   "sources": [
+    "book.xlsx [Data] [Year=2023, Region=West] Revenue = 646075",
+    "book.xlsx [Data] [Year=2023] Revenue: 5 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 10,
+   "end": 17,
+   "text": "329,428",
+   "quote": "West sold 329,428 units in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "322,428",
+   "recomputed_raw": "322428",
+   "sources": [
+    "book.xlsx [Data] [Year=2024, Region=West] Units = 322428"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 42,
+   "end": 57,
+   "text": "$831.05 million",
+   "quote": "West and East operating cost combined was $831.05 million in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "831.05 million",
+   "recomputed_raw": "831048000",
+   "sources": [
+    "book.xlsx [Data] [Year=2021, Region=West] Cost = 356781 x 1000",
+    "book.xlsx [Data] [Year=2021, Region=East] Cost = 474267 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 43,
+   "end": 51,
+   "text": "$722.58M",
+   "quote": "North and West operating cost combined was $722.58M in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "722.58M",
+   "recomputed_raw": "722582000",
+   "sources": [
+    "book.xlsx [Data] [Year=2023, Region=North] Cost = 145637 x 1000",
+    "book.xlsx [Data] [Year=2023, Region=West] Cost = 576945 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 30,
+   "end": 51,
+   "text": "7.4 percentage points",
+   "quote": "The margin in Coastal slipped 7.4 percentage points in 2023 vs 2022.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-7.4%p",
+   "recomputed_raw": "-7.4",
+   "sources": [
+    "book.xlsx [Data] [Year=2023, Region=Coastal] Margin = 5.4",
+    "book.xlsx [Data] [Year=2022, Region=Coastal] Margin = 12.8"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 50,
+   "end": 57,
+   "text": "−136.0%",
+   "quote": "The change in East unit sales in 2024 vs 2023 was −136.0%.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-13.6%",
+   "recomputed_raw": "-13.6003638204580362275937223809646390540668091058082563218095",
+   "sources": [
+    "book.xlsx [Data] [Year=2024, Region=East] Units = 100691",
+    "book.xlsx [Data] [Year=2023, Region=East] Units = 116541"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 52,
+   "end": 65,
+   "text": "−14.8 percent",
+   "quote": "The change in West headcount in 2025 vs 2024 was −14.8 percent.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-14.8%",
+   "recomputed_raw": "-14.8046032126588348117957324382642052265643730520258930712059",
+   "sources": [
+    "book.xlsx [Data] [Year=2025, Region=West] Staff = 7107",
+    "book.xlsx [Data] [Year=2024, Region=West] Staff = 8342"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 32,
+   "end": 54,
+   "text": "23.1 percentage points",
+   "quote": "The margin in Central jumped 23.1 percentage points in 2022 vs 2021.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "-23.1%p",
+   "recomputed_raw": "-23.1",
+   "sources": [
+    "book.xlsx [Data] [Year=2022, Region=Central] Margin = 1.4",
+    "book.xlsx [Data] [Year=2021, Region=Central] Margin = 24.5"
+   ],
+   "note": "the sentence says up, the recomputed change is -23.1"
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 34,
+   "end": 37,
+   "text": "648",
+   "quote": "Coastal headcount decreased by 648 in 2025 vs 2024.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "648",
+   "recomputed_raw": "648",
+   "sources": [
+    "book.xlsx [Data] [Year=2025, Region=Coastal] Staff = 3692",
+    "book.xlsx [Data] [Year=2024, Region=Coastal] Staff = 3044"
+   ],
+   "note": "the sentence says down, the recomputed change is 648"
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 29,
+   "end": 40,
+   "text": "1.8 percent",
+   "quote": "The margin in Coastal was 1.8 percent in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "5.5%",
+   "recomputed_raw": "5.5",
+   "sources": [
+    "book.xlsx [Data] [Year=2024, Region=Coastal] Margin = 5.5"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 10,
+   "end": 17,
+   "text": "322,428",
+   "quote": "West sold 322,428 units in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "373,613",
+   "recomputed_raw": "373613",
+   "sources": [
+    "book.xlsx [Data] [Year=2023, Region=West] Units = 373613"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 17,
+   "end": 32,
+   "text": "$695.67 million",
+   "quote": "West revenue was $695.67 million in 2023.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "646.08 million",
+   "recomputed_raw": "646075000",
+   "sources": [
+    "book.xlsx [Data] [Year=2023, Region=West] Revenue = 646075 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 50,
+   "end": 55,
+   "text": "+2.0%",
+   "quote": "The change in East unit sales in 2022 vs 2021 was +2.0%.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "2.1%",
+   "recomputed_raw": "2.09994128126275142069487156520267916679107077100687705888793",
+   "sources": [
+    "book.xlsx [Data] [Year=2022, Region=East] Units = 102589",
+    "book.xlsx [Data] [Year=2021, Region=East] Units = 100479"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 17,
+   "end": 24,
+   "text": "$747.3M",
+   "quote": "West revenue was $747.3M in FY2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "747.3M",
+   "recomputed_raw": "747325000",
+   "sources": [
+    "book.xlsx [Data] [Year=2025, Region=West] Revenue = 747325 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 20,
+   "end": 24,
+   "text": "1.1x",
+   "quote": "Central revenue was 1.1x that of North in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.1x",
+   "recomputed_raw": "1.1167413832648720782334911069872182489209533142892887674889",
+   "sources": [
+    "book.xlsx [Data] [Year=2021, Region=Central] Revenue = 267789",
+    "book.xlsx [Data] [Year=2021, Region=North] Revenue = 239795"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "book.xlsx",
+   "column": "Cost",
+   "multiplier": "1000",
+   "claims": 2
+  },
+  {
+   "file": "book.xlsx",
+   "column": "Revenue",
+   "multiplier": "1000",
+   "claims": 2
+  }
+ ]
+}

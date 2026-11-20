@@ -1,0 +1,89 @@
+{
+ "doc": "d007",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T043953Z",
+   "set": "rehearsal2",
+   "doc": "d007",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 2870,
+   "output_tokens": 3101,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0018375,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDZey1bPNoJhW5cvqveH"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "2개",
+    "should_be": "1개",
+    "why": "Only 2025 (22.1) is two-digit for 대구 in the 이익률 column"
+   },
+   {
+    "line": 10,
+    "number": "18,642억 1,800만 원",
+    "should_be": "9,586억 5,600만 원",
+    "why": "2022 서울 매출 is 958656 백만 원; 18,642억 1,800만 is 인천's figure"
+   },
+   {
+    "line": 12,
+    "number": "6억 원",
+    "should_be": "약 3억 3,200만 원",
+    "why": "2022 부산 매출 1558127 백만 원 ÷ 인원 4690 ≈ 332 백만 원"
+   },
+   {
+    "line": 13,
+    "number": "3개",
+    "should_be": "1개",
+    "why": "Only 대구 (-3) has a negative 2023 이익률"
+   },
+   {
+    "line": 14,
+    "number": "4개",
+    "should_be": "3개",
+    "why": "서울 two-digit years are 2022, 2024, 2025"
+   },
+   {
+    "line": 18,
+    "number": "5개",
+    "should_be": "3개",
+    "why": "2022 two-digit 이익률: 부산 15.1, 서울 20.1, 대전 19.8"
+   },
+   {
+    "line": 23,
+    "number": "감소",
+    "should_be": "증가",
+    "why": "인천 매출 rose from 1990985 to 2066642 백만 원 (+75,657 백만 원)"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026-03-23"
+   },
+   {
+    "line": 4,
+    "number": "v1.7.8"
+   },
+   {
+    "line": 32,
+    "number": "320"
+   },
+   {
+    "line": 33,
+    "number": "0.07"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0018375
+}

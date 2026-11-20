@@ -1,0 +1,99 @@
+{
+ "doc": "d004",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T044036Z",
+   "set": "rehearsal2",
+   "doc": "d004",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1666,
+   "output_tokens": 2237,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0012851,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDZiLdvwHonbcykoJR8U"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 10,
+    "number": "329,428",
+    "should_be": "322,428",
+    "why": "West 2024 units are 322,428; 329,428 is not in the data"
+   },
+   {
+    "line": 14,
+    "number": "−136.0%",
+    "should_be": "−13.6%",
+    "why": "East units 2024 vs 2023: (100691−116541)/116541 ≈ −13.6%"
+   },
+   {
+    "line": 19,
+    "number": "jumped 23.1 percentage points",
+    "should_be": "fell 23.1 percentage points",
+    "why": "Central margin went from 24.5 (2021) to 1.4 (2022), a drop"
+   },
+   {
+    "line": 20,
+    "number": "decreased by 648",
+    "should_be": "increased by 648",
+    "why": "Coastal headcount rose from 3044 to 3692 (+648)"
+   },
+   {
+    "line": 21,
+    "number": "1.8 percent",
+    "should_be": "5.5 percent",
+    "why": "Coastal 2024 margin is 5.5; 1.8 is East's 2024 margin"
+   },
+   {
+    "line": 23,
+    "number": "322,428",
+    "should_be": "373,613",
+    "why": "West 2023 units are 373,613; 322,428 is 2024"
+   },
+   {
+    "line": 24,
+    "number": "$695.67 million",
+    "should_be": "$646.08 million",
+    "why": "West 2023 revenue is 646,075 (thousands); 695,668 is Coastal's"
+   },
+   {
+    "line": 25,
+    "number": "+2.0%",
+    "should_be": "+2.1%",
+    "why": "East units 2022 vs 2021: (102589−100479)/100479 ≈ +2.1%"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 1,
+    "number": "1"
+   },
+   {
+    "line": 4,
+    "number": "v3.4.2"
+   },
+   {
+    "line": 4,
+    "number": "39"
+   },
+   {
+    "line": 32,
+    "number": "13"
+   },
+   {
+    "line": 33,
+    "number": "0.78"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0012851
+}

@@ -1,0 +1,392 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 7,
+  "wrong": 4,
+  "unverifiable": 4,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 3,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 15
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 27,
+   "end": 35,
+   "text": "16.9%포인트",
+   "quote": "광주 지역 이익률은 2021년 대비 2022년에 16.9%포인트 줄었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-16.9%p",
+   "recomputed_raw": "-16.9",
+   "sources": [
+    "book.xlsx [자료] H10 = 0.7",
+    "book.xlsx [자료] H5 = 17.6"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 17,
+   "end": 24,
+   "text": "190,325",
+   "quote": "2025년 지역 평균 판매량은 190,325건이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "190,025",
+   "recomputed_raw": "190025.2",
+   "sources": [
+    "book.xlsx [자료] E23 = 36206",
+    "book.xlsx [자료] E24 = 144264",
+    "book.xlsx [자료] E25 = 61766",
+    "book.xlsx [자료] E26 = 291459",
+    "book.xlsx [자료] E27 = 416431"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 17,
+   "end": 24,
+   "text": "382,398",
+   "quote": "2024년 대전 지역 판매량은 382,398건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "382,398",
+   "recomputed_raw": "382398",
+   "sources": [
+    "book.xlsx [자료] E22 = 382398"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 18,
+   "end": 27,
+   "text": "4,000,000",
+   "quote": "전 기간 전 지역 판매량은 대략 4,000,000건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,000,000",
+   "recomputed_raw": "4004391",
+   "sources": [
+    "book.xlsx [자료] E3 = 21777",
+    "book.xlsx [자료] E4 = 142025",
+    "book.xlsx [자료] E5 = 45863",
+    "book.xlsx [자료] E6 = 174737",
+    "book.xlsx [자료] E7 = 232700",
+    "book.xlsx [자료] E8 = 26829",
+    "book.xlsx [자료] E9 = 147706",
+    "book.xlsx [자료] E10 = 49532",
+    "book.xlsx [자료] E11 = 206714",
+    "book.xlsx [자료] E12 = 290875",
+    "book.xlsx [자료] E13 = 27419",
+    "book.xlsx [자료] E14 = 174884",
+    "book.xlsx [자료] E15 = 50275",
+    "book.xlsx [자료] E16 = 228832",
+    "book.xlsx [자료] E17 = 324616",
+    "book.xlsx [자료] E18 = 32766",
+    "book.xlsx [자료] E19 = 152499",
+    "book.xlsx [자료] E20 = 62643",
+    "book.xlsx [자료] E21 = 279175",
+    "book.xlsx [자료] E22 = 382398",
+    "book.xlsx [자료] E23 = 36206",
+    "book.xlsx [자료] E24 = 144264",
+    "book.xlsx [자료] E25 = 61766",
+    "book.xlsx [자료] E26 = 291459",
+    "book.xlsx [자료] E27 = 416431"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 17,
+   "end": 24,
+   "text": "932,700",
+   "quote": "2021년 대전 지역 판매량은 932,700건이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "232,700",
+   "recomputed_raw": "232700",
+   "sources": [
+    "book.xlsx [자료] E7 = 232700"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 21,
+   "end": 28,
+   "text": "44.3퍼센트",
+   "quote": "2024년 서울 지역은 전체 판매량의 44.3퍼센트를 차지했다.",
+   "verdict": "unverifiable",
+   "reason": "locator_no_match",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "the locator has no file"
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 19,
+   "end": 25,
+   "text": "79,427",
+   "quote": "2024년 인천 지역 단가는 79,427원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "79,427",
+   "recomputed_raw": "79427",
+   "sources": [
+    "book.xlsx [자료] F18 = 79427"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 25,
+   "end": 26,
+   "text": "1",
+   "quote": "2022년 이익률이 두 자릿수인 지역은 1개였다.",
+   "verdict": "unverifiable",
+   "reason": "declared_no_source",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "count of rows over a threshold: the sheet's header is not its first row, so a row selector cannot be used and the count cannot be expressed with the cell locators"
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 21,
+   "end": 28,
+   "text": "21,136조",
+   "quote": "2025년 지역별 매출 최고치는 21,136조 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2,000,000,000,000",
+   "recomputed_raw": "2113582000000",
+   "sources": [
+    "book.xlsx [자료] C23 = 2113582 x 1000000",
+    "book.xlsx [자료] C24 = 40105 x 1000000",
+    "book.xlsx [자료] C25 = 34720 x 1000000",
+    "book.xlsx [자료] C26 = 1909875 x 1000000",
+    "book.xlsx [자료] C27 = 85407 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 25,
+   "end": 26,
+   "text": "4",
+   "quote": "2021년 이익률이 두 자릿수인 지역은 4개였다.",
+   "verdict": "unverifiable",
+   "reason": "declared_no_source",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "count of rows over a threshold: the sheet's header is not its first row, so a row selector cannot be used and the count cannot be expressed with the cell locators"
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 21,
+   "end": 25,
+   "text": "3.4%",
+   "quote": "2023년 인천 지역은 전체 판매량의 3.4%를 차지했다.",
+   "verdict": "unverifiable",
+   "reason": "locator_no_match",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "the locator has no file"
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 26,
+   "end": 31,
+   "text": "2.45배",
+   "quote": "2025년 대전 지역 매출은 광주 지역 매출의 2.45배였다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "2.46배",
+   "recomputed_raw": "2.45987903225806451612903225806451612903225806451612903225806",
+   "sources": [
+    "book.xlsx [자료] C27 = 85407",
+    "book.xlsx [자료] C25 = 34720"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 18,
+   "end": 25,
+   "text": "4조 244억",
+   "quote": "2023년 전 지역 매출 합계는 4조 244억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,024,400,000,000",
+   "recomputed_raw": "4024439000000",
+   "sources": [
+    "book.xlsx [자료] C13 = 2097259 x 1000000",
+    "book.xlsx [자료] C14 = 38065 x 1000000",
+    "book.xlsx [자료] C15 = 35897 x 1000000",
+    "book.xlsx [자료] C16 = 1775157 x 1000000",
+    "book.xlsx [자료] C17 = 78061 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 16,
+   "end": 23,
+   "text": "18,506억",
+   "quote": "2021년 대전 지역 매출은 18,506억 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "78,900,000,000",
+   "recomputed_raw": "78888000000",
+   "sources": [
+    "book.xlsx [자료] C7 = 78888 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 18,
+   "end": 23,
+   "text": "3.62조",
+   "quote": "2021년 전 지역 매출 합계는 3.62조 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,620,000,000,000",
+   "recomputed_raw": "3618608000000",
+   "sources": [
+    "book.xlsx [자료] C3 = 1621351 x 1000000",
+    "book.xlsx [자료] C4 = 30050 x 1000000",
+    "book.xlsx [자료] C5 = 37740 x 1000000",
+    "book.xlsx [자료] C6 = 1850579 x 1000000",
+    "book.xlsx [자료] C7 = 78888 x 1000000"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "book.xlsx",
+   "column": "C13",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C14",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C15",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C16",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C17",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C23",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C24",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C25",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C26",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C27",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C3",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C4",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C5",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C6",
+   "multiplier": "1000000",
+   "claims": 1
+  },
+  {
+   "file": "book.xlsx",
+   "column": "C7",
+   "multiplier": "1000000",
+   "claims": 2
+  }
+ ]
+}

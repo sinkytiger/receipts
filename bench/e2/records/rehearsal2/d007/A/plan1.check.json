@@ -1,0 +1,278 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 8,
+  "wrong": 7,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 2,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 14
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 16,
+   "end": 17,
+   "text": "2",
+   "quote": "대구 지역은 다섯 해 가운데 2개 연도에 두 자릿수 이익률을 기록했다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1",
+   "recomputed_raw": "1",
+   "sources": [
+    "tables.md table 2 [지역=대구] 이익률 >= 10: 1 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 16,
+   "end": 30,
+   "text": "18,642억 1,800만",
+   "quote": "2022년 서울 지역 매출은 18,642억 1,800만 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "958,656,000,000",
+   "recomputed_raw": "958656000000",
+   "sources": [
+    "tables.md table 1 [연도=2022, 지역=서울] 매출 = 958656 x 1000000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 20,
+   "end": 26,
+   "text": "101.9%",
+   "quote": "2023년 인천 지역 비용은 매출의 101.9%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "101.9%",
+   "recomputed_raw": "101.900014314522711120375090721426831442728096896762155415536",
+   "sources": [
+    "tables.md table 1 [연도=2023, 지역=인천] 비용 = 2028814",
+    "tables.md table 1 [연도=2023, 지역=인천] 매출 = 1990985"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 19,
+   "end": 21,
+   "text": "6억",
+   "quote": "2022년 부산 지역 인당 매출은 6억 원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "300,000,000",
+   "recomputed_raw": "332223240.938166311300639658848614072494669509594882729211087",
+   "sources": [
+    "tables.md table 1 [연도=2022, 지역=부산] 매출 = 1558127 x 1000000",
+    "tables.md table 2 [연도=2022, 지역=부산] 인원 = 4690"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 21,
+   "end": 22,
+   "text": "3",
+   "quote": "마이너스인 지역은 3개였다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1",
+   "recomputed_raw": "1",
+   "sources": [
+    "tables.md table 2 [연도=2023] 이익률 < 0: 1 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 16,
+   "end": 17,
+   "text": "4",
+   "quote": "서울 지역은 다섯 해 가운데 4개 연도에 두 자릿수 이익률을 기록했다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3",
+   "recomputed_raw": "3",
+   "sources": [
+    "tables.md table 2 [지역=서울] 이익률 >= 10: 3 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 25,
+   "end": 26,
+   "text": "5",
+   "quote": "2022년 이익률이 두 자릿수인 지역은 5개였다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3",
+   "recomputed_raw": "3",
+   "sources": [
+    "tables.md table 2 [연도=2022] 이익률 >= 10: 3 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 21,
+   "end": 30,
+   "text": "6조 6,523억",
+   "quote": "2021년 전 지역 매출 합계는 6조 6,523억 원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6,652,300,000,000",
+   "recomputed_raw": "6652321000000",
+   "sources": [
+    "tables.md table 1 [연도=2021] 매출: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 21,
+   "end": 30,
+   "text": "4,500,000",
+   "quote": "전 기간 전 지역 판매량은 대략 4,500,000건이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,500,000",
+   "recomputed_raw": "4467934",
+   "sources": [
+    "tables.md table 1 [] 판매량: 30 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 20,
+   "end": 26,
+   "text": "11.02%",
+   "quote": "2024년 지역 평균 이익률은 11.02%였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "11.02%",
+   "recomputed_raw": "11.0166666666666666666666666666666666666666666666666666666667",
+   "sources": [
+    "tables.md table 2 [연도=2024] 이익률: 6 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 26,
+   "end": 37,
+   "text": "756억 5,700만",
+   "quote": "인천 지역 매출은 2023년 대비 2024년에 756억 5,700만 원 감소했다.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "75,657,000,000",
+   "recomputed_raw": "75657000000",
+   "sources": [
+    "tables.md table 1 [연도=2024, 지역=인천] 매출 = 2066642 x 1000000",
+    "tables.md table 1 [연도=2023, 지역=인천] 매출 = 1990985 x 1000000"
+   ],
+   "note": "the sentence says down, the recomputed change is 75657000000"
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 17,
+   "end": 23,
+   "text": "1.5퍼센트",
+   "quote": "2022년 광주 지역 이익률은 1.5퍼센트였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.5%",
+   "recomputed_raw": "1.5",
+   "sources": [
+    "tables.md table 2 [연도=2022, 지역=광주] 이익률 = 1.5"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 17,
+   "end": 23,
+   "text": "7.8퍼센트",
+   "quote": "2025년 인천 지역 이익률은 7.8퍼센트였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "7.8%",
+   "recomputed_raw": "7.8",
+   "sources": [
+    "tables.md table 2 [연도=2025, 지역=인천] 이익률 = 7.8"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 27,
+   "end": 32,
+   "text": "7.39%",
+   "quote": "대전 지역 판매량은 2021년 대비 2022년에 7.39% 떨어졌다.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "-7.40%",
+   "recomputed_raw": "-7.39988828322129552940270046420247703064506808945046901785542",
+   "sources": [
+    "tables.md table 1 [연도=2022, 지역=대전] 판매량 = 240376",
+    "tables.md table 1 [연도=2021, 지역=대전] 판매량 = 259585"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 17,
+   "end": 23,
+   "text": "8.6퍼센트",
+   "quote": "2021년 대구 지역 이익률은 8.6퍼센트였다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "8.6%",
+   "recomputed_raw": "8.6",
+   "sources": [
+    "tables.md table 2 [연도=2021, 지역=대구] 이익률 = 8.6"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "tables.md",
+   "column": "매출",
+   "multiplier": "1000000",
+   "claims": 4
+  }
+ ]
+}

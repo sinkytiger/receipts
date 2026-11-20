@@ -58,7 +58,7 @@ If the run stops with exit code 2, tell the user which file could not be read. D
 | `difference` | `a`, `b` | a − b |
 | `pct_change` | `new`, `old` | (new − old) / \|old\| |
 | `ratio` | `num`, `den` | num / den |
-| `share` | `part`, `whole` | part / whole |
+| `share` | `part`, `whole` (one cell, or a many-cells selector, which is summed) | part / whole |
 | `sum`, `mean`, `min`, `max` | `items`: a list of cells, or `cells`: a many-cells selector | as named |
 | `count` | `rows` | number of matching rows |
 
@@ -89,6 +89,8 @@ Rows, for `count`. `test` is optional and takes `==`, `!=`, `>`, `>=`, `<`, `<=`
 ```
 
 Every table locator names its table the same way, whether it uses `row`, `where` or `rows`: a JSON file needs the `pointer` to the list of records (`"pointer": "/rows"`), a Markdown file the `table` number, an Excel file the `sheet`.
+
+If the header of an Excel sheet is not on row 1, because a title or a unit note sits above it, add `"header_row": 2` (the row the header is on) to every locator on that sheet. `row`, `where` and `rows` then work as usual, so there is no need to fall back to `cell` addresses.
 
 ### SEC filings (EDGAR)
 

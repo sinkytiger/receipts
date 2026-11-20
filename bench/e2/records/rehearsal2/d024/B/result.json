@@ -1,0 +1,91 @@
+{
+ "doc": "d024",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "20261120T044154Z",
+   "set": "rehearsal2",
+   "doc": "d024",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 1799,
+   "output_tokens": 2333,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0013464,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChDZp7pQiSUGYvDPrxjHX"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 10,
+    "number": "190,325건",
+    "should_be": "190,025건",
+    "why": "2025 regional sales sum 950,126 divided by 5 is 190,025.2"
+   },
+   {
+    "line": 13,
+    "number": "932,700건",
+    "should_be": "232,700건",
+    "why": "2021 대전 판매량 is 232700 in the source"
+   },
+   {
+    "line": 14,
+    "number": "44.3퍼센트",
+    "should_be": "30.7퍼센트",
+    "why": "2024 서울 279,175 of 909,481 total is about 30.7%"
+   },
+   {
+    "line": 20,
+    "number": "21,136조 원",
+    "should_be": "약 2조 1,136억 원 (2,113,582백만 원)",
+    "why": "source unit is 백만 원; 2025 인천 revenue 2,113,582 is about 2.11조 원"
+   },
+   {
+    "line": 24,
+    "number": "2.45배",
+    "should_be": "2.46배",
+    "why": "85,407 / 34,720 is about 2.4599"
+   },
+   {
+    "line": 26,
+    "number": "18,506억 원",
+    "should_be": "7,889억 원",
+    "why": "2021 대전 매출 78,888백만 원 equals about 7,889억 원"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 3,
+    "number": "2026년 11월 23일"
+   },
+   {
+    "line": 4,
+    "number": "v1.8.8"
+   },
+   {
+    "line": 4,
+    "number": "13"
+   },
+   {
+    "line": 29,
+    "number": "3분기"
+   },
+   {
+    "line": 32,
+    "number": "50"
+   },
+   {
+    "line": 33,
+    "number": "0.26"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0013464
+}

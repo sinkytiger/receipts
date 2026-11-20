@@ -1,0 +1,334 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "quote": "대구 지역은 다섯 해 가운데 2개 연도에 두 자릿수 이익률을 기록했다.",
+   "number": "2",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "지역": "대구"
+     },
+     "test": {
+      "column": "이익률",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "quote": "2022년 서울 지역 매출은 18,642억 1,800만 원이었다.",
+   "number": "18,642억 1,800만",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2022",
+      "지역": "서울"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "quote": "2023년 인천 지역 비용은 매출의 101.9%였다.",
+   "number": "101.9%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2023",
+      "지역": "인천"
+     },
+     "column": "비용"
+    },
+    "whole": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2023",
+      "지역": "인천"
+     },
+     "column": "매출"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "quote": "2022년 부산 지역 인당 매출은 6억 원이었다.",
+   "number": "6억",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    },
+    "den": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "연도": "2022",
+      "지역": "부산"
+     },
+     "column": "인원"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "quote": "마이너스인 지역은 3개였다",
+   "number": "3",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "연도": "2023"
+     },
+     "test": {
+      "column": "이익률",
+      "op": "<",
+      "value": "0"
+     }
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "quote": "서울 지역은 다섯 해 가운데 4개 연도에 두 자릿수 이익률을 기록했다.",
+   "number": "4",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "지역": "서울"
+     },
+     "test": {
+      "column": "이익률",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "quote": "2022년 이익률이 두 자릿수인 지역은 5개였다.",
+   "number": "5",
+   "kind": "derived",
+   "formula": "count",
+   "operands": {
+    "rows": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "연도": "2022"
+     },
+     "test": {
+      "column": "이익률",
+      "op": ">=",
+      "value": "10"
+     }
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "quote": "2021년 전 지역 매출 합계는 6조 6,523억 원이었다.",
+   "number": "6조 6,523억",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {
+      "연도": "2021"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "quote": "전 기간 전 지역 판매량은 대략 4,500,000건이었다.",
+   "number": "4,500,000",
+   "kind": "derived",
+   "formula": "sum",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 1,
+     "where": {},
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "quote": "2024년 지역 평균 이익률은 11.02%였다.",
+   "number": "11.02%",
+   "kind": "derived",
+   "formula": "mean",
+   "operands": {
+    "cells": {
+     "file": "tables.md",
+     "table": 2,
+     "where": {
+      "연도": "2024"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "quote": "인천 지역 매출은 2023년 대비 2024년에 756억 5,700만 원 감소했다.",
+   "number": "756억 5,700만",
+   "kind": "derived",
+   "formula": "difference",
+   "operands": {
+    "a": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2024",
+      "지역": "인천"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    },
+    "b": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2023",
+      "지역": "인천"
+     },
+     "column": "매출",
+     "multiplier": 1000000
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "quote": "2022년 광주 지역 이익률은 1.5퍼센트였다.",
+   "number": "1.5퍼센트",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "연도": "2022",
+      "지역": "광주"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "quote": "2025년 인천 지역 이익률은 7.8퍼센트였다.",
+   "number": "7.8퍼센트",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "연도": "2025",
+      "지역": "인천"
+     },
+     "column": "이익률"
+    }
+   }
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "quote": "대전 지역 판매량은 2021년 대비 2022년에 7.39% 떨어졌다.",
+   "number": "7.39%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2022",
+      "지역": "대전"
+     },
+     "column": "판매량"
+    },
+    "old": {
+     "file": "tables.md",
+     "table": 1,
+     "row": {
+      "연도": "2021",
+      "지역": "대전"
+     },
+     "column": "판매량"
+    }
+   }
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "quote": "2021년 대구 지역 이익률은 8.6퍼센트였다.",
+   "number": "8.6퍼센트",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "file": "tables.md",
+     "table": 2,
+     "row": {
+      "연도": "2021",
+      "지역": "대구"
+     },
+     "column": "이익률"
+    }
+   }
+  }
+ ]
+}

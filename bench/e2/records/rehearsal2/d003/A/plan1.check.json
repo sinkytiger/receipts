@@ -1,0 +1,285 @@
+{
+ "document": "report.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 15,
+  "verified": 11,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 1,
+ "skipped": {
+  "code": 2,
+  "date": 2,
+  "heading_number": 2,
+  "list_marker": 4,
+  "url": 1,
+  "version": 1,
+  "year": 15
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 9,
+   "start": 31,
+   "end": 35,
+   "text": "1.4%",
+   "quote": "The lowest regional margin was 1.4% in 2023.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.4%",
+   "recomputed_raw": "1.4",
+   "sources": [
+    "tables.md table 3 [Year=2023, Region=Central] Margin = 1.4"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 10,
+   "start": 24,
+   "end": 39,
+   "text": "$124.25 million",
+   "quote": "West operating cost was $124.25 million in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "124.25 million",
+   "recomputed_raw": "124246000",
+   "sources": [
+    "tables.md table 2 [Year=2024, Region=West] Cost = 124246 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 11,
+   "start": 56,
+   "end": 65,
+   "text": "2,300,000",
+   "quote": "Across all regions and years, shipments totalled around 2,300,000 units.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,300,000",
+   "recomputed_raw": "2276591",
+   "sources": [
+    "tables.md table 2 [] Units: 20 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 12,
+   "start": 38,
+   "end": 42,
+   "text": "0.74",
+   "quote": "The cost-to-revenue ratio in West was 0.74 in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.74",
+   "recomputed_raw": "0.738002327651126172383103991237078113233381255562401588279592",
+   "sources": [
+    "tables.md table 2 [Year=2025, Region=West] Cost = 97020",
+    "tables.md table 2 [Year=2025, Region=West] Revenue = 131463"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 13,
+   "start": 10,
+   "end": 17,
+   "text": "382,630",
+   "quote": "East sold 382,630 units in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "38,263",
+   "recomputed_raw": "38263",
+   "sources": [
+    "tables.md table 2 [Year=2025, Region=East] Units = 38263"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 14,
+   "start": 44,
+   "end": 50,
+   "text": "$1.78B",
+   "quote": "Total operating cost across all regions was $1.78B in 2025.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1.69B",
+   "recomputed_raw": "1687612000",
+   "sources": [
+    "tables.md table 2 [Year=2025] Cost: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 18,
+   "start": 41,
+   "end": 45,
+   "text": "1.03",
+   "quote": "The cost-to-revenue ratio in West was 1.03 in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.03",
+   "recomputed_raw": "1.03299882770604521230160379789984785121012329871879079125685",
+   "sources": [
+    "tables.md table 2 [Year=2024, Region=West] Cost = 124246",
+    "tables.md table 2 [Year=2024, Region=West] Revenue = 120277"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 19,
+   "start": 53,
+   "end": 59,
+   "text": "+6.69%",
+   "quote": "The change in West unit sales in 2022 vs 2021 was +6.69%.",
+   "verdict": "verified",
+   "reason": "truncated",
+   "recomputed": "6.70%",
+   "recomputed_raw": "6.69973168550288641352955524839417838848686885112610781364339",
+   "sources": [
+    "tables.md table 2 [Year=2022, Region=West] Units = 39369",
+    "tables.md table 2 [Year=2021, Region=West] Units = 36897"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 20,
+   "start": 16,
+   "end": 23,
+   "text": "210,447",
+   "quote": "Central sold 210,447 units in 2025.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "210,447",
+   "recomputed_raw": "210447",
+   "sources": [
+    "tables.md table 2 [Year=2025, Region=Central] Units = 210447"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 21,
+   "start": 41,
+   "end": 47,
+   "text": "14.55%",
+   "quote": "The average margin across regions was 14.55% in 2022.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "8.23%",
+   "recomputed_raw": "8.225",
+   "sources": [
+    "tables.md table 3 [Year=2022] Margin: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 23,
+   "start": 38,
+   "end": 52,
+   "text": "$927.5 million",
+   "quote": "Coastal and West revenue combined was $927.5 million in 2021.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "927.5 million",
+   "recomputed_raw": "927523000",
+   "sources": [
+    "tables.md table 2 [Year=2021, Region=Coastal] Revenue = 803984 x 1000",
+    "tables.md table 2 [Year=2021, Region=West] Revenue = 123539 x 1000"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 24,
+   "start": 36,
+   "end": 37,
+   "text": "3",
+   "quote": "Double-digit margins were posted by 3 regions in 2024.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4",
+   "recomputed_raw": "4",
+   "sources": [
+    "tables.md table 3 [Year=2024] Margin >= 10: 4 rows"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c13",
+   "line": 25,
+   "start": 19,
+   "end": 24,
+   "text": "4.93%",
+   "quote": "West accounted for 4.93% of total revenue in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4.93%",
+   "recomputed_raw": "4.92680271284027757581169542686436085347066025636561818620485",
+   "sources": [
+    "tables.md table 2 [Year=2024, Region=West] Revenue = 120277",
+    "tables.md table 2 [Year=2024] Revenue: 4 cells (summed)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c14",
+   "line": 26,
+   "start": 38,
+   "end": 51,
+   "text": "12.40 percent",
+   "quote": "The average margin across regions was 12.40 percent in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "12.40%",
+   "recomputed_raw": "12.4",
+   "sources": [
+    "tables.md table 3 [Year=2024] Margin: 4 cells"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c15",
+   "line": 27,
+   "start": 10,
+   "end": 16,
+   "text": "48,057",
+   "quote": "West sold 48,057 units in 2024.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "48,057",
+   "recomputed_raw": "48057",
+   "sources": [
+    "tables.md table 2 [Year=2024, Region=West] Units = 48057"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [
+  {
+   "file": "tables.md",
+   "column": "Cost",
+   "multiplier": "1000",
+   "claims": 2
+  },
+  {
+   "file": "tables.md",
+   "column": "Revenue",
+   "multiplier": "1000",
+   "claims": 1
+  }
+ ]
+}
