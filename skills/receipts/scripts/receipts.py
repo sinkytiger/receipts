@@ -27,7 +27,7 @@ from decimal import Decimal, InvalidOperation, ROUND_DOWN, ROUND_HALF_EVEN, ROUN
 
 getcontext().prec = 60
 
-VERSION = "0.1.0.dev0"
+VERSION = "0.1.0"
 
 
 class StopError(Exception):

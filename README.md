@@ -32,7 +32,7 @@ The one-step form needs Claude Code 2.1.275 or later. On an older version use tw
 /plugin install receipts@receipts
 ```
 
-Then ask Claude to check the numbers in a document against its source files, for example "use receipts to check the numbers in report.md against sales.csv". How reliably the skill is picked up when you do not name it has not been measured yet. The skill adds about 160 tokens to every session and about 2,900 when it runs (estimates from `claude plugin details`).
+Then ask Claude to check the numbers in a document against its source files, for example "use receipts to check the numbers in report.md against sales.csv". How reliably the skill is picked up when you do not name it has not been measured yet. The skill adds about 160 tokens to every session and about 3,000 when it runs (estimates from `claude plugin details`).
 
 Both forms were tested as `claude plugin install ...` on the command line, from a clean configuration, with Claude Code 2.1.326 on Windows. The skill folder is plain Markdown plus one Python script, so other agents that read skills can use `skills/receipts` as it is. That has not been tested.
 
