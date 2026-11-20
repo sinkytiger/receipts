@@ -92,6 +92,8 @@ def score(out_root, data):
                         s["usd"] += r["usd"]
     arm_a = {"planted": {}, "correct": {}}
     arm_b = {"planted": {"flagged": 0, "not_flagged": 0}, "correct": {"flagged": 0, "not_flagged": 0}}
+    # Not the registered rule: any flag on the statement's line counts (see heldout-recount-after-audit.md).
+    arm_b_line = {"planted": 0, "correct": 0}
     totals = {"documents": 0, "statements": 0, "planted": 0, "correct": 0}
     a_extra = {"numbers": 0, "uncovered": 0, "plans_sent": 0, "corrected_plans": 0, "no_accepted_plan": 0, "refused": 0,
                "cut_off_replies": 0, "requests": 0, "input_tokens": 0, "output_tokens": 0, "usd": 0.0}
@@ -156,15 +158,16 @@ def score(out_root, data):
             v = verdicts.get((s["line"], s["start"], s["end"]), "not_checked" if not res_a["accepted_receipts"]
                              else "no_verdict")
             arm_a[kind][v] = arm_a[kind].get(v, 0) + 1
-            hit = None
+            hit, on_line = None, False
             for i, f in enumerate(flags):
                 try:
                     same_line = int(f.get("line")) == s["line"]
                 except (TypeError, ValueError):
                     same_line = False
-                if same_line and names_number(f.get("number"), s["text"]):
+                on_line = on_line or same_line
+                if hit is None and same_line and names_number(f.get("number"), s["text"]):
                     hit = i
-                    break
+            arm_b_line[kind] += int(on_line)
             if hit is not None:
                 used.add(hit)
             arm_b[kind]["flagged" if hit is not None else "not_flagged"] += 1
@@ -190,6 +193,8 @@ def score(out_root, data):
                   "requests_per_document": round(a_extra["requests"] / n, 2), **tidy(a_extra)},
         "arm_b": {"planted_flagged": share(arm_b["planted"]["flagged"], totals["planted"]),
                   "correct_flagged": share(arm_b["correct"]["flagged"], totals["correct"]),
+                  "planted_flagged_any_flag_on_line": share(arm_b_line["planted"], totals["planted"]),
+                  "correct_flagged_any_flag_on_line": share(arm_b_line["correct"], totals["correct"]),
                   "usd_per_document": round(b_extra["usd"] / n, 6),
                   "requests_per_document": round(b_extra["requests"] / n, 2), **tidy(b_extra)},
     }
@@ -217,6 +222,10 @@ def render(res) -> str:
             line("Arm B (review only): planted errors flagged", m["arm_b"]["planted_flagged"]),
             line("Arm A (skill): correct statements flagged", m["arm_a"]["correct_flagged"]),
             line("Arm B (review only): correct statements flagged", m["arm_b"]["correct_flagged"]),
+            line("Arm B, any flag on the statement's line (not the registered rule): planted errors flagged",
+                 m["arm_b"]["planted_flagged_any_flag_on_line"]),
+            line("Arm B, any flag on the statement's line (not the registered rule): correct statements flagged",
+                 m["arm_b"]["correct_flagged_any_flag_on_line"]),
             line("Arm A: numbers left uncovered", m["arm_a"]["uncovered_share"]), "",
             f"Arm A verdicts on planted errors: {m['arm_a']['planted_verdicts']}", "",
             f"Arm A verdicts on correct statements: {m['arm_a']['correct_verdicts']}", "",

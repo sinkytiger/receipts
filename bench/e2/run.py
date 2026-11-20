@@ -358,7 +358,10 @@ def export_records(out_root, set_name, docs):
                 continue
             dest = os.path.join(dest_root, doc, arm)
             os.makedirs(dest, exist_ok=True)
-            shutil.copyfile(os.path.join(src, "result.json"), os.path.join(dest, "result.json"))
+            result = json.loads(read(os.path.join(src, "result.json")))
+            if arm == "A" and result.get("accepted_receipts"):      # here the same file is planN.check.json
+                result["accepted_receipts_in_records"] = result["accepted_receipts"].split("/")[0] + ".check.json"
+            write_json(os.path.join(dest, "result.json"), result)
             shutil.copyfile(os.path.join(src, "conversation.json"), os.path.join(dest, "conversation.json"))
             n = 1
             while arm == "A" and os.path.isdir(os.path.join(src, f"plan{n}")):

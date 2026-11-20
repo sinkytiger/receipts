@@ -34,7 +34,7 @@ from decimal import Decimal, InvalidOperation
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-BUILDER_VERSION = "e3-builder-1"
+BUILDER_VERSION = "e3-builder-2"
 
 DEV_TICKERS = ["AAPL", "MSFT", "JPM", "WMT", "XOM"]
 HELD_OUT_TICKERS = ["JNJ", "KO", "NVDA", "COST", "PG", "HD", "BAC", "UNH", "PFE", "CVX", "CSCO", "ORCL", "NKE",
@@ -417,6 +417,12 @@ def shift(day, n=3):
     return (date.fromisoformat(day) + timedelta(days=n)).isoformat()
 
 
+def split_one_day(durations):
+    """(durations whose start differs from their end, number of one-day durations left out)."""
+    kept = [f for f in durations if f["start"] != f["end"]]
+    return kept, len(durations) - len(kept)
+
+
 def build_cases(parsed, accession, company):
     """Document lines, plans and gold for one filing."""
     eligible = parsed["facts"]
@@ -454,11 +460,12 @@ def build_cases(parsed, accession, company):
         return shift(f["end"]) if f["start"] is None else f"{f['start']}..{shift(f['end'])}"
 
     durations = [f for f in sample if f["start"] is not None]
+    multi_day, one_day_skipped = split_one_day(durations)
     usd_shares = [f for f in sample if f["unit"] in ("USD", "shares")]
     abstain = {
         "abstain-concept.json": [claim(f, concept=f["concept"] + "Zz") for f in sample[:ABSTAIN_EACH]],
         "abstain-period.json": [claim(f, period=moved(f)) for f in sample[:ABSTAIN_EACH]],
-        "abstain-instant.json": [claim(f, period=f["end"]) for f in durations[:ABSTAIN_EACH]],
+        "abstain-instant.json": [claim(f, period=f["end"]) for f in multi_day[:ABSTAIN_EACH]],
         "abstain-unit.json": [claim(f, unit="shares" if f["unit"] == "USD" else "USD")
                               for f in usd_shares[:ABSTAIN_EACH]],
     }
@@ -474,7 +481,8 @@ def build_cases(parsed, accession, company):
               "excluded_scale": len(eligible) - len(writable), "writable_facts": len(writable),
               "same_end_pairs": len(all_pairs), "sampled_facts": len(sample), "sampled_pairs": len(chosen),
               "sampled_displays_differ": sum(1 for f in sample if f["displays_differ"]),
-              "abstain": {k: len(v) for k, v in abstain.items()}}
+              "abstain": {k: len(v) for k, v in abstain.items()},
+              "abstain_instant_skipped_one_day": one_day_skipped}
     excluded = Counter(str(f["gold"]["scale"]) for f in eligible if f["gold"]["scale"] not in SCALE_WORDS)
     gold = {"accession": accession, "company": company, "counts": counts, "skipped": parsed["skipped"],
             "skipped_formats": parsed["skipped_formats"], "skipped_units": parsed["skipped_units"],
@@ -730,6 +738,11 @@ def self_test():
     ok(not any("accession" in c["operands"]["of"] for c in plans["open.json"]), "open has none")
     ok(all(len(plans[k]) == 5 for k in PLAN_FILES[2:]), "5 cases of each abstention kind")
     ok(all(".." not in c["operands"]["of"]["period"] for c in plans["abstain-instant.json"]), "instant asks")
+    ok(gold["counts"]["abstain_instant_skipped_one_day"] == 0, "synthetic document has no one-day duration")
+    od = {"start": "2026-06-30", "end": "2026-06-30"}
+    md = [{"start": f"2026-0{i}-01", "end": "2026-06-30"} for i in range(1, 8)]
+    kept, skipped = split_one_day([od] + md[:3] + [dict(od)] + md[3:])
+    ok(skipped == 2 and kept == md and od not in kept, "one-day durations leave abstain-instant, others stay")
     ok(all(c["operands"]["of"]["concept"].endswith("Zz") for c in plans["abstain-concept.json"]), "concept Zz")
     # 25 + 5 from a larger set, with no duplicates
     fake = []

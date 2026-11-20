@@ -27,7 +27,7 @@ from decimal import Decimal, InvalidOperation, ROUND_DOWN, ROUND_HALF_EVEN, ROUN
 
 getcontext().prec = 60
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 
 class StopError(Exception):
@@ -892,7 +892,12 @@ def resolve_edgar(loc: dict, base: str):
     concept = loc.get("concept")
     unit, rows = _edgar_concept(facts, concept, loc.get("unit"))
     period = f"{start}..{end}" if start else end
-    rows = [r for r in rows if r.get("end") == end and r.get("start") == start]
+    if start is None or start == end:
+        # One date, or a range of one day. The SEC's API stores a one-day period under a single date,
+        # so both ways of writing it name the same fact.
+        rows = [r for r in rows if r.get("end") == end and r.get("start") in (None, end)]
+    else:
+        rows = [r for r in rows if r.get("end") == end and r.get("start") == start]
     if not rows:
         raise LocatorError("locator_no_match", f"EDGAR has no {concept} in {unit} for {period} ({who})")
     if accession:

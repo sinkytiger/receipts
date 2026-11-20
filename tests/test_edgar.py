@@ -61,6 +61,11 @@ FACTS = {
                 fact(2.31, "2025-12-31", K25, "10-K", "2026-02-20", "2025-01-01")]}},
             "EffectiveIncomeTaxRateContinuingOperations": {"label": "Effective Income Tax Rate", "description": "", "units": {
                 "pure": [fact(0.17, "2025-12-31", K25, "10-K", "2026-02-20", "2025-01-01")]}},
+            "CommonStockDividendsPerShareCashPaid": {"label": "Dividends Paid Per Share", "description": "", "units": {
+                "USD/shares": [
+                    fact(0.5, "2025-01-16", K25, "10-K", "2026-02-20"),                  # one day, as the SEC stores it
+                    fact(0.75, "2025-07-22", K25, "10-K", "2026-02-20", "2025-07-22")]}},  # one day, with a start date
+
             "DebtInstrumentFaceAmount": {"label": "Debt Instrument, Face Amount", "description": "", "units": {
                 "USD": [fact(750000000, "2025-12-31", K25, "10-K", "2026-02-20")],
                 "EUR": [fact(500000000, "2025-12-31", K25, "10-K", "2026-02-20")]}},
@@ -191,6 +196,18 @@ class EdgarTest(unittest.TestCase):
         mixed, _ = self.one("Second-quarter revenue was $670 million.", "$670 million",
                             edgar("2026-04-01..2026-06-30", "us-gaap:Revenues"))
         self.assertEqual((q["verdict"], h["verdict"], mixed["verdict"]), ("verified", "verified", "wrong"))
+
+    def test_a_period_of_one_day_is_the_single_date(self):
+        concept = "us-gaap:CommonStockDividendsPerShareCashPaid"
+        cases = {"2025-01-16..2025-01-16": "$0.50", "2025-01-16": "$0.50", "2025-07-22..2025-07-22": "$0.75",
+                 "2025-07-22": "$0.75"}
+        for period, amount in cases.items():
+            row, _ = self.one(f"The dividend paid was {amount} per share.", amount,
+                              edgar(period, concept, unit="USD/shares"))
+            self.assertEqual(row["verdict"], "verified", period)
+        longer, _ = self.one("The dividend paid was $0.50 per share.", "$0.50",
+                             edgar("2025-01-01..2025-01-16", concept, unit="USD/shares"))
+        self.assertEqual(longer["reason"], "locator_no_match")
 
     def test_balance_and_flow_do_not_cross(self):
         a, _ = self.one("Revenue was $350 million.", "$350 million", edgar("2026-06-30", "us-gaap:Revenues"))
@@ -430,7 +447,7 @@ class EdgarTest(unittest.TestCase):
         self.assertEqual([c["concept"] for c in got["concepts"]], ["us-gaap:NetIncomeLoss"])
         self.assertEqual((got["concepts"][0]["units"], got["concepts"][0]["latest_end"]), (["USD"], "2025-12-31"))
         code, out, _ = self.main("edgar", "concepts", "999001", "--limit", "2", "--edgar-cache", cache)
-        self.assertEqual((json.loads(out)["matched"], len(json.loads(out)["concepts"])), (8, 2))
+        self.assertEqual((json.loads(out)["matched"], len(json.loads(out)["concepts"])), (9, 2))
         code, out, _ = self.main("edgar", "facts", "EXMP", "us-gaap:Assets", "--until", "2024-12-31", "--edgar-cache", cache)
         rows = json.loads(out)["facts"]
         self.assertEqual([(r["period"], r["value"], r["filings_differ"]) for r in rows],
