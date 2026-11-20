@@ -18,6 +18,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
 import zlib
@@ -675,6 +676,18 @@ class _NotFound(Exception):
     pass
 
 
+class _SameHostRedirects(urllib.request.HTTPRedirectHandler):
+    """A redirect to another host is not followed, so the contact string goes nowhere but the address asked."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if urllib.parse.urlsplit(newurl).netloc.lower() != urllib.parse.urlsplit(req.full_url).netloc.lower():
+            return None  # urllib then reports the 3xx answer as an error, which stops the run
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+_OPENER = urllib.request.build_opener(_SameHostRedirects)
+
+
 def edgar_setup(cache=None, refresh=False):
     _EDGAR.update(cache=cache, refresh=bool(refresh), files={}, fetched=set(), missing=set())
 
@@ -705,7 +718,7 @@ def _edgar_get(url: str) -> bytes:
             time.sleep(wait)
         _EDGAR["last"] = time.monotonic()
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
+            with _OPENER.open(req, timeout=30) as resp:
                 body = resp.read()
                 if (resp.headers.get("Content-Encoding") or "").lower() == "gzip":
                     body = gzip.decompress(body)

@@ -100,7 +100,7 @@ How the open items were settled (2026-11-20). The rules are in sections 2 and 8 
 | Different concept names | The plan names the concept. The script does not guess. `edgar concepts` and `edgar facts` print a company's own concept names, labels and period dates. |
 | Ticker to CIK | The SEC's `company_tickers.json`. A locator may also give the CIK. |
 
-Limits: the API holds the facts a company reports for itself as a whole, so segment, product and regional numbers are not available. Custom units and concepts are read as the company filed them, without any mapping between companies.
+Limits: the API holds the facts a company reports for itself as a whole, so segment, product and regional numbers are not available. Concepts a company defined itself were absent from the data of all five development companies. Units are used as filed, a company's own unit names included, and nothing maps one company's concept to another's.
 
 ## Out of scope for v0.1
 

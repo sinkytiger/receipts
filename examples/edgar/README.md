@@ -18,7 +18,7 @@ The note says research and development was 10.6% of revenue. Recomputed from the
 
 ## The snapshot
 
-`snapshot/` is a cut-down copy of what the SEC's API returned on 2026-11-20: Apple's line in the ticker list, and five concepts from Apple's company facts with their annual-report rows. Values were not edited. `snapshot/fetched.json` holds the fetch date that the receipt shows.
+`snapshot/` is a cut-down copy of what the SEC's API returned on 2026-11-20: Apple's line in the ticker list, and five concepts from Apple's company facts, each with its three annual-report rows for fiscal 2025 and fiscal 2026. The full data has several hundred concepts and many more rows. Values were not edited. `snapshot/fetched.json` holds the fetch date that the receipt shows.
 
 ## Reading the live data
 

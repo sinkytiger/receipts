@@ -68,12 +68,12 @@ A source can be a fact a company reported in its 10-K or 10-Q. The script reads 
 {"edgar": "AAPL", "concept": "us-gaap:Assets", "unit": "USD", "period": "2026-09-26"}
 ```
 
-- The SEC asks automated clients to say who they are. Put your name and e-mail address in the environment variable `RECEIPTS_SEC_USER_AGENT`. Nothing is shipped as a default, and without it the script stops before making a request. The text goes to the SEC only.
+- The SEC asks automated clients to say who they are. Put your name and e-mail address in the environment variable `RECEIPTS_SEC_USER_AGENT`. Nothing is shipped as a default, and without it the script stops before making a request. The text is sent only with these requests to the SEC and is not stored anywhere.
 - Each company is fetched once and cached under `.receipts/edgar/`. The receipt shows the fetch date. The script makes at most 5 requests a second (the SEC allows 10).
 - Periods are exact. A quarter and the year to date end on the same day and differ in the start date, so one cannot pass for the other.
 - When filings report different values for the same period (a restatement), the script abstains and lists them, unless the plan names the filing or picks the first or the latest report.
 - `receipts.py edgar concepts AAPL --match revenue` and `receipts.py edgar facts AAPL us-gaap:Assets` print a company's concept names and period dates, which a plan needs.
-- Segment, product and regional numbers are not in this API.
+- Segment, product and regional numbers are not in this API. Concepts a company defined itself were not in it either, for the five companies looked at.
 
 The rules are in sections 2 and 8 of [plan-format.md](skills/receipts/references/plan-format.md).
 
@@ -109,11 +109,11 @@ The plan in [docs/eval-plan.md](docs/eval-plan.md) has three parts. E1 and E3 ha
   - no fact was judged wrong;
   - with the filing named, 266 of 266 were verified;
   - with no filing named, 262 were verified and 4 abstained because filings report different values for that fact;
-  - 180 of 180 locators that should match nothing were `unverifiable`, and 15 of 15 runs that could not read EDGAR stopped.
+  - 180 of 180 locators that should match nothing were `unverifiable`, and 15 of 15 runs with no contact string, a corrupt cached file or an unreachable server stopped.
 
   Runs are logged in [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl). These are development numbers. The 20 held-out companies are run once on the release commit and have not been fetched. Two things to know: the sixth bar was added after the first run, when a deliberately broken copy of the tool got past the first five (the [plan's change log](docs/eval-plan.md) has the details); and one development company, XOM, files under a new registrant with no 10-K yet, so there are 9 filings and not 10.
 
-The benchmark documents are synthetic and built from sentence templates, half English and half Korean.
+The E1 documents are synthetic and built from sentence templates, half English and half Korean. The E3 test lines are generated from numbers in real filings.
 
 ## Roadmap
 

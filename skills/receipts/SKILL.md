@@ -99,14 +99,15 @@ A cell can be a fact a US-listed company reported to the SEC. It works wherever 
 {"edgar": "AAPL", "concept": "us-gaap:NetIncomeLoss", "unit": "USD", "period": "2025-09-28..2026-09-26"}
 ```
 
-- **Who is asking.** The SEC wants automated clients to identify themselves. The script reads the text from the environment variable `RECEIPTS_SEC_USER_AGENT` (a name and an e-mail address) and stops with exit code 2 if it is empty. Ask the user to set it. Never make one up and never put your own or anyone else's address there.
+- **Who is asking.** The SEC wants automated clients to identify themselves. The script reads the text from the environment variable `RECEIPTS_SEC_USER_AGENT` (a name and an e-mail address) and stops with exit code 2 when it is empty and something has to be fetched. A company that is already in the cache needs no request. Ask the user to set it. Never make one up and never put your own or anyone else's address there.
 - **Find the names and dates first.** Run these in the folder of `claims.json`, so they share its cache. Each company is fetched once.
   - `receipts.py edgar concepts AAPL --match revenue` lists the company's concepts with their labels. Companies use different concepts for the same idea (revenue is not always `us-gaap:Revenues`).
   - `receipts.py edgar facts AAPL us-gaap:Assets --since 2025-01-01` lists the periods, values and filings of one concept.
 - **Pick the concept by its meaning**, from its label and what the sentence talks about. Never pick a concept, period or filing because its value matches the document.
 - **Periods are exact.** A balance is one date (`2026-09-26`). A flow is `start..end`. A quarter and the year to date end on the same day and differ only in the start, so read the sentence: "in the third quarter" is three months, "in the first nine months" is not.
 - **Restated figures.** If filings give different values for the same period, the verdict is `unverifiable` (`edgar_versions_differ`) and the receipt lists them. Then follow the document: if it cites a filing, add `"accession": "0000320193-26-000026"`; if it says "as originally reported" use `"version": "first"`; if it means the current figure use `"version": "latest"`. If the document does not say, leave it and report it.
-- Values are in whole dollars and shares, so no `multiplier` is needed. Segment, product and regional numbers are not in this data: check them against a file, or mark them `no_source`.
+- Money is in whole dollars and share counts in whole shares, so those need no `multiplier`. A ratio (unit `pure`, a tax rate for example) is stored as a fraction, 0.17 for 17%: add `"multiplier": 100` when the document writes it as a percent.
+- Segment, product and regional numbers, and concepts a company defined itself, are not in this data: check them against a file, or mark them `no_source`.
 - A filing made after the fetch date on the receipt is not in the cache. Add `--refresh` to `check` to fetch again.
 
 ### Things that go wrong

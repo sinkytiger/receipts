@@ -99,8 +99,8 @@ A single cell may also be a fact a company reported to the SEC. Section 8 says h
 - **Exact periods.** The dates must equal the dates in the filing. Three months and nine months that end on the same day are two periods. A flow asked as one date, or a balance asked as a range, matches nothing.
 - **No match.** An unknown ticker or CIK, a concept the company has not reported, a unit the concept does not have, a period with no fact, or an accession that does not report the fact give `locator_no_match`. A concept with several units and no `unit` gives `locator_multiple`. A `period`, `accession` or `version` that is not written as above gives `locator_no_match`.
 - **The same fact in several filings.** Companies repeat earlier periods as comparison columns, so most facts are reported more than once. If every filing gives the same value, that value is used. If they differ (a restatement or a reclassification) and the locator has neither `accession` nor `version`, the verdict is `unverifiable` with the reason `edgar_versions_differ`, and the receipt lists each value with its filing. With `version`, the report with the earliest (`first`) or latest (`latest`) filing date is used, and the receipt notes that other filings differ. If the reports on that filing date, or inside the one `accession`, still differ, the verdict is `unverifiable` (`edgar_versions_differ`).
-- **Values** are in whole units (dollars, shares). `multiplier` works as on any cell.
-- **What EDGAR does not hold.** The SEC's API carries the facts a company reports for itself as a whole. Numbers on a breakdown axis (by segment, product or region) are not there and give `locator_no_match`. Check those against a file.
+- **Values** are as the company filed them: money in whole dollars (or whole units of the currency named), share counts in whole shares, per-share amounts in dollars, and ratios (unit `pure`, a tax rate for example) as fractions, so 17% is stored as 0.17. A document that writes such a ratio as a percent needs `"multiplier": 100`. `multiplier` works as on any cell.
+- **What EDGAR does not hold.** The SEC's API carries the facts a company reports for itself as a whole. Numbers on a breakdown axis (by segment, product or region) are not there and give `locator_no_match`. Check those against a file. Concepts a company defined itself (under its own prefix instead of `us-gaap` or `dei`) were also absent from every company's data looked at so far.
 - An EDGAR locator is a single cell. `where` and `rows` do not work with it (`unsupported`). To add up EDGAR facts, list them under `items`.
 
 ## 3. Formulas
@@ -255,7 +255,7 @@ The script reads two things from the SEC, with the Python standard library:
 - `https://data.sec.gov/api/xbrl/companyfacts/CIK##########.json`: every fact of one company. One request per company.
 - `https://www.sec.gov/files/company_tickers.json`: the ticker list. Fetched only when a locator names a ticker.
 
-**Who is asking.** The SEC asks automated clients to say who they are in the `User-Agent` header, in the form `Name contact@example.com`. The script takes that text from the environment variable `RECEIPTS_SEC_USER_AGENT`. There is no default. If a request is needed and the variable is empty, the script stops with exit code 2 and makes no request. The text goes to the SEC only. It is not written to the cache or to a receipt.
+**Who is asking.** The SEC asks automated clients to say who they are in the `User-Agent` header, in the form `Name contact@example.com`. The script takes that text from the environment variable `RECEIPTS_SEC_USER_AGENT`. There is no default. If a request is needed and the variable is empty, the script stops with exit code 2 and makes no request. The text is sent only as the `User-Agent` header of the two requests above. A redirect to another host is not followed. The text is not written to the cache or to a receipt.
 
 **Rate.** The SEC allows 10 requests per second. The script makes at most 5.
 
@@ -269,9 +269,9 @@ The script reads two things from the SEC, with the Python standard library:
 
 A cached file is used as it is, however old, and no request is made for it. `--refresh` fetches again. `fetched.json` records the date (UTC) each file was fetched, for example `{"companyfacts/CIK0000320193.json": "2026-11-20"}`. A file with no entry there counts as fetched on its modification date. The date is shown on the receipt, so a reader sees how fresh the EDGAR data was. A filing made after that date is not in the cache: its facts give `locator_no_match` until the cache is refreshed.
 
-**Stops.** A failed request (no connection, an HTTP error, a timeout), a response that is not the expected JSON, or a cached file that is not the expected JSON stops the script with exit code 2. One HTTP error is an answer and not a stop: 404 for a company's facts means the SEC has none under that CIK, which is `locator_no_match`. A request that times out or gets HTTP 429 or 5xx is tried once more after two seconds.
+**Stops.** A failed request (no connection, an HTTP error, a timeout), a response that is not the expected JSON, or a cached file that is not the expected JSON stops the script with exit code 2. One HTTP error is an answer and not a stop: 404 for a company's facts means the SEC has none under that CIK, which is `locator_no_match`. A request that gets no HTTP answer (no connection, a timeout, a broken body) or gets HTTP 429, 500, 502, 503 or 504 is tried once more after two seconds. A redirect to another host counts as a failed request.
 
-**Other addresses.** `RECEIPTS_EDGAR_DATA_URL` and `RECEIPTS_EDGAR_WWW_URL` replace `https://data.sec.gov` and `https://www.sec.gov`. They exist for tests. When either is set, the receipt says which address was used.
+**Other addresses.** `RECEIPTS_EDGAR_DATA_URL` and `RECEIPTS_EDGAR_WWW_URL` replace `https://data.sec.gov` and `https://www.sec.gov`. They exist for tests. The requests, with the contact string, then go to those addresses instead of the SEC's. When either is set, the receipt says which address was used.
 
 ### Looking things up
 

@@ -59,6 +59,8 @@ FACTS = {
                 fact(-45000000, "2025-12-31", K25, "10-K", "2026-02-20", "2025-01-01")]}},
             "EarningsPerShareDiluted": {"label": "Earnings Per Share, Diluted", "description": "", "units": {"USD/shares": [
                 fact(2.31, "2025-12-31", K25, "10-K", "2026-02-20", "2025-01-01")]}},
+            "EffectiveIncomeTaxRateContinuingOperations": {"label": "Effective Income Tax Rate", "description": "", "units": {
+                "pure": [fact(0.17, "2025-12-31", K25, "10-K", "2026-02-20", "2025-01-01")]}},
             "DebtInstrumentFaceAmount": {"label": "Debt Instrument, Face Amount", "description": "", "units": {
                 "USD": [fact(750000000, "2025-12-31", K25, "10-K", "2026-02-20")],
                 "EUR": [fact(500000000, "2025-12-31", K25, "10-K", "2026-02-20")]}},
@@ -79,6 +81,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         srv = self.server
         srv.seen.append((self.path, self.headers.get("User-Agent")))
+        if getattr(srv, "redirect_to", None):
+            self.send_response(302)
+            self.send_header("Location", srv.redirect_to + self.path)
+            self.end_headers()
+            return
         if srv.fail_with:
             self.send_response(srv.fail_with)
             self.end_headers()
@@ -127,7 +134,7 @@ class EdgarTest(unittest.TestCase):
         self.dir = pathlib.Path(tempfile.mkdtemp(prefix="receipts-edgar-"))
         self.addCleanup(shutil.rmtree, self.dir, ignore_errors=True)
         self.server.seen.clear()
-        self.server.fail_with, self.server.raw, self.server.zipped = 0, None, False
+        self.server.fail_with, self.server.raw, self.server.zipped, self.server.redirect_to = 0, None, False, None
         self.saved_env = dict(os.environ)
         self.addCleanup(self.restore_env)
         os.environ.update({"RECEIPTS_SEC_USER_AGENT": AGENT, "RECEIPTS_EDGAR_DATA_URL": self.url,
@@ -338,6 +345,27 @@ class EdgarTest(unittest.TestCase):
                 self.one("Assets were $5.0 billion.", "$5.0 billion", edgar("2025-12-31", edgar=CIK))
         self.assertFalse((self.dir / ".receipts" / "edgar" / "companyfacts" / f"CIK{CIK:010d}.json").exists())
 
+    def test_redirect_to_another_host_is_not_followed(self):
+        other = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        other.seen, other.fail_with, other.raw, other.zipped = [], 0, None, False
+        threading.Thread(target=other.serve_forever, daemon=True).start()
+        try:
+            self.server.redirect_to = f"http://127.0.0.1:{other.server_address[1]}"
+            with self.assertRaises(R.StopError) as ctx:
+                self.one("Assets were $5.0 billion.", "$5.0 billion", edgar("2025-12-31", edgar=CIK))
+            self.assertIn("HTTP 302", str(ctx.exception))
+            self.assertEqual(other.seen, [])                 # the contact string never reached the other host
+        finally:
+            other.shutdown()
+            other.server_close()
+
+    def test_ratio_is_stored_as_a_fraction(self):
+        loc = edgar("2025-01-01..2025-12-31", "us-gaap:EffectiveIncomeTaxRateContinuingOperations", unit="pure")
+        bare, _ = self.one("The effective tax rate was 17%.", "17%", loc)
+        scaled, res = self.one("The effective tax rate was 17%.", "17%", dict(loc, multiplier=100))
+        self.assertEqual((bare["verdict"], scaled["verdict"]), ("wrong", "verified"))
+        self.assertEqual(res["multipliers"][0]["multiplier"], "100")
+
     def test_corrupt_cache_stops(self):
         path = self.dir / ".receipts" / "edgar" / "companyfacts" / f"CIK{CIK:010d}.json"
         path.parent.mkdir(parents=True)
@@ -397,12 +425,12 @@ class EdgarTest(unittest.TestCase):
         cache = str(self.dir / "cache")
         code, out, _ = self.main("edgar", "company", "EXMP", "--edgar-cache", cache)
         self.assertEqual((code, json.loads(out)["cik"], json.loads(out)["name"]), (0, CIK, "Example Corp"))
-        code, out, _ = self.main("edgar", "concepts", "EXMP", "--match", "income", "--edgar-cache", cache)
+        code, out, _ = self.main("edgar", "concepts", "EXMP", "--match", "net income", "--edgar-cache", cache)
         got = json.loads(out)
         self.assertEqual([c["concept"] for c in got["concepts"]], ["us-gaap:NetIncomeLoss"])
         self.assertEqual((got["concepts"][0]["units"], got["concepts"][0]["latest_end"]), (["USD"], "2025-12-31"))
         code, out, _ = self.main("edgar", "concepts", "999001", "--limit", "2", "--edgar-cache", cache)
-        self.assertEqual((json.loads(out)["matched"], len(json.loads(out)["concepts"])), (7, 2))
+        self.assertEqual((json.loads(out)["matched"], len(json.loads(out)["concepts"])), (8, 2))
         code, out, _ = self.main("edgar", "facts", "EXMP", "us-gaap:Assets", "--until", "2024-12-31", "--edgar-cache", cache)
         rows = json.loads(out)["facts"]
         self.assertEqual([(r["period"], r["value"], r["filings_differ"]) for r in rows],
