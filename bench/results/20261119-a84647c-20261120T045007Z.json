@@ -1,0 +1,419 @@
+{
+  "timestamp": "20261120T045007Z",
+  "seed": 20261119,
+  "commit": "a84647c",
+  "dirty": false,
+  "tool": "skills/receipts/scripts/receipts.py",
+  "generator_version": "1",
+  "counts": {
+    "documents": 64,
+    "statements": 960,
+    "planted": 288,
+    "correct": 672,
+    "abstain": {
+      "corrupt_source": 24,
+      "missing_source": 24,
+      "multi_match": 24,
+      "zero_match": 24
+    }
+  },
+  "measures": [
+    {
+      "n": 1,
+      "name": "planted errors judged verified (false accepts)",
+      "value": 0,
+      "bar": "0",
+      "ok": true
+    },
+    {
+      "n": 2,
+      "name": "correct statements judged wrong (false alarms)",
+      "value": 0,
+      "bar": "0",
+      "ok": true
+    },
+    {
+      "n": 3,
+      "name": "planted errors judged wrong",
+      "value": 1.0,
+      "num": 288,
+      "den": 288,
+      "other_unverifiable": 0,
+      "other_not_unverifiable": 0,
+      "bar": ">= 98%, rest unverifiable",
+      "ok": true
+    },
+    {
+      "n": 4,
+      "name": "correct statements judged verified",
+      "value": 1.0,
+      "num": 672,
+      "den": 672,
+      "other_unverifiable": 0,
+      "other_not_unverifiable": 0,
+      "bar": ">= 98%, rest unverifiable",
+      "ok": true
+    },
+    {
+      "n": 5,
+      "name": "zero-cell and multi-cell locators judged unverifiable",
+      "value": 1.0,
+      "num": 48,
+      "den": 48,
+      "bar": "100%",
+      "ok": true
+    },
+    {
+      "n": 6,
+      "name": "missing or corrupt source: check exits non-zero",
+      "value": 1.0,
+      "num": 48,
+      "den": 48,
+      "exit_2": 48,
+      "bar": "100%",
+      "ok": true
+    },
+    {
+      "n": 7,
+      "name": "numbers placed by the generator that scan finds",
+      "value": 1.0,
+      "num": 960,
+      "den": 960,
+      "bar": ">= 99%",
+      "ok": true
+    },
+    {
+      "n": 8,
+      "name": "removed claims that scan found and the report lists as uncovered",
+      "value": 1.0,
+      "num": 128,
+      "den": 128,
+      "removed_total": 128,
+      "bar": "100%",
+      "ok": true
+    }
+  ],
+  "pass": true,
+  "breakdown": {
+    "lang": {
+      "en": {
+        "n": 480,
+        "verdict:wrong": 143,
+        "scan_found": 480,
+        "verdict:verified": 337
+      },
+      "ko": {
+        "n": 480,
+        "verdict:verified": 335,
+        "scan_found": 480,
+        "verdict:wrong": 145
+      }
+    },
+    "source_type": {
+      "csv": {
+        "n": 240,
+        "verdict:wrong": 68,
+        "scan_found": 240,
+        "verdict:verified": 172
+      },
+      "json": {
+        "n": 240,
+        "verdict:verified": 168,
+        "scan_found": 240,
+        "verdict:wrong": 72
+      },
+      "md": {
+        "n": 240,
+        "verdict:verified": 155,
+        "scan_found": 240,
+        "verdict:wrong": 85
+      },
+      "xlsx": {
+        "n": 240,
+        "verdict:verified": 177,
+        "scan_found": 240,
+        "verdict:wrong": 63
+      }
+    },
+    "formula": {
+      "count": {
+        "n": 60,
+        "verdict:wrong": 36,
+        "scan_found": 60,
+        "verdict:verified": 24
+      },
+      "difference": {
+        "n": 132,
+        "verdict:verified": 93,
+        "scan_found": 132,
+        "verdict:wrong": 39
+      },
+      "max": {
+        "n": 24,
+        "verdict:wrong": 6,
+        "scan_found": 24,
+        "verdict:verified": 18
+      },
+      "mean": {
+        "n": 47,
+        "verdict:wrong": 13,
+        "scan_found": 47,
+        "verdict:verified": 34
+      },
+      "min": {
+        "n": 18,
+        "verdict:verified": 13,
+        "scan_found": 18,
+        "verdict:wrong": 5
+      },
+      "pct_change": {
+        "n": 116,
+        "verdict:wrong": 49,
+        "scan_found": 116,
+        "verdict:verified": 67
+      },
+      "ratio": {
+        "n": 162,
+        "verdict:verified": 136,
+        "scan_found": 162,
+        "verdict:wrong": 26
+      },
+      "share": {
+        "n": 39,
+        "verdict:verified": 27,
+        "scan_found": 39,
+        "verdict:wrong": 12
+      },
+      "sum": {
+        "n": 159,
+        "verdict:wrong": 24,
+        "scan_found": 159,
+        "verdict:verified": 135
+      },
+      "value": {
+        "n": 203,
+        "verdict:verified": 125,
+        "scan_found": 203,
+        "verdict:wrong": 78
+      }
+    },
+    "planted": {
+      "correct": {
+        "n": 672,
+        "verdict:verified": 672,
+        "scan_found": 672
+      },
+      "digit_typo": {
+        "n": 36,
+        "verdict:wrong": 36,
+        "scan_found": 36
+      },
+      "direction_flip": {
+        "n": 36,
+        "verdict:wrong": 36,
+        "scan_found": 36
+      },
+      "rounding": {
+        "n": 36,
+        "verdict:wrong": 36,
+        "scan_found": 36
+      },
+      "stale_value": {
+        "n": 36,
+        "verdict:wrong": 36,
+        "scan_found": 36
+      },
+      "wrong_count": {
+        "n": 36,
+        "verdict:wrong": 36,
+        "scan_found": 36
+      },
+      "wrong_denominator": {
+        "n": 36,
+        "verdict:wrong": 36,
+        "scan_found": 36
+      },
+      "wrong_period": {
+        "n": 36,
+        "verdict:wrong": 36,
+        "scan_found": 36
+      },
+      "wrong_scale": {
+        "n": 36,
+        "verdict:wrong": 36,
+        "scan_found": 36
+      }
+    },
+    "format": {
+      "compound_억만": {
+        "n": 30,
+        "verdict:verified": 14,
+        "scan_found": 30,
+        "verdict:wrong": 16
+      },
+      "compound_조억": {
+        "n": 19,
+        "verdict:verified": 15,
+        "scan_found": 19,
+        "verdict:wrong": 4
+      },
+      "decimal": {
+        "n": 47,
+        "verdict:wrong": 11,
+        "scan_found": 47,
+        "verdict:verified": 36
+      },
+      "hedged_int": {
+        "n": 28,
+        "verdict:verified": 28,
+        "scan_found": 28
+      },
+      "integer": {
+        "n": 261,
+        "verdict:verified": 171,
+        "scan_found": 261,
+        "verdict:wrong": 90
+      },
+      "money_plain": {
+        "n": 67,
+        "verdict:verified": 52,
+        "scan_found": 67,
+        "verdict:wrong": 15
+      },
+      "multiple": {
+        "n": 32,
+        "verdict:verified": 29,
+        "scan_found": 32,
+        "verdict:wrong": 3
+      },
+      "pct": {
+        "n": 232,
+        "verdict:wrong": 83,
+        "scan_found": 232,
+        "verdict:verified": 149
+      },
+      "pct_signed": {
+        "n": 58,
+        "verdict:wrong": 17,
+        "scan_found": 58,
+        "verdict:verified": 41
+      },
+      "pp": {
+        "n": 45,
+        "verdict:wrong": 14,
+        "scan_found": 45,
+        "verdict:verified": 31
+      },
+      "scale_B": {
+        "n": 5,
+        "verdict:wrong": 2,
+        "scan_found": 5,
+        "verdict:verified": 3
+      },
+      "scale_K": {
+        "n": 13,
+        "verdict:verified": 10,
+        "scan_found": 13,
+        "verdict:wrong": 3
+      },
+      "scale_M": {
+        "n": 21,
+        "verdict:verified": 16,
+        "scan_found": 21,
+        "verdict:wrong": 5
+      },
+      "scale_billion": {
+        "n": 9,
+        "verdict:verified": 8,
+        "scan_found": 9,
+        "verdict:wrong": 1
+      },
+      "scale_million": {
+        "n": 18,
+        "verdict:verified": 12,
+        "scan_found": 18,
+        "verdict:wrong": 6
+      },
+      "scale_만": {
+        "n": 12,
+        "verdict:verified": 10,
+        "scan_found": 12,
+        "verdict:wrong": 2
+      },
+      "scale_억": {
+        "n": 46,
+        "verdict:wrong": 12,
+        "scan_found": 46,
+        "verdict:verified": 34
+      },
+      "scale_조": {
+        "n": 17,
+        "verdict:verified": 13,
+        "scan_found": 17,
+        "verdict:wrong": 4
+      }
+    }
+  },
+  "abstain": {
+    "locator_total": 48,
+    "locator_unverifiable": 48,
+    "source_total": 48,
+    "source_nonzero": 48,
+    "source_exit2": 48,
+    "by_case": {
+      "zero_match": {
+        "unverifiable": 24,
+        "reason:locator_no_match": 24
+      },
+      "multi_match": {
+        "unverifiable": 24,
+        "reason:locator_multiple": 24
+      },
+      "missing_source:deleted": {
+        "exit_2": 24
+      },
+      "corrupt_source:invalid_utf8": {
+        "exit_2": 12
+      },
+      "corrupt_source:truncated_json": {
+        "exit_2": 6
+      },
+      "corrupt_source:truncated_zip": {
+        "exit_2": 2
+      },
+      "corrupt_source:not_a_zip": {
+        "exit_2": 4
+      }
+    }
+  },
+  "check_exit_codes_gold": {
+    "1": 64
+  },
+  "claim_position_mismatch": 0,
+  "scan_unplaced_tokens": {},
+  "distractor_classification": {
+    "code": {
+      "skipped_expected_rule": 163
+    },
+    "date": {
+      "skipped_expected_rule": 156
+    },
+    "heading_number": {
+      "skipped_expected_rule": 128
+    },
+    "list_marker": {
+      "skipped_expected_rule": 256
+    },
+    "url": {
+      "skipped_expected_rule": 64
+    },
+    "version": {
+      "skipped_expected_rule": 64
+    },
+    "year": {
+      "skipped_expected_rule": 730
+    }
+  },
+  "failures": [],
+  "missed_statements": []
+}
