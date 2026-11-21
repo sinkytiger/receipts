@@ -76,7 +76,7 @@ The model proposes, code decides. The model only writes a plan that says "this n
 | Excel (.xlsx) | yes, values only | Reads stored cell values. Does not re-evaluate spreadsheet formulas. |
 | SEC EDGAR | yes | See below |
 | PDF | later | Needs an extra library |
-| DART (Korean filings) | later | Reuses [finground-lite-kr](https://github.com/sinkytiger/finground-lite-kr) |
+| DART (Korean filings) | yes, since 0.2 | See below |
 
 The script uses only the Python standard library, so it runs where installing packages is blocked.
 
@@ -102,6 +102,29 @@ How the open items were settled (2026-11-20). The rules are in sections 2 and 8 
 
 Limits: the API holds the facts a company reports for itself as a whole, so segment, product and regional numbers are not available. Concepts a company defined itself were absent from the data of all five development companies. Units are used as filed, a company's own unit names included, and nothing maps one company's concept to another's.
 
+## DART connection
+
+Checked on OpenDART's guide pages and terms of use (2026-11-21):
+
+- `https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json`: the full financial statements of one periodic report, by company code, business year, report code and consolidated or separate. From business year 2015.
+- `https://opendart.fss.or.kr/api/corpCode.xml`: every company's code, name and stock code, as a zip.
+- `https://opendart.fss.or.kr/api/fnlttXbrl.xml`: the XBRL file of a report. The script does not use it. The evaluation (E4) reads its gold from it.
+- A key is required. It is free and personal, and the terms forbid letting anyone else use it. The usual limit is 20,000 requests a day.
+
+How the open items were settled. The rules are in sections 2 and 9 of `plan-format.md`:
+
+| Item | Decision |
+|---|---|
+| The key | From `RECEIPTS_DART_KEY` only. There is no default and none is shipped. The key travels in the address of a request, so no message of the script shows an address, and a redirect to another host or from https to http is not followed. |
+| What a locator names | Company, business year, report, consolidated or separate, statement, the row (by account id or by name) and DART's own column name. None of them has a default, because each is a known way to mix figures up. |
+| Three months versus year to date | Two columns of the same row (`thstrm_amount`, `thstrm_add_amount`). The plan names the column. The receipt and the look-up print what the column holds. |
+| Amended reports | DART's API serves only the latest version of a report. The receipt shows its receipt number. A plan may name one (`rcept_no`). If DART serves another, the script abstains (`dart_receipt_differs`). |
+| DART's status codes | `000` is data. `013` is "nothing for the request", which is `locator_no_match` and is cached. Every other status stops the run. |
+| A statement type DART does not know | DART answers such a request with consolidated and separate rows mixed together. The script accepts only `CFS` and `OFS` and makes no request otherwise. |
+| Stock code to company code | DART's code file. A locator may also give the company code. A name is not accepted: more than 5,000 names in the code file belong to more than one company. |
+
+Limits: the statement of changes in equity is not covered in this version, because its rows are told apart by labels that differ from report to report. Notes, segment figures and preliminary earnings are not in this API. The code was written for this contract. What an earlier project ([finground-lite-kr](https://github.com/sinkytiger/finground-lite-kr)) had learned about DART's columns was reused, not its code.
+
 ## Out of scope for v0.1
 
 - Claims that are not numbers (rules, quotations, "all" / "none" statements).
@@ -115,7 +138,7 @@ Limits: the API holds the facts a company reports for itself as a whole, so segm
 .claude-plugin/plugin.json, marketplace.json
 skills/receipts/SKILL.md
 skills/receipts/references/     plan format, tolerance, locators
-skills/receipts/scripts/receipts.py    scan / check / report / edgar
+skills/receipts/scripts/receipts.py    scan / check / report / edgar / dart
 bench/                          planted-error generator and scorer
 examples/
 tests/
@@ -140,3 +163,4 @@ docs/design.md, docs/eval-plan.md
   - An internal error stops the run with exit code 2 instead of producing a verdict.
   - Year detection leans toward counting: a 4-digit number with no clear year context stays a number.
 - 2026-11-20: the SEC EDGAR connection was written. Its open items are settled in the table above. The evaluation of the connection (E3) was registered in `docs/eval-plan.md` before the code.
+- 2026-11-21: the DART connection was written. Its decisions are in the section above. The evaluation of the connection (E4) was registered in `docs/eval-plan.md` before the code.

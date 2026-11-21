@@ -58,7 +58,7 @@ The example report says East revenue grew 12.4%. The source says otherwise:
 
 The command also writes `receipts.json` and `receipts.md` next to the plan. The exit code is 1 when a number is wrong and 2 when a source cannot be read.
 
-Sources that work today: CSV, TSV, JSON, Markdown tables, plain text, Excel values, and what US-listed companies report to the SEC.
+Sources that work today: CSV, TSV, JSON, Markdown tables, plain text, Excel values, what US-listed companies report to the SEC, and the financial statements Korean companies file with DART.
 
 ## Check against SEC filings
 
@@ -90,12 +90,43 @@ python skills/receipts/scripts/receipts.py check examples/edgar/claims.json --ed
 
 The note says research and development was 10.6% of revenue. Recomputed from the two filed figures it is 9.6%.
 
+## Check against Korean filings (DART)
+
+A source can be an amount in the financial statements of a periodic report filed with Korea's DART: the annual, half-year and quarterly reports (사업보고서, 반기보고서, 분기보고서). The script reads it from OpenDART, the API of the Financial Supervisory Service.
+
+```json
+{"dart": "005930", "year": 2026, "report": "q3", "fs": "CFS", "statement": "IS",
+ "account": "dart_OperatingIncomeLoss", "column": "thstrm_amount"}
+```
+
+- DART gives every user a free key at [opendart.fss.or.kr](https://opendart.fss.or.kr), and its terms forbid letting anyone else use it. Put yours in the environment variable `RECEIPTS_DART_KEY`. Nothing is shipped as a default, and without it the script stops before making a request. The key is sent to DART only. It is not written to the cache, to a receipt or to any message.
+- Each report is fetched once and cached under `.receipts/dart/`. The receipt shows the fetch date and the receipt number of the filing. The script makes at most 5 requests a second.
+- The locator names the things people mix up: consolidated or separate (`fs`, with no default), the statement, and the column. In a half-year or quarterly report the three months and the year to date are two columns of the same row, so one cannot pass for the other.
+- DART's API holds only the latest version of a report. A plan can name the receipt number of the filing the document used. If the report has been amended since, the script abstains instead of comparing the document with other figures.
+- `receipts.py dart company 삼성전자` and `receipts.py dart accounts 005930 --year 2026 --report q3 --fs CFS` print a company's codes and the rows of a report, with what each column holds.
+- Amounts are in whole won, and a document may write them as `107조 4,405억원`.
+- The statement of changes in equity, notes, segment figures, preliminary earnings (잠정실적) and years before 2015 are not covered.
+
+The rules are in sections 2 and 9 of [plan-format.md](skills/receipts/references/plan-format.md).
+
+[examples/dart](examples/dart) is a short note in Korean on Samsung Electronics' third quarter of 2026 with one wrong figure. It runs without a network connection and without a key, from a cut-down copy of what DART returned on 2026-11-21:
+
+```sh
+python skills/receipts/scripts/receipts.py check examples/dart/claims.json --dart-cache examples/dart/snapshot
+```
+
+```
+7 numbers / 6 verified / 1 wrong / 0 unverifiable / 0 uncovered   (skipped: 7 date, 1 year)
+```
+
+The note gives 194.0조원 as the third-quarter net profit. That is the figure for January to September. The quarter alone was 75.1조원.
+
 ## What is here now
 
 - [skills/receipts/SKILL.md](skills/receipts/SKILL.md): the skill. It tells an agent how to write the plan, run the script and report the result without overstating it.
 - [skills/receipts/scripts/receipts.py](skills/receipts/scripts/receipts.py): `scan`, `check` and `report`. Standard library only.
 - [skills/receipts/references/plan-format.md](skills/receipts/references/plan-format.md): the plan format, the rules for reading and comparing numbers, and the outputs. The script and the benchmark both follow it.
-- [examples/quickstart](examples/quickstart): a short report, its source and a plan. [examples/edgar](examples/edgar): a note checked against SEC filings.
+- [examples/quickstart](examples/quickstart): a short report, its source and a plan. [examples/edgar](examples/edgar): a note checked against SEC filings. [examples/dart](examples/dart): a Korean note checked against DART filings.
 - [tests](tests): unit tests. Run `python -m unittest discover -s tests`.
 - [bench](bench): the planted-error benchmark generator and scorer; [bench/edgar](bench/edgar), the builder and scorer for the EDGAR connection; [bench/e2](bench/e2), the harness, scorer, spending record and conversations of the evaluation with a model.
 - [docs/design.md](docs/design.md) and [docs/eval-plan.md](docs/eval-plan.md): the design, and the evaluation plan. E1 was fixed before any code existed, E3 before the connection was written, and E2's details before its harness.

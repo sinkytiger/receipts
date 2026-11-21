@@ -50,7 +50,7 @@ python skills/receipts/scripts/receipts.py check examples/quickstart/claims.json
 9 numbers / 6 verified / 1 wrong / 1 unverifiable / 1 uncovered   (skipped: 1 date, 2 heading_number, 1 label, 3 year)
 ```
 
-지금 읽을 수 있는 출처는 CSV, TSV, JSON, 마크다운 표, 일반 텍스트, 엑셀 값, 그리고 미국 상장사가 SEC에 낸 공시 수치입니다.
+지금 읽을 수 있는 출처는 CSV, TSV, JSON, 마크다운 표, 일반 텍스트, 엑셀 값, 미국 상장사가 SEC에 낸 공시 수치, 그리고 한국 회사가 DART에 낸 정기보고서의 재무제표입니다.
 
 ## 미국 공시(SEC EDGAR)와 대조하기
 
@@ -79,6 +79,35 @@ python skills/receipts/scripts/receipts.py check examples/edgar/claims.json --ed
 ```
 
 글은 연구개발비가 매출의 10.6%라고 쓰지만, 공시된 두 수치로 다시 계산하면 9.6%입니다.
+
+## 한국 공시(DART)와 대조하기
+
+DART에 낸 정기보고서(사업보고서, 반기보고서, 분기보고서)의 재무제표 금액도 출처로 쓸 수 있습니다. 스크립트가 금융감독원의 OpenDART API에서 읽습니다.
+
+```json
+{"dart": "005930", "year": 2026, "report": "q3", "fs": "CFS", "statement": "IS",
+ "account": "dart_OperatingIncomeLoss", "column": "thstrm_amount"}
+```
+
+- DART는 이용자마다 무료 인증키를 줍니다([opendart.fss.or.kr](https://opendart.fss.or.kr)). 약관은 키를 남이 쓰게 하는 것을 금지합니다. 본인 키를 환경 변수 `RECEIPTS_DART_KEY`에 넣어야 합니다. 기본값은 없고, 비어 있으면 요청을 보내지 않고 멈춥니다. 키는 DART로 보내는 요청에만 들어가고, 저장 파일·영수증·오류 문구 어디에도 남기지 않습니다.
+- 보고서마다 한 번만 내려받아 `.receipts/dart/`에 저장합니다. 영수증에 내려받은 날짜와 공시 접수번호가 나옵니다. 요청은 1초에 5번 이하로 보냅니다.
+- 사람들이 자주 섞는 것을 위치에 모두 적게 합니다. 연결인지 별도인지(`fs`, 기본값 없음), 어느 재무제표인지, 어느 열인지입니다. 반기·분기보고서에서 3개월 수치와 누적 수치는 같은 줄의 서로 다른 열이므로 서로 바뀌어 통과하지 않습니다.
+- DART API에는 보고서의 최신본만 있습니다. 계획에 문서가 쓴 공시의 접수번호를 적어 둘 수 있습니다. 그 뒤 보고서가 정정됐으면 다른 수치와 견주지 않고 판정을 미룹니다.
+- `receipts.py dart company 삼성전자`, `receipts.py dart accounts 005930 --year 2026 --report q3 --fs CFS`로 회사 코드와 보고서의 줄, 그리고 각 열이 어떤 기간인지 찾습니다.
+- 금액은 원 단위이고, 문서에는 `107조 4,405억원`처럼 써도 됩니다.
+- 자본변동표, 주석, 부문별 수치, 잠정실적, 2015년 이전 사업연도는 다루지 않습니다.
+
+[examples/dart](examples/dart)는 삼성전자의 2026년 3분기를 다룬 짧은 글이고, 숫자 하나를 일부러 틀리게 썼습니다. DART가 2026-11-21에 돌려준 자료를 잘라 낸 사본이 들어 있어 네트워크도 키도 없이 돌아갑니다.
+
+```sh
+python skills/receipts/scripts/receipts.py check examples/dart/claims.json --dart-cache examples/dart/snapshot
+```
+
+```
+7 numbers / 6 verified / 1 wrong / 0 unverifiable / 0 uncovered   (skipped: 7 date, 1 year)
+```
+
+글은 3분기 순이익을 194.0조원이라고 쓰지만, 이는 1~9월 누적 수치입니다. 3분기 석 달만 보면 75.1조원입니다.
 
 ## 평가 결과
 
