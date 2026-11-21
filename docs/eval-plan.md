@@ -137,6 +137,83 @@ Reported without a bar: the share of open claims that abstain because filings di
 - EDGAR is live. A run on a later day may sample newer filings, so results name their filings.
 - Fair access. The SEC asks automated clients to identify themselves and allows 10 requests per second. The person who runs E3 supplies the contact string through an environment variable. None is shipped in the repository or written into results. The builder and the tool make at most 5 requests per second, cache what they fetch and do not fetch it twice. A run needs about four requests per company.
 
+## E4: DART connection (free)
+
+Registered on 2026-11-21, before the connection, its builder or its scorer was written. What had been looked at by then:
+
+- OpenDART's guide pages for three of its APIs (the full financial statements of one company, the XBRL file of a report, the company code file) and its terms of use.
+- Live responses for four companies. 삼성전자: the statements of the annual report 2025, the half-year report 2026 and the third-quarter report 2026, the XBRL files of the annual and the third-quarter report, the company record, the filing list, and requests with an unknown company code, with a statement type that does not exist, and with years that have no report. GS건설: the statements of the annual report 2023 and the filing list. 자이에스앤디: the statements of the annual report 2025 and the filing list. 동원모빌리티: the annual statements under the years 2025 and 2026.
+- The company code file, and one page of the list of annual reports filed from April to June 2026, which shows company names and receipt numbers only.
+- An earlier project by the same author (finground-lite-kr) read DART statements of 16 large companies in October 2026. All 16 are named below: five in the development list and the eleven named held-out companies. Nothing of this connection existed then.
+
+No model is involved. E4 asks five things. Given a correct locator (company, year, report, consolidated or separate, statement, account, column), does the connection return the value in the XBRL file the company filed? When the document holds the number of a neighbouring column, does the check say `wrong`? Does it abstain when it should? Does it stop when it cannot read DART? Does the key stay out of everything the tool prints or writes?
+
+### Two data paths
+
+- **The tool** reads `opendart.fss.or.kr/api/fnlttSinglAcntAll.json`.
+- **The gold** is read from the XBRL instance that DART serves for the same receipt number (`fnlttXbrl.xml`). For a row and a column, the gold is the fact whose element is the row's account id, whose context has exactly one dimension member (the consolidated one or the separate one), and whose period is the period the contract gives for that column (section 2, "What each column holds"). The dates of the periods are taken from the instance itself.
+- From the API response the builder takes only the list of rows (statement, account id, account name) and the receipt number. It reads no amount from it. The scorer may read the cached API response after scoring, only to say whether a `wrong` verdict came from the tool or from a difference between the API and the XBRL file.
+- The builder and the scorer are written by a separate agent from this plan and the contract, without reading the tool.
+
+Both paths start from the same filing. E4 tests the connection: company lookup, report, consolidated or separate, statement, account by id and by name, column, sign, the receipt number, and the reading of amounts written the Korean way. It does not test whether a company tagged its statements correctly. It does not cover the statement of changes in equity, which the tool refuses in this version, or rows without a standard account id, whose gold cannot be found in the XBRL file by id.
+
+### Companies
+
+- Development, used as often as needed while building (10): 삼성전자 `00126380`, GS건설 `00120030`, 자이에스앤디 `00367844`, 동원모빌리티 `00118008`, 현대자동차 `00164742`, SK하이닉스 `00164779`, NAVER `00266961`, 케이티 `00190321`, 삼성생명 `00126256`, KB금융 `00688996`.
+- Held-out, named (11): 기아 `00106641`, 현대모비스 `00164788`, POSCO홀딩스 `00155319`, LG화학 `00356361`, 삼성SDI `00126362`, 삼성바이오로직스 `00877059`, SK텔레콤 `00159023`, 삼성물산 `00149655`, LG에너지솔루션 `01515323`, 카카오 `00258801`, LG전자 `00401731`.
+- Held-out, drawn (20): on the day of the held-out run the company code file is fetched. The companies in it that have a stock code and are not named above are put in the order of the SHA-256 digest (hexadecimal, ascending) of the text `receipts-E4:` followed by the company code. Walking that order, a company is kept if DART returns statements for its annual report 2025 (consolidated or separate) and the XBRL file of that receipt number. The walk stops at 20 kept companies. Companies passed over are listed with the reason.
+
+The development list has the four companies whose responses were read before registration, two financial companies, a company whose business year ends in March, and two companies with amended reports. The eleven named held-out companies are large ones. The drawn ones can be of any size and no one chooses them. Until the held-out run, no statement, XBRL file or filing list of a held-out company is fetched, and the order of the draw is not computed. The builder refuses a held-out company and the draw without `--held-out`.
+
+### Reports and facts
+
+- Per company: the annual report of year 2025, the half-year report of year 2026 and the third-quarter report of year 2026, each consolidated and separate. That is up to six sets of statements. A set DART has no data for is reported as missing and skipped. The results record the receipt numbers and the fetch date.
+- Eligible rows: the rows of the balance sheet, the income statement, the statement of comprehensive income and the cash flow statement whose account id starts with `ifrs-full_` or `dart_` and occurs once in that statement of that set.
+- Columns: the ones the contract's table gives for the report type and the statement.
+- A fact is a set, a statement, an account id and a column. It has a gold when the instance holds at least one fact for that element, member and period, and all of them carry the same value. A fact without a gold is counted by reason and left out.
+- Every fact with a gold is used. There is no sampling. The builder prints the counts.
+
+### Cases
+
+For each set the builder writes test documents with one line per fact. A line shows a value in one of four ways, taken in turn: whole won with commas (`107,440,482,000,000원`); in `백만원` when that is exact; rounded to whole 억 (`1,074,405억원`); as 조 and 억, rounded to whole 억 (`107조 4,405억원`). The third way is used only from 1억 up and the fourth only from 1조 up; smaller values are written the first way. A negative value has a leading minus sign. The plans:
+
+- **By id**: each claim is a `lookup` on a DART locator with the company, `year`, `report`, `fs`, `statement`, `account` and `column`. The company is given as a stock code in the annual sets and as a company code in the others. The document shows the gold.
+- **By name**: the same with `name` in place of `account`, for rows whose name occurs once in that statement of the set.
+- **Pinned**: by id, plus the receipt number of the set.
+- **Swap**, each expected `wrong`: the locator names the fact and the document shows the gold of a neighbour. Neighbours are (a) three months and cumulative in the interim income statements: `thstrm_amount` with `thstrm_add_amount`, and `frmtrm_q_amount` with `frmtrm_add_amount`; (b) this period and the comparison period: `thstrm_amount` with `frmtrm_amount` in annual sets, interim balance sheets and interim cash flow statements, `thstrm_amount` with `frmtrm_q_amount` and `thstrm_add_amount` with `frmtrm_add_amount` in interim income statements; (c) consolidated and separate: the same statement, account id and column in the company's other set of the same report. A swap case is built for each fact and each kind of neighbour it has, when the neighbour's value as written does not match the fact's gold under the default tolerance.
+- **Abstention**, from the first five facts of each set, each expected `unverifiable`: the account id with `Zz` appended; a column the report type does not have (`frmtrm_q_amount` in annual sets, `bfefrmtrm_amount` in the others); `year` 2031; `fs` given as `XXX`; `statement` given as `SCE`; the set's receipt number with its last digit changed; the statement replaced by another of the four that does not hold that account id in the set.
+- **Amended reports**: a set is amended when the company's filing list shows an earlier filing with the same report name once a leading mark in square brackets, such as `[기재정정]`, is removed. For each amended set, its first five facts are pinned to the earliest such receipt number. Each is expected `unverifiable`. The same facts pinned to the receipt number DART serves are in the pinned plan.
+
+Stop cases, each run on the by-id plans of the first 5 sets of the run and each expected to exit with code 2: an empty cache and no key set; a cache that holds a corrupt statements file for the set; an empty cache, a made-up key and the DART address replaced by a closed local port; an empty cache, a made-up key and the address replaced by a local stand-in that answers every request with DART's status `020` (request limit exceeded); the same with status `800` (maintenance).
+
+The key. Scoring runs from caches, without a key. The tool's cache is filled by running the tool once on the by-id plans with the real key set. That run, and every stop case that sets a made-up key, is searched for the key it was given: in what the tool printed, and in every file under its cache and output folders.
+
+### Measures and pass bars
+
+| # | Measure | Bar |
+|---|---|---|
+| 1 | Fact claims judged `wrong`, by id, by name or pinned. The document holds the value from the XBRL file, so `wrong` means the connection returned another value. | 0 |
+| 2 | By id, by name and pinned, each counted on its own: judged `verified` | at least 98% each. The rest must be `unverifiable`. |
+| 3 | Swap cases judged `wrong`, among the cases whose fact was `verified` by id | 100%. The other swap cases must be `unverifiable`. |
+| 4 | Abstention cases judged `unverifiable` | 100% |
+| 5 | Amended reports: the claims pinned to the earlier receipt number are `unverifiable`, and the same facts pinned to the served number are `verified` | 100%. A run without an amended report has no cases. It then counts as met, and the results say that it had none. |
+| 6 | Stop cases that exit with code 2 | 100% |
+| 7 | Places where a key appears in what the tool printed or wrote | 0 |
+
+A crash, a missing claim or any other verdict counts as a failure of the measure it belongs to.
+
+Reported without a bar: `wrong` verdicts split by whether the tool returned the value the API holds; facts without a gold, and rows left out, by reason; results by company, report, consolidated or separate, statement, column and way of writing.
+
+### Procedure
+
+- Development companies may be run as often as needed. Every scorer run is logged with the commit hash in `bench/dart/runs.jsonl`.
+- A check of the scorer, before the held-out run: at least six deliberately broken copies of the tool are scored on the development set (the column ignored; `fs` passed to DART unchecked; the receipt number ignored; every status other than `000` treated as no data; a name matched as a substring; the statement ignored). Each must fail at least one bar. If one passes all bars, a measure is added with a dated entry in the change log, before any held-out data is fetched.
+- The held-out companies are run once, on the commit that is to be released. If a held-out bar fails, the README says so.
+- DART is live and reports can be amended, so results name their receipt numbers.
+- The key and the rate. DART gives each user a free key and its terms forbid letting others use it. The person who runs E4 supplies their own key through an environment variable. None is shipped in the repository or written into results. The builder and the tool make at most 5 requests per second, cache what they fetch and do not fetch it twice. A run needs about ten requests per company (six sets of statements, up to three XBRL files, one filing list), the company code file once, and the requests spent on drawn companies that are passed over. DART's limit is 20,000 requests a day per key.
+- Fetching is a step of its own. Building the cases and scoring then run from the cached files without any request, so they can be repeated.
+- Before real data is scored, the tool and the scorer may be run together on made-up data to check that the pieces fit. Such a run is not an E4 result.
+
 ## Real cases
 
 Checks of real documents may appear in the README as examples. They are not performance estimates and will be labelled that way.
@@ -185,3 +262,4 @@ Checks of real documents may appear in the README as examples. They are not perf
   - The E2 scorer: besides the registered counts it reports arm B's counts when any flag on the statement's line counts. On the held-out run it gives 125 of 128 and 26 of 322, the numbers of the recount above.
   - The E2 harness: the records it exports name the accepted plan's file as it is stored in the records folder. Nothing was run with it.
   - On the development sets 0.1.1 meets all 6 bars of E3 (commit `bc8e36d`) and all 8 bars of E1 (commit `f5f63d1`).
+- 2026-11-21: E4 (DART connection) registered, together with the DART part of the contract (`skills/receipts/references/plan-format.md`, sections 2 and 9). No connection code, builder, scorer or E4 result existed at this commit. E1, E2 and E3 are unchanged.
