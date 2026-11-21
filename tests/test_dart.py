@@ -374,6 +374,16 @@ class DartTest(unittest.TestCase):
             self.assertEqual(self.server.seen, [], loc)
         self.assertEqual(self.verdict(dart(year="2025", report=" Annual ", fs="cfs"))[0], "verified")
 
+    def test_code_file_with_fields_in_another_order(self):
+        xml = ("<result><list><stock_code>9990A0</stock_code><modify_date>20260101</modify_date>"
+               "<corp_name>예시전자</corp_name><corp_code>99900100</corp_code></list></result>")
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w") as zf:
+            zf.writestr("CORPCODE.xml", xml)
+        self.assertEqual(R._dart_companies_in(buf.getvalue()), [("99900100", "예시전자", "9990A0")])
+        self.assertEqual(R._dart_companies_in(code_file())[2], ("99900300", "다른 & 회사", "9990B0"))
+        self.assertIsNone(R._dart_companies_in(b"not a zip"))
+
     def test_stock_codes(self):
         self.assertEqual(self.verdict(dart(dart="9990Z9")), ("unverifiable", "locator_no_match"))
         self.assertEqual(self.verdict(dart(dart="9990C0")), ("unverifiable", "locator_multiple"))

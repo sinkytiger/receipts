@@ -1097,12 +1097,16 @@ def _dart_companies_in(body: bytes):
             text = zf.read(names[0]).decode("utf-8-sig") if names else ""
     except (zipfile.BadZipFile, OSError, ValueError, KeyError, IndexError, zlib.error, EOFError):
         return None
-    out = []
-    for block in re.findall(r"<list>(.*?)</list>", text, re.S):
-        got = dict(re.findall(r"<(corp_code|corp_name|stock_code)>([^<]*)</\1>", block))
-        if re.fullmatch(r"\d{8}", got.get("corp_code", "").strip()):
-            out.append((got["corp_code"].strip(), _unescape(got.get("corp_name", "")).strip(),
-                        got.get("stock_code", "").strip().upper()))
+    # The fields in the order DART writes them. One pass over the file, which holds about 120,000 companies.
+    out = [(c, _unescape(n).strip(), s.strip().upper()) for c, n, s in re.findall(
+        r"<corp_code>\s*(\d{8})\s*</corp_code>\s*<corp_name>([^<]*)</corp_name>\s*"
+        r"(?:<corp_eng_name>[^<]*</corp_eng_name>\s*)?<stock_code>([^<]*)</stock_code>", text)]
+    if not out:  # another order of fields: read each company's block on its own
+        for block in re.findall(r"<list>(.*?)</list>", text, re.S):
+            got = dict(re.findall(r"<(corp_code|corp_name|stock_code)>([^<]*)</\1>", block))
+            if re.fullmatch(r"\d{8}", got.get("corp_code", "").strip()):
+                out.append((got["corp_code"].strip(), _unescape(got.get("corp_name", "")).strip(),
+                            got.get("stock_code", "").strip().upper()))
     return out or None
 
 

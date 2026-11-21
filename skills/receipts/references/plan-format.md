@@ -117,7 +117,7 @@ A single cell may also be an amount in the financial statements of a periodic re
 | Field | Required | Meaning |
 |---|---|---|
 | `dart` | yes | The company: a stock code (6 characters, `005930`) or DART's own company code (8 digits, `00126380`). Letters in a stock code are read without regard to case. |
-| `year` | yes | The business year as DART files the report (`bsns_year`), 2015 or later. A number or a string of four digits. |
+| `year` | yes | The business year as DART files the report (`bsns_year`), 2015 or later. A whole number or a string of four digits. |
 | `report` | yes | `q1`, `half`, `q3` or `annual`: 1분기보고서, 반기보고서, 3분기보고서, 사업보고서. |
 | `fs` | yes | `CFS` for the consolidated statements (연결), `OFS` for the separate ones (별도·개별). There is no default. |
 | `statement` | yes | `BS` (재무상태표), `IS` (손익계산서), `CIS` (포괄손익계산서) or `CF` (현금흐름표). |
@@ -132,7 +132,7 @@ A single cell may also be an amount in the financial statements of a periodic re
 - **One row.** The row is looked for among the rows of the named statement in the named report. With `account`, its `account_id` must equal it. With `name`, its `account_nm` must equal it. With both, both must hold. No row gives `locator_no_match`, several rows give `locator_multiple`. DART marks a row that has no standard code with the text `-표준계정코드 미사용-` in place of an id. `account` never matches such a row. Use `name` for it.
 - **One amount.** The column must be present in the row and hold a number. A column that is absent or empty gives `locator_no_match`. Text that is not a number gives `cell_not_numeric`.
 - **No report.** If DART has no statements for that company, year, report and `fs` (its answer `013`), the verdict is `unverifiable` (`locator_no_match`). So is a field that is not written as above: a year before 2015, a `report`, `fs`, `statement` or `column` outside the lists, a `rcept_no` that is not 14 digits.
-- **What each column holds**, as DART's guide describes the columns. The receipt prints the name DART gives the period (`제 58 기 3분기`).
+- **What each column holds**, as DART's guide describes the columns. The receipt prints the name DART gives the period and the table's words for the column (`제 58 기 3분기, the three months`).
 
 | Report | Statement | `thstrm_amount` | `thstrm_add_amount` | `frmtrm_amount` | `frmtrm_q_amount` | `frmtrm_add_amount` | `bfefrmtrm_amount` |
 |---|---|---|---|---|---|---|---|
@@ -373,6 +373,6 @@ receipts.py dart accounts 005930 --year 2026 --report q3 --fs CFS --statement IS
 ```
 
 - `company`: for a stock code or a company code, that company. For any other text, the companies whose name contains it, the ones with a stock code first. Each is printed with its company code, name and stock code. At most 60 are printed unless `--limit` says otherwise (`0` prints all). `matched` is the full count.
-- `accounts`: the rows of one report, each with its statement, `account`, `name` and, for every column that holds a value, the value and the name DART gives that period. The output also names the receipt number and the currency. `--statement` and `--match` (text in the account id or the name) narrow the list. `--year`, `--report` and `--fs` are required. At most 60 rows are printed unless `--limit` says otherwise.
+- `accounts`: the rows of one report, each with its statement, `account`, `name` and, for every column that holds a value, the value, the name DART gives that period and what the table in section 2 says the column holds. The output also names the receipt number and the currency. `--statement` and `--match` (text in the account id or the name) narrow the list. `--year`, `--report` and `--fs` are required. At most 60 rows are printed unless `--limit` says otherwise.
 
 These commands use `.receipts/dart/` in the current folder unless `--dart-cache` or `RECEIPTS_DART_CACHE` names another, so run them in the plan's folder to share its cache. They stop with exit code 2 when the company is not found or DART has no such report.
