@@ -1004,7 +1004,8 @@ def _dart_holds(report: str, statement: str, column: str) -> str:
         table = {"thstrm_amount": "the period end", "frmtrm_amount": "the end of the previous business year"}
     elif statement == "CF":
         table = {"thstrm_amount": "from the start of the business year to the period end",
-                 "frmtrm_amount": "the same period a year earlier", "frmtrm_q_amount": "the same period a year earlier"}
+                 "frmtrm_amount": "the same period a year earlier",
+                 "frmtrm_q_amount": "not usable here: the three months in some rows, the cumulative period in others"}
     else:
         table = {"thstrm_amount": "the three months",
                  "thstrm_add_amount": "from the start of the business year to the period end",
@@ -1238,6 +1239,9 @@ def resolve_dart(loc: dict, base: str):
     column = loc.get("column")
     if not isinstance(column, str) or column not in DART_COLUMNS:
         raise LocatorError("locator_no_match", "column must be one of " + ", ".join(DART_COLUMNS))
+    if report != "annual" and statement == "CF" and column == "frmtrm_q_amount":
+        raise LocatorError("unsupported", "in an interim cash flow statement DART fills frmtrm_q_amount with the three "
+                                          "months in some rows and the cumulative period in others: use frmtrm_amount")
     pin = loc.get("rcept_no")
     if pin is not None:
         pin = str(pin).strip() if isinstance(pin, (str, int)) and not isinstance(pin, bool) else ""

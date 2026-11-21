@@ -273,6 +273,24 @@ class DartTest(unittest.TestCase):
         self.assertEqual(r["verdict"], "verified")
         self.assertIn("[제 10 기말, the end of the previous business year]", r["sources"][0])
 
+    def test_interim_cash_flow_has_one_comparison_column(self):
+        cf = dict(statement="CF")
+        now = q3("ifrs-full_CashFlowsFromUsedInOperatingActivities", "thstrm_amount", **cf)
+        self.assertEqual(self.verdict(now, "영업활동현금흐름은 4,100억원이다.", "4,100억원")[0], "verified")
+        before = q3("ifrs-full_CashFlowsFromUsedInOperatingActivities", "frmtrm_amount", **cf)
+        r, _ = self.one("전년 동기는 3,900억원이다.", "3,900억원", before)
+        self.assertEqual(r["verdict"], "verified")
+        self.assertIn("frmtrm_amount [the same period a year earlier]", r["sources"][0])
+        refused = q3("ifrs-full_CashFlowsFromUsedInOperatingActivities", "frmtrm_q_amount", **cf)
+        r, _ = self.one("전년 동기는 3,900억원이다.", "3,900억원", refused)
+        self.assertEqual((r["verdict"], r["reason"]), ("unverifiable", "unsupported"))
+        self.assertIn("use frmtrm_amount", r["note"])
+        # the same column is fine in an interim income statement, and absent in an annual report
+        self.assertEqual(self.verdict(q3(column="frmtrm_q_amount"), "전년 3분기 매출은 3,000억원이다.", "3,000억원")[0],
+                         "verified")
+        self.assertEqual(self.verdict(dart("ifrs-full_ProfitLoss", "frmtrm_q_amount", **cf)),
+                         ("unverifiable", "locator_no_match"))
+
     def test_consolidated_and_separate_are_two_reports(self):
         self.assertEqual(self.verdict(dart(fs="OFS"), "별도 자산총계는 2.5조원이다.", "2.5조원")[0], "verified")
         self.assertEqual(self.verdict(dart(fs="OFS"))[0], "wrong")
