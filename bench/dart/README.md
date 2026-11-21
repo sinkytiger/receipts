@@ -44,8 +44,9 @@ Options. `build.py`: `--companies 00126380,00120030` (development codes only), `
 
 Exit codes. `build.py`: 0 done, 1 at least one set could not be built (listed under `failed_sets` in the manifest,
 the others are built), 2 stopped. `evaluate.py --fill`: 0 every plan answered, 1 a plan was not answered, 2 cannot
-start. `evaluate.py`: 0 all seven bars met, 1 any bar not met, 2 cannot start (no cases, no tool, no fill record, or
-a held-out set without `--held-out`).
+start. `evaluate.py`: 0 all eight bars met (the seven registered measures and measure 8, see "The addition of
+2026-11-21"), 1 any bar not met, 2 cannot start (no cases, no tool, no fill record, or a held-out set without
+`--held-out`).
 
 ### The key and the requests
 
@@ -89,6 +90,8 @@ fetched.json                                  for each file the UTC date it was 
 - `sets/.../abstain-account.json`, `-column`, `-year`, `-fs`, `-sce`, `-receipt`, `-statement`: one plan per kind.
   `abstain-cfq.json`: in interim sets with cash flow facts only (see "The change of 2026-11-21").
 - `sets/.../amended.json`: only in amended sets.
+- `sets/.../ambiguous.md`, `ambiguous.json`: the ambiguous rows of measure 8, in a document of their own; only in
+  sets that have such rows.
 - `sets/.../gold.json`: per fact its id, line, statement, account, name, column, period, value, unit, way and
   written form; the swap, abstention and amended cases; counts; facts without a gold and rows left out by reason.
 - `sets/.../receipts-<plan>.json`: the tool's last answer to each plan (written by the scorer).
@@ -184,29 +187,41 @@ Builder:
     fetches its own copy of the company code file (`corpCode-heldout.zip`), so that it is fetched on that day and
     still never twice. The walk is repeated from the cache by the offline build and gives the same companies.
     Without `--held-out` the order is never computed.
+15. **Ambiguous rows** (measure 8, added on 2026-11-21, see below). Two kinds, each expected `unverifiable`.
+    By name: a row of BS, IS, CIS or CF whose name, trimmed, is not empty and is shared by several rows of that
+    statement in the set, whatever their account ids; the locator gives `name` alone. By id: a row whose account id
+    starts with `ifrs-full_` or `dart_` and is listed several times in that statement; the locator gives `account`
+    alone. At most the first ten rows of each kind per set, in the order DART lists them, by-name rows first. Each
+    is asked under the first column of the contract's table for its report and statement (`thstrm_amount`). Two rows
+    that share a name give two cases with the same locator. These rows need no gold and no amount is read for
+    them: every line shows the written amount of the set's first fact, and the label says so. They have their own
+    document (`ambiguous.md`) and plan (`ambiguous.json`), so no plan claims a number twice. A set without such a
+    row has neither file.
 
-Scorer:
+Scorer (numbers 16 to 22):
 
-15. **Fill.** The tool runs once per set on `by-id.json` (as the plan says) and on `abstain-year.json`, because the
+16. **Fill.** The tool runs once per set on `by-id.json` (as the plan says) and on `abstain-year.json`, because the
     answer "no data" for year 2031 has to be in the tool's cache before a run without a key. No other plan is
     run with the key. In particular `abstain-fs.json` is not: a tool that passes `fs` to DART unchecked then needs
     a request while scoring and stops. The fill step refuses to run when `RECEIPTS_DART_URL` is set (the key would
     go to another address), except on made-up data.
-16. **Key search.** The key as given, in lower case and in upper case, is looked for in what the tool printed
+17. **Key search.** The key as given, in lower case and in upper case, is looked for in what the tool printed
     (stdout and stderr of every run) and in the name and the contents of every file under the tool's cache and
     output folders, zip members included. The record keeps counts and places, never the key. It also says whether
     the fill started with an empty cache and whether the tool file is the one scored later.
-17. **Scoring environment.** `RECEIPTS_DART_KEY` and `DART_API_KEY` removed, `RECEIPTS_DART_CACHE` removed,
+18. **Scoring environment.** `RECEIPTS_DART_KEY` and `DART_API_KEY` removed, `RECEIPTS_DART_CACHE` removed,
     `RECEIPTS_DART_URL` set to a local port that was bound and closed. The tool is called as the contract writes
     it: `check PLAN --out DIR --dart-cache DIR`.
-18. **A plan the tool does not answer** (crash, timeout, exit 2, no valid `receipts.json`) gives every claim in it
+19. **A plan the tool does not answer** (crash, timeout, exit 2, no valid `receipts.json`) gives every claim in it
     the verdict `error`. A claim absent from `claims` is `missing`, or `unbound` when listed there.
-19. **Measures.** 1 counts claims of the three fact plans together. 2 is met when each of the three plans has at
+20. **Measures.** 1 counts claims of the three fact plans together. 2 is met when each of the three plans has at
     least one claim, at least 98% `verified`, and nothing but `unverifiable` besides. 3 is met when every swap case
     whose fact was `verified` in the by-id plan is `wrong` and every other swap case is `unverifiable`. 5 takes a
     fact as met when its claim in `amended.json` is `unverifiable` and its claim in `pinned.json` is `verified`.
-    7 adds the places found in the fill run and in the stop cases that set a made-up key.
-20. **Stop cases.** The by-id plan of the first five sets, five cases each, each in a fresh cache and output
+    7 adds the places found in the fill run and in the stop cases that set a made-up key. 8 is met when every
+    ambiguous-row case is `unverifiable` (bar 100%); the results also give the two kinds apart. A run with no
+    such case has no cases for measure 8: it counts as met and the results say so, as for measure 5.
+21. **Stop cases.** The by-id plan of the first five sets, five cases each, each in a fresh cache and output
     folder: (a) no key; the address points at the local stand-in, so that a tool that asks anyway does not reach
     DART, and the requests it sees are reported (without a bar); (b) a cut-off statements file for the set, no
     key, the address at a closed port, plus a copy of the tool cache's `corpCode.zip` when the plan names a stock
@@ -214,7 +229,7 @@ Scorer:
     with HTTP 200 and status `020` or `800`, in JSON for `.json` endpoints and in XML otherwise. The made-up key is
     `madeup` + 34 hex characters derived from the case's name. Whether a stopped answer was left in the cache is
     reported without a bar.
-21. **`wrong` verdicts** on fact claims are split after scoring by comparing the value the tool reports
+22. **`wrong` verdicts** on fact claims are split after scoring by comparing the value the tool reports
     (`recomputed_raw`) with the cell of the cached statements answer (the tool's cache, else the builder's): the
     tool returned the value the API holds, another value, or not known. The results also say in how many of them the
     API cell differs from the XBRL value.
@@ -229,6 +244,10 @@ Scorer:
 - Cases: by id 17,018, by name 16,072, pinned 17,018, swap 32,237 (a 4,538, b 14,397, c 13,302; not built because
   the neighbour as written passes for the fact: a 56, b 425, c 1,156), abstention 2,220 (290 of each of seven
   kinds, 190 of kind `cfq`), amended 40. Ways of writing: whole won 8,463, `백만원` 3,019, 억 3,923, 조 and 억 1,613.
+- Ambiguous rows (measure 8): 280 cases by name, in 33 of the 58 sets, and none by id, because no development set
+  lists a standard account id twice in one statement. By company: 삼성전자 6, 현대자동차 60, SK하이닉스 60, NAVER 60,
+  케이티 60, 삼성생명 4, KB금융 30, the other three 0. By statement: BS 240, CIS 24, CF 16. Every one of these names
+  is shared by exactly two rows.
 - Amended sets: the annual report 2025 of GS건설, 자이에스앤디, 삼성생명 and KB금융, CFS and OFS, 8 sets and 40 cases.
   케이티's third-quarter report carries the mark `[첨부추가]` on its only version and is not amended.
 
@@ -255,6 +274,21 @@ The contract was changed for that reason (section 2: "not usable", a locator tha
 
 The dated entry in the plan's change log is written by the plan's author, not by this folder's.
 
+### The addition of 2026-11-21: measure 8, ambiguous rows
+
+The plan's procedure has broken copies of the tool scored on the development set, and says: "If one passes all
+bars, a measure is added". The plan's author did that. The six faults the plan lists each failed a bar. A further
+copy, which takes the first row when several rows match instead of abstaining (`locator_multiple`), met all seven
+bars: no case addressed a row that a locator cannot single out, because rows whose account id repeats are left out
+of the facts and the by-name plan leaves out rows whose name repeats.
+
+Measure 8 was added for that: "Ambiguous rows: a locator that names a row by a name, or by an account id, that
+several rows of the statement share is judged `unverifiable`", bar 100%. The builder (version `e4-builder-3`)
+writes the cases (choice 15 above), the scorer counts them (choice 20), and the self-test has a stub with exactly
+that fault. Nothing else changed: the development set has the same 17,018 facts, 16,072 by-name claims, 32,237
+swap cases, 2,220 abstention cases and 40 amended cases as before, and 280 ambiguous-row cases in addition. The
+dated entry in the plan's change log is written by the plan's author.
+
 ## Self-test (offline, made-up data)
 
 ```sh
@@ -268,7 +302,7 @@ with a business year to March, a company with separate statements only, an amend
 id, a repeated id, a repeated name, a balance in the cash flow statement, a row tagged twice with different values,
 an amount the API leaves empty, facts on a breakdown axis, and candidates for the draw (no statements, no XBRL file,
 separate statements only). `testdata/stub_tool.py` stands in for the tool; it was written from the contract, talks
-only to 127.0.0.1 and has one switch per fault. `testdata/run_selftest.py` asserts that the stub meets all seven
+only to 127.0.0.1 and has one switch per fault. `testdata/run_selftest.py` asserts that the stub meets all eight
 bars and that each broken stub fails exactly these:
 
 | stub | fault | bars it fails |
@@ -280,15 +314,20 @@ bars and that each broken stub fails exactly these:
 | `stub_name_substring.py` | a name matches as a substring | 2 |
 | `stub_statement_ignored.py` | the statement is not looked at | 2, 4 |
 | `stub_cfq_allowed.py` | `frmtrm_q_amount` of an interim cash flow statement read like any column | 4 |
+| `stub_first_of_several.py` | the first of several matching rows is taken | 8 |
 | `stub_key_leak.py` | prints the address of each request | 7 |
 | `stub_key_in_cache.py` | writes the address of each request into its cache | 7 |
-| `stub_always_verified.py` | every claim is `verified` | 3, 4, 5 |
+| `stub_always_verified.py` | every claim is `verified` | 3, 4, 5, 8 |
 | `stub_no_stop.py` | never exits with code 2 | 6 |
 
 The made-up API fills `frmtrm_q_amount` of an interim cash flow statement the way DART does (three months in the
 profit row, the cumulative period elsewhere), so `stub_cfq_allowed.py` is caught by the `cfq` cases alone.
 
-It also scores the held-out path on made-up companies (refusals, the draw, a run with no amended report) and a
+The made-up 가상전자 lists one name on two rows with different ids and one standard id twice, so both kinds of
+ambiguous rows have cases (24 by name and 12 by id in its six sets); the other made-up companies have none.
+
+It also scores the held-out path on made-up companies (refusals, the draw, a run with no amended report and no
+ambiguous row, where measures 5 and 8 count as met and say so) and a
 made-up API that disagrees with its XBRL file in one cell of every set (the operating income of the current period
 is twice as large in the statements answer): bars 1, 2 and 3 fail and every `wrong` verdict is traced to the API,
 none to the tool. A self-test run is not an E4 result and is not logged in `bench/dart/runs.jsonl`.

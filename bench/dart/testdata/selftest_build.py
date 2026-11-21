@@ -142,6 +142,26 @@ def _tables(build):
            ("IS", "ifrs-full_Assets", True)], "eligible rows and names that occur once")
     ok(dict(left) == {"no_standard_account_id": 1, "account_id_repeats": 2, "other_id_prefix": 1,
                       "statement_of_changes_in_equity": 1, "other_statement": 1}, f"rows left out: {dict(left)}")
+    # ambiguous rows (measure 8): a name or a standard id that several rows of one statement share
+    amb = build.ambiguous_rows(rows_in, "annual")
+    ok([(x["kind"], x["statement"], x.get("name") or x.get("account"), x["column"], x["rows_sharing"]) for x in amb]
+       == [("name", "BS", "기타", "thstrm_amount", 2), ("name", "BS", "기타", "thstrm_amount", 2),
+           ("id", "BS", "ifrs-full_X", "thstrm_amount", 2), ("id", "BS", "ifrs-full_X", "thstrm_amount", 2)],
+       "ambiguous rows: a shared name, then a shared id, in DART's order")
+    many = [("CF", fake_dart.NOSTD, " 같은 이름 ")] * 7 + [("CF", "dart_Same", "같은 이름")] * 6 \
+        + [("CF", fake_dart.NOSTD, "")] * 3 + [("SCE", "dart_Same", "같은 이름")] * 2 \
+        + [("IS", "dart_Same", "같은 이름"), ("IS", "entity99_Own", "자체"), ("IS", "entity99_Own", "자체 둘")]
+    amb = build.ambiguous_rows(many, "q3")
+    names = [x for x in amb if x["kind"] == "name"]
+    by_id = [x for x in amb if x["kind"] == "id"]
+    ok(len(names) == 10 and all(x["statement"] == "CF" and x["rows_sharing"] == 13 for x in names)
+       and [x["name"] for x in names] == [" 같은 이름 "] * 7 + ["같은 이름"] * 3,
+       "ambiguous by name: names are compared trimmed, any account id counts, at most ten rows")
+    ok(len(by_id) == 6 and all(x["account"] == "dart_Same" and x["statement"] == "CF" and x["rows_sharing"] == 6
+                              and x["column"] == "thstrm_amount" for x in by_id),
+       "ambiguous by id: standard ids only, counted inside one statement, empty names and SCE rows left out")
+    ok(build.ambiguous_rows([("BS", "ifrs-full_Assets", "자산총계"), ("IS", "ifrs-full_Assets", "자산총계")],
+                            "annual") == [], "the same name or id in two statements is not ambiguous")
 
 
 # ---------------------------------------------------------------- companies and the draw
@@ -420,6 +440,7 @@ def _end_to_end(build, tmp):
     ok([(x["corp_code"], x["report"], x["fs"]) for x in m["missing_sets"]]
        == [("99000002", r, "CFS") for r in ("annual", "half", "q3")], "sets DART has no data for are reported")
     total_facts = total_cfq = 0
+    total_amb = {"name": 0, "id": 0}
     for s in m["sets"]:
         corp, report, fs = s["corp_code"], s["report"], s["fs"]
         c = fake_dart.COMPANIES[corp]
@@ -563,6 +584,47 @@ def _end_to_end(build, tmp):
         else:
             ok(not os.path.exists(os.path.join(folder, "amended.json")) and "amended.json" not in s["plans"],
                f"{s['folder']}: no amended plan")
+        # ambiguous rows (measure 8), worked out from the made-up rows on their own
+        listed = [(r["sj_div"], r["account_id"], r["account_nm"]) for r in api if r["sj_div"] in build.STATEMENTS]
+        n_name = {k: sum(1 for st, _, nm in listed if (st, nm.strip()) == k)
+                  for k in {(st, nm.strip()) for st, _, nm in listed}}
+        n_id = {k: sum(1 for st, aid, _ in listed if (st, aid) == k) for k in {(st, aid) for st, aid, _ in listed}}
+        want_amb = [("name", st, nm) for st, _, nm in listed if nm.strip() and n_name[(st, nm.strip())] > 1][:10] \
+            + [("id", st, aid) for st, aid, _ in listed
+               if aid.startswith(("ifrs-full_", "dart_")) and n_id[(st, aid)] > 1][:10]
+        amb_path = os.path.join(folder, "ambiguous.json")
+        if want_amb:
+            p = build.load_json(amb_path)
+            with open(os.path.join(folder, "ambiguous.md"), encoding="utf-8") as fh:
+                alines = fh.read().split("\n")
+            ok(p["document"] == "ambiguous.md" and len(alines) - 1 == len(p["claims"]) == len(want_amb)
+               == len(gold["ambiguous"]) == s["counts"]["ambiguous"] and "ambiguous.json" in s["plans"],
+               f"{s['folder']}: {len(want_amb)} ambiguous rows, one line each in a document of their own")
+            shown = gold["facts"][0]["written"]
+            for (kind, st, what), x, g in zip(want_amb, p["claims"], gold["ambiguous"]):
+                loc = x["operands"]["of"]
+                key_ = "name" if kind == "name" else "account"
+                ok(loc == {"dart": s["company_in_plans"], "year": year, "report": report, "fs": fs, "statement": st,
+                           key_: what, "column": "thstrm_amount"} and g["kind"] == kind and g["id"] == x["id"],
+                   f"{s['folder']} {x['id']}: an ambiguous row is asked by its {key_} alone")
+                line = alines[x["line"] - 1]
+                bare = re.sub(r"`[^`]*`", "", line).replace("  ", " ")
+                ok(line.endswith(shown) and x["quote"] == "값 " + shown and x["number"] in x["quote"]
+                   and LINE_RE.match(bare) is not None,
+                   f"{s['folder']} {x['id']}: the line shows the amount of the set's first fact")
+                hits = [r for r in api if r["sj_div"] == st and (r["account_nm"].strip() == what.strip()
+                                                                 if kind == "name" else r["account_id"] == what)]
+                ok(len(hits) > 1 and g["rows_sharing"] == len(hits),
+                   f"{s['folder']} {x['id']}: {len(hits)} rows of the statement match")
+            total_amb["name"] += sum(1 for k, _, _ in want_amb if k == "name")
+            total_amb["id"] += sum(1 for k, _, _ in want_amb if k == "id")
+        else:
+            ok(not os.path.exists(amb_path) and not os.path.exists(os.path.join(folder, "ambiguous.md"))
+               and "ambiguous.json" not in s["plans"] and s["counts"]["ambiguous"] == 0 and gold["ambiguous"] == [],
+               f"{s['folder']}: no ambiguous row, no plan")
+    ok(total_amb == {"name": 6 * 4, "id": 6 * 2} == m["totals"]["counts"]["ambiguous_by_kind"]
+       and m["totals"]["counts"]["ambiguous"] == 36,
+       f"totals: ambiguous rows by name {total_amb['name']}, by id {total_amb['id']}")
     c = m["totals"]["counts"]
     ok(c["facts"] == total_facts and c["amended"] == 10 and c["abstain"] == 9 * 7 * 5 + total_cfq
        and total_cfq == 4 * 5 + 2 * 4 == c["abstain_by_kind"]["cfq"],

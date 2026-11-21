@@ -13,6 +13,7 @@ It talks only to a local stand-in: without RECEIPTS_DART_URL on 127.0.0.1 it ref
   name_substring     a name matches when the row's name contains it
   statement_ignored  the row is looked for in all four statements, whatever the plan says
   cfq_allowed        frmtrm_q_amount of an interim cash flow statement is read like any other column
+  first_of_several   when several rows match a name or an account id, the first one is taken
   key_leak           the address of each request, key included, is printed
   key_in_cache       the address of each request, key included, is written to fetched.json
   always_verified    every claim is verified
@@ -268,7 +269,7 @@ def lookup(dart, loc, mode):
         hits.append(r)
     if not hits:
         raise NoMatch("locator_no_match")
-    if len(hits) > 1:
+    if len(hits) > 1 and mode != "first_of_several":
         raise NoMatch("locator_multiple")
     cell = hits[0].get(column)
     if cell is None or str(cell).strip() == "":

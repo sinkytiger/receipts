@@ -44,9 +44,10 @@ EXPECT = {
     "stub_name_substring.py": {2},
     "stub_statement_ignored.py": {2, 4},
     "stub_cfq_allowed.py": {4},
+    "stub_first_of_several.py": {8},
     "stub_key_leak.py": {7},
     "stub_key_in_cache.py": {7},
-    "stub_always_verified.py": {3, 4, 5},
+    "stub_always_verified.py": {3, 4, 5, 8},
     "stub_no_stop.py": {6},
 }
 
@@ -114,8 +115,14 @@ def scenario(work, name, src_out, set_name, stub, world, extra=()):
     with open(runs, encoding="utf-8") as fh:
         logged = [json.loads(x) for x in fh if x.strip()]
     check(len(logged) == 1 and logged[0]["commit"] == result["commit"] and logged[0]["dirty"] == result["dirty"]
-          and logged[0]["set"] == set_name and "measures" in logged[0] and logged[0]["made_up_data"],
-          f"{name}: one line in the run log, with commit, dirty flag, set and results")
+          and logged[0]["set"] == set_name and logged[0]["made_up_data"]
+          and sorted(logged[0]["measures"]) == sorted(logged[0]["pass"]) == [str(n) for n in range(1, 9)]
+          and logged[0]["pass"] == {str(m["n"]): m["ok"] for m in result["measures"]},
+          f"{name}: one line in the run log, with commit, dirty flag, set and the eight measures")
+    with open(os.path.join(results, found[0][:-5] + ".md"), encoding="utf-8") as fh:
+        md = fh.read()
+    check("| 8 | ambiguous rows" in md and "## Ambiguous rows by kind" in md,
+          f"{name}: the results Markdown shows measure 8")
     failing = {m["n"] for m in result["measures"] if not m["ok"]}
     check((code == 0) == (not failing) and result["pass"] == (not failing), f"{name}: exit code follows the bars")
     check(fake_dart.FAKE_KEY not in text and not files_with(results, fake_dart.FAKE_KEY),
@@ -206,7 +213,18 @@ def main():
     _, result = got["tool"]
     c = result["counts"]
     check(c["sets"] == 9 and c["stop_cases"] == 25 and c["amended"] == 10 and c["abstain"] == 9 * 35 + 28
-          and c["swap"] > 0 and 0 < c["by_name"] < c["by_id"] == c["pinned"], f"counts: {c}")
+          and c["ambiguous"] == 36 and c["swap"] > 0 and 0 < c["by_name"] < c["by_id"] == c["pinned"], f"counts: {c}")
+    check(len(result["measures"]) == 8 and [m["n"] for m in result["measures"]] == list(range(1, 9)),
+          "eight measures, each with its bar")
+    m8 = result["measures"][7]
+    amb = result["reported"]["ambiguous_by_kind"]
+    check(m8["ok"] and m8["cases"] == 36 == m8["num"] and m8["by_kind"] == {
+        "name": {"n": 24, "unverifiable": 24}, "id": {"n": 12, "unverifiable": 12}}
+          and amb["name"].get("reason:locator_multiple") == 24 and amb["id"].get("reason:locator_multiple") == 12,
+          "measure 8: every ambiguous row, by name and by id, is unverifiable (locator_multiple)")
+    m8 = got["first_of_several"][1]["measures"][7]
+    check(not m8["ok"] and m8["num"] == 0 and m8["cases"] == 36,
+          "a tool that takes the first of several rows fails measure 8 on every ambiguous row")
     by_id = result["measures"][1]["arms"]["by_id"]
     check(by_id["unverifiable"] == 2 and by_id["other"] == 0,
           "an amount the API leaves empty is unverifiable and the bar still holds")
@@ -236,6 +254,9 @@ def main():
     m5 = result["measures"][4]
     check(m5["cases"] == 0 and m5["ok"] and "counted as met" in m5["note"],
           "a run without an amended report counts measure 5 as met and says so")
+    m8 = result["measures"][7]
+    check(m8["cases"] == 0 and m8["ok"] and "counted as met" in m8["note"] and result["counts"]["ambiguous"] == 0,
+          "a run without an ambiguous row counts measure 8 as met and says so")
 
     failing, result = got["api-differs"]
     ws = result["reported"]["wrong_split"]

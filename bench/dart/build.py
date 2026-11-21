@@ -42,7 +42,7 @@ import xml.etree.ElementTree as ET
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-BUILDER_VERSION = "e4-builder-2"
+BUILDER_VERSION = "e4-builder-3"
 
 # ---------------------------------------------------------------- the registered lists (docs/eval-plan.md, E4)
 
@@ -85,6 +85,7 @@ ABSTAIN_KINDS = ("account", "column", "year", "fs", "sce", "receipt", "statement
 UNUSABLE_CF_COLUMN = "frmtrm_q_amount"
 ABSTAIN_EACH = 5
 AMENDED_EACH = 5
+AMBIGUOUS_EACH = 10
 WAYS = ("won", "million", "eok", "jo_eok")
 EOK = Decimal(100000000)
 JO = Decimal(1000000000000)
@@ -917,9 +918,34 @@ def matches(written, quantum, value):
 # ---------------------------------------------------------------- rows, facts, cases
 
 PLAN_FILES = ("by-id.json", "by-name.json", "pinned.json", "swap.json") \
-    + tuple(f"abstain-{k}.json" for k in ABSTAIN_KINDS) + ("amended.json",)
-SET_FILES = PLAN_FILES + ("document.md", "swap.md", "gold.json")
+    + tuple(f"abstain-{k}.json" for k in ABSTAIN_KINDS) + ("amended.json", "ambiguous.json")
+SET_FILES = PLAN_FILES + ("document.md", "swap.md", "ambiguous.md", "gold.json")
 MARK_RE = re.compile(r"^(?:\s*\[[^\]]*\])+")
+
+
+def ambiguous_rows(rows, report):
+    """Rows a locator cannot single out (measure 8), in the order DART lists them, at most AMBIGUOUS_EACH of each
+    kind: by name, a row of the four statements whose trimmed name is not empty and is shared by several rows of
+    its statement (any account id); by id, a row with a standard account id that several rows of its statement
+    share. Each is asked under the first column of the contract's table for its report and statement."""
+    ids = {s: Counter() for s in STATEMENTS}
+    names = {s: Counter() for s in STATEMENTS}
+    for st, aid, nm in rows:
+        if st in ids:
+            ids[st][aid] += 1
+            names[st][nm.strip()] += 1
+    by_name, by_id = [], []
+    for st, aid, nm in rows:
+        if st not in ids:
+            continue
+        column = columns_for(report, st)[0][0]
+        if nm.strip() and names[st][nm.strip()] > 1 and len(by_name) < AMBIGUOUS_EACH:
+            by_name.append({"kind": "name", "statement": st, "name": nm, "column": column,
+                            "rows_sharing": names[st][nm.strip()]})
+        if aid.startswith(ID_PREFIXES) and ids[st][aid] > 1 and len(by_id) < AMBIGUOUS_EACH:
+            by_id.append({"kind": "id", "statement": st, "account": aid, "column": column,
+                          "rows_sharing": ids[st][aid]})
+    return by_name + by_id
 
 
 def read_rows(data):
@@ -1058,7 +1084,7 @@ class Builder:
                 facts.append(dict(row, column=column, period_key=pk, period=list(periods[pk]), value=value,
                                   unit=unit))
         return {"corp": corp, "report": report, "year": year, "reprt": reprt, "fs": fs, "rcept_no": rcept,
-                "rows": len(rows), "rows_by_statement": dict(Counter(st for st, _, _ in rows)),
+                "rows": len(rows), "rows_by_statement": dict(Counter(st for st, _, _ in rows)), "row_list": rows,
                 "eligible_rows": len(elig), "left_out": dict(left), "ids": ids, "facts": facts,
                 "possible": possible, "no_gold": dict(no_gold),
                 "periods": {k: list(v) for k, v in periods.items()}, "period_notes": notes,
@@ -1180,6 +1206,28 @@ def build_cases(s, other, company_ref, amended):
         files["amended.json"] = plan("document.md", [fact_claim(f, rcept_no=amended["earliest_rcept_no"])
                                                      for f in facts[:AMENDED_EACH]])
 
+    # Ambiguous rows (measure 8). They need no gold: the line shows the written amount of the set's first fact,
+    # and the expected verdict, `unverifiable`, does not depend on it. No amount is read from the statements answer.
+    ambiguous, shown = [], facts[0]
+    for a in ambiguous_rows(s["row_list"], s["report"]):
+        if a["kind"] == "name":
+            label = (f"{a['statement']} · name: {a['name']} · {a['column']} · a name {a['rows_sharing']} rows "
+                     f"share · shows the amount of {shown['id']}")
+            which = {"name": a["name"]}
+        else:
+            label = (f"{a['statement']} · {a['account']} · {a['column']} · an id {a['rows_sharing']} rows share · "
+                     f"shows the amount of {shown['id']}")
+            which = {"account": a["account"]}
+        line, quote = _line(label, shown["text"])
+        loc = {"dart": company_ref, "year": s["year"], "report": s["report"], "fs": s["fs"],
+               "statement": a["statement"], **which, "column": a["column"]}
+        ambiguous.append(dict(a, id=f"m{len(ambiguous) + 1:04d}", line=len(ambiguous) + 1, doc_line=line,
+                              quote=quote, locator=loc))
+    if ambiguous:
+        files["ambiguous.md"] = "\n".join(x["doc_line"] for x in ambiguous) + "\n"
+        files["ambiguous.json"] = plan("ambiguous.md", [_claim(x["id"], x["line"], x["quote"], shown["number"],
+                                                               x["locator"]) for x in ambiguous])
+
     counts = {"rows": s["rows"], "eligible_rows": s["eligible_rows"], "facts_possible": s["possible"],
               "facts": len(facts), "by_id": len(facts), "by_name": len(named), "pinned": len(facts),
               "swap": len(swaps), "swap_by_kind": dict(Counter(x["kind"] for x in swaps)),
@@ -1187,6 +1235,8 @@ def build_cases(s, other, company_ref, amended):
               "abstain": sum(len(v) for v in abstain.values()),
               "abstain_by_kind": {k: len(v) for k, v in abstain.items()},
               "abstain_not_built": dict(abstain_skipped), "amended": len(amended_facts),
+              "ambiguous": len(ambiguous),
+              "ambiguous_by_kind": {k: sum(1 for x in ambiguous if x["kind"] == k) for k in ("name", "id")},
               "ways": dict(Counter(f["way"] for f in facts))}
     files["gold.json"] = {
         "set": {k: s[k] for k in ("corp", "report", "year", "reprt", "fs", "rcept_no")},
@@ -1202,6 +1252,8 @@ def build_cases(s, other, company_ref, amended):
         "abstain": abstain,
         "amended": {"facts": amended_facts, "earliest_rcept_no": amended.get("earliest_rcept_no"),
                     "served_rcept_no": s["rcept_no"]} if amended_facts else None,
+        "ambiguous": [{k: x[k] for k in ("id", "line", "kind", "statement", "name", "account", "column",
+                                         "rows_sharing") if k in x} for x in ambiguous],
     }
     return files, counts
 
@@ -1221,7 +1273,7 @@ def write_set(folder, files):
             with open(path, "w", encoding="utf-8", newline="\n") as fh:
                 fh.write(content)
         else:
-            write_rows_json(path, content, ("claims", "facts", "swap"))
+            write_rows_json(path, content, ("claims", "facts", "swap", "ambiguous"))
 
 
 def _add(total, part):
@@ -1352,13 +1404,16 @@ def print_counts(m):
           + (", ".join(f"{k} {v:,}" for k, v in sorted(left.items())) or "none"))
     print(f"facts possible {c.get('facts_possible', 0):,}; facts with a gold {c.get('facts', 0):,}; without a gold "
           f"{sum(no_gold.values()):,}: " + (", ".join(f"{k} {v:,}" for k, v in sorted(no_gold.items())) or "none"))
+    amb = c.get("ambiguous_by_kind", {})
     print("cases: by id {by_id:,}; by name {by_name:,}; pinned {pinned:,}; swap {swap:,} ({kinds}); "
-          "abstention {abstain:,} ({akinds}); amended {amended:,}".format(
+          "abstention {abstain:,} ({akinds}); amended {amended:,}; ambiguous {ambiguous:,} (by name {an:,}, "
+          "by id {ai:,})".format(
               by_id=c.get("by_id", 0), by_name=c.get("by_name", 0), pinned=c.get("pinned", 0), swap=c.get("swap", 0),
               kinds=", ".join(f"{k} {v:,}" for k, v in sorted(c.get("swap_by_kind", {}).items())) or "none",
               abstain=c.get("abstain", 0),
               akinds=", ".join(f"{k} {v:,}" for k, v in c.get("abstain_by_kind", {}).items()) or "none",
-              amended=c.get("amended", 0)))
+              amended=c.get("amended", 0), ambiguous=c.get("ambiguous", 0), an=amb.get("name", 0),
+              ai=amb.get("id", 0)))
     print("swap cases not built because the neighbour as written passes for the fact: "
           + (", ".join(f"{k} {v:,}" for k, v in sorted(c.get("swap_not_built_same_as_written", {}).items()))
              or "none"))
@@ -1370,7 +1425,9 @@ def print_counts(m):
               f"no gold {sum(pc['no_gold'].values()):,} "
               f"({', '.join(f'{k} {v}' for k, v in sorted(pc['no_gold'].items())) or 'none'}); "
               f"by name {cc.get('by_name', 0):,}; swap {cc.get('swap', 0):,}; abstention {cc.get('abstain', 0):,}; "
-              f"amended {cc.get('amended', 0):,}")
+              f"amended {cc.get('amended', 0):,}; ambiguous by name "
+              f"{cc.get('ambiguous_by_kind', {}).get('name', 0):,}, by id "
+              f"{cc.get('ambiguous_by_kind', {}).get('id', 0):,}")
 
 
 def self_test():

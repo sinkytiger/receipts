@@ -12,9 +12,10 @@ every file under its cache and output folders are searched for the key. Only cou
 
 Scoring runs the tool as a black box (`check PLAN --out DIR --dart-cache DIR`) on the cases written by
 bench/dart/build.py, with no key in its environment and RECEIPTS_DART_URL pointing at a closed local port: a plan
-that makes the tool want a request stops and counts as a failure. It computes the seven E4 measures, compares them
-with the registered bars, writes bench/dart/results/<set>-<commit>-<UTC>.json and .md and appends one line to
-bench/dart/runs.jsonl. Exit 0 if all seven bars are met, 1 otherwise, 2 when it cannot start.
+that makes the tool want a request stops and counts as a failure. It computes the eight E4 measures (the seven
+registered ones and measure 8, added on 2026-11-21 under the plan's rule for a broken copy that passes every bar),
+compares them with their bars, writes bench/dart/results/<set>-<commit>-<UTC>.json and .md and appends one line
+to bench/dart/runs.jsonl. Exit 0 if all eight bars are met, 1 otherwise, 2 when it cannot start.
 """
 from __future__ import annotations
 
@@ -495,7 +496,7 @@ def score(a, manifest, root, tool, cache):
             one(job)
 
     # 2. verdicts against the gold
-    facts, swaps, abst, amended = [], [], [], []
+    facts, swaps, abst, amended, ambiguous = [], [], [], [], []
     golds = {}
     for s in sets:
         gold = golds[s["folder"]] = load_json(os.path.join(root, "sets", s["folder"], "gold.json"))
@@ -531,6 +532,11 @@ def score(a, manifest, root, tool, cache):
                                     served_rcept_no=gold["amended"]["served_rcept_no"], earlier_verdict=ev,
                                     earlier_reason=er, served_verdict=sv, served_reason=sr,
                                     ok=ev == "unverifiable" and sv == "verified"))
+        for x in gold.get("ambiguous") or []:
+            v, reason, _ = lookup(answers.get((s["folder"], "ambiguous.json")), x["id"])
+            ambiguous.append(dict(tag, id=x["id"], kind=x["kind"], statement=x["statement"],
+                                  named=x.get("name") if x["kind"] == "name" else x.get("account"),
+                                  rows_sharing=x.get("rows_sharing"), verdict=v, reason=reason))
 
     # 3. stop cases and the key
     stops = stop_cases(py, tool, root, sets, cache, env, a.timeout, lambda m: print(m, flush=True))
@@ -572,6 +578,7 @@ def score(a, manifest, root, tool, cache):
     sw_b = [r for r in swaps if r["group"] == "fact_not_verified"]
     sw_a_ok, sw_b_ok = sum(1 for r in sw_a if r["ok"]), sum(1 for r in sw_b if r["ok"])
     a_unv = cnt(abst, "unverifiable")
+    g_unv = cnt(ambiguous, "unverifiable")
     am_ok = sum(1 for r in amended if r["ok"])
     s_ok = sum(1 for r in stops if r["ok"])
     fill_places = fill_record.get("key_search", {}).get("places_count")
@@ -604,6 +611,14 @@ def score(a, manifest, root, tool, cache):
              note="; ".join(x for x in (
                  "" if fill_matches else "the fill step was run with another version of the tool file",
                  "" if fill_complete else "the fill step left plans unanswered") if x)),
+        dict(n=8, name="ambiguous rows: a locator that names a row by a name, or by an account id, that several "
+                       "rows of the statement share is judged unverifiable",
+             value=rate(g_unv, len(ambiguous)), num=g_unv, den=len(ambiguous), cases=len(ambiguous),
+             by_kind={k: {"n": sum(1 for r in ambiguous if r["kind"] == k),
+                          "unverifiable": sum(1 for r in ambiguous if r["kind"] == k
+                                              and r["verdict"] == "unverifiable")} for k in ("name", "id")},
+             bar="100%", ok=g_unv == len(ambiguous),
+             note="no ambiguous row in this run: counted as met" if not ambiguous else ""),
     ]
 
     # 6. reported without a bar
@@ -619,11 +634,15 @@ def score(a, manifest, root, tool, cache):
     for r in facts:
         if r["verdict"] != "verified":
             bump(reasons, r["arm"], f"{r['verdict']}:{r['reason']}")
-    abst_by, swap_by, stop_by = {}, {}, {}
+    abst_by, swap_by, stop_by, amb_by = {}, {}, {}, {}
     for r in abst:
         bump(abst_by, r["kind"], "n")
         bump(abst_by, r["kind"], "verdict:" + r["verdict"])
         bump(abst_by, r["kind"], "reason:" + str(r["reason"]))
+    for r in ambiguous:
+        bump(amb_by, r["kind"], "n")
+        bump(amb_by, r["kind"], "verdict:" + r["verdict"])
+        bump(amb_by, r["kind"], "reason:" + str(r["reason"]))
     for r in swaps:
         k = f"{r['kind']} / {r['group']}"
         bump(swap_by, k, "n")
@@ -635,8 +654,8 @@ def score(a, manifest, root, tool, cache):
     counts = {"companies": len(manifest.get("companies", [])), "sets": len(sets),
               "missing_sets": len(manifest.get("missing_sets", [])), "facts": len(arms["by_id"]),
               "by_id": len(arms["by_id"]), "by_name": len(arms["by_name"]), "pinned": len(arms["pinned"]),
-              "swap": len(swaps), "abstain": len(abst), "amended": len(amended), "stop_cases": len(stops),
-              "plans_run": len(jobs)}
+              "swap": len(swaps), "abstain": len(abst), "amended": len(amended), "ambiguous": len(ambiguous),
+              "stop_cases": len(stops), "plans_run": len(jobs)}
     reported = {
         "wrong_split": {"counts": split, "api_differs_from_gold": sum(1 for w in wrong_rows
                                                                       if w["api_differs_from_gold"]),
@@ -644,7 +663,8 @@ def score(a, manifest, root, tool, cache):
         "facts_without_gold": totals.get("no_gold", {}), "rows_left_out": totals.get("rows_left_out", {}),
         "not_verified_by_reason": reasons, "swap_by_kind": dict(sorted(swap_by.items())),
         "swap_not_built": totals.get("counts", {}).get("swap_not_built_same_as_written", {}),
-        "abstain_by_kind": abst_by, "amended": amended, "stop_by_variant": stop_by,
+        "abstain_by_kind": abst_by, "amended": amended, "ambiguous_by_kind": amb_by,
+        "stop_by_variant": stop_by,
         "stop_requests_seen_without_a_key": sum(r["requests_seen"] or 0 for r in stops if r["variant"] == "no_key"),
         "stop_stopped_answers_cached": sum(len(r["stopped_answers_cached"]) for r in stops),
         "key_search": {"fill_run": fill_record.get("key_search"), "fill_record": os.path.basename(record_path),
@@ -663,7 +683,8 @@ def score(a, manifest, root, tool, cache):
     receipts = sorted({f"{s['corp_code']} {s['report']} {s['rcept_no']}" for s in sets})
     not_passing = ([r for r in facts if r["verdict"] != "verified"][:300]
                    + [dict(r, arm="swap") for r in swaps if not r["ok"]][:150]
-                   + [dict(r, arm="abstain") for r in abst if r["verdict"] != "unverifiable"][:150])
+                   + [dict(r, arm="abstain") for r in abst if r["verdict"] != "unverifiable"][:150]
+                   + [dict(r, arm="ambiguous") for r in ambiguous if r["verdict"] != "unverifiable"][:150])
     result = {"timestamp": stamp, "set": manifest.get("set"), "held_out": bool(manifest.get("held_out")),
               "made_up_data": bool(manifest.get("made_up")), "commit": commit, "dirty": bool(porcelain),
               "tool": tool_label(tool), "tool_sha256": sha256_file(tool),
@@ -713,6 +734,8 @@ def shown_value(m):
     text = f"{m['value']:.2%} ({m['num']}/{m['den']})"
     if m["n"] == 3:
         text += f"; other cases unverifiable {m['other_cases_unverifiable']}/{m['other_cases']}"
+    if m["n"] == 8:
+        text += "; " + ", ".join(f"by {k} {x['unverifiable']}/{x['n']}" for k, x in m["by_kind"].items())
     return text
 
 
@@ -723,8 +746,8 @@ def render_md(r):
            f"Run {r['timestamp']} with `{r['tool']}`. Data fetched {', '.join(r['fetch_dates'] or ['?'])}. "
            f"Companies {c['companies']}, sets {c['sets']} (DART has no data for {c['missing_sets']}), facts with a "
            f"gold {c['facts']}: by id {c['by_id']}, by name {c['by_name']}, pinned {c['pinned']}. Swap cases "
-           f"{c['swap']}, abstention cases {c['abstain']}, amended cases {c['amended']}, stop cases "
-           f"{c['stop_cases']}.", "",
+           f"{c['swap']}, abstention cases {c['abstain']}, amended cases {c['amended']}, ambiguous-row cases "
+           f"{c['ambiguous']}, stop cases {c['stop_cases']}.", "",
            f"Overall: {'PASS' if r['pass'] else 'FAIL'}. Plans the tool did not answer (crash, timeout, exit 2, no "
            f"receipts.json): {len(r['failures'])} of {c['plans_run']}.", "",
            "| # | Measure | Result | Bar | Met |", "|---|---|---|---|---|"]
@@ -785,6 +808,9 @@ def render_md(r):
                 f"{'yes' if x['ok'] else 'no'} |" for x in rep["amended"]]
     else:
         out += ["- none in this run (0 cases; the measure counts as met)"]
+    out += ["", "## Ambiguous rows by kind", ""]
+    out += [f"- by {k}: " + ", ".join(f"{x} {n}" for x, n in sorted(v.items()))
+            for k, v in rep["ambiguous_by_kind"].items()] or ["- none in this run (0 cases; measure 8 counts as met)"]
     out += ["", "## Stop cases", "", "| set | case | exit | met | requests seen | key places |", "|---|---|---|---|---|---|"]
     out += [f"| {s['set']} | {s['variant']} | {s['exit']} | {'yes' if s['ok'] else 'no'} | "
             f"{'' if s['requests_seen'] is None else s['requests_seen']} | "
