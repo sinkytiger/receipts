@@ -1,0 +1,151 @@
+{
+ "document": "report.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 3,
+   "quote": "3분기 매출은 195조 2,532억원",
+   "number": "195조 2,532억원",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "005930",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 3,
+   "quote": "영업이익은 107조 4,405억원",
+   "number": "107조 4,405억원",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "005930",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 4,
+   "quote": "3분기 영업이익률은 55.0%다",
+   "number": "55.0%",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "dart": "005930",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    },
+    "den": {
+     "dart": "005930",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 5,
+   "quote": "누적 영업이익은 254.2조원",
+   "number": "254.2조원",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "005930",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 6,
+   "quote": "3분기 순이익은 194.0조원",
+   "number": "194.0조원",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "005930",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 7,
+   "quote": "자산총계는 791.8조원",
+   "number": "791.8조원",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "005930",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 7,
+   "quote": "작년 말보다 39.7% 늘었다",
+   "number": "39.7%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "dart": "005930",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount"
+    },
+    "old": {
+     "dart": "005930",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "frmtrm_amount"
+    }
+   }
+  }
+ ]
+}

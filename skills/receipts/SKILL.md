@@ -1,6 +1,6 @@
 ---
 name: receipts
-description: Check every number in a report, summary, analysis or answer against its source files before calling it checked. Use when the user asks to verify, fact-check, review or double-check numbers ("are these numbers right?", "check this against the data", "숫자 확인해줘", "검증해줘", "원자료와 대조해줘"), and before you deliver a document whose numbers come from CSV, Excel, JSON, Markdown tables or text sources, or from what a US-listed company reported to the SEC (10-K, 10-Q on EDGAR). Gives each number a receipt - verified, wrong (with the recomputed value), unverifiable or uncovered - and stops you from saying "all checked" when some numbers were not.
+description: Check every number in a report, summary, analysis or answer against its source files before calling it checked. Use when the user asks to verify, fact-check, review or double-check numbers ("are these numbers right?", "check this against the data", "숫자 확인해줘", "검증해줘", "원자료와 대조해줘"), and before you deliver a document whose numbers come from CSV, Excel, JSON, Markdown tables or text sources, or from what a US-listed company reported to the SEC (10-K, 10-Q on EDGAR) or a Korean company filed with DART (사업보고서, 반기·분기보고서). Gives each number a receipt - verified, wrong (with the recomputed value), unverifiable or uncovered - and stops you from saying "all checked" when some numbers were not.
 ---
 
 # receipts
@@ -13,7 +13,7 @@ The script is `scripts/receipts.py` in this skill's folder. It needs only Python
 
 1. **Get the document into a text file.** The script reads `.md` or `.txt`. If the numbers are in a chat answer, a Word file or a PDF, save the text to a file first. Line numbers refer to that file.
 2. **Scan.** `python <skill>/scripts/receipts.py scan report.md` prints every number with its line. This list is the denominator. It also shows what was skipped (dates, years, versions, list markers) and why.
-3. **Find the sources and their units.** Use the files the user gave you or named. Do not guess a source and do not look one up on the web. The one outside source is SEC EDGAR, for figures a US-listed company reported in its filings (see "SEC filings" below). A number with no source is `no_source`. Note what each source says about its own units: a column name such as `usd_thousands`, a note field, a header line, or what the user told you.
+3. **Find the sources and their units.** Use the files the user gave you or named. Do not guess a source and do not look one up on the web. There are two outside sources: SEC EDGAR, for figures a US-listed company reported in its filings, and Korea's DART, for the financial statements in a Korean company's periodic reports (see "SEC filings" and "Korean filings" below). A number with no source is `no_source`. Note what each source says about its own units: a column name such as `usd_thousands`, a note field, a header line, or what the user told you.
 4. **Write `claims.json`** in the document's folder: one claim for every number in the scan list. The format is below.
 5. **Check.** `python <skill>/scripts/receipts.py check claims.json` prints the receipts and writes `receipts.json` and `receipts.md`. Exit code 0 means no number is wrong, 1 means at least one is wrong, 2 means the run stopped (a file could not be read, or the plan is not valid).
 6. **Repair the plan, never the verdict.** Fix your own mistakes and rerun: a claim listed under "claims that point at nothing" (the quote is not verbatim, or the line is off), a locator that matched no cell or several, a `multiplier` you left out although the source states its unit, a number still `uncovered`. When a number comes back `wrong`, check once that the locator points at what the sentence talks about and that the units follow the source. If they do, the number is wrong. Never choose a locator, formula, `multiplier` or `direction` because it makes the written number match.
@@ -112,6 +112,29 @@ A cell can be a fact a US-listed company reported to the SEC. It works wherever 
 - Segment, product and regional numbers, and concepts a company defined itself, are not in this data: check them against a file, or mark them `no_source`.
 - A filing made after the fetch date on the receipt is not in the cache. Add `--refresh` to `check` to fetch again.
 
+### Korean filings (DART)
+
+A cell can be an amount in the financial statements of a periodic report a Korean company filed with DART (사업보고서, 반기보고서, 분기보고서). It works wherever one cell is expected, inside formulas too.
+
+```json
+{"dart": "005930", "year": 2026, "report": "q3", "fs": "CFS", "statement": "IS",
+ "account": "dart_OperatingIncomeLoss", "column": "thstrm_amount"}
+```
+
+- **The key.** DART gives every user a free key (opendart.fss.or.kr). The script reads it from the environment variable `RECEIPTS_DART_KEY` and stops with exit code 2 when it is empty and something has to be fetched. A report that is already in the cache needs no key. Ask the user to set the variable. Never ask them to paste the key into the chat, and never print it or put it in a file or a command.
+- **Find the company and the rows first.** Run these in the folder of `claims.json`, so they share its cache.
+  - `receipts.py dart company 삼성전자` gives the stock code and the company code. `dart` takes either, as a string. A name is not accepted.
+  - `receipts.py dart accounts 005930 --year 2026 --report q3 --fs CFS --statement IS --match 영업` lists the rows of one report: `account`, `name`, and for each column its value, the name DART gives the period and what the column holds.
+- **`report`** is `q1`, `half`, `q3` or `annual`. **`year`** is the business year as DART files it. For a company whose year does not end in December, look at the period names in the listing to see which year holds the period.
+- **`fs`** is `CFS` (연결) or `OFS` (별도). There is no default. "연결 기준" is `CFS`, "별도 기준" is `OFS`. If the document does not say, use `CFS` when the company files consolidated statements, and say in the report that you assumed it.
+- **`statement`** is `BS`, `IS`, `CIS` or `CF`. The same account can stand in more than one statement.
+- **Pick the column by what the sentence says, never by its value.** In a half-year or third-quarter report, `thstrm_amount` of an income statement is the last three months alone. "3분기 누적", "1~9월", "상반기" are `thstrm_add_amount`. "전년 동기" is `frmtrm_q_amount` for three months and `frmtrm_add_amount` for the cumulative period. On an interim balance sheet, `frmtrm_amount` is the end of the previous business year, not the same date a year earlier. In an annual report, `frmtrm_amount` is the previous year and `bfefrmtrm_amount` the year before it. No report holds a fourth quarter alone: it is the annual `thstrm_amount` minus the third-quarter `thstrm_add_amount` (`difference`).
+- **Pick the row by its meaning.** Prefer `account`, the id. A row listed with `"account": null` has no standard code: name it with `name`, copied exactly. If two rows match, add `name` to `account`.
+- **Amended reports.** DART's API holds only the latest version of a report, and the receipt shows its receipt number. If the document cites a filing (a receipt number, or a DART link with `rcpNo=`), add `"rcept_no"`. The verdict is then `unverifiable` (`dart_receipt_differs`) when that filing has been replaced, instead of a comparison with other figures.
+- Amounts are in whole won, so `107조 4,405억원` needs no `multiplier`. Per-share amounts are in won.
+- The statement of changes in equity, notes, segment figures, preliminary earnings (잠정실적) and years before 2015 are not in this data: check them against a file, or mark them `no_source`.
+- A report filed or amended after the fetch date on the receipt is not in the cache. Add `--refresh` to `check` to fetch again.
+
 ### Things that go wrong
 
 - **Units of the source.** If the source is in thousands or millions, add `"multiplier": 1000` (or `1000000`) to every locator that reads such a column, inside formulas too. It works on `where` selectors as well. If the document writes a percent and the source cell holds a fraction (`0.244` for 24.4%), add `"multiplier": 100`. A percent change or share of two values in the same unit needs none.
@@ -138,7 +161,8 @@ Then:
 - every `uncovered` number. If any remain, say that those were not checked;
 - numbers verified with the note `truncated`: the written value is the source value cut off, not rounded (11.30 for 11.3054). Name them so the reader can decide;
 - every multiplier you declared and where it came from. Mark the ones the source does not state as assumptions;
-- if EDGAR was used: the fetch date the receipt shows, and every `accession` or `version` you chose and why.
+- if EDGAR was used: the fetch date the receipt shows, and every `accession` or `version` you chose and why;
+- if DART was used: the fetch date and the receipt numbers the receipt shows, and every `fs` you assumed because the document did not say.
 
 What the check does not cover, in one or two lines: numbers written as words ("five years", "두 자릿수"), the skipped tokens the scan listed (dates, years, code), claims that are not numbers, and whether the sources themselves are right.
 
