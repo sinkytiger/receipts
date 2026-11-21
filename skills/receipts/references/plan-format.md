@@ -54,8 +54,9 @@ Exactly one cell must match. Zero matches or more than one give `unverifiable`.
 - **Text** (`.txt`, or any other extension): `contains` must match exactly one line. `nth` (1-based, default 1) picks the n-th number on that line, counted the way `scan` counts numbers.
 - **Matching**: cell text and filter values are compared as strings after trimming spaces. A numeric cell whose value is a whole number is compared without a decimal part (`2025.0` matches `"2025"`). A `row` or `where` key that is not a column of the table gives `locator_no_match`.
 - **Cell values**: a cell may hold a JSON or Excel number, or text with thousands separators, a currency symbol, a trailing `%`, or parentheses for a negative value (`(1,500)`).
-- **`multiplier`** (optional, a finite number or a numeric string): the cell value is multiplied by it. Use it when the source is in thousands or millions. It works on many-cells selectors too, on each cell. It appears on the receipt.
+- **`multiplier`** (optional, a number or a numeric string, zero or between 1e-30 and 1e30 in size): the cell value is multiplied by it. Use it when the source is in thousands or millions. It works on many-cells selectors too, on each cell. It appears on the receipt.
 - Files are read as UTF-8 (a BOM is accepted).
+- A `file` inside a folder named `.receipts` gives `unsupported`. That folder is the script's own cache of EDGAR and DART answers, which is read through `edgar` and `dart` locators only. As a plain file it would give any row and column, without the rules those locators apply.
 
 ### Many cells
 
@@ -102,6 +103,7 @@ A single cell may also be a fact a company reported to the SEC. Section 8 says h
 - **Values** are as the company filed them: money in whole dollars (or whole units of the currency named), share counts in whole shares, per-share amounts in dollars, and ratios (unit `pure`, a tax rate for example) as fractions, so 17% is stored as 0.17. A document that writes such a ratio as a percent needs `"multiplier": 100`. `multiplier` works as on any cell.
 - **What EDGAR does not hold.** The SEC's API carries the facts a company reports for itself as a whole. Numbers on a breakdown axis (by segment, product or region) are not there and give `locator_no_match`. Check those against a file. Concepts a company defined itself (under its own prefix instead of `us-gaap` or `dei`) were also absent from every company's data looked at so far.
 - An EDGAR locator is a single cell. `where` and `rows` do not work with it (`unsupported`). To add up EDGAR facts, list them under `items`.
+- A field that is not in the table (other than `multiplier`) gives `locator_no_match`. A misspelled `accession` or `version` therefore cannot drop out unnoticed, and a locator cannot name a file beside an EDGAR fact.
 
 ### DART (Korean filings)
 
@@ -126,7 +128,7 @@ A single cell may also be an amount in the financial statements of a periodic re
 | `column` | yes | Which amount of the row, under DART's own name: `thstrm_amount`, `thstrm_add_amount`, `frmtrm_amount`, `frmtrm_q_amount`, `frmtrm_add_amount` or `bfefrmtrm_amount`. |
 | `rcept_no` | no | The receipt number (14 digits, a string or a whole number) of the filing. The claim is checked only if DART serves the report under this number. |
 
-`report`, `fs` and `statement` are read without regard to case. Spaces at both ends of a value are ignored. Digits are the ASCII digits 0 to 9.
+`report`, `fs` and `statement` are read without regard to case. Spaces at both ends of a value are ignored, except in `column`, which is written exactly. Digits are the ASCII digits 0 to 9.
 
 A field that is not in this table (other than `multiplier`) gives `locator_no_match`. A misspelled `rcept_no` therefore cannot drop out unnoticed, and a locator cannot name a file or an EDGAR fact beside a DART amount.
 
@@ -297,7 +299,7 @@ When a plan uses DART, `receipts.json` also has `"dart": {"files": [{"file": "fn
 
 A missing sheet, table, column or key inside a readable file is a locator problem (`locator_no_match`), not a stop.
 
-When `check` stops, a `receipts.json` or `receipts.md` that an earlier run left in the output folder is replaced by a note that this run stopped, so that an earlier result cannot be taken for this one. Nothing is created if the folder had none.
+When `check` stops, a `receipts.json` or `receipts.md` that an earlier run left in the output folder is replaced by a note that this run stopped, so that an earlier result cannot be taken for this one. Nothing is created if the folder had none. If an earlier file cannot be replaced, the script says so on its error output. A result that cannot be written is a stop as well.
 
 ## 8. EDGAR access
 
@@ -364,9 +366,9 @@ A statements file is named by company code, year, DART's report code (`11013` fo
 
 **DART's answers.** DART puts a status code in each answer. `000` is data. `013` means it has nothing for the request, which is `locator_no_match`. Any other status stops the script with exit code 2: `010` and `011` (a key that is not registered or cannot be used), `012` (an address that is not allowed), `020` (the request limit is exceeded), `100` and `101` (a bad request), `800` (DART is under maintenance), `900`, `901`, and any code not listed here. The script shows the three-digit code and, for the codes above, its own words for it. The message text DART sends with a status is never shown, because it is text from a server. A stopped answer is not cached.
 
-**Stops.** A failed request (no connection, an HTTP error, a timeout), a response that is not the expected JSON or zip, or a cached file that is not, stops the script with exit code 2. A statements answer is the expected JSON only if every row carries a receipt number of 14 digits and names the company, the year and the report that were asked for. So an answer for another report, sent by DART or found in the cache under the wrong name, is never used. A company code file in which a company cannot be read is not the expected zip. An answer that repeats the key, or is larger than 64 MB, also stops the script and is not cached. A request that gets no HTTP answer or gets HTTP 429, 500, 502, 503 or 504 is tried once more after two seconds. A redirect to another host, or from https to http, counts as a failed request.
+**Stops.** A failed request (no connection, an HTTP error, a timeout), a response that is not the expected JSON or zip, or a cached file that is not, stops the script with exit code 2. A statements answer is the expected JSON only if every row carries a receipt number of 14 digits and names the company, the year and the report that were asked for. So an answer for another report, sent by DART or found in the cache under the wrong name, is never used. A company code file in which a company cannot be read is not the expected zip. An answer that repeats the key, or is larger than 64 MB, or a company code file that unpacks to more than 512 MB, also stops the script and is not cached. The rows of a statements answer do not say whether they are consolidated or separate, so that part of an answer cannot be checked against the request. A request that gets no HTTP answer, or a body that ends before its announced length or before the end of its gzip stream, or HTTP 429, 500, 502, 503 or 504, is tried once more after two seconds. A redirect to another host, or from https to http, counts as a failed request.
 
-**Other address.** `RECEIPTS_DART_URL` replaces `https://opendart.fss.or.kr`. It exists for tests. The requests, with the key, then go to that address instead of DART's. A file fetched that way is noted in `<cache>/origin.json` with the address it came from, and the receipt names that address beside the file, in that run and in every later run from the same cache. Fetching the file again from DART's own address removes the note.
+**Other address.** `RECEIPTS_DART_URL` replaces `https://opendart.fss.or.kr`. It exists for tests. The requests, with the key, then go to that address instead of DART's. A file fetched that way is noted in `<cache>/origin.json` with the address it came from, before the file itself is stored, and the receipt names that address beside the file, in that run and in every later run from the same cache. Fetching the file again from DART's own address removes the note.
 
 ### Looking things up
 

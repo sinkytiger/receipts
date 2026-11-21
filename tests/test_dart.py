@@ -105,7 +105,8 @@ STATEMENTS = {
                                                  (350000000000, 1020000000000, 300000000000, 900000000000),
                                                  (410000000000, 390000000000)),
 }
-COMPANIES = [(CORP, "예시전자", STOCK, "Example Electronics"), ("99900200", "예시전자서비스", "", "Example Service"),
+COMPANIES = [("99900050", "가나다 예시전자", "", "Early Example"),
+             (CORP, "예시전자", STOCK, "Example Electronics"), ("99900200", "예시전자서비스", "", "Example Service"),
              ("99900300", "다른 & 회사", "9990B0", "Other & Co"), ("99900400", "같은코드하나", "9990C0", "Same One"),
              ("99900500", "같은코드둘", "9990C0", "Same Two")]
 
@@ -165,7 +166,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if srv.zipped and "gzip" in (self.headers.get("Accept-Encoding") or ""):
             body = gzip.compress(body)
             self.send_header("Content-Encoding", "gzip")
-        self.send_header("Content-Length", str(len(body)))
+        full = len(body)
+        if srv.cut:
+            body = body[:-srv.cut]
+        self.send_header("Content-Length", str(len(body) if srv.cut_quietly else full))
         self.end_headers()
         self.wfile.write(body)
 
@@ -178,6 +182,7 @@ def reset(server):
     server.headers.clear()
     server.fail_with, server.fail_times, server.raw, server.status, server.redirect_to = 0, None, None, "", None
     server.rows, server.echo, server.zipped, server.key = None, False, False, KEY
+    server.cut, server.cut_quietly = 0, False
 
 
 def new_server():
@@ -403,8 +408,9 @@ class DartTest(unittest.TestCase):
         self.assertEqual(r["verdict"], "verified")
         self.assertEqual(res["multipliers"], [{"file": "DART 9990A0", "column": "ifrs-full_Assets thstrm_amount",
                                                "multiplier": "0.000000001", "claims": 1}])
-        for bad in ("Infinity", "NaN", "-Infinity", "x"):
+        for bad in ("Infinity", "NaN", "-Infinity", "x", "1e400", "1e-400", "1e31"):
             self.assertEqual(self.verdict(dart(multiplier=bad)), ("unverifiable", "unsupported"), bad)
+        self.assertEqual(self.verdict(dart(multiplier=0), "값은 0이다.", "0")[0], "verified")
 
     def test_every_formula_takes_dart_cells(self):
         assets, debt, before = dart(), dart("ifrs-full_Liabilities"), dart(column="frmtrm_amount")
@@ -584,6 +590,25 @@ class DartTest(unittest.TestCase):
             self.assertIn("rows of another company, year or report", str(cm.exception))
             self.assertFalse((self.cache() / "fnlttSinglAcntAll").exists(), change)
 
+    def test_a_row_needs_a_receipt_number_of_14_digits(self):
+        for bad in ("2026031090000", "202603109000011", "2026031090000a", "２０２６０３１０９００００１", 20260310900001, None, ""):
+            self.fresh()
+            self.server.rows = [{**r, "rcept_no": bad} for r in annual_rows("CFS")]
+            with self.assertRaises(R.StopError, msg=bad):
+                self.verdict(dart(dart=CORP))
+            self.assertFalse((self.cache() / "fnlttSinglAcntAll").exists(), bad)
+
+    def test_a_cached_stop_status_is_a_cache_problem(self):
+        folder = self.cache() / "fnlttSinglAcntAll"
+        folder.mkdir(parents=True)
+        (folder / "99900100_2025_11011_CFS.json").write_text('{"status": "020", "message": "m"}', encoding="utf-8")
+        os.environ.pop("RECEIPTS_DART_KEY")
+        with self.assertRaises(R.StopError) as cm:
+            self.verdict(dart(dart=CORP))
+        self.assertIn("cannot be used", str(cm.exception))
+        self.assertIn("Delete it or run with --refresh", str(cm.exception))
+        self.assertEqual(self.server.seen, [])
+
     def test_a_cached_file_under_the_wrong_name_stops(self):
         self.verdict(dart(dart=CORP))
         folder = self.cache() / "fnlttSinglAcntAll"
@@ -667,10 +692,13 @@ class DartTest(unittest.TestCase):
             self.assertNotIn("사유", str(cm.exception))   # the server's own message is never shown
             if status in said:
                 self.assertIn(said[status], str(cm.exception))
-        for status in ("ABC", "", " 000", "13"):
+        for status in ("ABC", "", " 000", "13", "secret-text"):
             self.server.raw = json.dumps({"status": status, "message": "m", "list": annual_rows("CFS")}).encode()
-            with self.assertRaises(R.StopError, msg=status):
+            with self.assertRaises(R.StopError, msg=status) as cm:
                 self.verdict(dart(dart=CORP))
+            self.assertIn("a status that is not a three-digit code", str(cm.exception))
+            if status in ("ABC", "secret-text"):
+                self.assertNotIn(status, str(cm.exception))   # what the server wrote there is not repeated
         self.assertFalse((self.cache() / "fnlttSinglAcntAll").exists())
         reset(self.server)
         self.assertEqual(self.verdict(dart(dart=CORP))[0], "verified")
@@ -708,6 +736,36 @@ class DartTest(unittest.TestCase):
                 self.verdict(dart(dart=CORP))
             self.assertIn("DART sent more than", str(cm.exception))
         self.assertFalse((self.cache() / "fnlttSinglAcntAll").exists())
+
+    def test_a_body_that_ends_early_is_tried_again_and_stops(self):
+        for packed in (False, True):
+            self.fresh()
+            self.server.zipped, self.server.cut = packed, 6
+            with self.assertRaises(R.StopError) as cm:
+                self.verdict(dart(dart=CORP))
+            self.assertEqual(str(cm.exception), "cannot read DART (fnlttSinglAcntAll.json: EOFError)")
+            self.assertEqual(len(self.server.seen), 2, packed)
+            self.assertFalse((self.cache() / "fnlttSinglAcntAll").exists())
+        self.fresh()                                         # a gzip stream cut short with a matching length
+        self.server.zipped, self.server.cut, self.server.cut_quietly = True, 6, True
+        with self.assertRaises(R.StopError):
+            self.verdict(dart(dart=CORP))
+        self.assertEqual(len(self.server.seen), 2)
+
+    def test_the_limits_the_contract_states(self):
+        self.assertEqual(self.saved_gap, 0.2)                # at most 5 requests a second
+        self.assertEqual(R.DART_MAX_BYTES, 64 * 1024 * 1024)
+        self.assertEqual(R.DART_HOME, "https://opendart.fss.or.kr")
+        self.assertEqual(R.DART_KEY_ENV, "RECEIPTS_DART_KEY")
+
+    def test_the_fetch_date_is_the_utc_date(self):
+        real = R.time.gmtime
+        self.addCleanup(setattr, R.time, "gmtime", real)
+        fixed = time.struct_time((2031, 7, 8, 23, 30, 0, 1, 189, 0))
+        R.time.gmtime = lambda *a: real(*a) if a else fixed
+        _, res = self.one("자산총계는 5조원이다.", "5조원", dart(dart=CORP))
+        R.time.gmtime = real
+        self.assertEqual(res["dart"]["files"][0]["fetched"], "2031-07-08")
 
     def test_a_gzip_answer_is_unpacked(self):
         self.server.zipped = True
@@ -922,6 +980,15 @@ class DartTest(unittest.TestCase):
         R.DART_HOME = self.url
         _, res = self.one("자산총계는 5조원이다.", "5조원", dart(dart=CORP), refresh=True)
         self.assertNotIn("address", res["dart"]["files"][0])
+        self.assertFalse((self.cache() / "origin.json").exists())   # gone with its last entry
+
+    def test_a_file_from_another_address_is_never_cached_without_its_note(self):
+        self.cache().mkdir(parents=True)
+        (self.cache() / "origin.json").mkdir()               # the note cannot be written
+        with self.assertRaises(R.StopError) as cm:
+            self.verdict(dart(dart=CORP))
+        self.assertIn("cannot write the DART cache", str(cm.exception))
+        self.assertFalse((self.cache() / "fnlttSinglAcntAll" / "99900100_2025_11011_CFS.json").exists())
 
     def test_exit_codes_and_no_stale_receipt_after_a_stop(self):
         self.write(["자산총계는 9조원이다."], [self.claim("자산총계는 9조원", "9조원", dart())])
@@ -939,16 +1006,71 @@ class DartTest(unittest.TestCase):
         fresh_out = self.dir / "new-out"
         self.assertEqual(self.main("check", str(self.dir / "claims.json"), "--refresh", "--out", str(fresh_out))[0], 2)
         self.assertFalse(fresh_out.exists())                 # nothing is created for a run that stopped
+        empty = self.dir / "empty-out"
+        empty.mkdir()
+        (empty / "notes.md").write_text("mine", encoding="utf-8")
+        self.assertEqual(self.main("check", str(self.dir / "claims.json"), "--refresh", "--out", str(empty))[0], 2)
+        self.assertEqual(sorted(p.name for p in empty.iterdir()), ["notes.md"])   # nor in a folder that had none
 
-    def test_a_cached_dart_file_can_also_be_read_as_a_file(self):
-        rel = ".receipts/dart/fnlttSinglAcntAll/99900100_2025_11011_CFS.json"
-        as_file = {"file": rel, "pointer": "/list", "row": {"sj_div": "BS", "account_id": "ifrs-full_Liabilities"},
-                   "column": "thstrm_amount"}
-        claims = [{**self.claim("자산총계는 5조원", "5조원", dart(dart=CORP)), "id": "a"},
-                  {**self.claim("부채총계는 2조원", "2조원", as_file), "id": "b"},
-                  {**self.claim("부채총계는 2조원", "2조원", dart("ifrs-full_Liabilities", dart=CORP)), "id": "c",
-                   "line": 2}]
-        res = self.check(["자산총계는 5조원, 부채총계는 2조원이다.", "부채총계는 2조원이다."], claims)
+    def test_the_stop_note_hides_the_key_and_says_when_it_cannot_be_written(self):
+        out = self.dir / "o"
+        out.mkdir()
+        (out / "receipts.json").write_text('{"counts": {}}', encoding="utf-8")
+        (out / "receipts.md").mkdir()                        # cannot be replaced by a file
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            R._note_stop(str(out), f"asked {KEY} for it")
+        self.assertEqual(json.loads((out / "receipts.json").read_text(encoding="utf-8")), {"stopped": "asked [key] for it"})
+        self.assertEqual(err.getvalue(), "")                 # a folder of that name is not an earlier result
+        (out / "receipts.md").rmdir()
+        (out / "receipts.md").write_text("1 numbers / 1 verified", encoding="utf-8")
+        real = open
+
+        def no_markdown(path, *a, **kw):
+            if str(path).endswith("receipts.md") and a and "w" in a[0]:
+                raise PermissionError("read-only")
+            return real(path, *a, **kw)
+
+        R.open = no_markdown
+        self.addCleanup(delattr, R, "open")
+        with contextlib.redirect_stderr(err):
+            R._note_stop(str(out), "stopped again")
+        self.assertIn("could not replace", err.getvalue())
+        self.assertIn("still holds the result of an earlier run", err.getvalue())
+
+    def test_a_result_that_cannot_be_written_is_a_stop(self):
+        self.write(["자산총계는 5조원이다."], [self.claim("자산총계는 5조원", "5조원", dart(dart=CORP))])
+        self.assertEqual(self.main("check", str(self.dir / "claims.json"), "--quiet")[0], 0)
+        (self.dir / "receipts.json").unlink()
+        (self.dir / "receipts.json").mkdir()                 # the result cannot be written there
+        code, out, err = self.main("check", str(self.dir / "claims.json"), "--quiet")
+        self.assertEqual(code, 2)
+        self.assertIn("cannot write the receipts", err)
+        self.assertTrue((self.dir / "receipts.md").read_text(encoding="utf-8").startswith("The run stopped."))
+
+    def test_the_cache_is_not_read_as_a_plain_file(self):
+        def as_file(rel):
+            return {"file": rel, "pointer": "/list", "row": {"sj_div": "BS", "account_id": "ifrs-full_Liabilities"},
+                    "column": "thstrm_amount"}
+
+        def claims(rel):
+            return [{**self.claim("자산총계는 5조원", "5조원", dart(dart=CORP)), "id": "a"},
+                    {**self.claim("부채총계는 2조원", "2조원", as_file(rel)), "id": "b"},
+                    {**self.claim("부채총계는 2조원", "2조원", dart("ifrs-full_Liabilities", dart=CORP)), "id": "c",
+                     "line": 2}]
+
+        lines = ["자산총계는 5조원, 부채총계는 2조원이다.", "부채총계는 2조원이다."]
+        for rel in (".receipts/dart/fnlttSinglAcntAll/99900100_2025_11011_CFS.json",
+                    ".receipts\\dart\\fnlttSinglAcntAll\\99900100_2025_11011_CFS.json",
+                    "sub/.receipts/edgar/companyfacts/CIK0000999001.json"):
+            res = self.check(lines, claims(rel))
+            self.assertEqual([(c["verdict"], c["reason"]) for c in res["claims"]],
+                             [("verified", "match"), ("unverifiable", "unsupported"), ("verified", "match")], rel)
+        many = {"file": ".receipts/dart/x.json", "pointer": "/list", "where": {}, "column": "thstrm_amount"}
+        self.assertEqual(self.derived("합계는 7조원이다.", "7조원", "sum", {"cells": many}), ("unverifiable", "unsupported"))
+        # a cache kept elsewhere is a file like any other, and reading it beside a DART locator breaks nothing
+        res = self.check(lines, claims("kept/fnlttSinglAcntAll/99900100_2025_11011_CFS.json"),
+                         dart_cache=str(self.dir / "kept"))
         self.assertEqual([(c["verdict"], c["reason"]) for c in res["claims"]], [("verified", "match")] * 3)
 
     # ---- looking things up
@@ -958,9 +1080,11 @@ class DartTest(unittest.TestCase):
         self.addCleanup(os.chdir, ROOT)
         code, out, _ = self.main("dart", "company", "예시전자")
         got = json.loads(out)
-        self.assertEqual((code, got["matched"], got["fetched"]), (0, 2, today()))
-        self.assertEqual(got["companies"], [
+        self.assertEqual(got["fetched"], today())
+        self.assertEqual((code, got["matched"]), (0, 3))
+        self.assertEqual(got["companies"], [   # the one with a stock code first, then by name
             {"corp_code": CORP, "name": "예시전자", "name_en": "Example Electronics", "stock_code": STOCK},
+            {"corp_code": "99900050", "name": "가나다 예시전자", "name_en": "Early Example", "stock_code": None},
             {"corp_code": "99900200", "name": "예시전자서비스", "name_en": "Example Service", "stock_code": None}])
         self.assertEqual(json.loads(self.main("dart", "company", "9990a0")[1])["companies"][0]["corp_code"], CORP)
         self.assertEqual(json.loads(self.main("dart", "company", "99900300")[1])["companies"][0]["name"], "다른 & 회사")
@@ -1022,7 +1146,16 @@ class DartTest(unittest.TestCase):
             self.assertEqual((code, out), (2, ""), bad)
 
     def test_the_code_file_is_read_whole_or_not_at_all(self):
-        self.assertEqual(R._dart_companies_in(code_file())[2], ("99900300", "다른 & 회사", "9990B0", "Other & Co"))
+        self.assertEqual(R._dart_companies_in(code_file())[3], ("99900300", "다른 & 회사", "9990B0", "Other & Co"))
+        for odd in ("<corp_name><![CDATA[가]]></corp_name><stock_code>9990A0</stock_code>",
+                    "<corp_name>가</corp_name><stock_code><![CDATA[9990A0]]></stock_code>",
+                    "<corp_name>가</corp_name><stock_code/>"):
+            unreadable = zipped(f"<result><list><corp_code>99900100</corp_code>{odd}</list></result>")
+            self.assertIsNone(R._dart_companies_in(unreadable), odd)   # a name or a stock code that cannot be read
+        saved, R.DART_MAX_BYTES = R.DART_MAX_BYTES, 10
+        self.addCleanup(setattr, R, "DART_MAX_BYTES", saved)
+        self.assertIsNone(R._dart_companies_in(code_file()))            # the file inside the zip is too large
+        R.DART_MAX_BYTES = saved
         other_order = zipped("<result><list><stock_code>9990A0</stock_code><modify_date>20260101</modify_date>"
                              "<corp_name>예시전자</corp_name><corp_code>99900100</corp_code></list></result>")
         self.assertEqual(R._dart_companies_in(other_order), [("99900100", "예시전자", "9990A0", "")])

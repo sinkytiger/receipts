@@ -183,6 +183,19 @@ class EdgarTest(unittest.TestCase):
             row, _ = self.one("Total assets were $5.0 billion.", "$5.0 billion", edgar("2025-12-31", edgar=ident))
             self.assertEqual(row["verdict"], "verified", ident)
 
+    def test_a_field_the_script_does_not_know_is_refused(self):
+        good = edgar("2025-12-31", accession=K25)
+        self.assertEqual(self.one("Total assets were $5.0 billion.", "$5.0 billion", good)[0]["verdict"], "verified")
+        for key in ("acession", "accn", "verson", "Accession", "file", "row", "statement"):   # a misspelled pin must not vanish
+            self.server.seen.clear()
+            row, _ = self.one("Total assets were $5.0 billion.", "$5.0 billion", edgar("2025-12-31", **{key: "x"}))
+            self.assertEqual((row["verdict"], row["reason"]), ("unverifiable", "locator_no_match"), key)
+            self.assertIn(f"no field '{key}'", row["note"])
+            self.assertEqual(self.server.seen, [])
+        both = {**edgar("2025-12-31"), "dart": "005930"}
+        row, _ = self.one("Total assets were $5.0 billion.", "$5.0 billion", both)
+        self.assertEqual((row["verdict"], row["reason"]), ("unverifiable", "locator_no_match"))
+
     def test_wrong_number_is_wrong(self):
         row, _ = self.one("Revenue was $1,334.5 million in 2025.", "$1,334.5 million",
                           edgar("2025-01-01..2025-12-31", "us-gaap:Revenues"))

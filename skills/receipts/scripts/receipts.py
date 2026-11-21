@@ -499,6 +499,14 @@ def _json_pointer(doc, pointer: str):
     return node
 
 
+def _not_the_cache(name: str) -> str:
+    """The script's own cache of EDGAR and DART answers is read through edgar and dart locators only. As a
+    plain file it would give any row and column, without the rules those locators apply."""
+    if ".receipts" in re.split(r"[\\/]+", name):
+        raise LocatorError("unsupported", "a file inside .receipts is the script's own cache: use an edgar or dart locator")
+    return name
+
+
 def _table(loc: dict, base: str):
     """Return (header, rows, label) for a locator that addresses a table."""
     if isinstance(loc, dict) and "edgar" in loc:
@@ -507,7 +515,7 @@ def _table(loc: dict, base: str):
         raise LocatorError("unsupported", "a DART locator is a single cell: list the amounts under items")
     if not isinstance(loc, dict) or not isinstance(loc.get("file"), str):
         raise LocatorError("locator_no_match", "the locator has no file")
-    name = loc["file"]
+    name = _not_the_cache(loc["file"])
     kind, data = load_source(os.path.join(base, name))
     if kind == "table":
         return data[0], data[1], name
@@ -570,6 +578,8 @@ def _multiplier(loc: dict) -> Decimal:
         raise LocatorError("unsupported", "multiplier is not a number") from None
     if not mult.is_finite():
         raise LocatorError("unsupported", "multiplier is not a finite number")
+    if mult != 0 and not Decimal("1e-30") <= abs(mult) <= Decimal("1e30"):
+        raise LocatorError("unsupported", "multiplier is out of range (1e-30 to 1e30)")
     return mult
 
 
@@ -583,7 +593,7 @@ def resolve_cell(loc: dict, base: str):
         return resolve_edgar(loc, base)
     if not isinstance(loc, dict) or not isinstance(loc.get("file"), str):
         raise LocatorError("locator_no_match", "the locator has no file")
-    name = loc["file"]
+    name = _not_the_cache(loc["file"])
     kind, data = load_source(os.path.join(base, name))
     mult = _multiplier(loc)
     if kind == "text":
@@ -676,6 +686,7 @@ def resolve_count(loc: dict, base: str):
 # --------------------------------------------------------------------------- SEC EDGAR (contract sections 2 and 8)
 
 UA_ENV = "RECEIPTS_SEC_USER_AGENT"
+EDGAR_FIELDS = ("edgar", "concept", "unit", "period", "accession", "version", "multiplier")
 EDGAR_GAP = 0.2  # seconds between requests: at most 5 a second, the SEC allows 10
 _EDGAR = {"cache": None, "refresh": False, "last": 0.0, "files": {}, "fetched": set(), "missing": set()}
 DATE = r"\d{4}-\d{2}-\d{2}"
@@ -900,6 +911,11 @@ def resolve_edgar(loc: dict, base: str):
     """One fact a company reported to the SEC. Returns (value, description)."""
     if "where" in loc or "rows" in loc:
         raise LocatorError("unsupported", "an EDGAR locator is a single cell: list the facts under items")
+    extra = sorted(str(k) for k in loc if k not in EDGAR_FIELDS)
+    if extra:
+        # A field the script does not know is not skipped: a misspelled accession would drop the pin without a word.
+        raise LocatorError("locator_no_match", f"an EDGAR locator has no field {extra[0]!r}: the fields are "
+                                               + ", ".join(EDGAR_FIELDS))
     mult = _multiplier(loc)
     start, end = _edgar_period(loc.get("period"))
     accession = loc.get("accession")
@@ -1090,8 +1106,14 @@ def _dart_get(endpoint: str, params: dict) -> bytes:
         try:
             with _OPENER.open(req, timeout=60) as resp:
                 body = resp.read(DART_MAX_BYTES + 1)
+                announced = resp.headers.get("Content-Length") or ""
+                if re.fullmatch(r"[0-9]+", announced) and len(body) < min(int(announced), DART_MAX_BYTES + 1):
+                    raise EOFError("the body ended early")
                 if (resp.headers.get("Content-Encoding") or "").lower() == "gzip" and len(body) <= DART_MAX_BYTES:
-                    body = zlib.decompressobj(16 + zlib.MAX_WBITS).decompress(body, DART_MAX_BYTES + 1)
+                    unpack = zlib.decompressobj(16 + zlib.MAX_WBITS)
+                    body = unpack.decompress(body, DART_MAX_BYTES + 1)
+                    if not unpack.eof and len(body) <= DART_MAX_BYTES:
+                        raise EOFError("the gzip stream ended early")
         except urllib.error.HTTPError as e:
             e.close()
             if e.code in (429, 500, 502, 503, 504) and attempt == 1:
@@ -1127,6 +1149,8 @@ def _dart_companies_in(body: bytes):
     try:
         with zipfile.ZipFile(io.BytesIO(body)) as zf:
             names = [n for n in zf.namelist() if n.lower().endswith(".xml")]
+            if names and zf.getinfo(names[0]).file_size > 8 * DART_MAX_BYTES:
+                return None   # DART's file unpacks to about 30 MB
             text = zf.read(names[0]).decode("utf-8-sig") if names else ""
     except (zipfile.BadZipFile, OSError, ValueError, KeyError, IndexError, zlib.error, EOFError):
         return None
@@ -1142,6 +1166,8 @@ def _dart_companies_in(body: bytes):
             code = got.get("corp_code", "").strip()
             if not re.fullmatch(r"[0-9]{8}", code):
                 return None
+            if any(f"<{tag}" in block and tag not in got for tag in ("corp_name", "stock_code")):
+                return None   # a name or a stock code written in a form this does not read
             out.append((code, _unescape(got.get("corp_name", "")).strip(), got.get("stock_code", "").strip().upper(),
                         _unescape(got.get("corp_eng_name", "")).strip()))
     return out if out and len(out) == blocks else None
@@ -1167,9 +1193,12 @@ def _dart_origin(folder: str, add: dict = None, drop: str = None) -> dict:
         if drop:
             origin.pop(drop, None)
         try:
-            with open(path + ".part", "w", encoding="utf-8", newline="\n") as f:
-                json.dump(origin, f, indent=1, sort_keys=True)
-            os.replace(path + ".part", path)
+            if origin:
+                with open(path + ".part", "w", encoding="utf-8", newline="\n") as f:
+                    json.dump(origin, f, indent=1, sort_keys=True)
+                os.replace(path + ".part", path)
+            else:
+                os.remove(path)   # the file exists only while some cached file came from another address
         except OSError as e:
             raise StopError(f"cannot write the DART cache {path}: {e.strerror or e}") from None
     return origin
@@ -1194,15 +1223,17 @@ def _dart_file(rel: str, endpoint: str, params: dict, base: str, parse):
         home = _dart_home()
         try:
             os.makedirs(os.path.dirname(path), exist_ok=True)
+            # First the note on where the file comes from, then the file: a file from another address
+            # is never in the cache without its note.
+            if home != DART_HOME:
+                _dart_origin(folder, add={rel: home})
+            else:
+                _dart_origin(folder, drop=rel)
             with open(path + ".part", "wb") as f:
                 f.write(body)
             os.replace(path + ".part", path)
         except OSError as e:
             raise StopError(f"cannot write the DART cache {path}: {e.strerror or e}") from None
-        if home != DART_HOME:
-            _dart_origin(folder, add={rel: home})
-        else:
-            _dart_origin(folder, drop=rel)
         _DART["fetched"].add(key)
         _CACHE[key] = doc
         _dates_file(folder, {rel: time.strftime("%Y-%m-%d", time.gmtime())})
@@ -1212,6 +1243,8 @@ def _dart_file(rel: str, endpoint: str, params: dict, base: str, parse):
                 doc = parse(f.read())
         except OSError as e:
             raise StopError(f"cannot read the cached DART file {path}: {e.strerror or e}") from None
+        except StopError as e:
+            raise StopError(f"the cached DART file {path} cannot be used ({e}) Delete it or run with --refresh.") from None
         if doc is None:
             raise StopError(f"the cached DART file {path} is not what DART sends. Delete it or run with --refresh.")
         _CACHE[key] = doc
@@ -1255,8 +1288,8 @@ def _dart_statements(corp: str, year: int, code: str, fs: str, base: str) -> dic
                 return None
             if (r.get("corp_code"), r.get("bsns_year"), r.get("reprt_code")) != (corp, str(year), code):
                 # The rows say which report they belong to. An answer for another one is never used.
-                raise StopError(f"the DART answer stored or sent as {rel} holds rows of another company, year or "
-                                "report. Nothing was used. If it is a cached file, delete it or run with --refresh.")
+                raise StopError(f"the DART answer for {rel} holds rows of another company, year or report. "
+                                "Nothing was used.")
         return {"status": "000", "list": rows}
 
     doc = _dart_file(rel, endpoint, {"corp_code": corp, "bsns_year": str(year), "reprt_code": code, "fs_div": fs},
@@ -1814,7 +1847,7 @@ def render(res: dict) -> str:
 
 def _note_stop(out_dir: str, message: str):
     """The results of an earlier run must not pass for this one: where they exist, they are replaced by a note."""
-    note = _no_key(f"stopped: {message}")
+    note = _no_key(message)
     for name, text in (("receipts.json", json.dumps({"stopped": note}, ensure_ascii=False) + "\n"),
                        ("receipts.md", f"The run stopped. Nothing was checked.\n\n{note}\n")):
         path = os.path.join(out_dir, name)
@@ -1823,7 +1856,8 @@ def _note_stop(out_dir: str, message: str):
                 with open(path, "w", encoding="utf-8", newline="\n") as f:
                     f.write(text)
             except OSError:
-                pass
+                print(f"receipts: could not replace {path}: it still holds the result of an earlier run",
+                      file=sys.stderr)
 
 
 def exit_code(res: dict, strict: bool) -> int:
@@ -1922,12 +1956,17 @@ def main(argv=None) -> int:
         except Exception as e:
             _note_stop(out_dir, str(e) if isinstance(e, StopError) else f"internal error ({type(e).__name__})")
             raise
-        os.makedirs(out_dir, exist_ok=True)
         text = render(res)
-        with open(os.path.join(out_dir, "receipts.json"), "w", encoding="utf-8", newline="\n") as f:
-            json.dump(res, f, ensure_ascii=False, indent=1)
-        with open(os.path.join(out_dir, "receipts.md"), "w", encoding="utf-8", newline="\n") as f:
-            f.write(text + "\n")
+        try:
+            os.makedirs(out_dir, exist_ok=True)
+            with open(os.path.join(out_dir, "receipts.json"), "w", encoding="utf-8", newline="\n") as f:
+                json.dump(res, f, ensure_ascii=False, indent=1)
+            with open(os.path.join(out_dir, "receipts.md"), "w", encoding="utf-8", newline="\n") as f:
+                f.write(text + "\n")
+        except OSError as e:
+            why = f"cannot write the receipts into {out_dir}: {e.strerror or e}"
+            _note_stop(out_dir, why)
+            raise StopError(why) from None
         if not args.quiet:
             print(text)
         return exit_code(res, args.strict)

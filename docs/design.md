@@ -122,6 +122,14 @@ How the open items were settled. The rules are in sections 2 and 9 of `plan-form
 | DART's status codes | `000` is data. `013` is "nothing for the request", which is `locator_no_match` and is cached. Every other status stops the run. |
 | A statement type DART does not know | DART answers such a request with consolidated and separate rows mixed together. The script accepts only `CFS` and `OFS` and makes no request otherwise. |
 | Stock code to company code | DART's code file. A locator may also give the company code. A name is not accepted: more than 5,000 names in the code file belong to more than one company. |
+| Is the answer the one that was asked for | Every row of an answer names its company, year and report. An answer whose rows name another one, sent by DART or found in the cache under the wrong name, stops the run. Rows do not say whether they are consolidated or separate, so that part cannot be checked. |
+| A field the script does not know | Refused (`locator_no_match`), for DART and EDGAR locators alike. A misspelled `rcept_no` or `accession` would otherwise drop the pin without a word. |
+| Columns the table gives no meaning | Refused whatever the row holds. In an interim cash flow statement `frmtrm_q_amount` is refused because DART fills it with two different periods. |
+| Look-ups | They print no amounts, and only the columns a locator may name. A plan is written from what a row means, not from which value matches. |
+| The cache as a file | A `file` locator into `.receipts` is refused: as a plain file the cache would give any row and column without these rules. |
+| Text from the server | DART's message with a status is never shown, only the code and the script's own words. An answer that repeats the key is not cached. |
+| Another address | Noted in the cache when a file is fetched (`origin.json`), before the file is stored, and shown on every receipt that uses the file. |
+| A run that stops | An earlier `receipts.json` or `receipts.md` in the output folder is replaced by a note, for every kind of source. |
 
 Limits: the statement of changes in equity is not covered in this version, because its rows are told apart by labels that differ from report to report. Notes, segment figures and preliminary earnings are not in this API. The code was written for this contract. What an earlier project ([finground-lite-kr](https://github.com/sinkytiger/finground-lite-kr)) had learned about DART's columns was reused, not its code.
 
@@ -164,3 +172,4 @@ docs/design.md, docs/eval-plan.md
   - Year detection leans toward counting: a 4-digit number with no clear year context stays a number.
 - 2026-11-20: the SEC EDGAR connection was written. Its open items are settled in the table above. The evaluation of the connection (E3) was registered in `docs/eval-plan.md` before the code.
 - 2026-11-21: the DART connection was written. Its decisions are in the section above. The evaluation of the connection (E4) was registered in `docs/eval-plan.md` before the code.
+- 2026-11-21, later: an independent reviewer tried to break the DART connection twice. The rows added to the DART table above record what changed. The plan's change log lists the findings.

@@ -142,6 +142,7 @@ A cell can be an amount in the financial statements of a periodic report a Korea
 - **Direction.** For `difference` and `pct_change`, order the operands so the result has the true sign: `new` is the later period, `a − b` is later minus earlier. "fell 6.6%" is checked against a negative result. If the sentence has no clear word for up or down and the number is written without a sign, add `"direction": "up"` or `"down"` to say what the sentence means.
 - **Percentage points.** A difference between two percent values is written in points (`1.3%p`, `1.3 percentage points`, `130 bp`). Use `difference`.
 - **One number, one claim.** A sentence with three numbers needs three claims. They may share the quote.
+- **The script's cache is not a source.** Never point a `file` locator into `.receipts`: the script refuses it. Filing data is read through `edgar` and `dart` locators only. A misspelled field in such a locator is refused too, so copy the field names exactly.
 - **A number the formulas cannot express** (a CAGR, a median, a rank): use `no_source` with the reason `unsupported formula`. Do not approximate it with another formula.
 
 The full rules (how written numbers are read, rounding, scan rules, output files) are in `references/plan-format.md`. Read it when a case is not covered here.
