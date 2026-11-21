@@ -27,7 +27,7 @@ from decimal import Decimal, InvalidOperation, ROUND_DOWN, ROUND_HALF_EVEN, ROUN
 
 getcontext().prec = 60
 
-VERSION = "0.1.1"
+VERSION = "0.2.0"
 
 
 class StopError(Exception):
@@ -565,17 +565,22 @@ def _multiplier(loc: dict) -> Decimal:
     if "multiplier" not in loc:
         return Decimal(1)
     try:
-        return Decimal(str(loc["multiplier"]))
+        mult = Decimal(str(loc["multiplier"]))
     except InvalidOperation:
         raise LocatorError("unsupported", "multiplier is not a number") from None
+    if not mult.is_finite():
+        raise LocatorError("unsupported", "multiplier is not a finite number")
+    return mult
 
 
 def resolve_cell(loc: dict, base: str):
     """One cell. Returns (value, description)."""
-    if isinstance(loc, dict) and "edgar" in loc:
-        return resolve_edgar(loc, base)
+    if isinstance(loc, dict) and "edgar" in loc and "dart" in loc:
+        raise LocatorError("locator_no_match", "a locator names one source: edgar or dart, not both")
     if isinstance(loc, dict) and "dart" in loc:
         return resolve_dart(loc, base)
+    if isinstance(loc, dict) and "edgar" in loc:
+        return resolve_edgar(loc, base)
     if not isinstance(loc, dict) or not isinstance(loc.get("file"), str):
         raise LocatorError("locator_no_match", "the locator has no file")
     name = loc["file"]
@@ -793,13 +798,23 @@ def _edgar_dates(base: str, add: dict = None) -> dict:
     return _dates_file(_edgar_cache_dir(base), add)
 
 
+def _is_date(text: str) -> bool:
+    if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", text):
+        return False
+    try:
+        time.strptime(text, "%Y-%m-%d")
+    except ValueError:
+        return False
+    return True
+
+
 def _dates_file(folder: str, add: dict = None) -> dict:
     """Fetch dates by cached file, kept in <cache>/fetched.json. A file without an entry shows its modification date."""
     path = os.path.join(folder, "fetched.json")
     try:
         with open(path, encoding="utf-8") as f:
             dates = json.load(f)
-        dates = {k: v for k, v in dates.items() if isinstance(v, str) and re.fullmatch(DATE, v)}
+        dates = {k: v for k, v in dates.items() if isinstance(v, str) and _is_date(v)}
     except (OSError, ValueError, AttributeError):
         dates = {}
     if add:
@@ -984,12 +999,22 @@ def edgar_lookup(what: str, ident: str, base: str, concept=None, match=None, uni
 DART_KEY_ENV = "RECEIPTS_DART_KEY"
 DART_HOME = "https://opendart.fss.or.kr"
 DART_GAP = 0.2  # seconds between requests: at most 5 a second
+DART_MAX_BYTES = 64 * 1024 * 1024  # DART's largest answer is a few megabytes; a body beyond this is refused
 DART_REPORTS = {"q1": "11013", "half": "11012", "q3": "11014", "annual": "11011"}
 DART_STATEMENTS = ("BS", "IS", "CIS", "CF")
 # Each amount column and the field in which DART names its period.
 DART_COLUMNS = {"thstrm_amount": "thstrm_nm", "thstrm_add_amount": "thstrm_nm", "frmtrm_amount": "frmtrm_nm",
                 "frmtrm_q_amount": "frmtrm_q_nm", "frmtrm_add_amount": "frmtrm_q_nm", "bfefrmtrm_amount": "bfefrmtrm_nm"}
+DART_FIELDS = ("dart", "year", "report", "fs", "statement", "account", "name", "column", "rcept_no", "multiplier")
 DART_NO_CODE = "-표준계정코드 미사용-"  # what DART writes in account_id for a row without a standard code
+# DART's status codes in the script's own words. The message DART sends with a status is text from a server
+# and is never shown.
+DART_STATUS = {"010": "the key is not registered", "011": "the key cannot be used",
+               "012": "this address is not allowed to use the key", "014": "DART has no such file",
+               "020": "the request limit is exceeded", "021": "too many companies in one request",
+               "100": "a field has a value DART does not accept", "101": "DART refused the access",
+               "800": "DART is under maintenance", "900": "DART reports an undefined error",
+               "901": "the account behind the key has expired"}
 _DART = {"cache": None, "refresh": False, "last": 0.0, "files": {}, "fetched": set()}
 
 
@@ -1004,8 +1029,7 @@ def _dart_holds(report: str, statement: str, column: str) -> str:
         table = {"thstrm_amount": "the period end", "frmtrm_amount": "the end of the previous business year"}
     elif statement == "CF":
         table = {"thstrm_amount": "from the start of the business year to the period end",
-                 "frmtrm_amount": "the same period a year earlier",
-                 "frmtrm_q_amount": "not usable here: the three months in some rows, the cumulative period in others"}
+                 "frmtrm_amount": "the same period a year earlier"}
     else:
         table = {"thstrm_amount": "the three months",
                  "thstrm_add_amount": "from the start of the business year to the period end",
@@ -1026,10 +1050,21 @@ def _dart_cache_dir(base: str) -> str:
     return _DART["cache"] or os.environ.get("RECEIPTS_DART_CACHE", "").strip() or os.path.join(base, ".receipts", "dart")
 
 
+def _key_forms() -> list:
+    """The DART key as it may appear in text: as given, and as it is written inside an address."""
+    key = os.environ.get(DART_KEY_ENV, "").strip()
+    if not key:
+        return []
+    forms = {key, urllib.parse.quote(key, safe=""), urllib.parse.quote_plus(key), urllib.parse.quote(key)}
+    return sorted(forms, key=len, reverse=True)
+
+
 def _no_key(text) -> str:
     """A message with the DART key taken out, in case some error text ever carried it."""
-    key = os.environ.get(DART_KEY_ENV, "").strip()
-    return str(text).replace(key, "[key]") if key else str(text)
+    text = str(text)
+    for form in _key_forms():
+        text = text.replace(form, "[key]")
+    return text
 
 
 def _dart_get(endpoint: str, params: dict) -> bytes:
@@ -1054,10 +1089,9 @@ def _dart_get(endpoint: str, params: dict) -> bytes:
         _DART["last"] = time.monotonic()
         try:
             with _OPENER.open(req, timeout=60) as resp:
-                body = resp.read()
-                if (resp.headers.get("Content-Encoding") or "").lower() == "gzip":
-                    body = gzip.decompress(body)
-                return body
+                body = resp.read(DART_MAX_BYTES + 1)
+                if (resp.headers.get("Content-Encoding") or "").lower() == "gzip" and len(body) <= DART_MAX_BYTES:
+                    body = zlib.decompressobj(16 + zlib.MAX_WBITS).decompress(body, DART_MAX_BYTES + 1)
         except urllib.error.HTTPError as e:
             e.close()
             if e.code in (429, 500, 502, 503, 504) and attempt == 1:
@@ -1072,43 +1106,45 @@ def _dart_get(endpoint: str, params: dict) -> bytes:
             if isinstance(getattr(e, "reason", None), BaseException):
                 why += f": {type(e.reason).__name__}"
             raise StopError(f"cannot read DART ({endpoint}: {why})") from None
+        if len(body) > DART_MAX_BYTES:
+            raise StopError(f"DART sent more than {DART_MAX_BYTES // (1024 * 1024)} MB for {endpoint}. Nothing was used.")
+        return body
     raise StopError(f"cannot read DART ({endpoint})")
 
 
-def _dart_stop_status(doc_status: str, message: str, endpoint: str):
-    raise StopError(f"DART answered status {doc_status} for {endpoint}" + (f" ({message})" if message else "") +
+def _dart_stop_status(status, endpoint: str):
+    """Any status but 000 and 013 stops the run. Only a three-digit code and the script's own words are shown."""
+    code = status if isinstance(status, str) and re.fullmatch(r"[0-9]{3}", status) else None
+    raise StopError((f"DART answered status {code} for {endpoint}" if code else
+                     f"DART answered with a status that is not a three-digit code for {endpoint}") +
+                    (f": {DART_STATUS[code]}" if code in DART_STATUS else "") +
                     ". Only 000 (data) and 013 (nothing for the request) are answers the check can use.")
 
 
-def _dart_statements_ok(doc) -> bool:
-    """A statements answer: status 000 with a list of rows, or status 013 (DART has nothing for the request)."""
-    if not isinstance(doc, dict) or not isinstance(doc.get("status"), str):
-        return False
-    if doc["status"] == "013":
-        return True
-    rows = doc.get("list")
-    return doc["status"] == "000" and isinstance(rows, list) and bool(rows) and all(isinstance(r, dict) for r in rows)
-
-
 def _dart_companies_in(body: bytes):
-    """The company code file (a zip holding one XML file) -> [(company code, name, stock code)], or None."""
+    """The company code file (a zip holding one XML file) -> [(company code, name, stock code, English name)].
+    None when the bytes are not that file, or when a company in it cannot be read."""
     try:
         with zipfile.ZipFile(io.BytesIO(body)) as zf:
             names = [n for n in zf.namelist() if n.lower().endswith(".xml")]
             text = zf.read(names[0]).decode("utf-8-sig") if names else ""
     except (zipfile.BadZipFile, OSError, ValueError, KeyError, IndexError, zlib.error, EOFError):
         return None
+    blocks = text.count("<list>")
     # The fields in the order DART writes them. One pass over the file, which holds about 120,000 companies.
-    out = [(c, _unescape(n).strip(), s.strip().upper()) for c, n, s in re.findall(
-        r"<corp_code>\s*(\d{8})\s*</corp_code>\s*<corp_name>([^<]*)</corp_name>\s*"
-        r"(?:<corp_eng_name>[^<]*</corp_eng_name>\s*)?<stock_code>([^<]*)</stock_code>", text)]
-    if not out:  # another order of fields: read each company's block on its own
+    out = [(c, _unescape(n).strip(), s.strip().upper(), _unescape(e).strip()) for c, n, e, s in re.findall(
+        r"<corp_code>\s*([0-9]{8})\s*</corp_code>\s*<corp_name>([^<]*)</corp_name>\s*"
+        r"(?:<corp_eng_name>([^<]*)</corp_eng_name>\s*)?<stock_code>([^<]*)</stock_code>", text)]
+    if len(out) != blocks:  # another order or form of the fields: read each company's block on its own
+        out = []
         for block in re.findall(r"<list>(.*?)</list>", text, re.S):
-            got = dict(re.findall(r"<(corp_code|corp_name|stock_code)>([^<]*)</\1>", block))
-            if re.fullmatch(r"\d{8}", got.get("corp_code", "").strip()):
-                out.append((got["corp_code"].strip(), _unescape(got.get("corp_name", "")).strip(),
-                            got.get("stock_code", "").strip().upper()))
-    return out or None
+            got = dict(re.findall(r"<(corp_code|corp_name|corp_eng_name|stock_code)>([^<]*)</\1>", block))
+            code = got.get("corp_code", "").strip()
+            if not re.fullmatch(r"[0-9]{8}", code):
+                return None
+            out.append((code, _unescape(got.get("corp_name", "")).strip(), got.get("stock_code", "").strip().upper(),
+                        _unescape(got.get("corp_eng_name", "")).strip()))
+    return out if out and len(out) == blocks else None
 
 
 def _unescape(text: str) -> str:
@@ -1117,20 +1153,45 @@ def _unescape(text: str) -> str:
     return text
 
 
+def _dart_origin(folder: str, add: dict = None, drop: str = None) -> dict:
+    """Which cached files were fetched from another address than DART's, kept in <cache>/origin.json."""
+    path = os.path.join(folder, "origin.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            origin = json.load(f)
+        origin = {k: v for k, v in origin.items() if isinstance(k, str) and isinstance(v, str)}
+    except (OSError, ValueError, AttributeError):
+        origin = {}
+    if add or (drop and drop in origin):
+        origin.update(add or {})
+        if drop:
+            origin.pop(drop, None)
+        try:
+            with open(path + ".part", "w", encoding="utf-8", newline="\n") as f:
+                json.dump(origin, f, indent=1, sort_keys=True)
+            os.replace(path + ".part", path)
+        except OSError as e:
+            raise StopError(f"cannot write the DART cache {path}: {e.strerror or e}") from None
+    return origin
+
+
 def _dart_file(rel: str, endpoint: str, params: dict, base: str, parse):
     """A cached DART response, parsed. Fetched when it is not in the cache, or once per run with --refresh.
     `parse(body)` returns the parsed answer, or None when the bytes are not what DART sends for this endpoint."""
-    path = os.path.join(_dart_cache_dir(base), *rel.split("/"))
-    key = os.path.abspath(path)
+    folder = _dart_cache_dir(base)
+    path = os.path.join(folder, *rel.split("/"))
+    key = ("dart", os.path.abspath(path))   # source files are cached under their bare path, in another shape
     if (_DART["refresh"] and key not in _DART["fetched"]) or not os.path.exists(path):
         body = _dart_get(endpoint, params)
+        if any(form.encode("utf-8") in body for form in _key_forms()):
+            raise StopError(f"DART's answer for {endpoint} repeats the key. It was not used and not cached.")
         doc = parse(body)
         if doc is None:
-            status = re.search(rb'"?status"?\s*[>:]\s*"?(\d{3})', body[:400])
+            status = re.search(rb'"?status"?\s*[>:]\s*"?([0-9]{3})', body[:400])
             if status and status.group(1) not in (b"000", b"013"):
-                message = re.search(r'message"?\s*[>:]\s*"?([^"<]{1,120})', body[:600].decode("utf-8", "replace"))
-                _dart_stop_status(status.group(1).decode(), message.group(1).strip() if message else "", endpoint)
+                _dart_stop_status(status.group(1).decode(), endpoint)
             raise StopError(f"DART sent an unexpected answer for {endpoint}")
+        home = _dart_home()
         try:
             os.makedirs(os.path.dirname(path), exist_ok=True)
             with open(path + ".part", "wb") as f:
@@ -1138,9 +1199,13 @@ def _dart_file(rel: str, endpoint: str, params: dict, base: str, parse):
             os.replace(path + ".part", path)
         except OSError as e:
             raise StopError(f"cannot write the DART cache {path}: {e.strerror or e}") from None
+        if home != DART_HOME:
+            _dart_origin(folder, add={rel: home})
+        else:
+            _dart_origin(folder, drop=rel)
         _DART["fetched"].add(key)
         _CACHE[key] = doc
-        _dates_file(_dart_cache_dir(base), {rel: time.strftime("%Y-%m-%d", time.gmtime())})
+        _dates_file(folder, {rel: time.strftime("%Y-%m-%d", time.gmtime())})
     if key not in _CACHE:
         try:
             with open(path, "rb") as f:
@@ -1150,31 +1215,53 @@ def _dart_file(rel: str, endpoint: str, params: dict, base: str, parse):
         if doc is None:
             raise StopError(f"the cached DART file {path} is not what DART sends. Delete it or run with --refresh.")
         _CACHE[key] = doc
-    noted = _dates_file(_dart_cache_dir(base)).get(rel)
+    noted = _dates_file(folder).get(rel)
     try:
         fetched = noted or time.strftime("%Y-%m-%d", time.gmtime(os.path.getmtime(path)))
     except OSError:
         fetched = ""
-    _DART["files"].setdefault(rel, {})["fetched"] = fetched
+    info = _DART["files"].setdefault(rel, {})
+    info["fetched"] = fetched
+    address = _dart_origin(folder).get(rel)
+    if address:
+        info["address"] = address
     return _CACHE[key]
 
 
 def _dart_statements(corp: str, year: int, code: str, fs: str, base: str) -> dict:
     endpoint = "fnlttSinglAcntAll.json"
+    rel = f"fnlttSinglAcntAll/{corp}_{year}_{code}_{fs}.json"
 
     def parse(body):
         try:
             doc = json.loads(body.decode("utf-8-sig"))
         except ValueError:
             return None
-        if isinstance(doc, dict) and isinstance(doc.get("status"), str) and doc["status"] not in ("000", "013"):
-            _dart_stop_status(doc["status"], str(doc.get("message") or "").strip(), endpoint)
-        return doc if _dart_statements_ok(doc) else None
+        if not isinstance(doc, dict):
+            return None
+        status = doc.get("status")
+        if status == "013":
+            return {"status": "013"}
+        if status != "000":
+            if isinstance(status, str):
+                _dart_stop_status(status, endpoint)
+            return None
+        rows = doc.get("list")
+        if not isinstance(rows, list) or not rows:
+            return None
+        for r in rows:
+            if not isinstance(r, dict) or not isinstance(r.get("rcept_no"), str) \
+                    or not re.fullmatch(r"[0-9]{14}", r["rcept_no"]) or not isinstance(r.get("sj_div"), str):
+                return None
+            if (r.get("corp_code"), r.get("bsns_year"), r.get("reprt_code")) != (corp, str(year), code):
+                # The rows say which report they belong to. An answer for another one is never used.
+                raise StopError(f"the DART answer stored or sent as {rel} holds rows of another company, year or "
+                                "report. Nothing was used. If it is a cached file, delete it or run with --refresh.")
+        return {"status": "000", "list": rows}
 
-    rel = f"fnlttSinglAcntAll/{corp}_{year}_{code}_{fs}.json"
     doc = _dart_file(rel, endpoint, {"corp_code": corp, "bsns_year": str(year), "reprt_code": code, "fs_div": fs},
                      base, parse)
-    numbers = sorted({str(r.get("rcept_no")) for r in doc.get("list") or [] if r.get("rcept_no")})
+    numbers = sorted({r["rcept_no"] for r in doc.get("list") or []})
     if numbers:
         _DART["files"][rel]["rcept_no"] = ", ".join(numbers)
     return doc
@@ -1187,7 +1274,7 @@ def _dart_companies(base: str):
 def _dart_company(ident, base: str):
     """A stock code or a company code -> (company code, how the receipt names the company)."""
     text = ident.strip() if isinstance(ident, str) else ""
-    if re.fullmatch(r"\d{8}", text):
+    if re.fullmatch(r"[0-9]{8}", text):
         return text, text
     if not re.fullmatch(r"[0-9A-Za-z]{6}", text):
         raise LocatorError("locator_no_match", "dart must be a stock code (6 characters) or a DART company code "
@@ -1204,7 +1291,7 @@ def _dart_company(ident, base: str):
 def _dart_report_fields(loc: dict):
     """year, report, fs of a locator, checked. Returns (year, report word, DART report code, fs)."""
     year = loc.get("year")
-    if isinstance(year, bool) or not isinstance(year, (int, str)) or not re.fullmatch(r"\d{4}", str(year).strip()):
+    if isinstance(year, bool) or not isinstance(year, (int, str)) or not re.fullmatch(r"[0-9]{4}", str(year).strip()):
         raise LocatorError("locator_no_match", "year must be the business year, four digits")
     year = int(str(year).strip())
     if year < 2015:
@@ -1218,10 +1305,29 @@ def _dart_report_fields(loc: dict):
     return year, report, DART_REPORTS[report], fs
 
 
+def _dart_usable(report: str, statement: str, column: str):
+    """Refuse a column the contract gives no meaning in this report and statement."""
+    if report != "annual" and statement == "CF" and column == "frmtrm_q_amount":
+        raise LocatorError("unsupported", "in an interim cash flow statement DART fills frmtrm_q_amount with the three "
+                                          "months in some rows and the cumulative period in others: use frmtrm_amount")
+    if not _dart_holds(report, statement, column):
+        raise LocatorError("locator_no_match", f"the contract's table gives {column} no meaning in the {statement} of "
+                                               f"{'an annual' if report == 'annual' else 'an interim'} report")
+
+
+def _dart_text(value) -> str:
+    return value.strip() if isinstance(value, str) else ""
+
+
 def resolve_dart(loc: dict, base: str):
     """One amount in the statements of a report filed with DART. Returns (value, description)."""
     if "where" in loc or "rows" in loc:
         raise LocatorError("unsupported", "a DART locator is a single cell: list the amounts under items")
+    extra = sorted(str(k) for k in loc if k not in DART_FIELDS)
+    if extra:
+        # A field the script does not know is not skipped: a misspelled rcept_no would drop the pin without a word.
+        raise LocatorError("locator_no_match", f"a DART locator has no field {extra[0]!r}: the fields are "
+                                               + ", ".join(DART_FIELDS))
     mult = _multiplier(loc)
     year, report, code, fs = _dart_report_fields(loc)
     statement = loc.get("statement").strip().upper() if isinstance(loc.get("statement"), str) else None
@@ -1239,13 +1345,11 @@ def resolve_dart(loc: dict, base: str):
     column = loc.get("column")
     if not isinstance(column, str) or column not in DART_COLUMNS:
         raise LocatorError("locator_no_match", "column must be one of " + ", ".join(DART_COLUMNS))
-    if report != "annual" and statement == "CF" and column == "frmtrm_q_amount":
-        raise LocatorError("unsupported", "in an interim cash flow statement DART fills frmtrm_q_amount with the three "
-                                          "months in some rows and the cumulative period in others: use frmtrm_amount")
+    _dart_usable(report, statement, column)
     pin = loc.get("rcept_no")
     if pin is not None:
         pin = str(pin).strip() if isinstance(pin, (str, int)) and not isinstance(pin, bool) else ""
-        if not re.fullmatch(r"\d{14}", pin):
+        if not re.fullmatch(r"[0-9]{14}", pin):
             raise LocatorError("locator_no_match", "rcept_no must be the receipt number, 14 digits")
     corp, who = _dart_company(loc.get("dart"), base)
     doc = _dart_statements(corp, year, code, fs, base)
@@ -1253,15 +1357,19 @@ def resolve_dart(loc: dict, base: str):
     if doc["status"] == "013":
         raise LocatorError("locator_no_match", f"DART has no statements for {what} (as fetched; --refresh asks again)")
     rows = doc["list"]
-    served = sorted({str(r.get("rcept_no")) for r in rows if r.get("rcept_no")})
+    served = sorted({r["rcept_no"] for r in rows})
     if pin and pin not in served:
         raise LocatorError("dart_receipt_differs",
-                           f"DART serves {what} under receipt number {', '.join(served) or '(none)'}, not {pin}. "
+                           f"DART serves {what} under receipt number {', '.join(served)}, not {pin}. "
                            "Its API holds only the latest version of a report.")
-    hits = [r for r in rows if str(r.get("sj_div", "")).strip().upper() == statement
-            and (account is None or (account != DART_NO_CODE and str(r.get("account_id", "")).strip() == account))
-            and (name is None or str(r.get("account_nm", "")).strip() == name)
-            and (not pin or str(r.get("rcept_no")) == pin)]
+    if not pin and len(served) > 1:
+        raise LocatorError("dart_receipt_differs",
+                           f"DART's answer for {what} carries {len(served)} receipt numbers ({', '.join(served)}). "
+                           "Name one with rcept_no.")
+    hits = [r for r in rows if r["sj_div"].strip().upper() == statement
+            and (account is None or (account != DART_NO_CODE and _dart_text(r.get("account_id")) == account))
+            and (name is None or _dart_text(r.get("account_nm")) == name)
+            and (not pin or r["rcept_no"] == pin)]
     asked = " ".join(x for x in (account, name) if x)
     if not hits:
         raise LocatorError("locator_no_match", f"{what} {statement} has no row {asked}")
@@ -1271,60 +1379,65 @@ def resolve_dart(loc: dict, base: str):
     if _cell_str(row.get(column)) == "":
         raise LocatorError("locator_no_match", f"the row {asked} of {what} {statement} has no {column}")
     val = to_number(row.get(column))
-    row_id = str(row.get("account_id", "")).strip()
-    label = " ".join(x for x in ("" if row_id == DART_NO_CODE else row_id, str(row.get("account_nm", "")).strip()) if x)
-    period = ", ".join(x for x in (str(row.get(DART_COLUMNS[column]) or "").strip(),
-                                   _dart_holds(report, statement, column)) if x)
+    row_id = _dart_text(row.get("account_id"))
+    label = " ".join(x for x in ("" if row_id == DART_NO_CODE else row_id, _dart_text(row.get("account_nm"))) if x)
+    period = ", ".join(x for x in (_dart_text(row.get(DART_COLUMNS[column])), _dart_holds(report, statement, column)) if x)
     desc = (f"DART {what} {statement} {label} {column}" + (f" [{period}]" if period else "") +
-            f" = {_plain(val)} {str(row.get('currency') or '').strip()}".rstrip() +
+            f" = {_plain(val)} {_dart_text(row.get('currency'))}".rstrip() +
             (f" x {_plain(mult)}" if mult != 1 else ""))
-    return val * mult, f"{desc} (receipt number {row.get('rcept_no') or '?'})"
+    return val * mult, f"{desc} (receipt number {row['rcept_no']})"
 
 
 def dart_lookup(what: str, ident: str, base: str, year=None, report=None, fs=None, statement=None, match=None,
                 limit=60) -> dict:
-    """The two look-up commands: company, accounts."""
+    """The two look-up commands: company, accounts. Neither prints an amount: a plan is written from what a row
+    and a column mean, not from their values."""
+    if not isinstance(limit, int) or limit < 0:
+        raise StopError("--limit must be 0 (all) or a positive number")
     try:
         if what == "company":
             text = str(ident).strip()
             everyone = _dart_companies(base)
-            if re.fullmatch(r"\d{8}", text):
+            if re.fullmatch(r"[0-9]{8}", text):
                 found = [c for c in everyone if c[0] == text]
             elif re.fullmatch(r"[0-9A-Za-z]{6}", text) and any(c[2] == text.upper() for c in everyone):
                 found = [c for c in everyone if c[2] == text.upper()]
             else:
-                found = sorted((c for c in everyone if text and text.lower() in c[1].lower()),
+                found = sorted((c for c in everyone if text and (text.lower() in c[1].lower() or text.lower() in c[3].lower())),
                                key=lambda c: (not c[2], c[1], c[0]))
             if not found:
                 raise StopError(f"no company in DART's code file matches {text!r}")
             return {"query": text, "fetched": _DART["files"].get("corpCode.zip", {}).get("fetched"), "matched": len(found),
-                    "companies": [{"corp_code": c[0], "name": c[1], "stock_code": c[2] or None}
+                    "companies": [{"corp_code": c[0], "name": c[1], "name_en": c[3] or None, "stock_code": c[2] or None}
                                   for c in (found[:limit] if limit else found)]}
         year, word, code, fs = _dart_report_fields({"year": year, "report": report, "fs": fs})
+        want = statement.strip().upper() if statement else None
+        if want and want not in DART_STATEMENTS:
+            raise StopError("statement must be BS, IS, CIS or CF")
         corp, who = _dart_company(ident, base)
         doc = _dart_statements(corp, year, code, fs, base)
         if doc["status"] == "013":
             raise StopError(f"DART has no statements for {who} {year} {word} {fs}")
-        want = statement.strip().upper() if statement else None
-        if want and want not in DART_STATEMENTS:
-            raise StopError("statement must be BS, IS, CIS or CF")
         rows, left_out = [], 0
         for r in doc["list"]:
-            sj = str(r.get("sj_div", "")).strip().upper()
+            sj = r["sj_div"].strip().upper()
             if sj not in DART_STATEMENTS:
                 left_out += 1
                 continue
-            row_id, row_nm = str(r.get("account_id", "")).strip(), str(r.get("account_nm", "")).strip()
+            row_id, row_nm = _dart_text(r.get("account_id")), _dart_text(r.get("account_nm"))
             if (want and sj != want) or (match and match.lower() not in row_id.lower() and match.lower() not in row_nm.lower()):
                 continue
-            rows.append({"statement": sj, "account": None if row_id == DART_NO_CODE else row_id, "name": row_nm,
-                         "columns": {c: {"value": _cell_str(r.get(c)), "period": str(r.get(nm) or "").strip(),
-                                         "holds": _dart_holds(word, sj, c)}
-                                     for c, nm in DART_COLUMNS.items() if _cell_str(r.get(c)) != ""}})
+            columns = {}
+            for c, nm in DART_COLUMNS.items():   # only the columns a locator may name here
+                holds = _dart_holds(word, sj, c)
+                if holds and _cell_str(r.get(c)) != "":
+                    columns[c] = {"period": _dart_text(r.get(nm)), "holds": holds}
+            rows.append({"statement": sj, "account": None if row_id == DART_NO_CODE else (row_id or None), "name": row_nm,
+                         "columns": columns})
         rel = f"fnlttSinglAcntAll/{corp}_{year}_{code}_{fs}.json"
         return {"company": who, "corp_code": corp, "year": year, "report": word, "fs": fs,
                 "rcept_no": _DART["files"].get(rel, {}).get("rcept_no"),
-                "currency": ", ".join(sorted({str(r.get("currency")) for r in doc["list"] if r.get("currency")})),
+                "currency": ", ".join(sorted({_dart_text(r.get("currency")) for r in doc["list"]} - {""})),
                 "fetched": _DART["files"].get(rel, {}).get("fetched"), "rows_not_listed_other_statements": left_out,
                 "matched": len(rows), "rows": rows[:limit] if limit else rows}
     except LocatorError as e:
@@ -1582,10 +1695,10 @@ def run_check(plan_path: str, mode: str = "default", doc_override: str = None, e
 
     def walk(node, claim_id):
         if isinstance(node, dict):
-            src = (node["file"] if isinstance(node.get("file"), str) else f"EDGAR {node['edgar']}" if "edgar" in node
-                   else f"DART {node['dart']}" if "dart" in node else None)
+            src = (f"DART {node['dart']}" if "dart" in node else node["file"] if isinstance(node.get("file"), str)
+                   else f"EDGAR {node['edgar']}" if "edgar" in node else None)
             if "multiplier" in node and src:
-                if "dart" in node and not isinstance(node.get("file"), str):
+                if "dart" in node:
                     where = " ".join(str(node[k]) for k in ("account", "name", "column") if node.get(k))
                 else:
                     where = (node.get("column") or node.get("cell") or node.get("pointer") or node.get("contains")
@@ -1612,8 +1725,6 @@ def run_check(plan_path: str, mode: str = "default", doc_override: str = None, e
             res["edgar"]["addresses"] = list(hosts)
     if _DART["files"]:
         res["dart"] = {"files": [{"file": f, **info} for f, info in sorted(_DART["files"].items())]}
-        if _dart_home() != DART_HOME:
-            res["dart"]["address"] = _dart_home()
     return res
 
 
@@ -1681,8 +1792,10 @@ def render(res: dict) -> str:
                 "| file | fetched (UTC) | receipt number |", "|---|---|---|"]
         out += [f"| {esc(f['file'])} | {esc(f.get('fetched', ''))} | {esc(f.get('rcept_no', ''))} |"
                 for f in res["dart"]["files"]]
-        if res["dart"].get("address"):
-            out += ["", "Not read from DART's own address but from: " + esc(res["dart"]["address"])]
+        elsewhere = sorted({f["address"] for f in res["dart"]["files"] if f.get("address")})
+        for address in elsewhere:
+            files = [f["file"] for f in res["dart"]["files"] if f.get("address") == address]
+            out += ["", f"Not fetched from DART's own address but from {esc(address)}: {esc(', '.join(files))}"]
         out.append("")
     if res["uncovered"]:
         out += [f"### uncovered ({len(res['uncovered'])})", "", "| line | number |", "|---|---|"]
@@ -1697,6 +1810,20 @@ def render(res: dict) -> str:
         out += [f"| {esc(u['id'])} | {esc(u['reason'])}: {esc(u.get('note', ''))} |" for u in res["unbound_claims"]]
         out.append("")
     return "\n".join(out)
+
+
+def _note_stop(out_dir: str, message: str):
+    """The results of an earlier run must not pass for this one: where they exist, they are replaced by a note."""
+    note = _no_key(f"stopped: {message}")
+    for name, text in (("receipts.json", json.dumps({"stopped": note}, ensure_ascii=False) + "\n"),
+                       ("receipts.md", f"The run stopped. Nothing was checked.\n\n{note}\n")):
+        path = os.path.join(out_dir, name)
+        if os.path.isfile(path):
+            try:
+                with open(path, "w", encoding="utf-8", newline="\n") as f:
+                    f.write(text)
+            except OSError:
+                pass
 
 
 def exit_code(res: dict, strict: bool) -> int:
@@ -1789,8 +1916,12 @@ def main(argv=None) -> int:
                                          fs=args.fs, statement=args.statement, match=args.match, limit=args.limit),
                              ensure_ascii=False, indent=1))
             return 0
-        res = run_check(args.plan, args.mode, args.doc, args.edgar_cache, args.refresh, args.dart_cache)
         out_dir = args.out or os.path.dirname(os.path.abspath(args.plan))
+        try:
+            res = run_check(args.plan, args.mode, args.doc, args.edgar_cache, args.refresh, args.dart_cache)
+        except Exception as e:
+            _note_stop(out_dir, str(e) if isinstance(e, StopError) else f"internal error ({type(e).__name__})")
+            raise
         os.makedirs(out_dir, exist_ok=True)
         text = render(res)
         with open(os.path.join(out_dir, "receipts.json"), "w", encoding="utf-8", newline="\n") as f:

@@ -1,6 +1,6 @@
 # receipts — design (v0.1 draft)
 
-Status: the core script, the skill packaging and the SEC EDGAR connection exist and follow `skills/receipts/references/plan-format.md`, which is the detailed contract. Changes to this document after the first commit are listed at the bottom.
+Status: the core script, the skill packaging, the SEC EDGAR connection and the DART connection exist and follow `skills/receipts/references/plan-format.md`, which is the detailed contract. Changes to this document after the first commit are listed at the bottom.
 
 ## What it is
 

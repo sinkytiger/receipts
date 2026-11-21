@@ -89,13 +89,15 @@ DART에 낸 정기보고서(사업보고서, 반기보고서, 분기보고서)�
  "account": "dart_OperatingIncomeLoss", "column": "thstrm_amount"}
 ```
 
-- DART는 이용자마다 무료 인증키를 줍니다([opendart.fss.or.kr](https://opendart.fss.or.kr)). 약관은 키를 남이 쓰게 하는 것을 금지합니다. 본인 키를 환경 변수 `RECEIPTS_DART_KEY`에 넣어야 합니다. 기본값은 없고, 비어 있으면 요청을 보내지 않고 멈춥니다. 키는 DART로 보내는 요청에만 들어가고, 저장 파일·영수증·오류 문구 어디에도 남기지 않습니다.
+- DART는 이용자마다 무료 인증키를 줍니다([opendart.fss.or.kr](https://opendart.fss.or.kr)). 약관은 키를 남이 쓰게 하는 것을 금지합니다. 본인 키를 환경 변수 `RECEIPTS_DART_KEY`에 넣어야 합니다. 기본값은 없고, 비어 있으면 요청을 보내지 않고 멈춥니다. 키는 DART로 보내는 요청에만 들어갑니다(시험용 변수 `RECEIPTS_DART_URL`을 직접 설정하면 그 주소로 갑니다). 저장 파일, 영수증, 어떤 메시지에도 남기지 않습니다.
 - 보고서마다 한 번만 내려받아 `.receipts/dart/`에 저장합니다. 영수증에 내려받은 날짜와 공시 접수번호가 나옵니다. 요청은 1초에 5번 이하로 보냅니다.
-- 사람들이 자주 섞는 것을 위치에 모두 적게 합니다. 연결인지 별도인지(`fs`, 기본값 없음), 어느 재무제표인지, 어느 열인지입니다. 반기·분기보고서에서 3개월 수치와 누적 수치는 같은 줄의 서로 다른 열이므로 서로 바뀌어 통과하지 않습니다.
+- 사람들이 자주 섞는 것을 위치에 모두 적게 합니다. 연결인지 별도인지(`fs`, 기본값 없음), 어느 재무제표인지, 어느 열인지입니다. 반기·분기보고서에서 3개월 수치와 누적 수치는 같은 줄의 서로 다른 열입니다. 문장이 어느 쪽을 말하는지 계획에 적어야 하고, 영수증에는 그 열이 어떤 기간인지 찍힙니다.
 - DART API에는 보고서의 최신본만 있습니다. 계획에 문서가 쓴 공시의 접수번호를 적어 둘 수 있습니다. 그 뒤 보고서가 정정됐으면 다른 수치와 견주지 않고 판정을 미룹니다.
-- `receipts.py dart company 삼성전자`, `receipts.py dart accounts 005930 --year 2026 --report q3 --fs CFS`로 회사 코드와 보고서의 줄, 그리고 각 열이 어떤 기간인지 찾습니다.
-- 금액은 원 단위이고, 문서에는 `107조 4,405억원`처럼 써도 됩니다.
+- `receipts.py dart company 삼성전자`, `receipts.py dart accounts 005930 --year 2026 --report q3 --fs CFS`로 회사 코드와 보고서의 줄, 그리고 각 열이 어떤 기간인지 찾습니다. 금액은 보여 주지 않습니다. 계획은 값이 맞는지를 보고 쓰는 것이 아니라 그 줄이 무엇을 뜻하는지를 보고 써야 하기 때문입니다.
+- 금액은 보고서가 쓰는 통화의 기본 단위입니다. 거의 모든 회사가 원 단위이고, 문서에는 `107조 4,405억원`처럼 써도 됩니다.
 - 자본변동표, 주석, 부문별 수치, 잠정실적, 2015년 이전 사업연도는 다루지 않습니다.
+
+규칙은 [plan-format.md](skills/receipts/references/plan-format.md) 2절과 9절에 있습니다.
 
 [examples/dart](examples/dart)는 삼성전자의 2026년 3분기를 다룬 짧은 글이고, 숫자 하나를 일부러 틀리게 썼습니다. DART가 2026-11-21에 돌려준 자료를 잘라 낸 사본이 들어 있어 네트워크도 키도 없이 돌아갑니다.
 
@@ -176,9 +178,9 @@ python skills/receipts/scripts/receipts.py check examples/dart/claims.json --dar
 
 - [skills/receipts/references/plan-format.md](skills/receipts/references/plan-format.md): 계획 양식과 규칙 (영어)
 - [docs/design.md](docs/design.md): 동작 방식과 하지 않는 것 (영어)
-- [docs/eval-plan.md](docs/eval-plan.md): 평가 기준 (영어). E1은 코드를 쓰기 전에, E3는 연결 코드를 쓰기 전에, E2의 세부 절차는 실행기를 쓰기 전에 정했습니다.
+- [docs/eval-plan.md](docs/eval-plan.md): 평가 기준 (영어). E1은 코드를 쓰기 전에, E3와 E4는 각 연결 코드를 쓰기 전에, E2의 세부 절차는 실행기를 쓰기 전에 정했습니다.
 - [skills/receipts/SKILL.md](skills/receipts/SKILL.md): 스킬 설명서 (영어). 스킬 폴더는 마크다운과 파이썬 스크립트 하나라서 스킬을 읽는 다른 에이전트도 그대로 쓸 수 있을 것으로 보지만, 시험하지는 않았습니다.
-- [examples](examples): 기본 예제와 미국 공시 예제. [tests](tests): 단위 테스트. [bench](bench): 평가 문제 생성기, 채점기, 실행 기록.
+- [examples](examples): 기본 예제, 미국 공시 예제, 한국 공시 예제. [tests](tests): 단위 테스트. [bench](bench): 평가 문제 생성기, 채점기, 실행 기록.
 
 ## 로드맵
 
