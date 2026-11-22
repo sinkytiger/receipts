@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.0 (2026-11-22)
+
+- **Korean filings (DART).** A source can be an amount in the financial statements of a periodic report filed with Korea's DART (사업보고서, 반기보고서, 분기보고서), read from OpenDART. A locator names the company (stock code or DART company code), the business year, the report (`q1`, `half`, `q3`, `annual`), consolidated or separate (`fs`, with no default), the statement (`BS`, `IS`, `CIS`, `CF`), the row (by account id or by name) and DART's own column name. The rules are in sections 2 and 9 of `plan-format.md`.
+  - The key comes from `RECEIPTS_DART_KEY` only. It is sent to DART and nowhere else, and it is not written to the cache, to a receipt or to any message. No message shows the address of a request.
+  - In a half-year or quarterly report the three months and the year to date are two columns of the same row. The receipt and the look-up print what each column holds.
+  - DART's API serves only the latest version of a report. A plan may name the receipt number (`rcept_no`). If DART serves another, the verdict is `unverifiable` (`dart_receipt_differs`).
+  - An answer is used only if its rows name the company, year and report that were asked for. A field the script does not know is refused, so a misspelled `rcept_no` cannot drop out unnoticed.
+  - Not covered: the statement of changes in equity, notes, segment figures, preliminary earnings, years before 2015, and `frmtrm_q_amount` in an interim cash flow statement (DART fills that column with two different periods).
+  - New commands: `receipts.py dart company`, `receipts.py dart accounts`. The second prints no amounts.
+  - `examples/dart`: a Korean note on Samsung Electronics' third quarter of 2026, checked without a network connection and without a key.
+- **All sources.** When `check` stops, a `receipts.json` or `receipts.md` left by an earlier run in the output folder is replaced by a note that the run stopped. A `multiplier` has to be a finite number (`NaN` used to give `wrong`). A redirect from https to http is not followed (EDGAR and DART). A fetch date in `fetched.json` has to be a real date.
+  - A locator with a field the script does not know is refused, for EDGAR as for DART: a misspelled `accession` used to be skipped. A `file` locator into the script's own cache folder (`.receipts`) is refused.
+
+How 0.2.0 was checked. E4, the evaluation of the DART connection, was registered before the connection was written. The code was frozen at commit `2ae4742`. On the held-out set (31 companies, 177 sets of statements, 44,829 amounts) it meets all 8 bars: no amount judged `wrong` in 132,384 verdicts, 76,873 of 76,873 neighbouring-column cases judged `wrong`, 6,785 of 6,785 and 599 of 599 abstentions, 95 of 95 amended-report cases, 25 of 25 stops, and the key nowhere in the output. The scoring was started three times. The first two were cut by the machine (the computer went to sleep; the session that started the scoring ended) and are logged beside the third, as a rule written down before the run says. An independent reviewer tried to break the connection twice before the freeze. On the development sets 0.2.0 meets all 8 bars of E1 and all 6 bars of E3. Their held-out sets were used once, on 0.1.0, and are not run again. The unit tests pass (117).
+
 ## 0.1.1 (2026-11-20)
 
 - **EDGAR: a period of one day is the single date.** `2026-09-22..2026-09-22` and `2026-09-22` now name the same fact. In 0.1.0 the range form found nothing, because the SEC's API stores a one-day period under a single date. The two facts that 0.1.0 could not verify in the held-out E3 run were of this kind. Two things follow from the rule: a balance asked as a one-day range now matches too, and a single date also matches a fact stored with equal start and end dates.

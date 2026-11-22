@@ -2,7 +2,7 @@
 
 Every number your agent writes comes with a receipt, or gets flagged.
 
-> **Status: 0.1.1.** A checking script, an agent skill, a connection to SEC EDGAR, and three evaluations whose rules were written down before they were run. The results, with their limits, are [below](#what-the-evaluation-shows). They were measured on 0.1.0. [CHANGELOG.md](CHANGELOG.md) says what changed since.
+> **Status: 0.2.0.** A checking script, an agent skill, connections to SEC EDGAR and to Korea's DART, and four evaluations whose rules were written down before they were run. The results, with their limits, are [below](#what-the-evaluation-shows). E1, E2 and E3 were measured on 0.1.0, E4 on 0.2.0. [CHANGELOG.md](CHANGELOG.md) says what changed between them.
 
 [한국어](README.ko.md)
 
@@ -32,7 +32,7 @@ The one-step form needs Claude Code 2.1.275 or later. On an older version use tw
 /plugin install receipts@receipts
 ```
 
-Then ask Claude to check the numbers in a document against its source files, for example "use receipts to check the numbers in report.md against sales.csv". How reliably the skill is picked up when you do not name it has not been measured yet. The skill adds about 160 tokens to every session and about 3,100 when it runs (estimates from `claude plugin details`).
+Then ask Claude to check the numbers in a document against its source files, for example "use receipts to check the numbers in report.md against sales.csv". How reliably the skill is picked up when you do not name it has not been measured yet. On 0.1.1 the skill added about 160 tokens to every session and about 3,100 when it ran (estimates from `claude plugin details`). The skill text is about 40% longer in 0.2.0, and that has not been measured again.
 
 Both forms were tested as `claude plugin install ...` on the command line, from a clean configuration, with Claude Code 2.1.326 on Windows. The skill folder is plain Markdown plus one Python script, so other agents that read skills can use `skills/receipts` as it is. That has not been tested.
 
@@ -133,13 +133,14 @@ The note gives 194.0조원 as the third-quarter net profit. That is the figure f
 
 ## What the evaluation shows
 
-The rules for each evaluation were fixed in [docs/eval-plan.md](docs/eval-plan.md) before it was run. The code was frozen in one commit, and each held-out set was then run once. The results below were measured on version 0.1.0.
+The rules for each evaluation were fixed in [docs/eval-plan.md](docs/eval-plan.md) before it was run. The code was frozen in one commit, and each held-out set was then run once. E1, E2 and E3 were measured on version 0.1.0, E4 on version 0.2.0.
 
 | | Question | Held-out result |
 |---|---|---|
 | **E1** | Given a correct plan, does the script judge correctly? 64 synthetic documents, 960 statements, 288 with a planted error. | All 8 pass bars met. No planted error was accepted and no correct statement was flagged. |
 | **E2** | What happens when a model writes the plan? Claude Haiku 5.5, 30 synthetic documents, 128 planted errors, 322 correct statements. | With the skill and the script: 128 of 128 planted errors flagged, 2 of 322 correct statements flagged. The same model reviewing on its own: 125 of 128 and 26 of 322 (118 of 128 under the matching rule fixed beforehand, which undercounts it). |
 | **E3** | Does the EDGAR connection return what the filing prints? 20 companies, 40 filings, 1,169 facts. | All 6 pass bars met. No wrong value. 1,167 of 1,169 verified when the filing is named. |
+| **E4** | Does the DART connection return what the company filed, and does it tell neighbouring columns apart? 31 companies, 177 sets of statements, 44,829 amounts. | All 8 pass bars met, on the third scoring. The first two were cut by the machine and are reported below. No wrong value in any of them. |
 
 ### E1, the script alone
 
@@ -184,21 +185,40 @@ Values the connection returns are compared with the numbers printed in the filin
 
 Both sides of this comparison start from the same submission by the company. E3 tests the connection, not whether a company tagged its filing correctly. The sixth bar was added after the first development run, when a deliberately broken copy of the tool got past the first five. The [plan's change log](docs/eval-plan.md) has the details.
 
+### E4, Korean filings (DART)
+
+Values the connection returns are compared with the XBRL files the companies filed. For 31 companies, the annual report 2025 and the half-year and third-quarter reports 2026 were read, consolidated and separate: 177 sets of statements and 44,829 amounts. Eleven of the companies are large ones named beforehand. Twenty were drawn by a rule fixed beforehand from the 3,999 other companies that have a stock code in DART's company list, so no one chose them.
+
+- No amount was judged `wrong`, in 132,384 verdicts. All 44,829 were verified when asked by account id, all 42,726 when asked by name, and all 44,829 with the receipt number named.
+- 76,873 of 76,873 documents that held the number of a neighbouring column were judged `wrong`: the year to date in place of the three months, last year in place of this year, separate in place of consolidated.
+- 6,785 of 6,785 locators that should match nothing were `unverifiable`, and so were 599 of 599 that name a row by a name several rows share.
+- Ten of the companies had amended a report. In 95 of 95 cases a claim that names the earlier receipt number was `unverifiable`, and the same amount with the current number was verified.
+- 25 of 25 runs with no key, a corrupt cached file, an unreachable server or an error status from DART stopped. The key appeared nowhere in what the script printed or wrote.
+
+What to keep in mind:
+
+- **The scoring was started three times, and all three are logged.** The first was cut when the computer went to sleep for ten and a half hours in the middle. The four plans running at that moment passed the time limit and counted as failures (628 swap cases and 15 abstention cases, all of one set of statements), so that run reports two bars as not met. The second was cut after six minutes when the session it was started from ended: 1,583 plans never started. A rule written down before the held-out run says that scoring cut by the machine is run again. The third ran to its end, with the same caches and code, and is the result above. No amount was judged `wrong` in any of the three.
+- **Both sides start from the same filing.** E4 tests the connection. It does not test whether a company tagged its statements correctly.
+- **What is not in it.** The statement of changes in equity, which the script refuses. Rows without a standard account id (1,344 rows). The opening and closing cash rows of cash flow statements, which DART tags at a single date (826 amounts). Another 1,176 amounts had no fact for that period in the XBRL file and were left out.
+- **No model is involved.** E4 gives the script correct locators. How well a model picks the right column when it writes the plan against DART was not measured.
+- **What changed on the way, all before any held-out data was fetched.** On the development companies the author of the benchmark found that DART fills one comparison column of interim cash flow statements with two different periods. The contract had it wrong, and the script now refuses that column. Deliberately broken copies of the tool were scored to check the scorer. One got past the seven bars, and an eighth was added. A reviewer that had written none of the code tried to break the connection twice, and what it found was fixed. The [plan's change log](docs/eval-plan.md) has each step.
+
 ### What was not measured
 
 - Whether an agent picks up the skill when it is not named.
 - Agents other than Claude Code, and the `/plugin` command typed inside the app (the command-line form was tested).
+- A model writing plans against EDGAR or DART. E2 used files only.
 - Real documents. Checks of real documents may appear here as examples. They are not performance estimates.
 
 ### Where the runs are
 
-Every run is logged with its commit: [bench/runs.jsonl](bench/runs.jsonl) for E1, [bench/e2/runs.jsonl](bench/e2/runs.jsonl) for E2, [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl) for E3. The development runs are there too. The code was frozen at commit `a84647c`. The held-out runs were made on later commits that differ from it only in results and logs. Version 0.1.1 changed code after that. The held-out sets were not run again: 0.1.1 was rerun on the development sets only, where it meets every bar of E1 and E3.
+Every run is logged with its commit: [bench/runs.jsonl](bench/runs.jsonl) for E1, [bench/e2/runs.jsonl](bench/e2/runs.jsonl) for E2, [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl) for E3, [bench/dart/runs.jsonl](bench/dart/runs.jsonl) for E4. The development runs are there too. For E1, E2 and E3 the code was frozen at commit `a84647c`. The held-out runs were made on later commits that differ from it only in results and logs. Versions 0.1.1 and 0.2.0 changed code after that. The held-out sets of E1, E2 and E3 were not run again: both versions were rerun on the development sets only, where they meet every bar of E1 and E3. For E4 the code was frozen at commit `2ae4742`, and its held-out scorings are logged at `f3a841c`, as `nogit` and at `79dafe1`.
 
 ## Roadmap
 
-Done in 0.1.0: the core script and its benchmark, the skill and plugin, the SEC EDGAR connection, and the three evaluations. Done in 0.1.1: one-day periods on EDGAR.
+Done in 0.1.0: the core script and its benchmark, the skill and plugin, the SEC EDGAR connection, and the three evaluations. Done in 0.1.1: one-day periods on EDGAR. Done in 0.2.0: Korean filings (DART) and their evaluation.
 
-Next: Korean filings (DART), an audit of non-numeric claims, PDF sources.
+Next: an audit of non-numeric claims, PDF sources, and an evaluation with a model writing plans against filings.
 
 ## License
 
