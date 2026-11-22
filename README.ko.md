@@ -32,9 +32,9 @@
 /plugin install receipts@receipts
 ```
 
-설치한 뒤 "receipts로 report.md의 숫자를 sales.csv와 대조해 줘"처럼 요청합니다. 스킬 이름을 말하지 않았을 때 얼마나 잘 불러오는지는 아직 재지 않았습니다. 0.1.1에서 스킬은 세션마다 약 160토큰을, 실행할 때 약 3,100토큰을 썼습니다(`claude plugin details`의 추정치). 0.2.0에서는 스킬 설명서가 40%쯤 길어졌고, 다시 재지는 않았습니다.
+설치한 뒤 "receipts로 report.md의 숫자를 sales.csv와 대조해 줘"처럼 요청합니다. 스킬 이름을 말하지 않았을 때 얼마나 잘 불러오는지는 아직 재지 않았습니다. 스킬은 세션마다 약 180토큰을, 실행할 때 약 4,400토큰을 씁니다(0.2.0 기준, `claude plugin details`의 추정치).
 
-두 방식 모두 윈도우의 Claude Code 2.1.326에서 명령줄(`claude plugin install ...`)로, 설정이 없는 상태에서 설치해 확인했습니다.
+두 방식 모두 윈도우의 Claude Code 2.1.326에서 명령줄(`claude plugin install ...`)로, 설정이 없는 상태에서 설치해 확인했습니다. 0.2.0은 한 줄 방식을 Claude Code 2.1.330에서 다시 확인했습니다.
 
 ## 에이전트 없이 스크립트만 써 보기
 
