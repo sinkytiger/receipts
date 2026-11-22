@@ -1,0 +1,5665 @@
+{
+ "timestamp": "20261122T063305Z",
+ "set": "heldout",
+ "held_out": true,
+ "made_up_data": false,
+ "commit": "79dafe1",
+ "dirty": false,
+ "tool": "skills/receipts/scripts/receipts.py",
+ "tool_sha256": "1769676740267c05b50d2e041b0511f2ae05d0dd71f612c9cb013b7e53464dec",
+ "builder_version": "e4-builder-3",
+ "fetch_dates": [
+  "2026-11-21"
+ ],
+ "company_code_file_fetched": "2026-11-21",
+ "sets": [
+  {
+   "folder": "00106641-annual-CFS",
+   "company": "기아",
+   "corp_code": "00106641",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260312001224",
+   "company_in_plans": "000270",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 319
+  },
+  {
+   "folder": "00106641-annual-OFS",
+   "company": "기아",
+   "corp_code": "00106641",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260312001224",
+   "company_in_plans": "000270",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 274
+  },
+  {
+   "folder": "00106641-half-CFS",
+   "company": "기아",
+   "corp_code": "00106641",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260916000427",
+   "company_in_plans": "00106641",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260814003932",
+   "facts": 268
+  },
+  {
+   "folder": "00106641-half-OFS",
+   "company": "기아",
+   "corp_code": "00106641",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260916000427",
+   "company_in_plans": "00106641",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260814003932",
+   "facts": 226
+  },
+  {
+   "folder": "00106641-q3-CFS",
+   "company": "기아",
+   "corp_code": "00106641",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001529",
+   "company_in_plans": "00106641",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 270
+  },
+  {
+   "folder": "00106641-q3-OFS",
+   "company": "기아",
+   "corp_code": "00106641",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001529",
+   "company_in_plans": "00106641",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 230
+  },
+  {
+   "folder": "00164788-annual-CFS",
+   "company": "현대모비스",
+   "corp_code": "00164788",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260309001878",
+   "company_in_plans": "012330",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 293
+  },
+  {
+   "folder": "00164788-annual-OFS",
+   "company": "현대모비스",
+   "corp_code": "00164788",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260309001878",
+   "company_in_plans": "012330",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 246
+  },
+  {
+   "folder": "00164788-half-CFS",
+   "company": "현대모비스",
+   "corp_code": "00164788",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814004065",
+   "company_in_plans": "00164788",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 252
+  },
+  {
+   "folder": "00164788-half-OFS",
+   "company": "현대모비스",
+   "corp_code": "00164788",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814004065",
+   "company_in_plans": "00164788",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 202
+  },
+  {
+   "folder": "00164788-q3-CFS",
+   "company": "현대모비스",
+   "corp_code": "00164788",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116002191",
+   "company_in_plans": "00164788",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 256
+  },
+  {
+   "folder": "00164788-q3-OFS",
+   "company": "현대모비스",
+   "corp_code": "00164788",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116002191",
+   "company_in_plans": "00164788",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 208
+  },
+  {
+   "folder": "00155319-annual-CFS",
+   "company": "POSCO홀딩스",
+   "corp_code": "00155319",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260311004517",
+   "company_in_plans": "005490",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 429
+  },
+  {
+   "folder": "00155319-annual-OFS",
+   "company": "POSCO홀딩스",
+   "corp_code": "00155319",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260311004517",
+   "company_in_plans": "005490",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 333
+  },
+  {
+   "folder": "00155319-half-CFS",
+   "company": "POSCO홀딩스",
+   "corp_code": "00155319",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814000957",
+   "company_in_plans": "00155319",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 330
+  },
+  {
+   "folder": "00155319-half-OFS",
+   "company": "POSCO홀딩스",
+   "corp_code": "00155319",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814000957",
+   "company_in_plans": "00155319",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 232
+  },
+  {
+   "folder": "00155319-q3-CFS",
+   "company": "POSCO홀딩스",
+   "corp_code": "00155319",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261113001097",
+   "company_in_plans": "00155319",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 330
+  },
+  {
+   "folder": "00155319-q3-OFS",
+   "company": "POSCO홀딩스",
+   "corp_code": "00155319",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261113001097",
+   "company_in_plans": "00155319",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 242
+  },
+  {
+   "folder": "00356361-annual-CFS",
+   "company": "LG화학",
+   "corp_code": "00356361",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260313001195",
+   "company_in_plans": "051910",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 369
+  },
+  {
+   "folder": "00356361-annual-OFS",
+   "company": "LG화학",
+   "corp_code": "00356361",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260313001195",
+   "company_in_plans": "051910",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 292
+  },
+  {
+   "folder": "00356361-half-CFS",
+   "company": "LG화학",
+   "corp_code": "00356361",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814002655",
+   "company_in_plans": "00356361",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 324
+  },
+  {
+   "folder": "00356361-half-OFS",
+   "company": "LG화학",
+   "corp_code": "00356361",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814002655",
+   "company_in_plans": "00356361",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 248
+  },
+  {
+   "folder": "00356361-q3-CFS",
+   "company": "LG화학",
+   "corp_code": "00356361",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116000765",
+   "company_in_plans": "00356361",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 320
+  },
+  {
+   "folder": "00356361-q3-OFS",
+   "company": "LG화학",
+   "corp_code": "00356361",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000765",
+   "company_in_plans": "00356361",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 242
+  },
+  {
+   "folder": "00126362-annual-CFS",
+   "company": "삼성SDI",
+   "corp_code": "00126362",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260310002954",
+   "company_in_plans": "006400",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 375
+  },
+  {
+   "folder": "00126362-annual-OFS",
+   "company": "삼성SDI",
+   "corp_code": "00126362",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260310002954",
+   "company_in_plans": "006400",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 333
+  },
+  {
+   "folder": "00126362-half-CFS",
+   "company": "삼성SDI",
+   "corp_code": "00126362",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003578",
+   "company_in_plans": "00126362",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 332
+  },
+  {
+   "folder": "00126362-half-OFS",
+   "company": "삼성SDI",
+   "corp_code": "00126362",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003578",
+   "company_in_plans": "00126362",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 268
+  },
+  {
+   "folder": "00126362-q3-CFS",
+   "company": "삼성SDI",
+   "corp_code": "00126362",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116002248",
+   "company_in_plans": "00126362",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 328
+  },
+  {
+   "folder": "00126362-q3-OFS",
+   "company": "삼성SDI",
+   "corp_code": "00126362",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116002248",
+   "company_in_plans": "00126362",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 272
+  },
+  {
+   "folder": "00877059-annual-CFS",
+   "company": "삼성바이오로직스",
+   "corp_code": "00877059",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260515001658",
+   "company_in_plans": "207940",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260312001119",
+   "facts": 327
+  },
+  {
+   "folder": "00877059-annual-OFS",
+   "company": "삼성바이오로직스",
+   "corp_code": "00877059",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260515001658",
+   "company_in_plans": "207940",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260312001119",
+   "facts": 263
+  },
+  {
+   "folder": "00877059-half-CFS",
+   "company": "삼성바이오로직스",
+   "corp_code": "00877059",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003375",
+   "company_in_plans": "00877059",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 262
+  },
+  {
+   "folder": "00877059-half-OFS",
+   "company": "삼성바이오로직스",
+   "corp_code": "00877059",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003375",
+   "company_in_plans": "00877059",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 196
+  },
+  {
+   "folder": "00877059-q3-CFS",
+   "company": "삼성바이오로직스",
+   "corp_code": "00877059",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001659",
+   "company_in_plans": "00877059",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 268
+  },
+  {
+   "folder": "00877059-q3-OFS",
+   "company": "삼성바이오로직스",
+   "corp_code": "00877059",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001659",
+   "company_in_plans": "00877059",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 204
+  },
+  {
+   "folder": "00159023-annual-CFS",
+   "company": "SK텔레콤",
+   "corp_code": "00159023",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260318000532",
+   "company_in_plans": "017670",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 456
+  },
+  {
+   "folder": "00159023-annual-OFS",
+   "company": "SK텔레콤",
+   "corp_code": "00159023",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260318000532",
+   "company_in_plans": "017670",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 390
+  },
+  {
+   "folder": "00159023-half-CFS",
+   "company": "SK텔레콤",
+   "corp_code": "00159023",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260813001728",
+   "company_in_plans": "00159023",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 364
+  },
+  {
+   "folder": "00159023-half-OFS",
+   "company": "SK텔레콤",
+   "corp_code": "00159023",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260813001728",
+   "company_in_plans": "00159023",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 310
+  },
+  {
+   "folder": "00159023-q3-CFS",
+   "company": "SK텔레콤",
+   "corp_code": "00159023",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116002081",
+   "company_in_plans": "00159023",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 368
+  },
+  {
+   "folder": "00159023-q3-OFS",
+   "company": "SK텔레콤",
+   "corp_code": "00159023",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116002081",
+   "company_in_plans": "00159023",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 314
+  },
+  {
+   "folder": "00149655-annual-CFS",
+   "company": "삼성물산",
+   "corp_code": "00149655",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260312000856",
+   "company_in_plans": "028260",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 330
+  },
+  {
+   "folder": "00149655-annual-OFS",
+   "company": "삼성물산",
+   "corp_code": "00149655",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260312000856",
+   "company_in_plans": "028260",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 276
+  },
+  {
+   "folder": "00149655-half-CFS",
+   "company": "삼성물산",
+   "corp_code": "00149655",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814002969",
+   "company_in_plans": "00149655",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 272
+  },
+  {
+   "folder": "00149655-half-OFS",
+   "company": "삼성물산",
+   "corp_code": "00149655",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814002969",
+   "company_in_plans": "00149655",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 224
+  },
+  {
+   "folder": "00149655-q3-CFS",
+   "company": "삼성물산",
+   "corp_code": "00149655",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001150",
+   "company_in_plans": "00149655",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 276
+  },
+  {
+   "folder": "00149655-q3-OFS",
+   "company": "삼성물산",
+   "corp_code": "00149655",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001150",
+   "company_in_plans": "00149655",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 226
+  },
+  {
+   "folder": "01515323-annual-CFS",
+   "company": "LG에너지솔루션",
+   "corp_code": "01515323",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260312000217",
+   "company_in_plans": "373220",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 321
+  },
+  {
+   "folder": "01515323-annual-OFS",
+   "company": "LG에너지솔루션",
+   "corp_code": "01515323",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260312000217",
+   "company_in_plans": "373220",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 270
+  },
+  {
+   "folder": "01515323-half-CFS",
+   "company": "LG에너지솔루션",
+   "corp_code": "01515323",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260813000255",
+   "company_in_plans": "01515323",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 270
+  },
+  {
+   "folder": "01515323-half-OFS",
+   "company": "LG에너지솔루션",
+   "corp_code": "01515323",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260813000255",
+   "company_in_plans": "01515323",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 224
+  },
+  {
+   "folder": "01515323-q3-CFS",
+   "company": "LG에너지솔루션",
+   "corp_code": "01515323",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261113000421",
+   "company_in_plans": "01515323",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 272
+  },
+  {
+   "folder": "01515323-q3-OFS",
+   "company": "LG에너지솔루션",
+   "corp_code": "01515323",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261113000421",
+   "company_in_plans": "01515323",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 226
+  },
+  {
+   "folder": "00258801-annual-CFS",
+   "company": "카카오",
+   "corp_code": "00258801",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260318001423",
+   "company_in_plans": "035720",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 382
+  },
+  {
+   "folder": "00258801-annual-OFS",
+   "company": "카카오",
+   "corp_code": "00258801",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260318001423",
+   "company_in_plans": "035720",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 308
+  },
+  {
+   "folder": "00258801-half-CFS",
+   "company": "카카오",
+   "corp_code": "00258801",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260819000055",
+   "company_in_plans": "00258801",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260814003797",
+   "facts": 328
+  },
+  {
+   "folder": "00258801-half-OFS",
+   "company": "카카오",
+   "corp_code": "00258801",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260819000055",
+   "company_in_plans": "00258801",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260814003797",
+   "facts": 231
+  },
+  {
+   "folder": "00258801-q3-CFS",
+   "company": "카카오",
+   "corp_code": "00258801",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261113001344",
+   "company_in_plans": "00258801",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 332
+  },
+  {
+   "folder": "00258801-q3-OFS",
+   "company": "카카오",
+   "corp_code": "00258801",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261113001344",
+   "company_in_plans": "00258801",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 231
+  },
+  {
+   "folder": "00401731-annual-CFS",
+   "company": "LG전자",
+   "corp_code": "00401731",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260706000276",
+   "company_in_plans": "066570",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260313000662",
+   "facts": 396
+  },
+  {
+   "folder": "00401731-annual-OFS",
+   "company": "LG전자",
+   "corp_code": "00401731",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260706000276",
+   "company_in_plans": "066570",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260313000662",
+   "facts": 330
+  },
+  {
+   "folder": "00401731-half-CFS",
+   "company": "LG전자",
+   "corp_code": "00401731",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814001997",
+   "company_in_plans": "00401731",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 346
+  },
+  {
+   "folder": "00401731-half-OFS",
+   "company": "LG전자",
+   "corp_code": "00401731",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814001997",
+   "company_in_plans": "00401731",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 284
+  },
+  {
+   "folder": "00401731-q3-CFS",
+   "company": "LG전자",
+   "corp_code": "00401731",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116000748",
+   "company_in_plans": "00401731",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 352
+  },
+  {
+   "folder": "00401731-q3-OFS",
+   "company": "LG전자",
+   "corp_code": "00401731",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000748",
+   "company_in_plans": "00401731",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 284
+  },
+  {
+   "folder": "01049167-annual-OFS",
+   "company": "롤링스톤",
+   "corp_code": "01049167",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260325000345",
+   "company_in_plans": "214610",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260323001725",
+   "facts": 204
+  },
+  {
+   "folder": "01049167-half-OFS",
+   "company": "롤링스톤",
+   "corp_code": "01049167",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003633",
+   "company_in_plans": "01049167",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 153
+  },
+  {
+   "folder": "01049167-q3-OFS",
+   "company": "롤링스톤",
+   "corp_code": "01049167",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000203",
+   "company_in_plans": "01049167",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 151
+  },
+  {
+   "folder": "00303396-annual-CFS",
+   "company": "한국컴퓨터",
+   "corp_code": "00303396",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260731000387",
+   "company_in_plans": "054040",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260316000809",
+   "facts": 246
+  },
+  {
+   "folder": "00303396-annual-OFS",
+   "company": "한국컴퓨터",
+   "corp_code": "00303396",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260731000387",
+   "company_in_plans": "054040",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260316000809",
+   "facts": 225
+  },
+  {
+   "folder": "00303396-half-CFS",
+   "company": "한국컴퓨터",
+   "corp_code": "00303396",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814002407",
+   "company_in_plans": "00303396",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 216
+  },
+  {
+   "folder": "00303396-half-OFS",
+   "company": "한국컴퓨터",
+   "corp_code": "00303396",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814002407",
+   "company_in_plans": "00303396",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 190
+  },
+  {
+   "folder": "00303396-q3-CFS",
+   "company": "한국컴퓨터",
+   "corp_code": "00303396",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116000239",
+   "company_in_plans": "00303396",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 210
+  },
+  {
+   "folder": "00303396-q3-OFS",
+   "company": "한국컴퓨터",
+   "corp_code": "00303396",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000239",
+   "company_in_plans": "00303396",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 191
+  },
+  {
+   "folder": "00117629-annual-CFS",
+   "company": "KBI동양철관",
+   "corp_code": "00117629",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260318001380",
+   "company_in_plans": "008970",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 290
+  },
+  {
+   "folder": "00117629-annual-OFS",
+   "company": "KBI동양철관",
+   "corp_code": "00117629",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260318001380",
+   "company_in_plans": "008970",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 248
+  },
+  {
+   "folder": "00117629-half-CFS",
+   "company": "KBI동양철관",
+   "corp_code": "00117629",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260930000528",
+   "company_in_plans": "00117629",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260814002672",
+   "facts": 226
+  },
+  {
+   "folder": "00117629-half-OFS",
+   "company": "KBI동양철관",
+   "corp_code": "00117629",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260930000528",
+   "company_in_plans": "00117629",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260814002672",
+   "facts": 182
+  },
+  {
+   "folder": "00117629-q3-CFS",
+   "company": "KBI동양철관",
+   "corp_code": "00117629",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116000366",
+   "company_in_plans": "00117629",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 231
+  },
+  {
+   "folder": "00117629-q3-OFS",
+   "company": "KBI동양철관",
+   "corp_code": "00117629",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000366",
+   "company_in_plans": "00117629",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 190
+  },
+  {
+   "folder": "00584362-annual-OFS",
+   "company": "케이엑스넥스지",
+   "corp_code": "00584362",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260331004022",
+   "company_in_plans": "081970",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 282
+  },
+  {
+   "folder": "00584362-half-OFS",
+   "company": "케이엑스넥스지",
+   "corp_code": "00584362",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003341",
+   "company_in_plans": "00584362",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 206
+  },
+  {
+   "folder": "00584362-q3-OFS",
+   "company": "케이엑스넥스지",
+   "corp_code": "00584362",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000346",
+   "company_in_plans": "00584362",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 211
+  },
+  {
+   "folder": "01385005-annual-CFS",
+   "company": "리브스메드",
+   "corp_code": "01385005",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260323001621",
+   "company_in_plans": "491000",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 230
+  },
+  {
+   "folder": "01385005-annual-OFS",
+   "company": "리브스메드",
+   "corp_code": "01385005",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260323001621",
+   "company_in_plans": "491000",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 221
+  },
+  {
+   "folder": "01385005-half-CFS",
+   "company": "리브스메드",
+   "corp_code": "01385005",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814002414",
+   "company_in_plans": "01385005",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 204
+  },
+  {
+   "folder": "01385005-half-OFS",
+   "company": "리브스메드",
+   "corp_code": "01385005",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814002414",
+   "company_in_plans": "01385005",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 194
+  },
+  {
+   "folder": "01385005-q3-CFS",
+   "company": "리브스메드",
+   "corp_code": "01385005",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261113000262",
+   "company_in_plans": "01385005",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 216
+  },
+  {
+   "folder": "01385005-q3-OFS",
+   "company": "리브스메드",
+   "corp_code": "01385005",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261113000262",
+   "company_in_plans": "01385005",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 204
+  },
+  {
+   "folder": "01095722-annual-CFS",
+   "company": "심텍",
+   "corp_code": "01095722",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260317000641",
+   "company_in_plans": "222800",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 306
+  },
+  {
+   "folder": "01095722-annual-OFS",
+   "company": "심텍",
+   "corp_code": "01095722",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260317000641",
+   "company_in_plans": "222800",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 263
+  },
+  {
+   "folder": "01095722-half-CFS",
+   "company": "심텍",
+   "corp_code": "01095722",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260813001430",
+   "company_in_plans": "01095722",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 238
+  },
+  {
+   "folder": "01095722-half-OFS",
+   "company": "심텍",
+   "corp_code": "01095722",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260813001430",
+   "company_in_plans": "01095722",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 192
+  },
+  {
+   "folder": "01095722-q3-CFS",
+   "company": "심텍",
+   "corp_code": "01095722",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261113000938",
+   "company_in_plans": "01095722",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 236
+  },
+  {
+   "folder": "01095722-q3-OFS",
+   "company": "심텍",
+   "corp_code": "01095722",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261113000938",
+   "company_in_plans": "01095722",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 197
+  },
+  {
+   "folder": "00815095-annual-CFS",
+   "company": "우리이앤엘하루틴",
+   "corp_code": "00815095",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260323000560",
+   "company_in_plans": "153490",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 267
+  },
+  {
+   "folder": "00815095-annual-OFS",
+   "company": "우리이앤엘하루틴",
+   "corp_code": "00815095",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260323000560",
+   "company_in_plans": "153490",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 251
+  },
+  {
+   "folder": "00815095-half-CFS",
+   "company": "우리이앤엘하루틴",
+   "corp_code": "00815095",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814002476",
+   "company_in_plans": "00815095",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 221
+  },
+  {
+   "folder": "00815095-half-OFS",
+   "company": "우리이앤엘하루틴",
+   "corp_code": "00815095",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814002476",
+   "company_in_plans": "00815095",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 194
+  },
+  {
+   "folder": "00815095-q3-CFS",
+   "company": "우리이앤엘하루틴",
+   "corp_code": "00815095",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001219",
+   "company_in_plans": "00815095",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 231
+  },
+  {
+   "folder": "00815095-q3-OFS",
+   "company": "우리이앤엘하루틴",
+   "corp_code": "00815095",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001219",
+   "company_in_plans": "00815095",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 197
+  },
+  {
+   "folder": "01563922-annual-CFS",
+   "company": "엠오티",
+   "corp_code": "01563922",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260615000277",
+   "company_in_plans": "413390",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260318000603",
+   "facts": 273
+  },
+  {
+   "folder": "01563922-annual-OFS",
+   "company": "엠오티",
+   "corp_code": "01563922",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260615000277",
+   "company_in_plans": "413390",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260318000603",
+   "facts": 260
+  },
+  {
+   "folder": "01563922-half-CFS",
+   "company": "엠오티",
+   "corp_code": "01563922",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814001123",
+   "company_in_plans": "01563922",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 212
+  },
+  {
+   "folder": "01563922-half-OFS",
+   "company": "엠오티",
+   "corp_code": "01563922",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814001123",
+   "company_in_plans": "01563922",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 187
+  },
+  {
+   "folder": "01563922-q3-CFS",
+   "company": "엠오티",
+   "corp_code": "01563922",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116000277",
+   "company_in_plans": "01563922",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 212
+  },
+  {
+   "folder": "01563922-q3-OFS",
+   "company": "엠오티",
+   "corp_code": "01563922",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000277",
+   "company_in_plans": "01563922",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 190
+  },
+  {
+   "folder": "01423837-annual-CFS",
+   "company": "모아데이타",
+   "corp_code": "01423837",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260323000530",
+   "company_in_plans": "288980",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 265
+  },
+  {
+   "folder": "01423837-annual-OFS",
+   "company": "모아데이타",
+   "corp_code": "01423837",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260323000530",
+   "company_in_plans": "288980",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 230
+  },
+  {
+   "folder": "01423837-half-CFS",
+   "company": "모아데이타",
+   "corp_code": "01423837",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814002441",
+   "company_in_plans": "01423837",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 206
+  },
+  {
+   "folder": "01423837-half-OFS",
+   "company": "모아데이타",
+   "corp_code": "01423837",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814002441",
+   "company_in_plans": "01423837",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 168
+  },
+  {
+   "folder": "01423837-q3-CFS",
+   "company": "모아데이타",
+   "corp_code": "01423837",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001825",
+   "company_in_plans": "01423837",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 213
+  },
+  {
+   "folder": "01423837-q3-OFS",
+   "company": "모아데이타",
+   "corp_code": "01423837",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001825",
+   "company_in_plans": "01423837",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 194
+  },
+  {
+   "folder": "00114792-annual-CFS",
+   "company": "동국홀딩스",
+   "corp_code": "00114792",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260318000823",
+   "company_in_plans": "001230",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 371
+  },
+  {
+   "folder": "00114792-annual-OFS",
+   "company": "동국홀딩스",
+   "corp_code": "00114792",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260318000823",
+   "company_in_plans": "001230",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 293
+  },
+  {
+   "folder": "00114792-half-CFS",
+   "company": "동국홀딩스",
+   "corp_code": "00114792",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814001615",
+   "company_in_plans": "00114792",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 286
+  },
+  {
+   "folder": "00114792-half-OFS",
+   "company": "동국홀딩스",
+   "corp_code": "00114792",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814001615",
+   "company_in_plans": "00114792",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 192
+  },
+  {
+   "folder": "00114792-q3-CFS",
+   "company": "동국홀딩스",
+   "corp_code": "00114792",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261113000598",
+   "company_in_plans": "00114792",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 288
+  },
+  {
+   "folder": "00114792-q3-OFS",
+   "company": "동국홀딩스",
+   "corp_code": "00114792",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261113000598",
+   "company_in_plans": "00114792",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 200
+  },
+  {
+   "folder": "01021949-annual-CFS",
+   "company": "덱스터",
+   "corp_code": "01021949",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260320000939",
+   "company_in_plans": "206560",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 248
+  },
+  {
+   "folder": "01021949-annual-OFS",
+   "company": "덱스터",
+   "corp_code": "01021949",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260320000939",
+   "company_in_plans": "206560",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 197
+  },
+  {
+   "folder": "01021949-half-CFS",
+   "company": "덱스터",
+   "corp_code": "01021949",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003090",
+   "company_in_plans": "01021949",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 196
+  },
+  {
+   "folder": "01021949-half-OFS",
+   "company": "덱스터",
+   "corp_code": "01021949",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003090",
+   "company_in_plans": "01021949",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 155
+  },
+  {
+   "folder": "01021949-q3-CFS",
+   "company": "덱스터",
+   "corp_code": "01021949",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116000142",
+   "company_in_plans": "01021949",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 201
+  },
+  {
+   "folder": "01021949-q3-OFS",
+   "company": "덱스터",
+   "corp_code": "01021949",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000142",
+   "company_in_plans": "01021949",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 156
+  },
+  {
+   "folder": "01803635-annual-CFS",
+   "company": "에스투더블유",
+   "corp_code": "01803635",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260318001533",
+   "company_in_plans": "488280",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 277
+  },
+  {
+   "folder": "01803635-annual-OFS",
+   "company": "에스투더블유",
+   "corp_code": "01803635",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260318001533",
+   "company_in_plans": "488280",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 255
+  },
+  {
+   "folder": "01803635-half-CFS",
+   "company": "에스투더블유",
+   "corp_code": "01803635",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260813001570",
+   "company_in_plans": "01803635",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 212
+  },
+  {
+   "folder": "01803635-half-OFS",
+   "company": "에스투더블유",
+   "corp_code": "01803635",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260813001570",
+   "company_in_plans": "01803635",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 187
+  },
+  {
+   "folder": "01803635-q3-CFS",
+   "company": "에스투더블유",
+   "corp_code": "01803635",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001381",
+   "company_in_plans": "01803635",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 222
+  },
+  {
+   "folder": "01803635-q3-OFS",
+   "company": "에스투더블유",
+   "corp_code": "01803635",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001381",
+   "company_in_plans": "01803635",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 194
+  },
+  {
+   "folder": "00428251-annual-CFS",
+   "company": "현대백화점",
+   "corp_code": "00428251",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260318001314",
+   "company_in_plans": "069960",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 414
+  },
+  {
+   "folder": "00428251-annual-OFS",
+   "company": "현대백화점",
+   "corp_code": "00428251",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260318001314",
+   "company_in_plans": "069960",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 345
+  },
+  {
+   "folder": "00428251-half-CFS",
+   "company": "현대백화점",
+   "corp_code": "00428251",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003395",
+   "company_in_plans": "00428251",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 324
+  },
+  {
+   "folder": "00428251-half-OFS",
+   "company": "현대백화점",
+   "corp_code": "00428251",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003395",
+   "company_in_plans": "00428251",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 262
+  },
+  {
+   "folder": "00428251-q3-CFS",
+   "company": "현대백화점",
+   "corp_code": "00428251",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001557",
+   "company_in_plans": "00428251",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 316
+  },
+  {
+   "folder": "00428251-q3-OFS",
+   "company": "현대백화점",
+   "corp_code": "00428251",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001557",
+   "company_in_plans": "00428251",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 258
+  },
+  {
+   "folder": "00491336-annual-CFS",
+   "company": "잘만테크",
+   "corp_code": "00491336",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260331003271",
+   "company_in_plans": "090120",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 144
+  },
+  {
+   "folder": "00491336-annual-OFS",
+   "company": "잘만테크",
+   "corp_code": "00491336",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260331003271",
+   "company_in_plans": "090120",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 147
+  },
+  {
+   "folder": "00491336-half-CFS",
+   "company": "잘만테크",
+   "corp_code": "00491336",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260813001619",
+   "company_in_plans": "00491336",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 128
+  },
+  {
+   "folder": "00491336-half-OFS",
+   "company": "잘만테크",
+   "corp_code": "00491336",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260813001619",
+   "company_in_plans": "00491336",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 124
+  },
+  {
+   "folder": "00491336-q3-CFS",
+   "company": "잘만테크",
+   "corp_code": "00491336",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116000786",
+   "company_in_plans": "00491336",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 128
+  },
+  {
+   "folder": "00491336-q3-OFS",
+   "company": "잘만테크",
+   "corp_code": "00491336",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000786",
+   "company_in_plans": "00491336",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 124
+  },
+  {
+   "folder": "00575106-annual-CFS",
+   "company": "씨유테크",
+   "corp_code": "00575106",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260323001411",
+   "company_in_plans": "376290",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 229
+  },
+  {
+   "folder": "00575106-annual-OFS",
+   "company": "씨유테크",
+   "corp_code": "00575106",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260323001411",
+   "company_in_plans": "376290",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 211
+  },
+  {
+   "folder": "00575106-half-CFS",
+   "company": "씨유테크",
+   "corp_code": "00575106",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260813001289",
+   "company_in_plans": "00575106",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 192
+  },
+  {
+   "folder": "00575106-half-OFS",
+   "company": "씨유테크",
+   "corp_code": "00575106",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260813001289",
+   "company_in_plans": "00575106",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 174
+  },
+  {
+   "folder": "00575106-q3-CFS",
+   "company": "씨유테크",
+   "corp_code": "00575106",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116000698",
+   "company_in_plans": "00575106",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 203
+  },
+  {
+   "folder": "00575106-q3-OFS",
+   "company": "씨유테크",
+   "corp_code": "00575106",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000698",
+   "company_in_plans": "00575106",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 190
+  },
+  {
+   "folder": "00915508-annual-CFS",
+   "company": "스퀘어텍",
+   "corp_code": "00915508",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260323001654",
+   "company_in_plans": "148250",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 191
+  },
+  {
+   "folder": "00915508-annual-OFS",
+   "company": "스퀘어텍",
+   "corp_code": "00915508",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260323001654",
+   "company_in_plans": "148250",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 182
+  },
+  {
+   "folder": "00915508-half-CFS",
+   "company": "스퀘어텍",
+   "corp_code": "00915508",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260813000801",
+   "company_in_plans": "00915508",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 185
+  },
+  {
+   "folder": "00915508-half-OFS",
+   "company": "스퀘어텍",
+   "corp_code": "00915508",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260813000801",
+   "company_in_plans": "00915508",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 162
+  },
+  {
+   "folder": "00915508-q3-CFS",
+   "company": "스퀘어텍",
+   "corp_code": "00915508",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001045",
+   "company_in_plans": "00915508",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 189
+  },
+  {
+   "folder": "00915508-q3-OFS",
+   "company": "스퀘어텍",
+   "corp_code": "00915508",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001045",
+   "company_in_plans": "00915508",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 154
+  },
+  {
+   "folder": "01335578-annual-CFS",
+   "company": "애니플러스",
+   "corp_code": "01335578",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260323000867",
+   "company_in_plans": "310200",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 307
+  },
+  {
+   "folder": "01335578-annual-OFS",
+   "company": "애니플러스",
+   "corp_code": "01335578",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260323000867",
+   "company_in_plans": "310200",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 237
+  },
+  {
+   "folder": "01335578-half-CFS",
+   "company": "애니플러스",
+   "corp_code": "01335578",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261001000338",
+   "company_in_plans": "01335578",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260814003129",
+   "facts": 296
+  },
+  {
+   "folder": "01335578-half-OFS",
+   "company": "애니플러스",
+   "corp_code": "01335578",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261001000338",
+   "company_in_plans": "01335578",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260814003129",
+   "facts": 235
+  },
+  {
+   "folder": "01335578-q3-CFS",
+   "company": "애니플러스",
+   "corp_code": "01335578",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261112000678",
+   "company_in_plans": "01335578",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 312
+  },
+  {
+   "folder": "01335578-q3-OFS",
+   "company": "애니플러스",
+   "corp_code": "01335578",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261112000678",
+   "company_in_plans": "01335578",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 242
+  },
+  {
+   "folder": "00760971-annual-CFS",
+   "company": "크래프톤",
+   "corp_code": "00760971",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260515002689",
+   "company_in_plans": "259960",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260316001313",
+   "facts": 351
+  },
+  {
+   "folder": "00760971-annual-OFS",
+   "company": "크래프톤",
+   "corp_code": "00760971",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260515002689",
+   "company_in_plans": "259960",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260316001313",
+   "facts": 282
+  },
+  {
+   "folder": "00760971-half-CFS",
+   "company": "크래프톤",
+   "corp_code": "00760971",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003894",
+   "company_in_plans": "00760971",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 286
+  },
+  {
+   "folder": "00760971-half-OFS",
+   "company": "크래프톤",
+   "corp_code": "00760971",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003894",
+   "company_in_plans": "00760971",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 224
+  },
+  {
+   "folder": "00760971-q3-CFS",
+   "company": "크래프톤",
+   "corp_code": "00760971",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001814",
+   "company_in_plans": "00760971",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 282
+  },
+  {
+   "folder": "00760971-q3-OFS",
+   "company": "크래프톤",
+   "corp_code": "00760971",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001814",
+   "company_in_plans": "00760971",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 226
+  },
+  {
+   "folder": "01605282-annual-OFS",
+   "company": "닷밀",
+   "corp_code": "01605282",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260318000719",
+   "company_in_plans": "464580",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 229
+  },
+  {
+   "folder": "01605282-half-OFS",
+   "company": "닷밀",
+   "corp_code": "01605282",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814000901",
+   "company_in_plans": "01605282",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 162
+  },
+  {
+   "folder": "01605282-q3-OFS",
+   "company": "닷밀",
+   "corp_code": "01605282",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001049",
+   "company_in_plans": "01605282",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 164
+  },
+  {
+   "folder": "00238782-annual-CFS",
+   "company": "다우데이타",
+   "corp_code": "00238782",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260320001289",
+   "company_in_plans": "032190",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 543
+  },
+  {
+   "folder": "00238782-annual-OFS",
+   "company": "다우데이타",
+   "corp_code": "00238782",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260320001289",
+   "company_in_plans": "032190",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 273
+  },
+  {
+   "folder": "00238782-half-CFS",
+   "company": "다우데이타",
+   "corp_code": "00238782",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814004039",
+   "company_in_plans": "00238782",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 395
+  },
+  {
+   "folder": "00238782-half-OFS",
+   "company": "다우데이타",
+   "corp_code": "00238782",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814004039",
+   "company_in_plans": "00238782",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 190
+  },
+  {
+   "folder": "00238782-q3-CFS",
+   "company": "다우데이타",
+   "corp_code": "00238782",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001883",
+   "company_in_plans": "00238782",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 399
+  },
+  {
+   "folder": "00238782-q3-OFS",
+   "company": "다우데이타",
+   "corp_code": "00238782",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001883",
+   "company_in_plans": "00238782",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 208
+  }
+ ],
+ "missing_sets": [
+  {
+   "corp_code": "01049167",
+   "company": "롤링스톤",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  },
+  {
+   "corp_code": "01049167",
+   "company": "롤링스톤",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  },
+  {
+   "corp_code": "01049167",
+   "company": "롤링스톤",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  },
+  {
+   "corp_code": "00584362",
+   "company": "케이엑스넥스지",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  },
+  {
+   "corp_code": "00584362",
+   "company": "케이엑스넥스지",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  },
+  {
+   "corp_code": "00584362",
+   "company": "케이엑스넥스지",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  },
+  {
+   "corp_code": "01605282",
+   "company": "닷밀",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  },
+  {
+   "corp_code": "01605282",
+   "company": "닷밀",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  },
+  {
+   "corp_code": "01605282",
+   "company": "닷밀",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  }
+ ],
+ "sets_without_gold": [],
+ "draw": {
+  "candidates": 3999,
+  "wanted": 20,
+  "kept": [
+   {
+    "position": 2,
+    "corp_code": "01049167",
+    "corp_name": "롤링스톤",
+    "stock_code": "214610"
+   },
+   {
+    "position": 4,
+    "corp_code": "00303396",
+    "corp_name": "한국컴퓨터",
+    "stock_code": "054040"
+   },
+   {
+    "position": 5,
+    "corp_code": "00117629",
+    "corp_name": "KBI동양철관",
+    "stock_code": "008970"
+   },
+   {
+    "position": 6,
+    "corp_code": "00584362",
+    "corp_name": "케이엑스넥스지",
+    "stock_code": "081970"
+   },
+   {
+    "position": 9,
+    "corp_code": "01385005",
+    "corp_name": "리브스메드",
+    "stock_code": "491000"
+   },
+   {
+    "position": 10,
+    "corp_code": "01095722",
+    "corp_name": "심텍",
+    "stock_code": "222800"
+   },
+   {
+    "position": 11,
+    "corp_code": "00815095",
+    "corp_name": "우리이앤엘하루틴",
+    "stock_code": "153490"
+   },
+   {
+    "position": 13,
+    "corp_code": "01563922",
+    "corp_name": "엠오티",
+    "stock_code": "413390"
+   },
+   {
+    "position": 15,
+    "corp_code": "01423837",
+    "corp_name": "모아데이타",
+    "stock_code": "288980"
+   },
+   {
+    "position": 16,
+    "corp_code": "00114792",
+    "corp_name": "동국홀딩스",
+    "stock_code": "001230"
+   },
+   {
+    "position": 17,
+    "corp_code": "01021949",
+    "corp_name": "덱스터",
+    "stock_code": "206560"
+   },
+   {
+    "position": 18,
+    "corp_code": "01803635",
+    "corp_name": "에스투더블유",
+    "stock_code": "488280"
+   },
+   {
+    "position": 20,
+    "corp_code": "00428251",
+    "corp_name": "현대백화점",
+    "stock_code": "069960"
+   },
+   {
+    "position": 21,
+    "corp_code": "00491336",
+    "corp_name": "잘만테크",
+    "stock_code": "090120"
+   },
+   {
+    "position": 23,
+    "corp_code": "00575106",
+    "corp_name": "씨유테크",
+    "stock_code": "376290"
+   },
+   {
+    "position": 24,
+    "corp_code": "00915508",
+    "corp_name": "스퀘어텍",
+    "stock_code": "148250"
+   },
+   {
+    "position": 25,
+    "corp_code": "01335578",
+    "corp_name": "애니플러스",
+    "stock_code": "310200"
+   },
+   {
+    "position": 26,
+    "corp_code": "00760971",
+    "corp_name": "크래프톤",
+    "stock_code": "259960"
+   },
+   {
+    "position": 28,
+    "corp_code": "01605282",
+    "corp_name": "닷밀",
+    "stock_code": "464580"
+   },
+   {
+    "position": 29,
+    "corp_code": "00238782",
+    "corp_name": "다우데이타",
+    "stock_code": "032190"
+   }
+  ],
+  "passed_over": [
+   {
+    "position": 1,
+    "corp_code": "01965157",
+    "corp_name": "한화플러스제6호스팩",
+    "stock_code": "0127E0",
+    "reason": "no statements for the annual report 2025, consolidated or separate"
+   },
+   {
+    "position": 3,
+    "corp_code": "00107923",
+    "corp_name": "남한제지",
+    "stock_code": "001950",
+    "reason": "no statements for the annual report 2025, consolidated or separate"
+   },
+   {
+    "position": 7,
+    "corp_code": "01676989",
+    "corp_name": "케이비제23호기업인수목적",
+    "stock_code": "440200",
+    "reason": "no statements for the annual report 2025, consolidated or separate"
+   },
+   {
+    "position": 8,
+    "corp_code": "00220552",
+    "corp_name": "청람디지탈",
+    "stock_code": "035270",
+    "reason": "no statements for the annual report 2025, consolidated or separate"
+   },
+   {
+    "position": 12,
+    "corp_code": "00394778",
+    "corp_name": "케이엔씨글로벌",
+    "stock_code": "068150",
+    "reason": "no statements for the annual report 2025, consolidated or separate"
+   },
+   {
+    "position": 14,
+    "corp_code": "00529310",
+    "corp_name": "동북아10호선박투자회사",
+    "stock_code": "083350",
+    "reason": "no statements for the annual report 2025, consolidated or separate"
+   },
+   {
+    "position": 19,
+    "corp_code": "00533809",
+    "corp_name": "바스칸바이오제약",
+    "stock_code": "354390",
+    "reason": "no statements for the annual report 2025, consolidated or separate"
+   },
+   {
+    "position": 22,
+    "corp_code": "00305695",
+    "corp_name": "세니콘",
+    "stock_code": "056060",
+    "reason": "no statements for the annual report 2025, consolidated or separate"
+   },
+   {
+    "position": 27,
+    "corp_code": "00505541",
+    "corp_name": "아시아퍼시픽2호선박투자회사",
+    "stock_code": "081190",
+    "reason": "no statements for the annual report 2025, consolidated or separate"
+   }
+  ],
+  "complete": true
+ },
+ "counts": {
+  "companies": 31,
+  "sets": 177,
+  "missing_sets": 9,
+  "facts": 44829,
+  "by_id": 44829,
+  "by_name": 42726,
+  "pinned": 44829,
+  "swap": 76873,
+  "abstain": 6785,
+  "amended": 95,
+  "ambiguous": 599,
+  "stop_cases": 25,
+  "plans_run": 2179
+ },
+ "measures": [
+  {
+   "n": 1,
+   "name": "fact claims judged wrong, by id, by name or pinned",
+   "value": 0,
+   "den": 132384,
+   "by_arm": {
+    "by_id": 0,
+    "by_name": 0,
+    "pinned": 0
+   },
+   "bar": "0",
+   "ok": true
+  },
+  {
+   "n": 2,
+   "name": "by id, by name and pinned, each on its own: judged verified",
+   "value": {
+    "by_id": 1.0,
+    "by_name": 1.0,
+    "pinned": 1.0
+   },
+   "arms": {
+    "by_id": {
+     "value": 1.0,
+     "num": 44829,
+     "den": 44829,
+     "unverifiable": 0,
+     "other": 0,
+     "ok": true
+    },
+    "by_name": {
+     "value": 1.0,
+     "num": 42726,
+     "den": 42726,
+     "unverifiable": 0,
+     "other": 0,
+     "ok": true
+    },
+    "pinned": {
+     "value": 1.0,
+     "num": 44829,
+     "den": 44829,
+     "unverifiable": 0,
+     "other": 0,
+     "ok": true
+    }
+   },
+   "bar": ">= 98% each, rest unverifiable",
+   "ok": true
+  },
+  {
+   "n": 3,
+   "name": "swap cases judged wrong, among the cases whose fact was verified by id",
+   "value": 1.0,
+   "num": 76873,
+   "den": 76873,
+   "other_cases": 0,
+   "other_cases_unverifiable": 0,
+   "bar": "100%, the other swap cases unverifiable",
+   "ok": true
+  },
+  {
+   "n": 4,
+   "name": "abstention cases judged unverifiable",
+   "value": 1.0,
+   "num": 6785,
+   "den": 6785,
+   "bar": "100%",
+   "ok": true
+  },
+  {
+   "n": 5,
+   "name": "amended reports: pinned to the earlier receipt number unverifiable, pinned to the served number verified",
+   "value": 1.0,
+   "num": 95,
+   "den": 95,
+   "cases": 95,
+   "bar": "100%",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 6,
+   "name": "stop cases that exit with code 2",
+   "value": 1.0,
+   "num": 25,
+   "den": 25,
+   "bar": "100%",
+   "ok": true
+  },
+  {
+   "n": 7,
+   "name": "places where a key appears in what the tool printed or wrote",
+   "value": 0,
+   "fill_run": 0,
+   "stop_cases": 0,
+   "bar": "0",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 8,
+   "name": "ambiguous rows: a locator that names a row by a name, or by an account id, that several rows of the statement share is judged unverifiable",
+   "value": 1.0,
+   "num": 599,
+   "den": 599,
+   "cases": 599,
+   "by_kind": {
+    "name": {
+     "n": 599,
+     "unverifiable": 599
+    },
+    "id": {
+     "n": 0,
+     "unverifiable": 0
+    }
+   },
+   "bar": "100%",
+   "ok": true,
+   "note": ""
+  }
+ ],
+ "pass": true,
+ "reported": {
+  "wrong_split": {
+   "counts": {
+    "tool_returned_the_api_value": 0,
+    "tool_returned_another_value": 0,
+    "not_known": 0
+   },
+   "api_differs_from_gold": 0,
+   "claims": []
+  },
+  "facts_without_gold": {
+   "no_fact_in_period": 1176,
+   "only_instant_facts": 826
+  },
+  "rows_left_out": {
+   "no_standard_account_id": 1344,
+   "statement_of_changes_in_equity": 10426
+  },
+  "not_verified_by_reason": {},
+  "swap_by_kind": {
+   "a / fact_verified": {
+    "n": 10273,
+    "verdict:wrong": 10273
+   },
+   "b / fact_verified": {
+    "n": 36696,
+    "verdict:wrong": 36696
+   },
+   "c / fact_verified": {
+    "n": 29904,
+    "verdict:wrong": 29904
+   }
+  },
+  "swap_not_built": {
+   "c": 6184,
+   "b": 1716,
+   "a": 497
+  },
+  "abstain_by_kind": {
+   "account": {
+    "n": 885,
+    "verdict:unverifiable": 885,
+    "reason:locator_no_match": 885
+   },
+   "column": {
+    "n": 885,
+    "verdict:unverifiable": 885,
+    "reason:locator_no_match": 885
+   },
+   "year": {
+    "n": 885,
+    "verdict:unverifiable": 885,
+    "reason:locator_no_match": 885
+   },
+   "fs": {
+    "n": 885,
+    "verdict:unverifiable": 885,
+    "reason:locator_no_match": 885
+   },
+   "sce": {
+    "n": 885,
+    "verdict:unverifiable": 885,
+    "reason:unsupported": 885
+   },
+   "receipt": {
+    "n": 885,
+    "verdict:unverifiable": 885,
+    "reason:dart_receipt_differs": 885
+   },
+   "statement": {
+    "n": 885,
+    "verdict:unverifiable": 885,
+    "reason:locator_no_match": 885
+   },
+   "cfq": {
+    "n": 590,
+    "verdict:unverifiable": 590,
+    "reason:unsupported": 590
+   }
+  },
+  "amended": [
+   {
+    "set": "00106641-half-CFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00106641-half-CFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00106641-half-CFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00106641-half-CFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00106641-half-CFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00106641-half-OFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00106641-half-OFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00106641-half-OFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00106641-half-OFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00106641-half-OFS",
+    "company": "기아",
+    "corp_code": "00106641",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260814003932",
+    "served_rcept_no": "20260916000427",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-CFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-CFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-CFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-CFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-CFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-OFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-OFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-OFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-OFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00877059-annual-OFS",
+    "company": "삼성바이오로직스",
+    "corp_code": "00877059",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260312001119",
+    "served_rcept_no": "20260515001658",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-CFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-CFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-CFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-CFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-CFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-OFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-OFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-OFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-OFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00258801-half-OFS",
+    "company": "카카오",
+    "corp_code": "00258801",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260814003797",
+    "served_rcept_no": "20260819000055",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-CFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-CFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-CFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-CFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-CFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-OFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-OFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-OFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-OFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00401731-annual-OFS",
+    "company": "LG전자",
+    "corp_code": "00401731",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260313000662",
+    "served_rcept_no": "20260706000276",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01049167-annual-OFS",
+    "company": "롤링스톤",
+    "corp_code": "01049167",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260323001725",
+    "served_rcept_no": "20260325000345",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01049167-annual-OFS",
+    "company": "롤링스톤",
+    "corp_code": "01049167",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260323001725",
+    "served_rcept_no": "20260325000345",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01049167-annual-OFS",
+    "company": "롤링스톤",
+    "corp_code": "01049167",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260323001725",
+    "served_rcept_no": "20260325000345",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01049167-annual-OFS",
+    "company": "롤링스톤",
+    "corp_code": "01049167",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260323001725",
+    "served_rcept_no": "20260325000345",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01049167-annual-OFS",
+    "company": "롤링스톤",
+    "corp_code": "01049167",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260323001725",
+    "served_rcept_no": "20260325000345",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-CFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-CFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-CFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-CFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-CFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-OFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-OFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-OFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-OFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00303396-annual-OFS",
+    "company": "한국컴퓨터",
+    "corp_code": "00303396",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260316000809",
+    "served_rcept_no": "20260731000387",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-CFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-CFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-CFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-CFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-CFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-OFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-OFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-OFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-OFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00117629-half-OFS",
+    "company": "KBI동양철관",
+    "corp_code": "00117629",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260814002672",
+    "served_rcept_no": "20260930000528",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-CFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-CFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-CFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-CFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-CFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-OFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-OFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-OFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-OFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01563922-annual-OFS",
+    "company": "엠오티",
+    "corp_code": "01563922",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260318000603",
+    "served_rcept_no": "20260615000277",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-CFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-CFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-CFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-CFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-CFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-OFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-OFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-OFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-OFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "01335578-half-OFS",
+    "company": "애니플러스",
+    "corp_code": "01335578",
+    "report": "half",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260814003129",
+    "served_rcept_no": "20261001000338",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-CFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-CFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-CFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-CFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-CFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-OFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-OFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-OFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-OFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00760971-annual-OFS",
+    "company": "크래프톤",
+    "corp_code": "00760971",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260316001313",
+    "served_rcept_no": "20260515002689",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   }
+  ],
+  "ambiguous_by_kind": {
+   "name": {
+    "n": 599,
+    "verdict:unverifiable": 599,
+    "reason:locator_multiple": 599
+   }
+  },
+  "stop_by_variant": {
+   "no_key": {
+    "n": 5,
+    "exit:2": 5
+   },
+   "corrupt_cache": {
+    "n": 5,
+    "exit:2": 5
+   },
+   "closed_port": {
+    "n": 5,
+    "exit:2": 5
+   },
+   "status_020": {
+    "n": 5,
+    "exit:2": 5
+   },
+   "status_800": {
+    "n": 5,
+    "exit:2": 5
+   }
+  },
+  "stop_requests_seen_without_a_key": 0,
+  "stop_stopped_answers_cached": 0,
+  "key_search": {
+   "fill_run": {
+    "searched": "what the tool printed in each run (stdout and stderr), and the names and contents of every file under its cache and output folders",
+    "files_searched": 1064,
+    "places": [],
+    "places_count": 0
+   },
+   "fill_record": "tool-cache-fill.json",
+   "fill_timestamp": "20261121T142311Z",
+   "fill_commit": "f3a841c",
+   "fill_tool_is_this_tool": true,
+   "fill_complete": true,
+   "fill_started_with_empty_cache": true,
+   "stop_cases_searched": 15,
+   "stop_case_places": []
+  }
+ },
+ "breakdown": {
+  "company": {
+   "KBI동양철관 / by_id": {
+    "n": 1367,
+    "verdict:verified": 1367
+   },
+   "KBI동양철관 / by_name": {
+    "n": 1335,
+    "verdict:verified": 1335
+   },
+   "KBI동양철관 / pinned": {
+    "n": 1367,
+    "verdict:verified": 1367
+   },
+   "LG에너지솔루션 / by_id": {
+    "n": 1583,
+    "verdict:verified": 1583
+   },
+   "LG에너지솔루션 / by_name": {
+    "n": 1539,
+    "verdict:verified": 1539
+   },
+   "LG에너지솔루션 / pinned": {
+    "n": 1583,
+    "verdict:verified": 1583
+   },
+   "LG전자 / by_id": {
+    "n": 1992,
+    "verdict:verified": 1992
+   },
+   "LG전자 / by_name": {
+    "n": 1562,
+    "verdict:verified": 1562
+   },
+   "LG전자 / pinned": {
+    "n": 1992,
+    "verdict:verified": 1992
+   },
+   "LG화학 / by_id": {
+    "n": 1795,
+    "verdict:verified": 1795
+   },
+   "LG화학 / by_name": {
+    "n": 1737,
+    "verdict:verified": 1737
+   },
+   "LG화학 / pinned": {
+    "n": 1795,
+    "verdict:verified": 1795
+   },
+   "POSCO홀딩스 / by_id": {
+    "n": 1896,
+    "verdict:verified": 1896
+   },
+   "POSCO홀딩스 / by_name": {
+    "n": 1683,
+    "verdict:verified": 1683
+   },
+   "POSCO홀딩스 / pinned": {
+    "n": 1896,
+    "verdict:verified": 1896
+   },
+   "SK텔레콤 / by_id": {
+    "n": 2202,
+    "verdict:verified": 2202
+   },
+   "SK텔레콤 / by_name": {
+    "n": 2160,
+    "verdict:verified": 2160
+   },
+   "SK텔레콤 / pinned": {
+    "n": 2202,
+    "verdict:verified": 2202
+   },
+   "기아 / by_id": {
+    "n": 1587,
+    "verdict:verified": 1587
+   },
+   "기아 / by_name": {
+    "n": 1583,
+    "verdict:verified": 1583
+   },
+   "기아 / pinned": {
+    "n": 1587,
+    "verdict:verified": 1587
+   },
+   "다우데이타 / by_id": {
+    "n": 2008,
+    "verdict:verified": 2008
+   },
+   "다우데이타 / by_name": {
+    "n": 1964,
+    "verdict:verified": 1964
+   },
+   "다우데이타 / pinned": {
+    "n": 2008,
+    "verdict:verified": 2008
+   },
+   "닷밀 / by_id": {
+    "n": 555,
+    "verdict:verified": 555
+   },
+   "닷밀 / by_name": {
+    "n": 553,
+    "verdict:verified": 553
+   },
+   "닷밀 / pinned": {
+    "n": 555,
+    "verdict:verified": 555
+   },
+   "덱스터 / by_id": {
+    "n": 1153,
+    "verdict:verified": 1153
+   },
+   "덱스터 / by_name": {
+    "n": 1153,
+    "verdict:verified": 1153
+   },
+   "덱스터 / pinned": {
+    "n": 1153,
+    "verdict:verified": 1153
+   },
+   "동국홀딩스 / by_id": {
+    "n": 1630,
+    "verdict:verified": 1630
+   },
+   "동국홀딩스 / by_name": {
+    "n": 1360,
+    "verdict:verified": 1360
+   },
+   "동국홀딩스 / pinned": {
+    "n": 1630,
+    "verdict:verified": 1630
+   },
+   "롤링스톤 / by_id": {
+    "n": 508,
+    "verdict:verified": 508
+   },
+   "롤링스톤 / by_name": {
+    "n": 496,
+    "verdict:verified": 496
+   },
+   "롤링스톤 / pinned": {
+    "n": 508,
+    "verdict:verified": 508
+   },
+   "리브스메드 / by_id": {
+    "n": 1269,
+    "verdict:verified": 1269
+   },
+   "리브스메드 / by_name": {
+    "n": 1269,
+    "verdict:verified": 1269
+   },
+   "리브스메드 / pinned": {
+    "n": 1269,
+    "verdict:verified": 1269
+   },
+   "모아데이타 / by_id": {
+    "n": 1276,
+    "verdict:verified": 1276
+   },
+   "모아데이타 / by_name": {
+    "n": 1276,
+    "verdict:verified": 1276
+   },
+   "모아데이타 / pinned": {
+    "n": 1276,
+    "verdict:verified": 1276
+   },
+   "삼성SDI / by_id": {
+    "n": 1908,
+    "verdict:verified": 1908
+   },
+   "삼성SDI / by_name": {
+    "n": 1683,
+    "verdict:verified": 1683
+   },
+   "삼성SDI / pinned": {
+    "n": 1908,
+    "verdict:verified": 1908
+   },
+   "삼성물산 / by_id": {
+    "n": 1604,
+    "verdict:verified": 1604
+   },
+   "삼성물산 / by_name": {
+    "n": 1554,
+    "verdict:verified": 1554
+   },
+   "삼성물산 / pinned": {
+    "n": 1604,
+    "verdict:verified": 1604
+   },
+   "삼성바이오로직스 / by_id": {
+    "n": 1520,
+    "verdict:verified": 1520
+   },
+   "삼성바이오로직스 / by_name": {
+    "n": 1341,
+    "verdict:verified": 1341
+   },
+   "삼성바이오로직스 / pinned": {
+    "n": 1520,
+    "verdict:verified": 1520
+   },
+   "스퀘어텍 / by_id": {
+    "n": 1063,
+    "verdict:verified": 1063
+   },
+   "스퀘어텍 / by_name": {
+    "n": 969,
+    "verdict:verified": 969
+   },
+   "스퀘어텍 / pinned": {
+    "n": 1063,
+    "verdict:verified": 1063
+   },
+   "심텍 / by_id": {
+    "n": 1432,
+    "verdict:verified": 1432
+   },
+   "심텍 / by_name": {
+    "n": 1432,
+    "verdict:verified": 1432
+   },
+   "심텍 / pinned": {
+    "n": 1432,
+    "verdict:verified": 1432
+   },
+   "씨유테크 / by_id": {
+    "n": 1199,
+    "verdict:verified": 1199
+   },
+   "씨유테크 / by_name": {
+    "n": 1199,
+    "verdict:verified": 1199
+   },
+   "씨유테크 / pinned": {
+    "n": 1199,
+    "verdict:verified": 1199
+   },
+   "애니플러스 / by_id": {
+    "n": 1629,
+    "verdict:verified": 1629
+   },
+   "애니플러스 / by_name": {
+    "n": 1629,
+    "verdict:verified": 1629
+   },
+   "애니플러스 / pinned": {
+    "n": 1629,
+    "verdict:verified": 1629
+   },
+   "에스투더블유 / by_id": {
+    "n": 1347,
+    "verdict:verified": 1347
+   },
+   "에스투더블유 / by_name": {
+    "n": 1288,
+    "verdict:verified": 1288
+   },
+   "에스투더블유 / pinned": {
+    "n": 1347,
+    "verdict:verified": 1347
+   },
+   "엠오티 / by_id": {
+    "n": 1334,
+    "verdict:verified": 1334
+   },
+   "엠오티 / by_name": {
+    "n": 1270,
+    "verdict:verified": 1270
+   },
+   "엠오티 / pinned": {
+    "n": 1334,
+    "verdict:verified": 1334
+   },
+   "우리이앤엘하루틴 / by_id": {
+    "n": 1361,
+    "verdict:verified": 1361
+   },
+   "우리이앤엘하루틴 / by_name": {
+    "n": 1359,
+    "verdict:verified": 1359
+   },
+   "우리이앤엘하루틴 / pinned": {
+    "n": 1361,
+    "verdict:verified": 1361
+   },
+   "잘만테크 / by_id": {
+    "n": 795,
+    "verdict:verified": 795
+   },
+   "잘만테크 / by_name": {
+    "n": 773,
+    "verdict:verified": 773
+   },
+   "잘만테크 / pinned": {
+    "n": 795,
+    "verdict:verified": 795
+   },
+   "카카오 / by_id": {
+    "n": 1812,
+    "verdict:verified": 1812
+   },
+   "카카오 / by_name": {
+    "n": 1688,
+    "verdict:verified": 1688
+   },
+   "카카오 / pinned": {
+    "n": 1812,
+    "verdict:verified": 1812
+   },
+   "케이엑스넥스지 / by_id": {
+    "n": 699,
+    "verdict:verified": 699
+   },
+   "케이엑스넥스지 / by_name": {
+    "n": 699,
+    "verdict:verified": 699
+   },
+   "케이엑스넥스지 / pinned": {
+    "n": 699,
+    "verdict:verified": 699
+   },
+   "크래프톤 / by_id": {
+    "n": 1651,
+    "verdict:verified": 1651
+   },
+   "크래프톤 / by_name": {
+    "n": 1607,
+    "verdict:verified": 1607
+   },
+   "크래프톤 / pinned": {
+    "n": 1651,
+    "verdict:verified": 1651
+   },
+   "한국컴퓨터 / by_id": {
+    "n": 1278,
+    "verdict:verified": 1278
+   },
+   "한국컴퓨터 / by_name": {
+    "n": 1262,
+    "verdict:verified": 1262
+   },
+   "한국컴퓨터 / pinned": {
+    "n": 1278,
+    "verdict:verified": 1278
+   },
+   "현대모비스 / by_id": {
+    "n": 1457,
+    "verdict:verified": 1457
+   },
+   "현대모비스 / by_name": {
+    "n": 1446,
+    "verdict:verified": 1446
+   },
+   "현대모비스 / pinned": {
+    "n": 1457,
+    "verdict:verified": 1457
+   },
+   "현대백화점 / by_id": {
+    "n": 1919,
+    "verdict:verified": 1919
+   },
+   "현대백화점 / by_name": {
+    "n": 1857,
+    "verdict:verified": 1857
+   },
+   "현대백화점 / pinned": {
+    "n": 1919,
+    "verdict:verified": 1919
+   }
+  },
+  "report": {
+   "annual / by_id": {
+    "n": 17099,
+    "verdict:verified": 17099
+   },
+   "annual / by_name": {
+    "n": 16300,
+    "verdict:verified": 16300
+   },
+   "annual / pinned": {
+    "n": 17099,
+    "verdict:verified": 17099
+   },
+   "half / by_id": {
+    "n": 13749,
+    "verdict:verified": 13749
+   },
+   "half / by_name": {
+    "n": 13094,
+    "verdict:verified": 13094
+   },
+   "half / pinned": {
+    "n": 13749,
+    "verdict:verified": 13749
+   },
+   "q3 / by_id": {
+    "n": 13981,
+    "verdict:verified": 13981
+   },
+   "q3 / by_name": {
+    "n": 13332,
+    "verdict:verified": 13332
+   },
+   "q3 / pinned": {
+    "n": 13981,
+    "verdict:verified": 13981
+   }
+  },
+  "fs": {
+   "CFS / by_id": {
+    "n": 23781,
+    "verdict:verified": 23781
+   },
+   "CFS / by_name": {
+    "n": 22319,
+    "verdict:verified": 22319
+   },
+   "CFS / pinned": {
+    "n": 23781,
+    "verdict:verified": 23781
+   },
+   "OFS / by_id": {
+    "n": 21048,
+    "verdict:verified": 21048
+   },
+   "OFS / by_name": {
+    "n": 20407,
+    "verdict:verified": 20407
+   },
+   "OFS / pinned": {
+    "n": 21048,
+    "verdict:verified": 21048
+   }
+  },
+  "statement": {
+   "BS / by_id": {
+    "n": 17177,
+    "verdict:verified": 17177
+   },
+   "BS / by_name": {
+    "n": 15925,
+    "verdict:verified": 15925
+   },
+   "BS / pinned": {
+    "n": 17177,
+    "verdict:verified": 17177
+   },
+   "CF / by_id": {
+    "n": 12692,
+    "verdict:verified": 12692
+   },
+   "CF / by_name": {
+    "n": 12638,
+    "verdict:verified": 12638
+   },
+   "CF / pinned": {
+    "n": 12692,
+    "verdict:verified": 12692
+   },
+   "CIS / by_id": {
+    "n": 11707,
+    "verdict:verified": 11707
+   },
+   "CIS / by_name": {
+    "n": 10976,
+    "verdict:verified": 10976
+   },
+   "CIS / pinned": {
+    "n": 11707,
+    "verdict:verified": 11707
+   },
+   "IS / by_id": {
+    "n": 3253,
+    "verdict:verified": 3253
+   },
+   "IS / by_name": {
+    "n": 3187,
+    "verdict:verified": 3187
+   },
+   "IS / pinned": {
+    "n": 3253,
+    "verdict:verified": 3253
+   }
+  },
+  "column": {
+   "bfefrmtrm_amount / by_id": {
+    "n": 5700,
+    "verdict:verified": 5700
+   },
+   "bfefrmtrm_amount / by_name": {
+    "n": 5434,
+    "verdict:verified": 5434
+   },
+   "bfefrmtrm_amount / pinned": {
+    "n": 5700,
+    "verdict:verified": 5700
+   },
+   "frmtrm_add_amount / by_id": {
+    "n": 2698,
+    "verdict:verified": 2698
+   },
+   "frmtrm_add_amount / by_name": {
+    "n": 2554,
+    "verdict:verified": 2554
+   },
+   "frmtrm_add_amount / pinned": {
+    "n": 2698,
+    "verdict:verified": 2698
+   },
+   "frmtrm_amount / by_id": {
+    "n": 14125,
+    "verdict:verified": 14125
+   },
+   "frmtrm_amount / by_name": {
+    "n": 13499,
+    "verdict:verified": 13499
+   },
+   "frmtrm_amount / pinned": {
+    "n": 14125,
+    "verdict:verified": 14125
+   },
+   "frmtrm_q_amount / by_id": {
+    "n": 2686,
+    "verdict:verified": 2686
+   },
+   "frmtrm_q_amount / by_name": {
+    "n": 2542,
+    "verdict:verified": 2542
+   },
+   "frmtrm_q_amount / pinned": {
+    "n": 2686,
+    "verdict:verified": 2686
+   },
+   "thstrm_add_amount / by_id": {
+    "n": 2715,
+    "verdict:verified": 2715
+   },
+   "thstrm_add_amount / by_name": {
+    "n": 2567,
+    "verdict:verified": 2567
+   },
+   "thstrm_add_amount / pinned": {
+    "n": 2715,
+    "verdict:verified": 2715
+   },
+   "thstrm_amount / by_id": {
+    "n": 16905,
+    "verdict:verified": 16905
+   },
+   "thstrm_amount / by_name": {
+    "n": 16130,
+    "verdict:verified": 16130
+   },
+   "thstrm_amount / pinned": {
+    "n": 16905,
+    "verdict:verified": 16905
+   }
+  },
+  "way": {
+   "eok / by_id": {
+    "n": 9592,
+    "verdict:verified": 9592
+   },
+   "eok / by_name": {
+    "n": 9135,
+    "verdict:verified": 9135
+   },
+   "eok / pinned": {
+    "n": 9592,
+    "verdict:verified": 9592
+   },
+   "jo_eok / by_id": {
+    "n": 1903,
+    "verdict:verified": 1903
+   },
+   "jo_eok / by_name": {
+    "n": 1821,
+    "verdict:verified": 1821
+   },
+   "jo_eok / pinned": {
+    "n": 1903,
+    "verdict:verified": 1903
+   },
+   "million / by_id": {
+    "n": 2898,
+    "verdict:verified": 2898
+   },
+   "million / by_name": {
+    "n": 2761,
+    "verdict:verified": 2761
+   },
+   "million / pinned": {
+    "n": 2898,
+    "verdict:verified": 2898
+   },
+   "won / by_id": {
+    "n": 30436,
+    "verdict:verified": 30436
+   },
+   "won / by_name": {
+    "n": 29009,
+    "verdict:verified": 29009
+   },
+   "won / pinned": {
+    "n": 30436,
+    "verdict:verified": 30436
+   }
+  }
+ },
+ "stop_cases": [
+  {
+   "set": "00106641-annual-CFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-annual-CFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-annual-CFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-annual-CFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "corpCode.xml"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-annual-CFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "corpCode.xml"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-annual-OFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-annual-OFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-annual-OFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-annual-OFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "corpCode.xml"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-annual-OFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "corpCode.xml"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-CFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-CFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-CFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-CFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-CFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-OFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-OFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-OFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-OFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-half-OFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-q3-CFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-q3-CFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-q3-CFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-q3-CFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00106641-q3-CFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  }
+ ],
+ "check_exit_codes": {
+  "by-id.json": {
+   "0": 177
+  },
+  "by-name.json": {
+   "0": 177
+  },
+  "pinned.json": {
+   "0": 177
+  },
+  "abstain-column.json": {
+   "0": 177
+  },
+  "abstain-fs.json": {
+   "0": 177
+  },
+  "abstain-account.json": {
+   "0": 177
+  },
+  "abstain-sce.json": {
+   "0": 177
+  },
+  "abstain-year.json": {
+   "0": 177
+  },
+  "ambiguous.json": {
+   "0": 95
+  },
+  "abstain-receipt.json": {
+   "0": 177
+  },
+  "abstain-statement.json": {
+   "0": 177
+  },
+  "swap.json": {
+   "1": 177
+  },
+  "abstain-cfq.json": {
+   "0": 118
+  },
+  "amended.json": {
+   "0": 19
+  }
+ },
+ "failures": [],
+ "not_passing": []
+}
