@@ -28,4 +28,4 @@ Get a free key at [opendart.fss.or.kr](https://opendart.fss.or.kr), set `RECEIPT
 python skills/receipts/scripts/receipts.py check examples/dart/claims.json
 ```
 
-The script then fetches the report once into `examples/dart/.receipts/dart/` and checks against that. The key is sent to DART only. It is not written to the cache or to the receipt.
+The script then fetches the report once into `examples/dart/.receipts/dart/` and checks against that. The key is sent only to DART (or to the address in `RECEIPTS_DART_URL`, a variable that exists for tests). It is not written to the cache or to the receipt.
