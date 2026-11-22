@@ -215,6 +215,55 @@ Reported without a bar: `wrong` verdicts split by whether the tool returned the 
 - Fetching is a step of its own. Building the cases and scoring then run from the cached files without any request, so they can be repeated.
 - Before real data is scored, the tool and the scorer may be run together on made-up data to check that the pieces fit. Such a run is not an E4 result.
 
+## E5: a model writes the plan against DART (paid)
+
+Registered on 2026-11-23, before the generator, the harness, the scorer and the prompts of E5 exist. E4 gave the script correct locators. E5 asks what happens when a model has to find them.
+
+- **Question.** A document states figures of a Korean company. A model writes the plan with the skill, and the script checks it. Are the wrong numbers flagged and the correct ones left alone? The baseline is the same model reviewing alone, with the statements in front of it.
+- **Model.** `claude-haiku-5-5`, with the request settings of E2: through the Anthropic SDK, effort `medium`, thinking left at the model's default, `max_tokens` 16,000, no sampling parameters, no prompt caching.
+- **Spending.** Cap: US$3 for all of E5, the rehearsal included. A cost estimate is shown and approved before the first paid call. Every request is written to `bench/e5/spend.jsonl` with its token counts and cost. The harness adds that file up before each request and refuses to go past the cap. If the first 5 held-out documents cost more than 1.5 times the estimate, the run stops.
+- **No pass bars.** The numbers are reported as they come out, whichever arm does better.
+
+### Data
+
+- **Where the truth comes from.** The documents are written from the gold files of E4's sets (`bench/dart/out/<dev|heldout>/sets/*/gold.json`). Each amount there was read from the company's XBRL file, with its period as the dates in that file. An E5 statement describes its period from those dates, so what a sentence means does not rest on the column table of the contract.
+- **Companies.** Development: the 10 development companies of E4. Held-out: the 31 held-out companies of E4 (11 named, 20 drawn). The E4 held-out set is not fetched or scored again: E5 reads its gold files and a copy of the tool's cache as they are. The script has not changed since it was frozen for E4 (`2ae4742`), and nothing of E5 is developed on the held-out companies.
+- **Documents.** One document per company, in Korean, about one report: the third quarter of 2026, the first half of 2026, or the year 2025. The report follows the company's position in the manifest (third quarter, half year, annual, and so on in turn). If the company has no set for it, the next in turn is taken. The document is about the consolidated statements when the company has them for that report, and about the separate ones otherwise. A company without the sets a document needs is listed and left out.
+- **Statements.** A document has 12 statements, one per line, each with one number to check. An interim document has three amounts of the income statement for the three months, two for the cumulative period, one for a year earlier, two of the balance sheet (the period end and the end of the previous year), one of the cash flow statement, one from the company's other statements (separate, if the document is consolidated), and two derived figures (a percent change against a year earlier, and a margin or a debt ratio). An annual document has the same make-up, with the year, the previous year and the year before it in place of the interim periods. Rows come from a fixed list of standard account ids, taken in order as far as the set has them with a gold. The sentence uses the row's own name in the filing. A slot the set cannot fill is filled from another kind, and the manifest says so.
+- **Planted errors.** Four of the 12 statements carry a wrong number. The kinds are (a) three months and cumulative exchanged, in interim income statements, (b) this period and the comparison period exchanged, (c) consolidated and separate exchanged, (d) the amount changed by 3% to 30%, and (e) a wrong derived figure: its sign turned, or computed from an input exchanged as in a, b or c. Kinds a, b and c show a number that is in the filing, under another label. An interim document gets one each of a, b and c and one of d or e. An annual document gets b, c, d and e. A kind the company cannot have (no separate statements, for example) is replaced by d. A planted number is kept only if the script's default tolerance cannot take it for the true one at the written precision.
+- **Written forms.** Amounts as in E4's documents (won, 백만원, 억원, 조 and 억원), percentages with one decimal. Correct numbers are rounded at the written precision.
+- **Gold plans.** For every statement the generator writes the locator the sentence means. With these plans the script must judge every planted statement `wrong` and every other statement `verified`, with nothing `uncovered`. The harness refuses a set of documents for which it does not. This check makes no model call.
+- **Seed.** Every choice comes from a seeded generator, so a set of documents can be built again.
+
+### Arms
+
+- **Arm A, skill on.** System prompt: `skills/receipts/SKILL.md` as shipped, front matter included, plus a short note on how the session works. First message: the document with line numbers and the output of `scan`. The model can call three tools, which return what the script prints, unchanged: `dart company`, `dart accounts` (company, year, report, fs, and optionally statement and match), and one that returns `references/plan-format.md`. At most 12 tool calls per document. The script runs on a copy of the tool's cache with no key set: it can read the company code file and each company's annual report of 2025, half-year report of 2026 and third-quarter report of 2026, and nothing else. The note says so. The model replies with `claims.json`. The harness runs `check` and returns the printed receipt. The model may send a corrected plan up to two times, as step 6 of the skill allows, or reply `DONE`. The last plan that `check` accepted counts. If none was accepted, every number of that document counts as not checked.
+- **Arm B, the model alone.** One request, no script and no tools. The model gets the document with line numbers and the statements of the report the document is about, consolidated and separate where both exist: every row of the balance sheet, the income statements and the cash flow statement with every amount, as tab-separated text. The column headings say what each column holds, in the words of the contract's column table. The system prompt asks for a careful review, as in E2: look up or recompute every number, allow for normal rounding and for a value cut off at the written precision, check direction words, and list what cannot be checked. The reply is a JSON list of wrong numbers with their line numbers.
+- **Asymmetry, stated up front.** Arm A has to find the company, the report and the rows itself and may use many requests. Arm B is handed the right report and has one request. Arm B sees the amounts. In arm A only the script does.
+
+### Measures
+
+Counts are reported with Wilson 95% intervals.
+
+1. Planted errors flagged, for each arm, in total and by kind. Arm A: the verdict of the statement's number is `wrong`. Arm B: the reply lists a wrong number on the statement's line.
+2. Correct statements flagged, for each arm.
+3. Arm A, the verdicts of planted and of correct statements: `wrong`, `verified`, `unverifiable`, `uncovered`. A planted statement judged `verified` is reported on its own: the plan read a cell that matches the number instead of the cell the sentence means.
+4. Arm A, the locators: for every number judged from DART cells, whether the plan read the cell the generator meant, and if not, which field differs (company, year, report, fs, statement, row, column).
+5. Arm A, repairs: corrected plans per document, and the numbers that went from `wrong` to `verified` between two plans because the locator changed.
+6. Arm A: documents with no accepted plan, tool calls per document, and the share of numbers left `uncovered`.
+7. Both arms: requests, tokens and cost per document. Arm B: flags that match no statement.
+
+Counts are also split by report (third quarter, half year, annual) and by whether the company is one of the 11 named ones.
+
+### Procedure
+
+1. The generator, the harness and the scorer are written by the tool's author. Before the held-out run, an agent that wrote none of them reviews them and the development documents.
+2. Free checks first: the gold plans on the development documents, and a dry run of the harness that makes no request (prompt sizes and a cost estimate).
+3. Rehearsal: four development documents, both arms, inside the cap. Its purpose is to find harness errors. Prompts may be corrected after it. If the rehearsal shows that the skill text or the script should change, the change is made on development documents only, logged in the change log, and E1, E3 and E4 are run again on their development sets. No rehearsal number is reported as an E5 result.
+4. The prompts, the script and the skill are committed. On that commit the held-out documents are generated and the held-out run is made, once. If the run is cut for a reason outside the script and the model (the machine, or the connection to the API), the results say so, and the documents that did not finish are run again. Nothing that finished is run again.
+5. Records: for every document and arm the conversation, the tool calls with what they returned, every plan with the script's result, and the review reply are committed under `bench/e5/records/`. Thinking data is not kept.
+6. The README reports the result whichever way it comes out, with the cost.
+
 ## Real cases
 
 Checks of real documents may appear in the README as examples. They are not performance estimates and will be labelled that way.
@@ -328,3 +377,4 @@ Checks of real documents may appear in the README as examples. They are not perf
   - "Twice during development the network failed": when that entry was written it had happened once, at 14:47 on 2026-11-21. The second time was at 16:20, during the check of the scorer.
   - The check of the scorer. A first round, on the code as it was before the first review's fixes, was started at 14:38 on 2026-11-21 and stopped part-way because the code was about to change: two copies had been scored and three more had been started. It is not counted. The registered sentence "Every scorer run is logged with the commit hash in `bench/dart/runs.jsonl`" is kept for runs of the tool. Runs of broken copies are logged outside the repository.
 - 2026-11-22, a correction to the entry above, found by an independent check of the posts about version 0.2.0 against the raw files. The first round of the check of the scorer: its logs, kept outside the repository, show three copies scored and two more started, not two and three. `column_ignored`, `fs_unchecked` and `receipt_ignored` each have a complete score log with the seven bars of that time, written at 14:42, 14:51 and 14:56 on 2026-11-21. The fill of `status_as_no_data` ended after its first set of statements and its scorer stopped at once because there was no fill record, and `name_substring` has only the start of a fill. Neither was scored. The round is still not counted, and no result changes.
+- 2026-11-23, E5 registered (section "E5: a model writes the plan against DART"), before its generator, harness, scorer and prompts were written. It answers the limit stated for E4, that no model was involved. Its held-out documents are written from the gold files of E4's held-out companies: that set is read as it is, and is not fetched or scored again.
