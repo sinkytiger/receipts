@@ -23,7 +23,7 @@ from decimal import Decimal, ROUND_HALF_UP
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 E4_OUT = os.path.join(ROOT, "bench", "dart", "out")
-VERSION = "e5-generator-1"
+VERSION = "e5-generator-2"
 SEED = 20261123
 TURN = ("q3", "half", "annual")
 STATEMENTS = 12
@@ -233,9 +233,9 @@ def build_statements(main, other, interim, rng):
         wanted += [("balance_end", "BS", pick(bal, 0), R["end"]), ("balance_previous_end", "BS", pick(bal, 1), R["pend"]),
                    ("cash_flow", "CF", pick(cash, 0), R["cum"])]
     else:
-        wanted += [("income_year", "income", pick(inc, i), R["cur"]) for i in range(4)]
-        wanted += [("income_previous_year", "income", pick(inc, 0), R["prev"]),
-                   ("income_year_before", "income", pick(inc, 1), R["prev2"]),
+        wanted += [("income_year", "income", pick(inc, i), R["cur"]) for i in range(3)]
+        wanted += [("income_previous_year", "income", pick(inc, i), R["prev"]) for i in range(2)]
+        wanted += [("income_year_before", "income", pick(inc, 0), R["prev2"]),
                    ("balance_end", "BS", pick(bal, 0), R["end"]), ("balance_previous_end", "BS", pick(bal, 1), R["pend"]),
                    ("cash_flow", "CF", pick(cash, 0), R["cur"])]
     missing = [slot for slot, st, account, role in wanted if not take(slot, st, account, role)]
@@ -341,8 +341,10 @@ def plant(statements, main, other, interim, rng):
             for _ in range(20):
                 factor = rng.choice([rng.uniform(1.03, 1.30), rng.uniform(0.70, 0.97)])
                 value = int(round(truth * factor))
-                if value % MILLION and truth % MILLION == 0:
-                    value -= value % MILLION                     # keep the look of the true number
+                for unit in (MILLION, 1000):                     # keep the look of the true number
+                    if truth % unit == 0:
+                        value -= value % unit
+                        break
                 if _far_enough(st, value):
                     st["planted"] = {"kind": "d", "factor": round(factor, 4), "shown_value": value}
                     return True
@@ -467,6 +469,34 @@ def sentence(st, rng):
     st.update(text=line, number=f"{size}%", written=f"{size}%", way="percent", shown=str(size))
 
 
+def recognisable(statements):
+    """Mark the planted statements that a reader could suspect without any source: the shown amount also stands on
+    another line, or the document states the inputs of the figure (or the figure an amount is an input of)."""
+    def key(c):
+        return (c["fs"], c["statement"], c["account"], c["role"])
+
+    stated = {key(st["cells"][0]) for st in statements if st["kind"] == "amount" and not st.get("planted")}
+    amounts = [(i, st["planted"]["shown_value"] if st.get("planted") else st["truth"])
+               for i, st in enumerate(statements) if st["kind"] == "amount"]
+    for i, st in enumerate(statements):
+        planted = st.get("planted")
+        if not planted:
+            continue
+        flags = []
+        if st["kind"] == "amount":
+            if any(j != i and value == planted["shown_value"] for j, value in amounts):
+                flags.append("same_amount_on_another_line")
+            mine = key(st["cells"][0])
+            for other in statements:
+                if other["kind"] != "amount" and not other.get("planted") and mine in map(key, other["cells"]) \
+                        and all(key(c) == mine or key(c) in stated for c in other["cells"]):
+                    flags.append("input_of_a_stated_derived_figure")
+                    break
+        elif all(key(c) in stated for c in st["cells"]):
+            flags.append("inputs_stated_in_the_document")
+        planted["recognisable"] = flags
+
+
 def locator(corp, year, report, cell):
     return {"dart": corp, "year": year, "report": report, "fs": cell["fs"], "statement": cell["statement"],
             "account": cell["account"], "column": cell["column"]}
@@ -510,8 +540,13 @@ def make_document(company, sets, position, rng):
             reasons.append(f"{report}: four errors cannot be planted")
             continue
         rng.shuffle(statements)
-        for st in statements:
-            sentence(st, rng)
+        try:
+            for st in statements:
+                sentence(st, rng)
+        except Stop as e:
+            reasons.append(f"{report}: {e}")
+            continue
+        recognisable(statements)
         title = f"{main.year}년 {REPORT_TITLE[report]}"
         head = [f"# {company['name']} {title} 메모", "",
                 f"{company['name']}의 {title}에 실린 재무제표 수치를 정리했다. 금액은 원화다.", ""]
@@ -525,6 +560,7 @@ def make_document(company, sets, position, rng):
                          "number": st["number"], "written": st["written"], "way": st["way"],
                          "truth": str(st["truth"]), "shown": st["shown"],
                          "planted": p["kind"] if p else None, "planted_detail": p,
+                         "recognisable": bool(p and p.get("recognisable")),
                          "cells": [dict(locator(main.corp, main.year, report, c), role=c["role"], period=c["period"],
                                         name=c["name"], value=str(c["value"])) for c in st["cells"]]})
         info = {"corp_code": main.corp, "company": company["name"], "group": company["group"], "report": report,

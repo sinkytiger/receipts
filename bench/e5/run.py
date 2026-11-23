@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import glob
 import json
 import os
 import re
@@ -45,7 +46,7 @@ REQUESTS_PER_DOCUMENT = 20        # arm A: look-ups, plans and replies that held
 LISTING_LIMIT = 60000             # characters of one tool answer; a longer one is not returned
 REHEARSAL_DOCUMENTS = 4
 CAP_USD = 3.00
-RESERVE_USD = 0.05                # room kept for the request about to be made
+RESERVE_USD = 0.12                # room kept for the request about to be made (150,000 tokens in, 16,000 out)
 CHECK_TIMEOUT = 300               # seconds for one run of the script
 # US$ per million tokens for prompts of at most 100,000 tokens, and for longer ones
 RATES = {"short": (0.10, 0.50), "long": (0.50, 2.50)}
@@ -130,8 +131,12 @@ HOLDS = {
     ("interim", "CF"): [("thstrm_amount", "from the start of the business year to the period end"),
                         ("frmtrm_amount", "the same period a year earlier"), ("frmtrm_q_amount", "not usable")],
 }
-PERIOD_NAME = {"thstrm_amount": "thstrm_nm", "thstrm_add_amount": "thstrm_nm", "frmtrm_amount": "frmtrm_nm",
-               "frmtrm_q_amount": "frmtrm_nm", "frmtrm_add_amount": "frmtrm_nm", "bfefrmtrm_amount": "bfefrmtrm_nm"}
+# the fields in which DART names a column's period, in the order they are tried: in interim income and cash flow
+# statements the comparison period is named in frmtrm_q_nm and the rows have no frmtrm_nm
+PERIOD_NAME = {"thstrm_amount": ("thstrm_nm",), "thstrm_add_amount": ("thstrm_nm",),
+               "frmtrm_amount": ("frmtrm_nm", "frmtrm_q_nm"), "frmtrm_q_amount": ("frmtrm_q_nm", "frmtrm_nm"),
+               "frmtrm_add_amount": ("frmtrm_q_nm", "frmtrm_nm"), "bfefrmtrm_amount": ("bfefrmtrm_nm",)}
+LEFT_OUT_LIMIT = 5                # documents the gold check may leave out before the run refuses to start
 
 
 class Stop(Exception):
@@ -249,9 +254,11 @@ def statements_text(cache, doc):
             cols = HOLDS[(interim, group)]
             heads = []
             for col, holds in cols:
-                period = next((r.get(PERIOD_NAME[col]) for r in mine if r.get(PERIOD_NAME[col])), "")
+                period = next((r[f] for f in PERIOD_NAME[col] for r in mine if r.get(f)), "")
                 heads.append(f"{col} = {holds}" + (f" ({period})" if period else ""))
-            parts.append(f"--- {BASIS[fs]} statements ({fs}), {mine[0].get('sj_nm', st)} ({st}) ---")
+            parts.append(f"--- {BASIS[fs]} statements ({fs}), {mine[0].get('sj_nm', st)} ({st}); business year "
+                         f"{mine[0].get('bsns_year', doc['year'])}, report {doc['report']}, receipt number "
+                         f"{mine[0].get('rcept_no', '')} ---")
             parts.append("\t".join(["account_id", "account_nm"] + heads))
             for r in mine:
                 parts.append("\t".join([r.get("account_id", ""), r.get("account_nm", "")] + [r.get(col, "") or "" for col, _ in cols]))
@@ -422,7 +429,7 @@ def look_up(name, tool_input, cache):
         args = ["dart", "accounts", str(tool_input.get("company", ""))]
         for key in ("year", "report", "fs", "statement", "match", "limit"):
             if tool_input.get(key) not in (None, ""):
-                args += [f"--{key}", str(tool_input[key])]
+                args.append(f"--{key}={tool_input[key]}")
     else:
         return f"there is no tool named {name}", True
     code, out, err = script(args + ["--dart-cache", cache])
@@ -501,7 +508,8 @@ def run_arm_a(model, system, first_message, doc, folder, out_dir, cache, scan_nu
         record.user(feedback)
     else:
         stopped = f"the limit of {REQUESTS_PER_DOCUMENT} requests"
-    result = {"doc": doc, "arm": "A", "requests": requests, "plans_sent": plans, "tool_calls": tool_calls,
+    result = {"doc": doc, "arm": "A", "requests": requests, "plans_sent": plans,
+              "tool_calls": min(tool_calls, TOOL_CALLS), "tool_calls_refused_at_the_limit": max(tool_calls - TOOL_CALLS, 0),
               "said_done": done_word, "cut_off_replies": cut_off, "stopped": stopped, "accepted_plan": accepted,
               "scan_numbers": scan_numbers, "refused": stopped == "refusal",
               "usd": round(sum(r["usd"] for r in requests), 8)}
@@ -537,12 +545,11 @@ def export_records(run_dir, set_name, docs, docs_dir):
             os.makedirs(dest, exist_ok=True)
             for name in ("result.json", "conversation.json"):
                 shutil.copyfile(os.path.join(source, name), os.path.join(dest, name))
-            n = 1
-            while arm == "A" and os.path.isdir(os.path.join(source, f"plan{n}")):
+            plans_sent = read_json(os.path.join(source, "result.json")).get("plans_sent", 0) if arm == "A" else 0
+            for n in range(1, plans_sent + 1):
                 shutil.copyfile(os.path.join(source, f"plan{n}", "claims.json"), os.path.join(dest, f"plan{n}.claims.json"))
                 if os.path.isfile(os.path.join(source, f"plan{n}", "receipts.json")):   # the script's answer to the plan
                     shutil.copyfile(os.path.join(source, f"plan{n}", "receipts.json"), os.path.join(dest, f"plan{n}.check.json"))
-                n += 1
         slim_conversation(os.path.join(target, doc, "A", "conversation.json"))
     for name in ("run.json",):
         if os.path.isfile(os.path.join(run_dir, name)):
@@ -639,18 +646,23 @@ def main(argv=None) -> int:
     ap.add_argument("--resume", help="a run folder that was cut: documents that finished are kept")
     ap.add_argument("--key-file", help="file that holds the API key (default: the SDK's own lookup)")
     ap.add_argument("--cap", type=float, default=CAP_USD)
+    ap.add_argument("--records-name", default="rehearsal", help="folder under bench/e5/records/ for a rehearsal's records")
     args = ap.parse_args(argv)
     name = "heldout" if args.held_out else "dev"
     try:
+        if args.cap > CAP_USD:
+            raise Stop(f"the cap is US${CAP_USD:.2f} (docs/eval-plan.md, E5). A higher one needs a change of the plan.")
         cache = prepare_cache(name)
         counts, bad = check_gold(name, cache)
-        if args.check_gold or bad:
+        if args.check_gold:
             print(json.dumps({"gold_check": counts, "problems": bad}, ensure_ascii=False, indent=1))
-            if bad:
-                print("error: the gold plans do not give the expected verdicts. Nothing was run.", file=sys.stderr)
-                return 2
-            return 0
-        docs = documents(name)
+            return 2 if bad else 0
+        # S7: a document whose gold plan does not give the expected verdicts is left out and listed
+        left_out = sorted({b["doc"] for b in bad})
+        if len(left_out) > LEFT_OUT_LIMIT:
+            print(json.dumps({"gold_check": counts, "problems": bad}, ensure_ascii=False, indent=1))
+            raise Stop(f"the gold check leaves out {len(left_out)} documents, more than {LEFT_OUT_LIMIT}. Nothing was run.")
+        docs = [d for d in documents(name) if d["corp_code"] not in left_out]
         if args.rehearsal:
             if args.docs:
                 wanted = args.docs.split(",")
@@ -679,39 +691,68 @@ def main(argv=None) -> int:
             if args.approved_estimate is None:
                 raise Stop("a paid run needs --approved-estimate (US$ per document, as approved). See --dry-run.")
             model = Model(args.key_file, "heldout" if args.held_out else "rehearsal", args.cap)
-        run_dir = args.resume or os.path.join(set_dir(name), ("fake-" if args.fake else "run-")
-                                               + datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ"))
+        stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        if args.held_out and not args.fake and not args.resume and (
+                glob.glob(os.path.join(set_dir(name), "run-*")) or os.path.isdir(os.path.join(RECORDS, "heldout"))):
+            raise Stop("the held-out run was already started. It is made once: finish it with --resume <its run folder>.")
+        run_dir = args.resume or os.path.join(set_dir(name), ("fake-" if args.fake else "run-") + stamp)
         os.makedirs(run_dir, exist_ok=True)
-        meta = {"set": name, "started": utc_now(), "model": "fake" if args.fake else MODEL, "effort": EFFORT,
-                "max_tokens": MAX_TOKENS, "commit": git("rev-parse", "--short", "HEAD"),
-                "dirty": bool(git("status", "--porcelain")), "approved_estimate_usd_per_document": args.approved_estimate,
-                "estimate": {k: v for k, v in est.items() if k != "rows"}, "gold_check": counts,
-                "documents": [d["corp_code"] for d in docs], "resumed": bool(args.resume)}
-        write_json(os.path.join(run_dir, "run.json"), meta)
-        start_spend, finished = spent_so_far(), 0
+        this_start = {"time": utc_now(), "commit": git("rev-parse", "--short", "HEAD"),
+                      "dirty": bool(git("status", "--porcelain"))}
+        meta_path = os.path.join(run_dir, "run.json")
+        if args.resume:                              # the first start is kept; each resume is added to a list
+            if not os.path.isfile(meta_path):
+                raise Stop(f"{run_dir} is not a run folder (no run.json)")
+            meta = read_json(meta_path)
+            if meta.get("set") != name or (meta.get("model") == "fake") != bool(args.fake):
+                raise Stop(f"{run_dir} is a run of another kind ({meta.get('set')}, {meta.get('model')})")
+            meta.setdefault("resumes", []).append(this_start)
+        else:
+            meta = {"set": name, "started": this_start["time"], "model": "fake" if args.fake else MODEL, "effort": EFFORT,
+                    "max_tokens": MAX_TOKENS, "commit": this_start["commit"], "dirty": this_start["dirty"],
+                    "approved_estimate_usd_per_document": args.approved_estimate,
+                    "estimate": {k: v for k, v in est.items() if k != "rows"}, "gold_check": counts,
+                    "left_out_by_the_gold_check": [b for b in bad], "documents": [d["corp_code"] for d in docs],
+                    "resumes": []}
+        write_json(meta_path, meta)
+        first_five = [d["corp_code"] for d in docs[:5]]
+
+        def first_five_rule():
+            """S5: the cost of the first five documents, from the spending record, whichever start paid for it."""
+            if not args.held_out or args.fake or len(first_five) < 5 or not all(
+                    os.path.isfile(os.path.join(run_dir, c, arm, "result.json")) for c in first_five for arm in ("A", "B")):
+                return
+            cost = sum(float(r["usd"]) for r in spend_rows() if r.get("set") == "heldout" and r.get("doc") in first_five)
+            if cost > 1.5 * 5 * args.approved_estimate:
+                raise Stop(f"the first 5 documents cost US${cost:.4f}, more than 1.5 times the approved estimate "
+                           f"(US${5 * args.approved_estimate:.4f}). The run stops here.")
+
+        first_five_rule()
+        start_spend = spent_so_far()
         for doc, folder, scan_numbers, a, b in prompts:
             corp = doc["corp_code"]
             done_a = os.path.isfile(os.path.join(run_dir, corp, "A", "result.json"))
             done_b = os.path.isfile(os.path.join(run_dir, corp, "B", "result.json"))
+            for arm, done in (("A", done_a), ("B", done_b)):        # B1: a cut attempt is kept, out of the way
+                arm_dir = os.path.join(run_dir, corp, arm)
+                if not done and os.path.isdir(arm_dir):
+                    os.rename(arm_dir, f"{arm_dir}.cut-{stamp}")
             if isinstance(model, FakeModel):
                 model.gold_plan, model.company = read_json(os.path.join(folder, "gold-plan.json")), doc["company"]
             if not done_a:
                 ra = run_arm_a(model, system_a, a, corp, folder, os.path.join(run_dir, corp, "A"), cache, scan_numbers)
             if not done_b:
                 rb = run_arm_b(model, b, corp, os.path.join(run_dir, corp, "B"))
-            finished += 1
             spent = spent_so_far() - start_spend
             print(f"{corp} {doc['company']}: " + ("kept" if done_a and done_b else
                   f"A plans {ra['plans_sent'] if not done_a else '-'}, tool calls {ra['tool_calls'] if not done_a else '-'}, "
                   f"accepted {ra['accepted_plan'] if not done_a else '-'}; B parsed {rb['parsed'] if not done_b else '-'}")
                   + f"; spent in this run US${spent:.4f}", flush=True)
-            if args.held_out and not args.fake and finished == 5 and spent > 1.5 * 5 * args.approved_estimate:
-                raise Stop(f"the first 5 documents cost US${spent:.4f}, more than 1.5 times the approved estimate "
-                           f"(US${5 * args.approved_estimate:.4f}). The run stops here.")
-        meta.update(finished=utc_now(), spent_usd=round(spent_so_far() - start_spend, 6))
-        write_json(os.path.join(run_dir, "run.json"), meta)
+            first_five_rule()
+        meta.update(finished=utc_now())
+        write_json(meta_path, meta)
         if not args.fake:
-            print("records copied to", export_records(run_dir, "heldout" if args.held_out else "rehearsal",
+            print("records copied to", export_records(run_dir, "heldout" if args.held_out else args.records_name,
                                                       [d["corp_code"] for d in docs], os.path.join(set_dir(name), "docs")))
         print("run folder:", run_dir)
         return 0

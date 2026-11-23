@@ -59,13 +59,18 @@ def cells_of(claim):
     return out
 
 
-def number_on_line(receipts, line):
-    """The verdict of the one number on a statement's line: (verdict, claim or None)."""
+def number_on_line(receipts, line, number):
+    """The verdict of a statement's number: (verdict, claim or None). The claim is the one on that line whose number
+    is the statement's, as the scan shows it. A plan may hold other claims on the line (on a year, for example)."""
     claims = [c for c in receipts.get("claims", []) if c.get("line") == line and c.get("reason") != "duplicate_claim"]
-    if claims:
-        return claims[0]["verdict"], claims[0]
-    if any(u.get("line") == line for u in receipts.get("uncovered", [])):
+    mine = [c for c in claims if c.get("text") == number]
+    if mine:
+        return mine[0]["verdict"], mine[0]
+    if any(u.get("line") == line and u.get("text") == number for u in receipts.get("uncovered", [])):
         return "uncovered", None
+    others = [c for c in claims if c.get("text") is None]
+    if others:                                       # a receipt without the number's text: fall back to the line
+        return others[0]["verdict"], others[0]
     return "uncovered", None
 
 
@@ -77,32 +82,37 @@ def score_document(doc_dir, gold_doc):
     # arm A
     a_dir = os.path.join(doc_dir, "A")
     a = read_json(os.path.join(a_dir, "result.json")) if os.path.isfile(os.path.join(a_dir, "result.json")) else None
-    plans = []
-    if a:
-        n = 1                 # a run folder holds planN/receipts.json, the committed records planN.check.json
-        while any(os.path.isfile(os.path.join(a_dir, name)) for name in (f"plan{n}/claims.json", f"plan{n}.claims.json")):
-            path = next((os.path.join(a_dir, name) for name in (f"plan{n}/receipts.json", f"plan{n}.check.json")
-                         if os.path.isfile(os.path.join(a_dir, name))), None)
-            plans.append(read_json(path) if path else None)
-            n += 1
-    accepted = [p for p in plans if p is not None]
-    final = accepted[-1] if accepted else None
+    def plan(n):          # a run folder holds planN/receipts.json, the committed records planN.check.json
+        path = next((os.path.join(a_dir, name) for name in (f"plan{n}/receipts.json", f"plan{n}.check.json")
+                     if os.path.isfile(os.path.join(a_dir, name))), None)
+        return read_json(path) if path else None
+
+    last = int(a["accepted_plan"][4:]) if a and a.get("accepted_plan") else 0
+    plans = [plan(n) for n in range(1, (a or {}).get("plans_sent", 0) + 1)]
+    accepted = [p for p in plans[:last] if p is not None and "claims" in p]
+    final = plan(last) if last else None
     # arm B
     b_dir = os.path.join(doc_dir, "B")
     b = read_json(os.path.join(b_dir, "result.json")) if os.path.isfile(os.path.join(b_dir, "result.json")) else None
-    b_lines = Counter()
+    b_lines, b_unreadable = Counter(), 0
     if b and b.get("answer"):
         for item in b["answer"].get("wrong", []):
-            try:
-                b_lines[int(item.get("line"))] += 1
-            except (TypeError, ValueError):
-                b_lines[None] += 1
+            value = item.get("line") if isinstance(item, dict) else None
+            if isinstance(value, str) and value.strip().isdigit():
+                value = int(value.strip())
+            if isinstance(value, float) and value.is_integer():
+                value = int(value)
+            if isinstance(value, int) and not isinstance(value, bool):
+                b_lines[value] += 1
+            else:
+                b_unreadable += 1
     for s in statements:
-        row = {"id": s["id"], "line": s["line"], "kind": s["kind"], "slot": s["slot"], "planted": s["planted"]}
+        row = {"id": s["id"], "line": s["line"], "kind": s["kind"], "slot": s["slot"], "planted": s["planted"],
+               "recognisable": bool(s.get("recognisable"))}
         if final is None:
             row["a_verdict"] = "not_checked"
         else:
-            verdict, claim = number_on_line(final, s["line"])
+            verdict, claim = number_on_line(final, s["line"], s["number"])
             row["a_verdict"] = verdict
             if claim is not None and verdict in ("verified", "wrong"):
                 read = cells_of(claim)
@@ -112,28 +122,35 @@ def score_document(doc_dir, gold_doc):
                     row["locator"] = "other_cells"
                 else:
                     differs = sorted({f for r, m in zip(read, meant) for f in FIELDS if r[f] != m[f]}, key=FIELDS.index)
-                    row["locator"] = "same" if not differs else "differs"
+                    # N2: the same account id stands in two statements (IS and CIS, or CIS and CF) with one amount
+                    twin = bool(differs) and set(differs) <= {"statement", "column"} and verdict == "verified" \
+                        and not s["planted"]
+                    row["locator"] = "same" if not differs else "other_statement_same_amount" if twin else "differs"
                     if differs:
                         row["locator_fields"] = differs
         # a repair that turned `wrong` into `verified` by reading another cell
-        history = [number_on_line(p, s["line"]) for p in accepted]
+        history = [number_on_line(p, s["line"], s["number"]) for p in accepted]
         for (v1, c1), (v2, c2) in zip(history, history[1:]):
             if v1 == "wrong" and v2 == "verified" and c1 and c2 and cells_of(c1) != cells_of(c2):
                 row["repaired_to_match"] = True
         row["a_flagged"] = row["a_verdict"] == "wrong"
-        row["b_flagged"] = bool(b_lines.get(s["line"])) if b and b.get("parsed") else None
+        row["b_flagged"] = bool(b_lines.get(s["line"]))
         out["statements"].append(row)
     numbers = (final or {}).get("counts", {})
     out["arm_a"] = {"ran": a is not None, "accepted_plan": bool(final), "plans_sent": (a or {}).get("plans_sent"),
                     "accepted_plans": len(accepted), "tool_calls": (a or {}).get("tool_calls"),
+                    "tool_calls_refused_at_the_limit": (a or {}).get("tool_calls_refused_at_the_limit", 0),
                     "stopped": (a or {}).get("stopped"), "said_done": (a or {}).get("said_done"),
-                    "numbers": numbers.get("numbers"), "uncovered": numbers.get("uncovered"),
+                    # S1: with no accepted plan, every number of the document counts as not checked
+                    "numbers": numbers.get("numbers") if final else (a or {}).get("scan_numbers"),
+                    "uncovered": numbers.get("uncovered") if final else (a or {}).get("scan_numbers"),
                     "requests": len((a or {}).get("requests", [])),
                     "input_tokens": sum(r["input_tokens"] for r in (a or {}).get("requests", [])),
                     "output_tokens": sum(r["output_tokens"] for r in (a or {}).get("requests", [])),
                     "usd": (a or {}).get("usd")}
     out["arm_b"] = {"ran": b is not None, "parsed": (b or {}).get("parsed"),
-                    "flags": sum(b_lines.values()), "flags_on_no_statement": sum(v for k, v in b_lines.items() if k not in lines),
+                    "flags": sum(b_lines.values()) + b_unreadable, "items_without_a_line_number": b_unreadable,
+                    "flags_on_no_statement": sum(v for k, v in b_lines.items() if k not in lines) + b_unreadable,
                     "requests": len((b or {}).get("requests", [])),
                     "input_tokens": sum(r["input_tokens"] for r in (b or {}).get("requests", [])),
                     "output_tokens": sum(r["output_tokens"] for r in (b or {}).get("requests", [])),
@@ -145,7 +162,6 @@ def summarise(docs):
     rows = [dict(s, group=d["group"], report=d["report"], doc=d["corp_code"]) for d in docs for s in d["statements"]]
     planted = [r for r in rows if r["planted"]]
     correct = [r for r in rows if not r["planted"]]
-    b_rows = [r for r in rows if r["b_flagged"] is not None]
 
     def arm(rs, key):
         rs = [r for r in rs if r[key] is not None]
@@ -158,7 +174,10 @@ def summarise(docs):
     fields = Counter(f for r in judged for f in r.get("locator_fields", []))
     out = {
         "documents": len(docs), "statements": len(rows), "planted": len(planted), "correct": len(correct),
-        "1_planted_flagged": dict(both(planted), by_kind={k: both([r for r in planted if r["planted"] == k]) for k in KINDS}),
+        "1_planted_flagged": dict(both(planted), by_kind={k: both([r for r in planted if r["planted"] == k]) for k in KINDS},
+                                  # S8: planted numbers a reader could suspect from the document alone, and the others
+                                  recognisable_from_the_document=both([r for r in planted if r["recognisable"]]),
+                                  not_recognisable_from_the_document=both([r for r in planted if not r["recognisable"]])),
         "2_correct_flagged": both(correct),
         "3_arm_a_verdicts": {"planted": dict(Counter(r["a_verdict"] for r in planted)),
                              "correct": dict(Counter(r["a_verdict"] for r in correct)),
@@ -167,6 +186,7 @@ def summarise(docs):
                                                          for r in planted if r["a_verdict"] == "verified"]},
         "4_arm_a_locators": {"judged_from_dart_cells": len(judged),
                              "same_cells": rate(sum(1 for r in judged if r["locator"] == "same"), len(judged)),
+                             "other_statement_same_amount": sum(1 for r in judged if r["locator"] == "other_statement_same_amount"),
                              "differs": sum(1 for r in judged if r["locator"] == "differs"),
                              "other_cells": sum(1 for r in judged if r["locator"] == "other_cells"),
                              "fields_that_differ": {f: fields.get(f, 0) for f in FIELDS}},
@@ -176,6 +196,7 @@ def summarise(docs):
                             "of_which_planted": sum(1 for r in planted if r.get("repaired_to_match"))},
         "6_arm_a_other": {"documents_without_an_accepted_plan": sum(1 for d in docs if not d["arm_a"]["accepted_plan"]),
                           "tool_calls_per_document": _spread([d["arm_a"]["tool_calls"] for d in docs]),
+                          "tool_calls_refused_at_the_limit": sum(d["arm_a"]["tool_calls_refused_at_the_limit"] or 0 for d in docs),
                           "numbers_uncovered": rate(sum(d["arm_a"]["uncovered"] or 0 for d in docs),
                                                     sum(d["arm_a"]["numbers"] or 0 for d in docs))},
         "7_cost": {arm_name: {"requests_per_document": _spread([d[arm_name]["requests"] for d in docs]),
@@ -192,7 +213,6 @@ def summarise(docs):
                                     "correct_flagged": both([r for r in correct if r["group"] == g])}
                                 for g in sorted({r["group"] for r in rows})}},
     }
-    out["arm_b_statements_scored"] = len(b_rows)
     return out
 
 
@@ -225,10 +245,13 @@ def main(argv=None):
     args = ap.parse_args(argv)
     run = os.path.abspath(args.run)
     meta = read_json(os.path.join(run, "run.json")) if os.path.isfile(os.path.join(run, "run.json")) else {}
-    docs = []
-    for corp in sorted(os.listdir(run)):
+    docs, unfinished = [], []
+    listed = meta.get("documents") or []
+    for corp in sorted(set(listed) | {c for c in os.listdir(run) if os.path.isdir(os.path.join(run, c, "A"))}):
         doc_dir = os.path.join(run, corp)
-        if not os.path.isdir(doc_dir) or not os.path.isdir(os.path.join(doc_dir, "A")):
+        missing = [arm for arm in ("A", "B") if not os.path.isfile(os.path.join(doc_dir, arm, "result.json"))]
+        if missing:
+            unfinished.append({"doc": corp, "arms_without_a_result": missing})
             continue
         gold_path = next((p for p in (os.path.join(doc_dir, "gold.json"),
                                       os.path.join(args.docs or "", corp, "gold.json"),
@@ -242,6 +265,11 @@ def main(argv=None):
         print("error: no documents in that folder", file=sys.stderr)
         return 2
     summary = summarise(docs)
+    summary["unfinished_documents"] = unfinished
+    summary["left_out_by_the_gold_check"] = meta.get("left_out_by_the_gold_check", [])
+    if unfinished:
+        print(f"WARNING: {len(unfinished)} document(s) did not finish and are in no count: "
+              + ", ".join(u["doc"] for u in unfinished), file=sys.stderr)
     result = {"scored": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
               "run": os.path.relpath(run, ROOT).replace("\\", "/"), "run_meta": meta,
               "commit": git("rev-parse", "--short", "HEAD"), "dirty": bool(git("status", "--porcelain")),
@@ -251,13 +279,19 @@ def main(argv=None):
     for arm_name, label in (("arm_a", "arm A (skill and script)"), ("arm_b", "arm B (model alone)")):
         print(line(f"  planted flagged, {label}", s["1_planted_flagged"][arm_name]))
         print(line(f"  correct flagged, {label}", s["2_correct_flagged"][arm_name]))
+    print(line("  planted and recognisable from the document, arm A", s["1_planted_flagged"]["recognisable_from_the_document"]["arm_a"]),
+          "|", line("arm B", s["1_planted_flagged"]["recognisable_from_the_document"]["arm_b"]))
+    print(line("  planted and not recognisable, arm A", s["1_planted_flagged"]["not_recognisable_from_the_document"]["arm_a"]),
+          "|", line("arm B", s["1_planted_flagged"]["not_recognisable_from_the_document"]["arm_b"]))
     for k in KINDS:
         print(line(f"  kind {k}, arm A", s["1_planted_flagged"]["by_kind"][k]["arm_a"]), "|",
               line("arm B", s["1_planted_flagged"]["by_kind"][k]["arm_b"]))
     print("  arm A verdicts, planted:", s["3_arm_a_verdicts"]["planted"], "correct:", s["3_arm_a_verdicts"]["correct"])
     print("  arm A locators:", line("same cells", s["4_arm_a_locators"]["same_cells"]),
           "| fields that differ:", {k: v for k, v in s["4_arm_a_locators"]["fields_that_differ"].items() if v},
+          "| other statement, same amount:", s["4_arm_a_locators"]["other_statement_same_amount"],
           "| other cells:", s["4_arm_a_locators"]["other_cells"])
+    print("  arm B replies not parsed:", s["arm_b_replies_not_parsed"], "| flags on no statement:", s["arm_b_flags_on_no_statement"])
     print("  arm A repairs:", s["5_arm_a_repairs"])
     print("  arm A other:", s["6_arm_a_other"])
     print("  cost per document: arm A US$", s["7_cost"]["arm_a"]["usd_per_document"], "arm B US$", s["7_cost"]["arm_b"]["usd_per_document"])
