@@ -1,0 +1,2556 @@
+{
+ "timestamp": "20261123T112332Z",
+ "set": "dev",
+ "held_out": false,
+ "made_up_data": false,
+ "commit": "3e82f8a",
+ "dirty": true,
+ "tool": "skills/receipts/scripts/receipts.py",
+ "tool_sha256": "ea66512ac7b1e7cb5cdd605365f83b2b605502ec48487b216455b8105ae6b7e4",
+ "builder_version": "e4-builder-3",
+ "fetch_dates": [
+  "2026-11-21"
+ ],
+ "company_code_file_fetched": "2026-11-21",
+ "sets": [
+  {
+   "folder": "00126380-annual-CFS",
+   "company": "삼성전자",
+   "corp_code": "00126380",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260310002820",
+   "company_in_plans": "005930",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 351
+  },
+  {
+   "folder": "00126380-annual-OFS",
+   "company": "삼성전자",
+   "corp_code": "00126380",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260310002820",
+   "company_in_plans": "005930",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 276
+  },
+  {
+   "folder": "00126380-half-CFS",
+   "company": "삼성전자",
+   "corp_code": "00126380",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003699",
+   "company_in_plans": "00126380",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 284
+  },
+  {
+   "folder": "00126380-half-OFS",
+   "company": "삼성전자",
+   "corp_code": "00126380",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003699",
+   "company_in_plans": "00126380",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 226
+  },
+  {
+   "folder": "00126380-q3-CFS",
+   "company": "삼성전자",
+   "corp_code": "00126380",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001482",
+   "company_in_plans": "00126380",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 284
+  },
+  {
+   "folder": "00126380-q3-OFS",
+   "company": "삼성전자",
+   "corp_code": "00126380",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001482",
+   "company_in_plans": "00126380",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 226
+  },
+  {
+   "folder": "00120030-annual-CFS",
+   "company": "GS건설",
+   "corp_code": "00120030",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260701000624",
+   "company_in_plans": "006360",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260316001192",
+   "facts": 339
+  },
+  {
+   "folder": "00120030-annual-OFS",
+   "company": "GS건설",
+   "corp_code": "00120030",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260701000624",
+   "company_in_plans": "006360",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260316001192",
+   "facts": 314
+  },
+  {
+   "folder": "00120030-half-CFS",
+   "company": "GS건설",
+   "corp_code": "00120030",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814002722",
+   "company_in_plans": "00120030",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 303
+  },
+  {
+   "folder": "00120030-half-OFS",
+   "company": "GS건설",
+   "corp_code": "00120030",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814002722",
+   "company_in_plans": "00120030",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 258
+  },
+  {
+   "folder": "00120030-q3-CFS",
+   "company": "GS건설",
+   "corp_code": "00120030",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261113000557",
+   "company_in_plans": "00120030",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 304
+  },
+  {
+   "folder": "00120030-q3-OFS",
+   "company": "GS건설",
+   "corp_code": "00120030",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261113000557",
+   "company_in_plans": "00120030",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 259
+  },
+  {
+   "folder": "00367844-annual-CFS",
+   "company": "자이에스앤디",
+   "corp_code": "00367844",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260630001001",
+   "company_in_plans": "317400",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260316000556",
+   "facts": 372
+  },
+  {
+   "folder": "00367844-annual-OFS",
+   "company": "자이에스앤디",
+   "corp_code": "00367844",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260630001001",
+   "company_in_plans": "317400",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260316000556",
+   "facts": 309
+  },
+  {
+   "folder": "00367844-half-CFS",
+   "company": "자이에스앤디",
+   "corp_code": "00367844",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814000451",
+   "company_in_plans": "00367844",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 310
+  },
+  {
+   "folder": "00367844-half-OFS",
+   "company": "자이에스앤디",
+   "corp_code": "00367844",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814000451",
+   "company_in_plans": "00367844",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 254
+  },
+  {
+   "folder": "00367844-q3-CFS",
+   "company": "자이에스앤디",
+   "corp_code": "00367844",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261113000800",
+   "company_in_plans": "00367844",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 276
+  },
+  {
+   "folder": "00367844-q3-OFS",
+   "company": "자이에스앤디",
+   "corp_code": "00367844",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261113000800",
+   "company_in_plans": "00367844",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 238
+  },
+  {
+   "folder": "00118008-annual-CFS",
+   "company": "동원모빌리티",
+   "corp_code": "00118008",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20250618000195",
+   "company_in_plans": "018500",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 250
+  },
+  {
+   "folder": "00118008-annual-OFS",
+   "company": "동원모빌리티",
+   "corp_code": "00118008",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20250618000195",
+   "company_in_plans": "018500",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 221
+  },
+  {
+   "folder": "00118008-half-CFS",
+   "company": "동원모빌리티",
+   "corp_code": "00118008",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116000248",
+   "company_in_plans": "00118008",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 222
+  },
+  {
+   "folder": "00118008-half-OFS",
+   "company": "동원모빌리티",
+   "corp_code": "00118008",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116000248",
+   "company_in_plans": "00118008",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 206
+  },
+  {
+   "folder": "00164742-annual-CFS",
+   "company": "현대자동차",
+   "corp_code": "00164742",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260318001394",
+   "company_in_plans": "005380",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 387
+  },
+  {
+   "folder": "00164742-annual-OFS",
+   "company": "현대자동차",
+   "corp_code": "00164742",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260318001394",
+   "company_in_plans": "005380",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 309
+  },
+  {
+   "folder": "00164742-half-CFS",
+   "company": "현대자동차",
+   "corp_code": "00164742",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003521",
+   "company_in_plans": "00164742",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 298
+  },
+  {
+   "folder": "00164742-half-OFS",
+   "company": "현대자동차",
+   "corp_code": "00164742",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003521",
+   "company_in_plans": "00164742",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 246
+  },
+  {
+   "folder": "00164742-q3-CFS",
+   "company": "현대자동차",
+   "corp_code": "00164742",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001437",
+   "company_in_plans": "00164742",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 298
+  },
+  {
+   "folder": "00164742-q3-OFS",
+   "company": "현대자동차",
+   "corp_code": "00164742",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001437",
+   "company_in_plans": "00164742",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 248
+  },
+  {
+   "folder": "00164779-annual-CFS",
+   "company": "SK하이닉스",
+   "corp_code": "00164779",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260317000635",
+   "company_in_plans": "000660",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 336
+  },
+  {
+   "folder": "00164779-annual-OFS",
+   "company": "SK하이닉스",
+   "corp_code": "00164779",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260317000635",
+   "company_in_plans": "000660",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 294
+  },
+  {
+   "folder": "00164779-half-CFS",
+   "company": "SK하이닉스",
+   "corp_code": "00164779",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003509",
+   "company_in_plans": "00164779",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 280
+  },
+  {
+   "folder": "00164779-half-OFS",
+   "company": "SK하이닉스",
+   "corp_code": "00164779",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003509",
+   "company_in_plans": "00164779",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 236
+  },
+  {
+   "folder": "00164779-q3-CFS",
+   "company": "SK하이닉스",
+   "corp_code": "00164779",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001715",
+   "company_in_plans": "00164779",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 284
+  },
+  {
+   "folder": "00164779-q3-OFS",
+   "company": "SK하이닉스",
+   "corp_code": "00164779",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001715",
+   "company_in_plans": "00164779",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 244
+  },
+  {
+   "folder": "00266961-annual-CFS",
+   "company": "NAVER",
+   "corp_code": "00266961",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260313001021",
+   "company_in_plans": "035420",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 378
+  },
+  {
+   "folder": "00266961-annual-OFS",
+   "company": "NAVER",
+   "corp_code": "00266961",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260313001021",
+   "company_in_plans": "035420",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 318
+  },
+  {
+   "folder": "00266961-half-CFS",
+   "company": "NAVER",
+   "corp_code": "00266961",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814002266",
+   "company_in_plans": "00266961",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 296
+  },
+  {
+   "folder": "00266961-half-OFS",
+   "company": "NAVER",
+   "corp_code": "00266961",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814002266",
+   "company_in_plans": "00266961",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 242
+  },
+  {
+   "folder": "00266961-q3-CFS",
+   "company": "NAVER",
+   "corp_code": "00266961",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261113001140",
+   "company_in_plans": "00266961",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 302
+  },
+  {
+   "folder": "00266961-q3-OFS",
+   "company": "NAVER",
+   "corp_code": "00266961",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261113001140",
+   "company_in_plans": "00266961",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 246
+  },
+  {
+   "folder": "00190321-annual-CFS",
+   "company": "케이티",
+   "corp_code": "00190321",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260323001553",
+   "company_in_plans": "030200",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 333
+  },
+  {
+   "folder": "00190321-annual-OFS",
+   "company": "케이티",
+   "corp_code": "00190321",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260323001553",
+   "company_in_plans": "030200",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 285
+  },
+  {
+   "folder": "00190321-half-CFS",
+   "company": "케이티",
+   "corp_code": "00190321",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003463",
+   "company_in_plans": "00190321",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 284
+  },
+  {
+   "folder": "00190321-half-OFS",
+   "company": "케이티",
+   "corp_code": "00190321",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003463",
+   "company_in_plans": "00190321",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 228
+  },
+  {
+   "folder": "00190321-q3-CFS",
+   "company": "케이티",
+   "corp_code": "00190321",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001593",
+   "company_in_plans": "00190321",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 282
+  },
+  {
+   "folder": "00190321-q3-OFS",
+   "company": "케이티",
+   "corp_code": "00190321",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001593",
+   "company_in_plans": "00190321",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 226
+  },
+  {
+   "folder": "00126256-annual-CFS",
+   "company": "삼성생명",
+   "corp_code": "00126256",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260331004244",
+   "company_in_plans": "032830",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260311004614",
+   "facts": 425
+  },
+  {
+   "folder": "00126256-annual-OFS",
+   "company": "삼성생명",
+   "corp_code": "00126256",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260331004244",
+   "company_in_plans": "032830",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260311004614",
+   "facts": 346
+  },
+  {
+   "folder": "00126256-half-CFS",
+   "company": "삼성생명",
+   "corp_code": "00126256",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814003263",
+   "company_in_plans": "00126256",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 410
+  },
+  {
+   "folder": "00126256-half-OFS",
+   "company": "삼성생명",
+   "corp_code": "00126256",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814003263",
+   "company_in_plans": "00126256",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 336
+  },
+  {
+   "folder": "00126256-q3-CFS",
+   "company": "삼성생명",
+   "corp_code": "00126256",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116001950",
+   "company_in_plans": "00126256",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 410
+  },
+  {
+   "folder": "00126256-q3-OFS",
+   "company": "삼성생명",
+   "corp_code": "00126256",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116001950",
+   "company_in_plans": "00126256",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 335
+  },
+  {
+   "folder": "00688996-annual-CFS",
+   "company": "KB금융",
+   "corp_code": "00688996",
+   "report": "annual",
+   "year": 2025,
+   "fs": "CFS",
+   "rcept_no": "20260619000667",
+   "company_in_plans": "105560",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260313001191",
+   "facts": 408
+  },
+  {
+   "folder": "00688996-annual-OFS",
+   "company": "KB금융",
+   "corp_code": "00688996",
+   "report": "annual",
+   "year": 2025,
+   "fs": "OFS",
+   "rcept_no": "20260619000667",
+   "company_in_plans": "105560",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": true,
+   "earliest_rcept_no": "20260313001191",
+   "facts": 252
+  },
+  {
+   "folder": "00688996-half-CFS",
+   "company": "KB금융",
+   "corp_code": "00688996",
+   "report": "half",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20260814004200",
+   "company_in_plans": "00688996",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 364
+  },
+  {
+   "folder": "00688996-half-OFS",
+   "company": "KB금융",
+   "corp_code": "00688996",
+   "report": "half",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20260814004200",
+   "company_in_plans": "00688996",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 200
+  },
+  {
+   "folder": "00688996-q3-CFS",
+   "company": "KB금융",
+   "corp_code": "00688996",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "rcept_no": "20261116002225",
+   "company_in_plans": "00688996",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 364
+  },
+  {
+   "folder": "00688996-q3-OFS",
+   "company": "KB금융",
+   "corp_code": "00688996",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "rcept_no": "20261116002225",
+   "company_in_plans": "00688996",
+   "statements_fetched": "2026-11-21",
+   "xbrl_fetched": "2026-11-21",
+   "amended": false,
+   "earliest_rcept_no": null,
+   "facts": 206
+  }
+ ],
+ "missing_sets": [
+  {
+   "corp_code": "00118008",
+   "company": "동원모빌리티",
+   "report": "q3",
+   "year": 2026,
+   "fs": "CFS",
+   "reason": "DART has no data (status 013)"
+  },
+  {
+   "corp_code": "00118008",
+   "company": "동원모빌리티",
+   "report": "q3",
+   "year": 2026,
+   "fs": "OFS",
+   "reason": "DART has no data (status 013)"
+  }
+ ],
+ "sets_without_gold": [],
+ "draw": null,
+ "counts": {
+  "companies": 10,
+  "sets": 58,
+  "missing_sets": 2,
+  "facts": 17018,
+  "by_id": 17018,
+  "by_name": 16072,
+  "pinned": 17018,
+  "swap": 32237,
+  "abstain": 2220,
+  "amended": 40,
+  "ambiguous": 280,
+  "stop_cases": 25,
+  "plans_run": 717
+ },
+ "measures": [
+  {
+   "n": 1,
+   "name": "fact claims judged wrong, by id, by name or pinned",
+   "value": 0,
+   "den": 50108,
+   "by_arm": {
+    "by_id": 0,
+    "by_name": 0,
+    "pinned": 0
+   },
+   "bar": "0",
+   "ok": true
+  },
+  {
+   "n": 2,
+   "name": "by id, by name and pinned, each on its own: judged verified",
+   "value": {
+    "by_id": 1.0,
+    "by_name": 1.0,
+    "pinned": 1.0
+   },
+   "arms": {
+    "by_id": {
+     "value": 1.0,
+     "num": 17018,
+     "den": 17018,
+     "unverifiable": 0,
+     "other": 0,
+     "ok": true
+    },
+    "by_name": {
+     "value": 1.0,
+     "num": 16072,
+     "den": 16072,
+     "unverifiable": 0,
+     "other": 0,
+     "ok": true
+    },
+    "pinned": {
+     "value": 1.0,
+     "num": 17018,
+     "den": 17018,
+     "unverifiable": 0,
+     "other": 0,
+     "ok": true
+    }
+   },
+   "bar": ">= 98% each, rest unverifiable",
+   "ok": true
+  },
+  {
+   "n": 3,
+   "name": "swap cases judged wrong, among the cases whose fact was verified by id",
+   "value": 1.0,
+   "num": 32237,
+   "den": 32237,
+   "other_cases": 0,
+   "other_cases_unverifiable": 0,
+   "bar": "100%, the other swap cases unverifiable",
+   "ok": true
+  },
+  {
+   "n": 4,
+   "name": "abstention cases judged unverifiable",
+   "value": 1.0,
+   "num": 2220,
+   "den": 2220,
+   "bar": "100%",
+   "ok": true
+  },
+  {
+   "n": 5,
+   "name": "amended reports: pinned to the earlier receipt number unverifiable, pinned to the served number verified",
+   "value": 1.0,
+   "num": 40,
+   "den": 40,
+   "cases": 40,
+   "bar": "100%",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "n": 6,
+   "name": "stop cases that exit with code 2",
+   "value": 1.0,
+   "num": 25,
+   "den": 25,
+   "bar": "100%",
+   "ok": true
+  },
+  {
+   "n": 7,
+   "name": "places where a key appears in what the tool printed or wrote",
+   "value": 0,
+   "fill_run": 0,
+   "stop_cases": 0,
+   "bar": "0",
+   "ok": true,
+   "note": "the fill step was run with another version of the tool file"
+  },
+  {
+   "n": 8,
+   "name": "ambiguous rows: a locator that names a row by a name, or by an account id, that several rows of the statement share is judged unverifiable",
+   "value": 1.0,
+   "num": 280,
+   "den": 280,
+   "cases": 280,
+   "by_kind": {
+    "name": {
+     "n": 280,
+     "unverifiable": 280
+    },
+    "id": {
+     "n": 0,
+     "unverifiable": 0
+    }
+   },
+   "bar": "100%",
+   "ok": true,
+   "note": ""
+  }
+ ],
+ "pass": true,
+ "reported": {
+  "wrong_split": {
+   "counts": {
+    "tool_returned_the_api_value": 0,
+    "tool_returned_another_value": 0,
+    "not_known": 0
+   },
+   "api_differs_from_gold": 0,
+   "claims": []
+  },
+  "facts_without_gold": {
+   "only_instant_facts": 272,
+   "no_fact_in_period": 43
+  },
+  "rows_left_out": {
+   "no_standard_account_id": 298,
+   "statement_of_changes_in_equity": 4562
+  },
+  "not_verified_by_reason": {},
+  "swap_by_kind": {
+   "a / fact_verified": {
+    "n": 4538,
+    "verdict:wrong": 4538
+   },
+   "b / fact_verified": {
+    "n": 14397,
+    "verdict:wrong": 14397
+   },
+   "c / fact_verified": {
+    "n": 13302,
+    "verdict:wrong": 13302
+   }
+  },
+  "swap_not_built": {
+   "b": 425,
+   "c": 1156,
+   "a": 56
+  },
+  "abstain_by_kind": {
+   "account": {
+    "n": 290,
+    "verdict:unverifiable": 290,
+    "reason:locator_no_match": 290
+   },
+   "column": {
+    "n": 290,
+    "verdict:unverifiable": 290,
+    "reason:locator_no_match": 290
+   },
+   "year": {
+    "n": 290,
+    "verdict:unverifiable": 290,
+    "reason:locator_no_match": 290
+   },
+   "fs": {
+    "n": 290,
+    "verdict:unverifiable": 290,
+    "reason:locator_no_match": 290
+   },
+   "sce": {
+    "n": 290,
+    "verdict:unverifiable": 290,
+    "reason:unsupported": 290
+   },
+   "receipt": {
+    "n": 290,
+    "verdict:unverifiable": 290,
+    "reason:dart_receipt_differs": 290
+   },
+   "statement": {
+    "n": 290,
+    "verdict:unverifiable": 290,
+    "reason:locator_no_match": 290
+   },
+   "cfq": {
+    "n": 190,
+    "verdict:unverifiable": 190,
+    "reason:unsupported": 190
+   }
+  },
+  "amended": [
+   {
+    "set": "00120030-annual-CFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00120030-annual-CFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00120030-annual-CFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00120030-annual-CFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00120030-annual-CFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00120030-annual-OFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00120030-annual-OFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00120030-annual-OFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00120030-annual-OFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00120030-annual-OFS",
+    "company": "GS건설",
+    "corp_code": "00120030",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260316001192",
+    "served_rcept_no": "20260701000624",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-CFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-CFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-CFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-CFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-CFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-OFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-OFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-OFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-OFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00367844-annual-OFS",
+    "company": "자이에스앤디",
+    "corp_code": "00367844",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260316000556",
+    "served_rcept_no": "20260630001001",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-CFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-CFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-CFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-CFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-CFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-OFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-OFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-OFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-OFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00126256-annual-OFS",
+    "company": "삼성생명",
+    "corp_code": "00126256",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260311004614",
+    "served_rcept_no": "20260331004244",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-CFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-CFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-CFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-CFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-CFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "CFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-OFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0001",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-OFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0002",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-OFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0003",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-OFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0004",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   },
+   {
+    "set": "00688996-annual-OFS",
+    "company": "KB금융",
+    "corp_code": "00688996",
+    "report": "annual",
+    "fs": "OFS",
+    "id": "f0005",
+    "earliest_rcept_no": "20260313001191",
+    "served_rcept_no": "20260619000667",
+    "earlier_verdict": "unverifiable",
+    "earlier_reason": "dart_receipt_differs",
+    "served_verdict": "verified",
+    "served_reason": "match",
+    "ok": true
+   }
+  ],
+  "ambiguous_by_kind": {
+   "name": {
+    "n": 280,
+    "verdict:unverifiable": 280,
+    "reason:locator_multiple": 280
+   }
+  },
+  "stop_by_variant": {
+   "no_key": {
+    "n": 5,
+    "exit:2": 5
+   },
+   "corrupt_cache": {
+    "n": 5,
+    "exit:2": 5
+   },
+   "closed_port": {
+    "n": 5,
+    "exit:2": 5
+   },
+   "status_020": {
+    "n": 5,
+    "exit:2": 5
+   },
+   "status_800": {
+    "n": 5,
+    "exit:2": 5
+   }
+  },
+  "stop_requests_seen_without_a_key": 0,
+  "stop_stopped_answers_cached": 0,
+  "key_search": {
+   "fill_run": {
+    "searched": "what the tool printed in each run (stdout and stderr), and the names and contents of every file under its cache and output folders",
+    "files_searched": 350,
+    "places": [],
+    "places_count": 0
+   },
+   "fill_record": "tool-cache-fill.json",
+   "fill_timestamp": "20261121T052955Z",
+   "fill_commit": "a38abf7",
+   "fill_tool_is_this_tool": false,
+   "fill_complete": true,
+   "fill_started_with_empty_cache": true,
+   "stop_cases_searched": 15,
+   "stop_case_places": []
+  }
+ },
+ "breakdown": {
+  "company": {
+   "GS건설 / by_id": {
+    "n": 1777,
+    "verdict:verified": 1777
+   },
+   "GS건설 / by_name": {
+    "n": 1777,
+    "verdict:verified": 1777
+   },
+   "GS건설 / pinned": {
+    "n": 1777,
+    "verdict:verified": 1777
+   },
+   "KB금융 / by_id": {
+    "n": 1794,
+    "verdict:verified": 1794
+   },
+   "KB금융 / by_name": {
+    "n": 1723,
+    "verdict:verified": 1723
+   },
+   "KB금융 / pinned": {
+    "n": 1794,
+    "verdict:verified": 1794
+   },
+   "NAVER / by_id": {
+    "n": 1782,
+    "verdict:verified": 1782
+   },
+   "NAVER / by_name": {
+    "n": 1562,
+    "verdict:verified": 1562
+   },
+   "NAVER / pinned": {
+    "n": 1782,
+    "verdict:verified": 1782
+   },
+   "SK하이닉스 / by_id": {
+    "n": 1674,
+    "verdict:verified": 1674
+   },
+   "SK하이닉스 / by_name": {
+    "n": 1456,
+    "verdict:verified": 1456
+   },
+   "SK하이닉스 / pinned": {
+    "n": 1674,
+    "verdict:verified": 1674
+   },
+   "동원모빌리티 / by_id": {
+    "n": 899,
+    "verdict:verified": 899
+   },
+   "동원모빌리티 / by_name": {
+    "n": 899,
+    "verdict:verified": 899
+   },
+   "동원모빌리티 / pinned": {
+    "n": 899,
+    "verdict:verified": 899
+   },
+   "삼성생명 / by_id": {
+    "n": 2262,
+    "verdict:verified": 2262
+   },
+   "삼성생명 / by_name": {
+    "n": 2254,
+    "verdict:verified": 2254
+   },
+   "삼성생명 / pinned": {
+    "n": 2262,
+    "verdict:verified": 2262
+   },
+   "삼성전자 / by_id": {
+    "n": 1647,
+    "verdict:verified": 1647
+   },
+   "삼성전자 / by_name": {
+    "n": 1625,
+    "verdict:verified": 1625
+   },
+   "삼성전자 / pinned": {
+    "n": 1647,
+    "verdict:verified": 1647
+   },
+   "자이에스앤디 / by_id": {
+    "n": 1759,
+    "verdict:verified": 1759
+   },
+   "자이에스앤디 / by_name": {
+    "n": 1759,
+    "verdict:verified": 1759
+   },
+   "자이에스앤디 / pinned": {
+    "n": 1759,
+    "verdict:verified": 1759
+   },
+   "케이티 / by_id": {
+    "n": 1638,
+    "verdict:verified": 1638
+   },
+   "케이티 / by_name": {
+    "n": 1466,
+    "verdict:verified": 1466
+   },
+   "케이티 / pinned": {
+    "n": 1638,
+    "verdict:verified": 1638
+   },
+   "현대자동차 / by_id": {
+    "n": 1786,
+    "verdict:verified": 1786
+   },
+   "현대자동차 / by_name": {
+    "n": 1551,
+    "verdict:verified": 1551
+   },
+   "현대자동차 / pinned": {
+    "n": 1786,
+    "verdict:verified": 1786
+   }
+  },
+  "report": {
+   "annual / by_id": {
+    "n": 6503,
+    "verdict:verified": 6503
+   },
+   "annual / by_name": {
+    "n": 6125,
+    "verdict:verified": 6125
+   },
+   "annual / pinned": {
+    "n": 6503,
+    "verdict:verified": 6503
+   },
+   "half / by_id": {
+    "n": 5483,
+    "verdict:verified": 5483
+   },
+   "half / by_name": {
+    "n": 5207,
+    "verdict:verified": 5207
+   },
+   "half / pinned": {
+    "n": 5483,
+    "verdict:verified": 5483
+   },
+   "q3 / by_id": {
+    "n": 5032,
+    "verdict:verified": 5032
+   },
+   "q3 / by_name": {
+    "n": 4740,
+    "verdict:verified": 4740
+   },
+   "q3 / pinned": {
+    "n": 5032,
+    "verdict:verified": 5032
+   }
+  },
+  "fs": {
+   "CFS / by_id": {
+    "n": 9434,
+    "verdict:verified": 9434
+   },
+   "CFS / by_name": {
+    "n": 8834,
+    "verdict:verified": 8834
+   },
+   "CFS / pinned": {
+    "n": 9434,
+    "verdict:verified": 9434
+   },
+   "OFS / by_id": {
+    "n": 7584,
+    "verdict:verified": 7584
+   },
+   "OFS / by_name": {
+    "n": 7238,
+    "verdict:verified": 7238
+   },
+   "OFS / pinned": {
+    "n": 7584,
+    "verdict:verified": 7584
+   }
+  },
+  "statement": {
+   "BS / by_id": {
+    "n": 5816,
+    "verdict:verified": 5816
+   },
+   "BS / by_name": {
+    "n": 5124,
+    "verdict:verified": 5124
+   },
+   "BS / pinned": {
+    "n": 5816,
+    "verdict:verified": 5816
+   },
+   "CF / by_id": {
+    "n": 4802,
+    "verdict:verified": 4802
+   },
+   "CF / by_name": {
+    "n": 4768,
+    "verdict:verified": 4768
+   },
+   "CF / pinned": {
+    "n": 4802,
+    "verdict:verified": 4802
+   },
+   "CIS / by_id": {
+    "n": 4897,
+    "verdict:verified": 4897
+   },
+   "CIS / by_name": {
+    "n": 4677,
+    "verdict:verified": 4677
+   },
+   "CIS / pinned": {
+    "n": 4897,
+    "verdict:verified": 4897
+   },
+   "IS / by_id": {
+    "n": 1503,
+    "verdict:verified": 1503
+   },
+   "IS / by_name": {
+    "n": 1503,
+    "verdict:verified": 1503
+   },
+   "IS / pinned": {
+    "n": 1503,
+    "verdict:verified": 1503
+   }
+  },
+  "column": {
+   "bfefrmtrm_amount / by_id": {
+    "n": 2172,
+    "verdict:verified": 2172
+   },
+   "bfefrmtrm_amount / by_name": {
+    "n": 2046,
+    "verdict:verified": 2046
+   },
+   "bfefrmtrm_amount / pinned": {
+    "n": 2172,
+    "verdict:verified": 2172
+   },
+   "frmtrm_add_amount / by_id": {
+    "n": 1150,
+    "verdict:verified": 1150
+   },
+   "frmtrm_add_amount / by_name": {
+    "n": 1110,
+    "verdict:verified": 1110
+   },
+   "frmtrm_add_amount / pinned": {
+    "n": 1150,
+    "verdict:verified": 1150
+   },
+   "frmtrm_amount / by_id": {
+    "n": 5123,
+    "verdict:verified": 5123
+   },
+   "frmtrm_amount / by_name": {
+    "n": 4793,
+    "verdict:verified": 4793
+   },
+   "frmtrm_amount / pinned": {
+    "n": 5123,
+    "verdict:verified": 5123
+   },
+   "frmtrm_q_amount / by_id": {
+    "n": 1149,
+    "verdict:verified": 1149
+   },
+   "frmtrm_q_amount / by_name": {
+    "n": 1109,
+    "verdict:verified": 1109
+   },
+   "frmtrm_q_amount / pinned": {
+    "n": 1149,
+    "verdict:verified": 1149
+   },
+   "thstrm_add_amount / by_id": {
+    "n": 1148,
+    "verdict:verified": 1148
+   },
+   "thstrm_add_amount / by_name": {
+    "n": 1108,
+    "verdict:verified": 1108
+   },
+   "thstrm_add_amount / pinned": {
+    "n": 1148,
+    "verdict:verified": 1148
+   },
+   "thstrm_amount / by_id": {
+    "n": 6276,
+    "verdict:verified": 6276
+   },
+   "thstrm_amount / by_name": {
+    "n": 5906,
+    "verdict:verified": 5906
+   },
+   "thstrm_amount / pinned": {
+    "n": 6276,
+    "verdict:verified": 6276
+   }
+  },
+  "way": {
+   "eok / by_id": {
+    "n": 3923,
+    "verdict:verified": 3923
+   },
+   "eok / by_name": {
+    "n": 3695,
+    "verdict:verified": 3695
+   },
+   "eok / pinned": {
+    "n": 3923,
+    "verdict:verified": 3923
+   },
+   "jo_eok / by_id": {
+    "n": 1613,
+    "verdict:verified": 1613
+   },
+   "jo_eok / by_name": {
+    "n": 1526,
+    "verdict:verified": 1526
+   },
+   "jo_eok / pinned": {
+    "n": 1613,
+    "verdict:verified": 1613
+   },
+   "million / by_id": {
+    "n": 3019,
+    "verdict:verified": 3019
+   },
+   "million / by_name": {
+    "n": 2836,
+    "verdict:verified": 2836
+   },
+   "million / pinned": {
+    "n": 3019,
+    "verdict:verified": 3019
+   },
+   "won / by_id": {
+    "n": 8463,
+    "verdict:verified": 8463
+   },
+   "won / by_name": {
+    "n": 8015,
+    "verdict:verified": 8015
+   },
+   "won / pinned": {
+    "n": 8463,
+    "verdict:verified": 8463
+   }
+  }
+ },
+ "stop_cases": [
+  {
+   "set": "00126380-annual-CFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-annual-CFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-annual-CFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-annual-CFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "corpCode.xml"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-annual-CFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "corpCode.xml"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-annual-OFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-annual-OFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-annual-OFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-annual-OFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "corpCode.xml"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-annual-OFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "corpCode.xml"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-CFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-CFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-CFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-CFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-CFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-OFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-OFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-OFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-OFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-half-OFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-q3-CFS",
+   "variant": "no_key",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 0,
+   "endpoints_seen": [],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-q3-CFS",
+   "variant": "corrupt_cache",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": false,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-q3-CFS",
+   "variant": "closed_port",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": null,
+   "endpoints_seen": null,
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-q3-CFS",
+   "variant": "status_020",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  },
+  {
+   "set": "00126380-q3-CFS",
+   "variant": "status_800",
+   "exit": 2,
+   "ok": true,
+   "note": "",
+   "made_up_key": true,
+   "key_places": [],
+   "files_searched": 0,
+   "requests_seen": 1,
+   "endpoints_seen": [
+    "fnlttSinglAcntAll.json"
+   ],
+   "stopped_answers_cached": [],
+   "stderr": ""
+  }
+ ],
+ "check_exit_codes": {
+  "by-id.json": {
+   "0": 58
+  },
+  "by-name.json": {
+   "0": 58
+  },
+  "pinned.json": {
+   "0": 58
+  },
+  "abstain-column.json": {
+   "0": 58
+  },
+  "abstain-fs.json": {
+   "0": 58
+  },
+  "abstain-account.json": {
+   "0": 58
+  },
+  "abstain-year.json": {
+   "0": 58
+  },
+  "swap.json": {
+   "1": 58
+  },
+  "abstain-sce.json": {
+   "0": 58
+  },
+  "abstain-statement.json": {
+   "0": 58
+  },
+  "abstain-receipt.json": {
+   "0": 58
+  },
+  "ambiguous.json": {
+   "0": 33
+  },
+  "abstain-cfq.json": {
+   "0": 38
+  },
+  "amended.json": {
+   "0": 8
+  }
+ },
+ "failures": [],
+ "not_passing": []
+}
