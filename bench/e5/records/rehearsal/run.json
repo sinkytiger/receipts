@@ -1,0 +1,33 @@
+{
+ "set": "dev",
+ "started": "2026-11-22T23:55:17Z",
+ "model": "claude-haiku-5-5",
+ "effort": "medium",
+ "max_tokens": 16000,
+ "commit": "c90be78",
+ "dirty": false,
+ "approved_estimate_usd_per_document": 0.03,
+ "estimate": {
+  "documents": 4,
+  "expected_usd": 0.111,
+  "upper_usd": 1.4758,
+  "expected_usd_per_document": 0.02776,
+  "upper_usd_per_document": 0.36894,
+  "note": "token counts are guessed high from character counts; no request was made"
+ },
+ "gold_check": {
+  "documents": 10,
+  "statements": 120,
+  "planted_wrong": 40,
+  "correct_verified": 80
+ },
+ "documents": [
+  "00126380",
+  "00120030",
+  "00367844",
+  "00118008"
+ ],
+ "resumed": false,
+ "finished": "2026-11-22T23:58:28Z",
+ "spent_usd": 0.094301
+}

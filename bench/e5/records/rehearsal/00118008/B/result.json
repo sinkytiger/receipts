@@ -1,0 +1,59 @@
+{
+ "doc": "00118008",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-22T23:58:28Z",
+   "set": "rehearsal",
+   "doc": "00118008",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 10306,
+   "output_tokens": 1348,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0017046,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChJsdZDSzUKJwKEN65A3Z"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "1,556억원",
+    "should_be": "3,236억원",
+    "why": "2025년 4~9월 누적 연결 매출액은 323,619,019,495원이고, 1,556억원은 2025년 3개월(7~9월) 매출액이다"
+   },
+   {
+    "line": 9,
+    "number": "99억원",
+    "should_be": "58억원",
+    "why": "2026년 7~9월 연결 당기순이익은 5,783,503,247원이다"
+   },
+   {
+    "line": 12,
+    "number": "721억원",
+    "should_be": "773억원",
+    "why": "2026년 1~9월 연결 영업활동현금흐름은 77,325,753,985원이다"
+   },
+   {
+    "line": 15,
+    "number": "6,377억원",
+    "should_be": "6,683억원",
+    "why": "2026년 9월 말 연결 자산총계는 668,275,466,642원이다"
+   }
+  ],
+  "could_not_check": [
+   {
+    "line": 16,
+    "number": "4,581억원"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0017046
+}

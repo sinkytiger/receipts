@@ -1,0 +1,48 @@
+{
+ "doc": "00120030",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-22T23:56:51Z",
+   "set": "rehearsal",
+   "doc": "00120030",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 13997,
+   "output_tokens": 1526,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0021627,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChJsWHzi6SB8bVZsFjF6y"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "1,648억원",
+    "should_be": "913억원",
+    "why": "1,648억 is the cumulative Jan–Jun consolidated operating income; the April–June three-month figure is 91,354,000,000 won"
+   },
+   {
+    "line": 7,
+    "number": "2,779,365,000,000원",
+    "should_be": "1,594,509,000,000원",
+    "why": "2,779,365 million is the consolidated Q2 revenue; the separate Q2 revenue is 1,594,509 million"
+   },
+   {
+    "line": 10,
+    "number": "3,124,300,000,000원",
+    "should_be": "2,779,365,000,000원",
+    "why": "consolidated April–June revenue in the IS is 2,779,365 million; 3,124.3 billion does not appear in the statements"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0021627
+}

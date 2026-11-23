@@ -68,8 +68,9 @@ unchanged:
 
 You have at most 12 tool calls. A listing longer than 60,000 characters is not returned: narrow it with `statement`
 or `match`. The script runs from a cache, with no key. It can read the company code file and, for each company, the
-annual report of 2025, the half-year report of 2026 and the third-quarter report of 2026. Nothing else can be fetched
-here.
+reports it has filed among these three: the annual report of 2025, the half-year report of 2026 and the third-quarter
+report of 2026. Nothing else can be fetched here: a look-up of any other report stops with a message about the key,
+which only means that the report is not in the cache.
 
 When you have what you need, reply with the contents of `claims.json` and nothing else. The harness runs `check` and
 sends you what it printed. You may then send a corrected `claims.json`, at most two times (step 6), or reply with the
@@ -534,10 +535,26 @@ def export_records(run_dir, set_name, docs, docs_dir):
                 continue
             shutil.copytree(source, os.path.join(target, doc, arm), dirs_exist_ok=True,
                             ignore=shutil.ignore_patterns("work"))
+        slim_conversation(os.path.join(target, doc, "A", "conversation.json"))
     for name in ("run.json",):
         if os.path.isfile(os.path.join(run_dir, name)):
             shutil.copyfile(os.path.join(run_dir, name), os.path.join(target, name))
     return target
+
+
+def slim_conversation(path):
+    """In the committed copy, the two files of the skill that every conversation holds in full are named instead:
+    SKILL.md at the start of the system prompt, and plan-format.md as the answer of `read_plan_format`."""
+    if not os.path.isfile(path):
+        return
+    turns, skill, reference = read_json(path), read(SKILL), read(PLAN_FORMAT)
+    for turn in turns:
+        if turn["role"] == "system" and turn["text"].startswith(skill):
+            turn["text"] = (f"[skills/receipts/SKILL.md as shipped at the run's commit, {len(skill):,} characters]"
+                            + turn["text"][len(skill):])
+        elif turn["role"] == "tool" and turn.get("output") == reference:
+            turn["output"] = f"[skills/receipts/references/plan-format.md as shipped at the run's commit, {len(reference):,} characters]"
+    write_json(path, turns)
 
 
 # ---------------------------------------------------------------- the estimate

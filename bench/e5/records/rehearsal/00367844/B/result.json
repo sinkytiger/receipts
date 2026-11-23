@@ -1,0 +1,54 @@
+{
+ "doc": "00367844",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-22T23:57:34Z",
+   "set": "rehearsal",
+   "doc": "00367844",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 12463,
+   "output_tokens": 1143,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0018178,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChJsZcN5yDQLB6Emx1u7j"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 12,
+    "number": "1조 1,199억원",
+    "should_be": "1조 5,782억원 (1,578,173,429,989원)",
+    "why": "2024 consolidated revenue is 1,578,173,429,989; 11,199억 is not in the statements"
+   },
+   {
+    "line": 13,
+    "number": "71.2%",
+    "should_be": "12.1%",
+    "why": "(1,387,596,056,216 − 1,578,173,429,989) / 1,578,173,429,989 ≈ −12.1%, not −71.2%"
+   },
+   {
+    "line": 15,
+    "number": "-25,282,431,150원",
+    "should_be": "63,328,065,489원",
+    "why": "consolidated operating cash flow FY2025; -25,282,431,150 is the separate figure"
+   },
+   {
+    "line": 16,
+    "number": "1조 3,052억",
+    "should_be": "1조 1,899억원 (1,189,917,477,862원)",
+    "why": "consolidated total assets at 2025 year end; 1,305,235,716,477 is the 2024 year-end figure"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0018178
+}

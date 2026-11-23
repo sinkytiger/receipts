@@ -1,0 +1,54 @@
+{
+ "doc": "00126380",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-22T23:56:07Z",
+   "set": "rehearsal",
+   "doc": "00126380",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 13214,
+   "output_tokens": 1923,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0022829,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChJsSvmRhxedLLecCcPn7"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "6.2%",
+    "should_be": "55.0%",
+    "why": "Q3 2026 consolidated operating income 107,440,482 / revenue 195,253,209 = 55.0%"
+   },
+   {
+    "line": 6,
+    "number": "566조 9,421억원",
+    "should_be": "791조 8,418억원",
+    "why": "566,942,110 is the 2025 year-end total; the 2026 September-end consolidated assets are 791,841,881 million"
+   },
+   {
+    "line": 12,
+    "number": "713,181억원",
+    "should_be": "751,361억원",
+    "why": "Consolidated Q3 2026 profit (ProfitLoss) is 75,136,138 million; 713,181 is the separate-statement figure"
+   },
+   {
+    "line": 16,
+    "number": "4,338,380억원",
+    "should_be": "1,752,871억원",
+    "why": "Separate Q3 2026 revenue is 175,287,109 million; 433,838,003 million is the Jan–Sep cumulative figure"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0022829
+}

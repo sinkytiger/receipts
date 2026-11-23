@@ -23,7 +23,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 KINDS = ["a", "b", "c", "d", "e"]
 FIELDS = ["company", "year", "report", "fs", "statement", "row", "column"]
-SOURCE = re.compile(r"^DART (\d{8}) (\d{4}) (q1|half|q3|annual) (CFS|OFS) (BS|IS|CIS|CF) (\S+) .*? "
+# a source line of the receipt: "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS <account id> <name> <column> [..."
+# The name and stock code in brackets are there when the plan gave a stock code.
+SOURCE = re.compile(r"^DART (\d{8})(?: \(.*?\))? (\d{4}) (q1|half|q3|annual) (CFS|OFS) (BS|IS|CIS|CF) (\S+) .*? "
                     r"(thstrm_amount|thstrm_add_amount|frmtrm_amount|frmtrm_q_amount|frmtrm_add_amount|bfefrmtrm_amount) \[")
 
 
