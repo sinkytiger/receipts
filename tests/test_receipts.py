@@ -104,6 +104,16 @@ class ScanTest(unittest.TestCase):
         self.assertEqual(scan("Margins of 12.4 % (−3.2%) in a 10-15% band, about $2,250, 약 1,200만 명, 1.8배.")[0],
                          ["12.4 %", "−3.2%", "10", "15%", "$2,250", "1,200만", "1.8배"])
 
+    def test_korean_month_and_quarter_ranges(self):
+        text = ("2026년 7~9월 매출은 195조원, 1-9월 누적은 254조원, 1∼9월도 같다.\n"
+                "10~12월에는 5조원, 7 ~ 9월에는 4조원, 1~3분기 누적은 9조원이다. 7월~9월도 날짜다.\n"
+                "매출이 7~9% 늘었고 3-5개 공장을 지었다.")
+        nums, skipped = scan(text)
+        self.assertEqual(nums, ["195조", "254조", "5조", "4조", "9조", "7", "9%", "3", "5"])
+        self.assertIn(("7~9월", "date"), skipped)
+        self.assertIn(("1-9월", "date"), skipped)
+        self.assertIn(("1~3분기", "date"), skipped)
+
     def test_korean_particles_do_not_break_skip_rules(self):
         text = ("2026-11-19에 작성했고 11월에는 v3.0.9에서 14:30에 시작했다. 3분기에도, 2025년에는 FY2025와 같다.\n"
                 "이익률은 0.86였다. 직원은 3명이고 매출은 12,345건이었다. 버전은 1.2.3.")

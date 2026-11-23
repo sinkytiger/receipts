@@ -2,7 +2,7 @@
 
 Every number your agent writes comes with a receipt, or gets flagged.
 
-> **Status: 0.2.0.** A checking script, an agent skill, connections to SEC EDGAR and to Korea's DART, and four evaluations whose rules were written down before they were run. The results, with their limits, are [below](#what-the-evaluation-shows). E1, E2 and E3 were measured on 0.1.0, E4 on 0.2.0. [CHANGELOG.md](CHANGELOG.md) says what changed between them.
+> **Status: 0.2.1.** A checking script, an agent skill, connections to SEC EDGAR and to Korea's DART, and five evaluations whose rules were written down before they were run. The results, with their limits, are [below](#what-the-evaluation-shows). E1, E2 and E3 were measured on 0.1.0, E4 and E5 on 0.2.0. Version 0.2.1 changes only how the scan reads Korean month ranges such as `7~9월`. [CHANGELOG.md](CHANGELOG.md) says what changed between them.
 
 [한국어](README.ko.md)
 
@@ -225,7 +225,7 @@ The same model (Claude Haiku 5.5) ran both arms. With the skill it gets the docu
 - **Where the model alone went wrong.** Its 4 misses are all in the reply that could not be read, an annual document of one of the 11 named companies. Its 2 false flags, both its own miscalculations, are in named companies too. On the 20 drawn companies both arms flagged 80 of 80 planted errors and 0 of 160 correct statements.
 - **Some planted errors show without a source.** In 39 of the 124, the shown amount also stands on another line, the document states the inputs of the figure, or the amount is an input of a correct percent change or ratio whose other input the document states. With these left out the counts are 85 of 85 for the skill and 82 of 85 for the model alone (the three misses are in the reply that could not be read).
 
-What to keep in mind: the notes are made from sentence templates that name the statements and the period in every sentence, so real notes are harder. The form `7~9월` was avoided because the scan counts its first number as a number of the document, which is a defect to fix. It is one model, one setting, one run. There were no pass bars. By kind, the model alone flagged a 21 of 21, b 30 of 31, c 26 of 27, d 26 of 27 and e 17 of 18; the skill flagged all of each. Before the run an agent that wrote none of the code reviewed the generator, the harness and the scorer, and its findings were fixed before any held-out document existed. All of E5 cost US$0.90 in 258 requests, two rehearsals included. The conversations, the tool calls and every plan are in [bench/e5/records](bench/e5/records).
+What to keep in mind: the notes are made from sentence templates that name the statements and the period in every sentence, so real notes are harder. The form `7~9월` was avoided because the scan of 0.2.0 counts its first number as a number of the document. Version 0.2.1 fixes that. It is one model, one setting, one run. There were no pass bars. By kind, the model alone flagged a 21 of 21, b 30 of 31, c 26 of 27, d 26 of 27 and e 17 of 18; the skill flagged all of each. Before the run an agent that wrote none of the code reviewed the generator, the harness and the scorer, and its findings were fixed before any held-out document existed. All of E5 cost US$0.90 in 258 requests, two rehearsals included. The conversations, the tool calls and every plan are in [bench/e5/records](bench/e5/records).
 
 ### What was not measured
 
@@ -242,9 +242,9 @@ Every scoring of the tool is logged with its commit: [bench/runs.jsonl](bench/ru
 
 Done in 0.1.0: the core script and its benchmark, the skill and plugin, the SEC EDGAR connection, and the three evaluations. Done in 0.1.1: one-day periods on EDGAR. Done in 0.2.0: Korean filings (DART) and their evaluation.
 
-Done after 0.2.0, with the same script and skill: E5, a model writing plans against DART.
+Done after 0.2.0, with the same script and skill: E5, a model writing plans against DART. Done in 0.2.1: Korean month and quarter ranges (`7~9월`, `1~3분기`) in the scan.
 
-Next: an audit of non-numeric claims, PDF sources, a scan rule for Korean month ranges such as `7~9월`, and a model writing plans against EDGAR.
+Next: an audit of non-numeric claims, PDF sources, and a model writing plans against EDGAR.
 
 ## License
 

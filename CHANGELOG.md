@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1 (2026-11-23)
+
+- **Korean month and quarter ranges.** The scan now skips `7~9월`, `1-9월`, `10∼12월` and `1~3분기` as dates. Before, it skipped only the part with `월` or `분기`, and the first number of the range (`7` in `7~9월`) counted as a number of the document, so it came back `uncovered` unless the plan declared it. Found while writing E5, the evaluation in which a model writes the plan against DART. Ranges of amounts (`7~9%`, `3-5개`) are still two numbers.
+- E5 was run on 0.2.0 and is reported in the README. Its harness, records and results are in `bench/e5`.
+
 ## 0.2.0 (2026-11-22)
 
 - **Korean filings (DART).** A source can be an amount in the financial statements of a periodic report filed with Korea's DART (사업보고서, 반기보고서, 분기보고서), read from OpenDART. A locator names the company (stock code or DART company code), the business year, the report (`q1`, `half`, `q3`, `annual`), consolidated or separate (`fs`, with no default), the statement (`BS`, `IS`, `CIS`, `CF`), the row (by account id or by name) and DART's own column name. The rules are in sections 2 and 9 of `plan-format.md`.

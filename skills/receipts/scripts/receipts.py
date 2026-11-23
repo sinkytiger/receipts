@@ -27,7 +27,7 @@ from decimal import Decimal, InvalidOperation, ROUND_DOWN, ROUND_HALF_EVEN, ROUN
 
 getcontext().prec = 60
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 
 
 class StopError(Exception):
@@ -85,10 +85,13 @@ SKIP_RULES = [  # (rule, regex, group to mark). Order is priority: an earlier ma
     ("date", re.compile(rf"(?<![A-Za-z0-9_.])\d{{1,2}}(?:st|nd|rd|th)?\s+(?i:{MONTH})(?:,?\s+\d{{4}})?(?!\d)"), 0),
     ("date", re.compile(rf"(?i:\b{MONTH}),?\s+\d{{4}}(?!\d)"), 0),
     ("date", re.compile(r"(?<![A-Za-z0-9_.])\d{4}\s?년\s?\d{1,2}\s?월(?:\s?\d{1,2}\s?일)?"), 0),
+    # a Korean month range: 7~9월, 1-9월, 10∼12월, 7 ~ 9월 (the first number is a month too)
+    ("date", re.compile(r"(?<![A-Za-z0-9_.,])\d{1,2}\s?(?:월\s?)?[~∼〜\-–—]\s?\d{1,2}\s?월(?:\s?\d{1,2}\s?일)?"), 0),
     ("date", re.compile(r"(?<![A-Za-z0-9_.,])\d{1,2}\s?월(?:\s?\d{1,2}\s?일)?"), 0),
     ("date", re.compile(r"(?<![A-Za-z0-9_.])(?:(?:19|20)\d{2}\s?)?(?:[1-4]Q|Q[1-4]|H[12])(?![A-Za-z0-9])"
                         r"(?:\s?(?:(?:19|20)\d{2}|['’]\d{2})(?!\d))?"), 0),
     ("date", re.compile(r"(?<![A-Za-z0-9_.])(?:FY|CY)\s?['’]?\d{2,4}(?!\d)"), 0),
+    ("date", re.compile(r"(?<![A-Za-z0-9_.,])[1-4]\s?[~∼〜\-–—]\s?[1-4]\s?분기"), 0),  # 1~3분기
     ("date", re.compile(r"(?<![A-Za-z0-9_.,])[1-4]\s?(?:/\s?4\s?)?분기"), 0),
     ("year", re.compile(r"(?<![A-Za-z0-9_.,])(?:19|20)\d{2}\s?년(?:도)?"), 0),
     ("time", re.compile(r"(?<![A-Za-z0-9_.:])\d{1,2}:\d{2}(?::\d{2})?(?![A-Za-z0-9_:])(?:\s?(?i:am|pm)(?![A-Za-z]))?"), 0),

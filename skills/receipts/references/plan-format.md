@@ -244,7 +244,7 @@ Skip rules, each with its own count. When two rules could apply, the earlier one
 
 - `code`: fenced and inline code
 - `url`: links and e-mail addresses
-- `date`: full dates, month and day, quarters and fiscal labels such as `Q3`, `Q3 2025`, `1분기`, `FY2025`
+- `date`: full dates, month and day, quarters and fiscal labels such as `Q3`, `Q3 2025`, `1분기`, `FY2025`, and Korean month and quarter ranges such as `7~9월`, `1-9월`, `1~3분기` (the first number of the range is skipped with the second)
 - `year`: a bare 4-digit number from 1900 to 2100 in a year context. The contexts are: after `in`, `since`, `during`, `until`, `through`, `year`, `fiscal`, `vs`, `end of`, `as of`; after `by` or `from`, unless a direction word comes directly before it (`fell by 2000` and `rose from 1950` are amounts, while `up 12% from 2024` names a year); before `년`; in a year range; or joined to another year by `to`, `and`, `or`, `-`, `–`. A number followed by a unit or counter word (`2000 units`, `2000명`) is never a year.
 - `time`, `version`
 - `heading_number` (`## 2. Results`), `list_marker` (`1.` at the start of a line)
