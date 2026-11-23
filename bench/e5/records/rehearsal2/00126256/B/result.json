@@ -1,0 +1,54 @@
+{
+ "doc": "00126256",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:38:17Z",
+   "set": "rehearsal",
+   "doc": "00126256",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 16920,
+   "output_tokens": 1529,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0024565,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKKYTLsH5Z6jtuEav3wk"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 8,
+    "number": "24.8% 줄었다",
+    "should_be": "8.5% 늘었다",
+    "why": "consolidated net income rose from 2,260,255 to 2,451,515 million won; the direction and size are both wrong"
+   },
+   {
+    "line": 10,
+    "number": "1,821,290백만원",
+    "should_be": "2,813,666백만원",
+    "why": "1,821,290 is the separate PBT for 2024; consolidated PBT for 2024 is 2,813,666"
+   },
+   {
+    "line": 13,
+    "number": "1,983,439백만원",
+    "should_be": "2,451,515백만원",
+    "why": "consolidated net income for 2025 is 2,451,515 million won"
+   },
+   {
+    "line": 15,
+    "number": "2,260,255,000,000원",
+    "should_be": "2,033,709,000,000원",
+    "why": "2,260,255 million is the 2024 figure; the 2023 (제68기) consolidated net income is 2,033,709 million"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0024565
+}

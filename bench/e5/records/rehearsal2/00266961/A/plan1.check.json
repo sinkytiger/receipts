@@ -1,0 +1,232 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 7,
+  "wrong": 4,
+  "unverifiable": 1,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 26,
+   "end": 36,
+   "text": "41조 7,145억",
+   "quote": "자산총계는 41조 7,145억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "41,714,500,000,000",
+   "recomputed_raw": "41714509564686",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 28 기 3분기말, the period end] = 41714509564686 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 27,
+   "end": 37,
+   "text": "12조 1,315억",
+   "quote": "부채총계는 2025년 12월 말에 12조 1,315억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "12,131,500,000,000",
+   "recomputed_raw": "12131482961723",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 27 기말, the end of the previous business year] = 12131482961723 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 31,
+   "end": 40,
+   "text": "5조 1,531억",
+   "quote": "영업수익은 5조 1,531억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "8,839,900,000,000",
+   "recomputed_raw": "8839922977621",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 frmtrm_add_amount [제 27 기 3분기, the same cumulative period a year earlier] = 8839922977621 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 52,
+   "end": 57,
+   "text": "13.0%",
+   "quote": "영업이익률(영업이익을 영업수익으로 나눈 비율)은 13.0%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "13.0%",
+   "recomputed_raw": "12.99708439231924015696603224313253073537315237147532301773",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 28 기 3분기, the three months] = 451306205162 KRW (receipt number 20261113001140)",
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 28 기 3분기, the three months] = 3472364966936 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 31,
+   "end": 37,
+   "text": "4,513억",
+   "quote": "영업이익은 4,513억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,513,400,000,000",
+   "recomputed_raw": "1513372757754",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_add_amount [제 28 기 3분기, from the start of the business year to the period end] = 1513372757754 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 30,
+   "end": 36,
+   "text": "4,513억",
+   "quote": "2026년 7월부터 9월까지 4,513억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "451,300,000,000",
+   "recomputed_raw": "451306205162",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 28 기 3분기, the three months] = 451306205162 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 30,
+   "end": 39,
+   "text": "3조 4,724억",
+   "quote": "영업수익은 2026년 7월부터 9월까지 3조 4,724억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,472,400,000,000",
+   "recomputed_raw": "3472364966936",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 28 기 3분기, the three months] = 3472364966936 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 32,
+   "end": 38,
+   "text": "4,025억",
+   "quote": "분기순이익은 4,025억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "402,500,000,000",
+   "recomputed_raw": "402454801589",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS ifrs-full_ProfitLoss 분기순이익 thstrm_amount [제 28 기 3분기, the three months] = 402454801589 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 31,
+   "end": 40,
+   "text": "8조 8,399억",
+   "quote": "영업수익은 8조 8,399억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "10,102,200,000,000",
+   "recomputed_raw": "10102181150131",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_add_amount [제 28 기 3분기, from the start of the business year to the period end] = 10102181150131 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 35,
+   "end": 44,
+   "text": "1조 8,824억",
+   "quote": "영업활동현금흐름은 1조 8,824억원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "locator_no_match",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "the contract's table gives thstrm_add_amount no meaning in the CF of an interim report"
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 62,
+   "end": 68,
+   "text": "221.9%",
+   "quote": "보다 221.9% 늘었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "10.7%",
+   "recomputed_raw": "10.6534284229531613221925670654523037710146320309962937908588",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 28 기 3분기, the three months] = 3472364966936 KRW (receipt number 20261113001140)",
+    "DART 00266961 (NAVER, 035420) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 frmtrm_q_amount [제 27 기 3분기, the same three months a year earlier] = 3138054569501 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 30,
+   "end": 37,
+   "text": "19,720억",
+   "quote": "별도 기준 영업수익은 2026년 7월부터 9월까지 19,720억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,972,000,000,000",
+   "recomputed_raw": "1971994567016",
+   "sources": [
+    "DART 00266961 (NAVER, 035420) 2026 q3 OFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 28 기 3분기, the three months] = 1971994567016 KRW (receipt number 20261113001140)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00266961_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261113001140"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00266961_2026_11014_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261113001140"
+   }
+  ]
+ }
+}

@@ -1,0 +1,244 @@
+{
+ "document": "document.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "quote": "자산총계는 350,685,701백만원으로",
+   "number": "350,685,701백만",
+   "kind": "lookup",
+   "of": null,
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "quote": "영업활동으로부터의 현금흐름은 2025년 1월부터 12월까지 5,256,261백만원이었다",
+   "number": "5,256,261백만",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "quote": "별도 기준 당기순이익(손실)은 2025년 1월부터 12월까지 1조 6,998억원이었다",
+   "number": "1조 6,998억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "quote": "한 해 전 같은 기간(2024년 1월부터 12월까지)보다 24.8% 줄었다",
+   "number": "24.8%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    },
+    "old": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "quote": "법인세비용은 5,448억원이다",
+   "number": "5,448억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_IncomeTaxExpenseContinuingOperations",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "quote": "법인세비용차감전순이익은 2024년 1월부터 12월까지 1,821,290백만원이었다",
+   "number": "1,821,290백만",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLossBeforeTax",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "quote": "당기순이익(손실)은 2024년 1월부터 12월까지 2,260,255,000,000원이었다",
+   "number": "2,260,255,000,000",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "quote": "2025년 1월부터 12월까지의 법인세비용차감전순이익은 29,963억원이다",
+   "number": "29,963억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLossBeforeTax",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "quote": "2025년 1월부터 12월까지의 당기순이익(손실)은 1,983,439백만원이다",
+   "number": "1,983,439백만",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "quote": "부채총계는 274,116,162,000,000원으로",
+   "number": "274,116,162,000,000",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "quote": "2023년 1월부터 12월까지의 당기순이익(손실)은 2,260,255,000,000원이다",
+   "number": "2,260,255,000,000",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "bfefrmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "quote": "부채비율(부채총계를 자본총계로 나눈 비율)은 440.9%이다",
+   "number": "440.9%",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "thstrm_amount",
+     "multiplier": 100
+    },
+    "den": {
+     "dart": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Equity",
+     "column": "thstrm_amount"
+    }
+   }
+  }
+ ]
+}

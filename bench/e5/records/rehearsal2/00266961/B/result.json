@@ -1,0 +1,54 @@
+{
+ "doc": "00266961",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:37:19Z",
+   "set": "rehearsal",
+   "doc": "00266961",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 14193,
+   "output_tokens": 1578,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0022083,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKKUBbUBPhobGwhjQa27"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 7,
+    "number": "5조 1,531억원",
+    "should_be": "8조 8,399억원",
+    "why": "Consolidated 2025 Jan–Sep revenue is 8,839,922,977,621; 5,153,109,056,366 is the separate-statement figure."
+   },
+   {
+    "line": 9,
+    "number": "4,513억원",
+    "should_be": "1조 5,134억원",
+    "why": "Consolidated 2026 Jan–Sep operating income is 1,513,372,757,754; 4,513억 is the Q3 figure."
+   },
+   {
+    "line": 13,
+    "number": "8조 8,399억원",
+    "should_be": "10조 1,022억원",
+    "why": "Consolidated 2026 Jan–Sep revenue is 10,102,181,150,131; 8,839,922,977,621 is the 2025 figure."
+   },
+   {
+    "line": 15,
+    "number": "221.9%",
+    "should_be": "10.7%",
+    "why": "3,472,364,966,936 / 3,138,054,569,501 − 1 ≈ 10.7% increase, not 221.9%."
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0022083
+}

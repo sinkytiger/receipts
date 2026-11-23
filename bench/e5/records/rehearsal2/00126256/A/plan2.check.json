@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 23,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 27,
+   "end": 40,
+   "text": "350,685,701백만",
+   "quote": "자산총계는 350,685,701백만원으로",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "350,685,701,000,000",
+   "recomputed_raw": "350685701000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 70 기, the year end] = 350685701000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 41,
+   "end": 52,
+   "text": "5,256,261백만",
+   "quote": "영업활동으로부터의 현금흐름은 2025년 1월부터 12월까지 5,256,261백만원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,256,261,000,000",
+   "recomputed_raw": "5256261000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로부터의 현금흐름 thstrm_amount [제 70 기, the year] = 5256261000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 36,
+   "end": 45,
+   "text": "1조 6,998억",
+   "quote": "별도 기준 당기순이익(손실)은 2025년 1월부터 12월까지 1조 6,998억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,699,800,000,000",
+   "recomputed_raw": "1699762000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual OFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 70 기, the year] = 1699762000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 69,
+   "end": 74,
+   "text": "24.8%",
+   "quote": "한 해 전 같은 기간(2024년 1월부터 12월까지)보다 24.8% 줄었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "8.5%",
+   "recomputed_raw": "8.46187708908950538766643586674954817044979438160738500744385",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 70 기, the year] = 2451515000000 KRW (receipt number 20260331004244)",
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) frmtrm_amount [제 69 기, the previous year] = 2260255000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 33,
+   "end": 39,
+   "text": "5,448억",
+   "quote": "법인세비용은 5,448억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "544,800,000,000",
+   "recomputed_raw": "544830000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_IncomeTaxExpenseContinuingOperations 법인세비용 thstrm_amount [제 70 기, the year] = 544830000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 38,
+   "end": 49,
+   "text": "1,821,290백만",
+   "quote": "법인세비용차감전순이익은 2024년 1월부터 12월까지 1,821,290백만원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2,813,666,000,000",
+   "recomputed_raw": "2813666000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLossBeforeTax 법인세비용차감전순이익 frmtrm_amount [제 69 기, the previous year] = 2813666000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 36,
+   "end": 53,
+   "text": "2,260,255,000,000",
+   "quote": "당기순이익(손실)은 2024년 1월부터 12월까지 2,260,255,000,000원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,260,255,000,000",
+   "recomputed_raw": "2260255000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) frmtrm_amount [제 69 기, the previous year] = 2260255000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 39,
+   "end": 46,
+   "text": "29,963억",
+   "quote": "2025년 1월부터 12월까지의 법인세비용차감전순이익은 29,963억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,996,300,000,000",
+   "recomputed_raw": "2996345000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLossBeforeTax 법인세비용차감전순이익 thstrm_amount [제 70 기, the year] = 2996345000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 37,
+   "end": 48,
+   "text": "1,983,439백만",
+   "quote": "2025년 1월부터 12월까지의 당기순이익(손실)은 1,983,439백만원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2,451,515,000,000",
+   "recomputed_raw": "2451515000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 70 기, the year] = 2451515000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 27,
+   "end": 46,
+   "text": "274,116,162,000,000",
+   "quote": "부채총계는 274,116,162,000,000원으로",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "274,116,162,000,000",
+   "recomputed_raw": "274116162000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 69 기, the previous year end] = 274116162000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 37,
+   "end": 54,
+   "text": "2,260,255,000,000",
+   "quote": "2023년 1월부터 12월까지의 당기순이익(손실)은 2,260,255,000,000원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2,033,709,000,000",
+   "recomputed_raw": "2033709000000",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) bfefrmtrm_amount [제 68 기, the year two years back] = 2033709000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 46,
+   "end": 52,
+   "text": "440.9%",
+   "quote": "부채비율(부채총계를 자본총계로 나눈 비율)은 440.9%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "440.9%",
+   "recomputed_raw": "440.88683732529853559135778434833928014357853539023283575165",
+   "sources": [
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 70 기, the year end] = 285850383000000 KRW (receipt number 20260331004244)",
+    "DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Equity 자본총계 thstrm_amount [제 70 기, the year end] = 64835318000000 KRW (receipt number 20260331004244)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00126256_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260331004244"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00126256_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260331004244"
+   }
+  ]
+ }
+}

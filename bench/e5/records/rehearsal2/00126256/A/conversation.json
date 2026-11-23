@@ -1,0 +1,256 @@
+[
+ {
+  "role": "system",
+  "text": "[skills/receipts/SKILL.md as shipped at the run's commit, 18,238 characters]\n\n## How this session works\n\nYou cannot run commands or read files here. The harness does steps 1, 2 and 5 for you. The first message holds the\ndocument with line numbers and the output of `scan`. The source to check against is DART.\n\nThree tools stand in for the commands and the reference file of the skill. Each returns what the script prints,\nunchanged:\n\n- `dart_company` runs `receipts.py dart company <query>`.\n- `dart_accounts` runs `receipts.py dart accounts <company> --year .. --report .. --fs .. [--statement ..] [--match ..] [--limit ..]`.\n- `read_plan_format` returns `references/plan-format.md`.\n\nYou have at most 12 tool calls. A listing longer than 60,000 characters is not returned: narrow it with `statement`\nor `match`. The script runs from a cache, with no key. It can read the company code file and, for each company, the\nreports it has filed among these three: the annual report of 2025, the half-year report of 2026 and the third-quarter\nreport of 2026. Nothing else can be fetched here: a look-up of any other report stops with a message about the key,\nwhich only means that the report is not in the cache.\n\nWhen you have what you need, reply with the contents of `claims.json` and nothing else. The harness runs `check` and\nsends you what it printed. You may then send a corrected `claims.json`, at most two times (step 6), or reply with the\nsingle word DONE when no correction is needed. Step 7 is not needed here.\n"
+ },
+ {
+  "role": "user",
+  "text": "Document `document.md`. The number and bar at the start of each line are its line number and are not part of the file.\n\n1| # 삼성생명 2025년 사업보고서 메모\n2| \n3| 삼성생명의 2025년 사업보고서에 실린 재무제표 수치를 정리했다. 금액은 원화다.\n4| \n5| - 2025년 12월 말의 연결 기준 자산총계는 350,685,701백만원으로 집계됐다.\n6| - 연결 기준 영업활동으로부터의 현금흐름은 2025년 1월부터 12월까지 5,256,261백만원이었다.\n7| - 별도 기준 당기순이익(손실)은 2025년 1월부터 12월까지 1조 6,998억원이었다.\n8| - 연결 기준 2025년 1월부터 12월까지의 당기순이익(손실)은 한 해 전 같은 기간(2024년 1월부터 12월까지)보다 24.8% 줄었다.\n9| - 연결 기준 2025년 1월부터 12월까지의 법인세비용은 5,448억원이다.\n10| - 연결 기준 법인세비용차감전순이익은 2024년 1월부터 12월까지 1,821,290백만원이었다.\n11| - 연결 기준 당기순이익(손실)은 2024년 1월부터 12월까지 2,260,255,000,000원이었다.\n12| - 연결 기준 2025년 1월부터 12월까지의 법인세비용차감전순이익은 29,963억원이다.\n13| - 연결 기준 2025년 1월부터 12월까지의 당기순이익(손실)은 1,983,439백만원이다.\n14| - 2024년 12월 말의 연결 기준 부채총계는 274,116,162,000,000원으로 집계됐다.\n15| - 연결 기준 2023년 1월부터 12월까지의 당기순이익(손실)은 2,260,255,000,000원이다.\n16| - 연결 기준 2025년 12월 말의 부채비율(부채총계를 자본총계로 나눈 비율)은 440.9%이다.\n\nOutput of `receipts.py scan document.md`:\n\n{\n \"document\": \"document.md\",\n \"numbers\": [\n  {\n   \"line\": 5,\n   \"start\": 27,\n   \"end\": 40,\n   \"text\": \"350,685,701백만\"\n  },\n  {\n   \"line\": 6,\n   \"start\": 41,\n   \"end\": 52,\n   \"text\": \"5,256,261백만\"\n  },\n  {\n   \"line\": 7,\n   \"start\": 36,\n   \"end\": 45,\n   \"text\": \"1조 6,998억\"\n  },\n  {\n   \"line\": 8,\n   \"start\": 69,\n   \"end\": 74,\n   \"text\": \"24.8%\"\n  },\n  {\n   \"line\": 9,\n   \"start\": 33,\n   \"end\": 39,\n   \"text\": \"5,448억\"\n  },\n  {\n   \"line\": 10,\n   \"start\": 38,\n   \"end\": 49,\n   \"text\": \"1,821,290백만\"\n  },\n  {\n   \"line\": 11,\n   \"start\": 36,\n   \"end\": 53,\n   \"text\": \"2,260,255,000,000\"\n  },\n  {\n   \"line\": 12,\n   \"start\": 39,\n   \"end\": 46,\n   \"text\": \"29,963억\"\n  },\n  {\n   \"line\": 13,\n   \"start\": 37,\n   \"end\": 48,\n   \"text\": \"1,983,439백만\"\n  },\n  {\n   \"line\": 14,\n   \"start\": 27,\n   \"end\": 46,\n   \"text\": \"274,116,162,000,000\"\n  },\n  {\n   \"line\": 15,\n   \"start\": 37,\n   \"end\": 54,\n   \"text\": \"2,260,255,000,000\"\n  },\n  {\n   \"line\": 16,\n   \"start\": 46,\n   \"end\": 52,\n   \"text\": \"440.9%\"\n  }\n ],\n \"skipped\": {\n  \"date\": 23,\n  \"year\": 2\n },\n \"skipped_items\": [\n  {\n   \"line\": 1,\n   \"start\": 7,\n   \"end\": 12,\n   \"text\": \"2025년\",\n   \"rule\": \"year\"\n  },\n  {\n   \"line\": 3,\n   \"start\": 6,\n   \"end\": 11,\n   \"text\": \"2025년\",\n   \"rule\": \"year\"\n  },\n  {\n   \"line\": 5,\n   \"start\": 2,\n   \"end\": 11,\n   \"text\": \"2025년 12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 6,\n   \"start\": 24,\n   \"end\": 32,\n   \"text\": \"2025년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 6,\n   \"start\": 35,\n   \"end\": 38,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 7,\n   \"start\": 19,\n   \"end\": 27,\n   \"text\": \"2025년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 7,\n   \"start\": 30,\n   \"end\": 33,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 8,\n   \"start\": 8,\n   \"end\": 16,\n   \"text\": \"2025년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 8,\n   \"start\": 49,\n   \"end\": 57,\n   \"text\": \"2024년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 8,\n   \"start\": 19,\n   \"end\": 22,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 8,\n   \"start\": 60,\n   \"end\": 63,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 9,\n   \"start\": 8,\n   \"end\": 16,\n   \"text\": \"2025년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 9,\n   \"start\": 19,\n   \"end\": 22,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 10,\n   \"start\": 21,\n   \"end\": 29,\n   \"text\": \"2024년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 10,\n   \"start\": 32,\n   \"end\": 35,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 11,\n   \"start\": 19,\n   \"end\": 27,\n   \"text\": \"2024년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 11,\n   \"start\": 30,\n   \"end\": 33,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 12,\n   \"start\": 8,\n   \"end\": 16,\n   \"text\": \"2025년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 12,\n   \"start\": 19,\n   \"end\": 22,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 13,\n   \"start\": 8,\n   \"end\": 16,\n   \"text\": \"2025년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 13,\n   \"start\": 19,\n   \"end\": 22,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 14,\n   \"start\": 2,\n   \"end\": 11,\n   \"text\": \"2024년 12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 15,\n   \"start\": 8,\n   \"end\": 16,\n   \"text\": \"2023년 1월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 15,\n   \"start\": 19,\n   \"end\": 22,\n   \"text\": \"12월\",\n   \"rule\": \"date\"\n  },\n  {\n   \"line\": 16,\n   \"start\": 8,\n   \"end\": 17,\n   \"text\": \"2025년 12월\",\n   \"rule\": \"date\"\n  }\n ]\n}\n\nCheck the numbers of this document against the company's filings on DART. Write `claims.json` for it and reply with the JSON only."
+ },
+ {
+  "role": "assistant",
+  "text": "",
+  "stop_reason": "tool_use",
+  "input_tokens": 10551,
+  "output_tokens": 121,
+  "usd": 0.0011156,
+  "tool_calls": [
+   {
+    "name": "dart_company",
+    "input": {
+     "query": "삼성생명"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "name": "dart_company",
+  "input": {
+   "query": "삼성생명"
+  },
+  "output": "{\r\n \"query\": \"삼성생명\",\r\n \"fetched\": \"2026-11-21\",\r\n \"matched\": 5,\r\n \"companies\": [\r\n  {\r\n   \"corp_code\": \"00126256\",\r\n   \"name\": \"삼성생명\",\r\n   \"name_en\": \"Samsung Life Insurance co., Ltd\",\r\n   \"stock_code\": \"032830\"\r\n  },\r\n  {\r\n   \"corp_code\": \"01603008\",\r\n   \"name\": \"사회복지법인삼성생명공익재단\",\r\n   \"name_en\": \"SAMSUNG LIFE PUBLIC WELFARE FOUNDATION\",\r\n   \"stock_code\": null\r\n  },\r\n  {\r\n   \"corp_code\": \"01094121\",\r\n   \"name\": \"삼성생명금융서비스\",\r\n   \"name_en\": \"Samsung Financial Service Insurance Agency co.,Ltd.\",\r\n   \"stock_code\": null\r\n  },\r\n  {\r\n   \"corp_code\": \"00218450\",\r\n   \"name\": \"삼성생명서비스\",\r\n   \"name_en\": \"SAMSUNG LIFE INSURENCE SERVICE.CO.,LTD\",\r\n   \"stock_code\": null\r\n  },\r\n  {\r\n   \"corp_code\": \"00558279\",\r\n   \"name\": \"삼성생명서비스손해사정\",\r\n   \"name_en\": \"samsung life service claim adjustment co., ltd.\",\r\n   \"stock_code\": null\r\n  }\r\n ]\r\n}\r\n",
+  "is_error": false
+ },
+ {
+  "role": "assistant",
+  "text": "",
+  "stop_reason": "tool_use",
+  "input_tokens": 11117,
+  "output_tokens": 1343,
+  "usd": 0.0017832,
+  "tool_calls": [
+   {
+    "name": "dart_accounts",
+    "input": {
+     "company": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "BS",
+     "match": "총계"
+    }
+   },
+   {
+    "name": "dart_accounts",
+    "input": {
+     "company": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "match": "이익"
+    }
+   },
+   {
+    "name": "dart_accounts",
+    "input": {
+     "company": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "IS",
+     "match": "이익"
+    }
+   },
+   {
+    "name": "dart_accounts",
+    "input": {
+     "company": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CF",
+     "match": "영업활동"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "name": "dart_accounts",
+  "input": {
+   "company": "032830",
+   "year": 2025,
+   "report": "annual",
+   "fs": "CFS",
+   "statement": "BS",
+   "match": "총계"
+  },
+  "output": "{\r\n \"company\": \"00126256 (삼성생명, 032830)\",\r\n \"corp_code\": \"00126256\",\r\n \"year\": 2025,\r\n \"report\": \"annual\",\r\n \"fs\": \"CFS\",\r\n \"rcept_no\": \"20260331004244\",\r\n \"currency\": \"KRW\",\r\n \"fetched\": \"2026-11-21\",\r\n \"rows_not_listed_other_statements\": 69,\r\n \"matched\": 4,\r\n \"rows\": [\r\n  {\r\n   \"statement\": \"BS\",\r\n   \"account\": \"ifrs-full_Assets\",\r\n   \"name\": \"자산총계\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year end\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year end\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year end two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"BS\",\r\n   \"account\": \"ifrs-full_Equity\",\r\n   \"name\": \"자본총계\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year end\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year end\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year end two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"BS\",\r\n   \"account\": \"ifrs-full_EquityAndLiabilities\",\r\n   \"name\": \"자본과부채총계\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year end\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year end\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year end two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"BS\",\r\n   \"account\": \"ifrs-full_Liabilities\",\r\n   \"name\": \"부채총계\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year end\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year end\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year end two years back\"\r\n    }\r\n   }\r\n  }\r\n ]\r\n}\r\n",
+  "is_error": false
+ },
+ {
+  "role": "tool",
+  "name": "dart_accounts",
+  "input": {
+   "company": "032830",
+   "year": 2025,
+   "report": "annual",
+   "fs": "CFS",
+   "statement": "IS",
+   "match": "이익"
+  },
+  "output": "{\r\n \"company\": \"00126256 (삼성생명, 032830)\",\r\n \"corp_code\": \"00126256\",\r\n \"year\": 2025,\r\n \"report\": \"annual\",\r\n \"fs\": \"CFS\",\r\n \"rcept_no\": \"20260331004244\",\r\n \"currency\": \"KRW\",\r\n \"fetched\": \"2026-11-21\",\r\n \"rows_not_listed_other_statements\": 69,\r\n \"matched\": 0,\r\n \"rows\": []\r\n}\r\n",
+  "is_error": false
+ },
+ {
+  "role": "tool",
+  "name": "dart_accounts",
+  "input": {
+   "company": "032830",
+   "year": 2025,
+   "report": "annual",
+   "fs": "OFS",
+   "statement": "IS",
+   "match": "이익"
+  },
+  "output": "{\r\n \"company\": \"00126256 (삼성생명, 032830)\",\r\n \"corp_code\": \"00126256\",\r\n \"year\": 2025,\r\n \"report\": \"annual\",\r\n \"fs\": \"OFS\",\r\n \"rcept_no\": \"20260331004244\",\r\n \"currency\": \"KRW\",\r\n \"fetched\": \"2026-11-21\",\r\n \"rows_not_listed_other_statements\": 39,\r\n \"matched\": 0,\r\n \"rows\": []\r\n}\r\n",
+  "is_error": false
+ },
+ {
+  "role": "tool",
+  "name": "dart_accounts",
+  "input": {
+   "company": "032830",
+   "year": 2025,
+   "report": "annual",
+   "fs": "CFS",
+   "statement": "CF",
+   "match": "영업활동"
+  },
+  "output": "{\r\n \"company\": \"00126256 (삼성생명, 032830)\",\r\n \"corp_code\": \"00126256\",\r\n \"year\": 2025,\r\n \"report\": \"annual\",\r\n \"fs\": \"CFS\",\r\n \"rcept_no\": \"20260331004244\",\r\n \"currency\": \"KRW\",\r\n \"fetched\": \"2026-11-21\",\r\n \"rows_not_listed_other_statements\": 69,\r\n \"matched\": 2,\r\n \"rows\": [\r\n  {\r\n   \"statement\": \"CF\",\r\n   \"account\": \"ifrs-full_CashFlowsFromUsedInOperatingActivities\",\r\n   \"name\": \"영업활동으로부터의 현금흐름\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CF\",\r\n   \"account\": \"ifrs-full_CashFlowsFromUsedInOperations\",\r\n   \"name\": \"영업활동에서 창출된 현금흐름\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  }\r\n ]\r\n}\r\n",
+  "is_error": false
+ },
+ {
+  "role": "assistant",
+  "text": "",
+  "stop_reason": "tool_use",
+  "input_tokens": 14291,
+  "output_tokens": 711,
+  "usd": 0.0017846,
+  "tool_calls": [
+   {
+    "name": "dart_accounts",
+    "input": {
+     "company": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "match": "순이익"
+    }
+   },
+   {
+    "name": "dart_accounts",
+    "input": {
+     "company": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "match": "순이익"
+    }
+   },
+   {
+    "name": "dart_accounts",
+    "input": {
+     "company": "032830",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "match": "법인세"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "name": "dart_accounts",
+  "input": {
+   "company": "032830",
+   "year": 2025,
+   "report": "annual",
+   "fs": "CFS",
+   "match": "순이익"
+  },
+  "output": "{\r\n \"company\": \"00126256 (삼성생명, 032830)\",\r\n \"corp_code\": \"00126256\",\r\n \"year\": 2025,\r\n \"report\": \"annual\",\r\n \"fs\": \"CFS\",\r\n \"rcept_no\": \"20260331004244\",\r\n \"currency\": \"KRW\",\r\n \"fetched\": \"2026-11-21\",\r\n \"rows_not_listed_other_statements\": 69,\r\n \"matched\": 5,\r\n \"rows\": [\r\n  {\r\n   \"statement\": \"CIS\",\r\n   \"account\": \"ifrs-full_ProfitLoss\",\r\n   \"name\": \"당기순이익(손실)\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CIS\",\r\n   \"account\": \"ifrs-full_ProfitLossAttributableToNoncontrollingInterests\",\r\n   \"name\": \"비지배지분에 귀속되는 당기순이익(손실)\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CIS\",\r\n   \"account\": \"ifrs-full_ProfitLossAttributableToOwnersOfParent\",\r\n   \"name\": \"지배기업의 소유주에게 귀속되는 당기순이익(손실)\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CIS\",\r\n   \"account\": \"ifrs-full_ProfitLossBeforeTax\",\r\n   \"name\": \"법인세비용차감전순이익\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CF\",\r\n   \"account\": \"ifrs-full_ProfitLoss\",\r\n   \"name\": \"당기순이익(손실)\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  }\r\n ]\r\n}\r\n",
+  "is_error": false
+ },
+ {
+  "role": "tool",
+  "name": "dart_accounts",
+  "input": {
+   "company": "032830",
+   "year": 2025,
+   "report": "annual",
+   "fs": "OFS",
+   "match": "순이익"
+  },
+  "output": "{\r\n \"company\": \"00126256 (삼성생명, 032830)\",\r\n \"corp_code\": \"00126256\",\r\n \"year\": 2025,\r\n \"report\": \"annual\",\r\n \"fs\": \"OFS\",\r\n \"rcept_no\": \"20260331004244\",\r\n \"currency\": \"KRW\",\r\n \"fetched\": \"2026-11-21\",\r\n \"rows_not_listed_other_statements\": 39,\r\n \"matched\": 3,\r\n \"rows\": [\r\n  {\r\n   \"statement\": \"CIS\",\r\n   \"account\": \"ifrs-full_ProfitLoss\",\r\n   \"name\": \"당기순이익(손실)\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CIS\",\r\n   \"account\": \"ifrs-full_ProfitLossBeforeTax\",\r\n   \"name\": \"법인세비용차감전순이익\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CF\",\r\n   \"account\": \"ifrs-full_ProfitLoss\",\r\n   \"name\": \"당기순이익(손실)\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  }\r\n ]\r\n}\r\n",
+  "is_error": false
+ },
+ {
+  "role": "tool",
+  "name": "dart_accounts",
+  "input": {
+   "company": "032830",
+   "year": 2025,
+   "report": "annual",
+   "fs": "CFS",
+   "match": "법인세"
+  },
+  "output": "{\r\n \"company\": \"00126256 (삼성생명, 032830)\",\r\n \"corp_code\": \"00126256\",\r\n \"year\": 2025,\r\n \"report\": \"annual\",\r\n \"fs\": \"CFS\",\r\n \"rcept_no\": \"20260331004244\",\r\n \"currency\": \"KRW\",\r\n \"fetched\": \"2026-11-21\",\r\n \"rows_not_listed_other_statements\": 69,\r\n \"matched\": 8,\r\n \"rows\": [\r\n  {\r\n   \"statement\": \"BS\",\r\n   \"account\": \"ifrs-full_CurrentTaxAssets\",\r\n   \"name\": \"당기법인세자산\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year end\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year end\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year end two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"BS\",\r\n   \"account\": \"ifrs-full_DeferredTaxAssets\",\r\n   \"name\": \"이연법인세자산\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year end\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year end\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year end two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"BS\",\r\n   \"account\": \"ifrs-full_CurrentTaxLiabilities\",\r\n   \"name\": \"당기법인세부채\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year end\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year end\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year end two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"BS\",\r\n   \"account\": \"ifrs-full_DeferredTaxLiabilities\",\r\n   \"name\": \"이연법인세부채\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year end\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year end\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year end two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CIS\",\r\n   \"account\": \"ifrs-full_IncomeTaxExpenseContinuingOperations\",\r\n   \"name\": \"법인세비용\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CIS\",\r\n   \"account\": \"ifrs-full_OtherComprehensiveIncome\",\r\n   \"name\": \"법인세비용차감후기타포괄손익\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CIS\",\r\n   \"account\": \"ifrs-full_ProfitLossBeforeTax\",\r\n   \"name\": \"법인세비용차감전순이익\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  },\r\n  {\r\n   \"statement\": \"CF\",\r\n   \"account\": \"ifrs-full_IncomeTaxesPaidRefundClassifiedAsOperatingActivities\",\r\n   \"name\": \"법인세환급액(부담액)\",\r\n   \"columns\": {\r\n    \"thstrm_amount\": {\r\n     \"period\": \"제 70 기\",\r\n     \"holds\": \"the year\"\r\n    },\r\n    \"frmtrm_amount\": {\r\n     \"period\": \"제 69 기\",\r\n     \"holds\": \"the previous year\"\r\n    },\r\n    \"bfefrmtrm_amount\": {\r\n     \"period\": \"제 68 기\",\r\n     \"holds\": \"the year two years back\"\r\n    }\r\n   }\r\n  }\r\n ]\r\n}\r\n",
+  "is_error": false
+ },
+ {
+  "role": "assistant",
+  "text": "```json\n{\n  \"document\": \"document.md\",\n  \"claims\": [\n    {\"id\": \"c1\", \"line\": 5, \"quote\": \"자산총계는 350,685,701백만원으로\", \"number\": \"350,685,701백만\",\n     \"kind\": \"lookup\", \"of\": null,\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"BS\", \"account\": \"ifrs-full_Assets\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c2\", \"line\": 6, \"quote\": \"영업활동으로부터의 현금흐름은 2025년 1월부터 12월까지 5,256,261백만원이었다\", \"number\": \"5,256,261백만\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CF\", \"account\": \"ifrs-full_CashFlowsFromUsedInOperatingActivities\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c3\", \"line\": 7, \"quote\": \"별도 기준 당기순이익(손실)은 2025년 1월부터 12월까지 1조 6,998억원이었다\", \"number\": \"1조 6,998억\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"OFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c4\", \"line\": 8, \"quote\": \"한 해 전 같은 기간(2024년 1월부터 12월까지)보다 24.8% 줄었다\", \"number\": \"24.8%\",\n     \"kind\": \"derived\", \"formula\": \"pct_change\", \"direction\": \"down\",\n     \"operands\": {\n       \"new\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"thstrm_amount\"},\n       \"old\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"frmtrm_amount\"}}},\n    {\"id\": \"c5\", \"line\": 9, \"quote\": \"법인세비용은 5,448억원이다\", \"number\": \"5,448억\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_IncomeTaxExpenseContinuingOperations\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c6\", \"line\": 10, \"quote\": \"법인세비용차감전순이익은 2024년 1월부터 12월까지 1,821,290백만원이었다\", \"number\": \"1,821,290백만\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLossBeforeTax\", \"column\": \"frmtrm_amount\"}}},\n    {\"id\": \"c7\", \"line\": 11, \"quote\": \"당기순이익(손실)은 2024년 1월부터 12월까지 2,260,255,000,000원이었다\", \"number\": \"2,260,255,000,000\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"frmtrm_amount\"}}},\n    {\"id\": \"c8\", \"line\": 12, \"quote\": \"2025년 1월부터 12월까지의 법인세비용차감전순이익은 29,963억원이다\", \"number\": \"29,963억\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLossBeforeTax\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c9\", \"line\": 13, \"quote\": \"2025년 1월부터 12월까지의 당기순이익(손실)은 1,983,439백만원이다\", \"number\": \"1,983,439백만\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c10\", \"line\": 14, \"quote\": \"부채총계는 274,116,162,000,000원으로\", \"number\": \"274,116,162,000,000\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"BS\", \"account\": \"ifrs-full_Liabilities\", \"column\": \"frmtrm_amount\"}}},\n    {\"id\": \"c11\", \"line\": 15, \"quote\": \"2023년 1월부터 12월까지의 당기순이익(손실)은 2,260,255,000,000원이다\", \"number\": \"2,260,255,000,000\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"bfefrmtrm_amount\"}}},\n    {\"id\": \"c12\", \"line\": 16, \"quote\": \"부채비율(부채총계를 자본총계로 나눈 비율)은 440.9%이다\", \"number\": \"440.9%\",\n     \"kind\": \"derived\", \"formula\": \"ratio\",\n     \"operands\": {\n       \"num\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"BS\", \"account\": \"ifrs-full_Liabilities\", \"column\": \"thstrm_amount\", \"multiplier\": 100},\n       \"den\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"BS\", \"account\": \"ifrs-full_Equity\", \"column\": \"thstrm_amount\"}}}\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "input_tokens": 18631,
+  "output_tokens": 5552,
+  "usd": 0.0046391
+ },
+ {
+  "role": "user",
+  "text": "`check` ran (exit code 1). It printed:\n\n12 numbers / 7 verified / 5 wrong / 0 unverifiable / 0 uncovered   (skipped: 23 date, 2 year)\n\n### wrong (5)\n\n| line | sentence | written | source | recomputed | note |\n|---|---|---|---|---|---|\n| 8 | 한 해 전 같은 기간(2024년 1월부터 12월까지)보다 24.8% 줄었다 | 24.8% | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 70 기, the year] = 2451515000000 KRW (receipt number 20260331004244); DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) frmtrm_amount [제 69 기, the previous year] = 2260255000000 KRW (receipt number 20260331004244) | 8.5% (exact 8.46188) | mismatch |\n| 10 | 법인세비용차감전순이익은 2024년 1월부터 12월까지 1,821,290백만원이었다 | 1,821,290백만 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLossBeforeTax 법인세비용차감전순이익 frmtrm_amount [제 69 기, the previous year] = 2813666000000 KRW (receipt number 20260331004244) | 2,813,666,000,000 (exact 2,813,666,000,000) | mismatch |\n| 13 | 2025년 1월부터 12월까지의 당기순이익(손실)은 1,983,439백만원이다 | 1,983,439백만 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 70 기, the year] = 2451515000000 KRW (receipt number 20260331004244) | 2,451,515,000,000 (exact 2,451,515,000,000) | mismatch |\n| 15 | 2023년 1월부터 12월까지의 당기순이익(손실)은 2,260,255,000,000원이다 | 2,260,255,000,000 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) bfefrmtrm_amount [제 68 기, the year two years back] = 2033709000000 KRW (receipt number 20260331004244) | 2,033,709,000,000 (exact 2,033,709,000,000) | mismatch |\n| 16 | 부채비율(부채총계를 자본총계로 나눈 비율)은 440.9%이다 | 440.9% | DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 70 기, the year end] = 285850383000000 KRW x 100 (receipt number 20260331004244); DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Equity 자본총계 thstrm_amount [제 70 기, the year end] = 64835318000000 KRW (receipt number 20260331004244) | 44,088.7% (exact 44,088.7) | mismatch |\n\n### verified (7)\n\n| line | sentence | written | source | recomputed | note |\n|---|---|---|---|---|---|\n| 5 | 자산총계는 350,685,701백만원으로 | 350,685,701백만 | DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 70 기, the year end] = 350685701000000 KRW (receipt number 20260331004244) | 350,685,701,000,000 | match |\n| 6 | 영업활동으로부터의 현금흐름은 2025년 1월부터 12월까지 5,256,261백만원이었다 | 5,256,261백만 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로부터의 현금흐름 thstrm_amount [제 70 기, the year] = 5256261000000 KRW (receipt number 20260331004244) | 5,256,261,000,000 | match |\n| 7 | 별도 기준 당기순이익(손실)은 2025년 1월부터 12월까지 1조 6,998억원이었다 | 1조 6,998억 | DART 00126256 (삼성생명, 032830) 2025 annual OFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 70 기, the year] = 1699762000000 KRW (receipt number 20260331004244) | 1,699,800,000,000 | match |\n| 9 | 법인세비용은 5,448억원이다 | 5,448억 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_IncomeTaxExpenseContinuingOperations 법인세비용 thstrm_amount [제 70 기, the year] = 544830000000 KRW (receipt number 20260331004244) | 544,800,000,000 | match |\n| 11 | 당기순이익(손실)은 2024년 1월부터 12월까지 2,260,255,000,000원이었다 | 2,260,255,000,000 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) frmtrm_amount [제 69 기, the previous year] = 2260255000000 KRW (receipt number 20260331004244) | 2,260,255,000,000 | match |\n| 12 | 2025년 1월부터 12월까지의 법인세비용차감전순이익은 29,963억원이다 | 29,963억 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLossBeforeTax 법인세비용차감전순이익 thstrm_amount [제 70 기, the year] = 2996345000000 KRW (receipt number 20260331004244) | 2,996,300,000,000 | match |\n| 14 | 부채총계는 274,116,162,000,000원으로 | 274,116,162,000,000 | DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 69 기, the previous year end] = 274116162000000 KRW (receipt number 20260331004244) | 274,116,162,000,000 | match |\n\n### multipliers declared by the plan (1)\n\nThe script cannot check these. Each must come from what the source says about its own units.\n\n| file | column | multiplier | claims |\n|---|---|---|---|\n| DART 032830 | ifrs-full_Liabilities thstrm_amount | 100 | 1 |\n\n### DART data used (3)\n\nRead from OpenDART. Its API holds the latest version of each report. A report filed or amended after the fetch date is not in it (run with --refresh to fetch again).\n\n| file | fetched (UTC) | receipt number |\n|---|---|---|\n| corpCode.zip | 2026-11-21 |  |\n| fnlttSinglAcntAll/00126256_2025_11011_CFS.json | 2026-11-21 | 20260331004244 |\n| fnlttSinglAcntAll/00126256_2025_11011_OFS.json | 2026-11-21 | 20260331004244 |\n\n\n\nIf your plan needs a correction, reply with the full corrected claims.json (2 corrections left). If it needs none, reply DONE."
+ },
+ {
+  "role": "assistant",
+  "text": "The five wrong numbers are real errors in the document, except line 16, which I caused. I put a `multiplier` of 100 on the numerator of a ratio that DART already gives as a fraction (4.409 for 440.9%), so the check doubled the percent. The corrected plan below removes that multiplier and leaves the other four claims unchanged.\n\n```json\n{\n  \"document\": \"document.md\",\n  \"claims\": [\n    {\"id\": \"c1\", \"line\": 5, \"quote\": \"자산총계는 350,685,701백만원으로\", \"number\": \"350,685,701백만\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"BS\", \"account\": \"ifrs-full_Assets\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c2\", \"line\": 6, \"quote\": \"영업활동으로부터의 현금흐름은 2025년 1월부터 12월까지 5,256,261백만원이었다\", \"number\": \"5,256,261백만\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CF\", \"account\": \"ifrs-full_CashFlowsFromUsedInOperatingActivities\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c3\", \"line\": 7, \"quote\": \"별도 기준 당기순이익(손실)은 2025년 1월부터 12월까지 1조 6,998억원이었다\", \"number\": \"1조 6,998억\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"OFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c4\", \"line\": 8, \"quote\": \"한 해 전 같은 기간(2024년 1월부터 12월까지)보다 24.8% 줄었다\", \"number\": \"24.8%\",\n     \"kind\": \"derived\", \"formula\": \"pct_change\", \"direction\": \"down\",\n     \"operands\": {\n       \"new\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"thstrm_amount\"},\n       \"old\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"frmtrm_amount\"}}},\n    {\"id\": \"c5\", \"line\": 9, \"quote\": \"법인세비용은 5,448억원이다\", \"number\": \"5,448억\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_IncomeTaxExpenseContinuingOperations\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c6\", \"line\": 10, \"quote\": \"법인세비용차감전순이익은 2024년 1월부터 12월까지 1,821,290백만원이었다\", \"number\": \"1,821,290백만\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLossBeforeTax\", \"column\": \"frmtrm_amount\"}}},\n    {\"id\": \"c7\", \"line\": 11, \"quote\": \"당기순이익(손실)은 2024년 1월부터 12월까지 2,260,255,000,000원이었다\", \"number\": \"2,260,255,000,000\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"frmtrm_amount\"}}},\n    {\"id\": \"c8\", \"line\": 12, \"quote\": \"2025년 1월부터 12월까지의 법인세비용차감전순이익은 29,963억원이다\", \"number\": \"29,963억\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLossBeforeTax\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c9\", \"line\": 13, \"quote\": \"2025년 1월부터 12월까지의 당기순이익(손실)은 1,983,439백만원이다\", \"number\": \"1,983,439백만\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"thstrm_amount\"}}},\n    {\"id\": \"c10\", \"line\": 14, \"quote\": \"부채총계는 274,116,162,000,000원으로\", \"number\": \"274,116,162,000,000\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"BS\", \"account\": \"ifrs-full_Liabilities\", \"column\": \"frmtrm_amount\"}}},\n    {\"id\": \"c11\", \"line\": 15, \"quote\": \"2023년 1월부터 12월까지의 당기순이익(손실)은 2,260,255,000,000원이다\", \"number\": \"2,260,255,000,000\",\n     \"kind\": \"lookup\",\n     \"operands\": {\"of\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"CIS\", \"account\": \"ifrs-full_ProfitLoss\", \"column\": \"bfefrmtrm_amount\"}}},\n    {\"id\": \"c12\", \"line\": 16, \"quote\": \"부채비율(부채총계를 자본총계로 나눈 비율)은 440.9%이다\", \"number\": \"440.9%\",\n     \"kind\": \"derived\", \"formula\": \"ratio\",\n     \"operands\": {\n       \"num\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"BS\", \"account\": \"ifrs-full_Liabilities\", \"column\": \"thstrm_amount\"},\n       \"den\": {\"dart\": \"032830\", \"year\": 2025, \"report\": \"annual\", \"fs\": \"CFS\", \"statement\": \"BS\", \"account\": \"ifrs-full_Equity\", \"column\": \"thstrm_amount\"}}}\n  ]\n}\n```",
+  "stop_reason": "end_turn",
+  "input_tokens": 26886,
+  "output_tokens": 3367,
+  "usd": 0.0043721
+ },
+ {
+  "role": "user",
+  "text": "`check` ran (exit code 1). It printed:\n\n12 numbers / 8 verified / 4 wrong / 0 unverifiable / 0 uncovered   (skipped: 23 date, 2 year)\n\n### wrong (4)\n\n| line | sentence | written | source | recomputed | note |\n|---|---|---|---|---|---|\n| 8 | 한 해 전 같은 기간(2024년 1월부터 12월까지)보다 24.8% 줄었다 | 24.8% | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 70 기, the year] = 2451515000000 KRW (receipt number 20260331004244); DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) frmtrm_amount [제 69 기, the previous year] = 2260255000000 KRW (receipt number 20260331004244) | 8.5% (exact 8.46188) | mismatch |\n| 10 | 법인세비용차감전순이익은 2024년 1월부터 12월까지 1,821,290백만원이었다 | 1,821,290백만 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLossBeforeTax 법인세비용차감전순이익 frmtrm_amount [제 69 기, the previous year] = 2813666000000 KRW (receipt number 20260331004244) | 2,813,666,000,000 (exact 2,813,666,000,000) | mismatch |\n| 13 | 2025년 1월부터 12월까지의 당기순이익(손실)은 1,983,439백만원이다 | 1,983,439백만 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 70 기, the year] = 2451515000000 KRW (receipt number 20260331004244) | 2,451,515,000,000 (exact 2,451,515,000,000) | mismatch |\n| 15 | 2023년 1월부터 12월까지의 당기순이익(손실)은 2,260,255,000,000원이다 | 2,260,255,000,000 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) bfefrmtrm_amount [제 68 기, the year two years back] = 2033709000000 KRW (receipt number 20260331004244) | 2,033,709,000,000 (exact 2,033,709,000,000) | mismatch |\n\n### verified (8)\n\n| line | sentence | written | source | recomputed | note |\n|---|---|---|---|---|---|\n| 5 | 자산총계는 350,685,701백만원으로 | 350,685,701백만 | DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 70 기, the year end] = 350685701000000 KRW (receipt number 20260331004244) | 350,685,701,000,000 | match |\n| 6 | 영업활동으로부터의 현금흐름은 2025년 1월부터 12월까지 5,256,261백만원이었다 | 5,256,261백만 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로부터의 현금흐름 thstrm_amount [제 70 기, the year] = 5256261000000 KRW (receipt number 20260331004244) | 5,256,261,000,000 | match |\n| 7 | 별도 기준 당기순이익(손실)은 2025년 1월부터 12월까지 1조 6,998억원이었다 | 1조 6,998억 | DART 00126256 (삼성생명, 032830) 2025 annual OFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 70 기, the year] = 1699762000000 KRW (receipt number 20260331004244) | 1,699,800,000,000 | match |\n| 9 | 법인세비용은 5,448억원이다 | 5,448억 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_IncomeTaxExpenseContinuingOperations 법인세비용 thstrm_amount [제 70 기, the year] = 544830000000 KRW (receipt number 20260331004244) | 544,800,000,000 | match |\n| 11 | 당기순이익(손실)은 2024년 1월부터 12월까지 2,260,255,000,000원이었다 | 2,260,255,000,000 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) frmtrm_amount [제 69 기, the previous year] = 2260255000000 KRW (receipt number 20260331004244) | 2,260,255,000,000 | match |\n| 12 | 2025년 1월부터 12월까지의 법인세비용차감전순이익은 29,963억원이다 | 29,963억 | DART 00126256 (삼성생명, 032830) 2025 annual CFS CIS ifrs-full_ProfitLossBeforeTax 법인세비용차감전순이익 thstrm_amount [제 70 기, the year] = 2996345000000 KRW (receipt number 20260331004244) | 2,996,300,000,000 | match |\n| 14 | 부채총계는 274,116,162,000,000원으로 | 274,116,162,000,000 | DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 69 기, the previous year end] = 274116162000000 KRW (receipt number 20260331004244) | 274,116,162,000,000 | match |\n| 16 | 부채비율(부채총계를 자본총계로 나눈 비율)은 440.9%이다 | 440.9% | DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 70 기, the year end] = 285850383000000 KRW (receipt number 20260331004244); DART 00126256 (삼성생명, 032830) 2025 annual CFS BS ifrs-full_Equity 자본총계 thstrm_amount [제 70 기, the year end] = 64835318000000 KRW (receipt number 20260331004244) | 440.9% | match |\n\n### DART data used (3)\n\nRead from OpenDART. Its API holds the latest version of each report. A report filed or amended after the fetch date is not in it (run with --refresh to fetch again).\n\n| file | fetched (UTC) | receipt number |\n|---|---|---|\n| corpCode.zip | 2026-11-21 |  |\n| fnlttSinglAcntAll/00126256_2025_11011_CFS.json | 2026-11-21 | 20260331004244 |\n| fnlttSinglAcntAll/00126256_2025_11011_OFS.json | 2026-11-21 | 20260331004244 |\n\n\n\nIf your plan needs a correction, reply with the full corrected claims.json (1 correction left). If it needs none, reply DONE."
+ },
+ {
+  "role": "assistant",
+  "text": "DONE",
+  "stop_reason": "end_turn",
+  "input_tokens": 32837,
+  "output_tokens": 5,
+  "usd": 0.0032862
+ }
+]

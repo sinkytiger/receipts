@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 31,
+   "end": 41,
+   "text": "70조 1,438억",
+   "quote": "매출액은 70조 1,438억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "66,193,000,000,000",
+   "recomputed_raw": "66192960000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 77 기, the previous year] = 66192960000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 27,
+   "end": 37,
+   "text": "1,761,077억",
+   "quote": "자산총계는 2025년 12월 말에 1,761,077억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "176,107,700,000,000",
+   "recomputed_raw": "176107659000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 78 기, the year end] = 176107659000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 30,
+   "end": 40,
+   "text": "86조 8,521억",
+   "quote": "매출액은 2025년 1월부터 12월까지 86조 8,521억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "86,852,100,000,000",
+   "recomputed_raw": "86852117000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 78 기, the year] = 86852117000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 27,
+   "end": 39,
+   "text": "45,939,505백만",
+   "quote": "부채총계는 2024년 12월 말에 45,939,505백만원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "45,939,505,000,000",
+   "recomputed_raw": "45939505000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 77 기, the previous year end] = 45939505000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 36,
+   "end": 54,
+   "text": "29,795,885,000,000",
+   "quote": "영업활동 현금흐름은 2025년 1월부터 12월까지 29,795,885,000,000원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "53,373,126,000,000",
+   "recomputed_raw": "53373126000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동 현금흐름 thstrm_amount [제 78 기, the year] = 53373126000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 31,
+   "end": 41,
+   "text": "32조 7,657억",
+   "quote": "매출액은 32조 7,657억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "32,765,700,000,000",
+   "recomputed_raw": "32765719000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS ifrs-full_Revenue 매출액 bfefrmtrm_amount [제 76 기, the year two years back] = 32765719000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 36,
+   "end": 54,
+   "text": "42,947,902,000,000",
+   "quote": "당기순이익(손실)은 2025년 1월부터 12월까지 42,947,902,000,000원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "42,947,902,000,000",
+   "recomputed_raw": "42947902000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 78 기, the year] = 42947902000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 30,
+   "end": 40,
+   "text": "97조 1,467억",
+   "quote": "매출액은 2025년 1월부터 12월까지 97조 1,467억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "97,146,700,000,000",
+   "recomputed_raw": "97146675000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 78 기, the year] = 97146675000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 35,
+   "end": 43,
+   "text": "213,315억",
+   "quote": "영업이익(손실)은 2024년 1월부터 12월까지 213,315억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "23,467,300,000,000",
+   "recomputed_raw": "23467319000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) frmtrm_amount [제 77 기, the previous year] = 23467319000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 63,
+   "end": 68,
+   "text": "46.8%",
+   "quote": "한 해 전 같은 기간(2024년 1월부터 12월까지)보다 46.8% 줄었다",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "46.8%",
+   "recomputed_raw": "46.762850611303679424518861220286870386216298530840741976186",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 78 기, the year] = 97146675000000 KRW (receipt number 20260317000635)",
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 77 기, the previous year] = 66192960000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": "the sentence says down, the recomputed change is 46.762850611303679424518861220286870386216298530840741976186"
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 56,
+   "end": 61,
+   "text": "48.6%",
+   "quote": "영업이익률(영업이익(손실)을 매출액으로 나눈 비율)은 48.6%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "48.6%",
+   "recomputed_raw": "48.5928303773649484143435686296005498901532141990448978310374",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 78 기, the year] = 47206319000000 KRW (receipt number 20260317000635)",
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 78 기, the year] = 97146675000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 36,
+   "end": 46,
+   "text": "47조 2,063억",
+   "quote": "영업이익(손실)은 47조 2,063억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "47,206,300,000,000",
+   "recomputed_raw": "47206319000000",
+   "sources": [
+    "DART 00164779 (SK하이닉스, 000660) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 78 기, the year] = 47206319000000 KRW (receipt number 20260317000635)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00164779_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260317000635"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00164779_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260317000635"
+   }
+  ]
+ }
+}

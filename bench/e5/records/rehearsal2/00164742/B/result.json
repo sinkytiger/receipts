@@ -1,0 +1,54 @@
+{
+ "doc": "00164742",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:35:40Z",
+   "set": "rehearsal",
+   "doc": "00164742",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 13861,
+   "output_tokens": 1414,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0020931,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKKLttwCJmvxwiqwTJA7"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "7.3%",
+    "should_be": "5.8%",
+    "why": "Consolidated Q2 2026 operating margin is 2,850,888 / 49,215,328 = 5.79%"
+   },
+   {
+    "line": 6,
+    "number": "38,720,934,000,000원",
+    "should_be": "20,168,305,000,000원",
+    "why": "38,720,934 is the separate H1 2026 revenue; the Q2 figure is 20,168,305 million won"
+   },
+   {
+    "line": 11,
+    "number": "3,034,499백만원",
+    "should_be": "2,887,962백만원",
+    "why": "3,034,499 is separate Q2 net income; consolidated Q2 profit is 2,887,962"
+   },
+   {
+    "line": 16,
+    "number": "92조 6,944억원",
+    "should_be": "95조 1,542억원",
+    "why": "92,694,438 is the 2025 H1 revenue; 2026 H1 consolidated revenue is 95,154,214 million won"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0020931
+}
