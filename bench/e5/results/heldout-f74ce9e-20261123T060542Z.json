@@ -1,0 +1,6142 @@
+{
+ "scored": "2026-11-23T06:05:42Z",
+ "run": "bench/e5/records/heldout",
+ "run_meta": {
+  "set": "heldout",
+  "started": "2026-11-23T05:42:48Z",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "max_tokens": 16000,
+  "commit": "15b4dc5",
+  "dirty": false,
+  "approved_estimate_usd_per_document": 0.03,
+  "estimate": {
+   "documents": 31,
+   "expected_usd": 0.8278,
+   "upper_usd": 11.4359,
+   "expected_usd_per_document": 0.0267,
+   "upper_usd_per_document": 0.3689,
+   "note": "token counts are guessed high from character counts; no request was made"
+  },
+  "gold_check": {
+   "documents": 31,
+   "statements": 372,
+   "planted_wrong": 124,
+   "correct_verified": 248
+  },
+  "left_out_by_the_gold_check": [],
+  "documents": [
+   "00106641",
+   "00164788",
+   "00155319",
+   "00356361",
+   "00126362",
+   "00877059",
+   "00159023",
+   "00149655",
+   "01515323",
+   "00258801",
+   "00401731",
+   "01049167",
+   "00303396",
+   "00117629",
+   "00584362",
+   "01385005",
+   "01095722",
+   "00815095",
+   "01563922",
+   "01423837",
+   "00114792",
+   "01021949",
+   "01803635",
+   "00428251",
+   "00491336",
+   "00575106",
+   "00915508",
+   "01335578",
+   "00760971",
+   "01605282",
+   "00238782"
+  ],
+  "resumes": [],
+  "finished": "2026-11-23T06:04:53Z"
+ },
+ "commit": "f74ce9e",
+ "dirty": false,
+ "summary": {
+  "documents": 31,
+  "statements": 372,
+  "planted": 124,
+  "correct": 248,
+  "1_planted_flagged": {
+   "arm_a": {
+    "k": 124,
+    "n": 124,
+    "share": 1.0,
+    "wilson95": [
+     0.97,
+     1.0
+    ]
+   },
+   "arm_b": {
+    "k": 120,
+    "n": 124,
+    "share": 0.9677,
+    "wilson95": [
+     0.92,
+     0.9874
+    ]
+   },
+   "by_kind": {
+    "a": {
+     "arm_a": {
+      "k": 21,
+      "n": 21,
+      "share": 1.0,
+      "wilson95": [
+       0.8454,
+       1.0
+      ]
+     },
+     "arm_b": {
+      "k": 21,
+      "n": 21,
+      "share": 1.0,
+      "wilson95": [
+       0.8454,
+       1.0
+      ]
+     }
+    },
+    "b": {
+     "arm_a": {
+      "k": 31,
+      "n": 31,
+      "share": 1.0,
+      "wilson95": [
+       0.8897,
+       1.0
+      ]
+     },
+     "arm_b": {
+      "k": 30,
+      "n": 31,
+      "share": 0.9677,
+      "wilson95": [
+       0.8381,
+       0.9943
+      ]
+     }
+    },
+    "c": {
+     "arm_a": {
+      "k": 27,
+      "n": 27,
+      "share": 1.0,
+      "wilson95": [
+       0.8754,
+       1.0
+      ]
+     },
+     "arm_b": {
+      "k": 26,
+      "n": 27,
+      "share": 0.963,
+      "wilson95": [
+       0.8172,
+       0.9934
+      ]
+     }
+    },
+    "d": {
+     "arm_a": {
+      "k": 27,
+      "n": 27,
+      "share": 1.0,
+      "wilson95": [
+       0.8754,
+       1.0
+      ]
+     },
+     "arm_b": {
+      "k": 26,
+      "n": 27,
+      "share": 0.963,
+      "wilson95": [
+       0.8172,
+       0.9934
+      ]
+     }
+    },
+    "e": {
+     "arm_a": {
+      "k": 18,
+      "n": 18,
+      "share": 1.0,
+      "wilson95": [
+       0.8241,
+       1.0
+      ]
+     },
+     "arm_b": {
+      "k": 17,
+      "n": 18,
+      "share": 0.9444,
+      "wilson95": [
+       0.7424,
+       0.9901
+      ]
+     }
+    }
+   },
+   "recognisable_from_the_document": {
+    "arm_a": {
+     "k": 39,
+     "n": 39,
+     "share": 1.0,
+     "wilson95": [
+      0.9103,
+      1.0
+     ]
+    },
+    "arm_b": {
+     "k": 38,
+     "n": 39,
+     "share": 0.9744,
+     "wilson95": [
+      0.8682,
+      0.9955
+     ]
+    }
+   },
+   "not_recognisable_from_the_document": {
+    "arm_a": {
+     "k": 85,
+     "n": 85,
+     "share": 1.0,
+     "wilson95": [
+      0.9568,
+      1.0
+     ]
+    },
+    "arm_b": {
+     "k": 82,
+     "n": 85,
+     "share": 0.9647,
+     "wilson95": [
+      0.9013,
+      0.9879
+     ]
+    }
+   }
+  },
+  "2_correct_flagged": {
+   "arm_a": {
+    "k": 0,
+    "n": 248,
+    "share": 0.0,
+    "wilson95": [
+     0.0,
+     0.0153
+    ]
+   },
+   "arm_b": {
+    "k": 2,
+    "n": 248,
+    "share": 0.0081,
+    "wilson95": [
+     0.0022,
+     0.0289
+    ]
+   }
+  },
+  "3_arm_a_verdicts": {
+   "planted": {
+    "wrong": 124
+   },
+   "correct": {
+    "verified": 247,
+    "uncovered": 1
+   },
+   "planted_judged_verified": []
+  },
+  "4_arm_a_locators": {
+   "judged_from_dart_cells": 371,
+   "same_cells": {
+    "k": 367,
+    "n": 371,
+    "share": 0.9892,
+    "wilson95": [
+     0.9726,
+     0.9958
+    ]
+   },
+   "other_statement_same_amount": 0,
+   "differs": 4,
+   "other_cells": 0,
+   "fields_that_differ": {
+    "company": 0,
+    "year": 4,
+    "report": 4,
+    "fs": 0,
+    "statement": 0,
+    "row": 0,
+    "column": 4
+   }
+  },
+  "5_arm_a_repairs": {
+   "corrected_plans": 10,
+   "documents_with_a_corrected_plan": 8,
+   "wrong_to_verified_with_another_cell": 0,
+   "of_which_planted": 0
+  },
+  "6_arm_a_other": {
+   "documents_without_an_accepted_plan": 0,
+   "tool_calls_per_document": {
+    "mean": 7.9,
+    "min": 5,
+    "max": 12
+   },
+   "tool_calls_refused_at_the_limit": 0,
+   "numbers_uncovered": {
+    "k": 1,
+    "n": 372,
+    "share": 0.0027,
+    "wilson95": [
+     0.0005,
+     0.0151
+    ]
+   }
+  },
+  "7_cost": {
+   "arm_a": {
+    "requests_per_document": {
+     "mean": 5.71,
+     "min": 4,
+     "max": 8
+    },
+    "input_tokens_per_document": {
+     "mean": 175691.9,
+     "min": 61876,
+     "max": 334435
+    },
+    "output_tokens_per_document": {
+     "mean": 7757.81,
+     "min": 5518,
+     "max": 13134
+    },
+    "usd_per_document": 0.021448,
+    "usd": 0.664891
+   },
+   "arm_b": {
+    "requests_per_document": {
+     "mean": 1.0,
+     "min": 1,
+     "max": 1
+    },
+    "input_tokens_per_document": {
+     "mean": 11842.35,
+     "min": 5476,
+     "max": 16632
+    },
+    "output_tokens_per_document": {
+     "mean": 1366.61,
+     "min": 1015,
+     "max": 2061
+    },
+    "usd_per_document": 0.001868,
+    "usd": 0.057894
+   }
+  },
+  "arm_b_flags_on_no_statement": 0,
+  "arm_b_replies_not_parsed": 1,
+  "splits": {
+   "by_report": {
+    "q3": {
+     "planted_flagged": {
+      "arm_a": {
+       "k": 44,
+       "n": 44,
+       "share": 1.0,
+       "wilson95": [
+        0.9197,
+        1.0
+       ]
+      },
+      "arm_b": {
+       "k": 44,
+       "n": 44,
+       "share": 1.0,
+       "wilson95": [
+        0.9197,
+        1.0
+       ]
+      }
+     },
+     "correct_flagged": {
+      "arm_a": {
+       "k": 0,
+       "n": 88,
+       "share": 0.0,
+       "wilson95": [
+        0.0,
+        0.0418
+       ]
+      },
+      "arm_b": {
+       "k": 1,
+       "n": 88,
+       "share": 0.0114,
+       "wilson95": [
+        0.002,
+        0.0616
+       ]
+      }
+     }
+    },
+    "half": {
+     "planted_flagged": {
+      "arm_a": {
+       "k": 40,
+       "n": 40,
+       "share": 1.0,
+       "wilson95": [
+        0.9124,
+        1.0
+       ]
+      },
+      "arm_b": {
+       "k": 40,
+       "n": 40,
+       "share": 1.0,
+       "wilson95": [
+        0.9124,
+        1.0
+       ]
+      }
+     },
+     "correct_flagged": {
+      "arm_a": {
+       "k": 0,
+       "n": 80,
+       "share": 0.0,
+       "wilson95": [
+        0.0,
+        0.0458
+       ]
+      },
+      "arm_b": {
+       "k": 0,
+       "n": 80,
+       "share": 0.0,
+       "wilson95": [
+        0.0,
+        0.0458
+       ]
+      }
+     }
+    },
+    "annual": {
+     "planted_flagged": {
+      "arm_a": {
+       "k": 40,
+       "n": 40,
+       "share": 1.0,
+       "wilson95": [
+        0.9124,
+        1.0
+       ]
+      },
+      "arm_b": {
+       "k": 36,
+       "n": 40,
+       "share": 0.9,
+       "wilson95": [
+        0.7695,
+        0.9604
+       ]
+      }
+     },
+     "correct_flagged": {
+      "arm_a": {
+       "k": 0,
+       "n": 80,
+       "share": 0.0,
+       "wilson95": [
+        0.0,
+        0.0458
+       ]
+      },
+      "arm_b": {
+       "k": 1,
+       "n": 80,
+       "share": 0.0125,
+       "wilson95": [
+        0.0022,
+        0.0675
+       ]
+      }
+     }
+    }
+   },
+   "by_group": {
+    "drawn": {
+     "planted_flagged": {
+      "arm_a": {
+       "k": 80,
+       "n": 80,
+       "share": 1.0,
+       "wilson95": [
+        0.9542,
+        1.0
+       ]
+      },
+      "arm_b": {
+       "k": 80,
+       "n": 80,
+       "share": 1.0,
+       "wilson95": [
+        0.9542,
+        1.0
+       ]
+      }
+     },
+     "correct_flagged": {
+      "arm_a": {
+       "k": 0,
+       "n": 160,
+       "share": 0.0,
+       "wilson95": [
+        0.0,
+        0.0234
+       ]
+      },
+      "arm_b": {
+       "k": 0,
+       "n": 160,
+       "share": 0.0,
+       "wilson95": [
+        0.0,
+        0.0234
+       ]
+      }
+     }
+    },
+    "named": {
+     "planted_flagged": {
+      "arm_a": {
+       "k": 44,
+       "n": 44,
+       "share": 1.0,
+       "wilson95": [
+        0.9197,
+        1.0
+       ]
+      },
+      "arm_b": {
+       "k": 40,
+       "n": 44,
+       "share": 0.9091,
+       "wilson95": [
+        0.7884,
+        0.9641
+       ]
+      }
+     },
+     "correct_flagged": {
+      "arm_a": {
+       "k": 0,
+       "n": 88,
+       "share": 0.0,
+       "wilson95": [
+        0.0,
+        0.0418
+       ]
+      },
+      "arm_b": {
+       "k": 2,
+       "n": 88,
+       "share": 0.0227,
+       "wilson95": [
+        0.0063,
+        0.0791
+       ]
+      }
+     }
+    }
+   }
+  },
+  "unfinished_documents": [],
+  "left_out_by_the_gold_check": []
+ },
+ "documents": [
+  {
+   "corp_code": "00106641",
+   "company": "기아",
+   "group": "named",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "differs",
+     "locator_fields": [
+      "year",
+      "report",
+      "column"
+     ],
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 2,
+    "accepted_plans": 2,
+    "tool_calls": 5,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 4,
+    "input_tokens": 166386,
+    "output_tokens": 9722,
+    "usd": 0.0214996
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 5,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 12713,
+    "output_tokens": 1632,
+    "usd": 0.0020873
+   }
+  },
+  {
+   "corp_code": "00114792",
+   "company": "동국홀딩스",
+   "group": "drawn",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 6,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 5,
+    "input_tokens": 109805,
+    "output_tokens": 6252,
+    "usd": 0.0141065
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 13723,
+    "output_tokens": 1063,
+    "usd": 0.0019038
+   }
+  },
+  {
+   "corp_code": "00117629",
+   "company": "KBI동양철관",
+   "group": "drawn",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 10,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 161366,
+    "output_tokens": 6345,
+    "usd": 0.0193091
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 9743,
+    "output_tokens": 1131,
+    "usd": 0.0015398
+   }
+  },
+  {
+   "corp_code": "00126362",
+   "company": "삼성SDI",
+   "group": "named",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 9,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 5,
+    "input_tokens": 186700,
+    "output_tokens": 7528,
+    "usd": 0.022434
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 13503,
+    "output_tokens": 1437,
+    "usd": 0.0020688
+   }
+  },
+  {
+   "corp_code": "00149655",
+   "company": "삼성물산",
+   "group": "named",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 11,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 8,
+    "input_tokens": 334435,
+    "output_tokens": 8661,
+    "usd": 0.037774
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 13219,
+    "output_tokens": 2061,
+    "usd": 0.0023524
+   }
+  },
+  {
+   "corp_code": "00155319",
+   "company": "POSCO홀딩스",
+   "group": "named",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "d",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 2,
+    "accepted_plans": 2,
+    "tool_calls": 7,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 231060,
+    "output_tokens": 10185,
+    "usd": 0.0281985
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 5,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 15367,
+    "output_tokens": 1379,
+    "usd": 0.0022262
+   }
+  },
+  {
+   "corp_code": "00159023",
+   "company": "SK텔레콤",
+   "group": "named",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 7,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 249175,
+    "output_tokens": 6328,
+    "usd": 0.0280815
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 16632,
+    "output_tokens": 1608,
+    "usd": 0.0024672
+   }
+  },
+  {
+   "corp_code": "00164788",
+   "company": "현대모비스",
+   "group": "named",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 6,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 4,
+    "input_tokens": 143956,
+    "output_tokens": 7025,
+    "usd": 0.0179081
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 12216,
+    "output_tokens": 1340,
+    "usd": 0.0018916
+   }
+  },
+  {
+   "corp_code": "00238782",
+   "company": "다우데이타",
+   "group": "drawn",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "b",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 11,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 5,
+    "input_tokens": 155909,
+    "output_tokens": 8317,
+    "usd": 0.0197494
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 15828,
+    "output_tokens": 1568,
+    "usd": 0.0023668
+   }
+  },
+  {
+   "corp_code": "00258801",
+   "company": "카카오",
+   "group": "named",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 8,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 205475,
+    "output_tokens": 8288,
+    "usd": 0.0246915
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 14347,
+    "output_tokens": 1719,
+    "usd": 0.0022942
+   }
+  },
+  {
+   "corp_code": "00303396",
+   "company": "한국컴퓨터",
+   "group": "drawn",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 2,
+    "accepted_plans": 2,
+    "tool_calls": 7,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 7,
+    "input_tokens": 184246,
+    "output_tokens": 8847,
+    "usd": 0.0228481
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 10624,
+    "output_tokens": 1122,
+    "usd": 0.0016234
+   }
+  },
+  {
+   "corp_code": "00356361",
+   "company": "LG화학",
+   "group": "named",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": "e",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "differs",
+     "locator_fields": [
+      "year",
+      "report",
+      "column"
+     ],
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 2,
+    "accepted_plans": 2,
+    "tool_calls": 6,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 4,
+    "input_tokens": 171735,
+    "output_tokens": 8444,
+    "usd": 0.0213955
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 14508,
+    "output_tokens": 1649,
+    "usd": 0.0022753
+   }
+  },
+  {
+   "corp_code": "00401731",
+   "company": "LG전자",
+   "group": "named",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 7,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 5,
+    "input_tokens": 133194,
+    "output_tokens": 7356,
+    "usd": 0.0169974
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 14887,
+    "output_tokens": 1929,
+    "usd": 0.0024532
+   }
+  },
+  {
+   "corp_code": "00428251",
+   "company": "현대백화점",
+   "group": "drawn",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "b",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 6,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 4,
+    "input_tokens": 61876,
+    "output_tokens": 5518,
+    "usd": 0.0089466
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 15311,
+    "output_tokens": 1120,
+    "usd": 0.0020911
+   }
+  },
+  {
+   "corp_code": "00491336",
+   "company": "잘만테크",
+   "group": "drawn",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": "a",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "debt_ratio",
+     "slot": "debt_ratio",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 8,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 192693,
+    "output_tokens": 6685,
+    "usd": 0.0226118
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 10250,
+    "output_tokens": 1178,
+    "usd": 0.001614
+   }
+  },
+  {
+   "corp_code": "00575106",
+   "company": "씨유테크",
+   "group": "drawn",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "c",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 10,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 7,
+    "input_tokens": 158397,
+    "output_tokens": 7181,
+    "usd": 0.0194302
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 8960,
+    "output_tokens": 1330,
+    "usd": 0.001561
+   }
+  },
+  {
+   "corp_code": "00584362",
+   "company": "케이엑스넥스지",
+   "group": "drawn",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": "e",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "d",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "fill:other_statements",
+     "planted": "b",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 5,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 5,
+    "input_tokens": 121708,
+    "output_tokens": 5850,
+    "usd": 0.0150958
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 7065,
+    "output_tokens": 1037,
+    "usd": 0.001225
+   }
+  },
+  {
+   "corp_code": "00760971",
+   "company": "크래프톤",
+   "group": "drawn",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 8,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 5,
+    "input_tokens": 121617,
+    "output_tokens": 7103,
+    "usd": 0.0157132
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 13623,
+    "output_tokens": 1552,
+    "usd": 0.0021383
+   }
+  },
+  {
+   "corp_code": "00815095",
+   "company": "우리이앤엘하루틴",
+   "group": "drawn",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "b",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 8,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 192064,
+    "output_tokens": 7580,
+    "usd": 0.0229964
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 11446,
+    "output_tokens": 1107,
+    "usd": 0.0016981
+   }
+  },
+  {
+   "corp_code": "00877059",
+   "company": "삼성바이오로직스",
+   "group": "named",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": "e",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 8,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 4,
+    "input_tokens": 122843,
+    "output_tokens": 7101,
+    "usd": 0.0158348
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 11927,
+    "output_tokens": 1332,
+    "usd": 0.0018587
+   }
+  },
+  {
+   "corp_code": "00915508",
+   "company": "스퀘어텍",
+   "group": "drawn",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "b",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": "e",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "debt_ratio",
+     "slot": "debt_ratio",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 11,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 7,
+    "input_tokens": 142411,
+    "output_tokens": 7820,
+    "usd": 0.0181511
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 11110,
+    "output_tokens": 1124,
+    "usd": 0.001673
+   }
+  },
+  {
+   "corp_code": "01021949",
+   "company": "덱스터",
+   "group": "drawn",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "uncovered",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 3,
+    "accepted_plans": 3,
+    "tool_calls": 8,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": false,
+    "numbers": 12,
+    "uncovered": 1,
+    "requests": 7,
+    "input_tokens": 249897,
+    "output_tokens": 13134,
+    "usd": 0.0315567
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 10164,
+    "output_tokens": 1310,
+    "usd": 0.0016714
+   }
+  },
+  {
+   "corp_code": "01049167",
+   "company": "롤링스톤",
+   "group": "drawn",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "debt_ratio",
+     "slot": "debt_ratio",
+     "planted": "e",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "fill:other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 2,
+    "accepted_plans": 2,
+    "tool_calls": 6,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 101227,
+    "output_tokens": 7969,
+    "usd": 0.0141072
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 6533,
+    "output_tokens": 1015,
+    "usd": 0.0011608
+   }
+  },
+  {
+   "corp_code": "01095722",
+   "company": "심텍",
+   "group": "drawn",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": "e",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 7,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 5,
+    "input_tokens": 124894,
+    "output_tokens": 6789,
+    "usd": 0.0158839
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 10717,
+    "output_tokens": 1351,
+    "usd": 0.0017472
+   }
+  },
+  {
+   "corp_code": "01335578",
+   "company": "애니플러스",
+   "group": "drawn",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "d",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "c",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "differs",
+     "locator_fields": [
+      "year",
+      "report",
+      "column"
+     ],
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 2,
+    "accepted_plans": 2,
+    "tool_calls": 10,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 7,
+    "input_tokens": 245270,
+    "output_tokens": 9914,
+    "usd": 0.029484
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 15014,
+    "output_tokens": 1649,
+    "usd": 0.0023259
+   }
+  },
+  {
+   "corp_code": "01385005",
+   "company": "리브스메드",
+   "group": "drawn",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "differs",
+     "locator_fields": [
+      "year",
+      "report",
+      "column"
+     ],
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "debt_ratio",
+     "slot": "debt_ratio",
+     "planted": "e",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 9,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 217481,
+    "output_tokens": 7497,
+    "usd": 0.0254966
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 10470,
+    "output_tokens": 1258,
+    "usd": 0.001676
+   }
+  },
+  {
+   "corp_code": "01423837",
+   "company": "모아데이타",
+   "group": "drawn",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "a",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "debt_ratio",
+     "slot": "debt_ratio",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 12,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 177832,
+    "output_tokens": 6792,
+    "usd": 0.0211792
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 9661,
+    "output_tokens": 1213,
+    "usd": 0.0015726
+   }
+  },
+  {
+   "corp_code": "01515323",
+   "company": "LG에너지솔루션",
+   "group": "named",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": false
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 7,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 6,
+    "input_tokens": 211704,
+    "output_tokens": 6049,
+    "usd": 0.0241949
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": false,
+    "flags": 0,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 12894,
+    "output_tokens": 1321,
+    "usd": 0.0019499
+   }
+  },
+  {
+   "corp_code": "01563922",
+   "company": "엠오티",
+   "group": "drawn",
+   "report": "q3",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": "d",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": "a",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 3,
+    "accepted_plans": 3,
+    "tool_calls": 8,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": false,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 7,
+    "input_tokens": 238725,
+    "output_tokens": 10739,
+    "usd": 0.029242
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 9533,
+    "output_tokens": 1343,
+    "usd": 0.0016248
+   }
+  },
+  {
+   "corp_code": "01605282",
+   "company": "닷밀",
+   "group": "drawn",
+   "report": "annual",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "margin",
+     "slot": "margin",
+     "planted": "e",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "fill:other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_year",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "amount",
+     "slot": "income_previous_year",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "income_year_before",
+     "planted": "b",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 7,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 7,
+    "input_tokens": 214361,
+    "output_tokens": 6890,
+    "usd": 0.0248811
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 5476,
+    "output_tokens": 1197,
+    "usd": 0.0011461
+   }
+  },
+  {
+   "corp_code": "01803635",
+   "company": "에스투더블유",
+   "group": "drawn",
+   "report": "half",
+   "statements": [
+    {
+     "id": "s01",
+     "line": 5,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s02",
+     "line": 6,
+     "kind": "amount",
+     "slot": "cash_flow",
+     "planted": "d",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s03",
+     "line": 7,
+     "kind": "amount",
+     "slot": "balance_previous_end",
+     "planted": "b",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s04",
+     "line": 8,
+     "kind": "amount",
+     "slot": "other_statements",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s05",
+     "line": 9,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s06",
+     "line": 10,
+     "kind": "debt_ratio",
+     "slot": "debt_ratio",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s07",
+     "line": 11,
+     "kind": "amount",
+     "slot": "income_three_months",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s08",
+     "line": 12,
+     "kind": "pct_change",
+     "slot": "percent_change",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s09",
+     "line": 13,
+     "kind": "amount",
+     "slot": "income_year_earlier",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s10",
+     "line": 14,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "a",
+     "recognisable": true,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    },
+    {
+     "id": "s11",
+     "line": 15,
+     "kind": "amount",
+     "slot": "balance_end",
+     "planted": null,
+     "recognisable": false,
+     "a_verdict": "verified",
+     "locator": "same",
+     "a_flagged": false,
+     "b_flagged": false
+    },
+    {
+     "id": "s12",
+     "line": 16,
+     "kind": "amount",
+     "slot": "income_cumulative",
+     "planted": "c",
+     "recognisable": false,
+     "a_verdict": "wrong",
+     "locator": "same",
+     "a_flagged": true,
+     "b_flagged": true
+    }
+   ],
+   "arm_a": {
+    "ran": true,
+    "accepted_plan": true,
+    "plans_sent": 1,
+    "accepted_plans": 1,
+    "tool_calls": 7,
+    "tool_calls_refused_at_the_limit": 0,
+    "stopped": null,
+    "said_done": true,
+    "numbers": 12,
+    "uncovered": 0,
+    "requests": 5,
+    "input_tokens": 118007,
+    "output_tokens": 6583,
+    "usd": 0.0150922
+   },
+   "arm_b": {
+    "ran": true,
+    "parsed": true,
+    "flags": 4,
+    "items_without_a_line_number": 0,
+    "flags_on_no_statement": 0,
+    "requests": 1,
+    "input_tokens": 9649,
+    "output_tokens": 1290,
+    "usd": 0.0016099
+   }
+  }
+ ]
+}
