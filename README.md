@@ -141,6 +141,7 @@ The rules for each evaluation were fixed in [docs/eval-plan.md](docs/eval-plan.m
 | **E2** | What happens when a model writes the plan? Claude Haiku 5.5, 30 synthetic documents, 128 planted errors, 322 correct statements. | With the skill and the script: 128 of 128 planted errors flagged, 2 of 322 correct statements flagged. The same model reviewing on its own: 125 of 128 and 26 of 322 (118 of 128 under the matching rule fixed beforehand, which undercounts it). |
 | **E3** | Does the EDGAR connection return what the filing prints? 20 companies, 40 filings, 1,169 facts. | All 6 pass bars met. No wrong value. 1,167 of 1,169 verified when the filing is named. |
 | **E4** | Does the DART connection return what the company filed, and does it tell neighbouring columns apart? 31 companies, 177 sets of statements, 44,829 amounts. | All 8 pass bars met, on the third scoring. The first two were cut short and are reported below. No wrong value in any of them. |
+| **E5** | When a model has to find the DART locators itself, are the wrong numbers flagged? Claude Haiku 5.5, 31 Korean documents about 31 companies, 124 planted errors, 248 correct statements. | With the skill and the script: 124 of 124 planted errors flagged, 0 of 248 correct statements flagged. The same model reviewing on its own, with the statements in front of it: 120 of 124 and 2 of 248 under the rule fixed beforehand (124 of 124 if one reply with a stray character is read by hand). No pass bars. |
 
 ### E1, the script alone
 
@@ -204,22 +205,44 @@ What to keep in mind:
 - **No model is involved.** E4 gives the script correct locators. How well a model picks the right column when it writes the plan against DART was not measured.
 - **What changed on the way, all before any held-out data was fetched.** On the development companies the author of the benchmark found that DART fills one comparison column of interim cash flow statements with two different periods. The contract had it wrong, and the script now refuses that column. Deliberately broken copies of the tool were scored to check the scorer. One got past the seven bars, and an eighth was added. A reviewer that had written none of the code tried to break the connection twice. What held up was fixed, apart from one limit that the contract now states: the rows of an answer do not say whether they are consolidated or separate. The [plan's change log](docs/eval-plan.md) has each step.
 
+### E5, a model writes the plan against DART
+
+E4 gave the script correct locators. E5 lets a model find them. Each document is a short Korean note about one report of one company, with 12 statements. Four of them carry a planted error: the three months and the cumulative figure exchanged, this period and the comparison period exchanged, consolidated and separate exchanged, an amount changed by 3% to 30%, or a wrong percent change or ratio. The truth comes from the companies' XBRL files, as in E4. The companies are E4's 31 held-out ones, and the script and the skill are those of version 0.2.0, unchanged.
+
+The same model (Claude Haiku 5.5) ran both arms. With the skill it gets the document, the scan output and three tools that stand in for the look-up commands, which show rows and columns but no amounts. It writes the plan, the script judges, and it may correct the plan twice. On its own it gets the document and the statements of the right report as text, every row with every amount, and reviews in one request.
+
+| | Skill and script | Model alone |
+|---|---|---|
+| Planted errors flagged | 124 of 124 | 120 of 124 (124 of 124 read by hand, see below) |
+| Correct statements flagged | 0 of 248 | 2 of 248 |
+| Cost per document | US$0.021 | US$0.0019 |
+
+- **The model found the cells.** Of the 371 numbers the script judged, 367 were read from exactly the cell the sentence means. The other 4 read the same year-end balance from the annual report instead of the comparison column of the interim report: the same date and the same amount. One correct number was left `uncovered`.
+- **No plan was fitted to a number.** The model sent 10 corrected plans in 8 documents. In none of them did a number go from `wrong` to `verified` by reading another cell.
+- **The skill did not catch more.** Both arms caught nearly every planted error. The model alone was handed the right report and saw the amounts; with the skill it had to find the company, the report and the rows, and it cost about 11 times as much per document. What the skill adds here is the receipt for each number.
+- **One reply could not be read.** One reply of the model alone was not valid JSON (a stray period). The rule fixed before the run says such a reply flags nothing, which gives 120 of 124. Read by hand, it names the four planted lines of its document and no other, which would give 124 of 124.
+- **Some planted errors show without a source.** In 39 of the 124, the shown amount also stands on another line, or the document states the inputs of the figure. With these left out the counts are 85 of 85 for the skill and 82 of 85 for the model alone (the three misses are in the reply that could not be read).
+
+What to keep in mind: the notes are made from sentence templates that name the statements and the period in every sentence, so real notes are harder. The form `7~9월` was avoided because the scan counts its first number as a number of the document, which is a defect to fix. It is one model, one setting, one run. There were no pass bars. Before the run an agent that wrote none of the code reviewed the generator, the harness and the scorer, and its findings were fixed before any held-out document existed. All of E5 cost US$0.90 in 258 requests, two rehearsals included. The conversations, the tool calls and every plan are in [bench/e5/records](bench/e5/records).
+
 ### What was not measured
 
 - Whether an agent picks up the skill when it is not named.
 - Agents other than Claude Code, and the `/plugin` command typed inside the app (the command-line form was tested).
-- A model writing plans against EDGAR or DART. E2 used files only.
+- A model writing plans against EDGAR. E2 used files only, and E5 covers DART.
 - Real documents. Checks of real documents may appear here as examples. They are not performance estimates.
 
 ### Where the runs are
 
-Every scoring of the tool is logged with its commit: [bench/runs.jsonl](bench/runs.jsonl) for E1, [bench/e2/runs.jsonl](bench/e2/runs.jsonl) for E2, [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl) for E3, [bench/dart/runs.jsonl](bench/dart/runs.jsonl) for E4. The development runs are there too. For E1, E2 and E3 the code was frozen at commit `a84647c`. The held-out runs were made on later commits that differ from it only in results and logs. Versions 0.1.1 and 0.2.0 changed code after that. The held-out sets of E1, E2 and E3 were not run again: both versions were rerun on the development sets only, where they meet every bar of E1 and E3. For E4 the code was frozen at commit `2ae4742`, and its held-out scorings are logged at `f3a841c`, as `nogit` (git could not be run while the app was being updated) and at `79dafe1`. Scorings of deliberately broken copies of the tool are not in these files. The plan's change log reports them.
+Every scoring of the tool is logged with its commit: [bench/runs.jsonl](bench/runs.jsonl) for E1, [bench/e2/runs.jsonl](bench/e2/runs.jsonl) for E2, [bench/edgar/runs.jsonl](bench/edgar/runs.jsonl) for E3, [bench/dart/runs.jsonl](bench/dart/runs.jsonl) for E4, [bench/e5/runs.jsonl](bench/e5/runs.jsonl) for E5. The development runs are there too. For E1, E2 and E3 the code was frozen at commit `a84647c`. The held-out runs were made on later commits that differ from it only in results and logs. Versions 0.1.1 and 0.2.0 changed code after that. The held-out sets of E1, E2 and E3 were not run again: both versions were rerun on the development sets only, where they meet every bar of E1 and E3. For E4 the code was frozen at commit `2ae4742`, and its held-out scorings are logged at `f3a841c`, as `nogit` (git could not be run while the app was being updated) and at `79dafe1`. Scorings of deliberately broken copies of the tool are not in these files. The plan's change log reports them.
 
 ## Roadmap
 
 Done in 0.1.0: the core script and its benchmark, the skill and plugin, the SEC EDGAR connection, and the three evaluations. Done in 0.1.1: one-day periods on EDGAR. Done in 0.2.0: Korean filings (DART) and their evaluation.
 
-Next: an audit of non-numeric claims, PDF sources, and an evaluation with a model writing plans against filings.
+Done after 0.2.0, with the same script and skill: E5, a model writing plans against DART.
+
+Next: an audit of non-numeric claims, PDF sources, a scan rule for Korean month ranges such as `7~9월`, and a model writing plans against EDGAR.
 
 ## License
 
