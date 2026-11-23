@@ -1,0 +1,54 @@
+{
+ "doc": "01803635",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:59:22Z",
+   "set": "heldout",
+   "doc": "01803635",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 9649,
+   "output_tokens": 1290,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0016099,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKM9nc5ShhgT85SYx8ox"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "-15억원",
+    "should_be": "-12억원 (-1,196,586,980원)",
+    "why": "연결 영업활동현금흐름 1~6월 값은 약 -11.97억원이다"
+   },
+   {
+    "line": 7,
+    "number": "130억원",
+    "should_be": "74억원 (7,386,050,188원)",
+    "why": "130억원은 2026년 6월 말 부채총계이고, 2025년 12월 말 연결 부채총계는 약 74억원이다"
+   },
+   {
+    "line": 14,
+    "number": "2,085,113,562원",
+    "should_be": "4,262,053,689원",
+    "why": "2,085,113,562원은 4~6월 분기 영업수익이고, 1~6월 누적 연결 영업수익은 4,262,053,689원이다"
+   },
+   {
+    "line": 16,
+    "number": "-5,128,460,556원",
+    "should_be": "-5,414,422,837원",
+    "why": "-5,128,460,556원은 별도 재무제표 값이고, 연결 1~6월 영업손실은 -5,414,422,837원이다"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0016099
+}

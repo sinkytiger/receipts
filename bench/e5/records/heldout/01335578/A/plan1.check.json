@@ -1,0 +1,209 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 2,
+  "wrong": 0,
+  "unverifiable": 10,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 30,
+   "end": 36,
+   "text": "1,137억",
+   "quote": "매출액은 1,137억원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 34,
+   "end": 37,
+   "text": "22억",
+   "quote": "연결 기준 영업이익(손실)은 2026년 7월부터 9월까지 22억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 36,
+   "end": 40,
+   "text": "-11억",
+   "quote": "분기순이익(손실)은 -11억원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 29,
+   "end": 43,
+   "text": "32,065,247,744",
+   "quote": "매출액은 2026년 1월부터 9월까지 32,065,247,744원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 34,
+   "end": 37,
+   "text": "75억",
+   "quote": "영업이익(손실)은 2026년 1월부터 9월까지 75억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 26,
+   "end": 32,
+   "text": "2,255억",
+   "quote": "자산총계는 2,255억원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 27,
+   "end": 33,
+   "text": "1,432억",
+   "quote": "부채총계는 1,432억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 61,
+   "end": 66,
+   "text": "45.6%",
+   "quote": "보다 45.6% 줄었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-45.6%",
+   "recomputed_raw": "-45.5673665102381115301437008387791007876675065371517111662043",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 9 기 3분기, the three months] = 30326257034 KRW (receipt number 20261112000678)",
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 8 기 3분기, the same three months a year earlier] = 55713374661 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 34,
+   "end": 48,
+   "text": "49,924,929,864",
+   "quote": "영업활동현금흐름은 2026년 1월부터 9월까지 49,924,929,864원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 29,
+   "end": 33,
+   "text": "321억",
+   "quote": "별도 기준 매출액은 2026년 7월부터 9월까지 321억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 29,
+   "end": 33,
+   "text": "303억",
+   "quote": "연결 기준 매출액은 2026년 7월부터 9월까지 303억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 55,
+   "end": 59,
+   "text": "6.1%",
+   "quote": "영업이익률(영업이익(손실)을 매출액으로 나눈 비율)은 6.1%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6.1%",
+   "recomputed_raw": "6.07159900061407624353778337101460840965316999297975415293382",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 9 기 3분기, the three months] = 1841288719 KRW (receipt number 20261112000678)",
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 9 기 3분기, the three months] = 30326257034 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01335578_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261112000678"
+   }
+  ]
+ }
+}

@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 30,
+   "end": 40,
+   "text": "19조 7,589억",
+   "quote": "매출액은 19조 7,589억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "19,758,900,000,000",
+   "recomputed_raw": "19758856874740",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS ifrs-full_Revenue 매출액 frmtrm_add_amount [제 62 기 반기, the same cumulative period a year earlier] = 19758856874740 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 29,
+   "end": 38,
+   "text": "6조 1,829억",
+   "quote": "6조 1,829억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6,182,900,000,000",
+   "recomputed_raw": "6182862039293",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 63 기 반기, the three months] = 6182862039293 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 32,
+   "end": 38,
+   "text": "5,265억",
+   "quote": "5,265억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "915,500,000,000",
+   "recomputed_raw": "915543902093",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS ifrs-full_ProfitLoss 반기순이익 thstrm_amount [제 63 기 반기, the three months] = 915543902093 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 31,
+   "end": 38,
+   "text": "1조 317억",
+   "quote": "1조 317억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,031,700,000,000",
+   "recomputed_raw": "1031736010472",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 63 기 반기, the three months] = 1031736010472 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 27,
+   "end": 37,
+   "text": "19조 9,335억",
+   "quote": "부채총계는 2025년 12월 말에 19조 9,335억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "29,035,800,000,000",
+   "recomputed_raw": "29035796293982",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 62 기말, the end of the previous business year] = 29035796293982 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 30,
+   "end": 48,
+   "text": "11,995,055,624,406",
+   "quote": "매출액은 11,995,055,624,406원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "11,995,055,624,406",
+   "recomputed_raw": "11995055624406",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 63 기 반기, the three months] = 11995055624406 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 61,
+   "end": 66,
+   "text": "19.7%",
+   "quote": "보다 19.7% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "19.7%",
+   "recomputed_raw": "19.6863370837085500240045062966017841578999240671045778140251",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 63 기 반기, the three months] = 11995055624406 KRW (receipt number 20260814002969)",
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 62 기 반기, the same three months a year earlier] = 10022075966797 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 30,
+   "end": 40,
+   "text": "11조 9,951억",
+   "quote": "매출액은 11조 9,951억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "22,460,900,000,000",
+   "recomputed_raw": "22460878797270",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_add_amount [제 63 기 반기, from the start of the business year to the period end] = 22460878797270 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 41,
+   "end": 58,
+   "text": "4,051,074,799,140",
+   "quote": "현금흐름은 4,051,074,799,140원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,051,074,799,140",
+   "recomputed_raw": "4051074799140",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 63 기 반기, from the start of the business year to the period end] = 4051074799140 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 51,
+   "end": 55,
+   "text": "5.2%",
+   "quote": "영업이익률(영업이익을 매출액으로 나눈 비율)은 5.2%이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "8.6%",
+   "recomputed_raw": "8.60134411025786288519134487580199602919526983363547263926752",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 63 기 반기, the three months] = 1031736010472 KRW (receipt number 20260814002969)",
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 63 기 반기, the three months] = 11995055624406 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 30,
+   "end": 39,
+   "text": "1조 7,521억",
+   "quote": "영업이익은 2026년 1월부터 6월까지 1조 7,521억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,752,100,000,000",
+   "recomputed_raw": "1752100294114",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_add_amount [제 63 기 반기, from the start of the business year to the period end] = 1752100294114 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 26,
+   "end": 37,
+   "text": "163조 7,685억",
+   "quote": "자산총계는 163조 7,685억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "163,768,500,000,000",
+   "recomputed_raw": "163768451300192",
+   "sources": [
+    "DART 00149655 (삼성물산, 028260) 2026 half CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 63 기 반기말, the period end] = 163768451300192 KRW (receipt number 20260814002969)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00149655_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814002969"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00149655_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814002969"
+   }
+  ]
+ }
+}

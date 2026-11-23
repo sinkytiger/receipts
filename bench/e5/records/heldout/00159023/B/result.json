@@ -1,0 +1,54 @@
+{
+ "doc": "00159023",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:47:53Z",
+   "set": "heldout",
+   "doc": "00159023",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 16632,
+   "output_tokens": 1608,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0024672,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLGuKECGRCxg4P9PyGK"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "2,822,786,000,000원",
+    "should_be": "3,708,241,000,000원",
+    "why": "2,822,786,000,000 is the 2025 Jan-Sep operating cash flow; the 2026 Jan-Sep figure is 3,708,241,000,000"
+   },
+   {
+    "line": 7,
+    "number": "2조 8,305억원",
+    "should_be": "3조 1,563억원 (3,156,315백만원)",
+    "why": "separate Q3 2026 revenue (영업수익) is 3,156,315,000,000"
+   },
+   {
+    "line": 13,
+    "number": "16,559억원",
+    "should_be": "5,523억원 (552,312백만원)",
+    "why": "consolidated Q3 2026 operating income is 552,312,000,000; 16,559억 is the Jan-Sep figure"
+   },
+   {
+    "line": 14,
+    "number": "1조 2,508억원",
+    "should_be": "1조 6,559억원 (1,655,946백만원)",
+    "why": "consolidated Jan-Sep 2026 operating income is 1,655,946,000,000"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0024672
+}

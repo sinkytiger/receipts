@@ -1,0 +1,242 @@
+{
+ "document": "document.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "quote": "매출은 41조 9,186억원이다",
+   "number": "41조 9,186억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "quote": "은 7.2%이다",
+   "number": "7.2%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    },
+    "whole": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "quote": "영업활동현금흐름은 1,562,468백만원으로",
+   "number": "1,562,468백만",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "quote": "영업이익(손실)은 5,612억원으로 집계됐다",
+   "number": "5,612억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "quote": "자산총계는 101,061,661백만원이다",
+   "number": "101,061,661백만",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "quote": "영업이익(손실)은 11,111억원으로 집계됐다",
+   "number": "11,111억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "quote": "별도 기준 매출은 2026년 7월부터 9월까지 4조 7,275억원이었다",
+   "number": "4조 7,275억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "OFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "quote": "매출은 11,561,666,000,000원으로 집계됐다",
+   "number": "11,561,666,000,000",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "quote": "당기순이익(손실)은 -6,000억원이다",
+   "number": "-6,000억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "quote": "매출은 41조 9,186억원이다",
+   "number": "41조 9,186억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "quote": "부채 총계는 12,431,555,000,000원이다",
+   "number": "12,431,555,000,000",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "051910",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "quote": "보다 34.0% 늘었다",
+   "number": "34.0%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "up",
+   "operands": {
+    "new": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    },
+    "old": {
+     "dart": "051910",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount"
+    }
+   }
+  }
+ ]
+}

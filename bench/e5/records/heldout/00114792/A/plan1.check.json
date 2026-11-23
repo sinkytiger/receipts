@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 30,
+   "end": 39,
+   "text": "1조 4,163억",
+   "quote": "매출액은 2023년 1월부터 12월까지 1조 4,163억원",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,841,100,000,000",
+   "recomputed_raw": "1841113699327",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS ifrs-full_Revenue 매출액 bfefrmtrm_amount [제 70 기, the year two years back] = 1841113699327 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 27,
+   "end": 33,
+   "text": "6,837억",
+   "quote": "자산총계는 2025년 12월 말에 6,837억원",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2,693,400,000,000",
+   "recomputed_raw": "2693396462019",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 72 기, the year end] = 2693396462019 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 31,
+   "end": 40,
+   "text": "1조 9,994억",
+   "quote": "2024년 1월부터 12월까지의 매출액은 1조 9,994억원",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,999,400,000,000",
+   "recomputed_raw": "1999426088314",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS ifrs-full_Revenue 매출액 frmtrm_amount [제 71 기, the previous year] = 1999426088314 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 63,
+   "end": 67,
+   "text": "0.7%",
+   "quote": "한 해 전 같은 기간(2024년 1월부터 12월까지)보다 0.7% 줄었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-0.7%",
+   "recomputed_raw": "-0.708252922364394288316188156823087785357310210007525216434826",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 72 기, the year] = 1985265094613 KRW (receipt number 20260318000823)",
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS ifrs-full_Revenue 매출액 frmtrm_amount [제 71 기, the previous year] = 1999426088314 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 52,
+   "end": 56,
+   "text": "0.6%",
+   "quote": "영업이익률(영업이익을 매출액으로 나눈 비율)은 0.6%이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2.0%",
+   "recomputed_raw": "1.9874712438185245841728603071394336577820912252334085912921",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 72 기, the year] = 39456572869 KRW (receipt number 20260318000823)",
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 72 기, the year] = 1985265094613 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 42,
+   "end": 46,
+   "text": "547억",
+   "quote": "영업활동으로 인한 현금흐름은 547억원",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "54,700,000,000",
+   "recomputed_raw": "54667957475",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 72 기, the year] = 54667957475 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 32,
+   "end": 46,
+   "text": "20,721,382,562",
+   "quote": "당기순이익은 2025년 1월부터 12월까지 20,721,382,562원",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "20,721,382,562",
+   "recomputed_raw": "20721382562",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS ifrs-full_ProfitLoss 당기순이익 thstrm_amount [제 72 기, the year] = 20721382562 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 30,
+   "end": 34,
+   "text": "403억",
+   "quote": "별도 기준 매출액은 2025년 1월부터 12월까지 403억원",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "37,600,000,000",
+   "recomputed_raw": "37624796430",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual OFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 72 기, the year] = 37624796430 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 27,
+   "end": 33,
+   "text": "7,297억",
+   "quote": "부채총계는 2024년 12월 말에 7,297억원",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "729,700,000,000",
+   "recomputed_raw": "729676090365",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 71 기, the previous year end] = 729676090365 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 32,
+   "end": 36,
+   "text": "395억",
+   "quote": "2025년 1월부터 12월까지의 영업이익은 395억원",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "39,500,000,000",
+   "recomputed_raw": "39456572869",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 72 기, the year] = 39456572869 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 30,
+   "end": 37,
+   "text": "19,853억",
+   "quote": "매출액은 2025년 1월부터 12월까지 19,853억원",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,985,300,000,000",
+   "recomputed_raw": "1985265094613",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 72 기, the year] = 1985265094613 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 32,
+   "end": 46,
+   "text": "58,003,101,705",
+   "quote": "2024년 1월부터 12월까지의 연결 기준 영업이익은 58,003,101,705원",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "58,003,101,705",
+   "recomputed_raw": "58003101705",
+   "sources": [
+    "DART 00114792 (동국홀딩스, 001230) 2025 annual CFS IS dart_OperatingIncomeLoss 영업이익 frmtrm_amount [제 71 기, the previous year] = 58003101705 KRW (receipt number 20260318000823)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00114792_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260318000823"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00114792_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260318000823"
+   }
+  ]
+ }
+}

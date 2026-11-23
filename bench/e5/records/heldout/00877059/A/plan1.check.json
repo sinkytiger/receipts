@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 30,
+   "end": 39,
+   "text": "4조 5,570억",
+   "quote": "별도 기준 매출액은 2025년 1월부터 12월까지 4조 5,570억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,557,000,000,000",
+   "recomputed_raw": "4556971695180",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 15 기, the year] = 4556971695180 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 52,
+   "end": 57,
+   "text": "45.4%",
+   "quote": "영업이익률(영업이익을 매출액으로 나눈 비율)은 45.4%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "45.4%",
+   "recomputed_raw": "45.4078147735404341458747467277701722896045701657295848905133",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 15 기, the year] = 2069221266630 KRW (receipt number 20260515001658)",
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 15 기, the year] = 4556971695180 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 30,
+   "end": 37,
+   "text": "34,971억",
+   "quote": "연결 기준 매출액은 2023년 1월부터 12월까지 34,971억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2,938,800,000,000",
+   "recomputed_raw": "2938755680729",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS ifrs-full_Revenue 매출액 bfefrmtrm_amount [제 13 기, the year two years back] = 2938755680729 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 32,
+   "end": 49,
+   "text": "2,069,221,266,630",
+   "quote": "2025년 1월부터 12월까지의 연결 기준 영업이익은 2,069,221,266,630원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,069,221,266,630",
+   "recomputed_raw": "2069221266630",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 15 기, the year] = 2069221266630 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 27,
+   "end": 35,
+   "text": "11조 607억",
+   "quote": "연결 기준 2025년 12월 말의 자산총계는 11조 607억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "11,060,700,000,000",
+   "recomputed_raw": "11060741976837",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 15 기, the year end] = 11060741976837 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 31,
+   "end": 40,
+   "text": "4조 5,570억",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 매출액은 4조 5,570억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,557,000,000,000",
+   "recomputed_raw": "4556971695180",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 15 기, the year] = 4556971695180 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 63,
+   "end": 68,
+   "text": "30.3%",
+   "quote": "한 해 전 같은 기간(2024년 1월부터 12월까지)보다 30.3% 줄었다",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "30.3%",
+   "recomputed_raw": "30.3054581551285053982458162194149294957286916949320857486336",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 15 기, the year] = 4556971695180 KRW (receipt number 20260515001658)",
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 14 기, the previous year] = 3497145675782 KRW (receipt number 20260515001658)"
+   ],
+   "note": "the sentence says down, the recomputed change is 30.3054581551285053982458162194149294957286916949320857486336"
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 33,
+   "end": 50,
+   "text": "1,586,186,963,312",
+   "quote": "2025년 1월부터 12월까지의 연결 기준 당기순이익은 1,586,186,963,312원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,784,352,060,593",
+   "recomputed_raw": "1784352060593",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익 thstrm_amount [제 15 기, the year] = 1784352060593 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 32,
+   "end": 49,
+   "text": "1,321,366,380,588",
+   "quote": "2024년 1월부터 12월까지의 연결 기준 영업이익은 1,321,366,380,588원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,321,366,380,588",
+   "recomputed_raw": "1321366380588",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익 frmtrm_amount [제 14 기, the previous year] = 1321366380588 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 42,
+   "end": 51,
+   "text": "2조 2,478억",
+   "quote": "영업활동으로 인한 현금흐름은 2조 2,478억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,247,800,000,000",
+   "recomputed_raw": "2247807426551",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 15 기, the year] = 2247807426551 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 30,
+   "end": 39,
+   "text": "4조 2,621억",
+   "quote": "연결 기준 매출액은 2024년 1월부터 12월까지 4조 2,621억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3,497,100,000,000",
+   "recomputed_raw": "3497145675782",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 14 기, the previous year] = 3497145675782 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 27,
+   "end": 36,
+   "text": "6조 4,316억",
+   "quote": "연결 기준 2024년 12월 말의 부채총계는 6조 4,316억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6,431,600,000,000",
+   "recomputed_raw": "6431620287493",
+   "sources": [
+    "DART 00877059 (삼성바이오로직스, 207940) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 14 기, the previous year end] = 6431620287493 KRW (receipt number 20260515001658)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00877059_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260515001658"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00877059_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260515001658"
+   }
+  ]
+ }
+}

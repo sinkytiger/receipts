@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 55,
+   "end": 59,
+   "text": "6.0%",
+   "quote": "영업이익률(영업이익(손실)을 매출액으로 나눈 비율)은 6.0%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6.0%",
+   "recomputed_raw": "5.9735139937674796516884602322763008879307767813869244487003",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 50 기 반기, the three months] = 975158000000 KRW (receipt number 20260814004065)",
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 50 기 반기, the three months] = 16324696000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 61,
+   "end": 65,
+   "text": "2.4%",
+   "quote": "매출액은 한 해 전 같은 기간(2025년 4월부터 6월까지)보다 2.4% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2.4%",
+   "recomputed_raw": "2.43755726334710927125160820547329825145089108529420457434096",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 50 기 반기, the three months] = 16324696000000 KRW (receipt number 20260814004065)",
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 49 기 반기, the same three months a year earlier] = 15936241000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 30,
+   "end": 39,
+   "text": "8조 9,305억",
+   "quote": "별도 기준 매출액은 8조 9,305억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "9,914,500,000,000",
+   "recomputed_raw": "9914503000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half OFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 50 기 반기, the three months] = 9914503000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 34,
+   "end": 41,
+   "text": "23,330억",
+   "quote": "영업활동현금흐름은 2026년 1월부터 6월까지 23,330억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,333,000,000,000",
+   "recomputed_raw": "2332982000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 50 기 반기, from the start of the business year to the period end] = 2332982000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 30,
+   "end": 40,
+   "text": "16조 3,247억",
+   "quote": "매출액은 16조 3,247억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "16,324,700,000,000",
+   "recomputed_raw": "16324696000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 50 기 반기, the three months] = 16324696000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 29,
+   "end": 47,
+   "text": "15,936,241,000,000",
+   "quote": "매출액은 2025년 4월부터 6월까지 15,936,241,000,000원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "15,936,241,000,000",
+   "recomputed_raw": "15936241000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 49 기 반기, the same three months a year earlier] = 15936241000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 29,
+   "end": 39,
+   "text": "31조 8,852억",
+   "quote": "매출액은 2026년 1월부터 6월까지 31조 8,852억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "31,885,200,000,000",
+   "recomputed_raw": "31885209000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_add_amount [제 50 기 반기, from the start of the business year to the period end] = 31885209000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 35,
+   "end": 46,
+   "text": "1,777,806백만",
+   "quote": "영업이익(손실)은 1,777,806백만원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "975,158,000,000",
+   "recomputed_raw": "975158000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 50 기 반기, the three months] = 975158000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 26,
+   "end": 36,
+   "text": "75조 4,557억",
+   "quote": "자산총계는 75조 4,557억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "75,455,700,000,000",
+   "recomputed_raw": "75455709000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 50 기 반기말, the period end] = 75455709000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 32,
+   "end": 38,
+   "text": "5,273억",
+   "quote": "반기순이익은 5,273억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,060,200,000,000",
+   "recomputed_raw": "1060230000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS ifrs-full_ProfitLoss 반기순이익 thstrm_amount [제 50 기 반기, the three months] = 1060230000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 34,
+   "end": 43,
+   "text": "1조 7,778억",
+   "quote": "영업이익(손실)은 2026년 1월부터 6월까지 1조 7,778억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,777,800,000,000",
+   "recomputed_raw": "1777806000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS IS dart_OperatingIncomeLoss 영업이익(손실) thstrm_add_amount [제 50 기 반기, from the start of the business year to the period end] = 1777806000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 27,
+   "end": 37,
+   "text": "23조 7,713억",
+   "quote": "부채총계는 23조 7,713억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "21,187,700,000,000",
+   "recomputed_raw": "21187737000000",
+   "sources": [
+    "DART 00164788 (현대모비스, 012330) 2026 half CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 49 기말, the end of the previous business year] = 21187737000000 KRW (receipt number 20260814004065)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00164788_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814004065"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00164788_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814004065"
+   }
+  ]
+ }
+}

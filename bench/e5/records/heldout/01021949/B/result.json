@@ -1,0 +1,54 @@
+{
+ "doc": "01021949",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:58:45Z",
+   "set": "heldout",
+   "doc": "01021949",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 10164,
+   "output_tokens": 1310,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0016714,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKM737NaRBLiW6adDRc1"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "184억원",
+    "should_be": "399억원 (39,946,356,413원)",
+    "why": "2025년 1~9월 연결 영업수익 누계는 399억원이며, 184억원은 2025년 3분기 단독 금액(13,344,043,135원)에 가깝다"
+   },
+   {
+    "line": 8,
+    "number": "-88억원",
+    "should_be": "약 1.3억원 흑자 (130,961,010원)",
+    "why": "2026년 7월~9월 연결 영업이익은 양수이며, -88억원은 1~9월 누계 값이다"
+   },
+   {
+    "line": 9,
+    "number": "1,110억원",
+    "should_be": "1,160억원 (116,040,793,689원)",
+    "why": "2026년 9월말 연결 자산총계는 1,160억원이며, 1,110억원은 2025년 말 값이다"
+   },
+   {
+    "line": 11,
+    "number": "46억원",
+    "should_be": "49억원 (4,898,383,659원)",
+    "why": "2026년 1~9월 연결 영업활동현금흐름은 약 49억원이며, 46억원은 맞지 않는다"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0016714
+}

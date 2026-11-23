@@ -1,0 +1,231 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 7,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 1
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 63,
+   "end": 67,
+   "text": "4.9%",
+   "quote": "보다 4.9% 늘었다",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "-4.9%",
+   "recomputed_raw": "-4.94338802878633451019640431917408466540021706343641005873727",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기, the year] = 69094886192787 KRW (receipt number 20260311004517)",
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 57 기, the previous year] = 72688143160111 KRW (receipt number 20260311004517)"
+   ],
+   "note": "the sentence says up, the recomputed change is -4.94338802878633451019640431917408466540021706343641005873727"
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 32,
+   "end": 41,
+   "text": "1조 3,541억",
+   "quote": "영업이익은 1조 3,541억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,827,100,000,000",
+   "recomputed_raw": "1827063210829",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 58 기, the year] = 1827063210829 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 52,
+   "end": 56,
+   "text": "2.6%",
+   "quote": "영업이익을 매출액으로 나눈 비율)은 2.6%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2.6%",
+   "recomputed_raw": "2.6442813810144635798134844572794833460534292532792880582804",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 58 기, the year] = 1827063210829 KRW (receipt number 20260311004517)",
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기, the year] = 69094886192787 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 27,
+   "end": 37,
+   "text": "1,051,924억",
+   "quote": "자산총계는 2025년 12월 말에 1,051,924억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "105,192,400,000,000",
+   "recomputed_raw": "105192437963565",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 58 기, the year end] = 105192437963565 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 30,
+   "end": 40,
+   "text": "77조 1,272억",
+   "quote": "매출액은 2023년 1월부터 12월까지 77조 1,272억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "77,127,200,000,000",
+   "recomputed_raw": "77127197108585",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CIS ifrs-full_Revenue 매출액 bfefrmtrm_amount [제 56 기, the year two years back] = 77127197108585 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 27,
+   "end": 36,
+   "text": "2조 4,448억",
+   "quote": "2024년 12월 말의 부채총계는 2조 4,448억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "41,953,800,000,000",
+   "recomputed_raw": "41953831078121",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 57 기, the previous year end] = 41953831078121 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 32,
+   "end": 41,
+   "text": "2조 1,736억",
+   "quote": "영업이익은 2조 1,736억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,173,600,000,000",
+   "recomputed_raw": "2173573272904",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익 frmtrm_amount [제 57 기, the previous year] = 2173573272904 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 30,
+   "end": 39,
+   "text": "1조 9,971억",
+   "quote": "별도 기준 매출액은 2025년 1월부터 12월까지 1조 9,971억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,403,300,000,000",
+   "recomputed_raw": "1403309682120",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기, the year] = 1403309682120 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 42,
+   "end": 51,
+   "text": "4조 5,719억",
+   "quote": "영업활동으로 인한 현금흐름은 4조 5,719억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,571,900,000,000",
+   "recomputed_raw": "4571910292218",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 58 기, the year] = 4571910292218 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 32,
+   "end": 38,
+   "text": "5,044억",
+   "quote": "당기순이익은 2025년 1월부터 12월까지 5,044억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "504,400,000,000",
+   "recomputed_raw": "504403472266",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익 thstrm_amount [제 58 기, the year] = 504403472266 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 31,
+   "end": 41,
+   "text": "72조 6,881억",
+   "quote": "매출액은 72조 6,881억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "72,688,100,000,000",
+   "recomputed_raw": "72688143160111",
+   "sources": [
+    "DART 00155319 (POSCO홀딩스, 005490) 2025 annual CFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 57 기, the previous year] = 72688143160111 KRW (receipt number 20260311004517)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [
+  {
+   "line": 12,
+   "start": 31,
+   "end": 39,
+   "text": "69조 949억"
+  }
+ ],
+ "unbound_claims": [
+  {
+   "id": "c8",
+   "reason": "quote_not_on_line",
+   "note": "line 12 does not contain the quote"
+  }
+ ],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00155319_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260311004517"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00155319_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260311004517"
+   }
+  ]
+ }
+}

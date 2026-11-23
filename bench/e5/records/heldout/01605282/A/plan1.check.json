@@ -1,0 +1,229 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 23,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 56,
+   "end": 60,
+   "text": "3.0%",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 영업이익률(영업이익(손실)을 매출액으로 나눈 비율)은 3.0%이다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "0.4%",
+   "recomputed_raw": "0.362056053040237781685698595890081110523498677066646682055782",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 10 기, the year] = 122524497 KRW (receipt number 20260318000719)",
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 10 기, the year] = 33841306055 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 36,
+   "end": 47,
+   "text": "122,524,497",
+   "quote": "2025년 1월부터 12월까지의 별도 기준 영업이익(손실)은 122,524,497원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "122,524,497",
+   "recomputed_raw": "122524497",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 10 기, the year] = 122524497 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 27,
+   "end": 31,
+   "text": "459억",
+   "quote": "별도 기준 2024년 12월 말의 자산총계는 459억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "45,900,000,000",
+   "recomputed_raw": "45920636631",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS BS ifrs-full_Assets 자산총계 frmtrm_amount [제 9 기, the previous year end] = 45920636631 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 36,
+   "end": 47,
+   "text": "795,505,380",
+   "quote": "별도 기준 당기순이익(손실)은 2025년 1월부터 12월까지 795,505,380원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "795,505,380",
+   "recomputed_raw": "795505380",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 10 기, the year] = 795505380 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 30,
+   "end": 34,
+   "text": "236억",
+   "quote": "별도 기준 매출액은 2024년 1월부터 12월까지 236억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "23,600,000,000",
+   "recomputed_raw": "23630302177",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 9 기, the previous year] = 23630302177 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 63,
+   "end": 68,
+   "text": "43.2%",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 매출액은 한 해 전 같은 기간(2024년 1월부터 12월까지)보다 43.2% 늘었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "43.2%",
+   "recomputed_raw": "43.2114824495923753501817100356075569282805790503370421626581",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 10 기, the year] = 33841306055 KRW (receipt number 20260318000719)",
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 9 기, the previous year] = 23630302177 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 31,
+   "end": 35,
+   "text": "338억",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 매출액은 338억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "33,800,000,000",
+   "recomputed_raw": "33841306055",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 10 기, the year] = 33841306055 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 36,
+   "end": 47,
+   "text": "763,954,130",
+   "quote": "2024년 1월부터 12월까지의 별도 기준 영업이익(손실)은 763,954,130원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,023,815,806",
+   "recomputed_raw": "1023815806",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS dart_OperatingIncomeLoss 영업이익(손실) frmtrm_amount [제 9 기, the previous year] = 1023815806 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 42,
+   "end": 45,
+   "text": "42억",
+   "quote": "2025년 1월부터 12월까지의 별도 기준 영업활동으로 인한 현금흐름은 42억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,200,000,000",
+   "recomputed_raw": "4158176988",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 10 기, the year] = 4158176988 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 27,
+   "end": 41,
+   "text": "45,981,374,075",
+   "quote": "별도 기준 자산총계는 2025년 12월 말에 45,981,374,075원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "45,981,374,075",
+   "recomputed_raw": "45981374075",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 10 기, the year end] = 45981374075 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 30,
+   "end": 34,
+   "text": "236억",
+   "quote": "별도 기준 매출액은 2023년 1월부터 12월까지 236억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "18,800,000,000",
+   "recomputed_raw": "18780047895",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS CIS ifrs-full_Revenue 매출액 bfefrmtrm_amount [제 8 기, the year two years back] = 18780047895 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 27,
+   "end": 31,
+   "text": "123억",
+   "quote": "별도 기준 부채총계는 2024년 12월 말에 123억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "12,700,000,000",
+   "recomputed_raw": "12650385624",
+   "sources": [
+    "DART 01605282 (닷밀, 464580) 2025 annual OFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 9 기, the previous year end] = 12650385624 KRW (receipt number 20260318000719)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01605282_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260318000719"
+   }
+  ]
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "doc": "00126362",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:46:34Z",
+   "set": "heldout",
+   "doc": "00126362",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 13503,
+   "output_tokens": 1437,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0020688,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLBBBYVp1K3vzMF6KNB"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "3조 7,688억원",
+    "should_be": "7조 3,452억원",
+    "why": "Jan–Jun 2026 consolidated 영업수익 is the cumulative Revenue (7,345,161,306,669); 3,768,808,123,247 is the April–June quarter"
+   },
+   {
+    "line": 7,
+    "number": "-8,126억원",
+    "should_be": "482억원 (48,193,813,418)",
+    "why": "Jan–Jun 2026 consolidated 영업손익 cumulative is positive 48,193,813,418, not a loss of about 8,126억"
+   },
+   {
+    "line": 10,
+    "number": "7조 3,452억원",
+    "should_be": "6조 3,562억원 (6,356,223,796,915)",
+    "why": "Jan–Jun 2025 consolidated 영업수익 is the frmtrm_add_amount; 7,345,161,306,669 is the 2026 figure"
+   },
+   {
+    "line": 15,
+    "number": "2,304,813,039,780",
+    "should_be": "3,011,083,006,264",
+    "why": "Separate 영업수익 for April–June 2026 is 3,011,083,006,264"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0020688
+}

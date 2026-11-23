@@ -1,0 +1,229 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 23,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 35,
+   "end": 39,
+   "text": "222억",
+   "quote": "별도 기준 2024년 1월부터 12월까지의 수익(매출액)은 222억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "22,200,000,000",
+   "recomputed_raw": "22184569553",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS ifrs-full_Revenue 수익(매출액) frmtrm_amount [제 24 기, the previous year] = 22184569553 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 37,
+   "end": 40,
+   "text": "31억",
+   "quote": "2025년 1월부터 12월까지의 별도 기준 당기순이익(손실)은 31억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,100,000,000",
+   "recomputed_raw": "3052838767",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 25 기, the year] = 3052838767 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 27,
+   "end": 31,
+   "text": "347억",
+   "quote": "2025년 12월 말의 별도 기준 자산총계는 347억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "34,700,000,000",
+   "recomputed_raw": "34718389461",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 25 기, the year end] = 34718389461 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 35,
+   "end": 38,
+   "text": "21억",
+   "quote": "별도 기준 영업이익(손실)은 2024년 1월부터 12월까지 21억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,100,000,000",
+   "recomputed_raw": "2106589674",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS dart_OperatingIncomeLoss 영업이익(손실) frmtrm_amount [제 24 기, the previous year] = 2106589674 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 27,
+   "end": 30,
+   "text": "45억",
+   "quote": "2024년 12월 말의 별도 기준 부채총계는 45억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "5,800,000,000",
+   "recomputed_raw": "5798957377",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 24 기, the previous year end] = 5798957377 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 60,
+   "end": 64,
+   "text": "8.8%",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 영업이익률(영업이익(손실)을 수익(매출액)으로 나눈 비율)은 8.8%이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "10.8%",
+   "recomputed_raw": "10.8234961305698103120411031999838940631744526138015612660122",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 25 기, the year] = 2598235261 KRW (receipt number 20260331004022)",
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 25 기, the year] = 24005508291 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 35,
+   "end": 39,
+   "text": "262억",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 수익(매출액)은 262억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "24,000,000,000",
+   "recomputed_raw": "24005508291",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 25 기, the year] = 24005508291 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 35,
+   "end": 49,
+   "text": "20,299,291,516",
+   "quote": "2023년 1월부터 12월까지의 별도 기준 수익(매출액)은 20,299,291,516원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "20,299,291,516",
+   "recomputed_raw": "20299291516",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS ifrs-full_Revenue 수익(매출액) bfefrmtrm_amount [제 23 기, the year two years back] = 20299291516 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 27,
+   "end": 31,
+   "text": "347억",
+   "quote": "별도 기준 자산총계는 2024년 12월 말에 347억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "28,400,000,000",
+   "recomputed_raw": "28420899584",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS BS ifrs-full_Assets 자산총계 frmtrm_amount [제 24 기, the previous year end] = 28420899584 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 35,
+   "end": 38,
+   "text": "26억",
+   "quote": "별도 기준 영업이익(손실)은 2025년 1월부터 12월까지 26억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,600,000,000",
+   "recomputed_raw": "2598235261",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 25 기, the year] = 2598235261 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 67,
+   "end": 71,
+   "text": "8.2%",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 수익(매출액)은 한 해 전 같은 기간(2024년 1월부터 12월까지)보다 8.2% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "8.2%",
+   "recomputed_raw": "8.20813193444970872543483151890569386518851425739898826334465",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 25 기, the year] = 24005508291 KRW (receipt number 20260331004022)",
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CIS ifrs-full_Revenue 수익(매출액) frmtrm_amount [제 24 기, the previous year] = 22184569553 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 36,
+   "end": 39,
+   "text": "85억",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 영업활동현금흐름은 85억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "8,500,000,000",
+   "recomputed_raw": "8485726627",
+   "sources": [
+    "DART 00584362 (케이엑스넥스지, 081970) 2025 annual OFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 25 기, the year] = 8485726627 KRW (receipt number 20260331004022)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00584362_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260331004022"
+   }
+  ]
+ }
+}

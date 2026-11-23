@@ -1,0 +1,242 @@
+{
+ "document": "document.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "quote": "매출액은 2023년 1월부터 12월까지 1조 4,163억원",
+   "number": "1조 4,163억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "bfefrmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "quote": "자산총계는 2025년 12월 말에 6,837억원",
+   "number": "6,837억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "quote": "2024년 1월부터 12월까지의 매출액은 1조 9,994억원",
+   "number": "1조 9,994억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "quote": "한 해 전 같은 기간(2024년 1월부터 12월까지)보다 0.7% 줄었다",
+   "number": "0.7%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "down",
+   "operands": {
+    "new": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    },
+    "old": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "quote": "영업이익률(영업이익을 매출액으로 나눈 비율)은 0.6%이다",
+   "number": "0.6%",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    },
+    "den": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "quote": "영업활동으로 인한 현금흐름은 547억원",
+   "number": "547억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "quote": "당기순이익은 2025년 1월부터 12월까지 20,721,382,562원",
+   "number": "20,721,382,562",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "quote": "별도 기준 매출액은 2025년 1월부터 12월까지 403억원",
+   "number": "403억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "quote": "부채총계는 2024년 12월 말에 7,297억원",
+   "number": "7,297억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "quote": "2025년 1월부터 12월까지의 영업이익은 395억원",
+   "number": "395억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "quote": "매출액은 2025년 1월부터 12월까지 19,853억원",
+   "number": "19,853억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "quote": "2024년 1월부터 12월까지의 연결 기준 영업이익은 58,003,101,705원",
+   "number": "58,003,101,705",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "001230",
+     "year": 2025,
+     "report": "annual",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "frmtrm_amount"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,209 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 1,
+  "wrong": 1,
+  "unverifiable": 10,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 22,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 27,
+   "end": 31,
+   "text": "254억",
+   "quote": "별도 기준 자산총계는 2025년 12월 말에 254억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 35,
+   "end": 39,
+   "text": "-82억",
+   "quote": "별도 기준 영업이익(손실)은 2025년 1월부터 12월까지 -82억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 46,
+   "end": 52,
+   "text": "197.3%",
+   "quote": "별도 기준 2025년 12월 말의 부채비율(부채총계를 자본총계로 나눈 비율)은 197.3%이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "59.1%",
+   "recomputed_raw": "59.0937373159127743445389192813372035782039786223390212372196",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 17 기, the year end] = 9420994410 KRW (receipt number 20260325000345)",
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS BS ifrs-full_Equity 자본총계 thstrm_amount [제 17 기, the year end] = 15942458267 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 63,
+   "end": 69,
+   "text": "134.6%",
+   "quote": "한 해 전 같은 기간(2024년 1월부터 12월까지)보다 134.6% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "134.6%",
+   "recomputed_raw": "134.582372549733439948051159612315335008443211313445734883192",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 17 기, the year] = 10884865055 KRW (receipt number 20260325000345)",
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 16 기, the previous year] = 4640103575 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 36,
+   "end": 41,
+   "text": "-192억",
+   "quote": "별도 기준 2024년 1월부터 12월까지의 영업이익(손실)은 -192억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 30,
+   "end": 33,
+   "text": "54억",
+   "quote": "별도 기준 매출액은 2023년 1월부터 12월까지 54억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 27,
+   "end": 31,
+   "text": "315억",
+   "quote": "별도 기준 부채총계는 2024년 12월 말에 315억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 30,
+   "end": 34,
+   "text": "120억",
+   "quote": "별도 기준 매출액은 2025년 1월부터 12월까지 120억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 41,
+   "end": 46,
+   "text": "-101억",
+   "quote": "별도 기준 영업활동으로 인한 현금흐름은 2025년 1월부터 12월까지 -101억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 27,
+   "end": 31,
+   "text": "573억",
+   "quote": "별도 기준 2024년 12월 말의 자산총계는 573억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 30,
+   "end": 34,
+   "text": "109억",
+   "quote": "별도 기준 매출액은 2024년 1월부터 12월까지 109억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 37,
+   "end": 52,
+   "text": "-24,099,001,800",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 당기순이익(손실)은 -24,099,001,800원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01049167_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260325000345"
+   }
+  ]
+ }
+}

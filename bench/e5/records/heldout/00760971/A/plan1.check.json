@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 31,
+   "end": 37,
+   "text": "8,259억",
+   "quote": "별도 기준 영업수익은 8,259억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "983,100,000,000",
+   "recomputed_raw": "983112543333",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half OFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 20 기 반기, the three months] = 983112543333 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 31,
+   "end": 38,
+   "text": "2조 240억",
+   "quote": "영업수익은 2조 240억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2,661,600,000,000",
+   "recomputed_raw": "2661645610446",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_add_amount [제 20 기 반기, from the start of the business year to the period end] = 2661645610446 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 27,
+   "end": 34,
+   "text": "22,495억",
+   "quote": "부채총계는 22,495억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,249,500,000,000",
+   "recomputed_raw": "2249503836253",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 19 기말, the end of the previous business year] = 2249503836253 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 31,
+   "end": 37,
+   "text": "9,725억",
+   "quote": "2026년 4월부터 6월까지의 영업이익은 9,725억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "410,900,000,000",
+   "recomputed_raw": "410921666864",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 20 기 반기, the three months] = 410921666864 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 31,
+   "end": 37,
+   "text": "9,725억",
+   "quote": "2026년 1월부터 6월까지의 영업이익은 9,725억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "972,500,000,000",
+   "recomputed_raw": "972484871433",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_add_amount [제 20 기 반기, from the start of the business year to the period end] = 972484871433 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 41,
+   "end": 56,
+   "text": "458,676,015,045",
+   "quote": "2026년 1월부터 6월까지의 영업활동으로 인한 현금흐름은 458,676,015,045원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "458,676,015,045",
+   "recomputed_raw": "458676015045",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 20 기 반기, from the start of the business year to the period end] = 458676015045 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 31,
+   "end": 37,
+   "text": "6,620억",
+   "quote": "2025년 4월부터 6월까지의 영업수익은 6,620억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "662,000,000,000",
+   "recomputed_raw": "662048249145",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS ifrs-full_Revenue 영업수익 frmtrm_q_amount [제 19 기 반기, the same three months a year earlier] = 662048249145 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 26,
+   "end": 43,
+   "text": "9,433,648,042,482",
+   "quote": "2026년 6월 말의 자산총계는 9,433,648,042,482원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "9,714,275,478,495",
+   "recomputed_raw": "9714275478495",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 20 기 반기말, the period end] = 9714275478495 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 36,
+   "end": 41,
+   "text": "-299억",
+   "quote": "반기순이익(손실)은 -299억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-29,900,000,000",
+   "recomputed_raw": "-29900848684",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS ifrs-full_ProfitLoss 반기순이익(손실) thstrm_amount [제 20 기 반기, the three months] = -29900848684 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 62,
+   "end": 67,
+   "text": "94.9%",
+   "quote": "영업수익은 한 해 전 같은 기간(2025년 4월부터 6월까지)보다 94.9% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "94.9%",
+   "recomputed_raw": "94.8846786048092419353300939239809640838167373626670117247199",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 20 기 반기, the three months] = 1290230602555 KRW (receipt number 20260814003894)",
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS ifrs-full_Revenue 영업수익 frmtrm_q_amount [제 19 기 반기, the same three months a year earlier] = 662048249145 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 52,
+   "end": 57,
+   "text": "31.8%",
+   "quote": "영업이익률(영업이익을 영업수익으로 나눈 비율)은 31.8%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "31.8%",
+   "recomputed_raw": "31.8486994534361321894479035421734738346360521541690971723178",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 20 기 반기, the three months] = 410921666864 KRW (receipt number 20260814003894)",
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 20 기 반기, the three months] = 1290230602555 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 31,
+   "end": 38,
+   "text": "12,902억",
+   "quote": "2026년 4월부터 6월까지의 영업수익은 12,902억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,290,200,000,000",
+   "recomputed_raw": "1290230602555",
+   "sources": [
+    "DART 00760971 (크래프톤, 259960) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 20 기 반기, the three months] = 1290230602555 KRW (receipt number 20260814003894)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00760971_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814003894"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00760971_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814003894"
+   }
+  ]
+ }
+}

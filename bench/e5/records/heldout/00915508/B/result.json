@@ -1,0 +1,54 @@
+{
+ "doc": "00915508",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T06:01:57Z",
+   "set": "heldout",
+   "doc": "00915508",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 11110,
+   "output_tokens": 1124,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.001673,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKMMGKX84Us2qDz1G9Gt"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "143억원",
+    "should_be": "186억원 (18,651,545,847원, about 186.5억)",
+    "why": "143억 is the 2024 consolidated revenue; 2025 consolidated revenue is 18,651,545,847원"
+   },
+   {
+    "line": 6,
+    "number": "27.3%",
+    "should_be": "30.4%",
+    "why": "18,651,545,847 / 14,303,142,292 − 1 ≈ 30.4%"
+   },
+   {
+    "line": 9,
+    "number": "135억원",
+    "should_be": "147억원 (14,686,648,669원, about 146.9억)",
+    "why": "2023 consolidated revenue is 14,686,648,669원"
+   },
+   {
+    "line": 12,
+    "number": "1,990,445,887원",
+    "should_be": "-4,317,834,535원",
+    "why": "1,990,445,887 is the separate-statement operating cash flow; consolidated is -4,317,834,535"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.001673
+}

@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 29,
+   "end": 43,
+   "text": "49,207,815,068",
+   "quote": "49,207,815,068원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "65,985,887,559",
+   "recomputed_raw": "65985887559",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS ifrs-full_Revenue 수익 thstrm_add_amount [제 8 기 3분기, from the start of the business year to the period end] = 65985887559 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 35,
+   "end": 38,
+   "text": "13억",
+   "quote": "영업이익(손실)은 13억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,000,000,000",
+   "recomputed_raw": "1027488515",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 8 기 3분기, the three months] = 1027488515 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 60,
+   "end": 64,
+   "text": "2.5%",
+   "quote": "2.5% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2.5%",
+   "recomputed_raw": "2.49026273292312025594986245713647031578495303421817143989122",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 8 기 3분기, the three months] = 23482503132 KRW (receipt number 20261116000277)",
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS ifrs-full_Revenue 수익 frmtrm_q_amount [제 7 기 3분기, the same three months a year earlier] = 22911935735 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 29,
+   "end": 33,
+   "text": "660억",
+   "quote": "별도 기준 수익은 660억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "23,500,000,000",
+   "recomputed_raw": "23482503132",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 OFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 8 기 3분기, the three months] = 23482503132 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 28,
+   "end": 32,
+   "text": "235억",
+   "quote": "연결 기준 수익은 2026년 7월부터 9월까지 235억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "23,500,000,000",
+   "recomputed_raw": "23482503132",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 8 기 3분기, the three months] = 23482503132 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 54,
+   "end": 58,
+   "text": "4.4%",
+   "quote": "영업이익률(영업이익(손실)을 수익으로 나눈 비율)은 4.4%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4.4%",
+   "recomputed_raw": "4.37554935785284408410059953569348468893882483737253739377038",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 8 기 3분기, the three months] = 1027488515 KRW (receipt number 20261116000277)",
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 8 기 3분기, the three months] = 23482503132 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 26,
+   "end": 32,
+   "text": "1,413억",
+   "quote": "자산총계는 1,413억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "141,300,000,000",
+   "recomputed_raw": "141308732049",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 8 기 3분기말, the period end] = 141308732049 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 35,
+   "end": 38,
+   "text": "24억",
+   "quote": "영업이익(손실)은 24억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,400,000,000",
+   "recomputed_raw": "2382897118",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_add_amount [제 8 기 3분기, from the start of the business year to the period end] = 2382897118 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 27,
+   "end": 31,
+   "text": "597억",
+   "quote": "부채총계는 2025년 12월 말에 597억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "59,700,000,000",
+   "recomputed_raw": "59721506743",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 7 기말, the end of the previous business year] = 59721506743 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 35,
+   "end": 45,
+   "text": "43,116,497",
+   "quote": "당기순이익(손실)은 2026년 7월부터 9월까지 43,116,497원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "43,116,497",
+   "recomputed_raw": "43116497",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 8 기 3분기, the three months] = 43116497 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 35,
+   "end": 40,
+   "text": "-136억",
+   "quote": "영업활동현금흐름은 -136억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-13,600,000,000",
+   "recomputed_raw": "-13588998407",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 8 기 3분기, from the start of the business year to the period end] = -13588998407 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 29,
+   "end": 33,
+   "text": "603억",
+   "quote": "603억",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "49,200,000,000",
+   "recomputed_raw": "49207815068",
+   "sources": [
+    "DART 01563922 (엠오티, 413390) 2026 q3 CFS CIS ifrs-full_Revenue 수익 frmtrm_add_amount [제 7 기 3분기, the same cumulative period a year earlier] = 49207815068 KRW (receipt number 20261116000277)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01563922_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116000277"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01563922_2026_11014_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116000277"
+   }
+  ]
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "doc": "00149655",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:48:46Z",
+   "set": "heldout",
+   "doc": "00149655",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 13219,
+   "output_tokens": 2061,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0023524,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLLhRUeqzfgaVYSfX98"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 7,
+    "number": "5,265억원",
+    "should_be": "9,155억원",
+    "why": "Consolidated Q2 2026 net income (ProfitLoss, three months) is 915,543,902,093 won"
+   },
+   {
+    "line": 9,
+    "number": "19조 9,335억원",
+    "should_be": "29조 358억원",
+    "why": "That is the separate-statement liabilities figure; consolidated 부채총계 at 2025 year-end is 29,035,796,293,982 won"
+   },
+   {
+    "line": 12,
+    "number": "11조 9,951억원",
+    "should_be": "22조 4,609억원",
+    "why": "Cumulative Jan–Jun 2026 consolidated revenue is 22,460,878,797,270 won; 11조 9,951억 is the Q2 figure"
+   },
+   {
+    "line": 14,
+    "number": "5.2%",
+    "should_be": "8.6%",
+    "why": "Q2 operating income 1,031,736,010,472 divided by Q2 revenue 11,995,055,624,406 is about 8.6%"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0023524
+}

@@ -1,0 +1,54 @@
+{
+ "doc": "00303396",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:52:21Z",
+   "set": "heldout",
+   "doc": "00303396",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 10624,
+   "output_tokens": 1122,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0016234,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLcpxc2ZFzkKgGuk5e6"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 7,
+    "number": "120,541,641,791",
+    "should_be": "132,581,967,749",
+    "why": "120,541,641,791 is the separate-statement figure; consolidated 2025-12-31 total liabilities is 132,581,967,749"
+   },
+   {
+    "line": 8,
+    "number": "71.2%",
+    "should_be": "22.1%",
+    "why": "99,525.2m vs 127,799.1m is about -22.1%, not -71.2%"
+   },
+   {
+    "line": 12,
+    "number": "81억원",
+    "should_be": "2.3억원 (234,131,474원)",
+    "why": "consolidated Q3 net income is 234,131,474 won, not 8.1 billion"
+   },
+   {
+    "line": 14,
+    "number": "995억원",
+    "should_be": "2,604억원 (260,368,783,374원)",
+    "why": "995억 is the Q3 revenue; the Jan-Sep consolidated revenue is about 260.4 billion"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0016234
+}

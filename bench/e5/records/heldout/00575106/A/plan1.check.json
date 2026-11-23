@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 35,
+   "end": 38,
+   "text": "36억",
+   "quote": "영업이익(손실)은 36억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,600,000,000",
+   "recomputed_raw": "1550746846",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 23 기 반기, the three months] = 1550746846 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 27,
+   "end": 31,
+   "text": "145억",
+   "quote": "연결 기준 2025년 12월 말의 부채총계는 145억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "14,500,000,000",
+   "recomputed_raw": "14536970813",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 22 기말, the end of the previous business year] = 14536970813 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 34,
+   "end": 48,
+   "text": "31,506,665,890",
+   "quote": "영업활동현금흐름은 2026년 1월부터 6월까지 31,506,665,890원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "31,506,665,890",
+   "recomputed_raw": "31506665890",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 23 기 반기, from the start of the business year to the period end] = 31506665890 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 28,
+   "end": 31,
+   "text": "25억",
+   "quote": "연결 기준 수익은 2026년 4월부터 6월까지 25억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "48,000,000,000",
+   "recomputed_raw": "47984708165",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 23 기 반기, the three months] = 47984708165 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 60,
+   "end": 64,
+   "text": "1.2%",
+   "quote": "1.2% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1.2%",
+   "recomputed_raw": "1.19639269228458703235779070204436687983454576614331949377377",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 23 기 반기, the three months] = 47984708165 KRW (receipt number 20260813001289)",
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS ifrs-full_Revenue 수익 frmtrm_q_amount [제 22 기 반기, the same three months a year earlier] = 47417409740 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 26,
+   "end": 32,
+   "text": "1,561억",
+   "quote": "1,561억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "156,100,000,000",
+   "recomputed_raw": "156075345640",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 23 기 반기말, the period end] = 156075345640 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 28,
+   "end": 32,
+   "text": "367억",
+   "quote": "수익은 2025년 4월부터 6월까지 367억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "47,400,000,000",
+   "recomputed_raw": "47417409740",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS ifrs-full_Revenue 수익 frmtrm_q_amount [제 22 기 반기, the same three months a year earlier] = 47417409740 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 29,
+   "end": 33,
+   "text": "967억",
+   "quote": "수익은 967억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "89,700,000,000",
+   "recomputed_raw": "89730498673",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS ifrs-full_Revenue 수익 thstrm_add_amount [제 23 기 반기, from the start of the business year to the period end] = 89730498673 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 54,
+   "end": 58,
+   "text": "3.2%",
+   "quote": "영업이익률(영업이익(손실)을 수익으로 나눈 비율)은 3.2%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3.2%",
+   "recomputed_raw": "3.23175216710208786574580181152592824151856545942587999482522",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 23 기 반기, the three months] = 1550746846 KRW (receipt number 20260813001289)",
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 23 기 반기, the three months] = 47984708165 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 28,
+   "end": 31,
+   "text": "25억",
+   "quote": "별도 기준 수익은 2026년 4월부터 6월까지 25억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,500,000,000",
+   "recomputed_raw": "2536825113",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half OFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 23 기 반기, the three months] = 2536825113 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 36,
+   "end": 39,
+   "text": "27억",
+   "quote": "당기순이익(손실)은 27억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,700,000,000",
+   "recomputed_raw": "2685956229",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 23 기 반기, the three months] = 2685956229 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 34,
+   "end": 47,
+   "text": "3,569,111,793",
+   "quote": "영업이익(손실)은 2026년 1월부터 6월까지 3,569,111,793원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,569,111,793",
+   "recomputed_raw": "3569111793",
+   "sources": [
+    "DART 00575106 (씨유테크, 376290) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_add_amount [제 23 기 반기, from the start of the business year to the period end] = 3569111793 KRW (receipt number 20260813001289)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00575106_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260813001289"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00575106_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260813001289"
+   }
+  ]
+ }
+}

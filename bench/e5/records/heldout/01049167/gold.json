@@ -1,0 +1,483 @@
+{
+ "document": {
+  "corp_code": "01049167",
+  "company": "롤링스톤",
+  "group": "drawn",
+  "report": "annual",
+  "year": 2025,
+  "fs": "OFS",
+  "other_statements": false,
+  "statements": 12,
+  "planted": [
+   "b",
+   "d",
+   "d",
+   "e"
+  ],
+  "replaced_by_d": [
+   "c"
+  ],
+  "slots_filled_from_another_kind": [
+   "other_statements"
+  ],
+  "passed_over": []
+ },
+ "statements": [
+  {
+   "id": "s01",
+   "line": 5,
+   "slot": "balance_end",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "254억",
+   "written": "254억원",
+   "way": "eok",
+   "truth": "25363452677",
+   "shown": "25400000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount",
+     "role": "end0",
+     "period": [
+      "2025-12-31"
+     ],
+     "name": "자산총계",
+     "value": "25363452677"
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "line": 6,
+   "slot": "income_year",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "-82억",
+   "written": "-82억원",
+   "way": "eok",
+   "truth": "-9935154074",
+   "shown": "-8200000000",
+   "planted": "d",
+   "planted_detail": {
+    "kind": "d",
+    "factor": 0.822,
+    "shown_value": -8166649890,
+    "recognisable": []
+   },
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount",
+     "role": "year0",
+     "period": [
+      "2025-01-01",
+      "2025-12-31"
+     ],
+     "name": "영업이익(손실)",
+     "value": "-9935154074"
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "line": 7,
+   "slot": "debt_ratio",
+   "kind": "debt_ratio",
+   "fs": "OFS",
+   "number": "197.3%",
+   "written": "197.3%",
+   "way": "percent",
+   "truth": "59.09373731591277434453891928",
+   "shown": "197.3",
+   "planted": "e",
+   "planted_detail": {
+    "kind": "e",
+    "how": "input_b",
+    "shown_percent": "197.3093429142736610558379704",
+    "shown_cell": {
+     "fs": "OFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "role": "end1",
+     "column": "frmtrm_amount"
+    },
+    "recognisable": []
+   },
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "thstrm_amount",
+     "role": "end0",
+     "period": [
+      "2025-12-31"
+     ],
+     "name": "부채총계",
+     "value": "9420994410"
+    },
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "BS",
+     "account": "ifrs-full_Equity",
+     "column": "thstrm_amount",
+     "role": "end0",
+     "period": [
+      "2025-12-31"
+     ],
+     "name": "자본총계",
+     "value": "15942458267"
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "line": 8,
+   "slot": "percent_change",
+   "kind": "pct_change",
+   "fs": "OFS",
+   "number": "134.6%",
+   "written": "134.6%",
+   "way": "percent",
+   "truth": "134.5823725497334399480511596",
+   "shown": "134.6",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount",
+     "role": "year0",
+     "period": [
+      "2025-01-01",
+      "2025-12-31"
+     ],
+     "name": "매출액",
+     "value": "10884865055"
+    },
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_amount",
+     "role": "year1",
+     "period": [
+      "2024-01-01",
+      "2024-12-31"
+     ],
+     "name": "매출액",
+     "value": "4640103575"
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "line": 9,
+   "slot": "income_previous_year",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "-192억",
+   "written": "-192억원",
+   "way": "eok",
+   "truth": "-19234571811",
+   "shown": "-19200000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "frmtrm_amount",
+     "role": "year1",
+     "period": [
+      "2024-01-01",
+      "2024-12-31"
+     ],
+     "name": "영업이익(손실)",
+     "value": "-19234571811"
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "line": 10,
+   "slot": "income_year_before",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "54억",
+   "written": "54억원",
+   "way": "eok",
+   "truth": "5367423455",
+   "shown": "5400000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "bfefrmtrm_amount",
+     "role": "year2",
+     "period": [
+      "2023-01-01",
+      "2023-12-31"
+     ],
+     "name": "매출액",
+     "value": "5367423455"
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "line": 11,
+   "slot": "balance_previous_end",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "315억",
+   "written": "315억원",
+   "way": "eok",
+   "truth": "31455959651",
+   "shown": "31500000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "frmtrm_amount",
+     "role": "end1",
+     "period": [
+      "2024-12-31"
+     ],
+     "name": "부채총계",
+     "value": "31455959651"
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "line": 12,
+   "slot": "income_year",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "120억",
+   "written": "120억원",
+   "way": "eok",
+   "truth": "10884865055",
+   "shown": "12000000000",
+   "planted": "d",
+   "planted_detail": {
+    "kind": "d",
+    "factor": 1.0985,
+    "shown_value": 11957328558,
+    "recognisable": []
+   },
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount",
+     "role": "year0",
+     "period": [
+      "2025-01-01",
+      "2025-12-31"
+     ],
+     "name": "매출액",
+     "value": "10884865055"
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "line": 13,
+   "slot": "cash_flow",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "-101억",
+   "written": "-101억원",
+   "way": "eok",
+   "truth": "-10099915005",
+   "shown": "-10100000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount",
+     "role": "year0",
+     "period": [
+      "2025-01-01",
+      "2025-12-31"
+     ],
+     "name": "영업활동으로 인한 현금흐름",
+     "value": "-10099915005"
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "line": 14,
+   "slot": "fill:other_statements",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "573억",
+   "written": "573억원",
+   "way": "eok",
+   "truth": "57341136759",
+   "shown": "57300000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "frmtrm_amount",
+     "role": "end1",
+     "period": [
+      "2024-12-31"
+     ],
+     "name": "자산총계",
+     "value": "57341136759"
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "line": 15,
+   "slot": "income_previous_year",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "109억",
+   "written": "109억원",
+   "way": "eok",
+   "truth": "4640103575",
+   "shown": "10900000000",
+   "planted": "b",
+   "planted_detail": {
+    "kind": "b",
+    "shown_value": 10884865055,
+    "shown_cell": {
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "role": "year0",
+     "column": "thstrm_amount"
+    },
+    "recognisable": []
+   },
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_amount",
+     "role": "year1",
+     "period": [
+      "2024-01-01",
+      "2024-12-31"
+     ],
+     "name": "매출액",
+     "value": "4640103575"
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "line": 16,
+   "slot": "income_year",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "-24,099,001,800",
+   "written": "-24,099,001,800원",
+   "way": "won",
+   "truth": "-24099001800",
+   "shown": "-24099001800",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01049167",
+     "year": 2025,
+     "report": "annual",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount",
+     "role": "year0",
+     "period": [
+      "2025-01-01",
+      "2025-12-31"
+     ],
+     "name": "당기순이익(손실)",
+     "value": "-24099001800"
+    }
+   ]
+  }
+ ]
+}

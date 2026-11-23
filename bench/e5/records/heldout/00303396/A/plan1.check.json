@@ -1,0 +1,209 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 1,
+  "wrong": 1,
+  "unverifiable": 10,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 35,
+   "end": 39,
+   "text": "-62억",
+   "quote": "영업활동현금흐름은 -62억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 29,
+   "end": 33,
+   "text": "995억",
+   "quote": "2026년 7월부터 9월까지의 연결 기준 수익은 995억원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 27,
+   "end": 42,
+   "text": "120,541,641,791",
+   "quote": "부채총계는 2025년 12월 말에 120,541,641,791원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 60,
+   "end": 65,
+   "text": "71.2%",
+   "quote": "수익은 한 해 전 같은 기간(2025년 7월부터 9월까지)보다 71.2% 줄었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-22.1%",
+   "recomputed_raw": "-22.1237205473009081933344160264433564000284860007270659261148",
+   "sources": [
+    "DART 00303396 (한국컴퓨터, 054040) 2026 q3 CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 33 기 3분기, the three months] = 99525204607 KRW (receipt number 20261116000239)",
+    "DART 00303396 (한국컴퓨터, 054040) 2026 q3 CFS CIS ifrs-full_Revenue 수익 frmtrm_q_amount [제 32 기 3분기, the same three months a year earlier] = 127799126135 KRW (receipt number 20261116000239)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 26,
+   "end": 41,
+   "text": "314,233,955,599",
+   "quote": "자산총계는 314,233,955,599원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 54,
+   "end": 58,
+   "text": "5.0%",
+   "quote": "영업이익률(영업이익(손실)을 수익으로 나눈 비율)은 5.0%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5.0%",
+   "recomputed_raw": "4.98264026040617170634941651811036904287084898592515987752638",
+   "sources": [
+    "DART 00303396 (한국컴퓨터, 054040) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 33 기 3분기, the three months] = 4958982914 KRW (receipt number 20261116000239)",
+    "DART 00303396 (한국컴퓨터, 054040) 2026 q3 CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 33 기 3분기, the three months] = 99525204607 KRW (receipt number 20261116000239)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 28,
+   "end": 34,
+   "text": "1,278억",
+   "quote": "수익은 2025년 7월부터 9월까지 1,278억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 36,
+   "end": 39,
+   "text": "81억",
+   "quote": "당기순이익(손실)은 81억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 34,
+   "end": 37,
+   "text": "50억",
+   "quote": "영업이익(손실)은 2026년 7월부터 9월까지 50억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 29,
+   "end": 33,
+   "text": "995억",
+   "quote": "2026년 1월부터 9월까지의 연결 기준 수익은 995억원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 35,
+   "end": 39,
+   "text": "113억",
+   "quote": "2026년 1월부터 9월까지의 영업이익(손실)은 113억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 29,
+   "end": 33,
+   "text": "368억",
+   "quote": "별도 기준 2026년 7월부터 9월까지의 수익은 368억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00303396_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116000239"
+   }
+  ]
+ }
+}

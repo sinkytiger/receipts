@@ -1,0 +1,54 @@
+{
+ "doc": "00356361",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:45:51Z",
+   "set": "heldout",
+   "doc": "00356361",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 14508,
+   "output_tokens": 1649,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0022753,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKL7tUsdBhemUVRpqQKw"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "7.2%",
+    "should_be": "3.6%",
+    "why": "Q3 2026 consolidated operating income 561,186 / revenue 15,495,953 = 3.62%"
+   },
+   {
+    "line": 9,
+    "number": "101,061,661백만원",
+    "should_be": "102,222,028백만원",
+    "why": "101,061,661 is the 2025 year-end total; 2026 Q3-end consolidated total assets is 102,222,028,000,000 won"
+   },
+   {
+    "line": 14,
+    "number": "41조 9,186억원",
+    "should_be": "15조 4,960억원",
+    "why": "41조 9,186억 is the nine-month revenue; Q3 consolidated revenue is 15,495,953 million won"
+   },
+   {
+    "line": 15,
+    "number": "12,431,555,000,000원",
+    "should_be": "53,956,116,000,000원",
+    "why": "12,431,555 is the separate-statement liabilities; consolidated 2025 year-end total liabilities is 53,956,116 million won"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0022753
+}

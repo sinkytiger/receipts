@@ -1,0 +1,230 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 36,
+   "end": 39,
+   "text": "69억",
+   "quote": "영업이익(손실)은 69억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "300,000,000",
+   "recomputed_raw": "286520518",
+   "sources": [
+    "DART 00815095 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 18 기, the year] = 286520518 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 35,
+   "end": 50,
+   "text": "119,952,903,890",
+   "quote": "수익(매출액)은 119,952,903,890원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "119,952,903,890",
+   "recomputed_raw": "119952903890",
+   "sources": [
+    "DART 00815095 2025 annual OFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 18 기, the year] = 119952903890 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 36,
+   "end": 47,
+   "text": "-96,474,580",
+   "quote": "12월까지 -96,474,580원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-1,391,425,848",
+   "recomputed_raw": "-1391425848",
+   "sources": [
+    "DART 00815095 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 18 기, the year] = -1391425848 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 34,
+   "end": 40,
+   "text": "1,469억",
+   "quote": "12월까지 1,469억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "146,900,000,000",
+   "recomputed_raw": "146852886071",
+   "sources": [
+    "DART 00815095 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) frmtrm_amount [제 17 기, the previous year] = 146852886071 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 27,
+   "end": 33,
+   "text": "1,220억",
+   "quote": "자산총계는 1,220억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "122,000,000,000",
+   "recomputed_raw": "122006821491",
+   "sources": [
+    "DART 00815095 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 18 기, the year end] = 122006821491 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 36,
+   "end": 49,
+   "text": "6,645,819,070",
+   "quote": "영업이익(손실)은 6,645,819,070원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "6,867,545,117",
+   "recomputed_raw": "6867545117",
+   "sources": [
+    "DART 00815095 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) frmtrm_amount [제 17 기, the previous year] = 6867545117 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 60,
+   "end": 64,
+   "text": "0.2%",
+   "quote": "영업이익률(영업이익(손실)을 수익(매출액)으로 나눈 비율)은 0.2%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.2%",
+   "recomputed_raw": "0.236381933680340699312355458134345543051276062457667853438389",
+   "sources": [
+    "DART 00815095 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 18 기, the year] = 286520518 KRW (receipt number 20260323000560)",
+    "DART 00815095 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 18 기, the year] = 121210836014 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 35,
+   "end": 41,
+   "text": "1,212억",
+   "quote": "수익(매출액)은 1,212억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "121,200,000,000",
+   "recomputed_raw": "121210836014",
+   "sources": [
+    "DART 00815095 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 18 기, the year] = 121210836014 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 27,
+   "end": 31,
+   "text": "307억",
+   "quote": "부채총계는 2024년 12월 말에 307억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "30,700,000,000",
+   "recomputed_raw": "30703657379",
+   "sources": [
+    "DART 00815095 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 17 기, the previous year end] = 30703657379 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 36,
+   "end": 50,
+   "text": "10,132,629,159",
+   "quote": "영업활동현금흐름은 10,132,629,159원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "10,132,629,159",
+   "recomputed_raw": "10132629159",
+   "sources": [
+    "DART 00815095 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 18 기, the year] = 10132629159 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 67,
+   "end": 72,
+   "text": "17.5%",
+   "quote": "보다 17.5% 늘었다",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "-17.5%",
+   "recomputed_raw": "-17.4610460461789340028448312946196847509146152067114453598378",
+   "sources": [
+    "DART 00815095 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 18 기, the year] = 121210836014 KRW (receipt number 20260323000560)",
+    "DART 00815095 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) frmtrm_amount [제 17 기, the previous year] = 146852886071 KRW (receipt number 20260323000560)"
+   ],
+   "note": "the sentence says up, the recomputed change is -17.4610460461789340028448312946196847509146152067114453598378"
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 35,
+   "end": 41,
+   "text": "1,420억",
+   "quote": "수익(매출액)은 1,420억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "142,000,000,000",
+   "recomputed_raw": "141964383578",
+   "sources": [
+    "DART 00815095 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) bfefrmtrm_amount [제 16 기, the year two years back] = 141964383578 KRW (receipt number 20260323000560)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "fnlttSinglAcntAll/00815095_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260323000560"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00815095_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260323000560"
+   }
+  ]
+ }
+}

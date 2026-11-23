@@ -1,0 +1,54 @@
+{
+ "doc": "01423837",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:57:07Z",
+   "set": "heldout",
+   "doc": "01423837",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 9661,
+   "output_tokens": 1213,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0015726,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLyrPkqh5CoozaTSeEr"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "-83억원",
+    "should_be": "-87억원 (-8,706,917,708원)",
+    "why": "연결 영업활동현금흐름 상반기 값은 -8,706,917,708원이다"
+   },
+   {
+    "line": 8,
+    "number": "-131억원",
+    "should_be": "-95억원 (-9,486,405,905원)",
+    "why": "-131억은 누적 반기순손실이고, 2026년 4~6월 3개월 값은 -9,486,405,905원이다"
+   },
+   {
+    "line": 9,
+    "number": "-20억원",
+    "should_be": "-37억원 (-3,698,535,545원)",
+    "why": "연결 영업손실 상반기 누계는 -3,698,535,545원이다"
+   },
+   {
+    "line": 12,
+    "number": "197.9%",
+    "should_be": "78.2% 증가",
+    "why": "6,533,798,783 / 3,666,268,459 - 1 ≈ 78.2%"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0015726
+}

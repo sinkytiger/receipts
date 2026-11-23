@@ -1,0 +1,54 @@
+{
+ "doc": "00164788",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:44:14Z",
+   "set": "heldout",
+   "doc": "00164788",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 12216,
+   "output_tokens": 1340,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0018916,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKKzqJgj1vqiwVK29T5S"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 7,
+    "number": "8조 9,305억원",
+    "should_be": "9조 9,145억원",
+    "why": "별도 2026년 4~6월 매출액은 9,914,503백만원"
+   },
+   {
+    "line": 12,
+    "number": "1,777,806백만원",
+    "should_be": "975,158백만원",
+    "why": "1,777,806은 1~6월 누계이고, 4~6월 분기 영업이익은 975,158백만원"
+   },
+   {
+    "line": 14,
+    "number": "5,273억원",
+    "should_be": "1조 602억원",
+    "why": "5,273억원은 별도 분기 반기순이익이고, 연결 4~6월 반기순이익은 1,060,230백만원"
+   },
+   {
+    "line": 16,
+    "number": "23조 7,713억원",
+    "should_be": "21조 1,877억원",
+    "why": "23조 7,713억원은 2026년 6월 말 부채총계이고, 2025년 말 부채총계는 21,187,737백만원"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0018916
+}

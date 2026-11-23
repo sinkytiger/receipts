@@ -1,0 +1,54 @@
+{
+ "doc": "01095722",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:54:55Z",
+   "set": "heldout",
+   "doc": "01095722",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 10717,
+   "output_tokens": 1351,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0017472,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLp86JAGkhByLmKh2Tv"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 8,
+    "number": "174.9%",
+    "should_be": "51.0%",
+    "why": "Q2 consolidated revenue 514,564,784,270 vs 340,767,377,716 a year earlier is +51.0%, not +174.9%"
+   },
+   {
+    "line": 10,
+    "number": "-480억원",
+    "should_be": "-473억원",
+    "why": "Consolidated operating cash flow Jan-Jun 2026 is -47,330,594,250 won, i.e. -473억"
+   },
+   {
+    "line": 12,
+    "number": "1조 1,901억원",
+    "should_be": "1조 439억원",
+    "why": "Consolidated liabilities at 2025 year-end were 1,043,963,591,400; 1,190,130,012,203 is the 2026 June figure"
+   },
+   {
+    "line": 14,
+    "number": "5,146억원",
+    "should_be": "9,369억원",
+    "why": "Consolidated revenue Jan-Jun 2026 is 936,936,204,100; 5,146억 is the Q2 figure"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0017472
+}

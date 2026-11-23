@@ -1,0 +1,209 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 1,
+  "wrong": 1,
+  "unverifiable": 10,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 29,
+   "end": 39,
+   "text": "41조 9,186억",
+   "quote": "매출은 41조 9,186억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 53,
+   "end": 57,
+   "text": "7.2%",
+   "quote": "은 7.2%이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3.6%",
+   "recomputed_raw": "3.62150040078206225844902859475632121496496536869981471936576",
+   "sources": [
+    "DART 00356361 (LG화학, 051910) 2026 q3 CFS IS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 26 기 3분기, the three months] = 561186000000 KRW (receipt number 20261116000765)",
+    "DART 00356361 (LG화학, 051910) 2026 q3 CFS IS ifrs-full_Revenue 매출 thstrm_amount [제 26 기 3분기, the three months] = 15495953000000 KRW (receipt number 20261116000765)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 35,
+   "end": 46,
+   "text": "1,562,468백만",
+   "quote": "영업활동현금흐름은 1,562,468백만원으로",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 35,
+   "end": 41,
+   "text": "5,612억",
+   "quote": "영업이익(손실)은 5,612억원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 26,
+   "end": 39,
+   "text": "101,061,661백만",
+   "quote": "자산총계는 101,061,661백만원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 35,
+   "end": 42,
+   "text": "11,111억",
+   "quote": "영업이익(손실)은 11,111억원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 28,
+   "end": 37,
+   "text": "4조 7,275억",
+   "quote": "별도 기준 매출은 2026년 7월부터 9월까지 4조 7,275억원이었다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 29,
+   "end": 47,
+   "text": "11,561,666,000,000",
+   "quote": "매출은 11,561,666,000,000원으로 집계됐다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 36,
+   "end": 43,
+   "text": "-6,000억",
+   "quote": "당기순이익(손실)은 -6,000억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 29,
+   "end": 39,
+   "text": "41조 9,186억",
+   "quote": "매출은 41조 9,186억원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 28,
+   "end": 46,
+   "text": "12,431,555,000,000",
+   "quote": "부채 총계는 12,431,555,000,000원이다",
+   "verdict": "unverifiable",
+   "reason": "unsupported",
+   "recomputed": "",
+   "recomputed_raw": "",
+   "sources": [],
+   "note": "operands must be an object"
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 60,
+   "end": 65,
+   "text": "34.0%",
+   "quote": "보다 34.0% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "34.0%",
+   "recomputed_raw": "34.0287204283534916161736552500305751783523239643836796530881",
+   "sources": [
+    "DART 00356361 (LG화학, 051910) 2026 q3 CFS IS ifrs-full_Revenue 매출 thstrm_amount [제 26 기 3분기, the three months] = 15495953000000 KRW (receipt number 20261116000765)",
+    "DART 00356361 (LG화학, 051910) 2026 q3 CFS IS ifrs-full_Revenue 매출 frmtrm_q_amount [제 25 기 3분기, the same three months a year earlier] = 11561666000000 KRW (receipt number 20261116000765)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00356361_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116000765"
+   }
+  ]
+ }
+}

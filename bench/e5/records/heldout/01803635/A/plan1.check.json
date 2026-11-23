@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 23,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 31,
+   "end": 34,
+   "text": "21억",
+   "quote": "영업수익은 21억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,100,000,000",
+   "recomputed_raw": "2085113562",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 9 기 반기, the three months] = 2085113562 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 40,
+   "end": 44,
+   "text": "-15억",
+   "quote": "현금흐름은 2026년 1월부터 6월까지 -15억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-1,200,000,000",
+   "recomputed_raw": "-1196586980",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 9 기 반기, from the start of the business year to the period end] = -1196586980 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 27,
+   "end": 31,
+   "text": "130억",
+   "quote": "부채총계는 130억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "7,400,000,000",
+   "recomputed_raw": "7386050188",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 8 기말, the end of the previous business year] = 7386050188 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 30,
+   "end": 33,
+   "text": "21억",
+   "quote": "영업수익은 2026년 4월부터 6월까지 21억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "2,100,000,000",
+   "recomputed_raw": "2084365617",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half OFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 9 기 반기, the three months] = 2084365617 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 30,
+   "end": 44,
+   "text": "-3,162,840,394",
+   "quote": "영업손실은 2026년 4월부터 6월까지 -3,162,840,394원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-3,162,840,394",
+   "recomputed_raw": "-3162840394",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS CIS dart_OperatingIncomeLoss 영업손실 thstrm_amount [제 9 기 반기, the three months] = -3162840394 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 45,
+   "end": 50,
+   "text": "69.8%",
+   "quote": "비율)은 69.8%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "69.8%",
+   "recomputed_raw": "69.7504684303896659003100507210274600520402929584786063788895",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 9 기 반기말, the period end] = 13002962994 KRW (receipt number 20260813001570)",
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS BS ifrs-full_Equity 자본총계 thstrm_amount [제 9 기 반기말, the period end] = 18642115654 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 32,
+   "end": 36,
+   "text": "-31억",
+   "quote": "반기순손실은 -31억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-3,100,000,000",
+   "recomputed_raw": "-3069040389",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS CIS ifrs-full_ProfitLoss 반기순손실 thstrm_amount [제 9 기 반기, the three months] = -3069040389 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 62,
+   "end": 66,
+   "text": "7.5%",
+   "quote": "보다 7.5% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "7.5%",
+   "recomputed_raw": "7.46406294148864176666187401331652444351802124536738765820594",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 9 기 반기, the three months] = 2085113562 KRW (receipt number 20260813001570)",
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS CIS ifrs-full_Revenue 영업수익 frmtrm_q_amount [제 8 기 반기, the same three months a year earlier] = 1940289158 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 31,
+   "end": 34,
+   "text": "41억",
+   "quote": "영업수익은 41억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,100,000,000",
+   "recomputed_raw": "4114437836",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS CIS ifrs-full_Revenue 영업수익 frmtrm_add_amount [제 8 기 반기, the same cumulative period a year earlier] = 4114437836 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 31,
+   "end": 44,
+   "text": "2,085,113,562",
+   "quote": "영업수익은 2,085,113,562원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4,262,053,689",
+   "recomputed_raw": "4262053689",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_add_amount [제 9 기 반기, from the start of the business year to the period end] = 4262053689 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 26,
+   "end": 30,
+   "text": "316억",
+   "quote": "자산총계는 2026년 6월 말에 316억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "31,600,000,000",
+   "recomputed_raw": "31645078648",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 9 기 반기말, the period end] = 31645078648 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 31,
+   "end": 45,
+   "text": "-5,128,460,556",
+   "quote": "영업손실은 -5,128,460,556원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-5,414,422,837",
+   "recomputed_raw": "-5414422837",
+   "sources": [
+    "DART 01803635 (에스투더블유, 488280) 2026 half CFS CIS dart_OperatingIncomeLoss 영업손실 thstrm_add_amount [제 9 기 반기, from the start of the business year to the period end] = -5414422837 KRW (receipt number 20260813001570)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01803635_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260813001570"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01803635_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260813001570"
+   }
+  ]
+ }
+}

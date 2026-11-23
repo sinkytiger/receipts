@@ -1,0 +1,60 @@
+{
+ "doc": "00106641",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:43:36Z",
+   "set": "heldout",
+   "doc": "00106641",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 12713,
+   "output_tokens": 1632,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0020873,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKKwvYsRM894fuZJ9KWR"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "10.1%",
+    "should_be": "10.5%",
+    "why": "Q3 2026 vs Q3 2025 consolidated revenue: 31,597,447 / 28,686,037 - 1 ≈ 10.5%"
+   },
+   {
+    "line": 7,
+    "number": "1조 4,225억원",
+    "should_be": "1조 2,855억원",
+    "why": "Q3 2026 consolidated profit (ProfitLoss, three months) is 1,285,538 million; 1,422,460 is the 2025 figure"
+   },
+   {
+    "line": 8,
+    "number": "21.1%",
+    "should_be": "5.8%",
+    "why": "Q3 2026 operating income 1,818,286 / revenue 31,597,447 ≈ 5.75%"
+   },
+   {
+    "line": 12,
+    "number": "31조 5,974억",
+    "should_be": "94조 1,364억",
+    "why": "Jan-Sep 2026 consolidated revenue is 94,136,383 million; 31조 5,974억 is the Q3 figure"
+   },
+   {
+    "line": 14,
+    "number": "38,980억",
+    "should_be": "6조 6,519억",
+    "why": "Jan-Sep 2026 consolidated operating income is 6,651,936 million"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0020873
+}

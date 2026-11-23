@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 23,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 35,
+   "end": 39,
+   "text": "143억",
+   "quote": "수익(매출액)은 143억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "18,700,000,000",
+   "recomputed_raw": "18651545847",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 24 기, the year] = 18651545847 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 67,
+   "end": 72,
+   "text": "27.3%",
+   "quote": "보다 27.3% 늘었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "30.4%",
+   "recomputed_raw": "30.4017359698095073666767657714916341265746250047863258717835",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 24 기, the year] = 18651545847 KRW (receipt number 20260323001654)",
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) frmtrm_amount [제 23 기, the previous year] = 14303142292 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 36,
+   "end": 40,
+   "text": "-27억",
+   "quote": "영업이익(손실)은 -27억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-2,700,000,000",
+   "recomputed_raw": "-2688295942",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) frmtrm_amount [제 23 기, the previous year] = -2688295942 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 27,
+   "end": 31,
+   "text": "102억",
+   "quote": "부채총계는 102억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "10,200,000,000",
+   "recomputed_raw": "10167871589",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 23 기, the previous year end] = 10167871589 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 34,
+   "end": 38,
+   "text": "135억",
+   "quote": "수익(매출액)은 2023년 1월부터 12월까지 135억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "14,700,000,000",
+   "recomputed_raw": "14686648669",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) bfefrmtrm_amount [제 22 기, the year two years back] = 14686648669 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 35,
+   "end": 39,
+   "text": "143억",
+   "quote": "수익(매출액)은 143억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "14,300,000,000",
+   "recomputed_raw": "14303142292",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) frmtrm_amount [제 23 기, the previous year] = 14303142292 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 27,
+   "end": 31,
+   "text": "634억",
+   "quote": "자산총계는 2025년 12월 말에 634억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "63,400,000,000",
+   "recomputed_raw": "63377015827",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 24 기, the year end] = 63377015827 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 36,
+   "end": 49,
+   "text": "1,990,445,887",
+   "quote": "영업활동현금흐름은 1,990,445,887원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-4,317,834,535",
+   "recomputed_raw": "-4317834535",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 24 기, the year] = -4317834535 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 46,
+   "end": 51,
+   "text": "60.8%",
+   "quote": "부채비율(부채총계를 자본총계로 나눈 비율)은 60.8%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "60.8%",
+   "recomputed_raw": "60.8227306113965868572924171154868524983926167694562632980954",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 24 기, the year end] = 23969019466 KRW (receipt number 20260323001654)",
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS BS ifrs-full_Equity 자본총계 thstrm_amount [제 24 기, the year end] = 39407996361 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 34,
+   "end": 48,
+   "text": "18,213,976,515",
+   "quote": "별도 기준 수익(매출액)은 2025년 1월부터 12월까지 18,213,976,515원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "18,213,976,515",
+   "recomputed_raw": "18213976515",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual OFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 24 기, the year] = 18213976515 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 35,
+   "end": 39,
+   "text": "-34억",
+   "quote": "영업이익(손실)은 2025년 1월부터 12월까지 -34억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-3,400,000,000",
+   "recomputed_raw": "-3434269185",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 24 기, the year] = -3434269185 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 36,
+   "end": 40,
+   "text": "-39억",
+   "quote": "당기순이익(손실)은 2025년 1월부터 12월까지 -39억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-3,900,000,000",
+   "recomputed_raw": "-3864498895",
+   "sources": [
+    "DART 00915508 (스퀘어텍, 148250) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 24 기, the year] = -3864498895 KRW (receipt number 20260323001654)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00915508_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260323001654"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00915508_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260323001654"
+   }
+  ]
+ }
+}

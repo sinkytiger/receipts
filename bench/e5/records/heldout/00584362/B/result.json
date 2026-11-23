@@ -1,0 +1,54 @@
+{
+ "doc": "00584362",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:53:35Z",
+   "set": "heldout",
+   "doc": "00584362",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 7065,
+   "output_tokens": 1037,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.001225,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLiHfLgmWCxtiToswfb"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "45억원",
+    "should_be": "58억원 (5,798,957,377원)",
+    "why": "2024년 말 부채총계는 5,798,957,377원으로 약 58억원이다"
+   },
+   {
+    "line": 10,
+    "number": "8.8%",
+    "should_be": "10.8% (2,598,235,261 / 24,005,508,291)",
+    "why": "2025년 영업이익률은 영업이익을 매출액으로 나눈 약 10.8%이다"
+   },
+   {
+    "line": 11,
+    "number": "262억원",
+    "should_be": "240억원 (24,005,508,291원)",
+    "why": "2025년 별도 매출액은 24,005,508,291원이다"
+   },
+   {
+    "line": 13,
+    "number": "347억원",
+    "should_be": "284억원 (28,420,899,584원)",
+    "why": "2024년 말 자산총계는 28,420,899,584원이다"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.001225
+}

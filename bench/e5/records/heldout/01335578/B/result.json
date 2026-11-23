@@ -1,0 +1,54 @@
+{
+ "doc": "01335578",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T06:02:50Z",
+   "set": "heldout",
+   "doc": "01335578",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 15014,
+   "output_tokens": 1649,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0023259,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKMR4RWUWYd4sLyNZ6EF"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "22억원",
+    "should_be": "18억원 (1,841,288,719원, 약 18.4억원)",
+    "why": "2026년 7~9월 연결 영업이익은 1,841,288,719원으로 18억원대다"
+   },
+   {
+    "line": 8,
+    "number": "32,065,247,744원",
+    "should_be": "92,243,750,250원",
+    "why": "32,065,247,744원은 별도 기준 1~9월 매출액이고, 연결 1~9월 매출액은 92,243,750,250원이다"
+   },
+   {
+    "line": 13,
+    "number": "49,924,929,864원",
+    "should_be": "17,222,423,703원",
+    "why": "49,924,929,864원은 2025년 1~9월 영업활동현금흐름이고, 2026년 1~9월 연결 값은 17,222,423,703원이다"
+   },
+   {
+    "line": 14,
+    "number": "321억",
+    "should_be": "약 121억 (12,064,382,233원, 120.6억)",
+    "why": "321억원은 별도 기준 1~9월 매출액이고, 별도 기준 7~9월 매출액은 약 120.6억원이다"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0023259
+}

@@ -1,0 +1,239 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 25,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 36,
+   "end": 41,
+   "text": "-155억",
+   "quote": "연결 기준 2026년 7월부터 9월까지의 당기순이익(손실)은 -155억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-15,500,000,000",
+   "recomputed_raw": "-15525769181",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 16 기 3분기, the three months] = -15525769181 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 27,
+   "end": 31,
+   "text": "211억",
+   "quote": "연결 기준 부채총계는 2025년 12월 말에 211억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "21,100,000,000",
+   "recomputed_raw": "21063982255",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 15 기, the year end] = 21063982255 KRW (receipt number 20260323001621)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 35,
+   "end": 40,
+   "text": "-310억",
+   "quote": "연결 기준 2026년 1월부터 9월까지의 영업이익(손실)은 -310억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-31,000,000,000",
+   "recomputed_raw": "-30976211270",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_add_amount [제 16 기 3분기, from the start of the business year to the period end] = -30976211270 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 35,
+   "end": 40,
+   "text": "-357억",
+   "quote": "연결 기준 2026년 1월부터 9월까지의 영업활동현금흐름은 -357억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-35,700,000,000",
+   "recomputed_raw": "-35748287797",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 16 기 3분기, from the start of the business year to the period end] = -35748287797 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 29,
+   "end": 33,
+   "text": "317억",
+   "quote": "2026년 7월부터 9월까지의 연결 기준 수익은 317억원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "8,900,000,000",
+   "recomputed_raw": "8922760885",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 16 기 3분기, the three months] = 8922760885 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 26,
+   "end": 32,
+   "text": "2,041억",
+   "quote": "연결 기준 자산총계는 2026년 9월 말에 2,041억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "204,100,000,000",
+   "recomputed_raw": "204086081359",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 16 기 3분기말, the period end] = 204086081359 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 29,
+   "end": 33,
+   "text": "346억",
+   "quote": "2025년 1월부터 9월까지의 연결 기준 수익은 346억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "34,600,000,000",
+   "recomputed_raw": "34580585146",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS CIS ifrs-full_Revenue 수익 frmtrm_add_amount [제 15 기 3분기, the same cumulative period a year earlier] = 34580585146 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 45,
+   "end": 50,
+   "text": "13.7%",
+   "quote": "연결 기준 2026년 9월 말의 부채비율(부채총계를 자본총계로 나눈 비율)은 13.7%이다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "32.5%",
+   "recomputed_raw": "32.4766843555873318836585643658357785222346391368078743716474",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 16 기 3분기말, the period end] = 50031741645 KRW (receipt number 20261113000262)",
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS BS ifrs-full_Equity 자본총계 thstrm_amount [제 16 기 3분기말, the period end] = 154054339714 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 28,
+   "end": 32,
+   "text": "313억",
+   "quote": "연결 기준 수익은 2026년 1월부터 9월까지 313억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "31,700,000,000",
+   "recomputed_raw": "31693046934",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS CIS ifrs-full_Revenue 수익 thstrm_add_amount [제 16 기 3분기, from the start of the business year to the period end] = 31693046934 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 29,
+   "end": 32,
+   "text": "88억",
+   "quote": "별도 기준 2026년 7월부터 9월까지의 수익은 88억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "8,800,000,000",
+   "recomputed_raw": "8837246067",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 OFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 16 기 3분기, the three months] = 8837246067 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 35,
+   "end": 39,
+   "text": "-45억",
+   "quote": "연결 기준 2026년 7월부터 9월까지의 영업이익(손실)은 -45억원이다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-10,400,000,000",
+   "recomputed_raw": "-10419744373",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 16 기 3분기, the three months] = -10419744373 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 60,
+   "end": 65,
+   "text": "33.6%",
+   "quote": "연결 기준 2026년 7월부터 9월까지의 수익은 한 해 전 같은 기간(2025년 7월부터 9월까지)보다 33.6% 줄었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-33.6%",
+   "recomputed_raw": "-33.5948700610476262962470491289173820574753605585086417626215",
+   "sources": [
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS CIS ifrs-full_Revenue 수익 thstrm_amount [제 16 기 3분기, the three months] = 8922760885 KRW (receipt number 20261113000262)",
+    "DART 01385005 (리브스메드, 491000) 2026 q3 CFS CIS ifrs-full_Revenue 수익 frmtrm_q_amount [제 15 기 3분기, the same three months a year earlier] = 13436854793 KRW (receipt number 20261113000262)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01385005_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260323001621"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01385005_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261113000262"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01385005_2026_11014_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261113000262"
+   }
+  ]
+ }
+}

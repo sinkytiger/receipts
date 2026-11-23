@@ -1,0 +1,54 @@
+{
+ "doc": "00760971",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T06:03:31Z",
+   "set": "heldout",
+   "doc": "00760971",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 13623,
+   "output_tokens": 1552,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0021383,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKMU3VHYdsGo4cGtGXys"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "8,259억원",
+    "should_be": "9,831억원",
+    "why": "Separate three-month revenue is 983,112,543,333 won, not 8,259억원."
+   },
+   {
+    "line": 6,
+    "number": "2조 240억원",
+    "should_be": "2조 6,616억원",
+    "why": "Consolidated cumulative revenue is 2,661,645,610,446 won. 2조 240억 is the separate figure."
+   },
+   {
+    "line": 8,
+    "number": "9,725억원",
+    "should_be": "4,109억원",
+    "why": "Consolidated three-month operating income is 410,921,666,864 won. 9,725억 is the six-month figure."
+   },
+   {
+    "line": 12,
+    "number": "9,433,648,042,482원",
+    "should_be": "9,714,275,478,495원",
+    "why": "2026-06 consolidated total assets is 9,714,275,478,495. 9,433,648,042,482 is the 2025-12 figure."
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0021383
+}

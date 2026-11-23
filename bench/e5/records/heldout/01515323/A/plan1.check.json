@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 63,
+   "end": 67,
+   "text": "7.6%",
+   "quote": "보다 7.6% 줄었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-7.6%",
+   "recomputed_raw": "-7.60287881322043272754027826758317904056603571057064351354637",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 6 기, the year] = 23671759000000 KRW (receipt number 20260312000217)",
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS ifrs-full_Revenue 매출액 frmtrm_amount [제 5 기, the previous year] = 25619585000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 27,
+   "end": 37,
+   "text": "29조 3,402억",
+   "quote": "29조 3,402억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "29,340,200,000,000",
+   "recomputed_raw": "29340248000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 5 기, the previous year end] = 29340248000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 36,
+   "end": 45,
+   "text": "4조 4,323억",
+   "quote": "4조 4,323억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,432,300,000,000",
+   "recomputed_raw": "4432277000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 6 기, the year] = 4432277000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 52,
+   "end": 56,
+   "text": "2.4%",
+   "quote": "영업이익률(영업이익을 매출액으로 나눈 비율)은 2.4%이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "5.7%",
+   "recomputed_raw": "5.68660740420684411327438742511699278452437776170330223453187",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 6 기, the year] = 1346120000000 KRW (receipt number 20260312000217)",
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 6 기, the year] = 23671759000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 32,
+   "end": 41,
+   "text": "1조 3,461억",
+   "quote": "영업이익은 1조 3,461억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,346,100,000,000",
+   "recomputed_raw": "1346120000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 6 기, the year] = 1346120000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 30,
+   "end": 40,
+   "text": "33조 7,455억",
+   "quote": "33조 7,455억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "33,745,500,000,000",
+   "recomputed_raw": "33745470000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS ifrs-full_Revenue 매출액 bfefrmtrm_amount [제 4 기, the year two years back] = 33745470000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 31,
+   "end": 41,
+   "text": "23조 6,718억",
+   "quote": "23조 6,718억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "23,671,800,000,000",
+   "recomputed_raw": "23671759000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 6 기, the year] = 23671759000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 30,
+   "end": 40,
+   "text": "25조 6,196억",
+   "quote": "25조 6,196억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "25,619,600,000,000",
+   "recomputed_raw": "25619585000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS ifrs-full_Revenue 매출액 frmtrm_amount [제 5 기, the previous year] = 25619585000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 27,
+   "end": 37,
+   "text": "60조 3,068억",
+   "quote": "60조 3,068억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "67,148,000,000,000",
+   "recomputed_raw": "67147953000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 6 기, the year end] = 67147953000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 31,
+   "end": 40,
+   "text": "5조 5,305억",
+   "quote": "5조 5,305억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "7,661,600,000,000",
+   "recomputed_raw": "7661584000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual OFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 6 기, the year] = 7661584000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 32,
+   "end": 47,
+   "text": "575,387,000,000",
+   "quote": "영업이익은 575,387,000,000원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "575,387,000,000",
+   "recomputed_raw": "575387000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS dart_OperatingIncomeLoss 영업이익 frmtrm_amount [제 5 기, the previous year] = 575387000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 37,
+   "end": 44,
+   "text": "-5,727억",
+   "quote": "당기순이익(손실)은 -5,727억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "80,800,000,000",
+   "recomputed_raw": "80803000000",
+   "sources": [
+    "DART 01515323 (LG에너지솔루션, 373220) 2025 annual CFS IS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 6 기, the year] = 80803000000 KRW (receipt number 20260312000217)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01515323_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260312000217"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01515323_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260312000217"
+   }
+  ]
+ }
+}

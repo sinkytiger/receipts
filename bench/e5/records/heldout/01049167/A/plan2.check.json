@@ -1,0 +1,229 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 22,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 27,
+   "end": 31,
+   "text": "254억",
+   "quote": "별도 기준 자산총계는 2025년 12월 말에 254억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "25,400,000,000",
+   "recomputed_raw": "25363452677",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 17 기, the year end] = 25363452677 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 35,
+   "end": 39,
+   "text": "-82억",
+   "quote": "별도 기준 영업이익(손실)은 2025년 1월부터 12월까지 -82억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-9,900,000,000",
+   "recomputed_raw": "-9935154074",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 17 기, the year] = -9935154074 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 46,
+   "end": 52,
+   "text": "197.3%",
+   "quote": "별도 기준 2025년 12월 말의 부채비율(부채총계를 자본총계로 나눈 비율)은 197.3%이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "59.1%",
+   "recomputed_raw": "59.0937373159127743445389192813372035782039786223390212372196",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 17 기, the year end] = 9420994410 KRW (receipt number 20260325000345)",
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS BS ifrs-full_Equity 자본총계 thstrm_amount [제 17 기, the year end] = 15942458267 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 63,
+   "end": 69,
+   "text": "134.6%",
+   "quote": "한 해 전 같은 기간(2024년 1월부터 12월까지)보다 134.6% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "134.6%",
+   "recomputed_raw": "134.582372549733439948051159612315335008443211313445734883192",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 17 기, the year] = 10884865055 KRW (receipt number 20260325000345)",
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 16 기, the previous year] = 4640103575 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 36,
+   "end": 41,
+   "text": "-192억",
+   "quote": "별도 기준 2024년 1월부터 12월까지의 영업이익(손실)은 -192억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-19,200,000,000",
+   "recomputed_raw": "-19234571811",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS dart_OperatingIncomeLoss 영업이익(손실) frmtrm_amount [제 16 기, the previous year] = -19234571811 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 30,
+   "end": 33,
+   "text": "54억",
+   "quote": "별도 기준 매출액은 2023년 1월부터 12월까지 54억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,400,000,000",
+   "recomputed_raw": "5367423455",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS ifrs-full_Revenue 매출액 bfefrmtrm_amount [제 15 기, the year two years back] = 5367423455 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 27,
+   "end": 31,
+   "text": "315억",
+   "quote": "별도 기준 부채총계는 2024년 12월 말에 315억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "31,500,000,000",
+   "recomputed_raw": "31455959651",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 16 기, the previous year end] = 31455959651 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 30,
+   "end": 34,
+   "text": "120억",
+   "quote": "별도 기준 매출액은 2025년 1월부터 12월까지 120억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "10,900,000,000",
+   "recomputed_raw": "10884865055",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 17 기, the year] = 10884865055 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 41,
+   "end": 46,
+   "text": "-101억",
+   "quote": "별도 기준 영업활동으로 인한 현금흐름은 2025년 1월부터 12월까지 -101억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-10,100,000,000",
+   "recomputed_raw": "-10099915005",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 17 기, the year] = -10099915005 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 27,
+   "end": 31,
+   "text": "573억",
+   "quote": "별도 기준 2024년 12월 말의 자산총계는 573억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "57,300,000,000",
+   "recomputed_raw": "57341136759",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS BS ifrs-full_Assets 자산총계 frmtrm_amount [제 16 기, the previous year end] = 57341136759 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 30,
+   "end": 34,
+   "text": "109억",
+   "quote": "별도 기준 매출액은 2024년 1월부터 12월까지 109억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4,600,000,000",
+   "recomputed_raw": "4640103575",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS ifrs-full_Revenue 매출액 frmtrm_amount [제 16 기, the previous year] = 4640103575 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 37,
+   "end": 52,
+   "text": "-24,099,001,800",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 당기순이익(손실)은 -24,099,001,800원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-24,099,001,800",
+   "recomputed_raw": "-24099001800",
+   "sources": [
+    "DART 01049167 (롤링스톤, 214610) 2025 annual OFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 17 기, the year] = -24099001800 KRW (receipt number 20260325000345)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01049167_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260325000345"
+   }
+  ]
+ }
+}

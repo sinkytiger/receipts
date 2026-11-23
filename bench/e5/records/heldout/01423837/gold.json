@@ -1,0 +1,494 @@
+{
+ "document": {
+  "corp_code": "01423837",
+  "company": "모아데이타",
+  "group": "drawn",
+  "report": "half",
+  "year": 2026,
+  "fs": "CFS",
+  "other_statements": true,
+  "statements": 12,
+  "planted": [
+   "a",
+   "b",
+   "c",
+   "e"
+  ],
+  "replaced_by_d": [],
+  "slots_filled_from_another_kind": [],
+  "passed_over": []
+ },
+ "statements": [
+  {
+   "id": "s01",
+   "line": 5,
+   "slot": "income_cumulative",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "109억",
+   "written": "109억원",
+   "way": "eok",
+   "truth": "10921614875",
+   "shown": "10900000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_add_amount",
+     "role": "cumulative",
+     "period": [
+      "2026-01-01",
+      "2026-06-30"
+     ],
+     "name": "매출액",
+     "value": "10921614875"
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "line": 6,
+   "slot": "cash_flow",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "-83억",
+   "written": "-83억원",
+   "way": "eok",
+   "truth": "-8706917708",
+   "shown": "-8300000000",
+   "planted": "c",
+   "planted_detail": {
+    "kind": "c",
+    "shown_value": -8275246766,
+    "shown_cell": {
+     "fs": "OFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "role": "cumulative",
+     "column": "thstrm_amount"
+    },
+    "recognisable": []
+   },
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount",
+     "role": "cumulative",
+     "period": [
+      "2026-01-01",
+      "2026-06-30"
+     ],
+     "name": "영업활동현금흐름",
+     "value": "-8706917708"
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "line": 7,
+   "slot": "balance_end",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "859억",
+   "written": "859억원",
+   "way": "eok",
+   "truth": "85919454685",
+   "shown": "85900000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount",
+     "role": "end",
+     "period": [
+      "2026-06-30"
+     ],
+     "name": "자산총계",
+     "value": "85919454685"
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "line": 8,
+   "slot": "income_three_months",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "-131억",
+   "written": "-131억원",
+   "way": "eok",
+   "truth": "-9486405905",
+   "shown": "-13100000000",
+   "planted": "a",
+   "planted_detail": {
+    "kind": "a",
+    "shown_value": -13108881527,
+    "shown_cell": {
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "role": "cumulative",
+     "column": "thstrm_add_amount"
+    },
+    "recognisable": []
+   },
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-04-01",
+      "2026-06-30"
+     ],
+     "name": "반기순이익(손실)",
+     "value": "-9486405905"
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "line": 9,
+   "slot": "income_cumulative",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "-20억",
+   "written": "-20억원",
+   "way": "eok",
+   "truth": "-3698535545",
+   "shown": "-2000000000",
+   "planted": "b",
+   "planted_detail": {
+    "kind": "b",
+    "shown_value": -2021672467,
+    "shown_cell": {
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "role": "prior_cumulative",
+     "column": "frmtrm_add_amount"
+    },
+    "recognisable": []
+   },
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_add_amount",
+     "role": "cumulative",
+     "period": [
+      "2026-01-01",
+      "2026-06-30"
+     ],
+     "name": "영업이익(손실)",
+     "value": "-3698535545"
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "line": 10,
+   "slot": "income_three_months",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "65억",
+   "written": "65억원",
+   "way": "eok",
+   "truth": "6533798783",
+   "shown": "6500000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-04-01",
+      "2026-06-30"
+     ],
+     "name": "매출액",
+     "value": "6533798783"
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "line": 11,
+   "slot": "income_three_months",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "-14억",
+   "written": "-14억원",
+   "way": "eok",
+   "truth": "-1436714622",
+   "shown": "-1400000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-04-01",
+      "2026-06-30"
+     ],
+     "name": "영업이익(손실)",
+     "value": "-1436714622"
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "line": 12,
+   "slot": "percent_change",
+   "kind": "pct_change",
+   "fs": "CFS",
+   "number": "197.9%",
+   "written": "197.9%",
+   "way": "percent",
+   "truth": "78.21386666218487084336013704",
+   "shown": "197.9",
+   "planted": "e",
+   "planted_detail": {
+    "kind": "e",
+    "how": "input_a",
+    "shown_percent": "197.8945758374427866740131700",
+    "shown_cell": {
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "role": "cumulative",
+     "column": "thstrm_add_amount"
+    },
+    "recognisable": [
+     "inputs_stated_in_the_document"
+    ]
+   },
+   "recognisable": true,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-04-01",
+      "2026-06-30"
+     ],
+     "name": "매출액",
+     "value": "6533798783"
+    },
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount",
+     "role": "prior_three_months",
+     "period": [
+      "2025-04-01",
+      "2025-06-30"
+     ],
+     "name": "매출액",
+     "value": "3666268459"
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "line": 13,
+   "slot": "balance_previous_end",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "588억",
+   "written": "588억원",
+   "way": "eok",
+   "truth": "58846914565",
+   "shown": "58800000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "frmtrm_amount",
+     "role": "prev_year_end",
+     "period": [
+      "2025-12-31"
+     ],
+     "name": "부채총계",
+     "value": "58846914565"
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "line": 14,
+   "slot": "other_statements",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "5,831,928,600",
+   "written": "5,831,928,600원",
+   "way": "won",
+   "truth": "5831928600",
+   "shown": "5831928600",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-04-01",
+      "2026-06-30"
+     ],
+     "name": "매출액",
+     "value": "5831928600"
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "line": 15,
+   "slot": "income_year_earlier",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "37억",
+   "written": "37억원",
+   "way": "eok",
+   "truth": "3666268459",
+   "shown": "3700000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount",
+     "role": "prior_three_months",
+     "period": [
+      "2025-04-01",
+      "2025-06-30"
+     ],
+     "name": "매출액",
+     "value": "3666268459"
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "line": 16,
+   "slot": "debt_ratio",
+   "kind": "debt_ratio",
+   "fs": "CFS",
+   "number": "569.5%",
+   "written": "569.5%",
+   "way": "percent",
+   "truth": "569.5350884033297502606822618",
+   "shown": "569.5",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "thstrm_amount",
+     "role": "end",
+     "period": [
+      "2026-06-30"
+     ],
+     "name": "부채총계",
+     "value": "73086750892"
+    },
+    {
+     "dart": "01423837",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Equity",
+     "column": "thstrm_amount",
+     "role": "end",
+     "period": [
+      "2026-06-30"
+     ],
+     "name": "자본총계",
+     "value": "12832703793"
+    }
+   ]
+  }
+ ]
+}

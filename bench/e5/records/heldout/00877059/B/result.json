@@ -1,0 +1,54 @@
+{
+ "doc": "00877059",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:47:14Z",
+   "set": "heldout",
+   "doc": "00877059",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 11927,
+   "output_tokens": 1332,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0018587,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLE96cq3ahGjd5gHstz"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 7,
+    "number": "34,971억원",
+    "should_be": "29,388억원",
+    "why": "2023 consolidated revenue is 2,938,755,680,729won; 34,971억 is the 2024 figure"
+   },
+   {
+    "line": 11,
+    "number": "30.3% 줄었다",
+    "should_be": "30.3% 늘었다",
+    "why": "2025 revenue rose from 3,497,145,675,782 to 4,556,971,695,180, about +30.3%, so the direction is an increase"
+   },
+   {
+    "line": 12,
+    "number": "1,586,186,963,312원",
+    "should_be": "1,784,352,060,593원",
+    "why": "1,586,186,963,312 is the separate-statement profit; consolidated 2025 net income is 1,784,352,060,593"
+   },
+   {
+    "line": 15,
+    "number": "4조 2,621억원",
+    "should_be": "3조 4,971억원",
+    "why": "2024 consolidated revenue is 3,497,145,675,782won"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0018587
+}

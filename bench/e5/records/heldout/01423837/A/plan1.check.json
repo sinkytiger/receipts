@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 23,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 30,
+   "end": 34,
+   "text": "109억",
+   "quote": "연결 기준 2026년 1월부터 6월까지의 매출액은 109억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "10,900,000,000",
+   "recomputed_raw": "10921614875",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_add_amount [제 13 기 반기, from the start of the business year to the period end] = 10921614875 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 35,
+   "end": 39,
+   "text": "-83억",
+   "quote": "2026년 1월부터 6월까지의 연결 기준 영업활동현금흐름은 -83억원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-8,700,000,000",
+   "recomputed_raw": "-8706917708",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 13 기 반기, from the start of the business year to the period end] = -8706917708 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 26,
+   "end": 30,
+   "text": "859억",
+   "quote": "연결 기준 2026년 6월 말의 자산총계는 859억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "85,900,000,000",
+   "recomputed_raw": "85919454685",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 13 기 반기말, the period end] = 85919454685 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 35,
+   "end": 40,
+   "text": "-131억",
+   "quote": "연결 기준 반기순이익(손실)은 2026년 4월부터 6월까지 -131억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-9,500,000,000",
+   "recomputed_raw": "-9486405905",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS CIS ifrs-full_ProfitLoss 반기순이익(손실) thstrm_amount [제 13 기 반기, the three months] = -9486405905 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 34,
+   "end": 38,
+   "text": "-20억",
+   "quote": "연결 기준 영업이익(손실)은 2026년 1월부터 6월까지 -20억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-3,700,000,000",
+   "recomputed_raw": "-3698535545",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_add_amount [제 13 기 반기, from the start of the business year to the period end] = -3698535545 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 30,
+   "end": 33,
+   "text": "65억",
+   "quote": "2026년 4월부터 6월까지의 연결 기준 매출액은 65억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6,500,000,000",
+   "recomputed_raw": "6533798783",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 13 기 반기, the three months] = 6533798783 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 34,
+   "end": 38,
+   "text": "-14억",
+   "quote": "연결 기준 영업이익(손실)은 2026년 4월부터 6월까지 -14억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-1,400,000,000",
+   "recomputed_raw": "-1436714622",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 13 기 반기, the three months] = -1436714622 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 61,
+   "end": 67,
+   "text": "197.9%",
+   "quote": "연결 기준 2026년 4월부터 6월까지의 매출액은 한 해 전 같은 기간(2025년 4월부터 6월까지)보다 197.9% 늘었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "78.2%",
+   "recomputed_raw": "78.213866662184870843360137037908057894349629239739205906307",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 13 기 반기, the three months] = 6533798783 KRW (receipt number 20260814002441)",
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS CIS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 12 기 반기, the same three months a year earlier] = 3666268459 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 27,
+   "end": 31,
+   "text": "588억",
+   "quote": "연결 기준 부채총계는 2025년 12월 말에 588억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "58,800,000,000",
+   "recomputed_raw": "58846914565",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 12 기말, the end of the previous business year] = 58846914565 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 29,
+   "end": 42,
+   "text": "5,831,928,600",
+   "quote": "별도 기준 매출액은 2026년 4월부터 6월까지 5,831,928,600원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,831,928,600",
+   "recomputed_raw": "5831928600",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 13 기 반기, the three months] = 5831928600 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 29,
+   "end": 32,
+   "text": "37억",
+   "quote": "연결 기준 매출액은 2025년 4월부터 6월까지 37억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,700,000,000",
+   "recomputed_raw": "3666268459",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS CIS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 12 기 반기, the same three months a year earlier] = 3666268459 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 45,
+   "end": 51,
+   "text": "569.5%",
+   "quote": "연결 기준 2026년 6월 말의 부채비율(부채총계를 자본총계로 나눈 비율)은 569.5%이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "569.5%",
+   "recomputed_raw": "569.53508840332975026068226181802589667238959234037079125777",
+   "sources": [
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 13 기 반기말, the period end] = 73086750892 KRW (receipt number 20260814002441)",
+    "DART 01423837 (모아데이타, 288980) 2026 half CFS BS ifrs-full_Equity 자본총계 thstrm_amount [제 13 기 반기말, the period end] = 12832703793 KRW (receipt number 20260814002441)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01423837_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814002441"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01423837_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814002441"
+   }
+  ]
+ }
+}

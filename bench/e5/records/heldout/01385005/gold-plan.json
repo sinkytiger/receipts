@@ -1,0 +1,241 @@
+{
+ "document": "document.md",
+ "claims": [
+  {
+   "id": "s01",
+   "line": 5,
+   "quote": "연결 기준 2026년 7월부터 9월까지의 당기순이익(손실)은 -155억원이다.",
+   "number": "-155억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s02",
+   "line": 6,
+   "quote": "연결 기준 부채총계는 2025년 12월 말에 211억원이었다.",
+   "number": "211억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s03",
+   "line": 7,
+   "quote": "연결 기준 2026년 1월부터 9월까지의 영업이익(손실)은 -310억원이다.",
+   "number": "-310억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "s04",
+   "line": 8,
+   "quote": "연결 기준 2026년 1월부터 9월까지의 영업활동현금흐름은 -357억원이다.",
+   "number": "-357억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s05",
+   "line": 9,
+   "quote": "2026년 7월부터 9월까지의 연결 기준 수익은 317억원으로 집계됐다.",
+   "number": "317억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s06",
+   "line": 10,
+   "quote": "연결 기준 자산총계는 2026년 9월 말에 2,041억원이었다.",
+   "number": "2,041억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s07",
+   "line": 11,
+   "quote": "2025년 1월부터 9월까지의 연결 기준 수익은 346억원으로 집계됐다.",
+   "number": "346억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "s08",
+   "line": 12,
+   "quote": "연결 기준 2026년 9월 말의 부채비율(부채총계를 자본총계로 나눈 비율)은 13.7%이다.",
+   "number": "13.7%",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "thstrm_amount"
+    },
+    "den": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Equity",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s09",
+   "line": 13,
+   "quote": "연결 기준 수익은 2026년 1월부터 9월까지 313억원이었다.",
+   "number": "313억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "s10",
+   "line": 14,
+   "quote": "별도 기준 2026년 7월부터 9월까지의 수익은 88억원이다.",
+   "number": "88억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s11",
+   "line": 15,
+   "quote": "연결 기준 2026년 7월부터 9월까지의 영업이익(손실)은 -45억원이다.",
+   "number": "-45억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s12",
+   "line": 16,
+   "quote": "연결 기준 2026년 7월부터 9월까지의 수익은 한 해 전 같은 기간(2025년 7월부터 9월까지)보다 33.6% 줄었다.",
+   "number": "33.6%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    },
+    "old": {
+     "dart": "01385005",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount"
+    }
+   }
+  }
+ ]
+}

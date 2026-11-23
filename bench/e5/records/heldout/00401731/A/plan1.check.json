@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 30,
+   "end": 40,
+   "text": "20조 7,351억",
+   "quote": "매출액은 20조 7,351억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "20,735,100,000,000",
+   "recomputed_raw": "20735142000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 24 기 반기, the same three months a year earlier] = 20735142000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 27,
+   "end": 37,
+   "text": "22조 4,690억",
+   "quote": "부채총계는 22조 4,690억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "40,068,100,000,000",
+   "recomputed_raw": "40068142000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 24 기말, the end of the previous business year] = 40068142000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 30,
+   "end": 41,
+   "text": "1,579,082백만",
+   "quote": "영업이익은 2026년 4월부터 6월까지 1,579,082백만원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,579,082,000,000",
+   "recomputed_raw": "1579082000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 25 기 반기, the three months] = 1579082000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 30,
+   "end": 40,
+   "text": "23조 8,265억",
+   "quote": "매출액은 23조 8,265억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "23,826,500,000,000",
+   "recomputed_raw": "23826468000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 25 기 반기, the three months] = 23826468000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 36,
+   "end": 42,
+   "text": "6,096억",
+   "quote": "반기순이익(손실)은 6,096억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "781,300,000,000",
+   "recomputed_raw": "781322000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS ifrs-full_ProfitLoss 반기순이익(손실) thstrm_amount [제 25 기 반기, the three months] = 781322000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 61,
+   "end": 66,
+   "text": "14.9%",
+   "quote": "매출액은 한 해 전 같은 기간(2025년 4월부터 6월까지)보다 14.9% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "14.9%",
+   "recomputed_raw": "14.9086319254529339610985061013809309818085644168725731417706",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 25 기 반기, the three months] = 23826468000000 KRW (receipt number 20260814001997)",
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 24 기 반기, the same three months a year earlier] = 20735142000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 30,
+   "end": 41,
+   "text": "7,569,121백만",
+   "quote": "별도 기준 매출액은 7,569,121백만원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "7,569,121,000,000",
+   "recomputed_raw": "7569121000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half OFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 25 기 반기, the three months] = 7569121000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 51,
+   "end": 55,
+   "text": "6.6%",
+   "quote": "영업이익률(영업이익을 매출액으로 나눈 비율)은 6.6%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6.6%",
+   "recomputed_raw": "6.62742795113400777656176316187527249108008790895906182989438",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 25 기 반기, the three months] = 1579082000000 KRW (receipt number 20260814001997)",
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 25 기 반기, the three months] = 23826468000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 30,
+   "end": 38,
+   "text": "475,537억",
+   "quote": "매출액은 475,537억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "47,553,700,000,000",
+   "recomputed_raw": "47553695000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_add_amount [제 25 기 반기, from the start of the business year to the period end] = 47553695000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 26,
+   "end": 36,
+   "text": "70조 9,742억",
+   "quote": "자산총계는 2026년 6월 말에 70조 9,742억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "73,696,200,000,000",
+   "recomputed_raw": "73696206000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 25 기 반기말, the period end] = 73696206000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 30,
+   "end": 39,
+   "text": "1조 5,791억",
+   "quote": "영업이익은 2026년 1월부터 6월까지 1조 5,791억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3,252,800,000,000",
+   "recomputed_raw": "3252805000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_add_amount [제 25 기 반기, from the start of the business year to the period end] = 3252805000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 41,
+   "end": 48,
+   "text": "35,529억",
+   "quote": "영업활동으로 인한 현금흐름은 35,529억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,552,900,000,000",
+   "recomputed_raw": "3552902000000",
+   "sources": [
+    "DART 00401731 (LG전자, 066570) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 25 기 반기, from the start of the business year to the period end] = 3552902000000 KRW (receipt number 20260814001997)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00401731_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814001997"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00401731_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814001997"
+   }
+  ]
+ }
+}

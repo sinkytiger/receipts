@@ -1,0 +1,241 @@
+{
+ "document": "document.md",
+ "claims": [
+  {
+   "id": "s01",
+   "line": 5,
+   "quote": "2026년 1월부터 6월까지의 연결 기준 영업수익은 3조 7,688억원으로 집계됐다.",
+   "number": "3조 7,688억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "s02",
+   "line": 6,
+   "quote": "연결 기준 2026년 4월부터 6월까지의 영업손익은 2,038억원이다.",
+   "number": "2,038억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s03",
+   "line": 7,
+   "quote": "연결 기준 영업손익은 2026년 1월부터 6월까지 -8,126억원이었다.",
+   "number": "-8,126억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "s04",
+   "line": 8,
+   "quote": "연결 기준 2026년 4월부터 6월까지의 영업수익은 한 해 전 같은 기간(2025년 4월부터 6월까지)보다 18.5% 늘었다.",
+   "number": "18.5%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    },
+    "old": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount"
+    }
+   }
+  },
+  {
+   "id": "s05",
+   "line": 9,
+   "quote": "연결 기준 2026년 4월부터 6월까지의 영업이익률(영업손익을 영업수익으로 나눈 비율)은 5.4%이다.",
+   "number": "5.4%",
+   "kind": "derived",
+   "formula": "share",
+   "operands": {
+    "part": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    },
+    "whole": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s06",
+   "line": 10,
+   "quote": "연결 기준 2025년 1월부터 6월까지의 영업수익은 7조 3,452억원이다.",
+   "number": "7조 3,452억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "s07",
+   "line": 11,
+   "quote": "연결 기준 2025년 12월 말의 부채 합계는 18조 6,852억원이다.",
+   "number": "18조 6,852억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s08",
+   "line": 12,
+   "quote": "연결 기준 2026년 6월 말의 자산 합계는 47,621,891,099,845원이다.",
+   "number": "47,621,891,099,845",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s09",
+   "line": 13,
+   "quote": "2026년 4월부터 6월까지의 연결 기준 반기순손익은 4,716억원으로 집계됐다.",
+   "number": "4,716억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s10",
+   "line": 14,
+   "quote": "2026년 1월부터 6월까지의 연결 기준 영업활동현금흐름은 1,094억원으로 집계됐다.",
+   "number": "1,094억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s11",
+   "line": 15,
+   "quote": "별도 기준 영업수익은 2026년 4월부터 6월까지 2,304,813,039,780원이었다.",
+   "number": "2,304,813,039,780",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "s12",
+   "line": 16,
+   "quote": "연결 기준 2026년 4월부터 6월까지의 영업수익은 3조 7,688억원이다.",
+   "number": "3조 7,688억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "00126362",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  }
+ ]
+}

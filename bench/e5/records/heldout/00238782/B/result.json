@@ -1,0 +1,54 @@
+{
+ "doc": "00238782",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T06:04:53Z",
+   "set": "heldout",
+   "doc": "00238782",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 15828,
+   "output_tokens": 1568,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0023668,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKMa8XKaoZxcQw8VarzC"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "6조 9,323억원",
+    "should_be": "7조 2,154억원",
+    "why": "Q3 2026 consolidated revenue is 7,215,424,867,639 won"
+   },
+   {
+    "line": 7,
+    "number": "12조 2,049억원",
+    "should_be": "33조 2,235억원",
+    "why": "Jan-Sep 2026 consolidated revenue is 33,223,505,758,810 won; 12조 2,049억 is the 2025 figure"
+   },
+   {
+    "line": 10,
+    "number": "1조 9,257억원",
+    "should_be": "4,469억원",
+    "why": "Q3 2026 consolidated operating income is 446,851,290,822 won; 1조 9,257억 is the nine-month figure"
+   },
+   {
+    "line": 12,
+    "number": "94억원",
+    "should_be": "1조 9,257억원",
+    "why": "Jan-Sep 2026 consolidated operating income is 1,925,727,648,010 won"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0023668
+}

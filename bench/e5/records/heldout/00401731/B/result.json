@@ -1,0 +1,53 @@
+{
+ "doc": "00401731",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:50:54Z",
+   "set": "heldout",
+   "doc": "00401731",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 14887,
+   "output_tokens": 1929,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0024532,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLWAbcXn7FyUqFVPqck"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "22조 4,690억원",
+    "should_be": "40조 6,814억원 (부채총계 40,068,142백만원, 2025년 말)",
+    "why": "Consolidated total liabilities at prior year-end is 40,068,142 million won, not 22조 원대"
+   },
+   {
+    "line": 9,
+    "number": "6,096억원",
+    "should_be": "7,813억원 (반기순이익 781,322백만원, 2026년 4~6월)",
+    "why": "Consolidated ProfitLoss for the three months is 781,322 million won; 6,096 does not match"
+   },
+   {
+    "line": 14,
+    "number": "70조 9,742억원",
+    "should_be": "73조 6,962억원 (자산총계 73,696,206백만원, 2026년 6월 말)",
+    "why": "Consolidated total assets at period end is 73,696,206 million won"
+   },
+   {
+    "line": 15,
+    "number": "1조 5,791억원",
+    "should_be": "3조 2,528억원 (영업이익 누계 3,252,805백만원)",
+    "why": "Cumulative Jan–Jun 2026 consolidated operating income is 3,252,805 million won"
+   }
+  ]
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0024532
+}

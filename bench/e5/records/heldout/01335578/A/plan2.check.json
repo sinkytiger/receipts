@@ -1,0 +1,239 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 30,
+   "end": 36,
+   "text": "1,137억",
+   "quote": "매출액은 1,137억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "113,700,000,000",
+   "recomputed_raw": "113694124576",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_Revenue 매출액 frmtrm_add_amount [제 8 기 3분기, the same cumulative period a year earlier] = 113694124576 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 34,
+   "end": 37,
+   "text": "22억",
+   "quote": "연결 기준 영업이익(손실)은 2026년 7월부터 9월까지 22억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,800,000,000",
+   "recomputed_raw": "1841288719",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 9 기 3분기, the three months] = 1841288719 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 36,
+   "end": 40,
+   "text": "-11억",
+   "quote": "분기순이익(손실)은 -11억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-1,100,000,000",
+   "recomputed_raw": "-1102845709",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_ProfitLoss 분기순이익(손실) thstrm_amount [제 9 기 3분기, the three months] = -1102845709 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 29,
+   "end": 43,
+   "text": "32,065,247,744",
+   "quote": "매출액은 2026년 1월부터 9월까지 32,065,247,744원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "92,243,750,250",
+   "recomputed_raw": "92243750250",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_Revenue 매출액 thstrm_add_amount [제 9 기 3분기, from the start of the business year to the period end] = 92243750250 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 34,
+   "end": 37,
+   "text": "75억",
+   "quote": "영업이익(손실)은 2026년 1월부터 9월까지 75억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "7,500,000,000",
+   "recomputed_raw": "7539467292",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_add_amount [제 9 기 3분기, from the start of the business year to the period end] = 7539467292 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 26,
+   "end": 32,
+   "text": "2,255억",
+   "quote": "자산총계는 2,255억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "225,500,000,000",
+   "recomputed_raw": "225502456459",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 9 기 3분기말, the period end] = 225502456459 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 27,
+   "end": 33,
+   "text": "1,432억",
+   "quote": "부채총계는 1,432억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "143,200,000,000",
+   "recomputed_raw": "143193477369",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 8 기, the year end] = 143193477369 KRW (receipt number 20260323000867)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 61,
+   "end": 66,
+   "text": "45.6%",
+   "quote": "보다 45.6% 줄었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-45.6%",
+   "recomputed_raw": "-45.5673665102381115301437008387791007876675065371517111662043",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 9 기 3분기, the three months] = 30326257034 KRW (receipt number 20261112000678)",
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 8 기 3분기, the same three months a year earlier] = 55713374661 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 34,
+   "end": 48,
+   "text": "49,924,929,864",
+   "quote": "영업활동현금흐름은 2026년 1월부터 9월까지 49,924,929,864원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "17,222,423,703",
+   "recomputed_raw": "17222423703",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 9 기 3분기, from the start of the business year to the period end] = 17222423703 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 29,
+   "end": 33,
+   "text": "321억",
+   "quote": "별도 기준 매출액은 2026년 7월부터 9월까지 321억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "12,100,000,000",
+   "recomputed_raw": "12064382233",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 9 기 3분기, the three months] = 12064382233 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 29,
+   "end": 33,
+   "text": "303억",
+   "quote": "연결 기준 매출액은 2026년 7월부터 9월까지 303억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "30,300,000,000",
+   "recomputed_raw": "30326257034",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 9 기 3분기, the three months] = 30326257034 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 55,
+   "end": 59,
+   "text": "6.1%",
+   "quote": "영업이익률(영업이익(손실)을 매출액으로 나눈 비율)은 6.1%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6.1%",
+   "recomputed_raw": "6.07159900061407624353778337101460840965316999297975415293382",
+   "sources": [
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 9 기 3분기, the three months] = 1841288719 KRW (receipt number 20261112000678)",
+    "DART 01335578 (애니플러스, 310200) 2026 q3 CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 9 기 3분기, the three months] = 30326257034 KRW (receipt number 20261112000678)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01335578_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260323000867"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01335578_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261112000678"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01335578_2026_11014_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261112000678"
+   }
+  ]
+ }
+}

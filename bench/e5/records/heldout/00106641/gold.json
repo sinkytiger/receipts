@@ -1,0 +1,498 @@
+{
+ "document": {
+  "corp_code": "00106641",
+  "company": "기아",
+  "group": "named",
+  "report": "q3",
+  "year": 2026,
+  "fs": "CFS",
+  "other_statements": true,
+  "statements": 12,
+  "planted": [
+   "a",
+   "b",
+   "c",
+   "e"
+  ],
+  "replaced_by_d": [],
+  "slots_filled_from_another_kind": [],
+  "passed_over": []
+ },
+ "statements": [
+  {
+   "id": "s01",
+   "line": 5,
+   "slot": "percent_change",
+   "kind": "pct_change",
+   "fs": "CFS",
+   "number": "10.1%",
+   "written": "10.1%",
+   "way": "percent",
+   "truth": "10.14922347063834575685724731",
+   "shown": "10.1",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-07-01",
+      "2026-09-30"
+     ],
+     "name": "매출액",
+     "value": "31597447000000"
+    },
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount",
+     "role": "prior_three_months",
+     "period": [
+      "2025-07-01",
+      "2025-09-30"
+     ],
+     "name": "매출액",
+     "value": "28686037000000"
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "line": 6,
+   "slot": "cash_flow",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "79,277억",
+   "written": "79,277억원",
+   "way": "eok",
+   "truth": "7927699000000",
+   "shown": "7927700000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount",
+     "role": "cumulative",
+     "period": [
+      "2026-01-01",
+      "2026-09-30"
+     ],
+     "name": "영업활동현금흐름",
+     "value": "7927699000000"
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "line": 7,
+   "slot": "income_three_months",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "1조 4,225억",
+   "written": "1조 4,225억원",
+   "way": "jo_eok",
+   "truth": "1285538000000",
+   "shown": "1422500000000",
+   "planted": "b",
+   "planted_detail": {
+    "kind": "b",
+    "shown_value": 1422460000000,
+    "shown_cell": {
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_ProfitLoss",
+     "role": "prior_three_months",
+     "column": "frmtrm_q_amount"
+    },
+    "recognisable": []
+   },
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-07-01",
+      "2026-09-30"
+     ],
+     "name": "당기순이익",
+     "value": "1285538000000"
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "line": 8,
+   "slot": "margin",
+   "kind": "margin",
+   "fs": "CFS",
+   "number": "21.1%",
+   "written": "21.1%",
+   "way": "percent",
+   "truth": "5.754534535654098889698272142",
+   "shown": "21.1",
+   "planted": "e",
+   "planted_detail": {
+    "kind": "e",
+    "how": "input_a",
+    "shown_percent": "21.05213120541036115987472026",
+    "shown_cell": {
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "role": "cumulative",
+     "column": "thstrm_add_amount"
+    },
+    "recognisable": [
+     "inputs_stated_in_the_document"
+    ]
+   },
+   "recognisable": true,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-07-01",
+      "2026-09-30"
+     ],
+     "name": "영업이익",
+     "value": "1818286000000"
+    },
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-07-01",
+      "2026-09-30"
+     ],
+     "name": "매출액",
+     "value": "31597447000000"
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "line": 9,
+   "slot": "income_year_earlier",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "28조 6,860억",
+   "written": "28조 6,860억원",
+   "way": "jo_eok",
+   "truth": "28686037000000",
+   "shown": "28686000000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount",
+     "role": "prior_three_months",
+     "period": [
+      "2025-07-01",
+      "2025-09-30"
+     ],
+     "name": "매출액",
+     "value": "28686037000000"
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "line": 10,
+   "slot": "balance_end",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "99조 5,995억",
+   "written": "99조 5,995억원",
+   "way": "jo_eok",
+   "truth": "99599498000000",
+   "shown": "99599500000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount",
+     "role": "end",
+     "period": [
+      "2026-09-30"
+     ],
+     "name": "자산총계",
+     "value": "99599498000000"
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "line": 11,
+   "slot": "income_three_months",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "1조 8,183억",
+   "written": "1조 8,183억원",
+   "way": "jo_eok",
+   "truth": "1818286000000",
+   "shown": "1818300000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-07-01",
+      "2026-09-30"
+     ],
+     "name": "영업이익",
+     "value": "1818286000000"
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "line": 12,
+   "slot": "income_cumulative",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "31조 5,974억",
+   "written": "31조 5,974억원",
+   "way": "jo_eok",
+   "truth": "94136383000000",
+   "shown": "31597400000000",
+   "planted": "a",
+   "planted_detail": {
+    "kind": "a",
+    "shown_value": 31597447000000,
+    "shown_cell": {
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "role": "three_months",
+     "column": "thstrm_amount"
+    },
+    "recognisable": [
+     "same_amount_on_another_line"
+    ]
+   },
+   "recognisable": true,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_add_amount",
+     "role": "cumulative",
+     "period": [
+      "2026-01-01",
+      "2026-09-30"
+     ],
+     "name": "매출액",
+     "value": "94136383000000"
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "line": 13,
+   "slot": "balance_previous_end",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "37,788,591,000,000",
+   "written": "37,788,591,000,000원",
+   "way": "won",
+   "truth": "37788591000000",
+   "shown": "37788591000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "frmtrm_amount",
+     "role": "prev_year_end",
+     "period": [
+      "2025-12-31"
+     ],
+     "name": "부채총계",
+     "value": "37788591000000"
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "line": 14,
+   "slot": "income_cumulative",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "38,980억",
+   "written": "38,980억원",
+   "way": "eok",
+   "truth": "6651936000000",
+   "shown": "3898000000000",
+   "planted": "c",
+   "planted_detail": {
+    "kind": "c",
+    "shown_value": 3897987000000,
+    "shown_cell": {
+     "fs": "OFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "role": "cumulative",
+     "column": "thstrm_add_amount"
+    },
+    "recognisable": []
+   },
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_add_amount",
+     "role": "cumulative",
+     "period": [
+      "2026-01-01",
+      "2026-09-30"
+     ],
+     "name": "영업이익",
+     "value": "6651936000000"
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "line": 15,
+   "slot": "income_three_months",
+   "kind": "amount",
+   "fs": "CFS",
+   "number": "31조 5,974억",
+   "written": "31조 5,974억원",
+   "way": "jo_eok",
+   "truth": "31597447000000",
+   "shown": "31597400000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "CFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-07-01",
+      "2026-09-30"
+     ],
+     "name": "매출액",
+     "value": "31597447000000"
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "line": 16,
+   "slot": "other_statements",
+   "kind": "amount",
+   "fs": "OFS",
+   "number": "16조 9,566억",
+   "written": "16조 9,566억원",
+   "way": "jo_eok",
+   "truth": "16956560000000",
+   "shown": "16956600000000",
+   "planted": null,
+   "planted_detail": null,
+   "recognisable": false,
+   "cells": [
+    {
+     "dart": "00106641",
+     "year": 2026,
+     "report": "q3",
+     "fs": "OFS",
+     "statement": "IS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount",
+     "role": "three_months",
+     "period": [
+      "2026-07-01",
+      "2026-09-30"
+     ],
+     "name": "매출액",
+     "value": "16956560000000"
+    }
+   ]
+  }
+ ]
+}

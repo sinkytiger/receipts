@@ -1,0 +1,26 @@
+{
+ "doc": "01515323",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:49:23Z",
+   "set": "heldout",
+   "doc": "01515323",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 12894,
+   "output_tokens": 1321,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0019499,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLPdHX9cs6ztCikgeEU"
+  }
+ ],
+ "answer": null,
+ "parsed": false,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0019499
+}

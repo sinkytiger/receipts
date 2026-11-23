@@ -1,0 +1,54 @@
+{
+ "doc": "00428251",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:59:53Z",
+   "set": "heldout",
+   "doc": "00428251",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 15311,
+   "output_tokens": 1120,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0020911,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKMCCXZENcfQb2wGGBcx"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "2,840억원",
+    "should_be": "3,779억원",
+    "why": "2025 consolidated operating income is 377,947,571,000 won; 2,840억 is the 2024 figure"
+   },
+   {
+    "line": 6,
+    "number": "7,578억원",
+    "should_be": "9,862억원",
+    "why": "2025 consolidated operating cash flow is 986,166,052,000 won; 7,578억 is the 2022 figure"
+   },
+   {
+    "line": 11,
+    "number": "7조 7,965억원",
+    "should_be": "11조 2,498억원",
+    "why": "consolidated total assets at 2025 year end is 11,249,807,365,000 won; 7,796,471,126,000 is the separate figure"
+   },
+   {
+    "line": 12,
+    "number": "줄었다",
+    "should_be": "늘었다",
+    "why": "revenue rose from 4,187,614,464,000 to 4,230,320,613,000, about +1.0%, so the direction is an increase"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0020911
+}

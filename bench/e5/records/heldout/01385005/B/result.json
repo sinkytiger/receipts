@@ -1,0 +1,54 @@
+{
+ "doc": "01385005",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:54:17Z",
+   "set": "heldout",
+   "doc": "01385005",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 10470,
+   "output_tokens": 1258,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.001676,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLmKpehUKBajmMDRWb2"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 9,
+    "number": "317억원",
+    "should_be": "89억원",
+    "why": "Q3 2026 consolidated revenue is 8,922,760,885; 317억 is the year-to-date figure"
+   },
+   {
+    "line": 12,
+    "number": "13.7%",
+    "should_be": "32.5%",
+    "why": "Consolidated liabilities 50,031,741,645 divided by equity 154,054,339,714 is about 32.5%"
+   },
+   {
+    "line": 13,
+    "number": "313억원",
+    "should_be": "317억원",
+    "why": "Consolidated cumulative Jan–Sep 2026 revenue is 31,693,046,934, which rounds to 317억"
+   },
+   {
+    "line": 15,
+    "number": "-45억원",
+    "should_be": "-104억원",
+    "why": "Consolidated Q3 2026 operating loss is -10,419,744,373, about -104억"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.001676
+}

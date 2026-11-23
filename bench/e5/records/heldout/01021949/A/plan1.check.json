@@ -1,0 +1,231 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 7,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 1
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 30,
+   "end": 34,
+   "text": "184억",
+   "quote": "연결 기준 영업수익은 2025년 1월부터 9월까지 184억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "39,900,000,000",
+   "recomputed_raw": "39946356413",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 frmtrm_add_amount [제 15 기 3분기, the same cumulative period a year earlier] = 39946356413 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 62,
+   "end": 67,
+   "text": "43.6%",
+   "quote": "한 해 전 같은 기간(2025년 7월부터 9월까지)보다 43.6% 늘었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "43.6%",
+   "recomputed_raw": "43.6114813488273395033506087358732147863369447958547834835068",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 16 기 3분기, the three months] = 19163578018 KRW (receipt number 20261116000142)",
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 frmtrm_q_amount [제 15 기 3분기, the same three months a year earlier] = 13344043135 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 31,
+   "end": 35,
+   "text": "396억",
+   "quote": "2026년 1월부터 9월까지의 연결 기준 영업수익은 396억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "39,600,000,000",
+   "recomputed_raw": "39575115995",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_add_amount [제 16 기 3분기, from the start of the business year to the period end] = 39575115995 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 34,
+   "end": 38,
+   "text": "-88억",
+   "quote": "연결 기준 영업이익(손실)은 2026년 7월부터 9월까지 -88억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "100,000,000",
+   "recomputed_raw": "130961010",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 16 기 3분기, the three months] = 130961010 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 26,
+   "end": 32,
+   "text": "1,110억",
+   "quote": "2026년 9월 말의 연결 기준 자산총계는 1,110억원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "116,000,000,000",
+   "recomputed_raw": "116040793689",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 16 기 3분기말, the period end] = 116040793689 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 27,
+   "end": 31,
+   "text": "676억",
+   "quote": "연결 기준 부채총계는 2025년 12월 말에 676억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "67,600,000,000",
+   "recomputed_raw": "67638691099",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 15 기말, the end of the previous business year] = 67638691099 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 35,
+   "end": 38,
+   "text": "46억",
+   "quote": "2026년 1월부터 9월까지의 연결 기준 영업활동현금흐름은 46억원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "4,900,000,000",
+   "recomputed_raw": "4898383659",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 16 기 3분기, from the start of the business year to the period end] = 4898383659 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 31,
+   "end": 34,
+   "text": "64억",
+   "quote": "2026년 7월부터 9월까지의 별도 기준 영업수익은 64억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6,400,000,000",
+   "recomputed_raw": "6404831428",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 OFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 16 기 3분기, the three months] = 6404831428 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 35,
+   "end": 47,
+   "text": "-328,583,825",
+   "quote": "연결 기준 당기순이익(손실)은 2026년 7월부터 9월까지 -328,583,825원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-328,583,825",
+   "recomputed_raw": "-328583825",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 16 기 3분기, the three months] = -328583825 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 56,
+   "end": 60,
+   "text": "0.7%",
+   "quote": "은 0.7%이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.7%",
+   "recomputed_raw": "0.683384960141528409645238933271526809926231803963113126821305",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 16 기 3분기, the three months] = 130961010 KRW (receipt number 20261116000142)",
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 16 기 3분기, the three months] = 19163578018 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 31,
+   "end": 35,
+   "text": "192억",
+   "quote": "2026년 7월부터 9월까지의 연결 기준 영업수익은 192억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "19,200,000,000",
+   "recomputed_raw": "19163578018",
+   "sources": [
+    "DART 01021949 (덱스터, 206560) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 16 기 3분기, the three months] = 19163578018 KRW (receipt number 20261116000142)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [
+  {
+   "line": 13,
+   "start": 34,
+   "end": 38,
+   "text": "-88억"
+  }
+ ],
+ "unbound_claims": [
+  {
+   "id": "c9",
+   "reason": "quote_not_on_line",
+   "note": "line 13 does not contain the quote"
+  }
+ ],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01021949_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116000142"
+   },
+   {
+    "file": "fnlttSinglAcntAll/01021949_2026_11014_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116000142"
+   }
+  ]
+ }
+}

@@ -1,0 +1,239 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 61,
+   "end": 66,
+   "text": "10.1%",
+   "quote": "매출액은 한 해 전 같은 기간(2025년 7월부터 9월까지)보다 10.1% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "10.1%",
+   "recomputed_raw": "10.1492234706383457568572473081590182708054096144406423236504",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 83 기 3분기, the three months] = 31597447000000 KRW (receipt number 20261116001529)",
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 82 기 3분기, the same three months a year earlier] = 28686037000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 35,
+   "end": 42,
+   "text": "79,277억",
+   "quote": "2026년 1월부터 9월까지의 연결 기준 영업활동현금흐름은 79,277억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "7,927,700,000,000",
+   "recomputed_raw": "7927699000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 83 기 3분기, from the start of the business year to the period end] = 7927699000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 32,
+   "end": 41,
+   "text": "1조 4,225억",
+   "quote": "연결 기준 2026년 7월부터 9월까지의 당기순이익은 1조 4,225억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,285,500,000,000",
+   "recomputed_raw": "1285538000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS ifrs-full_ProfitLoss 당기순이익 thstrm_amount [제 83 기 3분기, the three months] = 1285538000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 51,
+   "end": 56,
+   "text": "21.1%",
+   "quote": "영업이익률(영업이익을 매출액으로 나눈 비율)은 21.1%이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "5.8%",
+   "recomputed_raw": "5.75453453565409888969827214204995739054487535021421192667876",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 83 기 3분기, the three months] = 1818286000000 KRW (receipt number 20261116001529)",
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 83 기 3분기, the three months] = 31597447000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 29,
+   "end": 39,
+   "text": "28조 6,860억",
+   "quote": "매출액은 2025년 7월부터 9월까지 28조 6,860억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "28,686,000,000,000",
+   "recomputed_raw": "28686037000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 82 기 3분기, the same three months a year earlier] = 28686037000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 26,
+   "end": 36,
+   "text": "99조 5,995억",
+   "quote": "연결 기준 2026년 9월 말의 자산총계는 99조 5,995억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "99,599,500,000,000",
+   "recomputed_raw": "99599498000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 83 기 3분기말, the period end] = 99599498000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 30,
+   "end": 39,
+   "text": "1조 8,183억",
+   "quote": "영업이익은 2026년 7월부터 9월까지 1조 8,183억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,818,300,000,000",
+   "recomputed_raw": "1818286000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 83 기 3분기, the three months] = 1818286000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 30,
+   "end": 40,
+   "text": "31조 5,974억",
+   "quote": "2026년 1월부터 9월까지의 매출액은 31조 5,974억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "94,136,400,000,000",
+   "recomputed_raw": "94136383000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS ifrs-full_Revenue 매출액 thstrm_add_amount [제 83 기 3분기, from the start of the business year to the period end] = 94136383000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 27,
+   "end": 45,
+   "text": "37,788,591,000,000",
+   "quote": "부채총계는 37,788,591,000,000원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "37,788,591,000,000",
+   "recomputed_raw": "37788591000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 thstrm_amount [제 82 기, the year end] = 37788591000000 KRW (receipt number 20260312001224)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 31,
+   "end": 38,
+   "text": "38,980억",
+   "quote": "2026년 1월부터 9월까지의 영업이익은 38,980억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "6,651,900,000,000",
+   "recomputed_raw": "6651936000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_add_amount [제 83 기 3분기, from the start of the business year to the period end] = 6651936000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 29,
+   "end": 39,
+   "text": "31조 5,974억",
+   "quote": "매출액은 2026년 7월부터 9월까지 31조 5,974억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "31,597,400,000,000",
+   "recomputed_raw": "31597447000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 83 기 3분기, the three months] = 31597447000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 30,
+   "end": 40,
+   "text": "16조 9,566억",
+   "quote": "2026년 7월부터 9월까지의 별도 기준 매출액은 16조 9,566억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "16,956,600,000,000",
+   "recomputed_raw": "16956560000000",
+   "sources": [
+    "DART 00106641 (기아, 000270) 2026 q3 OFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 83 기 3분기, the three months] = 16956560000000 KRW (receipt number 20261116001529)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00106641_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260312001224"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00106641_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116001529"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00106641_2026_11014_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116001529"
+   }
+  ]
+ }
+}

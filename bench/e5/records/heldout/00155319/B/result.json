@@ -1,0 +1,60 @@
+{
+ "doc": "00155319",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:45:07Z",
+   "set": "heldout",
+   "doc": "00155319",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 15367,
+   "output_tokens": 1379,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0022262,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKL4juMUkU8arjcXSAsV"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "4.9%",
+    "should_be": "-4.9% (decrease)",
+    "why": "2025 consolidated revenue 69,094,886 vs 72,688,143 million won is a decline, so 늘었다 is wrong too"
+   },
+   {
+    "line": 6,
+    "number": "1조 3,541억원",
+    "should_be": "1조 8,271억원",
+    "why": "consolidated operating income 2025 is 1,827,063,210,829 won"
+   },
+   {
+    "line": 8,
+    "number": "1,051,924억원",
+    "should_be": "105,192억원",
+    "why": "consolidated total assets 2025 is 105,192,437,963,565 won"
+   },
+   {
+    "line": 10,
+    "number": "2조 4,448억원",
+    "should_be": "41조 9,538억원",
+    "why": "consolidated total liabilities 2024 year end is 41,953,831,078,121 won; 2조 4,448억 is the separate figure"
+   },
+   {
+    "line": 13,
+    "number": "1조 9,971억원",
+    "should_be": "1조 4,033억원",
+    "why": "separate revenue 2025 is 1,403,309,682,120 won; 1,997,127,595,121 is the 2024 figure"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0022262
+}

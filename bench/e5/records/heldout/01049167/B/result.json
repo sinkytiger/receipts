@@ -1,0 +1,54 @@
+{
+ "doc": "01049167",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:51:35Z",
+   "set": "heldout",
+   "doc": "01049167",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 6533,
+   "output_tokens": 1015,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0011608,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLZShofJu86iqw74cF2"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "-82억원",
+    "should_be": "-99억원 (-9,935,154,074원)",
+    "why": "2025 separate operating loss is -9,935,154,074 won, about -99억원"
+   },
+   {
+    "line": 7,
+    "number": "197.3%",
+    "should_be": "59.1% (9,420,994,410 / 15,942,458,267)",
+    "why": "2025 year-end separate liabilities/equity ratio is about 59.1%"
+   },
+   {
+    "line": 12,
+    "number": "120억원",
+    "should_be": "109억원 (10,884,865,055원)",
+    "why": "2025 separate revenue is 10,884,865,055 won, about 109억원"
+   },
+   {
+    "line": 15,
+    "number": "109억원",
+    "should_be": "46억원 (4,640,103,575원)",
+    "why": "2024 separate revenue is 4,640,103,575 won, about 46억원"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0011608
+}

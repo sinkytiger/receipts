@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 31,
+   "end": 37,
+   "text": "7,029억",
+   "quote": "영업수익은 7,029억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "702,900,000,000",
+   "recomputed_raw": "702911767070",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 OFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 32 기 3분기, the three months] = 702911767070 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 31,
+   "end": 37,
+   "text": "7,287억",
+   "quote": "영업이익은 7,287억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "240,300,000,000",
+   "recomputed_raw": "240281867628",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 32 기 3분기, the three months] = 240281867628 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 31,
+   "end": 40,
+   "text": "2조 1,606억",
+   "quote": "영업수익은 2조 1,606억",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2,086,800,000,000",
+   "recomputed_raw": "2086762829770",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 32 기 3분기, the three months] = 2086762829770 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 34,
+   "end": 40,
+   "text": "5,409억",
+   "quote": "영업활동현금흐름은 2026년 1월부터 9월까지 5,409억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "540,900,000,000",
+   "recomputed_raw": "540939828803",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 32 기 3분기, from the start of the business year to the period end] = 540939828803 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 31,
+   "end": 38,
+   "text": "61,273억",
+   "quote": "영업수익은 61,273억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6,127,300,000,000",
+   "recomputed_raw": "6127296077246",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_add_amount [제 32 기 3분기, from the start of the business year to the period end] = 6127296077246 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 31,
+   "end": 37,
+   "text": "7,287억",
+   "quote": "2026년 1월부터 9월까지의 영업이익은 7,287억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "728,700,000,000",
+   "recomputed_raw": "728695868085",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_add_amount [제 32 기 3분기, from the start of the business year to the period end] = 728695868085 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 26,
+   "end": 34,
+   "text": "12조 275억",
+   "quote": "자산총계는 2026년 9월 말에 12조 275억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "26,591,600,000,000",
+   "recomputed_raw": "26591571556326",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 32 기 3분기말, the period end] = 26591571556326 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 27,
+   "end": 37,
+   "text": "11조 5,941억",
+   "quote": "부채총계는 11조 5,941억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "12,558,600,000,000",
+   "recomputed_raw": "12558602529761",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 31 기말, the end of the previous business year] = 12558602529761 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 36,
+   "end": 42,
+   "text": "1,777억",
+   "quote": "당기순이익(손실)은 1,777억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "177,700,000,000",
+   "recomputed_raw": "177679172533",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 32 기 3분기, the three months] = 177679172533 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 62,
+   "end": 66,
+   "text": "6.3%",
+   "quote": "영업수익은 한 해 전 같은 기간(2025년 7월부터 9월까지)보다 6.3% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "6.3%",
+   "recomputed_raw": "6.34645844500226028953715113789973451360013846056256853634998",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 32 기 3분기, the three months] = 2086762829770 KRW (receipt number 20261113001344)",
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 frmtrm_q_amount [제 31 기 3분기, the same three months a year earlier] = 1962230675363 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 31,
+   "end": 40,
+   "text": "5조 6,276억",
+   "quote": "영업수익은 5조 6,276억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,627,600,000,000",
+   "recomputed_raw": "5627585904543",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 frmtrm_add_amount [제 31 기 3분기, the same cumulative period a year earlier] = 5627585904543 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 52,
+   "end": 57,
+   "text": "11.5%",
+   "quote": "영업이익률(영업이익을 영업수익으로 나눈 비율)은 11.5%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "11.5%",
+   "recomputed_raw": "11.5145748333308928124170705814497981228338505378935590987671",
+   "sources": [
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 32 기 3분기, the three months] = 240281867628 KRW (receipt number 20261113001344)",
+    "DART 00258801 (카카오, 035720) 2026 q3 CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 32 기 3분기, the three months] = 2086762829770 KRW (receipt number 20261113001344)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00258801_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261113001344"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00258801_2026_11014_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261113001344"
+   }
+  ]
+ }
+}

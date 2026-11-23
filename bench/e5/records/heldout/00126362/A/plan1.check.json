@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 31,
+   "end": 40,
+   "text": "3조 7,688억",
+   "quote": "영업수익은 3조 7,688억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "7,345,200,000,000",
+   "recomputed_raw": "7345161306669",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_add_amount [제 57 기 반기, from the start of the business year to the period end] = 7345161306669 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 31,
+   "end": 37,
+   "text": "2,038억",
+   "quote": "영업손익은 2,038억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "203,800,000,000",
+   "recomputed_raw": "203774585157",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS dart_OperatingIncomeLoss 영업손익 thstrm_amount [제 57 기 반기, the three months] = 203774585157 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 30,
+   "end": 37,
+   "text": "-8,126억",
+   "quote": "영업손익은 2026년 1월부터 6월까지 -8,126억원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "48,200,000,000",
+   "recomputed_raw": "48193813418",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS dart_OperatingIncomeLoss 영업손익 thstrm_add_amount [제 57 기 반기, from the start of the business year to the period end] = 48193813418 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 62,
+   "end": 67,
+   "text": "18.5%",
+   "quote": "영업수익은 한 해 전 같은 기간(2025년 4월부터 6월까지)보다 18.5% 늘었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "18.5%",
+   "recomputed_raw": "18.5381182936093763384265968643650383600963680056791380108816",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 57 기 반기, the three months] = 3768808123247 KRW (receipt number 20260814003578)",
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS ifrs-full_Revenue 영업수익 frmtrm_q_amount [제 56 기 반기, the same three months a year earlier] = 3179406065745 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 52,
+   "end": 56,
+   "text": "5.4%",
+   "quote": "영업이익률(영업손익을 영업수익으로 나눈 비율)은 5.4%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5.4%",
+   "recomputed_raw": "5.40687077965218631997358120185905931384048132648365158290616",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS dart_OperatingIncomeLoss 영업손익 thstrm_amount [제 57 기 반기, the three months] = 203774585157 KRW (receipt number 20260814003578)",
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 57 기 반기, the three months] = 3768808123247 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 31,
+   "end": 40,
+   "text": "7조 3,452억",
+   "quote": "2025년 1월부터 6월까지의 영업수익은 7조 3,452억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "6,356,200,000,000",
+   "recomputed_raw": "6356223796915",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS ifrs-full_Revenue 영업수익 frmtrm_add_amount [제 56 기 반기, the same cumulative period a year earlier] = 6356223796915 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 28,
+   "end": 38,
+   "text": "18조 6,852억",
+   "quote": "2025년 12월 말의 부채 합계는 18조 6,852억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "18,685,200,000,000",
+   "recomputed_raw": "18685225421089",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS BS ifrs-full_Liabilities 부채 합계 frmtrm_amount [제 56 기말, the end of the previous business year] = 18685225421089 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 27,
+   "end": 45,
+   "text": "47,621,891,099,845",
+   "quote": "2026년 6월 말의 자산 합계는 47,621,891,099,845원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "47,621,891,099,845",
+   "recomputed_raw": "47621891099845",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS BS ifrs-full_Assets 자산 합계 thstrm_amount [제 57 기 반기말, the period end] = 47621891099845 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 32,
+   "end": 38,
+   "text": "4,716억",
+   "quote": "2026년 4월부터 6월까지의 연결 기준 반기순손익은 4,716억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "471,600,000,000",
+   "recomputed_raw": "471625761952",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS ifrs-full_ProfitLoss 반기순손익 thstrm_amount [제 57 기 반기, the three months] = 471625761952 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 35,
+   "end": 41,
+   "text": "1,094억",
+   "quote": "2026년 1월부터 6월까지의 연결 기준 영업활동현금흐름은 1,094억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "109,400,000,000",
+   "recomputed_raw": "109386315168",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 57 기 반기, from the start of the business year to the period end] = 109386315168 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 30,
+   "end": 47,
+   "text": "2,304,813,039,780",
+   "quote": "별도 기준 영업수익은 2026년 4월부터 6월까지 2,304,813,039,780원이었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "3,011,083,006,264",
+   "recomputed_raw": "3011083006264",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half OFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 57 기 반기, the three months] = 3011083006264 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 31,
+   "end": 40,
+   "text": "3조 7,688억",
+   "quote": "연결 기준 2026년 4월부터 6월까지의 영업수익은 3조 7,688억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,768,800,000,000",
+   "recomputed_raw": "3768808123247",
+   "sources": [
+    "DART 00126362 (삼성SDI, 006400) 2026 half CFS CIS ifrs-full_Revenue 영업수익 thstrm_amount [제 57 기 반기, the three months] = 3768808123247 KRW (receipt number 20260814003578)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00126362_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814003578"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00126362_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814003578"
+   }
+  ]
+ }
+}

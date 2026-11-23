@@ -1,0 +1,54 @@
+{
+ "doc": "00114792",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:57:42Z",
+   "set": "heldout",
+   "doc": "00114792",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 13723,
+   "output_tokens": 1063,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0019038,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKM2UwzeGEX3oYPwadGV"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "1조 4,163억원",
+    "should_be": "1조 8,411억원",
+    "why": "2023 consolidated revenue is 1,841,113,699,327 won (IS, bfefrmtrm), not 1,416 billion"
+   },
+   {
+    "line": 6,
+    "number": "6,837억원",
+    "should_be": "2조 6,934억원",
+    "why": "consolidated total assets at 2025 year end is 2,693,396,462,019 won"
+   },
+   {
+    "line": 9,
+    "number": "0.6%",
+    "should_be": "2.0%",
+    "why": "39,456,572,869 / 1,985,265,094,613 ≈ 1.99%"
+   },
+   {
+    "line": 12,
+    "number": "403억원",
+    "should_be": "376억원",
+    "why": "separate 2025 revenue is 37,624,796,430 won; 403억 is the 2024 figure (40,265,149,610)"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0019038
+}

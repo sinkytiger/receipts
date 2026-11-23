@@ -1,0 +1,54 @@
+{
+ "doc": "00815095",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:55:34Z",
+   "set": "heldout",
+   "doc": "00815095",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 11446,
+   "output_tokens": 1107,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0016981,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLs1UFyavK9gYFVxE9c"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "69억원",
+    "should_be": "약 2억 8,652만원 (286,520,518원)",
+    "why": "2025 consolidated operating income is 286,520,518 won; 69억 is off by a factor of about 24"
+   },
+   {
+    "line": 7,
+    "number": "-96,474,580",
+    "should_be": "-1,391,425,848",
+    "why": "that is the separate-statement net income; consolidated ProfitLoss is -1,391,425,848"
+   },
+   {
+    "line": 10,
+    "number": "6,645,819,070",
+    "should_be": "6,867,545,117",
+    "why": "2024 consolidated operating income in the CIS is 6,867,545,117"
+   },
+   {
+    "line": 15,
+    "number": "17.5% 늘었다",
+    "should_be": "17.5% 줄었다",
+    "why": "revenue fell from 146,852,886,071 to 121,210,836,014, a decrease of about 17.5%"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0016981
+}

@@ -1,0 +1,54 @@
+{
+ "doc": "01605282",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T06:04:08Z",
+   "set": "heldout",
+   "doc": "01605282",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 5476,
+   "output_tokens": 1197,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0011461,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKMWuFmPjdvZTsGScbNB"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "3.0%",
+    "should_be": "0.4% (about 0.36%)",
+    "why": "122,524,497 / 33,841,306,055 is about 0.36%, not 3.0%"
+   },
+   {
+    "line": 12,
+    "number": "763,954,130",
+    "should_be": "1,023,815,806",
+    "why": "FY2024 separate operating income in the CIS is 1,023,815,806"
+   },
+   {
+    "line": 15,
+    "number": "236억원",
+    "should_be": "188억원 (about 187.8억)",
+    "why": "FY2023 separate revenue (bfefrmtrm) is 18,780,047,895"
+   },
+   {
+    "line": 16,
+    "number": "123억원",
+    "should_be": "127억원 (about 126.5억)",
+    "why": "FY2024 year-end separate total liabilities is 12,650,385,624"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0011461
+}

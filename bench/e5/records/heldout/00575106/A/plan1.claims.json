@@ -1,0 +1,242 @@
+{
+ "document": "document.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "quote": "영업이익(손실)은 36억원으로 집계됐다",
+   "number": "36억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "quote": "연결 기준 2025년 12월 말의 부채총계는 145억원이다",
+   "number": "145억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "quote": "영업활동현금흐름은 2026년 1월부터 6월까지 31,506,665,890원이었다",
+   "number": "31,506,665,890",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "quote": "연결 기준 수익은 2026년 4월부터 6월까지 25억원이었다",
+   "number": "25억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "quote": "1.2% 늘었다",
+   "number": "1.2%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "direction": "up",
+   "operands": {
+    "new": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    },
+    "old": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "quote": "1,561억원으로 집계됐다",
+   "number": "1,561억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "quote": "수익은 2025년 4월부터 6월까지 367억원이었다",
+   "number": "367억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "quote": "수익은 967억원으로 집계됐다",
+   "number": "967억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "quote": "영업이익률(영업이익(손실)을 수익으로 나눈 비율)은 3.2%이다",
+   "number": "3.2%",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    },
+    "den": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "quote": "별도 기준 수익은 2026년 4월부터 6월까지 25억원이었다",
+   "number": "25억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "quote": "당기순이익(손실)은 27억원이다",
+   "number": "27억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "quote": "영업이익(손실)은 2026년 1월부터 6월까지 3,569,111,793원이었다",
+   "number": "3,569,111,793",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "376290",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_add_amount"
+    }
+   }
+  }
+ ]
+}

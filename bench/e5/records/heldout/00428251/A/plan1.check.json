@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 35,
+   "end": 41,
+   "text": "2,840억",
+   "quote": "연결 기준 영업이익(손실)은 2025년 1월부터 12월까지 2,840억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "377,900,000,000",
+   "recomputed_raw": "377947571000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 24 기, the year] = 377947571000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 36,
+   "end": 42,
+   "text": "7,578억",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 영업활동현금흐름은 7,578억원이다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "986,200,000,000",
+   "recomputed_raw": "986166052000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 24 기, the year] = 986166052000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 36,
+   "end": 42,
+   "text": "1,415억",
+   "quote": "연결 기준 당기순이익(손실)은 2025년 1월부터 12월까지 1,415억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "141,500,000,000",
+   "recomputed_raw": "141528509000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 24 기, the year] = 141528509000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 27,
+   "end": 34,
+   "text": "49,833억",
+   "quote": "연결 기준 부채총계는 2024년 12월 말에 49,833억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,983,300,000,000",
+   "recomputed_raw": "4983278191000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 23 기, the previous year end] = 4983278191000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 30,
+   "end": 39,
+   "text": "4조 2,303억",
+   "quote": "연결 기준 매출액은 2025년 1월부터 12월까지 4조 2,303억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,230,300,000,000",
+   "recomputed_raw": "4230320613000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 24 기, the year] = 4230320613000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 31,
+   "end": 40,
+   "text": "1조 7,955억",
+   "quote": "별도 기준 2025년 1월부터 12월까지의 매출액은 1조 7,955억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,795,500,000,000",
+   "recomputed_raw": "1795544840000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual OFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 24 기, the year] = 1795544840000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 27,
+   "end": 36,
+   "text": "7조 7,965억",
+   "quote": "연결 기준 자산총계는 2025년 12월 말에 7조 7,965억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "11,249,800,000,000",
+   "recomputed_raw": "11249807365000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 24 기, the year end] = 11249807365000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 63,
+   "end": 67,
+   "text": "1.0%",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 매출액은 한 해 전 같은 기간(2024년 1월부터 12월까지)보다 1.0% 줄었다.",
+   "verdict": "wrong",
+   "reason": "direction_mismatch",
+   "recomputed": "1.0%",
+   "recomputed_raw": "1.01982045785578793912581155895061881226705018850560546731362",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 24 기, the year] = 4230320613000 KRW (receipt number 20260318001314)",
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS ifrs-full_Revenue 매출액 frmtrm_amount [제 23 기, the previous year] = 4187614464000 KRW (receipt number 20260318001314)"
+   ],
+   "note": "the sentence says down, the recomputed change is 1.01982045785578793912581155895061881226705018850560546731362"
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 56,
+   "end": 60,
+   "text": "8.9%",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 영업이익률(영업이익(손실)을 매출액으로 나눈 비율)은 8.9%이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "8.9%",
+   "recomputed_raw": "8.93425358443393236019957431061029605228174699580388518415117",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 24 기, the year] = 377947571000 KRW (receipt number 20260318001314)",
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 24 기, the year] = 4230320613000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 36,
+   "end": 42,
+   "text": "2,840억",
+   "quote": "2024년 1월부터 12월까지의 연결 기준 영업이익(손실)은 2,840억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "284,000,000,000",
+   "recomputed_raw": "284042489000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS dart_OperatingIncomeLoss 영업이익(손실) frmtrm_amount [제 23 기, the previous year] = 284042489000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 31,
+   "end": 40,
+   "text": "4조 2,075억",
+   "quote": "연결 기준 2023년 1월부터 12월까지의 매출액은 4조 2,075억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,207,500,000,000",
+   "recomputed_raw": "4207452895000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS ifrs-full_Revenue 매출액 bfefrmtrm_amount [제 22 기, the year two years back] = 4207452895000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 31,
+   "end": 40,
+   "text": "4조 1,876억",
+   "quote": "2024년 1월부터 12월까지의 연결 기준 매출액은 4조 1,876억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "4,187,600,000,000",
+   "recomputed_raw": "4187614464000",
+   "sources": [
+    "DART 00428251 (현대백화점, 069960) 2025 annual CFS IS ifrs-full_Revenue 매출액 frmtrm_amount [제 23 기, the previous year] = 4187614464000 KRW (receipt number 20260318001314)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00428251_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260318001314"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00428251_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260318001314"
+   }
+  ]
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "doc": "00491336",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T06:00:32Z",
+   "set": "heldout",
+   "doc": "00491336",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 10250,
+   "output_tokens": 1178,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.001614,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKMEyGRmCKKd7Hn6tcKU"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "39억원",
+    "should_be": "21억원 (2,111,296,136원)",
+    "why": "consolidated operating cash flow Jan–Sep 2026 is 2,111,296,136 won"
+   },
+   {
+    "line": 9,
+    "number": "121억",
+    "should_be": "73억 (7,298,864,472원)",
+    "why": "consolidated revenue Jul–Sep 2026 is 7,298,864,472 won; 121억 is the 2025 figure"
+   },
+   {
+    "line": 11,
+    "number": "54억원",
+    "should_be": "67억원 (6,698,127,792원)",
+    "why": "separate revenue Jul–Sep 2026 is 6,698,127,792 won"
+   },
+   {
+    "line": 14,
+    "number": "354억원",
+    "should_be": "121억원 (12,093,223,852원)",
+    "why": "consolidated revenue Jul–Sep 2025 is 12,093,223,852 won; 354억 is the Jan–Sep 2025 cumulative figure"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.001614
+}

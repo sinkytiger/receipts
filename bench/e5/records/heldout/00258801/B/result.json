@@ -1,0 +1,54 @@
+{
+ "doc": "00258801",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:50:11Z",
+   "set": "heldout",
+   "doc": "00258801",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 14347,
+   "output_tokens": 1719,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0022942,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLT3dpwBz7h4Dv5hMEF"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 6,
+    "number": "7,287억원",
+    "should_be": "2,403억원",
+    "why": "7,287억 is the 9-month cumulative consolidated operating income; the 3-month figure is 240,281,867,628 won"
+   },
+   {
+    "line": 7,
+    "number": "2조 1,606억원",
+    "should_be": "2조 868억원",
+    "why": "3-month consolidated operating revenue is 2,086,762,829,770 won"
+   },
+   {
+    "line": 11,
+    "number": "12조 275억원",
+    "should_be": "26조 5,916억원",
+    "why": "consolidated total assets at 2026 period end is 26,591,571,556,326 won"
+   },
+   {
+    "line": 12,
+    "number": "11조 5,941억원",
+    "should_be": "12조 5,586억원",
+    "why": "2025 year-end consolidated total liabilities is 12,558,602,529,761 won; 11,594,069,700,917 is the 2026 9-month-end figure"
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0022942
+}

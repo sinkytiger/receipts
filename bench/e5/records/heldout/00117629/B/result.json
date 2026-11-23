@@ -1,0 +1,54 @@
+{
+ "doc": "00117629",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T05:53:00Z",
+   "set": "heldout",
+   "doc": "00117629",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 9743,
+   "output_tokens": 1131,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.0015398,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKLffTgjDejAxCWoVrhf"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "41억원",
+    "should_be": "-0.8억원 (3개월 영업손실 -82,673,199원)",
+    "why": "2026년 4~6월 영업이익은 손실이며 금액도 4.1억원이 아니라 약 -0.8억원이다. 41억원은 누적(1~6월) 값이다."
+   },
+   {
+    "line": 8,
+    "number": "2.1%",
+    "should_be": "3.2%",
+    "why": "4,102,754,038 / 127,334,942,617 ≈ 3.22%"
+   },
+   {
+    "line": 9,
+    "number": "-36억원",
+    "should_be": "-23억원",
+    "why": "2026년 4~6월 연결 반기순손실은 -2,305,687,156원이다."
+   },
+   {
+    "line": 16,
+    "number": "1,062억원",
+    "should_be": "981억원",
+    "why": "2025년 말 연결 부채총계는 98,083,472,688원이다."
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.0015398
+}

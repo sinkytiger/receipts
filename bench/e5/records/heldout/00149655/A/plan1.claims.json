@@ -1,0 +1,241 @@
+{
+ "document": "document.md",
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "quote": "매출액은 19조 7,589억원이다",
+   "number": "19조 7,589억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "quote": "6조 1,829억원이었다",
+   "number": "6조 1,829억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "OFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "quote": "5,265억원으로 집계됐다",
+   "number": "5,265억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_ProfitLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "quote": "1조 317억원으로 집계됐다",
+   "number": "1조 317억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "quote": "부채총계는 2025년 12월 말에 19조 9,335억원이었다",
+   "number": "19조 9,335억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Liabilities",
+     "column": "frmtrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "quote": "매출액은 11,995,055,624,406원으로 집계됐다",
+   "number": "11,995,055,624,406",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "quote": "보다 19.7% 늘었다",
+   "number": "19.7%",
+   "kind": "derived",
+   "formula": "pct_change",
+   "operands": {
+    "new": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    },
+    "old": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "frmtrm_q_amount"
+    }
+   }
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "quote": "매출액은 11조 9,951억원으로 집계됐다",
+   "number": "11조 9,951억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "quote": "현금흐름은 4,051,074,799,140원으로 집계됐다",
+   "number": "4,051,074,799,140",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CF",
+     "account": "ifrs-full_CashFlowsFromUsedInOperatingActivities",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "quote": "영업이익률(영업이익을 매출액으로 나눈 비율)은 5.2%이다",
+   "number": "5.2%",
+   "kind": "derived",
+   "formula": "ratio",
+   "operands": {
+    "num": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_amount"
+    },
+    "den": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "ifrs-full_Revenue",
+     "column": "thstrm_amount"
+    }
+   }
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "quote": "영업이익은 2026년 1월부터 6월까지 1조 7,521억원이었다",
+   "number": "1조 7,521억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "CIS",
+     "account": "dart_OperatingIncomeLoss",
+     "column": "thstrm_add_amount"
+    }
+   }
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "quote": "자산총계는 163조 7,685억원으로 집계됐다",
+   "number": "163조 7,685억",
+   "kind": "lookup",
+   "operands": {
+    "of": {
+     "dart": "028260",
+     "year": 2026,
+     "report": "half",
+     "fs": "CFS",
+     "statement": "BS",
+     "account": "ifrs-full_Assets",
+     "column": "thstrm_amount"
+    }
+   }
+  }
+ ]
+}

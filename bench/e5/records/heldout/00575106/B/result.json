@@ -1,0 +1,54 @@
+{
+ "doc": "00575106",
+ "arm": "B",
+ "requests": [
+  {
+   "time": "2026-11-23T06:01:13Z",
+   "set": "heldout",
+   "doc": "00575106",
+   "arm": "B",
+   "request": 1,
+   "model": "claude-haiku-5-5",
+   "input_tokens": 8960,
+   "output_tokens": 1330,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "usd": 0.001561,
+   "stop_reason": "end_turn",
+   "request_id": "req_011ChKMHyEmTDUnwpMDNwRpA"
+  }
+ ],
+ "answer": {
+  "wrong": [
+   {
+    "line": 5,
+    "number": "36억원",
+    "should_be": "15억 5,075만원 (1,550,746,846원)",
+    "why": "2026년 4~6월 연결 영업이익은 1,550,746,846원이다. 36억원은 맞지 않는다."
+   },
+   {
+    "line": 8,
+    "number": "25억원",
+    "should_be": "약 480억원 (47,984,708,165원)",
+    "why": "2026년 4~6월 연결 수익은 47,984,708,165원이다. 25억원은 별도 기준 수치다."
+   },
+   {
+    "line": 11,
+    "number": "367억원",
+    "should_be": "약 474억원 (47,417,409,740원)",
+    "why": "2025년 4~6월 연결 수익은 47,417,409,740원이다."
+   },
+   {
+    "line": 12,
+    "number": "967억원",
+    "should_be": "약 897억원 (89,730,498,673원)",
+    "why": "2026년 1~6월 연결 수익은 89,730,498,673원이다."
+   }
+  ],
+  "could_not_check": []
+ },
+ "parsed": true,
+ "cut_off_replies": 0,
+ "refused": false,
+ "usd": 0.001561
+}
