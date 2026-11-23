@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 36,
+   "end": 50,
+   "text": "12,505,665,943",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 영업이익(손실)은 12,505,665,943원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "12,505,665,943",
+   "recomputed_raw": "12505665943",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 26 기, the year] = 12505665943 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 43,
+   "end": 47,
+   "text": "509억",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 법인세비용차감전순이익(손실)은 509억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "50,900,000,000",
+   "recomputed_raw": "50948405146",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS ifrs-full_ProfitLossBeforeTax 법인세비용차감전순이익(손실) thstrm_amount [제 26 기, the year] = 50948405146 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 33,
+   "end": 37,
+   "text": "371억",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 당기순이익은 371억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "37,100,000,000",
+   "recomputed_raw": "37119411185",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS ifrs-full_ProfitLoss 당기순이익 thstrm_amount [제 26 기, the year] = 37119411185 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 35,
+   "end": 50,
+   "text": "453,912,289,316",
+   "quote": "2025년 1월부터 12월까지의 별도 기준 수익(매출액)은 453,912,289,316원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "453,912,289,316",
+   "recomputed_raw": "453912289316",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual OFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 26 기, the year] = 453912289316 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 27,
+   "end": 33,
+   "text": "6,391억",
+   "quote": "연결 기준 부채총계는 2024년 12월 말에 6,391억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "639,100,000,000",
+   "recomputed_raw": "639120136968",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 25 기, the previous year end] = 639120136968 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 60,
+   "end": 64,
+   "text": "0.9%",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 영업이익률(영업이익(손실)을 수익(매출액)으로 나눈 비율)은 0.9%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "0.9%",
+   "recomputed_raw": "0.901246864098416461162629626549523718641430670637082709568029",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 26 기, the year] = 12505665943 KRW (receipt number 20260630001001)",
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 26 기, the year] = 1387596056216 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 35,
+   "end": 52,
+   "text": "1,387,596,056,216",
+   "quote": "2025년 1월부터 12월까지의 연결 기준 수익(매출액)은 1,387,596,056,216원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "1,387,596,056,216",
+   "recomputed_raw": "1387596056216",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 26 기, the year] = 1387596056216 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 35,
+   "end": 44,
+   "text": "1조 1,199억",
+   "quote": "2024년 1월부터 12월까지의 연결 기준 수익(매출액)은 1조 1,199억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,578,200,000,000",
+   "recomputed_raw": "1578173429989",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) frmtrm_amount [제 25 기, the previous year] = 1578173429989 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 67,
+   "end": 72,
+   "text": "71.2%",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 수익(매출액)은 한 해 전 같은 기간(2024년 1월부터 12월까지)보다 71.2% 줄었다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "-12.1%",
+   "recomputed_raw": "-12.0758194347707615466460352060375939717008247526310901535574",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) thstrm_amount [제 26 기, the year] = 1387596056216 KRW (receipt number 20260630001001)",
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS ifrs-full_Revenue 수익(매출액) frmtrm_amount [제 25 기, the previous year] = 1578173429989 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 36,
+   "end": 42,
+   "text": "1,266억",
+   "quote": "연결 기준 2023년 1월부터 12월까지의 영업이익(손실)은 1,266억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "126,600,000,000",
+   "recomputed_raw": "126591961231",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CIS dart_OperatingIncomeLoss 영업이익(손실) bfefrmtrm_amount [제 24 기, the year two years back] = 126591961231 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 36,
+   "end": 51,
+   "text": "-25,282,431,150",
+   "quote": "연결 기준 2025년 1월부터 12월까지의 영업활동현금흐름은 -25,282,431,150원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "63,328,065,489",
+   "recomputed_raw": "63328065489",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 26 기, the year] = 63328065489 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 27,
+   "end": 36,
+   "text": "1조 3,052억",
+   "quote": "2025년 12월 말의 연결 기준 자산총계는 1조 3,052억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,189,900,000,000",
+   "recomputed_raw": "1189917477862",
+   "sources": [
+    "DART 00367844 (자이에스앤디, 317400) 2025 annual CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 26 기, the year end] = 1189917477862 KRW (receipt number 20260630001001)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00367844_2025_11011_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260630001001"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00367844_2025_11011_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260630001001"
+   }
+  ]
+ }
+}

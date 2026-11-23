@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 30,
+   "end": 36,
+   "text": "3,838억",
+   "quote": "2026년 4월부터 9월까지의 연결 기준 매출액은 3,838억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "383,800,000,000",
+   "recomputed_raw": "383830509785",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_add_amount [제 42 기 반기, from the start of the business year to the period end] = 383830509785 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 30,
+   "end": 36,
+   "text": "1,556억",
+   "quote": "2025년 4월부터 9월까지의 연결 기준 매출액은 1,556억원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "323,600,000,000",
+   "recomputed_raw": "323619019495",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS ifrs-full_Revenue 매출액 frmtrm_add_amount [제 41 기 반기, the same cumulative period a year earlier] = 323619019495 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 61,
+   "end": 66,
+   "text": "22.2%",
+   "quote": "연결 기준 2026년 7월부터 9월까지의 매출액은 한 해 전 같은 기간(2025년 7월부터 9월까지)보다 22.2% 늘었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "22.2%",
+   "recomputed_raw": "22.2058277378996899965480097446700925563434277613178852327928",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 42 기 반기, the three months] = 190161662213 KRW (receipt number 20261116000248)",
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 41 기 반기, the same three months a year earlier] = 155607687238 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 34,
+   "end": 38,
+   "text": "352억",
+   "quote": "연결 기준 영업이익(손실)은 2026년 7월부터 9월까지 352억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "35,200,000,000",
+   "recomputed_raw": "35203008112",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 42 기 반기, the three months] = 35203008112 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 36,
+   "end": 39,
+   "text": "99억",
+   "quote": "2026년 7월부터 9월까지의 연결 기준 당기순이익(손실)은 99억원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "5,800,000,000",
+   "recomputed_raw": "5783503247",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 42 기 반기, the three months] = 5783503247 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 30,
+   "end": 36,
+   "text": "1,902억",
+   "quote": "연결 기준 2026년 7월부터 9월까지의 매출액은 1,902억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "190,200,000,000",
+   "recomputed_raw": "190161662213",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 42 기 반기, the three months] = 190161662213 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 35,
+   "end": 39,
+   "text": "496억",
+   "quote": "2026년 4월부터 9월까지의 연결 기준 영업이익(손실)은 496억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "49,600,000,000",
+   "recomputed_raw": "49617956604",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_add_amount [제 42 기 반기, from the start of the business year to the period end] = 49617956604 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 35,
+   "end": 39,
+   "text": "721억",
+   "quote": "2026년 4월부터 9월까지의 연결 기준 영업활동현금흐름은 721억원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "77,300,000,000",
+   "recomputed_raw": "77325753985",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 42 기 반기, from the start of the business year to the period end] = 77325753985 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 55,
+   "end": 60,
+   "text": "18.5%",
+   "quote": "연결 기준 2026년 7월부터 9월까지의 영업이익률(영업이익(손실)을 매출액으로 나눈 비율)은 18.5%이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "18.5%",
+   "recomputed_raw": "18.5121478758263718921902501407643183094245368979398888548776",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 42 기 반기, the three months] = 35203008112 KRW (receipt number 20261116000248)",
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 42 기 반기, the three months] = 190161662213 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 30,
+   "end": 36,
+   "text": "1,028억",
+   "quote": "별도 기준 2026년 7월부터 9월까지의 매출액은 1,028억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "102,800,000,000",
+   "recomputed_raw": "102818241814",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half OFS CIS ifrs-full_Revenue 매출액 thstrm_amount [제 42 기 반기, the three months] = 102818241814 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 26,
+   "end": 32,
+   "text": "6,377억",
+   "quote": "연결 기준 자산총계는 2026년 9월 말에 6,377억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "668,300,000,000",
+   "recomputed_raw": "668275466642",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 42 기 반기말, the period end] = 668275466642 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 26,
+   "end": 32,
+   "text": "4,581억",
+   "quote": "연결 기준 2026년 3월 말의 부채총계는 4,581억원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "458,100,000,000",
+   "recomputed_raw": "458065475734",
+   "sources": [
+    "DART 00118008 (동원모빌리티, 018500) 2026 half CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 41 기말, the end of the previous business year] = 458065475734 KRW (receipt number 20261116000248)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00118008_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116000248"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00118008_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116000248"
+   }
+  ]
+ }
+}

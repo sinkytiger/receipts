@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 24,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 26,
+   "end": 36,
+   "text": "18조 6,379억",
+   "quote": "자산총계는 18조 6,379억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "18,637,900,000,000",
+   "recomputed_raw": "18637863000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 58 기 반기말, the period end] = 18637863000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 35,
+   "end": 41,
+   "text": "1,648억",
+   "quote": "영업이익(손실)은 1,648억원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "91,400,000,000",
+   "recomputed_raw": "91354000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 58 기 반기, the three months] = 91354000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 30,
+   "end": 47,
+   "text": "2,779,365,000,000",
+   "quote": "매출액은 2,779,365,000,000원이다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "1,594,509,000,000",
+   "recomputed_raw": "1594509000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half OFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기 반기, the three months] = 1594509000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 30,
+   "end": 39,
+   "text": "5조 1,799억",
+   "quote": "매출액은 5조 1,799억원으로 집계됐다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "5,179,900,000,000",
+   "recomputed_raw": "5179903000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_add_amount [제 58 기 반기, from the start of the business year to the period end] = 5179903000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 35,
+   "end": 41,
+   "text": "1,648억",
+   "quote": "영업이익(손실)은 1,648억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "164,800,000,000",
+   "recomputed_raw": "164823000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS dart_OperatingIncomeLoss 영업이익(손실) thstrm_add_amount [제 58 기 반기, from the start of the business year to the period end] = 164823000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 30,
+   "end": 47,
+   "text": "3,124,300,000,000",
+   "quote": "매출액은 3,124,300,000,000원으로",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "2,779,365,000,000",
+   "recomputed_raw": "2779365000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기 반기, the three months] = 2779365000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 41,
+   "end": 47,
+   "text": "2,011억",
+   "quote": "영업활동으로 인한 현금흐름은 2,011억원으로 집계됐다",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "94,400,000,000",
+   "recomputed_raw": "94379000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동으로 인한 현금흐름 thstrm_amount [제 58 기 반기, from the start of the business year to the period end] = 94379000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 29,
+   "end": 38,
+   "text": "3조 1,961억",
+   "quote": "매출액은 2025년 4월부터 6월까지 3조 1,961억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3,196,100,000,000",
+   "recomputed_raw": "3196053000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 57 기 반기, the same three months a year earlier] = 3196053000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 55,
+   "end": 59,
+   "text": "3.3%",
+   "quote": "영업이익률(영업이익(손실)을 매출액으로 나눈 비율)은 3.3%이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "3.3%",
+   "recomputed_raw": "3.28686588483340619170206144209198863769242254975506995302884",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS dart_OperatingIncomeLoss 영업이익(손실) thstrm_amount [제 58 기 반기, the three months] = 91354000000 KRW (receipt number 20260814002722)",
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기 반기, the three months] = 2779365000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 27,
+   "end": 37,
+   "text": "12조 9,363억",
+   "quote": "부채총계는 2025년 12월 말에 12조 9,363억원이었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "12,936,300,000,000",
+   "recomputed_raw": "12936285000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 57 기말, the end of the previous business year] = 12936285000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 36,
+   "end": 40,
+   "text": "144억",
+   "quote": "당기순이익(손실)은 144억원이다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "14,400,000,000",
+   "recomputed_raw": "14371000000",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS ifrs-full_ProfitLoss 당기순이익(손실) thstrm_amount [제 58 기 반기, the three months] = 14371000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 61,
+   "end": 66,
+   "text": "13.0%",
+   "quote": "매출액은 한 해 전 같은 기간(2025년 4월부터 6월까지)보다 13.0% 줄었다",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "-13.0%",
+   "recomputed_raw": "-13.0375810413657095173327851571923244076365441999866710595851",
+   "sources": [
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기 반기, the three months] = 2779365000000 KRW (receipt number 20260814002722)",
+    "DART 00120030 (GS건설, 006360) 2026 half CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 57 기 반기, the same three months a year earlier] = 3196053000000 KRW (receipt number 20260814002722)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00120030_2026_11012_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814002722"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00120030_2026_11012_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20260814002722"
+   }
+  ]
+ }
+}

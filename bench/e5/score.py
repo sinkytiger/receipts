@@ -79,10 +79,11 @@ def score_document(doc_dir, gold_doc):
     a = read_json(os.path.join(a_dir, "result.json")) if os.path.isfile(os.path.join(a_dir, "result.json")) else None
     plans = []
     if a:
-        n = 1
-        while os.path.isfile(os.path.join(a_dir, f"plan{n}", "receipts.json")) or os.path.isfile(os.path.join(a_dir, f"plan{n}", "claims.json")):
-            path = os.path.join(a_dir, f"plan{n}", "receipts.json")
-            plans.append(read_json(path) if os.path.isfile(path) else None)
+        n = 1                 # a run folder holds planN/receipts.json, the committed records planN.check.json
+        while any(os.path.isfile(os.path.join(a_dir, name)) for name in (f"plan{n}/claims.json", f"plan{n}.claims.json")):
+            path = next((os.path.join(a_dir, name) for name in (f"plan{n}/receipts.json", f"plan{n}.check.json")
+                         if os.path.isfile(os.path.join(a_dir, name))), None)
+            plans.append(read_json(path) if path else None)
             n += 1
     accepted = [p for p in plans if p is not None]
     final = accepted[-1] if accepted else None

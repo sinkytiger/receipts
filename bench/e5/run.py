@@ -522,19 +522,27 @@ def run_arm_b(model, first_message, doc, out_dir):
 
 
 def export_records(run_dir, set_name, docs, docs_dir):
-    """Copy what the run wrote to bench/e5/records/<set>/ for the repository, with each document and its gold files.
-    The working copies are left out."""
+    """Copy what a reader needs to check the run into bench/e5/records/<set>/ (tracked): each document with its gold
+    files, the conversations, and every plan with the script's answer (planN.claims.json, planN.check.json).
+    No thinking data, no keys."""
     target = os.path.join(RECORDS, set_name)
     for doc in docs:
         os.makedirs(os.path.join(target, doc), exist_ok=True)
         for name in ("document.md", "gold.json", "gold-plan.json"):
             shutil.copyfile(os.path.join(docs_dir, doc, name), os.path.join(target, doc, name))
         for arm in ("A", "B"):
-            source = os.path.join(run_dir, doc, arm)
-            if not os.path.isdir(source):
+            source, dest = os.path.join(run_dir, doc, arm), os.path.join(target, doc, arm)
+            if not os.path.isfile(os.path.join(source, "result.json")):
                 continue
-            shutil.copytree(source, os.path.join(target, doc, arm), dirs_exist_ok=True,
-                            ignore=shutil.ignore_patterns("work"))
+            os.makedirs(dest, exist_ok=True)
+            for name in ("result.json", "conversation.json"):
+                shutil.copyfile(os.path.join(source, name), os.path.join(dest, name))
+            n = 1
+            while arm == "A" and os.path.isdir(os.path.join(source, f"plan{n}")):
+                shutil.copyfile(os.path.join(source, f"plan{n}", "claims.json"), os.path.join(dest, f"plan{n}.claims.json"))
+                if os.path.isfile(os.path.join(source, f"plan{n}", "receipts.json")):   # the script's answer to the plan
+                    shutil.copyfile(os.path.join(source, f"plan{n}", "receipts.json"), os.path.join(dest, f"plan{n}.check.json"))
+                n += 1
         slim_conversation(os.path.join(target, doc, "A", "conversation.json"))
     for name in ("run.json",):
         if os.path.isfile(os.path.join(run_dir, name)):

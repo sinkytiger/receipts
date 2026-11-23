@@ -1,0 +1,234 @@
+{
+ "document": "document.md",
+ "mode": "default",
+ "counts": {
+  "numbers": 12,
+  "verified": 8,
+  "wrong": 4,
+  "unverifiable": 0,
+  "uncovered": 0
+ },
+ "truncated": 0,
+ "skipped": {
+  "date": 26,
+  "year": 2
+ },
+ "claims": [
+  {
+   "id": "c1",
+   "line": 5,
+   "start": 51,
+   "end": 55,
+   "text": "6.2%",
+   "quote": "연결 기준 2026년 7월부터 9월까지의 영업이익률(영업이익을 매출액으로 나눈 비율)은 6.2%이다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "55.0%",
+   "recomputed_raw": "55.0262310925706731918551976269952111260819278007359151777116",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 58 기 3분기, the three months] = 107440482000000 KRW (receipt number 20261116001482)",
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기 3분기, the three months] = 195253209000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c2",
+   "line": 6,
+   "start": 26,
+   "end": 37,
+   "text": "566조 9,421억",
+   "quote": "2026년 9월 말의 연결 기준 자산총계는 566조 9,421억원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "791,841,900,000,000",
+   "recomputed_raw": "791841881000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS BS ifrs-full_Assets 자산총계 thstrm_amount [제 58 기 3분기말, the period end] = 791841881000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c3",
+   "line": 7,
+   "start": 61,
+   "end": 67,
+   "text": "126.9%",
+   "quote": "연결 기준 2026년 7월부터 9월까지의 매출액은 한 해 전 같은 기간(2025년 7월부터 9월까지)보다 126.9% 늘었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "126.9%",
+   "recomputed_raw": "126.875720986700397796944558887469481650192390354334777796226",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기 3분기, the three months] = 195253209000000 KRW (receipt number 20261116001482)",
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 57 기 3분기, the same three months a year earlier] = 86061747000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c4",
+   "line": 8,
+   "start": 31,
+   "end": 44,
+   "text": "254,165,691백만",
+   "quote": "연결 기준 2026년 1월부터 9월까지의 영업이익은 254,165,691백만원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "254,165,691,000,000",
+   "recomputed_raw": "254165691000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_add_amount [제 58 기 3분기, from the start of the business year to the period end] = 254165691000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c5",
+   "line": 9,
+   "start": 29,
+   "end": 37,
+   "text": "860,617억",
+   "quote": "연결 기준 매출액은 2025년 7월부터 9월까지 860,617억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "86,061,700,000,000",
+   "recomputed_raw": "86061747000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS ifrs-full_Revenue 매출액 frmtrm_q_amount [제 57 기 3분기, the same three months a year earlier] = 86061747000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c6",
+   "line": 10,
+   "start": 31,
+   "end": 42,
+   "text": "107조 4,405억",
+   "quote": "2026년 7월부터 9월까지의 연결 기준 영업이익은 107조 4,405억원으로 집계됐다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "107,440,500,000,000",
+   "recomputed_raw": "107440482000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS dart_OperatingIncomeLoss 영업이익 thstrm_amount [제 58 기 3분기, the three months] = 107440482000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c7",
+   "line": 11,
+   "start": 29,
+   "end": 40,
+   "text": "195조 2,532억",
+   "quote": "연결 기준 매출액은 2026년 7월부터 9월까지 195조 2,532억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "195,253,200,000,000",
+   "recomputed_raw": "195253209000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기 3분기, the three months] = 195253209000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c8",
+   "line": 12,
+   "start": 31,
+   "end": 39,
+   "text": "713,181억",
+   "quote": "연결 기준 분기순이익은 2026년 7월부터 9월까지 713,181억원이었다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "75,136,100,000,000",
+   "recomputed_raw": "75136138000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS ifrs-full_ProfitLoss 분기순이익 thstrm_amount [제 58 기 3분기, the three months] = 75136138000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c9",
+   "line": 13,
+   "start": 35,
+   "end": 48,
+   "text": "243,942,116백만",
+   "quote": "연결 기준 2026년 1월부터 9월까지의 영업활동현금흐름은 243,942,116백만원이다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "243,942,116,000,000",
+   "recomputed_raw": "243942116000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS CF ifrs-full_CashFlowsFromUsedInOperatingActivities 영업활동현금흐름 thstrm_amount [제 58 기 3분기, from the start of the business year to the period end] = 243942116000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c10",
+   "line": 14,
+   "start": 27,
+   "end": 37,
+   "text": "1,306,218억",
+   "quote": "연결 기준 부채총계는 2025년 12월 말에 1,306,218억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "130,621,800,000,000",
+   "recomputed_raw": "130621773000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS BS ifrs-full_Liabilities 부채총계 frmtrm_amount [제 57 기말, the end of the previous business year] = 130621773000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c11",
+   "line": 15,
+   "start": 29,
+   "end": 40,
+   "text": "500조 6,261억",
+   "quote": "연결 기준 매출액은 2026년 1월부터 9월까지 500조 6,261억원이었다.",
+   "verdict": "verified",
+   "reason": "match",
+   "recomputed": "500,626,100,000,000",
+   "recomputed_raw": "500626123000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 CFS IS ifrs-full_Revenue 매출액 thstrm_add_amount [제 58 기 3분기, from the start of the business year to the period end] = 500626123000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  },
+  {
+   "id": "c12",
+   "line": 16,
+   "start": 30,
+   "end": 40,
+   "text": "4,338,380억",
+   "quote": "2026년 7월부터 9월까지의 별도 기준 매출액은 4,338,380억원으로 집계됐다.",
+   "verdict": "wrong",
+   "reason": "mismatch",
+   "recomputed": "175,287,100,000,000",
+   "recomputed_raw": "175287109000000",
+   "sources": [
+    "DART 00126380 (삼성전자, 005930) 2026 q3 OFS IS ifrs-full_Revenue 매출액 thstrm_amount [제 58 기 3분기, the three months] = 175287109000000 KRW (receipt number 20261116001482)"
+   ],
+   "note": ""
+  }
+ ],
+ "uncovered": [],
+ "unbound_claims": [],
+ "labels": [],
+ "multipliers": [],
+ "dart": {
+  "files": [
+   {
+    "file": "corpCode.zip",
+    "fetched": "2026-11-21"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00126380_2026_11014_CFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116001482"
+   },
+   {
+    "file": "fnlttSinglAcntAll/00126380_2026_11014_OFS.json",
+    "fetched": "2026-11-21",
+    "rcept_no": "20261116001482"
+   }
+  ]
+ }
+}
